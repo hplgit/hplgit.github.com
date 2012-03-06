@@ -1,0 +1,1190 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Quick Intro to Version Control Systems and Project Hosting Services &mdash; Quick Intro to Version Control Systems and Project Hosting Services 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Quick Intro to Version Control Systems and Project Hosting Services 1.0 documentation" href="index.html" />
+    <link rel="prev" title="Quick Intro to Version Control Systems and Project Hosting Services" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Quick Intro to Version Control Systems and Project Hosting Services"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Quick Intro to Version Control Systems and Project Hosting Services 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="quick-intro-to-version-control-systems-and-project-hosting-services">
+<h1>Quick Intro to Version Control Systems and Project Hosting Services<a class="headerlink" href="#quick-intro-to-version-control-systems-and-project-hosting-services" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 6, 2012</td>
+</tr>
+</tbody>
+</table>
+<p>Version control systems allow you to record the history of files
+and share files among several computers and collaborators in a
+professional way. File changes on one computer are updated or
+merged with changes on another computer. Especially when working
+with programs or technical reports it is essential
+to have changes documented and to
+ensure that every computer and person involved in the project
+have the latest updates of the files.
+Greg Wilson&#8217; excellent <a class="reference external" href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly
+from using version control systems.</p>
+<p>Projects that you want to share among several computers or project
+workers are today most conveniently stored at some web site &#8220;in the
+cloud&#8221; and updated through communication with that site. I strongly
+recommend you to use such sites for all serious programming and
+scientific writing work &#8211; and all other important files.</p>
+<p>The simplest services for hosting project files is Dropbox. Simply
+go to <a class="reference external" href="http://dropbox.com">http://dropbox.com</a> and watch the video. It is very easy to get
+started with Dropbox, and it allows you to share files among
+laptops and mobile units.</p>
+<p>When several people may edit files simultaneously, it can be
+difficult detect who did what when, roll back to previous versions,
+and to manually merge the edits when these are incompatible. Then ones needs
+more sophisticated tools than Dropbox:
+project hosting services with true version control systems.
+This is what we aim at getting you started with here.</p>
+<p>The idea with project hosting services is that you have the files
+associated with a project in the cloud. Many people may share these
+files.  Every time you want to work on the project you explicitly
+update your version of the files, edit the files as you like, and
+synchronize the files with the &#8220;master version&#8221; at the site where the
+project is hosted.  If you at some point need to go back to the
+version of the files at some particular you when you known everything
+was fine, this is an easy operation. You can also use tools to see
+what various people (or just yourself) have done with the files.</p>
+<p>Four popular project hosting services are</p>
+<blockquote>
+<div><ul class="simple">
+<li>Bitbucket at <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt></li>
+<li>GitHub at <tt class="docutils literal"><span class="pre">github.com</span></tt></li>
+<li>Googlecode at <tt class="docutils literal"><span class="pre">code.google.com</span></tt></li>
+<li>Launchpad at <tt class="docutils literal"><span class="pre">launchpad.net</span></tt></li>
+</ul>
+</div></blockquote>
+<p>All these services are very similar. Here we describe how you get
+started with Bitbucket, GitHub, and Googlecode. All the project
+hosting services have good introductions
+available at their web sites, but the recipes below aim at getting you
+started even quicker through a specific example.
+Launchpad works very similarly to Bitbucket, GitHub, and Googlecode.</p>
+<p>The mention services host all your files in a specific project in what
+is known as a <em>repository</em>, or <em>repo</em> for short.  When a copy of the
+files are wanted on a certain computer, one clones the repository on
+that computer.  This creates a local copy of the files. Now files can
+be edited, new ones can be added, and files can be deleted.  These
+changes are then brought back to the repository.  If users at
+different computers synchronize their files frequently with the
+repository, most modern version control systems will be able to merge
+changes in files that have been edited simultaneously on different
+computers. This is perhaps one of the most useful features of project
+hosting services.</p>
+<p>For the examples below, assume that you have some directory tree
+<tt class="docutils literal"><span class="pre">my-project</span></tt> with files that you want to host at Bitbucket, GitHub, or
+Googlecode and bring under version control. The official name of the
+project is &#8220;My Project&#8221;.</p>
+</div>
+<div class="section" id="installing-version-control-systems">
+<h1>Installing Version Control Systems<a class="headerlink" href="#installing-version-control-systems" title="Permalink to this headline">¶</a></h1>
+<p>The various project hosting sites work with different version
+control systems:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">bitbucket.org</span></tt> offers Git (<tt class="docutils literal"><span class="pre">git</span></tt>) or Mercurial (<tt class="docutils literal"><span class="pre">hg</span></tt>),</li>
+<li><tt class="docutils literal"><span class="pre">github.com</span></tt> offers Git (<tt class="docutils literal"><span class="pre">git</span></tt>),</li>
+<li><tt class="docutils literal"><span class="pre">code.google.com</span></tt> offers Git (<tt class="docutils literal"><span class="pre">git</span></tt>), Mercurial (<tt class="docutils literal"><span class="pre">hg</span></tt>), or Subversion (<tt class="docutils literal"><span class="pre">svn</span></tt>),</li>
+<li><tt class="docutils literal"><span class="pre">launchpad.net</span></tt> offers Bazaar (<tt class="docutils literal"><span class="pre">bzr</span></tt>).</li>
+</ul>
+</div></blockquote>
+<p>All the version control systems are quite similar in the way users
+operate them, but Subversion is technically different from Git,
+Mercurial, and Bazaar. The latter three work very much in the same way
+for a beginner, but their more advanced commands and their
+nomenclature differ significantly.  Which system to choose is mainly a
+matter of personal preference and experience. For some people the
+choice of project hosting site comes first, while others prefer a
+particular version control system and let this preference govern the
+choice of project hosting site.</p>
+<p>It is possible to use Mercurial also with a GitHub project. This
+requires a plugin for Mercurial, described in <a class="reference external" href="http://hg-git.github.com">http://hg-git.github.com</a>.
+The plugin is easy to install (<tt class="docutils literal"><span class="pre">easy-install</span> <span class="pre">hg-git</span></tt> or
+<tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">mercurial-git</span></tt> on Ubuntu). You can also use
+Git to work with Subversion and Mercurial repositories.</p>
+<p>The author&#8217;s experience from teaching contexts points to the combination
+of Bitbucket and Mercurial is the simplest to get started with,
+foremost because it appears that Mercurial is easier to learn than Git
+beyond the very basic commands.
+The
+combination of GitHub and Git seems to have the strongest momentum and
+popularity in the software development community at the time of this
+writing.</p>
+<div class="section" id="installing-mercurial">
+<h2>Installing Mercurial<a class="headerlink" href="#installing-mercurial" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="index-0"></span><p id="index-1">The <a class="reference external" href="http://mercurial.selenic.com/">Mercurial website</a> has information
+on downloading Mercurial on different platforms.
+On Ubuntu, you just perform</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install mercurial</span>
+</pre></div>
+</div>
+<p>You can alternatively click in the Synaptic Package
+Manager and choose the Mercurial package in the graphical interface.</p>
+<p>Mercurial is pure Python code so it is trivial on any system with Python
+installed to download the Mercurial source code and perform
+the standard <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> command.</p>
+<p>You need to create two files in your home directory: <tt class="docutils literal"><span class="pre">.hgrc</span></tt> for
+specifying the behavior of <tt class="docutils literal"><span class="pre">hg</span></tt> (Mercurial) and <tt class="docutils literal"><span class="pre">.hgignore</span></tt> for
+listing the type of files you in general do not want to have under version
+control. A simple <tt class="docutils literal"><span class="pre">.hgrc</span></tt> file can look like this:</p>
+<div class="highlight-python"><pre>[ui]
+username = "Hans Petter Langtangen &lt;hpl@simula.no&gt;"
+ignore=~/.hgignore</pre>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">.hgignore</span></tt> file lists the types of files that will be skipped
+when bringing new directories under Mercurial version control.
+Typically this is temporary files sich as object files (<tt class="docutils literal"><span class="pre">*.o</span></tt>),
+shared libraries (<tt class="docutils literal"><span class="pre">*.so</span></tt>), and backup files (<tt class="docutils literal"><span class="pre">*.bak</span></tt> and <tt class="docutils literal"><span class="pre">*~</span></tt>).
+The file types are usually specified using Unix Shell Wildcard notation,
+also referred to as <tt class="docutils literal"><span class="pre">glob</span></tt> syntax, as in <tt class="docutils literal"><span class="pre">*.o</span></tt> (where <tt class="docutils literal"><span class="pre">*</span></tt> means any
+sequence of characters).
+An example of a <tt class="docutils literal"><span class="pre">.hgignore</span></tt> file may be</p>
+<div class="highlight-python"><pre>syntax: glob
+*.o
+*.so
+*.a
+*~
+.*~
+*.log
+*.dvi
+*.aux
+*.old
+*.bak
+tmp*</pre>
+</div>
+</div>
+<div class="section" id="installing-git">
+<h2>Installing Git<a class="headerlink" href="#installing-git" title="Permalink to this headline">¶</a></h2>
+<p id="index-2">The installation of Git on various systems is described
+on the <a class="reference external" href="http://git-scm.com/">Git website</a> under the <em>Download</em> section.
+On Ubuntu the relevant commands are</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install git gitk git-doc</span>
+</pre></div>
+</div>
+<p>Git involves compiled code so it is most convenient to download a
+precompiled binary version of the software on Windows, Mac and other
+Linux computers.</p>
+<p>Make a file <tt class="docutils literal"><span class="pre">.gitconfig</span></tt> in your home directory with information on
+your full name, email address, your favorite emacs editor, and
+the name of a file which defines the file types that Git should omit
+when bringing new directories under version control.
+Here is a simplified version of the author&#8217;s <tt class="docutils literal"><span class="pre">.gitconfig</span></tt> file:</p>
+<div class="highlight-python"><pre>[user]
+name = Hans Petter Langtangen
+email = hpl@simula.no
+editor = emacs
+
+[core]
+excludesfile = ~/.gitignore</pre>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">.gitignore</span></tt> file should list, using the Unix Shell Wildcard notation,
+the type of files that you do not want to have under version control,
+typically (large) files that can easily be regenerated from some other
+source files. A <tt class="docutils literal"><span class="pre">.gitignore</span></tt> file may look like</p>
+<div class="highlight-python"><pre>*.o
+*.so
+*.a
+*~
+.*~
+*.log
+*.dvi
+*.aux
+*.old
+*.bak
+tmp*</pre>
+</div>
+<div class="section" id="bazaar">
+<h3>Bazaar<a class="headerlink" href="#bazaar" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="http://wiki.bazaar.canonical.com/">Bazaar website</a> has
+a <em>Download</em> button which offers installation on a variety of
+platforms. On Ubuntu, type</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install bzr</span>
+</pre></div>
+</div>
+<p>The source code of Bazaar is in Python and can be installed by the
+usual <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> command.</p>
+</div>
+</div>
+</div>
+<div class="section" id="bitbucket">
+<span id="bitgit-bitbucket"></span><h1>Bitbucket<a class="headerlink" href="#bitbucket" title="Permalink to this headline">¶</a></h1>
+<p id="index-3">To start using Bitbucket, go to <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt> and create an account.
+My favorite communication channel with Bitbucket repositories is
+through SSH and HTTPS as used in their examples.  To use SSH, you must
+upload your SSH key, typically the contents of the file <tt class="docutils literal"><span class="pre">id_rsa.pub</span></tt>
+or <tt class="docutils literal"><span class="pre">id_dsa.pub</span></tt> in the <tt class="docutils literal"><span class="pre">.ssh</span></tt> subdirectory of your home directory. Go
+to the page for your account and upload one of these files. If you do
+not have any of them, click on the link &#8220;Using SSH&#8221;, which explains
+what you need to know.</p>
+<div class="section" id="create-a-new-project">
+<h2>Create a New Project<a class="headerlink" href="#create-a-new-project" title="Permalink to this headline">¶</a></h2>
+<p>Click at <tt class="docutils literal"><span class="pre">Repositories</span></tt> and at <tt class="docutils literal"><span class="pre">create</span> <span class="pre">repository</span></tt>.
+You can now</p>
+<blockquote>
+<div><ul class="simple">
+<li>fill in the name of the project, here <tt class="docutils literal"><span class="pre">my-project</span></tt>,</li>
+<li>choose between the Git or Mercurial version control system,</li>
+<li>decide whether the project is private or public (the number of
+private repos for a user is limited unless you pay),</li>
+<li>click whether you want issue tracking for reporting errors,
+suggesting improvements, etc.,</li>
+<li>click whether you want a wiki page associated witht the project.</li>
+</ul>
+</div></blockquote>
+<p>You may also want to have the <a class="reference external" href="http://confluence.atlassian.com/display/BITBUCKET/Bitbucket+101">Bitbucket 101 guide</a>
+available (open the link in another tab or window in your browser).</p>
+<p>It is now time to copy the project to your laptop, or <em>clone</em> it
+in Git and Mercurial terminology. Go to the project page
+and find the <em>Clone this repository</em> line. Click on <em>SSH</em>,
+copy the <em>clone</em> line and run this command in a terminal:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">hg clone ssh://hg@bitbucket.org/username/my-project</span>
+<span class="gp">#</span> or
+<span class="go">git clone ssh://hg@bitbucket.org/username/my-project.git</span>
+</pre></div>
+</div>
+<p>Only the <tt class="docutils literal"><span class="pre">hg</span></tt> or the <tt class="docutils literal"><span class="pre">git</span></tt> command is display since your project was
+initialized with either Merucial or Git as version control system (this
+cannot be changed later).
+In the above command you must replace <tt class="docutils literal"><span class="pre">username</span></tt> by your own user name
+at Bitbucket.</p>
+<p>The next step is to collect files and directories that should make up
+the project and put them in the <tt class="docutils literal"><span class="pre">my-project</span></tt> directory.</p>
+<p>Then all files should be brought under version control, with the exception
+of the file types listed in <tt class="docutils literal"><span class="pre">.hgignore</span></tt>.
+Issue the following command in the <tt class="docutils literal"><span class="pre">my-project</span></tt> directory:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">hg add</span>
+<span class="gp">#</span> or
+<span class="go">git add .</span>
+</pre></div>
+</div>
+<p>Thereafter, the changes to the repository (adding of files) must
+be registered, or <em>commited</em> if we use standard version control system
+terminology. The command reads</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">hg commit  -m &#39;Initial import of files.&#39;</span>
+<span class="gp">#</span> or
+<span class="go">git commit -m &#39;Initial import of files.&#39;</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">-m</span></tt> option is a required description of the changes that have taken
+place. This description does not matter much for this initial import
+of files into the repository, but is of importance for future commit
+commands such that you can easily track the history of your project files.</p>
+<p>The final step is to push the local changes to the master repo at
+Bitbucket:
+perform</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">hg push</span>
+<span class="gp">#</span> or
+<span class="go">git push -u origin master</span>
+</pre></div>
+</div>
+<p>You must be connected to the Internet for the <tt class="docutils literal"><span class="pre">push</span></tt> command to work since
+it sends file information to the <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt> site.</p>
+<p>Further work with the files must always follow the pull, edit, commit, and
+push steps explained in the section <a class="reference internal" href="#bitgit-hg"><em>Using Mercurial</em></a> for Mercurial and
+Section {bitgit:git} for Git.</p>
+</div>
+</div>
+<div class="section" id="googlecode">
+<span id="bitgit-googlecode"></span><h1>Googlecode<a class="headerlink" href="#googlecode" title="Permalink to this headline">¶</a></h1>
+<p id="index-4">To use Googlecode you need a general account on Google.</p>
+<div class="section" id="id1">
+<h2>Create a New Project<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Go to <a class="reference external" href="http://code.google.com/hosting">http://code.google.com/hosting</a> and click on
+<em>Create a new project</em>. Fill out <em>all</em> the fields. For now
+the project name is <tt class="docutils literal"><span class="pre">my-project</span></tt>.
+You have
+to choose between Git, Mercurial, and Subversion as version control
+system for your project, and this choice cannot be changed.
+Git and Mercurial are preferred over Subversion nowadays.
+If you choose Git, you must create a file <tt class="docutils literal"><span class="pre">.netrc</span></tt> in your
+home directory containing the line</p>
+<div class="highlight-python"><pre>machine code.google.com login uname password pw</pre>
+</div>
+<p>Here, <tt class="docutils literal"><span class="pre">uname</span></tt> is your user name for the Google account and
+<tt class="docutils literal"><span class="pre">pw</span></tt> is the Googlecode password which is generated for you on
+the <tt class="docutils literal"><span class="pre">code.google.com/p/my-project</span></tt>.
+The <tt class="docutils literal"><span class="pre">.netrc</span></tt> file avoids typing or pasting in
+your long and complicated password every time you push changes to
+the repository on <tt class="docutils literal"><span class="pre">code.google.com</span></tt>.</p>
+<p>The next step is to clone the empty repository on your local machine
+so that you can add files:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git clone https://code.google.com/p/my-project/</span>
+</pre></div>
+</div>
+<p>Now you can go to the <tt class="docutils literal"><span class="pre">my-project</span></tt> directory and add files.
+Perform</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git add .</span>
+<span class="go">git commit am &#39;First import of files.&#39;</span>
+<span class="go">git push origin master</span>
+</pre></div>
+</div>
+<p>Click on <em>Source</em> and
+<em>Browse</em> on the project&#8217;s web page, and realize that the added
+files are visible on the project page.</p>
+<p>If you use Mercurial as version control system on Googlecode and
+you want to avoid giving your password when you push changes to
+the repository, you should add the following section to your
+<tt class="docutils literal"><span class="pre">.hgrc</span></tt> file:</p>
+<div class="highlight-python"><pre>[auth]
+my-project.prefix = https://my-project.googlecode.com/hg/
+my-project.username = uname
+my-project.password = pw</pre>
+</div>
+<p>where <tt class="docutils literal"><span class="pre">uname</span></tt> and <tt class="docutils literal"><span class="pre">pw</span></tt> must be replaced by your account name and
+the special Googlecode password. Other projects on Googlecode
+using Mercurial will need similar lines.</p>
+<p>A very strong and useful feature with Googlecode, in my opinion, is
+that one can reach the repository files directly through an URL.
+That means that one can place documentation of the project in
+the repository and find an URL to the HTML or PDF files of the documentation,
+which will then be displayed correctly. All other project hosting sites
+demands either wiki pages or special web areas for locating documentation.
+The URL to your files is</p>
+<div class="highlight-python"><pre>https://my-project.googlecode.com/git/</pre>
+</div>
+<p>When using other version control systems, <tt class="docutils literal"><span class="pre">git</span></tt> is simply replaced by
+<tt class="docutils literal"><span class="pre">hg</span></tt> or or <tt class="docutils literal"><span class="pre">svn</span></tt>.
+For example, if we have HTML documentation of our project in
+the directory <tt class="docutils literal"><span class="pre">doc/API/html</span></tt>, we can point users to</p>
+<div class="highlight-python"><pre>https://my-project.googlecode.com/git/doc/API/html/index.html</pre>
+</div>
+<p>The HTML will be rendered correctly as opposed to when you load
+the similar file into the web browser from the repository,</p>
+<div class="highlight-python"><pre>http://code.google.com/p/my-project/source/browse/doc/API/html/index.html</pre>
+</div>
+<p>Now you can only see the HTML source code of this file, as is usual
+on other project hosting sites.</p>
+<p>You can click on <em>Project Home</em> and then on <em>Administer</em> to edit the
+main page of the project. This is a wiki, using Google&#8217;s wiki syntax,
+but it is quite easy to add links to your documentation, e.g.,</p>
+<div class="highlight-python"><pre>Browse the
+[https://my-project.googlecode.com/git/doc/API/html/index.html
+API documentation].</pre>
+</div>
+<p>It is easy to allow others to push their changes to the
+repository: click on <em>Sharing</em> and then on <em>Administer</em>.
+The Google account names of people you allow write access can be
+listed under each other in the <em>Project committers</em> field.</p>
+</div>
+<div class="section" id="wiki-pages">
+<h2>Wiki Pages<a class="headerlink" href="#wiki-pages" title="Permalink to this headline">¶</a></h2>
+<p>Wiki pages can intuitively be made directly in the browser. However,
+it is often more convenient to have them locally on your computer.
+Click on <em>Source</em> and choose <em>wiki</em> on the <em>Repository</em> pull down menu.
+The proper clone command to get a copy of the wiki repository then
+appears.</p>
+<p>Googlecode applies their own Google wiki format. My preference is
+to write documentation in the neutral <a class="reference external" href="http://code.google.com/p/doconce">Doconce</a> format and transform the document to LaTeX, Sphinx, and Google wiki.
+The wiki can then be copied from the project directories to the
+wiki directory and then pushed to the repository. This ensures
+that there is only one source of the documentation (despite the need
+for many formats) and that the wiki pages are frequently updated.</p>
+</div>
+</div>
+<div class="section" id="github">
+<span id="bitgit-github"></span><h1>GitHub<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h1>
+<p id="index-5">Go to <tt class="docutils literal"><span class="pre">github.com</span></tt> and create an account. Then
+go to your account settings, choose <em>SSH Public Keys</em>, and provide
+your SSH key. Everyone who is supposed to use your repository must
+provide their SSH key.  There is a help that explains what this is all
+about. Often, it is just a matter of pasting the contents of
+<tt class="docutils literal"><span class="pre">id_rsa.pub</span></tt> or <tt class="docutils literal"><span class="pre">id_dsa.pub</span></tt> in the <tt class="docutils literal"><span class="pre">.ssh</span></tt> subdirectory of your home
+directory into the <em>Key</em> box in the web page. Make sure to cut and
+paste the text from, e.g., <tt class="docutils literal"><span class="pre">id_dsa.pub</span></tt> without any extra whitespaces
+or other text.</p>
+<p>A next step is to provide your so called API Token. Go to your account
+settings and choose <em>Account Admin</em>, copy the API Token and place
+it in the <tt class="docutils literal"><span class="pre">~/.gitconfig</span></tt> file like this</p>
+<div class="highlight-python"><pre>[github]
+token = 4b17350d7ea9d9xse4c98749a89fc15dfc4</pre>
+</div>
+<div class="section" id="id2">
+<h2>Create a New Project<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Click on <em>New Repository</em> on the main page and fill out a project
+name, here <em>My Project</em>.
+Then create your project directory, here named <tt class="docutils literal"><span class="pre">My-Project</span></tt>,
+on your computer and initialize the project:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">mkdir My-Project</span>
+<span class="go">cd My-Project</span>
+<span class="go">git init</span>
+<span class="go">touch README</span>
+<span class="go">git add README</span>
+<span class="go">git commit -m &#39;First import of files.&#39;</span>
+</pre></div>
+</div>
+<p>These commands initialize a local repository.
+The next step is to copy all files that you want to have
+has part of the project and
+add them to Git by the command</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git add .</span>
+<span class="go">git commit -m &#39;Adding more files.&#39;</span>
+</pre></div>
+</div>
+<p>Create a remote name (usually <tt class="docutils literal"><span class="pre">origin</span></tt>)
+for your repository at GitHub and push your local files to
+the global repository:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git remote add origin git@github.com:username/My-Project.git</span>
+<span class="go">git push -u origin master</span>
+</pre></div>
+</div>
+<p>Make sure you replace <tt class="docutils literal"><span class="pre">username</span></tt> by your real username at GitHub.
+Also note that when your project was registered with the name
+&#8220;My Project&#8221;, <tt class="docutils literal"><span class="pre">My-Project.git</span></tt> is the name you should use in the
+<tt class="docutils literal"><span class="pre">git</span> <span class="pre">remote</span></tt> command (spaces in the project name on GitHub are replaced
+by dashes in the similar directory name).</p>
+<p>Find your new project on your personal <tt class="docutils literal"><span class="pre">github.com</span></tt> pages and check
+that the project files you added are viewable on the web pages.</p>
+<p>To give others permissions to push their edits of files to the
+repository, you go to the project&#8217;s page on <tt class="docutils literal"><span class="pre">github.com</span></tt>,
+click on <em>Admin</em>, click on <em>Collaborators</em> on the left, and
+fill in the name of a collaborator (her or his user name on GitHub).
+You can click on <em>Service Hooks</em> and then <em>Email</em> in the list
+to make each <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></tt> command send an email to yourself or
+others.</p>
+<p>The daily file operations are explained in Section {bitgit:git}.
+There you also find information on how to create wiki pages and
+web pages associated with the project.</p>
+</div>
+<div class="section" id="id3">
+<h2>Wiki Pages<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>With every GitHub project there is an option to create wiki pages.
+Click on the <em>Wiki</em> button right under the line with the project
+name of the main page of the project. Click on <em>New Page</em> to create
+a new page. The wiki pages can be written in different markup
+languages. Markdown is the default choice, but you can alternatively
+use reStructuredText (unfortunately not the Sphinx extension
+with nice LaTeX mathematics) or MediaWiki (the markup used for
+Wikipedia).</p>
+<p>The wiki pages can be written and maintained through the web browser
+interface, but it is usually more convenient to clone them on
+your computer as this makes it easy to add figures and other documents
+you may want to link to. It also makes it straightforward to edit
+the wiki text in your favorit text editor. The wiki pages are
+stored in a separate repo: click on <em>Git Access</em> and then on
+<em>Git Read-Only</em> to see the
+Git address for a standard <tt class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span></tt> command, typically</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git clone git://github.com/username/My-Project.wiki.git</span>
+</pre></div>
+</div>
+<p>This command makes a local copy of the pages in the directory
+<tt class="docutils literal"><span class="pre">My-Project.wiki</span></tt>, which you may prefer to have at the same level
+as the project directory itself in your directory tree.</p>
+<p>Each wiki page has its own file, where the extension reflects
+the markup language used, e.g., <tt class="docutils literal"><span class="pre">.md</span></tt> for Markdown and <tt class="docutils literal"><span class="pre">.rest</span></tt> for
+reStructuredText. The wiki files are handled as other files in a
+GitHub project, i.e., you need to pull before editing and then
+perform commit and push. After the push you can reload the page
+in the web browser to monitor the effect.</p>
+<p>You may consider having the original text in <tt class="docutils literal"><span class="pre">doconce</span></tt> format and
+generate the wiki in reStructuredText format.</p>
+<p>Do changes, commit the usual way, and push by</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git push git@github.com:username/My-project.wiki.git</span>
+</pre></div>
+</div>
+<p>The address can be stored as <tt class="docutils literal"><span class="pre">url</span></tt> in <tt class="docutils literal"><span class="pre">.git/config</span></tt> so that just a
+<tt class="docutils literal"><span class="pre">git</span> <span class="pre">push</span></tt> works.</p>
+</div>
+<div class="section" id="project-web-pages">
+<h2>Project Web Pages<a class="headerlink" href="#project-web-pages" title="Permalink to this headline">¶</a></h2>
+<p>GitHub can also host a set of web pages for your project where you can
+store various types of documentation. Here is a simple
+recipe for creating a set of project web pages.</p>
+<ol class="arabic simple">
+<li>Go to to the  project page on <tt class="docutils literal"><span class="pre">github.com</span></tt> and click <em>Admin</em>.</li>
+<li>Check the <em>GitHub Pages</em> check box.</li>
+<li>Click on the <em>Automatic GitHub Page Generator</em> button in the pop up window.</li>
+<li>Go to the root directory of the project, <tt class="docutils literal"><span class="pre">My-Project</span></tt>,
+and run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">fetch</span> <span class="pre">origin</span></tt>.</li>
+<li>Run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">gh-pages</span> <span class="pre">origin/gh-pages</span></tt></li>
+</ol>
+<p>You have now a <em>new branch</em> called <tt class="docutils literal"><span class="pre">gh-pages</span></tt> of your project containing an
+<tt class="docutils literal"><span class="pre">index.html</span></tt> file in the root directory (and in fact all files <em>not</em>
+contained in the <em>master branch</em>, typically redundant files not to be
+stored in the version control system).
+You can populate this directory and subdirectories you create with
+HTML and other files as you like.</p>
+<p>The <tt class="docutils literal"><span class="pre">index.html</span></tt> page is invoked by the web address
+<tt class="docutils literal"><span class="pre">http://username.github.com/My-Project/</span></tt>, where <tt class="docutils literal"><span class="pre">username</span></tt> is the GitHub
+user name and <tt class="docutils literal"><span class="pre">My-Project</span></tt> is the project name.</p>
+<p>The web pages and project files are now in two different branches.
+To see the branches, type <tt class="docutils literal"><span class="pre">git</span> <span class="pre">branch</span></tt> and the one you are in will
+be marked with a star in the output. Swithing to the master branch
+is done by <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">master</span></tt>. Similarly, <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">gh-pages</span></tt>
+swithces to the gh-pages branch.</p>
+<p>If branches diverge you can merge them by</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git merge otherbranch</span>
+</pre></div>
+</div>
+<p>where <tt class="docutils literal"><span class="pre">otherbranch</span></tt> is the name of another branch. If there is a conflict
+in the merge, there will be markers in problematic files. Run
+<tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> to show the problems. After a manual edit, do
+<tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></tt>. Then you may run <tt class="docutils literal"><span class="pre">gitk</span></tt> to see a graphical illustration
+of what has happened.</p>
+<p>I recommend to have the master and gh-pages synchronized, at least
+in projects where you need the source code files for generating
+API documentation in the gh-pages branch. Then you will start
+with pulling
+everything from the master branch to the gh-pages branch.
+Make sure the master branch is updated with anything that was
+generated for the gh-pages branch. Finally you switch to the
+master branch and merge with gh-pages so you get the autogenerated
+<tt class="docutils literal"><span class="pre">index.html</span></tt>
+file in the root directory:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git merge master</span>
+<span class="go">git push origin gh-pages</span>
+<span class="go">git checkout master</span>
+<span class="go">git merge gh-pages</span>
+</pre></div>
+</div>
+<p>You can now add the documentation to the project files and
+keep them in the master branch.
+Before publishing documents online,
+make sure to update the gh-pages branch by</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git commit -am &#39;Ensure commit of everything in master branch&#39;</span>
+<span class="go">git push origin master</span>
+<span class="go">git checkout gh-pages</span>
+<span class="go">git merge master</span>
+<span class="go">git push origin gh-pages</span>
+<span class="go">git checkout master</span>
+</pre></div>
+</div>
+<p>Here is a very important point if you want to use Sphinx-generated
+HTML pages: you <em>must</em> add an empty file <tt class="docutils literal"><span class="pre">.nojekyll</span></tt> in the top
+directory of the project pages. Without it, the contents in <tt class="docutils literal"><span class="pre">_static</span></tt>
+and <tt class="docutils literal"><span class="pre">_images</span></tt> directories (or any other directory starting with an
+underscore) are not visible, i.e., the layout of the pages cannot make
+use of Sphinx styles.  The problem can also be circumvented by
+installing special Sphinx extensions (<a class="reference external" href="https://github.com/michaeljones/sphinx-to-github">sphinx-to-github</a> or <a class="reference external" href="http://pydoc.net/github-tools/0.1.3/">github-tools</a>).</p>
+</div>
+<div class="section" id="user-web-pages">
+<h2>User Web Pages<a class="headerlink" href="#user-web-pages" title="Permalink to this headline">¶</a></h2>
+<p>GitHub also allows you to create user pages and organization pages not
+tied to any specific project.
+Your personal cite has address
+<tt class="docutils literal"><span class="pre">http://username.github.com</span></tt>.
+Go to your home page on <tt class="docutils literal"><span class="pre">github.com</span></tt> and click <em>New repository</em>,
+and give it the project name <tt class="docutils literal"><span class="pre">username.github.com</span></tt>.
+Then following the instructions that come up:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">mkdir username.github.com</span>
+<span class="go">cd username.github.com</span>
+<span class="go">git init</span>
+<span class="gp">#</span> make an index.html file with some <span class="nb">test </span>text
+<span class="go">git add index.html</span>
+<span class="go">git commit -m &#39;First commit&#39;</span>
+<span class="go">git remote add origin git@github.com:username/username.githun.com.git</span>
+<span class="go">git push -u origin master</span>
+</pre></div>
+</div>
+<p>Go to <tt class="docutils literal"><span class="pre">http://username.github.com</span></tt> and see how the <tt class="docutils literal"><span class="pre">index.html</span></tt> is
+rendered. You can now add various contents as in any ordinary
+Git repository.
+If you want to use Sphinx generated HTML pages, recall to add an empty file
+<tt class="docutils literal"><span class="pre">.nojekyll</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="using-mercurial">
+<span id="bitgit-hg"></span><h1>Using Mercurial<a class="headerlink" href="#using-mercurial" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-6"></span><div class="section" id="the-basic-commands-of-mercurial">
+<span id="index-7"></span><h2>The Basic Commands of Mercurial<a class="headerlink" href="#the-basic-commands-of-mercurial" title="Permalink to this headline">¶</a></h2>
+<p>You get started with your project on a new machine or another user
+can get started with the project by the command</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">hg clone ssh://hg@bitbucket.org/username/my-project</span>
+</pre></div>
+</div>
+<p>Your typical working style with the <tt class="docutils literal"><span class="pre">my-project</span></tt> project goes as follows.
+First you go to the desired directory where this project is stored on
+your local computer and make sure
+you have the latest versions of the files:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">hg pull</span>
+<span class="go">hg update</span>
+</pre></div>
+</div>
+<p>These commands download the latest versions of the files from
+your <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt> repository and make them ready for changes on
+your computer. The <tt class="docutils literal"><span class="pre">pull</span></tt> command requires a functioning Internet
+connection.</p>
+<p>You can now edit some files. Maybe you also add, remove, and move some files:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">hg add filename</span>
+<span class="go">hg remove filename</span>
+<span class="go">hg rename oldfilename ../somedir/newfilename</span>
+</pre></div>
+</div>
+<p>The removal of a file is physically performed when you to a
+<tt class="docutils literal"><span class="pre">hg</span> <span class="pre">commit</span></tt>. The file is never removed from the repository, only
+hidden, so it is easy to get the file and its entire history
+back at a later stage.</p>
+<p>After some changes, you have to commit and push the files to the
+repository at <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">hg commit -m &#39;Description of changes.&#39;</span>
+<span class="go">hg push</span>
+</pre></div>
+</div>
+<p>The command</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">hg stat</span>
+</pre></div>
+</div>
+<p>shows the status of the individual files (<tt class="docutils literal"><span class="pre">M</span></tt> for modified, <tt class="docutils literal"><span class="pre">A</span></tt> for
+added, <tt class="docutils literal"><span class="pre">R</span></tt> for removed), and you should pay attention to files with a
+question mark because these are not tracked in the repository. It is
+very easy to forget adding new files so <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">stat</span></tt> is a useful command
+to ensure that all files you want to track have been added to the
+repository.</p>
+<p>The power of <tt class="docutils literal"><span class="pre">hg</span></tt> and your file repository <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt> is that
+you can work with the project files on several computers and others can
+also contribute to this project. The history of each file is recorded
+and anyone can roll back to previous versions, if needed. You can easily see
+who did what with the various files. For example,</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">hg annotate -aun myfile</span>
+</pre></div>
+</div>
+<p>lists the various lines in the file <tt class="docutils literal"><span class="pre">myfile</span></tt> annotated with the revision
+number of the latest change of the line and the name of the user who
+performed the change. Another command,</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">hg log -p myfile</span>
+</pre></div>
+</div>
+<p>lists the history of the file <tt class="docutils literal"><span class="pre">myfile</span></tt> in more detail so that you
+can track the evolution of this file.</p>
+<p>Mercurial has a two-level type of repository: there is global
+repository for all users of the <tt class="docutils literal"><span class="pre">my-project</span></tt> tree at <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt>,
+but each user also has a local repository (automatically made). To
+update files, one must first pull new files from the global repository
+(<tt class="docutils literal"><span class="pre">pull</span></tt>) and then update the local repository (<tt class="docutils literal"><span class="pre">update</span></tt>), before any
+file can be edited. The <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">commit</span></tt> command saves files in the local
+repository. One may run many <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">commit</span></tt> commands to make a sequence
+of corresponding versions of files in the local repository. Finally,
+when the local versions are ready to be pushed to the global
+repository, one runs the <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">push</span></tt> command.</p>
+<p>Older version control systems, including Subversion and CVS, have only
+a global repository and no local ones.  The advantage of the two-level
+repository is that you can change your files locally and keep track of
+the changes (by doing <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">commit</span></tt>) without affecting other users of
+the files.  This feature allows you to commit changes to the global
+repository only when you feel comfortable with the state of the files.
+Nevertheless, if others work actively on the same files as you, it is
+generally recommended to push often in order to exchange the latest
+version of the files. This strategy may avoid problems with future
+merging of files.</p>
+</div>
+<div class="section" id="merging-files-with-mercurial">
+<span id="bitgit-hgmerge"></span><h2>Merging Files with Mercurial<a class="headerlink" href="#merging-files-with-mercurial" title="Permalink to this headline">¶</a></h2>
+<p id="index-8">It might have happened that others and you have edited the same files
+at the same time. How should the edits then be combined?  Often the
+<tt class="docutils literal"><span class="pre">hg</span> <span class="pre">update</span></tt> command is clever enough to merge the changes made by
+different users automatically. If not, you have to run an explicit <tt class="docutils literal"><span class="pre">hg</span>
+<span class="pre">merge</span></tt> command.  The <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">merge</span></tt> program tries to use some merge
+program on your computer system to automatically merge files. If this
+failes, <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">merge</span></tt> invokes some graphical tool to help you resolve the
+conflict between files.  Example on popular merge programs for this
+purpose are <tt class="docutils literal"><span class="pre">meld</span></tt>, <tt class="docutils literal"><span class="pre">xxdiff</span></tt>, <tt class="docutils literal"><span class="pre">kdiff3</span></tt>, and <tt class="docutils literal"><span class="pre">diffuse</span></tt>.  You can
+specify the merge program, say <tt class="docutils literal"><span class="pre">xxdiff</span></tt>, by <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">merge</span> <span class="pre">--tool</span> <span class="pre">xxdiff</span></tt>.
+How you now proceed is dependent on the particular program. Usually,
+for each change you must choose either your new local version of the
+text, or your old local version of the text, or the version of the
+text pulled from the global repository.  After using the merge program
+successfully you must save the merged file and perform an <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">commit</span></tt>
+command on it, and perhaps do an <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">push</span></tt> to also update the global
+repository with the merged file(s).</p>
+<p>Suppose you do not manage to merge using the merge tool. Then you have
+to invoke the file, say <tt class="docutils literal"><span class="pre">myfile</span></tt> in an editor and do the merge
+manually. There will often be lines starting with &#8216;&lt;&lt;&lt;&lt;&#8217;, &#8216;=====&#8217;,
+and &#8216;&gt;&gt;&gt;&gt;` to mark conflicting texts (<em>merge markers</em>). After removing
+these lines and editing the text manually, you must register the conflict
+as resolved:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">hg resolve -m merge myfile</span>
+<span class="go">hg commit -m merge myfile</span>
+</pre></div>
+</div>
+<p>You can read more about merging files in the <a class="reference external" href="http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html">hgbook</a>.
+We shall now illustrate the merge problems through an example.
+Suppose we have a global repository <tt class="docutils literal"><span class="pre">tmp_repo</span></tt>, and two (cloned)
+directories <tt class="docutils literal"><span class="pre">tmp1</span></tt> and <tt class="docutils literal"><span class="pre">tmp2</span></tt>, corresponding to two users, each with
+their copy of the global repository.  There is only one file <tt class="docutils literal"><span class="pre">myfile</span></tt>
+in the repository. We then simulate the two users and perform edits in
+parallel. The shell script below simulates the two users and
+illustrates the importance of pulling before editing and the need of
+merge.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
+<span class="c"># Demo script for exemplifying hg merge</span>
+
+rm -rf tmp1 tmp2 tmp_repo   <span class="c"># Clean up previous runs</span>
+
+mkdir tmp_repo   <span class="c"># Global repository for testing</span>
+<span class="nb">cd </span>tmp_repo
+cat &gt; myfile <span class="s">&lt;&lt;EOF</span>
+<span class="s">This is a little</span>
+<span class="s">test file for</span>
+<span class="s">exemplifying merge</span>
+<span class="s">of files in different</span>
+<span class="s">hg directories.</span>
+<span class="s">EOF</span>
+hg init   <span class="c"># Make hg global repository out of this directory</span>
+hg add    <span class="c"># Add all files not mentioned in ~/.hgignore</span>
+hg commit -m <span class="s1">&#39;first commit&#39;</span>
+<span class="nb">cd</span> ..
+
+<span class="c"># Make a new hg repositories tmp1 and tmp2 (two users)</span>
+hg clone tmp_repo tmp1
+hg clone tmp_repo tmp2
+
+<span class="c"># Change myfile in the directory tmp1</span>
+<span class="nb">cd </span>tmp1
+<span class="c"># Edit myfile: insert a new second line</span>
+perl -pi -e <span class="s1">&#39;s/a little\n/a little\ntmp1-add1\n/g&#39;</span> myfile
+<span class="c"># Register change in local repository</span>
+hg commit -m <span class="s1">&#39;Inserted a new second line in myfile.&#39;</span>
+<span class="c"># Look at changes in this clone</span>
+hg log -p
+<span class="c"># Register change in global repository tmp_repo</span>
+hg push
+<span class="nb">cd</span> ..
+
+<span class="c"># Change myfile in the directory tmp2 &quot;in parallel&quot;</span>
+<span class="nb">cd </span>tmp2
+<span class="c"># Edit myfile: add a line at the end</span>
+cat &gt;&gt; myfile <span class="s">&lt;&lt;EOF</span>
+<span class="s">tmp2-add1</span>
+<span class="s">EOF</span>
+<span class="c"># Register change locally</span>
+hg commit -m <span class="s1">&#39;Added a new line at the end&#39;</span>
+<span class="c"># Register change globally</span>
+hg push
+<span class="c"># Error message: global repository has changed,</span>
+<span class="c"># we need to pull those changes to local repository first</span>
+<span class="c"># and see if all files are compatible before we can update</span>
+<span class="c"># our own changes to the global repository.</span>
+<span class="c"># hg writes</span>
+<span class="c"># abort: push creates new remote head d0a2f8e6b9d9!</span>
+<span class="c"># (you should pull and merge or use push -f to force)</span>
+
+hg pull
+<span class="c"># hg writes:</span>
+<span class="c"># added 1 changesets with 1 changes to 1 files (+1 heads)</span>
+<span class="c"># (run &#39;hg heads&#39; to see heads, &#39;hg merge&#39; to merge)</span>
+hg merge
+<span class="c"># Successful merge!</span>
+cat myfile
+hg commit -m merge
+hg push
+<span class="nb">cd</span> ..
+
+<span class="c"># Perform new changes in parallel in tmp1 and tmp2,</span>
+<span class="c"># this time causing hg merge to fail</span>
+
+<span class="c"># Change myfile in the directory tmp1</span>
+<span class="nb">cd </span>tmp1
+<span class="c"># Do it all right by pulling and updating first</span>
+hg pull
+hg update
+<span class="c"># Edit myfile: insert &quot;just&quot; in first line.</span>
+perl -pi -e <span class="s1">&#39;s/a little/tmp1-add2 a little/g&#39;</span> myfile
+<span class="c"># Register change in local repository</span>
+hg commit -m <span class="s1">&#39;Inserted &quot;just&quot; in first line.&#39;</span>
+<span class="c"># Register change in global repository tmp_repo</span>
+hg push
+<span class="nb">cd</span> ..
+
+<span class="c"># Change myfile in the directory tmp2 &quot;in parallel&quot;</span>
+<span class="nb">cd </span>tmp2
+<span class="c"># Edit myfile: replace little by modest</span>
+perl -pi -e <span class="s1">&#39;s/a little/a tmp2-replace1\ntmp2-add2\n/g&#39;</span> myfile
+<span class="c"># Register change locally</span>
+hg commit -m <span class="s1">&#39;Replaced &quot;little&quot; by &quot;modest&quot;&#39;</span>
+<span class="c"># Register change globally</span>
+hg push
+<span class="c"># Not possible: need to pull changes in the global repository</span>
+hg pull
+hg update
+<span class="c"># hg update aborts: we have to run hg merge</span>
+diff myfile ../tmp_repo/myfile
+<span class="nb">echo</span> <span class="s1">&#39;Now you must do hg merge manually&#39;</span>
+</pre></div>
+</div>
+<p>Try to run this <a class="reference external" href="_static-bitgit/hg_merge.sh">file</a> named
+<tt class="docutils literal"><span class="pre">hg_merge.sh</span></tt> by <tt class="docutils literal"><span class="pre">sh</span> <span class="pre">-x</span> <span class="pre">hg_merge.sh</span></tt>.
+To resolve the resulting merge conflict you need to go to the <tt class="docutils literal"><span class="pre">tmp2</span></tt>
+directory, run <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">merge</span> <span class="pre">--tool</span> <span class="pre">meld</span></tt> and use the <tt class="docutils literal"><span class="pre">meld</span></tt> tool to
+select which text snippets that should make up the final, merged
+version. Save and quit <tt class="docutils literal"><span class="pre">meld</span></tt> and peform <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">merge</span></tt>.  You
+can now do <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">push</span></tt> successfully to update the global repository.</p>
+</div>
+<div class="section" id="more-documentation-on-mercurial">
+<h2>More Documentation on Mercurial<a class="headerlink" href="#more-documentation-on-mercurial" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://mercurial.selenic.com/wiki/QuickStart">Mercurial Quick Start</a> (for the impatient)</li>
+<li><a class="reference external" href="http://mercurial.selenic.com/wiki/FAQ">Mercurial FAQ</a></li>
+<li><a class="reference external" href="http://mercurial.selenic.com/wiki/Tutorial">Mercurial Tutorial</a></li>
+<li><a class="reference external" href="http://hgbook.red-bean.com/">Mercurial: The Definitive Guide</a> (online or printed book)</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="using-git">
+<span id="bitgit-git"></span><h1>Using Git<a class="headerlink" href="#using-git" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-basic-commands-of-git">
+<span id="index-9"></span><h2>The Basic Commands of Git<a class="headerlink" href="#the-basic-commands-of-git" title="Permalink to this headline">¶</a></h2>
+<p>You get started with your project on a new machine, or another user
+can get started with the project,
+by running</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git clone git@github.com:username/My-Project.git</span>
+<span class="go">cd My-Project</span>
+<span class="go">ls</span>
+</pre></div>
+</div>
+<p>Recall to replace <tt class="docutils literal"><span class="pre">username</span></tt> by your real user name and <tt class="docutils literal"><span class="pre">My-Project</span></tt> by the
+actual project name.</p>
+<p>The typical work flow with the &#8220;My Project&#8221; project starts with
+updating the local repository by going to the <tt class="docutils literal"><span class="pre">My-Project</span></tt> directory
+and writing</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git pull origin master</span>
+</pre></div>
+</div>
+<p>After editing files, adding new files, deleting files, or renaming files,</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git add myfile1 myfile2.* yourdir</span>
+<span class="go">git rm yourfile</span>
+<span class="go">git rm -r yourdir</span>
+<span class="go">git mv thisfile thatname</span>
+<span class="go">git mv thisfile ../thatdir</span>
+</pre></div>
+</div>
+<p>it is time to commit your changes (note the <tt class="docutils literal"><span class="pre">-am</span></tt> option):</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git commit -am &#39;Description of changes.&#39;</span>
+</pre></div>
+</div>
+<p>You may perform many commits, to keep track of small changes, before
+you push your changes to the global repository:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git push origin master</span>
+</pre></div>
+</div>
+<p>To see the status of files, run</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git status -s</span>
+</pre></div>
+</div>
+<p>Files are marked with <tt class="docutils literal"><span class="pre">A</span></tt> for added, <tt class="docutils literal"><span class="pre">M</span></tt> for modified, and so on.</p>
+<p>A nice graphical tool allows you to view all changes, or just
+the latest ones:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">gitk --all</span>
+<span class="go">gitk --since=&quot;2 weeks ago&quot;</span>
+</pre></div>
+</div>
+<p>You can also view changes to all files or some selected ones
+in the terminal window:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git log -p                        # all changes to all files</span>
+<span class="go">git log --stat --summary          # more compact summary</span>
+<span class="go">git log --stat --summary  subdir  # only files in subdir folder</span>
+</pre></div>
+</div>
+<p>To see who did what when, use <tt class="docutils literal"><span class="pre">git</span> <span class="pre">blame</span></tt>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git blame subdir/myfile.txt</span>
+<span class="go">git blame --since=&quot;1 week&quot; subdir/myfile.txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="merging-files-with-git">
+<span id="bitgit-gitmerge"></span><h2>Merging Files with Git<a class="headerlink" href="#merging-files-with-git" title="Permalink to this headline">¶</a></h2>
+<p id="index-10">The <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> command fetches new files from the repository and
+tries to perform an automatic merge if there are conflicts between
+the local files and the files in the repository.
+Git will write a message if the merge is unsuccessful for one or
+more files. These files will have to be edited manually.
+Merge markers of the type &#8216;&gt;&gt;&gt;&gt;&gt;&#8217;, &#8216;======&#8217;, and &#8216;&lt;&lt;&lt;&lt;&lt;&#8217; have been
+inserted by Git to mark sections of a file where the version in the
+repository differ from the local version. You must decide which
+lines that are to appear in the final, merged version. When done,
+perform <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></tt> and the conflicts are resolved.</p>
+<p>Below is a Unix shell script illustrating how to make a global
+repository in Git, and how two users clone this repository and
+perform edits in parallel. There is one file <tt class="docutils literal"><span class="pre">myfile</span></tt> in the
+repository.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
+<span class="c"># Demo script for exemplifying git and merge</span>
+
+rm -rf tmp1 tmp2 tmp_repo   <span class="c"># Clean up previous runs</span>
+
+mkdir tmp_repo   <span class="c"># Global repository for testing</span>
+<span class="nb">cd </span>tmp_repo
+git --bare init --shared
+<span class="nb">cd</span> ..
+
+<span class="c"># Make a repo that can be pushed to tmp_repo</span>
+mkdir _tmp
+<span class="nb">cd </span>_tmp
+cat &gt; myfile <span class="s">&lt;&lt;EOF</span>
+<span class="s">This is a little</span>
+<span class="s">test file for</span>
+<span class="s">exemplifying merge</span>
+<span class="s">of files in different</span>
+<span class="s">git directories.</span>
+<span class="s">EOF</span>
+git init
+git add .   <span class="c"># Add all files not mentioned in ~/.gitignore</span>
+git commit -am <span class="s1">&#39;first commit&#39;</span>
+git push ../tmp_repo master
+<span class="nb">cd</span> ..
+rm -rf _tmp
+
+<span class="c"># Make a new hg repositories tmp1 and tmp2 (two users)</span>
+git clone tmp_repo tmp1
+git clone tmp_repo tmp2
+<span class="c"># Change myfile in the directory tmp1</span>
+<span class="nb">cd </span>tmp1
+<span class="c"># Edit myfile: insert a new second line</span>
+perl -pi -e <span class="s1">&#39;s/a little\n/a little\ntmp1-add1\n/g&#39;</span> myfile
+<span class="c"># Register change in local repository</span>
+git commit -am <span class="s1">&#39;Inserted a new second line in myfile.&#39;</span>
+<span class="c"># Look at changes in this clone</span>
+git log -p
+<span class="c"># or a more compact summary</span>
+git log --stat --summary
+<span class="c"># or graphically</span>
+<span class="c">#gitk</span>
+<span class="c"># Register change in global repository tmp_repo</span>
+git push origin master
+<span class="nb">cd</span> ..
+
+<span class="c"># Change myfile in the directory tmp2 &quot;in parallel&quot;</span>
+<span class="nb">cd </span>tmp2
+<span class="c"># Edit myfile: add a line at the end</span>
+cat &gt;&gt; myfile <span class="s">&lt;&lt;EOF</span>
+<span class="s">tmp2-add1</span>
+<span class="s">EOF</span>
+<span class="c"># Register change locally</span>
+git commit -am <span class="s1">&#39;Added a new line at the end&#39;</span>
+<span class="c"># Register change globally</span>
+git push origin master
+<span class="c"># Error message: global repository has changed,</span>
+<span class="c"># we need to pull those changes to local repository first</span>
+<span class="c"># and see if all files are compatible before we can update</span>
+<span class="c"># our own changes to the global repository.</span>
+<span class="c"># git writes</span>
+<span class="c">#To /home/hpl/vc/scripting/manu/py/bitgit/src-bitgit/tmp_repo</span>
+<span class="c"># ! [rejected]        master -&gt; master (non-fast-forward)</span>
+<span class="c">#error: failed to push some refs to ...</span>
+
+git pull origin master
+<span class="c"># git writes:</span>
+<span class="c">#Auto-merging myfile</span>
+<span class="c">#Merge made by recursive.</span>
+<span class="c"># myfile |    1 +</span>
+<span class="c"># 1 files changed, 1 insertions(+), 0 deletions(-)</span>
+cat myfile  <span class="c"># successful merge!</span>
+git commit -am merge
+git push origin master
+<span class="nb">cd</span> ..
+
+<span class="c"># Perform new changes in parallel in tmp1 and tmp2,</span>
+<span class="c"># this time causing hg merge to fail</span>
+
+<span class="c"># Change myfile in the directory tmp1</span>
+<span class="nb">cd </span>tmp1
+<span class="c"># Do it all right by pulling and updating first</span>
+git pull origin master
+<span class="c"># Edit myfile: insert &quot;just&quot; in first line.</span>
+perl -pi -e <span class="s1">&#39;s/a little/tmp1-add2 a little/g&#39;</span> myfile
+<span class="c"># Register change in local repository</span>
+git commit -am <span class="s1">&#39;Inserted &quot;just&quot; in first line.&#39;</span>
+<span class="c"># Register change in global repository tmp_repo</span>
+git push origin master
+<span class="nb">cd</span> ..
+
+<span class="c"># Change myfile in the directory tmp2 &quot;in parallel&quot;</span>
+<span class="nb">cd </span>tmp2
+<span class="c"># Edit myfile: replace little by modest</span>
+perl -pi -e <span class="s1">&#39;s/a little/a tmp2-replace1\ntmp2-add2\n/g&#39;</span> myfile
+<span class="c"># Register change locally</span>
+git commit -am <span class="s1">&#39;Replaced &quot;little&quot; by &quot;modest&quot;&#39;</span>
+<span class="c"># Register change globally</span>
+git push origin master
+<span class="c"># Not possible: need to pull changes in the global repository</span>
+git pull origin master
+<span class="c"># git writes</span>
+<span class="c">#CONFLICT (content): Merge conflict in myfile</span>
+<span class="c">#Automatic merge failed; fix conflicts and then commit the result.</span>
+<span class="c"># we have to do a manual merge</span>
+cat myfile
+<span class="nb">echo</span> <span class="s1">&#39;Now you must edit myfile manually&#39;</span>
+</pre></div>
+</div>
+<p>You may run this <a class="reference external" href="_static-bitgit/git_merge.sh">file</a> named
+<tt class="docutils literal"><span class="pre">git_merge.sh</span></tt> by <tt class="docutils literal"><span class="pre">sh</span> <span class="pre">-x</span> <span class="pre">git_merge.sh</span></tt>.
+At the end, the versions of <tt class="docutils literal"><span class="pre">myfile</span></tt> in the
+repository and the <tt class="docutils literal"><span class="pre">tmp2</span></tt> directory are in conflict. Git tried
+to merge the two versions, but failed. Merge markers are left in
+<tt class="docutils literal"><span class="pre">tmp2/myfile</span></tt>:</p>
+<div class="highlight-python"><pre>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+This is a tmp2-replace1
+tmp2-add2
+
+=======
+This is tmp1-add2 a little
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; ad9b9f631c4cc586ea951390d9415ac83bcc9c01
+tmp1-add1
+test file for
+exemplifying merge
+of files in different
+git directories.
+tmp2-add1</pre>
+</div>
+<p>Launch a text editor and edit the file so that it becomes correct.
+Then run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-am</span> <span class="pre">merge</span></tt> to finalize the merge.</p>
+</div>
+<div class="section" id="more-documentation-on-git">
+<h2>More Documentation on Git<a class="headerlink" href="#more-documentation-on-git" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://schacon.github.com/git/everyday.html">Everyday GIT With 20 Commands Or So</a></li>
+<li><a class="reference external" href="http://book.git-scm.com/">Git Community Book</a></li>
+<li><a class="reference external" href="http://hoth.entp.com/output/git_for_designers.html">Git for Designers</a> (aimed a people with no previous knowledge of version control systems)</li>
+<li><a class="reference external" href="http://www-cs-students.stanford.edu/~blynn/gitmagic/ch02.html">Git Magic: Basic Tricks</a></li>
+<li>The official <a class="reference external" href="http://schacon.github.com/git/gittutorial.html">Git Tutorial</a></li>
+<li><a class="reference external" href="http://www.youtube.com/watch?v=TPY8UwlTIc0&amp;feature=related">Git Tutorial Video</a> on YouTube</li>
+<li><a class="reference external" href="http://wiki.sourcemage.org/Git_Guide">Git Questions</a></li>
+<li><a class="reference external" href="http://gitref.org">Git Reference</a> (can also be used as a tutorial on Git)</li>
+<li><a class="reference external" href="http://schacon.github.com/git/user-manual.html">Git User Manual</a></li>
+<li><a class="reference external" href="http://git-scm.com/">Git home page</a></li>
+<li><a class="reference external" href="http://mercurial.selenic.com/wiki/GitConcepts#Command_equivalence_table">Git and Mercurial command equivalence table</a></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Quick Intro to Version Control Systems and Project Hosting Services</a></li>
+<li><a class="reference internal" href="#installing-version-control-systems">Installing Version Control Systems</a><ul>
+<li><a class="reference internal" href="#installing-mercurial">Installing Mercurial</a></li>
+<li><a class="reference internal" href="#installing-git">Installing Git</a><ul>
+<li><a class="reference internal" href="#bazaar">Bazaar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bitbucket">Bitbucket</a><ul>
+<li><a class="reference internal" href="#create-a-new-project">Create a New Project</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#googlecode">Googlecode</a><ul>
+<li><a class="reference internal" href="#id1">Create a New Project</a></li>
+<li><a class="reference internal" href="#wiki-pages">Wiki Pages</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#github">GitHub</a><ul>
+<li><a class="reference internal" href="#id2">Create a New Project</a></li>
+<li><a class="reference internal" href="#id3">Wiki Pages</a></li>
+<li><a class="reference internal" href="#project-web-pages">Project Web Pages</a></li>
+<li><a class="reference internal" href="#user-web-pages">User Web Pages</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-mercurial">Using Mercurial</a><ul>
+<li><a class="reference internal" href="#the-basic-commands-of-mercurial">The Basic Commands of Mercurial</a></li>
+<li><a class="reference internal" href="#merging-files-with-mercurial">Merging Files with Mercurial</a></li>
+<li><a class="reference internal" href="#more-documentation-on-mercurial">More Documentation on Mercurial</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-git">Using Git</a><ul>
+<li><a class="reference internal" href="#the-basic-commands-of-git">The Basic Commands of Git</a></li>
+<li><a class="reference internal" href="#merging-files-with-git">Merging Files with Git</a></li>
+<li><a class="reference internal" href="#more-documentation-on-git">More Documentation on Git</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Quick Intro to Version Control Systems and Project Hosting Services</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/wrap_bitgit.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Quick Intro to Version Control Systems and Project Hosting Services"
+             >previous</a> |</li>
+        <li><a href="index.html">Quick Intro to Version Control Systems and Project Hosting Services 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, H. P. Langtangen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1347 @@
+.. Automatically generated reST file from Doconce source
+   (http://code.google.com/p/doconce/)
+
+Quick Intro to Version Control Systems and Project Hosting Services
+===================================================================
+
+:Author: Hans Petter Langtangen
+
+:Date: Mar 6, 2012
+
+Version control systems allow you to record the history of files
+and share files among several computers and collaborators in a
+professional way. File changes on one computer are updated or
+merged with changes on another computer. Especially when working
+with programs or technical reports it is essential
+to have changes documented and to
+ensure that every computer and person involved in the project
+have the latest updates of the files.
+Greg Wilson' excellent `Script for Introduction to Version Control <http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/>`_ provides a more detailed motivation why you will benefit greatly
+from using version control systems.
+
+Projects that you want to share among several computers or project
+workers are today most conveniently stored at some web site "in the
+cloud" and updated through communication with that site. I strongly
+recommend you to use such sites for all serious programming and
+scientific writing work -- and all other important files.
+
+The simplest services for hosting project files is Dropbox. Simply
+go to `<http://dropbox.com>`_ and watch the video. It is very easy to get
+started with Dropbox, and it allows you to share files among
+laptops and mobile units.
+
+When several people may edit files simultaneously, it can be
+difficult detect who did what when, roll back to previous versions,
+and to manually merge the edits when these are incompatible. Then ones needs
+more sophisticated tools than Dropbox:
+project hosting services with true version control systems.
+This is what we aim at getting you started with here.
+
+The idea with project hosting services is that you have the files
+associated with a project in the cloud. Many people may share these
+files.  Every time you want to work on the project you explicitly
+update your version of the files, edit the files as you like, and
+synchronize the files with the "master version" at the site where the
+project is hosted.  If you at some point need to go back to the
+version of the files at some particular you when you known everything
+was fine, this is an easy operation. You can also use tools to see
+what various people (or just yourself) have done with the files.
+
+Four popular project hosting services are
+
+  * Bitbucket at ``bitbucket.org``
+
+  * GitHub at ``github.com``
+
+  * Googlecode at ``code.google.com``
+
+  * Launchpad at ``launchpad.net``
+
+All these services are very similar. Here we describe how you get
+started with Bitbucket, GitHub, and Googlecode. All the project
+hosting services have good introductions
+available at their web sites, but the recipes below aim at getting you
+started even quicker through a specific example.
+Launchpad works very similarly to Bitbucket, GitHub, and Googlecode.
+
+The mention services host all your files in a specific project in what
+is known as a *repository*, or *repo* for short.  When a copy of the
+files are wanted on a certain computer, one clones the repository on
+that computer.  This creates a local copy of the files. Now files can
+be edited, new ones can be added, and files can be deleted.  These
+changes are then brought back to the repository.  If users at
+different computers synchronize their files frequently with the
+repository, most modern version control systems will be able to merge
+changes in files that have been edited simultaneously on different
+computers. This is perhaps one of the most useful features of project
+hosting services.
+
+.. Next we describe how to get started with Bitbucket and GitHub.  If you
+
+.. are new to project hosting sites, it is recommended to read about
+
+.. Bitbucket first, since the description of GitHub is briefer.
+
+
+For the examples below, assume that you have some directory tree
+``my-project`` with files that you want to host at Bitbucket, GitHub, or
+Googlecode and bring under version control. The official name of the
+project is "My Project".
+
+Installing Version Control Systems
+==================================
+
+The various project hosting sites work with different version
+control systems:
+
+ * ``bitbucket.org`` offers Git (``git``) or Mercurial (``hg``),
+
+ * ``github.com`` offers Git (``git``),
+
+ * ``code.google.com`` offers Git (``git``), Mercurial (``hg``), or Subversion (``svn``),
+
+ * ``launchpad.net`` offers Bazaar (``bzr``).
+
+All the version control systems are quite similar in the way users
+operate them, but Subversion is technically different from Git,
+Mercurial, and Bazaar. The latter three work very much in the same way
+for a beginner, but their more advanced commands and their
+nomenclature differ significantly.  Which system to choose is mainly a
+matter of personal preference and experience. For some people the
+choice of project hosting site comes first, while others prefer a
+particular version control system and let this preference govern the
+choice of project hosting site.
+
+It is possible to use Mercurial also with a GitHub project. This
+requires a plugin for Mercurial, described in `<http://hg-git.github.com>`_.
+The plugin is easy to install (``easy-install hg-git`` or
+``sudo apt-get install mercurial-git`` on Ubuntu). You can also use
+Git to work with Subversion and Mercurial repositories.
+
+The author's experience from teaching contexts points to the combination
+of Bitbucket and Mercurial is the simplest to get started with,
+foremost because it appears that Mercurial is easier to learn than Git
+beyond the very basic commands.
+The
+combination of GitHub and Git seems to have the strongest momentum and
+popularity in the software development community at the time of this
+writing.
+
+Installing Mercurial
+--------------------
+
+
+.. index:: Mercurial
+
+.. index:: hg
+
+
+The `Mercurial website <http://mercurial.selenic.com/>`_ has information
+on downloading Mercurial on different platforms.
+On Ubuntu, you just perform
+
+.. code-block:: console
+
+        sudo apt-get install mercurial
+
+You can alternatively click in the Synaptic Package
+Manager and choose the Mercurial package in the graphical interface.
+
+Mercurial is pure Python code so it is trivial on any system with Python
+installed to download the Mercurial source code and perform
+the standard ``sudo python setup.py install`` command.
+
+You need to create two files in your home directory: ``.hgrc`` for
+specifying the behavior of ``hg`` (Mercurial) and ``.hgignore`` for
+listing the type of files you in general do not want to have under version
+control. A simple ``.hgrc`` file can look like this:
+
+.. code-block:: python
+
+        [ui]
+        username = "Hans Petter Langtangen <hpl@simula.no>"
+        ignore=~/.hgignore
+
+The ``.hgignore`` file lists the types of files that will be skipped
+when bringing new directories under Mercurial version control.
+Typically this is temporary files sich as object files (``*.o``),
+shared libraries (``*.so``), and backup files (``*.bak`` and ``*~``).
+The file types are usually specified using Unix Shell Wildcard notation,
+also referred to as ``glob`` syntax, as in ``*.o`` (where ``*`` means any
+sequence of characters).
+An example of a ``.hgignore`` file may be
+
+.. code-block:: python
+
+        syntax: glob
+        *.o
+        *.so
+        *.a
+        *~
+        .*~
+        *.log
+        *.dvi
+        *.aux
+        *.old
+        *.bak
+        tmp*
+
+
+
+
+Installing Git
+--------------
+
+
+.. index:: git
+
+
+The installation of Git on various systems is described
+on the `Git website <http://git-scm.com/>`_ under the *Download* section.
+On Ubuntu the relevant commands are
+
+.. code-block:: console
+
+        sudo apt-get install git gitk git-doc
+
+Git involves compiled code so it is most convenient to download a
+precompiled binary version of the software on Windows, Mac and other
+Linux computers.
+
+Make a file ``.gitconfig`` in your home directory with information on
+your full name, email address, your favorite emacs editor, and
+the name of a file which defines the file types that Git should omit
+when bringing new directories under version control.
+Here is a simplified version of the author's ``.gitconfig`` file:
+
+.. code-block:: python
+
+        [user]
+        name = Hans Petter Langtangen
+        email = hpl@simula.no
+        editor = emacs
+        
+        [core]
+        excludesfile = ~/.gitignore
+
+
+The ``.gitignore`` file should list, using the Unix Shell Wildcard notation,
+the type of files that you do not want to have under version control,
+typically (large) files that can easily be regenerated from some other
+source files. A ``.gitignore`` file may look like
+
+.. code-block:: python
+
+        *.o
+        *.so
+        *.a
+        *~
+        .*~
+        *.log
+        *.dvi
+        *.aux
+        *.old
+        *.bak
+        tmp*
+
+
+
+Bazaar
+~~~~~~
+
+The `Bazaar website <http://wiki.bazaar.canonical.com/>`_ has
+a *Download* button which offers installation on a variety of
+platforms. On Ubuntu, type
+
+.. code-block:: console
+
+        sudo apt-get install bzr
+
+The source code of Bazaar is in Python and can be installed by the
+usual ``sudo python setup.py install`` command.
+
+
+.. _bitgit:bitbucket:
+
+Bitbucket
+=========
+
+
+.. index:: Bitbucket
+
+
+To start using Bitbucket, go to ``bitbucket.org`` and create an account.
+My favorite communication channel with Bitbucket repositories is
+through SSH and HTTPS as used in their examples.  To use SSH, you must
+upload your SSH key, typically the contents of the file ``id_rsa.pub``
+or ``id_dsa.pub`` in the ``.ssh`` subdirectory of your home directory. Go
+to the page for your account and upload one of these files. If you do
+not have any of them, click on the link "Using SSH", which explains
+what you need to know.
+
+Create a New Project
+--------------------
+
+Click at ``Repositories`` and at ``create repository``.
+You can now
+
+ * fill in the name of the project, here ``my-project``,
+
+ * choose between the Git or Mercurial version control system,
+
+ * decide whether the project is private or public (the number of
+   private repos for a user is limited unless you pay),
+
+ * click whether you want issue tracking for reporting errors,
+   suggesting improvements, etc.,
+
+ * click whether you want a wiki page associated witht the project.
+
+You may also want to have the `Bitbucket 101 guide <http://confluence.atlassian.com/display/BITBUCKET/Bitbucket+101>`_
+available (open the link in another tab or window in your browser).
+
+It is now time to copy the project to your laptop, or *clone* it
+in Git and Mercurial terminology. Go to the project page
+and find the *Clone this repository* line. Click on *SSH*,
+copy the *clone* line and run this command in a terminal:
+
+.. code-block:: console
+
+        hg clone ssh://hg@bitbucket.org/username/my-project
+        # or
+        git clone ssh://hg@bitbucket.org/username/my-project.git
+
+Only the ``hg`` or the ``git`` command is display since your project was
+initialized with either Merucial or Git as version control system (this
+cannot be changed later).
+In the above command you must replace ``username`` by your own user name
+at Bitbucket.
+
+The next step is to collect files and directories that should make up
+the project and put them in the ``my-project`` directory.
+
+Then all files should be brought under version control, with the exception
+of the file types listed in ``.hgignore``.
+Issue the following command in the ``my-project`` directory:
+
+.. code-block:: console
+
+        hg add
+        # or
+        git add .
+
+
+Thereafter, the changes to the repository (adding of files) must
+be registered, or *commited* if we use standard version control system
+terminology. The command reads
+
+.. code-block:: console
+
+        hg commit  -m 'Initial import of files.'
+        # or
+        git commit -m 'Initial import of files.'
+
+The ``-m`` option is a required description of the changes that have taken
+place. This description does not matter much for this initial import
+of files into the repository, but is of importance for future commit
+commands such that you can easily track the history of your project files.
+
+The final step is to push the local changes to the master repo at
+Bitbucket:
+perform
+
+.. code-block:: console
+
+        hg push
+        # or
+        git push -u origin master
+
+You must be connected to the Internet for the ``push`` command to work since
+it sends file information to the ``bitbucket.org`` site.
+
+Further work with the files must always follow the pull, edit, commit, and
+push steps explained in the section :ref:`bitgit:hg` for Mercurial and
+Section {bitgit:git} for Git.
+
+.. _bitgit:googlecode:
+
+Googlecode
+==========
+
+
+.. index:: Googlecode
+
+
+To use Googlecode you need a general account on Google.
+
+
+Create a New Project
+--------------------
+
+Go to `<http://code.google.com/hosting>`_ and click on
+*Create a new project*. Fill out *all* the fields. For now
+the project name is ``my-project``.
+You have
+to choose between Git, Mercurial, and Subversion as version control
+system for your project, and this choice cannot be changed.
+Git and Mercurial are preferred over Subversion nowadays.
+If you choose Git, you must create a file ``.netrc`` in your
+home directory containing the line
+
+.. code-block:: python
+
+        machine code.google.com login uname password pw
+
+Here, ``uname`` is your user name for the Google account and
+``pw`` is the Googlecode password which is generated for you on
+the ``code.google.com/p/my-project``.
+The ``.netrc`` file avoids typing or pasting in
+your long and complicated password every time you push changes to
+the repository on ``code.google.com``.
+
+The next step is to clone the empty repository on your local machine
+so that you can add files:
+
+.. code-block:: console
+
+        git clone https://code.google.com/p/my-project/
+
+Now you can go to the ``my-project`` directory and add files.
+Perform
+
+.. code-block:: console
+
+        git add .
+        git commit am 'First import of files.'
+        git push origin master
+
+Click on *Source* and
+*Browse* on the project's web page, and realize that the added
+files are visible on the project page.
+
+If you use Mercurial as version control system on Googlecode and
+you want to avoid giving your password when you push changes to
+the repository, you should add the following section to your
+``.hgrc`` file:
+
+.. code-block:: python
+
+        [auth]
+        my-project.prefix = https://my-project.googlecode.com/hg/
+        my-project.username = uname
+        my-project.password = pw
+
+where ``uname`` and ``pw`` must be replaced by your account name and
+the special Googlecode password. Other projects on Googlecode
+using Mercurial will need similar lines.
+
+A very strong and useful feature with Googlecode, in my opinion, is
+that one can reach the repository files directly through an URL.
+That means that one can place documentation of the project in
+the repository and find an URL to the HTML or PDF files of the documentation,
+which will then be displayed correctly. All other project hosting sites
+demands either wiki pages or special web areas for locating documentation.
+The URL to your files is
+
+.. code-block:: python
+
+        https://my-project.googlecode.com/git/
+
+When using other version control systems, ``git`` is simply replaced by
+``hg`` or or ``svn``.
+For example, if we have HTML documentation of our project in
+the directory ``doc/API/html``, we can point users to
+
+.. code-block:: python
+
+        https://my-project.googlecode.com/git/doc/API/html/index.html
+
+The HTML will be rendered correctly as opposed to when you load
+the similar file into the web browser from the repository,
+
+.. code-block:: python
+
+        http://code.google.com/p/my-project/source/browse/doc/API/html/index.html
+
+Now you can only see the HTML source code of this file, as is usual
+on other project hosting sites.
+
+You can click on *Project Home* and then on *Administer* to edit the
+main page of the project. This is a wiki, using Google's wiki syntax,
+but it is quite easy to add links to your documentation, e.g.,
+
+.. code-block:: python
+
+        Browse the
+        [https://my-project.googlecode.com/git/doc/API/html/index.html
+        API documentation].
+
+
+It is easy to allow others to push their changes to the
+repository: click on *Sharing* and then on *Administer*.
+The Google account names of people you allow write access can be
+listed under each other in the *Project committers* field.
+
+Wiki Pages
+----------
+
+Wiki pages can intuitively be made directly in the browser. However,
+it is often more convenient to have them locally on your computer.
+Click on *Source* and choose *wiki* on the *Repository* pull down menu.
+The proper clone command to get a copy of the wiki repository then
+appears.
+
+Googlecode applies their own Google wiki format. My preference is
+to write documentation in the neutral `Doconce <http://code.google.com/p/doconce>`_ format and transform the document to LaTeX, Sphinx, and Google wiki.
+The wiki can then be copied from the project directories to the
+wiki directory and then pushed to the repository. This ensures
+that there is only one source of the documentation (despite the need
+for many formats) and that the wiki pages are frequently updated.
+
+.. https://odespy.googlecode.com/git/doc/API/index.html
+
+.. https://odespy.googlecode.com/git/doc/tutorial/html/wrap_odesolvers.html
+
+
+
+.. _bitgit:github:
+
+GitHub
+======
+
+
+.. index:: GitHub
+
+
+
+Go to ``github.com`` and create an account. Then
+go to your account settings, choose *SSH Public Keys*, and provide
+your SSH key. Everyone who is supposed to use your repository must
+provide their SSH key.  There is a help that explains what this is all
+about. Often, it is just a matter of pasting the contents of
+``id_rsa.pub`` or ``id_dsa.pub`` in the ``.ssh`` subdirectory of your home
+directory into the *Key* box in the web page. Make sure to cut and
+paste the text from, e.g., ``id_dsa.pub`` without any extra whitespaces
+or other text.
+
+A next step is to provide your so called API Token. Go to your account
+settings and choose *Account Admin*, copy the API Token and place
+it in the ``~/.gitconfig`` file like this
+
+.. code-block:: python
+
+        [github]
+        token = 4b17350d7ea9d9xse4c98749a89fc15dfc4
+
+
+Create a New Project
+--------------------
+
+Click on *New Repository* on the main page and fill out a project
+name, here *My Project*.
+Then create your project directory, here named ``My-Project``,
+on your computer and initialize the project:
+
+.. code-block:: console
+
+        mkdir My-Project
+        cd My-Project
+        git init
+        touch README
+        git add README
+        git commit -m 'First import of files.'
+
+These commands initialize a local repository.
+The next step is to copy all files that you want to have
+has part of the project and
+add them to Git by the command
+
+.. code-block:: console
+
+        git add .
+        git commit -m 'Adding more files.'
+
+Create a remote name (usually ``origin``)
+for your repository at GitHub and push your local files to
+the global repository:
+
+.. code-block:: console
+
+        git remote add origin git@github.com:username/My-Project.git
+        git push -u origin master
+
+Make sure you replace ``username`` by your real username at GitHub.
+Also note that when your project was registered with the name
+"My Project", ``My-Project.git`` is the name you should use in the
+``git remote`` command (spaces in the project name on GitHub are replaced
+by dashes in the similar directory name).
+
+Find your new project on your personal ``github.com`` pages and check
+that the project files you added are viewable on the web pages.
+
+
+To give others permissions to push their edits of files to the
+repository, you go to the project's page on ``github.com``,
+click on *Admin*, click on *Collaborators* on the left, and
+fill in the name of a collaborator (her or his user name on GitHub).
+You can click on *Service Hooks* and then *Email* in the list
+to make each ``git commit`` command send an email to yourself or
+others.
+
+The daily file operations are explained in Section {bitgit:git}.
+There you also find information on how to create wiki pages and
+web pages associated with the project.
+
+
+Wiki Pages
+----------
+
+With every GitHub project there is an option to create wiki pages.
+Click on the *Wiki* button right under the line with the project
+name of the main page of the project. Click on *New Page* to create
+a new page. The wiki pages can be written in different markup
+languages. Markdown is the default choice, but you can alternatively
+use reStructuredText (unfortunately not the Sphinx extension
+with nice LaTeX mathematics) or MediaWiki (the markup used for
+Wikipedia).
+
+The wiki pages can be written and maintained through the web browser
+interface, but it is usually more convenient to clone them on
+your computer as this makes it easy to add figures and other documents
+you may want to link to. It also makes it straightforward to edit
+the wiki text in your favorit text editor. The wiki pages are
+stored in a separate repo: click on *Git Access* and then on
+*Git Read-Only* to see the
+Git address for a standard ``git clone`` command, typically
+
+.. code-block:: console
+
+        git clone git://github.com/username/My-Project.wiki.git
+
+This command makes a local copy of the pages in the directory
+``My-Project.wiki``, which you may prefer to have at the same level
+as the project directory itself in your directory tree.
+
+Each wiki page has its own file, where the extension reflects
+the markup language used, e.g., ``.md`` for Markdown and ``.rest`` for
+reStructuredText. The wiki files are handled as other files in a
+GitHub project, i.e., you need to pull before editing and then
+perform commit and push. After the push you can reload the page
+in the web browser to monitor the effect.
+
+You may consider having the original text in ``doconce`` format and
+generate the wiki in reStructuredText format.
+
+Do changes, commit the usual way, and push by
+
+.. code-block:: console
+
+        git push git@github.com:username/My-project.wiki.git
+
+The address can be stored as ``url`` in ``.git/config`` so that just a
+``git push`` works.
+
+
+Project Web Pages
+-----------------
+
+GitHub can also host a set of web pages for your project where you can
+store various types of documentation. Here is a simple
+recipe for creating a set of project web pages.
+
+1. Go to to the  project page on ``github.com`` and click *Admin*.
+
+2. Check the *GitHub Pages* check box.
+
+3. Click on the *Automatic GitHub Page Generator* button in the pop up window.
+
+4. Go to the root directory of the project, ``My-Project``,
+   and run ``git fetch origin``.
+
+5. Run ``git checkout -b gh-pages origin/gh-pages``
+
+You have now a *new branch* called ``gh-pages`` of your project containing an
+``index.html`` file in the root directory (and in fact all files *not*
+contained in the *master branch*, typically redundant files not to be
+stored in the version control system).
+You can populate this directory and subdirectories you create with
+HTML and other files as you like.
+
+The ``index.html`` page is invoked by the web address
+``http://username.github.com/My-Project/``, where ``username`` is the GitHub
+user name and ``My-Project`` is the project name.
+
+.. Update this info when I have maintained gh-pages for a while!
+
+.. Could also have a special section on branching in git (above,
+
+.. then the info here is simple... YES!).
+
+
+The web pages and project files are now in two different branches.
+To see the branches, type ``git branch`` and the one you are in will
+be marked with a star in the output. Swithing to the master branch
+is done by ``git checkout master``. Similarly, ``git checkout gh-pages``
+swithces to the gh-pages branch.
+
+If branches diverge you can merge them by
+
+.. code-block:: console
+
+        git merge otherbranch
+
+where ``otherbranch`` is the name of another branch. If there is a conflict
+in the merge, there will be markers in problematic files. Run
+``git diff`` to show the problems. After a manual edit, do
+``git commit -a``. Then you may run ``gitk`` to see a graphical illustration
+of what has happened.
+
+I recommend to have the master and gh-pages synchronized, at least
+in projects where you need the source code files for generating
+API documentation in the gh-pages branch. Then you will start
+with pulling
+everything from the master branch to the gh-pages branch.
+Make sure the master branch is updated with anything that was
+generated for the gh-pages branch. Finally you switch to the
+master branch and merge with gh-pages so you get the autogenerated
+``index.html``
+file in the root directory:
+
+.. code-block:: console
+
+        git merge master
+        git push origin gh-pages
+        git checkout master
+        git merge gh-pages
+
+You can now add the documentation to the project files and
+keep them in the master branch.
+Before publishing documents online,
+make sure to update the gh-pages branch by
+
+.. code-block:: console
+
+        git commit -am 'Ensure commit of everything in master branch'
+        git push origin master
+        git checkout gh-pages
+        git merge master
+        git push origin gh-pages
+        git checkout master
+
+
+Here is a very important point if you want to use Sphinx-generated
+HTML pages: you *must* add an empty file ``.nojekyll`` in the top
+directory of the project pages. Without it, the contents in ``_static``
+and ``_images`` directories (or any other directory starting with an
+underscore) are not visible, i.e., the layout of the pages cannot make
+use of Sphinx styles.  The problem can also be circumvented by
+installing special Sphinx extensions (`sphinx-to-github <https://github.com/michaeljones/sphinx-to-github>`_ or `github-tools <http://pydoc.net/github-tools/0.1.3/>`_).
+
+.. See https://github.com/daler/sphinxdoc-test
+
+.. for ideas on how to do sphinx documentation without full
+
+.. mirroring as I do.
+
+.. See also http://lucasbardella.com/report/hosting-your-sphinx-docs-in-github/
+
+.. Sphinx extension for github: https://github.com/michaeljones/sphinx-to-github
+
+
+
+User Web Pages
+--------------
+
+
+GitHub also allows you to create user pages and organization pages not
+tied to any specific project.
+Your personal cite has address
+``http://username.github.com``.
+Go to your home page on ``github.com`` and click *New repository*,
+and give it the project name ``username.github.com``.
+Then following the instructions that come up:
+
+.. code-block:: console
+
+        mkdir username.github.com
+        cd username.github.com
+        git init
+        # make an index.html file with some test text
+        git add index.html
+        git commit -m 'First commit'
+        git remote add origin git@github.com:username/username.githun.com.git
+        git push -u origin master
+
+Go to ``http://username.github.com`` and see how the ``index.html`` is
+rendered. You can now add various contents as in any ordinary
+Git repository.
+If you want to use Sphinx generated HTML pages, recall to add an empty file
+``.nojekyll``.
+
+.. Use gh-pages in a subfolder of the master branch: https://gist.github.com/825950
+
+
+
+.. _bitgit:hg:
+
+Using Mercurial
+===============
+
+
+.. index:: Mercurial
+
+.. index:: hg
+
+
+The Basic Commands of Mercurial
+-------------------------------
+
+You get started with your project on a new machine or another user
+can get started with the project by the command
+
+.. code-block:: console
+
+        hg clone ssh://hg@bitbucket.org/username/my-project
+
+
+Your typical working style with the ``my-project`` project goes as follows.
+First you go to the desired directory where this project is stored on
+your local computer and make sure
+you have the latest versions of the files:
+
+.. code-block:: console
+
+        hg pull
+        hg update
+
+These commands download the latest versions of the files from
+your ``bitbucket.org`` repository and make them ready for changes on
+your computer. The ``pull`` command requires a functioning Internet
+connection.
+
+You can now edit some files. Maybe you also add, remove, and move some files:
+
+.. code-block:: console
+
+        hg add filename
+        hg remove filename
+        hg rename oldfilename ../somedir/newfilename
+
+The removal of a file is physically performed when you to a
+``hg commit``. The file is never removed from the repository, only
+hidden, so it is easy to get the file and its entire history
+back at a later stage.
+
+After some changes, you have to commit and push the files to the
+repository at ``bitbucket.org``:
+
+.. code-block:: console
+
+        hg commit -m 'Description of changes.'
+        hg push
+
+
+The command
+
+.. code-block:: console
+
+        hg stat
+
+shows the status of the individual files (``M`` for modified, ``A`` for
+added, ``R`` for removed), and you should pay attention to files with a
+question mark because these are not tracked in the repository. It is
+very easy to forget adding new files so ``hg stat`` is a useful command
+to ensure that all files you want to track have been added to the
+repository.
+
+The power of ``hg`` and your file repository ``bitbucket.org`` is that
+you can work with the project files on several computers and others can
+also contribute to this project. The history of each file is recorded
+and anyone can roll back to previous versions, if needed. You can easily see
+who did what with the various files. For example,
+
+.. code-block:: console
+
+        hg annotate -aun myfile
+
+lists the various lines in the file ``myfile`` annotated with the revision
+number of the latest change of the line and the name of the user who
+performed the change. Another command,
+
+.. code-block:: console
+
+        hg log -p myfile
+
+lists the history of the file ``myfile`` in more detail so that you
+can track the evolution of this file.
+
+Mercurial has a two-level type of repository: there is global
+repository for all users of the ``my-project`` tree at ``bitbucket.org``,
+but each user also has a local repository (automatically made). To
+update files, one must first pull new files from the global repository
+(``pull``) and then update the local repository (``update``), before any
+file can be edited. The ``hg commit`` command saves files in the local
+repository. One may run many ``hg commit`` commands to make a sequence
+of corresponding versions of files in the local repository. Finally,
+when the local versions are ready to be pushed to the global
+repository, one runs the ``hg push`` command.
+
+Older version control systems, including Subversion and CVS, have only
+a global repository and no local ones.  The advantage of the two-level
+repository is that you can change your files locally and keep track of
+the changes (by doing ``hg commit``) without affecting other users of
+the files.  This feature allows you to commit changes to the global
+repository only when you feel comfortable with the state of the files.
+Nevertheless, if others work actively on the same files as you, it is
+generally recommended to push often in order to exchange the latest
+version of the files. This strategy may avoid problems with future
+merging of files.
+
+.. _bitgit:hgmerge:
+
+Merging Files with Mercurial
+----------------------------
+
+
+.. index:: merging files
+
+
+It might have happened that others and you have edited the same files
+at the same time. How should the edits then be combined?  Often the
+``hg update`` command is clever enough to merge the changes made by
+different users automatically. If not, you have to run an explicit ``hg
+merge`` command.  The ``hg merge`` program tries to use some merge
+program on your computer system to automatically merge files. If this
+failes, ``hg merge`` invokes some graphical tool to help you resolve the
+conflict between files.  Example on popular merge programs for this
+purpose are ``meld``, ``xxdiff``, ``kdiff3``, and ``diffuse``.  You can
+specify the merge program, say ``xxdiff``, by ``hg merge --tool xxdiff``.
+How you now proceed is dependent on the particular program. Usually,
+for each change you must choose either your new local version of the
+text, or your old local version of the text, or the version of the
+text pulled from the global repository.  After using the merge program
+successfully you must save the merged file and perform an ``hg commit``
+command on it, and perhaps do an ``hg push`` to also update the global
+repository with the merged file(s).
+
+Suppose you do not manage to merge using the merge tool. Then you have
+to invoke the file, say ``myfile`` in an editor and do the merge
+manually. There will often be lines starting with '<<<<', '=====',
+and '>>>>` to mark conflicting texts (*merge markers*). After removing
+these lines and editing the text manually, you must register the conflict
+as resolved:
+
+.. code-block:: console
+
+        hg resolve -m merge myfile
+        hg commit -m merge myfile
+
+
+You can read more about merging files in the `hgbook <http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html>`_.
+We shall now illustrate the merge problems through an example.
+Suppose we have a global repository ``tmp_repo``, and two (cloned)
+directories ``tmp1`` and ``tmp2``, corresponding to two users, each with
+their copy of the global repository.  There is only one file ``myfile``
+in the repository. We then simulate the two users and perform edits in
+parallel. The shell script below simulates the two users and
+illustrates the importance of pulling before editing and the need of
+merge.
+
+
+.. code-block:: bash
+
+        #!/bin/sh
+        # Demo script for exemplifying hg merge
+        
+        rm -rf tmp1 tmp2 tmp_repo   # Clean up previous runs
+        
+        mkdir tmp_repo   # Global repository for testing
+        cd tmp_repo
+        cat > myfile <<EOF
+        This is a little
+        test file for
+        exemplifying merge
+        of files in different
+        hg directories.
+        EOF
+        hg init   # Make hg global repository out of this directory
+        hg add    # Add all files not mentioned in ~/.hgignore
+        hg commit -m 'first commit'
+        cd ..
+        
+        # Make a new hg repositories tmp1 and tmp2 (two users)
+        hg clone tmp_repo tmp1
+        hg clone tmp_repo tmp2
+        
+        # Change myfile in the directory tmp1
+        cd tmp1
+        # Edit myfile: insert a new second line
+        perl -pi -e 's/a little\n/a little\ntmp1-add1\n/g' myfile
+        # Register change in local repository
+        hg commit -m 'Inserted a new second line in myfile.'
+        # Look at changes in this clone
+        hg log -p
+        # Register change in global repository tmp_repo
+        hg push
+        cd ..
+        
+        # Change myfile in the directory tmp2 "in parallel"
+        cd tmp2
+        # Edit myfile: add a line at the end
+        cat >> myfile <<EOF
+        tmp2-add1
+        EOF
+        # Register change locally
+        hg commit -m 'Added a new line at the end'
+        # Register change globally
+        hg push
+        # Error message: global repository has changed,
+        # we need to pull those changes to local repository first
+        # and see if all files are compatible before we can update
+        # our own changes to the global repository.
+        # hg writes
+        # abort: push creates new remote head d0a2f8e6b9d9!
+        # (you should pull and merge or use push -f to force)
+        
+        hg pull
+        # hg writes:
+        # added 1 changesets with 1 changes to 1 files (+1 heads)
+        # (run 'hg heads' to see heads, 'hg merge' to merge)
+        hg merge
+        # Successful merge!
+        cat myfile
+        hg commit -m merge
+        hg push
+        cd ..
+        
+        # Perform new changes in parallel in tmp1 and tmp2,
+        # this time causing hg merge to fail
+        
+        # Change myfile in the directory tmp1
+        cd tmp1
+        # Do it all right by pulling and updating first
+        hg pull
+        hg update
+        # Edit myfile: insert "just" in first line.
+        perl -pi -e 's/a little/tmp1-add2 a little/g' myfile
+        # Register change in local repository
+        hg commit -m 'Inserted "just" in first line.'
+        # Register change in global repository tmp_repo
+        hg push
+        cd ..
+        
+        # Change myfile in the directory tmp2 "in parallel"
+        cd tmp2
+        # Edit myfile: replace little by modest
+        perl -pi -e 's/a little/a tmp2-replace1\ntmp2-add2\n/g' myfile
+        # Register change locally
+        hg commit -m 'Replaced "little" by "modest"'
+        # Register change globally
+        hg push
+        # Not possible: need to pull changes in the global repository
+        hg pull
+        hg update
+        # hg update aborts: we have to run hg merge
+        diff myfile ../tmp_repo/myfile
+        echo 'Now you must do hg merge manually'
+
+
+Try to run this `file <_static-bitgit/hg_merge.sh>`_ named
+``hg_merge.sh`` by ``sh -x hg_merge.sh``.
+To resolve the resulting merge conflict you need to go to the ``tmp2``
+directory, run ``hg merge --tool meld`` and use the ``meld`` tool to
+select which text snippets that should make up the final, merged
+version. Save and quit ``meld`` and peform ``hg commit -m merge``.  You
+can now do ``hg push`` successfully to update the global repository.
+
+More Documentation on Mercurial
+-------------------------------
+
+ * `Mercurial Quick Start <http://mercurial.selenic.com/wiki/QuickStart>`_ (for the impatient)
+
+ * `Mercurial FAQ <http://mercurial.selenic.com/wiki/FAQ>`_
+
+ * `Mercurial Tutorial <http://mercurial.selenic.com/wiki/Tutorial>`_
+
+ * `Mercurial: The Definitive Guide <http://hgbook.red-bean.com/>`_ (online or printed book)
+
+.. _bitgit:git:
+
+Using Git
+=========
+
+
+.. index:: git
+
+
+The Basic Commands of Git
+-------------------------
+
+You get started with your project on a new machine, or another user
+can get started with the project,
+by running
+
+.. code-block:: console
+
+        git clone git@github.com:username/My-Project.git
+        cd My-Project
+        ls
+
+Recall to replace ``username`` by your real user name and ``My-Project`` by the
+actual project name.
+
+The typical work flow with the "My Project" project starts with
+updating the local repository by going to the ``My-Project`` directory
+and writing
+
+.. code-block:: console
+
+        git pull origin master
+
+
+After editing files, adding new files, deleting files, or renaming files,
+
+.. code-block:: console
+
+        git add myfile1 myfile2.* yourdir
+        git rm yourfile
+        git rm -r yourdir
+        git mv thisfile thatname
+        git mv thisfile ../thatdir
+
+it is time to commit your changes (note the ``-am`` option):
+
+.. code-block:: console
+
+        git commit -am 'Description of changes.'
+
+You may perform many commits, to keep track of small changes, before
+you push your changes to the global repository:
+
+.. code-block:: console
+
+        git push origin master
+
+
+To see the status of files, run
+
+.. code-block:: console
+
+        git status -s
+
+Files are marked with ``A`` for added, ``M`` for modified, and so on.
+
+A nice graphical tool allows you to view all changes, or just
+the latest ones:
+
+.. code-block:: console
+
+        gitk --all
+        gitk --since="2 weeks ago"
+
+You can also view changes to all files or some selected ones
+in the terminal window:
+
+.. code-block:: console
+
+        git log -p                        # all changes to all files
+        git log --stat --summary          # more compact summary
+        git log --stat --summary  subdir  # only files in subdir folder
+
+To see who did what when, use ``git blame``:
+
+.. code-block:: console
+
+        git blame subdir/myfile.txt
+        git blame --since="1 week" subdir/myfile.txt
+
+
+.. _bitgit:gitmerge:
+
+Merging Files with Git
+----------------------
+
+
+.. index:: merging files
+
+
+The ``git pull`` command fetches new files from the repository and
+tries to perform an automatic merge if there are conflicts between
+the local files and the files in the repository.
+Git will write a message if the merge is unsuccessful for one or
+more files. These files will have to be edited manually.
+Merge markers of the type '>>>>>', '======', and '<<<<<' have been
+inserted by Git to mark sections of a file where the version in the
+repository differ from the local version. You must decide which
+lines that are to appear in the final, merged version. When done,
+perform ``git commit`` and the conflicts are resolved.
+
+Below is a Unix shell script illustrating how to make a global
+repository in Git, and how two users clone this repository and
+perform edits in parallel. There is one file ``myfile`` in the
+repository.
+
+
+.. code-block:: bash
+
+        #!/bin/sh
+        # Demo script for exemplifying git and merge
+        
+        rm -rf tmp1 tmp2 tmp_repo   # Clean up previous runs
+        
+        mkdir tmp_repo   # Global repository for testing
+        cd tmp_repo
+        git --bare init --shared
+        cd ..
+        
+        # Make a repo that can be pushed to tmp_repo
+        mkdir _tmp
+        cd _tmp
+        cat > myfile <<EOF
+        This is a little
+        test file for
+        exemplifying merge
+        of files in different
+        git directories.
+        EOF
+        git init
+        git add .   # Add all files not mentioned in ~/.gitignore
+        git commit -am 'first commit'
+        git push ../tmp_repo master
+        cd ..
+        rm -rf _tmp
+        
+        # Make a new hg repositories tmp1 and tmp2 (two users)
+        git clone tmp_repo tmp1
+        git clone tmp_repo tmp2
+        # Change myfile in the directory tmp1
+        cd tmp1
+        # Edit myfile: insert a new second line
+        perl -pi -e 's/a little\n/a little\ntmp1-add1\n/g' myfile
+        # Register change in local repository
+        git commit -am 'Inserted a new second line in myfile.'
+        # Look at changes in this clone
+        git log -p
+        # or a more compact summary
+        git log --stat --summary
+        # or graphically
+        #gitk
+        # Register change in global repository tmp_repo
+        git push origin master
+        cd ..
+        
+        # Change myfile in the directory tmp2 "in parallel"
+        cd tmp2
+        # Edit myfile: add a line at the end
+        cat >> myfile <<EOF
+        tmp2-add1
+        EOF
+        # Register change locally
+        git commit -am 'Added a new line at the end'
+        # Register change globally
+        git push origin master
+        # Error message: global repository has changed,
+        # we need to pull those changes to local repository first
+        # and see if all files are compatible before we can update
+        # our own changes to the global repository.
+        # git writes
+        #To /home/hpl/vc/scripting/manu/py/bitgit/src-bitgit/tmp_repo
+        # ! [rejected]        master -> master (non-fast-forward)
+        #error: failed to push some refs to ...
+        
+        git pull origin master
+        # git writes:
+        #Auto-merging myfile
+        #Merge made by recursive.
+        # myfile |    1 +
+        # 1 files changed, 1 insertions(+), 0 deletions(-)
+        cat myfile  # successful merge!
+        git commit -am merge
+        git push origin master
+        cd ..
+        
+        # Perform new changes in parallel in tmp1 and tmp2,
+        # this time causing hg merge to fail
+        
+        # Change myfile in the directory tmp1
+        cd tmp1
+        # Do it all right by pulling and updating first
+        git pull origin master
+        # Edit myfile: insert "just" in first line.
+        perl -pi -e 's/a little/tmp1-add2 a little/g' myfile
+        # Register change in local repository
+        git commit -am 'Inserted "just" in first line.'
+        # Register change in global repository tmp_repo
+        git push origin master
+        cd ..
+        
+        # Change myfile in the directory tmp2 "in parallel"
+        cd tmp2
+        # Edit myfile: replace little by modest
+        perl -pi -e 's/a little/a tmp2-replace1\ntmp2-add2\n/g' myfile
+        # Register change locally
+        git commit -am 'Replaced "little" by "modest"'
+        # Register change globally
+        git push origin master
+        # Not possible: need to pull changes in the global repository
+        git pull origin master
+        # git writes
+        #CONFLICT (content): Merge conflict in myfile
+        #Automatic merge failed; fix conflicts and then commit the result.
+        # we have to do a manual merge
+        cat myfile
+        echo 'Now you must edit myfile manually'
+
+
+You may run this `file <_static-bitgit/git_merge.sh>`_ named
+``git_merge.sh`` by ``sh -x git_merge.sh``.
+At the end, the versions of ``myfile`` in the
+repository and the ``tmp2`` directory are in conflict. Git tried
+to merge the two versions, but failed. Merge markers are left in
+``tmp2/myfile``:
+
+.. code-block:: python
+
+        <<<<<<< HEAD
+        This is a tmp2-replace1
+        tmp2-add2
+        
+        =======
+        This is tmp1-add2 a little
+        >>>>>>> ad9b9f631c4cc586ea951390d9415ac83bcc9c01
+        tmp1-add1
+        test file for
+        exemplifying merge
+        of files in different
+        git directories.
+        tmp2-add1
+
+Launch a text editor and edit the file so that it becomes correct.
+Then run ``git commit -am merge`` to finalize the merge.
+
+
+
+More Documentation on Git
+-------------------------
+
+ * `Everyday GIT With 20 Commands Or So <http://schacon.github.com/git/everyday.html>`_
+
+ * `Git Community Book <http://book.git-scm.com/>`_
+
+ * `Git for Designers <http://hoth.entp.com/output/git_for_designers.html>`_ (aimed a people with no previous knowledge of version control systems)
+
+ * `Git Magic: Basic Tricks <http://www-cs-students.stanford.edu/~blynn/gitmagic/ch02.html>`_
+
+ * The official `Git Tutorial <http://schacon.github.com/git/gittutorial.html>`_
+
+ * `Git Tutorial Video <http://www.youtube.com/watch?v=TPY8UwlTIc0&feature=related>`_ on YouTube
+
+ * `Git Questions <http://wiki.sourcemage.org/Git_Guide>`_
+
+ * `Git Reference <http://gitref.org>`_ (can also be used as a tutorial on Git)
+
+ * `Git User Manual <http://schacon.github.com/git/user-manual.html>`_
+
+ * `Git home page <http://git-scm.com/>`_
+
+ * `Git and Mercurial command equivalence table <http://mercurial.selenic.com/wiki/GitConcepts#Command_equivalence_table>`_
