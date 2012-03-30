@@ -6,7 +6,7 @@ Quick Intro to Version Control Systems and Project Hosting Services
 
 :Author: Hans Petter Langtangen
 
-:Date: Mar 6, 2012
+:Date: Mar 31, 2012
 
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -42,10 +42,10 @@ associated with a project in the cloud. Many people may share these
 files.  Every time you want to work on the project you explicitly
 update your version of the files, edit the files as you like, and
 synchronize the files with the "master version" at the site where the
-project is hosted.  If you at some point need to go back to the
-version of the files at some particular you when you known everything
-was fine, this is an easy operation. You can also use tools to see
-what various people (or just yourself) have done with the files.
+project is hosted.  If you at some point need to go back to a
+version of the files at some particular point in the past,
+this is an easy operation. You can also use tools to see
+what various people have done with the files in the various versions.
 
 Four popular project hosting services are
 
@@ -261,13 +261,13 @@ through SSH and HTTPS as used in their examples.  To use SSH, you must
 upload your SSH key, typically the contents of the file ``id_rsa.pub``
 or ``id_dsa.pub`` in the ``.ssh`` subdirectory of your home directory. Go
 to the page for your account and upload one of these files. If you do
-not have any of them, click on the link "Using SSH", which explains
+not have any of them, click on the link *Using SSH*, which explains
 what you need to know.
 
 Create a New Project
 --------------------
 
-Click at ``Repositories`` and at ``create repository``.
+Click at *Repositories* and at *create repository*.
 You can now
 
  * fill in the name of the project, here ``my-project``,
@@ -1124,6 +1124,7 @@ the latest ones:
         gitk --all
         gitk --since="2 weeks ago"
 
+
 You can also view changes to all files or some selected ones
 in the terminal window:
 
@@ -1139,6 +1140,42 @@ To see who did what when, use ``git blame``:
 
         git blame subdir/myfile.txt
         git blame --since="1 week" subdir/myfile.txt
+
+
+Occasionally you need to go back to an earlier version of a file,
+say its name is ``myfile``. Start with view the history:
+
+.. code-block:: console
+
+        git log myfile
+
+Find a commit candidate from the list that you will compare the
+present version to and copy the commit hash (string like
+``c7673487...``) and run
+
+.. code-block:: console
+
+        git diff c7673487763ec2bb374758fb8e7efefa12f16dea myfile
+
+where the long string is the relevant commit hash. You can now view the
+differences between the most recent version and the one in
+the commit you picked. If you want to restore the old file, write
+
+.. code-block:: console
+
+        git checkout c7673487763ec2bb374758fb8e7efefa12f16dea myfile
+
+To go back to
+another version (the most recent one, for instance),
+find the commit hash with ``git log myfile``, and do
+``get checkout <commit hash> myfile``.
+At any time you to ``git commit`` the current version of ``myfile`` will
+enter the most recent commit of the current branch.
+
+If ``myfile`` changed name from ``yourfile`` at some point and you want
+``yourfile`` back, run ``git log`` to find the commit when ``yourfile`` existed,
+and do a ``git checkout <commit hash> yourfile``.
+
 
 
 .. _bitgit:gitmerge:

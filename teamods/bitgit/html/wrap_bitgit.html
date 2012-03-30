@@ -56,7 +56,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 6, 2012</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 31, 2012</td>
 </tr>
 </tbody>
 </table>
@@ -90,10 +90,10 @@ associated with a project in the cloud. Many people may share these
 files.  Every time you want to work on the project you explicitly
 update your version of the files, edit the files as you like, and
 synchronize the files with the &#8220;master version&#8221; at the site where the
-project is hosted.  If you at some point need to go back to the
-version of the files at some particular you when you known everything
-was fine, this is an easy operation. You can also use tools to see
-what various people (or just yourself) have done with the files.</p>
+project is hosted.  If you at some point need to go back to a
+version of the files at some particular point in the past,
+this is an easy operation. You can also use tools to see
+what various people have done with the files in the various versions.</p>
 <p>Four popular project hosting services are</p>
 <blockquote>
 <div><ul class="simple">
@@ -252,11 +252,11 @@ through SSH and HTTPS as used in their examples.  To use SSH, you must
 upload your SSH key, typically the contents of the file <tt class="docutils literal"><span class="pre">id_rsa.pub</span></tt>
 or <tt class="docutils literal"><span class="pre">id_dsa.pub</span></tt> in the <tt class="docutils literal"><span class="pre">.ssh</span></tt> subdirectory of your home directory. Go
 to the page for your account and upload one of these files. If you do
-not have any of them, click on the link &#8220;Using SSH&#8221;, which explains
+not have any of them, click on the link <em>Using SSH</em>, which explains
 what you need to know.</p>
 <div class="section" id="create-a-new-project">
 <h2>Create a New Project<a class="headerlink" href="#create-a-new-project" title="Permalink to this headline">¶</a></h2>
-<p>Click at <tt class="docutils literal"><span class="pre">Repositories</span></tt> and at <tt class="docutils literal"><span class="pre">create</span> <span class="pre">repository</span></tt>.
+<p>Click at <em>Repositories</em> and at <em>create repository</em>.
 You can now</p>
 <blockquote>
 <div><ul class="simple">
@@ -918,6 +918,32 @@ in the terminal window:</p>
 <span class="go">git blame --since=&quot;1 week&quot; subdir/myfile.txt</span>
 </pre></div>
 </div>
+<p>Occasionally you need to go back to an earlier version of a file,
+say its name is <tt class="docutils literal"><span class="pre">myfile</span></tt>. Start with view the history:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git log myfile</span>
+</pre></div>
+</div>
+<p>Find a commit candidate from the list that you will compare the
+present version to and copy the commit hash (string like
+<tt class="docutils literal"><span class="pre">c7673487...</span></tt>) and run</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git diff c7673487763ec2bb374758fb8e7efefa12f16dea myfile</span>
+</pre></div>
+</div>
+<p>where the long string is the relevant commit hash. You can now view the
+differences between the most recent version and the one in
+the commit you picked. If you want to restore the old file, write</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git checkout c7673487763ec2bb374758fb8e7efefa12f16dea myfile</span>
+</pre></div>
+</div>
+<p>To go back to
+another version (the most recent one, for instance),
+find the commit hash with <tt class="docutils literal"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">myfile</span></tt>, and do
+<tt class="docutils literal"><span class="pre">get</span> <span class="pre">checkout</span> <span class="pre">&lt;commit</span> <span class="pre">hash&gt;</span> <span class="pre">myfile</span></tt>.
+At any time you to <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></tt> the current version of <tt class="docutils literal"><span class="pre">myfile</span></tt> will
+enter the most recent commit of the current branch.</p>
+<p>If <tt class="docutils literal"><span class="pre">myfile</span></tt> changed name from <tt class="docutils literal"><span class="pre">yourfile</span></tt> at some point and you want
+<tt class="docutils literal"><span class="pre">yourfile</span></tt> back, run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">log</span></tt> to find the commit when <tt class="docutils literal"><span class="pre">yourfile</span></tt> existed,
+and do a <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;commit</span> <span class="pre">hash&gt;</span> <span class="pre">yourfile</span></tt>.</p>
 </div>
 <div class="section" id="merging-files-with-git">
 <span id="bitgit-gitmerge"></span><h2>Merging Files with Git<a class="headerlink" href="#merging-files-with-git" title="Permalink to this headline">¶</a></h2>
