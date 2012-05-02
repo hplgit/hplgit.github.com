@@ -56,7 +56,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 31, 2012</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 2, 2012</td>
 </tr>
 </tbody>
 </table>
@@ -104,11 +104,11 @@ what various people have done with the files in the various versions.</p>
 </ul>
 </div></blockquote>
 <p>All these services are very similar. Here we describe how you get
-started with Bitbucket, GitHub, and Googlecode. All the project
-hosting services have good introductions
-available at their web sites, but the recipes below aim at getting you
-started even quicker through a specific example.
-Launchpad works very similarly to Bitbucket, GitHub, and Googlecode.</p>
+started with Bitbucket, GitHub, and Googlecode. Launchpad works very
+similarly to the latter three. All the project hosting services have
+good introductions available at their web sites, but the recipes below
+are much shorter and aim at getting you started even quicker by
+concentrating on the most important need-to-know commands.</p>
 <p>The mention services host all your files in a specific project in what
 is known as a <em>repository</em>, or <em>repo</em> for short.  When a copy of the
 files are wanted on a certain computer, one clones the repository on
@@ -163,7 +163,7 @@ writing.</p>
 <h2>Installing Mercurial<a class="headerlink" href="#installing-mercurial" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="index-0"></span><p id="index-1">The <a class="reference external" href="http://mercurial.selenic.com/">Mercurial website</a> has information
 on downloading Mercurial on different platforms.
-On Ubuntu, you just perform</p>
+On Ubuntu and Debian-based Linx systems, you just perform</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install mercurial</span>
 </pre></div>
 </div>
@@ -172,7 +172,15 @@ Manager and choose the Mercurial package in the graphical interface.</p>
 <p>Mercurial is pure Python code so it is trivial on any system with Python
 installed to download the Mercurial source code and perform
 the standard <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> command.</p>
-<p>You need to create two files in your home directory: <tt class="docutils literal"><span class="pre">.hgrc</span></tt> for
+<p>This tutorial emphasizes the command-line interface to Mercurial, but there
+is also a graphical interface called TortoiseHG, which can be installed
+by</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install tortoisehg</span>
+</pre></div>
+</div>
+<p>on Ubuntu. TortoiseHG is the natural application to run Mercurial on a
+Windows machine.</p>
+<p>We recommend that you create two files in your home directory: <tt class="docutils literal"><span class="pre">.hgrc</span></tt> for
 specifying the behavior of <tt class="docutils literal"><span class="pre">hg</span></tt> (Mercurial) and <tt class="docutils literal"><span class="pre">.hgignore</span></tt> for
 listing the type of files you in general do not want to have under version
 control. A simple <tt class="docutils literal"><span class="pre">.hgrc</span></tt> file can look like this:</p>
@@ -324,7 +332,8 @@ Section {bitgit:git} for Git.</p>
 </div>
 <div class="section" id="googlecode">
 <span id="bitgit-googlecode"></span><h1>Googlecode<a class="headerlink" href="#googlecode" title="Permalink to this headline">¶</a></h1>
-<p id="index-4">To use Googlecode you need a general account on Google.</p>
+<p id="index-4">To use Googlecode you need a general account on Google, which allows
+you to use Gmail, Googledocs, and other products.</p>
 <div class="section" id="id1">
 <h2>Create a New Project<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Go to <a class="reference external" href="http://code.google.com/hosting">http://code.google.com/hosting</a> and click on
@@ -549,7 +558,7 @@ To see the branches, type <tt class="docutils literal"><span class="pre">git</sp
 be marked with a star in the output. Swithing to the master branch
 is done by <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">master</span></tt>. Similarly, <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">gh-pages</span></tt>
 swithces to the gh-pages branch.</p>
-<p>If branches diverge you can merge them by</p>
+<p>When branches diverge you can merge them by</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git merge otherbranch</span>
 </pre></div>
 </div>
@@ -558,16 +567,14 @@ in the merge, there will be markers in problematic files. Run
 <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> to show the problems. After a manual edit, do
 <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></tt>. Then you may run <tt class="docutils literal"><span class="pre">gitk</span></tt> to see a graphical illustration
 of what has happened.</p>
-<p>I recommend to have the master and gh-pages synchronized, at least
-in projects where you need the source code files for generating
-API documentation in the gh-pages branch. Then you will start
-with pulling
-everything from the master branch to the gh-pages branch.
-Make sure the master branch is updated with anything that was
-generated for the gh-pages branch. Finally you switch to the
-master branch and merge with gh-pages so you get the autogenerated
-<tt class="docutils literal"><span class="pre">index.html</span></tt>
-file in the root directory:</p>
+<p>I recommend to have the master and gh-pages synchronized, at least in
+projects where you need the source code files for generating API
+documentation in the gh-pages branch. Then you will start with pulling
+everything from the master branch to the gh-pages branch.  Make sure
+the master branch is updated with anything that was generated for the
+gh-pages branch. Finally you switch to the master branch and merge
+with gh-pages so you get the autogenerated <tt class="docutils literal"><span class="pre">index.html</span></tt> file in the
+root directory:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git merge master</span>
 <span class="go">git push origin gh-pages</span>
 <span class="go">git checkout master</span>
@@ -622,13 +629,48 @@ If you want to use Sphinx generated HTML pages, recall to add an empty file
 </div>
 <div class="section" id="using-mercurial">
 <span id="bitgit-hg"></span><h1>Using Mercurial<a class="headerlink" href="#using-mercurial" title="Permalink to this headline">¶</a></h1>
-<span class="target" id="index-6"></span><div class="section" id="the-basic-commands-of-mercurial">
-<span id="index-7"></span><h2>The Basic Commands of Mercurial<a class="headerlink" href="#the-basic-commands-of-mercurial" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="index-6"></span><p id="index-7">Mac and Linux users will normally work with Mercurial through commands in
+a terminal window, which is the emphasized interface described here.
+Windows users will prefer to use TortoiseHG. This graphical interface is
+mostly self-explanatory, but a brief description appears below.</p>
+<div class="section" id="basic-use-of-tortoisehg-on-a-windows-machine">
+<h2>Basic use of TortoiseHG on a Windows Machine<a class="headerlink" href="#basic-use-of-tortoisehg-on-a-windows-machine" title="Permalink to this headline">¶</a></h2>
+<p>When you have an account on Bitbucket and have downloaded and installed
+TortoiseHG, you are ready to work with Mercurial repositories the
+following way.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Start  <em>Hg workbench</em></li>
+<li>Register your username as your email address: choose <em>File - Settings</em>
+and then <em>Commit</em>.</li>
+<li>Clone a repository: choose <em>File - clone repository</em>. Paste the
+URL of the Bitbucket repo as <em>Source</em> and set
+<em>Destination</em> as some preferred folder on your machine.
+You will be prompted for a password which is the password for your
+Bitbucket account.</li>
+<li>When a file is changed and you want to commit the changes,
+right-click in the Explorer window showing the Mercurial directory
+and choose <em>Commit</em>. Write a comment in the text field to the right
+to document the changes.</li>
+<li>To synchronize your local files with the repository (i.e., to do a
+<tt class="docutils literal"><span class="pre">push</span></tt> command), right-click in the Explorer window, choose
+<em>TortoiseHG - Synchronize</em>. You need to provide the password for the
+Bitbucket account.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="basic-commands-of-mercurial">
+<h2>Basic Commands of Mercurial<a class="headerlink" href="#basic-commands-of-mercurial" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cloning">
+<h3>Cloning<a class="headerlink" href="#cloning" title="Permalink to this headline">¶</a></h3>
 <p>You get started with your project on a new machine or another user
 can get started with the project by the command</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">hg clone ssh://hg@bitbucket.org/username/my-project</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="the-pull-change-push-cycle">
+<h3>The Pull-Change-Push Cycle<a class="headerlink" href="#the-pull-change-push-cycle" title="Permalink to this headline">¶</a></h3>
 <p>Your typical working style with the <tt class="docutils literal"><span class="pre">my-project</span></tt> project goes as follows.
 First you go to the desired directory where this project is stored on
 your local computer and make sure
@@ -667,22 +709,65 @@ question mark because these are not tracked in the repository. It is
 very easy to forget adding new files so <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">stat</span></tt> is a useful command
 to ensure that all files you want to track have been added to the
 repository.</p>
+</div>
+<div class="section" id="viewing-the-history-of-files">
+<h3>Viewing the History of Files<a class="headerlink" href="#viewing-the-history-of-files" title="Permalink to this headline">¶</a></h3>
 <p>The power of <tt class="docutils literal"><span class="pre">hg</span></tt> and your file repository <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt> is that
 you can work with the project files on several computers and others can
 also contribute to this project. The history of each file is recorded
 and anyone can roll back to previous versions, if needed. You can easily see
-who did what with the various files. For example,</p>
+who did what with the various files.</p>
+<p>For example,</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">hg annotate -aun myfile</span>
 </pre></div>
 </div>
 <p>lists the various lines in the file <tt class="docutils literal"><span class="pre">myfile</span></tt> annotated with the revision
 number of the latest change of the line and the name of the user who
-performed the change. Another command,</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">hg log -p myfile</span>
+performed the change.</p>
+<p>Another command,</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">hg log -p filename | less</span>
 </pre></div>
 </div>
-<p>lists the history of the file <tt class="docutils literal"><span class="pre">myfile</span></tt> in more detail so that you
-can track the evolution of this file.</p>
+<p>lists the history of <tt class="docutils literal"><span class="pre">filename</span></tt> in more detail so that you can track
+the evolution of this file. Adding the <tt class="docutils literal"><span class="pre">--follow</span></tt> option will list the
+history also when <tt class="docutils literal"><span class="pre">filename</span></tt> had other names.  The history of all
+files in a directory is listed by by specifying the directory name(s).
+No name specification gives the history of the whole repo.</p>
+<p>More compact output from <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">log</span></tt>, without line differences, is triggered by
+the <tt class="docutils literal"><span class="pre">--stat</span></tt> option:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">hg log --stat filename | less   # changes in a specific file</span>
+<span class="go">hg log --stat | less            # changes in the whole repo</span>
+</pre></div>
+</div>
+<p>The combination <tt class="docutils literal"><span class="pre">-p</span> <span class="pre">--stat</span></tt> equips the line differences with an overview
+of which files that were changed in each revision.</p>
+<p>If you wonder what has recently happened to a file after updating your
+local repository, just run <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">log</span> <span class="pre">-p</span> <span class="pre">--stat</span></tt>: the last changes appear
+in the beginning of the output.</p>
+</div>
+<div class="section" id="retrieving-old-files">
+<h3>Retrieving Old Files<a class="headerlink" href="#retrieving-old-files" title="Permalink to this headline">¶</a></h3>
+<p>To restore an old version of a file with name <tt class="docutils literal"><span class="pre">filename</span></tt>,
+check the file history with
+<tt class="docutils literal"><span class="pre">hg</span> <span class="pre">log</span> <span class="pre">-p</span> <span class="pre">filename</span></tt> and find the revision number corresponding to the
+version of the file you want. Say this revision number is 152.
+The command</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">hg revert -r 152 filename</span>
+</pre></div>
+</div>
+<p>replaces the current version of the file by the old one from revision 152.
+Sometimes it is better to store the old version in a separate file:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">hg cat -r 152 filename &gt; somefile</span>
+</pre></div>
+</div>
+<p>The entire local repo can also be set back:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">hg update -r 152</span>
+<span class="go">hg update            # go back to the latest version again</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="comments-on-two-level-repositories">
+<h3>Comments on Two-Level Repositories<a class="headerlink" href="#comments-on-two-level-repositories" title="Permalink to this headline">¶</a></h3>
 <p>Mercurial has a two-level type of repository: there is global
 repository for all users of the <tt class="docutils literal"><span class="pre">my-project</span></tt> tree at <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt>,
 but each user also has a local repository (automatically made). To
@@ -704,13 +789,14 @@ generally recommended to push often in order to exchange the latest
 version of the files. This strategy may avoid problems with future
 merging of files.</p>
 </div>
+</div>
 <div class="section" id="merging-files-with-mercurial">
 <span id="bitgit-hgmerge"></span><h2>Merging Files with Mercurial<a class="headerlink" href="#merging-files-with-mercurial" title="Permalink to this headline">¶</a></h2>
 <p id="index-8">It might have happened that others and you have edited the same files
 at the same time. How should the edits then be combined?  Often the
 <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">update</span></tt> command is clever enough to merge the changes made by
 different users automatically. If not, you have to run an explicit <tt class="docutils literal"><span class="pre">hg</span>
-<span class="pre">merge</span></tt> command.  The <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">merge</span></tt> program tries to use some merge
+<span class="pre">merge</span></tt> command.  This command tries to use some merge
 program on your computer system to automatically merge files. If this
 failes, <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">merge</span></tt> invokes some graphical tool to help you resolve the
 conflict between files.  Example on popular merge programs for this
@@ -851,6 +937,7 @@ can now do <tt class="docutils literal"><span class="pre">hg</span> <span class=
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference external" href="http://mercurial.selenic.com/wiki/QuickStart">Mercurial Quick Start</a> (for the impatient)</li>
+<li><a class="reference external" href="http://hgbook.red-bean.com/read/a-tour-of-mercurial-the-basics.html">A Tour of Mercurial - The Basics</a></li>
 <li><a class="reference external" href="http://mercurial.selenic.com/wiki/FAQ">Mercurial FAQ</a></li>
 <li><a class="reference external" href="http://mercurial.selenic.com/wiki/Tutorial">Mercurial Tutorial</a></li>
 <li><a class="reference external" href="http://hgbook.red-bean.com/">Mercurial: The Definitive Guide</a> (online or printed book)</li>
@@ -860,8 +947,10 @@ can now do <tt class="docutils literal"><span class="pre">hg</span> <span class=
 </div>
 <div class="section" id="using-git">
 <span id="bitgit-git"></span><h1>Using Git<a class="headerlink" href="#using-git" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="the-basic-commands-of-git">
-<span id="index-9"></span><h2>The Basic Commands of Git<a class="headerlink" href="#the-basic-commands-of-git" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="basic-commands-of-git">
+<span id="index-9"></span><h2>Basic Commands of Git<a class="headerlink" href="#basic-commands-of-git" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>Cloning<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>You get started with your project on a new machine, or another user
 can get started with the project,
 by running</p>
@@ -872,6 +961,9 @@ by running</p>
 </div>
 <p>Recall to replace <tt class="docutils literal"><span class="pre">username</span></tt> by your real user name and <tt class="docutils literal"><span class="pre">My-Project</span></tt> by the
 actual project name.</p>
+</div>
+<div class="section" id="id5">
+<h3>The Pull-Change-Push Cycle<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>The typical work flow with the &#8220;My Project&#8221; project starts with
 updating the local repository by going to the <tt class="docutils literal"><span class="pre">My-Project</span></tt> directory
 and writing</p>
@@ -879,11 +971,11 @@ and writing</p>
 </pre></div>
 </div>
 <p>After editing files, adding new files, deleting files, or renaming files,</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git add myfile1 myfile2.* yourdir</span>
-<span class="go">git rm yourfile</span>
-<span class="go">git rm -r yourdir</span>
-<span class="go">git mv thisfile thatname</span>
-<span class="go">git mv thisfile ../thatdir</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git add file1 file2.* dir1 dir2</span>
+<span class="go">git rm filename</span>
+<span class="go">git rm -r dirname</span>
+<span class="go">git mv oldname newname</span>
+<span class="go">git mv oldname ../newdir</span>
 </pre></div>
 </div>
 <p>it is time to commit your changes (note the <tt class="docutils literal"><span class="pre">-am</span></tt> option):</p>
@@ -899,7 +991,12 @@ you push your changes to the global repository:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git status -s</span>
 </pre></div>
 </div>
-<p>Files are marked with <tt class="docutils literal"><span class="pre">A</span></tt> for added, <tt class="docutils literal"><span class="pre">M</span></tt> for modified, and so on.</p>
+<p>Files are marked with different symbols, e.g.,
+<tt class="docutils literal"><span class="pre">A</span></tt> for added, <tt class="docutils literal"><span class="pre">M</span></tt> for modified, <tt class="docutils literal"><span class="pre">R</span></tt> for renamed,
+and <tt class="docutils literal"><span class="pre">??</span></tt> for not being registered in the repo.</p>
+</div>
+<div class="section" id="id6">
+<h3>Viewing the History of Files<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>A nice graphical tool allows you to view all changes, or just
 the latest ones:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">gitk --all</span>
@@ -909,17 +1006,38 @@ the latest ones:</p>
 <p>You can also view changes to all files or some selected ones
 in the terminal window:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git log -p                        # all changes to all files</span>
-<span class="go">git log --stat --summary          # more compact summary</span>
+<span class="go">git log -p filename               # all changes to a specific file</span>
+<span class="go">git log --stat --summary          # compact summary of changed files</span>
 <span class="go">git log --stat --summary  subdir  # only files in subdir folder</span>
 </pre></div>
 </div>
-<p>To see who did what when, use <tt class="docutils literal"><span class="pre">git</span> <span class="pre">blame</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git blame subdir/myfile.txt</span>
-<span class="go">git blame --since=&quot;1 week&quot; subdir/myfile.txt</span>
+<p>Adding <tt class="docutils literal"><span class="pre">--follow</span></tt> will print the history of file versions before the
+file got its present name.</p>
+<p>To show the author who is responsible for the last modification of each
+line in the file, use <tt class="docutils literal"><span class="pre">git</span> <span class="pre">blame</span></tt>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git blame filename</span>
+<span class="go">git blame --since=&quot;1 week&quot; filename</span>
 </pre></div>
 </div>
+<p>A useful command to see the history of who did what, where individual
+edits of words are highlighted (<tt class="docutils literal"><span class="pre">--word-diff</span></tt>), is</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git log -p --stat --word-diff filename</span>
+</pre></div>
+</div>
+<p>Removed words appear in brackets and added words in curly braces.</p>
+<p>Looking for when a particular piece of text entered or left the file,
+say the text <tt class="docutils literal"><span class="pre">def</span> <span class="pre">myfunc</span></tt>, one can run</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git log -p --word-diff --stat -S&#39;def myfunc&#39; filename</span>
+</pre></div>
+</div>
+<p>This is useful to track down particular changes in the files to see when
+they occurred and who introduced them. One can also search for regular
+expressions instead of exact text: just replace <tt class="docutils literal"><span class="pre">-S</span></tt> by <tt class="docutils literal"><span class="pre">-G</span></tt>.</p>
+</div>
+<div class="section" id="id7">
+<h3>Retrieving Old Files<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>Occasionally you need to go back to an earlier version of a file,
-say its name is <tt class="docutils literal"><span class="pre">myfile</span></tt>. Start with view the history:</p>
+say its name is <tt class="docutils literal"><span class="pre">myfile</span></tt>. Start with viewing the history:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git log myfile</span>
 </pre></div>
 </div>
@@ -935,15 +1053,21 @@ the commit you picked. If you want to restore the old file, write</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git checkout c7673487763ec2bb374758fb8e7efefa12f16dea myfile</span>
 </pre></div>
 </div>
-<p>To go back to
-another version (the most recent one, for instance),
-find the commit hash with <tt class="docutils literal"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">myfile</span></tt>, and do
-<tt class="docutils literal"><span class="pre">get</span> <span class="pre">checkout</span> <span class="pre">&lt;commit</span> <span class="pre">hash&gt;</span> <span class="pre">myfile</span></tt>.
-At any time you to <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></tt> the current version of <tt class="docutils literal"><span class="pre">myfile</span></tt> will
-enter the most recent commit of the current branch.</p>
+<p>To go back to another version (the most recent one, for instance),
+find the commit hash with <tt class="docutils literal"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">myfile</span></tt>, and do <tt class="docutils literal"><span class="pre">get</span> <span class="pre">checkout</span>
+<span class="pre">&lt;commit</span> <span class="pre">hash&gt;</span> <span class="pre">myfile</span></tt>.  At any time you do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></tt> the current
+version of <tt class="docutils literal"><span class="pre">myfile</span></tt> will enter the most recent commit of the current
+branch.</p>
 <p>If <tt class="docutils literal"><span class="pre">myfile</span></tt> changed name from <tt class="docutils literal"><span class="pre">yourfile</span></tt> at some point and you want
-<tt class="docutils literal"><span class="pre">yourfile</span></tt> back, run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">log</span></tt> to find the commit when <tt class="docutils literal"><span class="pre">yourfile</span></tt> existed,
-and do a <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;commit</span> <span class="pre">hash&gt;</span> <span class="pre">yourfile</span></tt>.</p>
+<tt class="docutils literal"><span class="pre">yourfile</span></tt> back, run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">--follow</span> <span class="pre">myfile</span></tt> to find the commit
+when <tt class="docutils literal"><span class="pre">yourfile</span></tt> existed, and do a <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;commit</span> <span class="pre">hash&gt;</span> <span class="pre">yourfile</span></tt>.</p>
+<p>The Git equivalent to <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">cat</span></tt> for just viewing old versions of files is
+<tt class="docutils literal"><span class="pre">git</span> <span class="pre">show</span></tt>, but the command requires the full path from the root
+git directory (which is sometimes inconvenient):</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git show c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/myfile</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="merging-files-with-git">
 <span id="bitgit-gitmerge"></span><h2>Merging Files with Git<a class="headerlink" href="#merging-files-with-git" title="Permalink to this headline">¶</a></h2>
@@ -957,6 +1081,13 @@ inserted by Git to mark sections of a file where the version in the
 repository differ from the local version. You must decide which
 lines that are to appear in the final, merged version. When done,
 perform <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></tt> and the conflicts are resolved.</p>
+<p>Graphical merge tools may ease the process of merging text files.  You
+can run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">mergetool</span> <span class="pre">--tool=meld</span></tt> to open the merge tool <tt class="docutils literal"><span class="pre">meld</span></tt> for
+every file that needs to be merged (or specify the name of a
+particular file). Other popular merge tools supported by Git are
+<tt class="docutils literal"><span class="pre">araxis</span></tt>, <tt class="docutils literal"><span class="pre">bc3</span></tt>, <tt class="docutils literal"><span class="pre">diffuse</span></tt>, <tt class="docutils literal"><span class="pre">ecmerge</span></tt>, <tt class="docutils literal"><span class="pre">emerge</span></tt>, <tt class="docutils literal"><span class="pre">gvimdiff</span></tt>, <tt class="docutils literal"><span class="pre">kdiff3</span></tt>,
+<tt class="docutils literal"><span class="pre">opendiff</span></tt>, <tt class="docutils literal"><span class="pre">p4merge</span></tt>, <tt class="docutils literal"><span class="pre">tkdiff</span></tt>, <tt class="docutils literal"><span class="pre">tortoisemerge</span></tt>, <tt class="docutils literal"><span class="pre">vimdiff</span></tt>, and
+<tt class="docutils literal"><span class="pre">xxdiff</span></tt>.</p>
 <p>Below is a Unix shell script illustrating how to make a global
 repository in Git, and how two users clone this repository and
 perform edits in parallel. There is one file <tt class="docutils literal"><span class="pre">myfile</span></tt> in the
@@ -1090,7 +1221,8 @@ of files in different
 git directories.
 tmp2-add1</pre>
 </div>
-<p>Launch a text editor and edit the file so that it becomes correct.
+<p>Launch a text editor and edit the file, or use <tt class="docutils literal"><span class="pre">git</span> <span class="pre">mergetool</span></tt>,
+so that the file becomes correct.
 Then run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-am</span> <span class="pre">merge</span></tt> to finalize the merge.</p>
 </div>
 <div class="section" id="more-documentation-on-git">
@@ -1108,6 +1240,24 @@ Then run <tt class="docutils literal"><span class="pre">git</span> <span class="
 <li><a class="reference external" href="http://schacon.github.com/git/user-manual.html">Git User Manual</a></li>
 <li><a class="reference external" href="http://git-scm.com/">Git home page</a></li>
 <li><a class="reference external" href="http://mercurial.selenic.com/wiki/GitConcepts#Command_equivalence_table">Git and Mercurial command equivalence table</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="diff-of-the-two-most-recent-versions-of-a-file">
+<h2>Diff of The Two Most Recent Versions of a File<a class="headerlink" href="#diff-of-the-two-most-recent-versions-of-a-file" title="Permalink to this headline">¶</a></h2>
+<p>Both Mercurial and Git have &#8220;diff&#8221; commands for viewing differences
+in files. However, it sometimes takes quite some manual steps to
+answer the following question: I have just pulled new changes and
+want to view what these changes are for some selected files, using
+my favorite diff tools (maybe different tools for different types of
+files)? The answer consists of doing the following steps:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Run a log command to see the identity of the previous version</li>
+<li>Run <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">cat</span></tt> or <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span></tt> (or <tt class="docutils literal"><span class="pre">git</span> <span class="pre">show</span></tt>) to get the
+previous version of the file, and save that version as a separate
+file</li>
+<li>Run some diff tool on the present and previous version of the file</li>
 </ul>
 </div></blockquote>
 </div>
@@ -1144,15 +1294,30 @@ Then run <tt class="docutils literal"><span class="pre">git</span> <span class="
 </ul>
 </li>
 <li><a class="reference internal" href="#using-mercurial">Using Mercurial</a><ul>
-<li><a class="reference internal" href="#the-basic-commands-of-mercurial">The Basic Commands of Mercurial</a></li>
+<li><a class="reference internal" href="#basic-use-of-tortoisehg-on-a-windows-machine">Basic use of TortoiseHG on a Windows Machine</a></li>
+<li><a class="reference internal" href="#basic-commands-of-mercurial">Basic Commands of Mercurial</a><ul>
+<li><a class="reference internal" href="#cloning">Cloning</a></li>
+<li><a class="reference internal" href="#the-pull-change-push-cycle">The Pull-Change-Push Cycle</a></li>
+<li><a class="reference internal" href="#viewing-the-history-of-files">Viewing the History of Files</a></li>
+<li><a class="reference internal" href="#retrieving-old-files">Retrieving Old Files</a></li>
+<li><a class="reference internal" href="#comments-on-two-level-repositories">Comments on Two-Level Repositories</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#merging-files-with-mercurial">Merging Files with Mercurial</a></li>
 <li><a class="reference internal" href="#more-documentation-on-mercurial">More Documentation on Mercurial</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#using-git">Using Git</a><ul>
-<li><a class="reference internal" href="#the-basic-commands-of-git">The Basic Commands of Git</a></li>
+<li><a class="reference internal" href="#basic-commands-of-git">Basic Commands of Git</a><ul>
+<li><a class="reference internal" href="#id4">Cloning</a></li>
+<li><a class="reference internal" href="#id5">The Pull-Change-Push Cycle</a></li>
+<li><a class="reference internal" href="#id6">Viewing the History of Files</a></li>
+<li><a class="reference internal" href="#id7">Retrieving Old Files</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#merging-files-with-git">Merging Files with Git</a></li>
 <li><a class="reference internal" href="#more-documentation-on-git">More Documentation on Git</a></li>
+<li><a class="reference internal" href="#diff-of-the-two-most-recent-versions-of-a-file">Diff of The Two Most Recent Versions of a File</a></li>
 </ul>
 </li>
 </ul>
