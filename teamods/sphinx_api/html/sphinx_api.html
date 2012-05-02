@@ -1,0 +1,572 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Simple Formatting Rules &mdash; How To Generate API Documentation with Sphinx 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="How To Generate API Documentation with Sphinx 1.0 documentation" href="index.html" />
+    <link rel="prev" title="How To Generate API Documentation with Sphinx" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="How To Generate API Documentation with Sphinx"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">How To Generate API Documentation with Sphinx 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <p>The current standard tool for documenting Python software is
+Sphinx. This tool was created to support hand-written documentation
+files in the reStructuredText (reST) format, but Sphinx also supports
+automatic generation of module or package documentation based on
+parsing function headers and extracting doc strings. We refer to such
+documentation as <em>API documentation</em>. For an example, see the
+documentation of the <tt class="docutils literal"><span class="pre">numpy.polyfit</span></tt> function
+<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.polyfit.html">http://docs.scipy.org/doc/numpy/reference/generated/numpy.polyfit.html</a>.</p>
+<p>There are two principal steps in making API documentation. First, write
+doc strings in all key classes, methods, and functions using the
+formatting described below. Second, copy the script
+<a class="reference external" href="_static/make.py">make.py</a> (<a class="reference external" href="_static/make.py.html">view</a>)
+to the directory where you have the source code, adapt the script by
+changing a few lines in the top of it, and run the code
+to generate the documentation (in the <tt class="docutils literal"><span class="pre">API</span></tt>
+subdirectory).  The script automates the various steps in running
+Sphinx and preparing Sphinx files as described later.</p>
+<p>We shall now briefly describe the reST format and show step by step
+how to create API documentation of Python modules.
+We follow the documentation <a class="reference external" href="https://github.com/numpy/numpy/blob/master/doc/example.py">rules</a> of the
+<tt class="docutils literal"><span class="pre">numpy</span></tt> package. Sphinx version 1.1 or higher is then required.  In
+addition, the <tt class="docutils literal"><span class="pre">numpydoc</span></tt> Sphinx extension must be installed.  Download
+the <tt class="docutils literal"><span class="pre">numpy</span></tt> source tree, go to the top directory and perform</p>
+<div class="highlight-py"><pre>cd doc/sphinxext
+sudo python setup.py install</pre>
+</div>
+<div class="section" id="simple-formatting-rules">
+<h1>Simple Formatting Rules<a class="headerlink" href="#simple-formatting-rules" title="Permalink to this headline">¶</a></h1>
+<p>The reST format used by Sphinx and other popular tools in the Python
+community is a lightly tagged markup language, much less tagged than
+LaTeX and HTML. There is a
+<a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickstart.html">Quick Start Guide</a>
+for reST that gives a much broader overview than the brief
+description below. The
+Sphinx <a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickref.html">Quick Reference</a> is also handy.</p>
+<p>Paragraphs are separated by blank lines. Words in running
+text can be <em>emphasized</em>.  Furthermore, text in double backquotes
+is typeset as code: <tt class="docutils literal"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">sin(r)</span></tt>.  Bullet lists start with
+a dash (-) and are indented, with a blank line before and after:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span class="m">*</span> a is the first parameter.
+
+<span class="m">*</span> b is the second parameter. An item can
+  occupy multiple lines.
+
+<span class="m">*</span> c is the third parameter.
+</pre></div>
+</div>
+<p>In description lists, where each item starts with a keyword, an item
+starts with the keyword, followed by a colon, and the text appears
+indented on the next line:</p>
+<div class="highlight-rst"><div class="highlight"><pre>a:
+  the first parameter
+
+b:
+  the second parameter. An item can
+  occupy multiple
+  lines.
+
+c:
+  the third parameter.
+</pre></div>
+</div>
+<p>To make a section heading, just write the heading and use equal signs, on
+the line below the heading, for sections, and simple dashes for
+subsections (other choices of characters are also possible).</p>
+<div class="section" id="mathematics">
+<h2>Mathematics<a class="headerlink" href="#mathematics" title="Permalink to this headline">¶</a></h2>
+<p>Mathematical formulas are typeset in LaTeX style inline. For example,
+<span class="math">\(ax^2 + bx + c\)</span> is written like</p>
+<div class="highlight-rst"><div class="highlight"><pre><span class="na">:math:</span><span class="nv">`ax^2 + bx + c`</span>
+</pre></div>
+</div>
+<p>Two write an equation on a separate line,
+write</p>
+<div class="highlight-rst"><div class="highlight"><pre>`.. math:: ax^2 + bx + c = 0
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-rst"><div class="highlight"><pre><span class="p">..</span> <span class="ow">math</span><span class="p">::</span>
+
+   ax^2 + bx + c = 0
+</pre></div>
+</div>
+<p>The result in Sphinx format is</p>
+<div class="math">
+\[ax^2 + bx + c = 0\]</div>
+<p>Remember to end the equation block with a blank line.
+Several equations can be aligned below each other by using <tt class="docutils literal"><span class="pre">&amp;</span></tt>
+as alignment character:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span class="p">..</span> <span class="ow">math</span><span class="p">::</span>
+
+   ax^2 + bx + c &amp;= 0,\\
+   dx + e &amp;= 0.
+</pre></div>
+</div>
+<p>This becomes</p>
+<div class="math">
+\[\begin{split}ax^2 + bx + c &amp;= 0,
+dx + e &amp;= 0.\end{split}\]</div>
+<p>in Sphinx.</p>
+</div>
+<div class="section" id="code-snippets">
+<h2>Code Snippets<a class="headerlink" href="#code-snippets" title="Permalink to this headline">¶</a></h2>
+<p>To include a piece of code like</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">roots</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
+    <span class="n">root1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">q</span><span class="p">))</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">root2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">q</span><span class="p">))</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">root1</span><span class="p">,</span> <span class="n">root2</span>
+</pre></div>
+</div>
+<p>you can write it as</p>
+<div class="highlight-rst"><div class="highlight"><pre>Here is an example<span class="se">::</span>
+
+<span class="s">        def roots(a, b, c):</span>
+<span class="s">            q = b**2 - 4*a*c</span>
+<span class="s">            root1 = -b + sqrt(q)/float(2*a)</span>
+<span class="s">            root2 = -b - sqrt(q)/float(2*a)</span>
+<span class="s">            return root1, root2</span>
+</pre></div>
+</div>
+<p>The code block must be intented, and the preceding line must end with
+a double colon. To specify the type of programming language and
+associated formatting (via the Pygments package), write</p>
+<div class="highlight-rst"><div class="highlight"><pre><span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> python
+
+        def roots(a, b, c):
+            q = b<span class="ge">**2 - 4*</span>a*c
+            root1 = -b + sqrt(q)/float(2*a)
+            root2 = -b - sqrt(q)/float(2*a)
+            return root1, root2
+</pre></div>
+</div>
+<p>Interactive sessions and doctests can be inserted without
+colon and indentation of the code, but a blank line is
+needed before and after the interactive block.</p>
+<div class="highlight-rst"><div class="highlight"><pre>Here is an example in an interactive Python shell.
+
+&gt;&gt;&gt; a = 1
+&gt;&gt;&gt; b = 2
+&gt;&gt;&gt; a + b
+3
+
+Note: the result is correct.
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-to-format-doc-strings">
+<h2>How to Format Doc Strings<a class="headerlink" href="#how-to-format-doc-strings" title="Permalink to this headline">¶</a></h2>
+<p>Here is a function with a typical doc string formatted in <tt class="docutils literal"><span class="pre">numpy</span></tt> style.</p>
+<div class="highlight-py"><div class="highlight"><pre><span class="c"># This is Python code</span>
+<span class="kn">from</span> <span class="nn">numpy.lib.scimath</span> <span class="kn">import</span> <span class="n">sqrt</span>  <span class="c"># handles real and complex args</span>
+
+<span class="k">def</span> <span class="nf">roots</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the two roots in the quadratic equation::</span>
+
+<span class="sd">      a*x**2 + b*x + c = 0</span>
+
+<span class="sd">    or written with math typesetting</span>
+
+<span class="sd">    .. math:: ax^2 + bx + c = 0</span>
+
+<span class="sd">    The returned roots are real or complex numbers,</span>
+<span class="sd">    depending on the values of the arguments `a`, `b`,</span>
+<span class="sd">    and `c`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    a: int, real, complex</span>
+<span class="sd">       coefficient of the quadratic term</span>
+<span class="sd">    b: int, real, complex</span>
+<span class="sd">       coefficient of the linear term</span>
+<span class="sd">    c: int, real, complex</span>
+<span class="sd">       coefficient of the constant term</span>
+<span class="sd">    verbose: bool, optional</span>
+<span class="sd">       prints the quantity ``b**2 - 4*a*c`` and if the</span>
+<span class="sd">       roots are real or complex</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    root1, root2: real, complex</span>
+<span class="sd">        the roots of the quadratic polynomial.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError:</span>
+<span class="sd">        when `a` is zero</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    :class:`Quadratic`: which is a class for quadratic polynomials</span>
+<span class="sd">        that also has a :func:`Quadratic.roots` method for computing</span>
+<span class="sd">        the roots of a quadratic polynomial. There is also a class</span>
+<span class="sd">        :class:`~linear.Linear` in the module :mod:`linear`</span>
+<span class="sd">        (i.e., :class:`linear.Linear`).</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The algorithm is a straightforward implementation of</span>
+<span class="sd">    a very well known formula [1]_.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Any textbook on mathematics or</span>
+<span class="sd">           `Wikipedia &lt;http://en.wikipedia.org/wiki/Quadratic_equation&gt;`_.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; roots(-1, 2, 10)</span>
+<span class="sd">    (-5.3166247903553998, 1.3166247903553998)</span>
+<span class="sd">    &gt;&gt;&gt; roots(-1, 2, -10)</span>
+<span class="sd">    ((-2-3j), (-2+3j))</span>
+
+<span class="sd">    Alternatively, we can in a doc string list the arguments and</span>
+<span class="sd">    return values in a table</span>
+
+<span class="sd">    ==========   =============   ================================</span>
+<span class="sd">    Parameter    Type            Description</span>
+<span class="sd">    ==========   =============   ================================</span>
+<span class="sd">    a            float/complex   coefficient for quadratic term</span>
+<span class="sd">    b            float/complex   coefficient for linear term</span>
+<span class="sd">    c            float/complex   coefficient for constant term</span>
+<span class="sd">    r1, r2       float/complex   return: the two roots of</span>
+<span class="sd">                                 the quadratic polynomial</span>
+<span class="sd">    ==========   =============   ================================</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1E-14</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;a=</span><span class="si">%g</span><span class="s"> is too close to zero&#39;</span> <span class="o">%</span> <span class="n">a</span><span class="p">)</span>
+
+    <span class="n">q</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39;q=</span><span class="si">%g</span><span class="s">: </span><span class="si">%s</span><span class="s"> roots&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="s">&#39;real&#39;</span> <span class="k">if</span> <span class="n">q</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">else</span> <span class="s">&#39;complex&#39;</span><span class="p">)</span>
+
+    <span class="n">root1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">q</span><span class="p">))</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">root2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">q</span><span class="p">))</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">root1</span><span class="p">,</span> <span class="n">root2</span>
+</pre></div>
+</div>
+<p>Note the following:</p>
+<ol class="arabic simple">
+<li>Arguments to the functions and other variables are typeset in
+single back-ticks (normally translated to an italic font by Sphinx).</li>
+<li>The headings <tt class="docutils literal"><span class="pre">Parameters</span></tt> (for function arguments), <tt class="docutils literal"><span class="pre">Returns</span></tt>, etc.,
+are standard names and lead to a certain formatting of the doc
+string in HTML. The text following these headings are description
+lists. Sometimes a simpler formatting is convenient,
+e.g., a table or just running text explaining what the arguments and
+return values are.</li>
+<li>One can make links to the documentation of other classes and functions
+as demonstrated under &#8220;See Also&#8221; (a tilde strips off the
+module prefix in the output).</li>
+</ol>
+</div>
+</div>
+<div class="section" id="running-sphinx">
+<h1>Running Sphinx<a class="headerlink" href="#running-sphinx" title="Permalink to this headline">¶</a></h1>
+<p>We have made a complete example on
+making API documentation with Sphinx.
+The module files <a class="reference external" href="_static/quadratic.py">quadratic.py</a>
+(<a class="reference external" href="_static/quadratic.py.html">view</a>) and
+<a class="reference external" href="_static/linear.py">linear.py</a> (<a class="reference external" href="_static/linear.py.html">view</a>)
+contain examples of classes and a stand-alone functions with
+doc strings formatted as described above.
+The file <a class="reference external" href="_static/make.py">make.py</a>
+(<a class="reference external" href="_static/make.py.html">view</a>) runs
+(automatically) all the steps described below and creates
+<a class="reference external" href="_static/api-example/index.html">HTML documentation</a>
+of the two modules.</p>
+<div class="section" id="make-sphinx-module-files">
+<h2>Make Sphinx Module Files<a class="headerlink" href="#make-sphinx-module-files" title="Permalink to this headline">¶</a></h2>
+<p>For each module file <tt class="docutils literal"><span class="pre">module.py</span></tt> you want include in the documentation,
+prepare a file <tt class="docutils literal"><span class="pre">module.txt</span></tt> containing</p>
+<div class="highlight-rst"><div class="highlight"><pre><span class="gh">:mod:`module`</span>
+<span class="gh">=============</span>
+
+<span class="p">..</span> <span class="ow">automodule</span><span class="p">::</span> module
+   :members:
+   <span class="nc">:undoc-members:</span>
+   <span class="nc">:special-members:</span>
+   <span class="nc">:inherited-members:</span>
+   <span class="nc">:show-inheritance:</span>
+</pre></div>
+</div>
+<p>This specifications imply that the documentation will contain
+all member functions (not starting with an underscore) with doc strings
+(<tt class="docutils literal"><span class="pre">:members:</span></tt>), and those without
+doc strings (<tt class="docutils literal"><span class="pre">:undoc-members:</span></tt>), as well as all special methods
+(<tt class="docutils literal"><span class="pre">:special-members:</span></tt>), and all methods inherited from super classes
+(<tt class="docutils literal"><span class="pre">:inherited-members:</span></tt>).
+For the worked example we need to make the module files
+<a class="reference external" href="_static/quadratic.txt">_static/quadratic.txt</a> (<a class="reference external" href="_static/quadratic.txt.html">view</a>)
+and <a class="reference external" href="_static/linear.txt">_static/linear.txt</a> (<a class="reference external" href="_static/linear.txt.html">view</a>).</p>
+<p>The name of modules in a subpackages must be listed with the full package path.
+For example, module <tt class="docutils literal"><span class="pre">mod</span></tt> in subpackage <tt class="docutils literal"><span class="pre">s2</span></tt> of subpackage <tt class="docutils literal"><span class="pre">s1</span></tt> is listed as</p>
+<div class="highlight-rst"><div class="highlight"><pre><span class="gh">:mod:`s1.s2.mod`</span>
+<span class="gh">================</span>
+
+<span class="p">..</span> <span class="ow">automodule</span><span class="p">::</span> s1.s2.mod
+</pre></div>
+</div>
+<p>in the file <tt class="docutils literal"><span class="pre">mod.txt</span></tt>. The <tt class="docutils literal"><span class="pre">index.txt</span></tt> file has a corresponding line
+with <tt class="docutils literal"><span class="pre">mod</span></tt> (which actually is the basename of the file <tt class="docutils literal"><span class="pre">mod.txt</span></tt>
+where the module <tt class="docutils literal"><span class="pre">s1.s2.mod</span></tt> is defined).
+For each of the <tt class="docutils literal"><span class="pre">__init__.py</span></tt> files in the packages one will normally
+make a <tt class="docutils literal"><span class="pre">.txt</span></tt> file with the package name, say <tt class="docutils literal"><span class="pre">s2.txt</span></tt>, where the first
+lines are:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span class="gh">:mod:`s1.s2`</span>
+<span class="gh">============</span>
+
+<span class="p">..</span> <span class="ow">automodule</span><span class="p">::</span> s1.s2
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-sphinx-directory-tree">
+<h2>Create Sphinx Directory Tree<a class="headerlink" href="#create-sphinx-directory-tree" title="Permalink to this headline">¶</a></h2>
+<p>Sphinx needs a series of files that can be automatically
+generated by running</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">sphinx-quickstart</span>
+</pre></div>
+</div>
+<p>and answering the questions. Specify a directory name as
+&#8220;rooth path for the documentation&#8221;, say <tt class="docutils literal"><span class="pre">api</span></tt>, give the
+documentation a title, author, and version number.
+Make sure the extension of sphinx files is
+<tt class="docutils literal"><span class="pre">.txt</span></tt> and not <tt class="docutils literal"><span class="pre">.rst</span></tt>. If you make a fresh version of the
+documentation, remember to first delete the <tt class="docutils literal"><span class="pre">api</span></tt> directory.
+Move all the <tt class="docutils literal"><span class="pre">module.txt</span></tt> files to the <tt class="docutils literal"><span class="pre">api</span></tt> directory.</p>
+</div>
+<div class="section" id="make-index-file">
+<h2>Make Index File<a class="headerlink" href="#make-index-file" title="Permalink to this headline">¶</a></h2>
+<p>In the recently generated <tt class="docutils literal"><span class="pre">api</span></tt> directory,
+you must make an index file <tt class="docutils literal"><span class="pre">index.txt</span></tt> that lists the modules for
+which there exist <tt class="docutils literal"><span class="pre">.txt</span></tt> files . The <tt class="docutils literal"><span class="pre">index.txt</span></tt> file is automatically
+generated by <tt class="docutils literal"><span class="pre">sphinx-quickstart</span></tt>, but no modules are listed.
+Here is the typical look when it contains two modules <tt class="docutils literal"><span class="pre">quadratic</span></tt>
+and <tt class="docutils literal"><span class="pre">linear</span></tt>:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span class="cp">.. Docex Example documentation master file, created by</span>
+<span class="cp">   sphinx-quickstart on Thu Feb 16 10:50:28 2022.</span>
+<span class="cp">   ...</span>
+
+<span class="gh">Welcome to Sphinx API Example&#39;s documentation!</span>
+<span class="gh">==============================================</span>
+
+Contents:
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:maxdepth:</span> <span class="nf">2</span>
+
+   quadratic
+   linear
+
+<span class="gh">Indices and tables</span>
+<span class="gh">==================</span>
+
+<span class="m">*</span> <span class="na">:ref:</span><span class="nv">`genindex`</span>
+<span class="m">*</span> <span class="na">:ref:</span><span class="nv">`modindex`</span>
+<span class="m">*</span> <span class="na">:ref:</span><span class="nv">`search`</span>
+</pre></div>
+</div>
+<p>Recall that each module listed in this file
+must have a corresponding <tt class="docutils literal"><span class="pre">.txt</span></tt> file as
+described above.</p>
+</div>
+<div class="section" id="edit-the-configuration-file">
+<h2>Edit the Configuration File<a class="headerlink" href="#edit-the-configuration-file" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">api</span></tt> directory contains a file <tt class="docutils literal"><span class="pre">conf.py</span></tt> which allows you
+to configure a lot of features. You need to find the
+line with</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#sys.path.insert(0, os.path.abspath(&#39;.&#39;))</span>
+</pre></div>
+</div>
+<p>Uncomment this line and insert the directory where the modules reside,
+in this case the parent directory</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">pardir</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>We also recommend to make use of more Sphinx extension modules.
+Find the line with <tt class="docutils literal"><span class="pre">extensions</span> <span class="pre">=</span></tt> and edit it to</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span>
+    <span class="s">&#39;sphinx.ext.mathjax&#39;</span><span class="p">,</span>
+    <span class="s">&#39;sphinx.ext.viewcode&#39;</span><span class="p">,</span>
+    <span class="s">&#39;numpydoc&#39;</span><span class="p">,</span>
+    <span class="s">&#39;sphinx.ext.autosummary&#39;</span><span class="p">,</span>
+    <span class="s">&#39;sphinx.ext.doctest&#39;</span><span class="p">,</span>
+    <span class="s">&#39;sphinx.ext.inheritance_diagram&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>If not the <tt class="docutils literal"><span class="pre">numpydoc</span></tt> Sphinx extension is enabled, headings like
+<tt class="docutils literal"><span class="pre">Parameters</span></tt>, <tt class="docutils literal"><span class="pre">Returns</span></tt>, etc., are ignored and give rise to
+error messages (&#8220;Unexpected section title&#8221;).</p>
+<p>You may also want to add</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">extensions</span> <span class="o">+=</span> <span class="p">[</span>
+    <span class="s">&#39;matplotlib.sphinxext.only_directives&#39;</span><span class="p">,</span>
+    <span class="s">&#39;matplotlib.sphinxext.plot_directive&#39;</span><span class="p">,</span>
+    <span class="s">&#39;matplotlib.sphinxext.ipython_directive&#39;</span><span class="p">,</span>
+    <span class="s">&#39;matplotlib.sphinxext.ipython_console_highlighting&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>if <tt class="docutils literal"><span class="pre">matplotlib</span></tt> is installed.</p>
+</div>
+<div class="section" id="compile-the-sphinx-document">
+<h2>Compile the Sphinx Document<a class="headerlink" href="#compile-the-sphinx-document" title="Permalink to this headline">¶</a></h2>
+<p>You are now ready to compile an HTML version of the Sphinx documentation:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">make html</span>
+</pre></div>
+</div>
+<p>This command results in a directory <tt class="docutils literal"><span class="pre">_build/html</span></tt> with a
+file <tt class="docutils literal"><span class="pre">index.html</span></tt> that can be loaded into a web browser for inspection.</p>
+<p>The Python script
+<a class="reference external" href="_static/make.py">make.py</a> (<a class="reference external" href="_static/make.py.html">view</a>)
+automatically generates <tt class="docutils literal"><span class="pre">.txt</span></tt> index files for each <tt class="docutils literal"><span class="pre">.py</span></tt> file,
+runs <tt class="docutils literal"><span class="pre">sphinx-quickstart</span></tt>, copies index files to the new generated directory,
+edits <tt class="docutils literal"><span class="pre">conf.py</span></tt>, and runs <tt class="docutils literal"><span class="pre">make</span> <span class="pre">html</span></tt> to create the API documentation
+in HTML format. Examining the <tt class="docutils literal"><span class="pre">make.py</span></tt> script provides a complete
+recipe for getting started with Sphinx for automatically generating
+module and package documentation. The script can easily be applied
+to your own projects (it works without modifications if you want to
+document all <tt class="docutils literal"><span class="pre">.py</span></tt> files in a directory).
+in a directory)</p>
+<p>To see the result of the generated documentation,
+invoke <a class="reference external" href="_static/api-example/index.html">api/_build/html/index.html</a>.
+Click around to see the various features, like the index, for instance.
+The layout and colors can be customized through different
+Sphinx <em>themes</em>, see the <tt class="docutils literal"><span class="pre">api/conf.py</span></tt> file. Several examples
+are provided in
+the <a class="reference external" href="_static/examples/index.html">examples directory</a>.</p>
+<p>Our example with the <tt class="docutils literal"><span class="pre">quadratic</span></tt> and <tt class="docutils literal"><span class="pre">linear</span></tt> modules is minimalistic.
+An excellent large-scale example on documenting a packing using Sphinx
+is found in the Matplotlib source (subdirectory <tt class="docutils literal"><span class="pre">doc</span></tt>).  SciTools also
+applies Sphinx for documentation, and the file
+<tt class="docutils literal"><span class="pre">doc/api/sphinx-src/00README</span></tt> in the SciTools source tree explains the
+necessary steps in detail. Before diving into the documentation
+details of Matplotlib or SciTools, it will be advantageous to have
+digested some of the official Sphinx documentation, reached from
+<a class="reference external" href="http://sphinx.pocoo.org/">http://sphinx.pocoo.org/</a>.</p>
+<div class="figure" id="sphinx-api-fig-html">
+<img alt="_images/sphinx.png" src="_images/sphinx.png" style="width: 600px;" />
+<p class="caption"><em>Snapshot of HTML documentation automatically generated by Sphinx</em></p>
+</div>
+</div>
+</div>
+<div class="section" id="doconce-doc-string-format">
+<h1>Doconce Doc String Format<a class="headerlink" href="#doconce-doc-string-format" title="Permalink to this headline">¶</a></h1>
+<p>A disadvantage with the Sphinx format in doc strings is that it has
+quite some tagging that can be annoying when reading the doc strings
+directly, as done when invoking <tt class="docutils literal"><span class="pre">pydoc</span></tt> on the command line or
+<tt class="docutils literal"><span class="pre">help(...)</span></tt> or <tt class="docutils literal"><span class="pre">object.__doc__</span></tt> in interactive Python sessions.
+By writing the doc strings in <a class="reference external" href="http://code.google.com/p/doconce">Doconce</a>
+format, one can transform the text both to Sphinx and to plain ASCII.
+That is, the doc strings looks nice in <tt class="docutils literal"><span class="pre">pydoc</span></tt> and in HTML.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Simple Formatting Rules</a><ul>
+<li><a class="reference internal" href="#mathematics">Mathematics</a></li>
+<li><a class="reference internal" href="#code-snippets">Code Snippets</a></li>
+<li><a class="reference internal" href="#how-to-format-doc-strings">How to Format Doc Strings</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#running-sphinx">Running Sphinx</a><ul>
+<li><a class="reference internal" href="#make-sphinx-module-files">Make Sphinx Module Files</a></li>
+<li><a class="reference internal" href="#create-sphinx-directory-tree">Create Sphinx Directory Tree</a></li>
+<li><a class="reference internal" href="#make-index-file">Make Index File</a></li>
+<li><a class="reference internal" href="#edit-the-configuration-file">Edit the Configuration File</a></li>
+<li><a class="reference internal" href="#compile-the-sphinx-document">Compile the Sphinx Document</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#doconce-doc-string-format">Doconce Doc String Format</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">How To Generate API Documentation with Sphinx</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/sphinx_api.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="How To Generate API Documentation with Sphinx"
+             >previous</a> |</li>
+        <li><a href="index.html">How To Generate API Documentation with Sphinx 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, 1.0.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

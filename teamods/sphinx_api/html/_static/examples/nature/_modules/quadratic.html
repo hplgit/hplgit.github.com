@@ -1,0 +1,327 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>quadratic &mdash; Sphinx API Example 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Sphinx API Example 0.1 documentation" href="../index.html" />
+    <link rel="up" title="Module code" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">Sphinx API Example 0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for quadratic</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This is an example on how to document Python modules using doc</span>
+<span class="sd">strings and the sphinx tool. The doc strings can make use of</span>
+<span class="sd">the reStructuredText format, see</span>
+<span class="sd">`&lt;http://docutils.sourceforge.net/docs/user/rst/quickstart.html&gt;`_.</span>
+<span class="sd">It is recommended to document Python modules according to</span>
+<span class="sd">the `rules &lt;https://github.com/numpy/numpy/blob/master/doc/example.py&gt;`_</span>
+<span class="sd">of the ``numpy`` package. See also</span>
+<span class="sd">`A Guide to NumPy/SciPy Documentation &lt;https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt&gt;`_.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;roots&#39;</span><span class="p">,</span> <span class="s">&#39;Quadratic&#39;</span><span class="p">,</span> <span class="s">&#39;Cubic&#39;</span><span class="p">]</span>
+
+<span class="kn">from</span> <span class="nn">numpy.lib.scimath</span> <span class="kn">import</span> <span class="n">sqrt</span>  <span class="c"># handles real and complex args</span>
+
+<div class="viewcode-block" id="roots"><a class="viewcode-back" href="../quadratic.html#quadratic.roots">[docs]</a><span class="k">def</span> <span class="nf">roots</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the two roots in the quadratic equation::</span>
+
+<span class="sd">      a*x**2 + b*x + c = 0</span>
+
+<span class="sd">    or written with math typesetting</span>
+
+<span class="sd">    .. math:: ax^2 + bx + c = 0</span>
+
+<span class="sd">    The returned roots are real or complex numbers,</span>
+<span class="sd">    depending on the values of the arguments `a`, `b`,</span>
+<span class="sd">    and `c`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    a: int, real, complex</span>
+<span class="sd">       coefficient of the quadratic term</span>
+<span class="sd">    b: int, real, complex</span>
+<span class="sd">       coefficient of the linear term</span>
+<span class="sd">    c: int, real, complex</span>
+<span class="sd">       coefficient of the constant term</span>
+<span class="sd">    verbose: bool, optional</span>
+<span class="sd">       prints the quantity ``b**2 - 4*a*c`` and if the</span>
+<span class="sd">       roots are real or complex</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    root1, root2: real, complex</span>
+<span class="sd">        the roots of the quadratic polynomial.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError:</span>
+<span class="sd">        when `a` is zero</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    :class:`Quadratic`: which is a class for quadratic polynomials</span>
+<span class="sd">        that also has a :func:`Quadratic.roots` method for computing</span>
+<span class="sd">        the roots of a quadratic polynomial. There is also a class</span>
+<span class="sd">        :class:`linear.Linear` in the module :mod:`linear`.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The algorithm is a straightforward implementation of</span>
+<span class="sd">    a very well known formula [1]_.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Any textbook on mathematics or</span>
+<span class="sd">           `Wikipedia &lt;http://en.wikipedia.org/wiki/Quadratic_equation&gt;`_.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; roots(-1, 2, 10)</span>
+<span class="sd">    (-5.3166247903553998, 1.3166247903553998)</span>
+<span class="sd">    &gt;&gt;&gt; roots(-1, 2, -10)</span>
+<span class="sd">    ((-2-3j), (-2+3j))</span>
+
+<span class="sd">    Alternatively, we can in a doc string list the arguments and</span>
+<span class="sd">    return values in a table</span>
+
+<span class="sd">    ==========   =============   ================================</span>
+<span class="sd">    Parameter    Type            Description</span>
+<span class="sd">    ==========   =============   ================================</span>
+<span class="sd">    a            float/complex   coefficient for quadratic term</span>
+<span class="sd">    b            float/complex   coefficient for linear term</span>
+<span class="sd">    c            float/complex   coefficient for constant term</span>
+<span class="sd">    r1, r2       float/complex   return: the two roots of</span>
+<span class="sd">                                 the quadratic polynomial</span>
+<span class="sd">    ==========   =============   ================================</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1E-14</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;a=</span><span class="si">%g</span><span class="s"> is too close to zero&#39;</span> <span class="o">%</span> <span class="n">a</span><span class="p">)</span>
+
+    <span class="n">q</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39;q=</span><span class="si">%g</span><span class="s">: </span><span class="si">%s</span><span class="s"> roots&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="s">&#39;real&#39;</span> <span class="k">if</span> <span class="n">q</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">else</span> <span class="s">&#39;complex&#39;</span><span class="p">)</span>
+
+    <span class="n">root1</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">root2</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">root1</span><span class="p">,</span> <span class="n">root2</span>
+</div>
+<div class="viewcode-block" id="Quadratic"><a class="viewcode-back" href="../quadratic.html#quadratic.Quadratic">[docs]</a><span class="k">class</span> <span class="nc">Quadratic</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Representation of a quadratic polynomial:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">       ax^2 + bx + c</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">    &gt;&gt;&gt; q = Quadratic(a=2, b=4, c=-16)</span>
+<span class="sd">    &gt;&gt;&gt; print q</span>
+<span class="sd">    2*x**2 + 4*x - 16</span>
+<span class="sd">    &gt;&gt;&gt; r1, r2 = q.roots()</span>
+<span class="sd">    &gt;&gt;&gt; r1</span>
+<span class="sd">    2.0</span>
+<span class="sd">    &gt;&gt;&gt; r2</span>
+<span class="sd">    -4.0</span>
+<span class="sd">    &gt;&gt;&gt; q(r1), q(r2)  # check</span>
+<span class="sd">    (0.0, 0.0)</span>
+<span class="sd">    &gt;&gt;&gt; repr(q)</span>
+<span class="sd">    &#39;Quadratic(a=2, b=4, c=-16)&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Quadratic.__init__"><a class="viewcode-back" href="../quadratic.html#quadratic.Quadratic.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The arguments `a`, `b`, and `c` are coefficients in</span>
+<span class="sd">        the quadratic polynomial::</span>
+
+<span class="sd">          a*x**2 + b*x + c</span>
+
+<span class="sd">        or</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">           ax^2 + bx + c</span>
+
+<span class="sd">        ==========   =============   ================================</span>
+<span class="sd">        Argument     Type            Description</span>
+<span class="sd">        ==========   =============   ================================</span>
+<span class="sd">        a            float/complex   coefficient for quadratic term</span>
+<span class="sd">        b            float/complex   coefficient for linear term</span>
+<span class="sd">        c            float/complex   coefficient for constant term</span>
+<span class="sd">        ==========   =============   ================================</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError:</span>
+<span class="sd">            When `a` is too close to zero.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1E-14</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;a=</span><span class="si">%g</span><span class="s"> is too close to zero&#39;</span> <span class="o">%</span> <span class="n">a</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Quadratic.__call__"><a class="viewcode-back" href="../quadratic.html#quadratic.Quadratic.__call__">[docs]</a>    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Quadratic.value"><a class="viewcode-back" href="../quadratic.html#quadratic.Quadratic.value">[docs]</a>    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the value of the quadratic polynomial for `x`.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">        &gt;&gt;&gt; q = Quadratic(a=2, b=4, c=-16)</span>
+<span class="sd">        &gt;&gt;&gt; print q</span>
+<span class="sd">        2*x**2 + 4*x - 16</span>
+<span class="sd">        &gt;&gt;&gt; q(1)</span>
+<span class="sd">        -10</span>
+<span class="sd">        &gt;&gt;&gt; q(-2.5)</span>
+<span class="sd">        -13.5</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">c</span>
+</div>
+<div class="viewcode-block" id="Quadratic.roots"><a class="viewcode-back" href="../quadratic.html#quadratic.Quadratic.roots">[docs]</a>    <span class="k">def</span> <span class="nf">roots</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the two roots of the quadratic polynomial.</span>
+<span class="sd">        The roots are real or complex, depending on the</span>
+<span class="sd">        coefficients in the polynomial.</span>
+
+<span class="sd">        Let us define a quadratic polynomial:</span>
+
+<span class="sd">        &gt;&gt;&gt; q = Quadratic(a=2, b=4, c=-16)</span>
+<span class="sd">        &gt;&gt;&gt; print q</span>
+<span class="sd">        2*x**2 + 4*x - 16</span>
+
+<span class="sd">        The roots are then found by</span>
+
+<span class="sd">        &gt;&gt;&gt; r1, r2 = q.roots()</span>
+<span class="sd">        &gt;&gt;&gt; r1</span>
+<span class="sd">        2.0</span>
+<span class="sd">        &gt;&gt;&gt; r2</span>
+<span class="sd">        -4.0</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">c</span>  <span class="c"># short names</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
+        <span class="n">root1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">q</span><span class="p">))</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+        <span class="n">root2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">q</span><span class="p">))</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">root1</span><span class="p">,</span> <span class="n">root2</span>
+
+</div>
+<div class="viewcode-block" id="Quadratic.__str__"><a class="viewcode-back" href="../quadratic.html#quadratic.Quadratic.__str__">[docs]</a>    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># no doc</span>
+        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">*x**2 </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">*x </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> \
+               <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">_sign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">),</span>
+                <span class="n">_sign</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="Quadratic.__repr__"><a class="viewcode-back" href="../quadratic.html#quadratic.Quadratic.__repr__">[docs]</a>    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;Quadratic(a=</span><span class="si">%s</span><span class="s">, b=</span><span class="si">%s</span><span class="s">, c=</span><span class="si">%s</span><span class="s">)&#39;</span> <span class="o">%</span> \
+               <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="p">)</span>
+</div></div>
+<span class="k">def</span> <span class="nf">_sign</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return &#39;+&#39; if `v` &gt;= 0, otherwise &#39;-&#39;.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s">&#39;+&#39;</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="s">&#39;-&#39;</span>
+
+<div class="viewcode-block" id="Cubic"><a class="viewcode-back" href="../quadratic.html#quadratic.Cubic">[docs]</a><span class="k">class</span> <span class="nc">Cubic</span><span class="p">(</span><span class="n">Quadratic</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Evaluation of a cubic polynomial :math:`ax^3 + bx^2 + cx + d`.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Cubic.__init__"><a class="viewcode-back" href="../quadratic.html#quadratic.Cubic.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cubic</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span>
+        <span class="n">Quadratic</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Cubic.value"><a class="viewcode-back" href="../quadratic.html#quadratic.Cubic.value">[docs]</a>    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Quadratic</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">cubic</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">3</span>
+</div>
+<div class="viewcode-block" id="Cubic.roots"><a class="viewcode-back" href="../quadratic.html#quadratic.Cubic.roots">[docs]</a>    <span class="k">def</span> <span class="nf">roots</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s">&#39;roots for cubic polynomial not impl.&#39;</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Cubic.__str__"><a class="viewcode-back" href="../quadratic.html#quadratic.Cubic.__str__">[docs]</a>    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">*x**3 +&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cubic</span><span class="p">)</span> <span class="o">+</span> <span class="n">Quadratic</span><span class="o">.</span><span class="n">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">Sphinx API Example 0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, An Author.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

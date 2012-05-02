@@ -1,0 +1,242 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>linear &mdash; Sphinx API Example 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Sphinx API Example 0.1 documentation" href="index.html" />
+    <link rel="prev" title="Welcome to Sphinx API Example’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Sphinx API Example’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Sphinx API Example 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-linear">
+<span id="linear"></span><h1><a class="reference internal" href="#module-linear" title="linear"><tt class="xref py py-mod docutils literal"><span class="pre">linear</span></tt></a><a class="headerlink" href="#module-linear" title="Permalink to this headline">¶</a></h1>
+<p>Example for illustrating how Sphinx can be used to create
+API documentation for Python modules.</p>
+<p>This module is minimalistic - se module <a class="reference internal" href="quadratic.html#module-quadratic" title="quadratic"><tt class="xref py py-mod docutils literal"><span class="pre">quadratic</span></tt></a> for a
+better examples on how to write doc strings.</p>
+<dl class="function">
+<dt id="linear.root">
+<tt class="descclassname">linear.</tt><tt class="descname">root</tt><big>(</big><em>a</em>, <em>b</em><big>)</big><a class="reference internal" href="_modules/linear.html#root"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#linear.root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the root <tt class="docutils literal"><span class="pre">x</span></tt> of the equation <tt class="docutils literal"><span class="pre">a*x</span> <span class="pre">+</span> <span class="pre">b</span></tt>.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="linear.Linear">
+<em class="property">class </em><tt class="descclassname">linear.</tt><tt class="descname">Linear</tt><big>(</big><em>a</em>, <em>b</em><big>)</big><a class="reference internal" href="_modules/linear.html#Linear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#linear.Linear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for representing linear functions <span class="math">\(ax^2+b\)</span>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">line</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">line</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">2.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">line</span><span class="o">.</span><span class="n">root</span><span class="p">()</span>
+<span class="go">2.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">line</span>
+<span class="go">1.0*x - 2.0</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#linear.Linear.__call__" title="linear.Linear.__call__"><tt class="xref py py-obj docutils literal"><span class="pre">__call__</span></tt></a>(x)</td>
+<td>Return value of linear function at <cite>x</cite>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#linear.Linear.root" title="linear.Linear.root"><tt class="xref py py-obj docutils literal"><span class="pre">root</span></tt></a>()</td>
+<td>Return the root of the linear function.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#linear.Linear.value" title="linear.Linear.value"><tt class="xref py py-obj docutils literal"><span class="pre">value</span></tt></a>(x)</td>
+<td>Return value of linear function at <cite>x</cite>.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="linear.Linear.__call__">
+<tt class="descname">__call__</tt><big>(</big><em>x</em><big>)</big><a class="reference internal" href="_modules/linear.html#Linear.__call__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#linear.Linear.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return value of linear function at <cite>x</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="linear.Linear.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>a</em>, <em>b</em><big>)</big><a class="reference internal" href="_modules/linear.html#Linear.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#linear.Linear.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>a</cite> and <cite>b</cite> are coefficients in the linear
+function <span class="math">\(ax^2+b\)</span>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="linear.Linear.__module__">
+<tt class="descname">__module__</tt><em class="property"> = 'linear'</em><a class="headerlink" href="#linear.Linear.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="linear.Linear.__str__">
+<tt class="descname">__str__</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/linear.html#Linear.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#linear.Linear.__str__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="linear.Linear.root">
+<tt class="descname">root</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/linear.html#Linear.root"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#linear.Linear.root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the root of the linear function.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="linear.Linear.value">
+<tt class="descname">value</tt><big>(</big><em>x</em><big>)</big><a class="reference internal" href="_modules/linear.html#Linear.value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#linear.Linear.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return value of linear function at <cite>x</cite>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="linear.Line">
+<em class="property">class </em><tt class="descclassname">linear.</tt><tt class="descname">Line</tt><big>(</big><em>p1</em>, <em>p2</em><big>)</big><a class="reference internal" href="_modules/linear.html#Line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#linear.Line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the straight line that goes through two points p1 and p2.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">line</span> <span class="o">=</span> <span class="n">Line</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">line</span>
+<span class="go">-0.2*x + 0.2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">line</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">line</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#linear.Line.value" title="linear.Line.value"><tt class="xref py py-obj docutils literal"><span class="pre">value</span></tt></a>(x)</td>
+<td>Return the value of the line at <cite>x</cite>.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="linear.Line.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>p1</em>, <em>p2</em><big>)</big><a class="reference internal" href="_modules/linear.html#Line.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#linear.Line.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>p1</cite> and <cite>p2</cite> are two points (2-tuple/list).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="linear.Line.__module__">
+<tt class="descname">__module__</tt><em class="property"> = 'linear'</em><a class="headerlink" href="#linear.Line.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="linear.Line.__str__">
+<tt class="descname">__str__</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/linear.html#Line.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#linear.Line.__str__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="linear.Line.value">
+<tt class="descname">value</tt><big>(</big><em>x</em><big>)</big><a class="reference internal" href="_modules/linear.html#Line.value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#linear.Line.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the value of the line at <cite>x</cite>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Sphinx API Example&#8217;s documentation!</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/linear.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Sphinx API Example’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">Sphinx API Example 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, An Author.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

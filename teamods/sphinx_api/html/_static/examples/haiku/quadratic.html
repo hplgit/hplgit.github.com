@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>quadratic &mdash; Sphinx API Example 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/theme_extras.js"></script>
+    <link rel="top" title="Sphinx API Example 0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="index.html">
+          <span>Sphinx API Example 0.1 documentation</span></a></h1>
+        <h2 class="heading"><span>quadratic</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="module-quadratic">
+<span id="quadratic"></span><h1><a class="reference internal" href="#module-quadratic" title="quadratic"><tt class="xref py py-mod docutils literal"><span class="pre">quadratic</span></tt></a><a class="headerlink" href="#module-quadratic" title="Permalink to this headline">¶</a></h1>
+<p>This is an example on how to document Python modules using doc
+strings and the sphinx tool. The doc strings can make use of
+the reStructuredText format, see
+<a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickstart.html">http://docutils.sourceforge.net/docs/user/rst/quickstart.html</a>.
+It is recommended to document Python modules according to
+the <a class="reference external" href="https://github.com/numpy/numpy/blob/master/doc/example.py">rules</a>
+of the <tt class="docutils literal"><span class="pre">numpy</span></tt> package. See also
+<a class="reference external" href="https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt">A Guide to NumPy/SciPy Documentation</a>.</p>
+<dl class="function">
+<dt id="quadratic.roots">
+<tt class="descclassname">quadratic.</tt><tt class="descname">roots</tt><big>(</big><em>a</em>, <em>b</em>, <em>c</em>, <em>verbose=False</em><big>)</big><a class="reference internal" href="_modules/quadratic.html#roots"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#quadratic.roots" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the two roots in the quadratic equation:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>or written with math typesetting</p>
+<div class="math">
+\[ax^2 + bx + c = 0\]</div>
+<p>The returned roots are real or complex numbers,
+depending on the values of the arguments <cite>a</cite>, <cite>b</cite>,
+and <cite>c</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>a: int, real, complex</strong> :</p>
+<blockquote>
+<div><p>coefficient of the quadratic term</p>
+</div></blockquote>
+<p><strong>b: int, real, complex</strong> :</p>
+<blockquote>
+<div><p>coefficient of the linear term</p>
+</div></blockquote>
+<p><strong>c: int, real, complex</strong> :</p>
+<blockquote>
+<div><p>coefficient of the constant term</p>
+</div></blockquote>
+<p><strong>verbose: bool, optional</strong> :</p>
+<blockquote>
+<div><p>prints the quantity <tt class="docutils literal"><span class="pre">b**2</span> <span class="pre">-</span> <span class="pre">4*a*c</span></tt> and if the
+roots are real or complex</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>root1, root2: real, complex</strong> :</p>
+<blockquote>
+<div><p>the roots of the quadratic polynomial.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>ValueError:</strong> :</p>
+<blockquote class="last">
+<div><p>when <cite>a</cite> is zero</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="#quadratic.Quadratic" title="quadratic.Quadratic"><tt class="xref py py-class docutils literal"><span class="pre">Quadratic</span></tt></a></dt>
+<dd>which is a class for quadratic polynomials that also has a <a class="reference internal" href="#quadratic.Quadratic.roots" title="quadratic.Quadratic.roots"><tt class="xref py py-func docutils literal"><span class="pre">Quadratic.roots()</span></tt></a> method for computing the roots of a quadratic polynomial. There is also a class <a class="reference internal" href="linear.html#linear.Linear" title="linear.Linear"><tt class="xref py py-class docutils literal"><span class="pre">linear.Linear</span></tt></a> in the module <a class="reference internal" href="linear.html#module-linear" title="linear"><tt class="xref py py-mod docutils literal"><span class="pre">linear</span></tt></a>.</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The algorithm is a straightforward implementation of
+a very well known formula <a class="reference internal" href="#r1">[R1]</a>.</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Any textbook on mathematics or
+<a class="reference external" href="http://en.wikipedia.org/wiki/Quadratic_equation">Wikipedia</a>.</td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">roots</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="go">(-5.3166247903553998, 1.3166247903553998)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">roots</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">((-2-3j), (-2+3j))</span>
+</pre></div>
+</div>
+<p>Alternatively, we can in a doc string list the arguments and
+return values in a table</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="24%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>a</td>
+<td>float/complex</td>
+<td>coefficient for quadratic term</td>
+</tr>
+<tr class="row-odd"><td>b</td>
+<td>float/complex</td>
+<td>coefficient for linear term</td>
+</tr>
+<tr class="row-even"><td>c</td>
+<td>float/complex</td>
+<td>coefficient for constant term</td>
+</tr>
+<tr class="row-odd"><td>r1, r2</td>
+<td>float/complex</td>
+<td>return: the two roots of
+the quadratic polynomial</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="quadratic.Quadratic">
+<em class="property">class </em><tt class="descclassname">quadratic.</tt><tt class="descname">Quadratic</tt><big>(</big><em>a</em>, <em>b</em>, <em>c</em><big>)</big><a class="reference internal" href="_modules/quadratic.html#Quadratic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#quadratic.Quadratic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Representation of a quadratic polynomial:</p>
+<div class="math">
+\[ax^2 + bx + c\]</div>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">Quadratic</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="o">=-</span><span class="mi">16</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">q</span>
+<span class="go">2*x**2 + 4*x - 16</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">roots</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r1</span>
+<span class="go">2.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r2</span>
+<span class="go">-4.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="p">(</span><span class="n">r1</span><span class="p">),</span> <span class="n">q</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span>  <span class="c"># check</span>
+<span class="go">(0.0, 0.0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+<span class="go">&#39;Quadratic(a=2, b=4, c=-16)&#39;</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#quadratic.Quadratic.__call__" title="quadratic.Quadratic.__call__"><tt class="xref py py-obj docutils literal"><span class="pre">__call__</span></tt></a>(x)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#quadratic.Quadratic.roots" title="quadratic.Quadratic.roots"><tt class="xref py py-obj docutils literal"><span class="pre">roots</span></tt></a>()</td>
+<td>Return the two roots of the quadratic polynomial.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#quadratic.Quadratic.value" title="quadratic.Quadratic.value"><tt class="xref py py-obj docutils literal"><span class="pre">value</span></tt></a>(x)</td>
+<td>Return the value of the quadratic polynomial for <cite>x</cite>.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="quadratic.Quadratic.__call__">
+<tt class="descname">__call__</tt><big>(</big><em>x</em><big>)</big><a class="reference internal" href="_modules/quadratic.html#Quadratic.__call__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#quadratic.Quadratic.__call__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="quadratic.Quadratic.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>a</em>, <em>b</em>, <em>c</em><big>)</big><a class="reference internal" href="_modules/quadratic.html#Quadratic.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#quadratic.Quadratic.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The arguments <cite>a</cite>, <cite>b</cite>, and <cite>c</cite> are coefficients in
+the quadratic polynomial:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">c</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="math">
+\[ax^2 + bx + c\]</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="24%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Argument</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>a</td>
+<td>float/complex</td>
+<td>coefficient for quadratic term</td>
+</tr>
+<tr class="row-odd"><td>b</td>
+<td>float/complex</td>
+<td>coefficient for linear term</td>
+</tr>
+<tr class="row-even"><td>c</td>
+<td>float/complex</td>
+<td>coefficient for constant term</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>ValueError:</strong> :</p>
+<blockquote class="last">
+<div><p>When <cite>a</cite> is too close to zero.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="quadratic.Quadratic.__module__">
+<tt class="descname">__module__</tt><em class="property"> = 'quadratic'</em><a class="headerlink" href="#quadratic.Quadratic.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="quadratic.Quadratic.__repr__">
+<tt class="descname">__repr__</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/quadratic.html#Quadratic.__repr__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#quadratic.Quadratic.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="quadratic.Quadratic.__str__">
+<tt class="descname">__str__</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/quadratic.html#Quadratic.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#quadratic.Quadratic.__str__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="quadratic.Quadratic.roots">
+<tt class="descname">roots</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/quadratic.html#Quadratic.roots"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#quadratic.Quadratic.roots" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the two roots of the quadratic polynomial.
+The roots are real or complex, depending on the
+coefficients in the polynomial.</p>
+<p>Let us define a quadratic polynomial:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">Quadratic</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="o">=-</span><span class="mi">16</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">q</span>
+<span class="go">2*x**2 + 4*x - 16</span>
+</pre></div>
+</div>
+<p>The roots are then found by</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">roots</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r1</span>
+<span class="go">2.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r2</span>
+<span class="go">-4.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="quadratic.Quadratic.value">
+<tt class="descname">value</tt><big>(</big><em>x</em><big>)</big><a class="reference internal" href="_modules/quadratic.html#Quadratic.value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#quadratic.Quadratic.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the value of the quadratic polynomial for <cite>x</cite>.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">Quadratic</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="o">=-</span><span class="mi">16</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">q</span>
+<span class="go">2*x**2 + 4*x - 16</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">-10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="go">-13.5</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="quadratic.Cubic">
+<em class="property">class </em><tt class="descclassname">quadratic.</tt><tt class="descname">Cubic</tt><big>(</big><em>a</em>, <em>b</em>, <em>c</em>, <em>d</em><big>)</big><a class="reference internal" href="_modules/quadratic.html#Cubic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#quadratic.Cubic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#quadratic.Quadratic" title="quadratic.Quadratic"><tt class="xref py py-class docutils literal"><span class="pre">quadratic.Quadratic</span></tt></a></p>
+<p>Evaluation of a cubic polynomial <span class="math">\(ax^3 + bx^2 + cx + d\)</span>.</p>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#quadratic.Cubic.__call__" title="quadratic.Cubic.__call__"><tt class="xref py py-obj docutils literal"><span class="pre">__call__</span></tt></a>(x)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#quadratic.Cubic.roots" title="quadratic.Cubic.roots"><tt class="xref py py-obj docutils literal"><span class="pre">roots</span></tt></a>()</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#quadratic.Cubic.value" title="quadratic.Cubic.value"><tt class="xref py py-obj docutils literal"><span class="pre">value</span></tt></a>(x)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="quadratic.Cubic.__call__">
+<tt class="descname">__call__</tt><big>(</big><em>x</em><big>)</big><a class="headerlink" href="#quadratic.Cubic.__call__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="quadratic.Cubic.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>a</em>, <em>b</em>, <em>c</em>, <em>d</em><big>)</big><a class="reference internal" href="_modules/quadratic.html#Cubic.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#quadratic.Cubic.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="quadratic.Cubic.__module__">
+<tt class="descname">__module__</tt><em class="property"> = 'quadratic'</em><a class="headerlink" href="#quadratic.Cubic.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="quadratic.Cubic.__repr__">
+<tt class="descname">__repr__</tt><big>(</big><big>)</big><a class="headerlink" href="#quadratic.Cubic.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="quadratic.Cubic.__str__">
+<tt class="descname">__str__</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/quadratic.html#Cubic.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#quadratic.Cubic.__str__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="quadratic.Cubic.roots">
+<tt class="descname">roots</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/quadratic.html#Cubic.roots"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#quadratic.Cubic.roots" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="quadratic.Cubic.value">
+<tt class="descname">value</tt><big>(</big><em>x</em><big>)</big><a class="reference internal" href="_modules/quadratic.html#Cubic.value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#quadratic.Cubic.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2012, An Author.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <style type="text/css">
+td.linenos { background-color: #f0f0f0; padding-right: 10px; }
+span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
+pre { line-height: 125%; }
+body .hll { background-color: #ffffcc }
+body  { background: #f8f8f8; }
+body .c { color: #008800; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #AA22FF; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .cm { color: #008800; font-style: italic } /* Comment.Multiline */
+body .cp { color: #008800 } /* Comment.Preproc */
+body .c1 { color: #008800; font-style: italic } /* Comment.Single */
+body .cs { color: #008800; font-weight: bold } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #808080 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0040D0 } /* Generic.Traceback */
+body .kc { color: #AA22FF; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #AA22FF; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #AA22FF; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #AA22FF } /* Keyword.Pseudo */
+body .kr { color: #AA22FF; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #00BB00; font-weight: bold } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BB4444 } /* Literal.String */
+body .na { color: #BB4444 } /* Name.Attribute */
+body .nb { color: #AA22FF } /* Name.Builtin */
+body .nc { color: #0000FF } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #00A000 } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #B8860B } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sb { color: #BB4444 } /* Literal.String.Backtick */
+body .sc { color: #BB4444 } /* Literal.String.Char */
+body .sd { color: #BB4444; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BB4444 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BB4444 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BB4444 } /* Literal.String.Single */
+body .ss { color: #B8860B } /* Literal.String.Symbol */
+body .bp { color: #AA22FF } /* Name.Builtin.Pseudo */
+body .vc { color: #B8860B } /* Name.Variable.Class */
+body .vg { color: #B8860B } /* Name.Variable.Global */
+body .vi { color: #B8860B } /* Name.Variable.Instance */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+<span class="c"># Make API documentation of Python modules using Sphinx.</span>
+
+<span class="kn">import</span> <span class="nn">glob</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">shutil</span><span class="o">,</span> <span class="nn">commands</span>
+
+<span class="c"># The dict packages holds the name of all Python modules</span>
+<span class="c"># and packages that are to be included in the documentation.</span>
+<span class="c"># Keywords are package names (use . to separate names, as in</span>
+<span class="c"># the import statement), while the values are the list of</span>
+<span class="c"># modules in the (sub)package. An empty keyword means that</span>
+<span class="c"># there is no package, just a set of modules.</span>
+
+<span class="n">source_file_dirs</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">]</span>  <span class="c"># abs path or relative path</span>
+<span class="c"># Here we take all modules in source_file_dirs</span>
+<span class="n">modules</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">source_file_dirs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">&#39;*.py&#39;</span><span class="p">))</span>
+<span class="n">packages</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;&#39;</span><span class="p">:</span> <span class="n">modules</span><span class="p">}</span>
+<span class="c"># Exclude certain types of files</span>
+<span class="n">exclude_files</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;make.py&#39;</span><span class="p">,</span> <span class="s">&#39;__init__.py&#39;</span><span class="p">,</span> <span class="s">&#39;setup.py&#39;</span><span class="p">]</span>
+<span class="n">remove</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">package</span> <span class="ow">in</span> <span class="n">packages</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">packages</span><span class="p">[</span><span class="n">package</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">exclude_files</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">module</span><span class="p">:</span>
+                <span class="n">remove</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">package</span><span class="p">,</span> <span class="n">module</span><span class="p">))</span>
+<span class="k">print</span> <span class="n">packages</span>
+<span class="k">for</span> <span class="n">package</span><span class="p">,</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">remove</span><span class="p">:</span>
+    <span class="n">packages</span><span class="p">[</span><span class="n">package</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
+
+<span class="n">docdir</span> <span class="o">=</span> <span class="s">&#39;api&#39;</span>  <span class="c"># name of subdir to contain generated documentation</span>
+<span class="n">project_name</span> <span class="o">=</span> <span class="s">&#39;Sphinx API Example&#39;</span>
+<span class="n">author</span> <span class="o">=</span> <span class="s">&#39;An Author&#39;</span>
+<span class="n">version</span> <span class="o">=</span> <span class="s">&#39;0.1&#39;</span>
+
+
+<span class="c">#--------------------------------------------------------------</span>
+<span class="c"># Customization below this line is seldom necessary</span>
+
+<span class="c"># Clean up previously generated API document files</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">docdir</span><span class="p">):</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">docdir</span><span class="p">)</span>
+
+<span class="n">module_names</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">txtfiles</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c"># Generate .txt file for each module in each package</span>
+
+<span class="k">def</span> <span class="nf">write_txtfile</span><span class="p">(</span><span class="n">module_name</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
+    <span class="n">module_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span>
+    <span class="n">txtfile</span> <span class="o">=</span> <span class="n">module_name</span> <span class="o">+</span> <span class="s">&#39;.txt&#39;</span>
+    <span class="n">txtfiles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">txtfile</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">prefix</span><span class="p">:</span>
+        <span class="n">full_name</span> <span class="o">=</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span> <span class="o">+</span> <span class="n">module_name</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">full_name</span> <span class="o">=</span> <span class="n">module_name</span>
+    <span class="n">heading_underline</span> <span class="o">=</span> <span class="s">&#39;=&#39;</span><span class="o">*</span><span class="p">(</span><span class="mi">7</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_name</span><span class="p">))</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">txtfile</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">:mod:`</span><span class="si">%(module_name)s</span><span class="s">`</span>
+<span class="si">%(heading_underline)s</span><span class="s"></span>
+
+<span class="s">.. automodule:: </span><span class="si">%(module_name)s</span><span class="s"></span>
+<span class="s">   :members:</span>
+<span class="s">   :undoc-members:</span>
+<span class="s">   :special-members:</span>
+<span class="s">   :inherited-members:</span>
+<span class="s">   :show-inheritance:</span>
+<span class="s">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="nb">vars</span><span class="p">())</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s">&#39;autogenerated </span><span class="si">%(txtfile)s</span><span class="s"> for module </span><span class="si">%(module_name)s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="nb">vars</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">package</span> <span class="ow">in</span> <span class="n">packages</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">package</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+        <span class="c"># .txt file for package</span>
+        <span class="n">write_txtfile</span><span class="p">(</span><span class="n">package</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">packages</span><span class="p">[</span><span class="n">package</span><span class="p">]:</span>
+        <span class="n">module_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">module</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+        <span class="n">write_txtfile</span><span class="p">(</span><span class="n">module_name</span><span class="p">,</span> <span class="n">package</span><span class="p">)</span>
+
+<span class="c"># Let Sphinx generate the files it needs:</span>
+<span class="n">cmd</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s">sphinx-quickstart &lt;&lt;EOF</span>
+<span class="si">%(docdir)s</span><span class="s"></span>
+<span class="s">n</span>
+<span class="s">_</span>
+<span class="si">%(project_name)s</span><span class="s"></span>
+<span class="si">%(author)s</span><span class="s"></span>
+<span class="si">%(version)s</span><span class="s"></span>
+<span class="si">%(version)s</span><span class="s"></span>
+<span class="s">.txt</span>
+<span class="s">index</span>
+<span class="s">n</span>
+<span class="s">y</span>
+<span class="s">n</span>
+<span class="s">n</span>
+<span class="s">n</span>
+<span class="s">n</span>
+<span class="s">y</span>
+<span class="s">n</span>
+<span class="s">n</span>
+<span class="s">y</span>
+<span class="s">y</span>
+<span class="s">y</span>
+<span class="s">EOF</span>
+<span class="s">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="nb">vars</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">cmd</span>
+<span class="c">#failure, output1 = commands.getstatusoutput(cmd)</span>
+<span class="n">failure</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">failure</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&#39;Could not run sphinx-quickstart&#39;</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">txtfile</span> <span class="ow">in</span> <span class="n">txtfiles</span><span class="p">:</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">txtfile</span><span class="p">,</span> <span class="n">docdir</span><span class="p">)</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">docdir</span><span class="p">)</span>
+
+<span class="c"># Insert list of modules in the file index.txt (generated by sphinx-quickstart)</span>
+<span class="n">module_names_formatting</span> <span class="o">=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">   &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">module_names</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;index.txt&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;index.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s">&#39;Welcome to&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+        <span class="c"># Remove the Welcome to ... &#39;s documentation</span>
+        <span class="n">words</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s">&#39;:maxdepth:&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">   </span><span class="si">%(module_names_formatting)s</span><span class="s"></span>
+<span class="s">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="nb">vars</span><span class="p">())</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c"># Edit the generated conf.py file (generated by the above command)</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;conf.py&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">);</span> <span class="n">text</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">();</span> <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c"># Specify where to find the source files (.py)</span>
+<span class="n">source</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;os.path.abspath(os.path.join(os.pardir, &#39;</span><span class="si">%s</span><span class="s">&#39;))&quot;</span> <span class="o">%</span> <span class="n">d</span>
+          <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">source_file_dirs</span><span class="p">]</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&#39;\#sys\.path\.insert.+&#39;</span><span class="p">,</span> <span class="s">&#39;sys.path.extend([</span><span class="si">%s</span><span class="s">])&#39;</span> <span class="o">%</span> \
+              <span class="s">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">source</span><span class="p">),</span> <span class="n">text</span><span class="p">)</span>
+
+<span class="c"># Also add more extensions</span>
+<span class="n">extensions</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s">extensions = [</span>
+<span class="s">  &#39;sphinx.ext.autodoc&#39;,</span>
+<span class="s">  &#39;sphinx.ext.mathjax&#39;,</span>
+<span class="s">  #&#39;sphinx.ext.pngmath&#39;,</span>
+<span class="s">  #&#39;matplotlib.sphinxext.mathmpl&#39;,</span>
+<span class="s">  &#39;sphinx.ext.viewcode&#39;,</span>
+<span class="s">  &#39;numpydoc&#39;,</span>
+<span class="s">  &#39;sphinx.ext.autosummary&#39;,</span>
+<span class="s">  &#39;sphinx.ext.doctest&#39;,</span>
+<span class="s">  &#39;matplotlib.sphinxext.only_directives&#39;,</span>
+<span class="s">  &#39;matplotlib.sphinxext.plot_directive&#39;,</span>
+<span class="s">  &#39;matplotlib.sphinxext.ipython_directive&#39;,</span>
+<span class="s">  &#39;matplotlib.sphinxext.ipython_console_highlighting&#39;,</span>
+<span class="s">  &#39;sphinx.ext.inheritance_diagram&#39;]</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&#39;extensions = .*\]&#39;</span><span class="p">,</span> <span class="n">extensions</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+<span class="c"># Add support for other themes</span>
+<span class="n">themes</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s">html_theme = [</span>
+<span class="s">  &#39;default&#39;,</span>
+<span class="s">  &#39;agogo&#39;,</span>
+<span class="s">  &#39;haiku&#39;,</span>
+<span class="s">  &#39;pyramid&#39;,</span>
+<span class="s">  &#39;sphinxdoc&#39;,</span>
+<span class="s">  &#39;basic&#39;,</span>
+<span class="s">  &#39;epub&#39;,</span>
+<span class="s">  &#39;nature&#39;,</span>
+<span class="s">  &#39;scrolls&#39;,</span>
+<span class="s">  &#39;traditional&#39;][0]  # standard themes in sphinx</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;html_theme = &#39;default&#39;&quot;</span><span class="p">,</span> <span class="n">themes</span><span class="p">)</span>
+
+<span class="c"># Add support for customizing themes</span>
+<span class="n">customize_theme</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s"># See http://sphinx.pocoo.org/theming.html for setting options</span>
+<span class="s"># This is a customization of the default theme:</span>
+<span class="s">#html_theme_options = {</span>
+<span class="s">#  &#39;rightsidebar&#39;: &#39;true&#39;,</span>
+<span class="s">#}</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;#html_theme_options = {}&#39;</span><span class="p">,</span> <span class="n">customize_theme</span><span class="p">)</span>
+
+<span class="c"># Write modified text back to conf.py</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;conf.py&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">);</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text</span><span class="p">);</span> <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c"># Make sure we have the numpydoc module as this is needed for</span>
+<span class="c"># the API documentation</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">numpydoc</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s">Install numpydoc: download numpy (or get the latest github version,</span>
+<span class="s">cd doc/sphinxext; sudo python setup.py install</span>
+<span class="s">&quot;&quot;&quot;</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c"># Generate HTML documentation</span>
+<span class="k">print</span> <span class="s">&#39;</span><span class="se">\n\n</span><span class="s">make html...&#39;</span>
+<span class="n">failure</span><span class="p">,</span> <span class="n">output2</span> <span class="o">=</span> <span class="n">commands</span><span class="o">.</span><span class="n">getstatusoutput</span><span class="p">(</span><span class="s">&#39;make html&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="s">&#39;toctree contains reference&#39;</span> <span class="ow">in</span> <span class="n">output2</span><span class="p">:</span>
+    <span class="n">output2</span> <span class="o">+=</span> <span class="s">&#39;</span><span class="se">\n\n</span><span class="s">Many warnings &quot;toctree contains reference to nonexisting document&quot; may appear above, but this is not critical.&#39;</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">output2</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+    <span class="k">if</span> <span class="s">&#39;Error:&#39;</span> <span class="ow">in</span> <span class="n">line</span> <span class="ow">or</span> <span class="s">&#39;WARNING:&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39;Problems with the source code: &#39;</span><span class="p">,</span> <span class="n">line</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;../tmp.out&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output2</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">failure</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&#39;Could not run make html&#39;</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">print</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">run google-chrome </span><span class="si">%s</span><span class="s">/_build/html/index.html to see the documentation&#39;</span> <span class="o">%</span> <span class="n">docdir</span>
+<span class="k">print</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">see tmp.out for output from make html&#39;</span>
+</pre></div>
+</body>
+</html>
