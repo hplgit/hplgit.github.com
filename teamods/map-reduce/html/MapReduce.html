@@ -1,0 +1,797 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Application of Map-Reduce in Scientific Computing &mdash; Application of Map-Reduce in Scientific Computing 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Application of Map-Reduce in Scientific Computing 1.0 documentation" href="index.html" />
+    <link rel="prev" title="Application of Map-Reduce in Scientific Computing" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Application of Map-Reduce in Scientific Computing"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Application of Map-Reduce in Scientific Computing 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="application-of-map-reduce-in-scientific-computing">
+<h1>Application of Map-Reduce in Scientific Computing<a class="headerlink" href="#application-of-map-reduce-in-scientific-computing" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body"><p class="first">Hans Petter Langtangen, Mohammed Sourouri</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first">May 5, 2012</p>
+<ul class="last simple">
+<li><a class="reference external" href="http://blog.enthought.com/general/pygotham-sneak-peek-the-three-ps/">http://blog.enthought.com/general/pygotham-sneak-peek-the-three-ps/</a></li>
+<li><a class="reference external" href="http://michaelnielsen.org/blog/write-your-first-mapreduce-program-in-20-minutes/">http://michaelnielsen.org/blog/write-your-first-mapreduce-program-in-20-minutes/</a></li>
+<li><a class="reference external" href="http://blog.cordiner.net/2010/06/16/calculating-variance-and-mean-with-mapreduce-python/">http://blog.cordiner.net/2010/06/16/calculating-variance-and-mean-with-mapreduce-python/</a></li>
+<li><a class="reference external" href="http://www.doughellmann.com/PyMOTW/multiprocessing/mapreduce.html">http://www.doughellmann.com/PyMOTW/multiprocessing/mapreduce.html</a></li>
+<li><a class="reference external" href="http://blog.mafr.de/2007/10/28/map-reduce-in-python/">http://blog.mafr.de/2007/10/28/map-reduce-in-python/</a></li>
+<li><a class="reference external" href="http://brandynwhite.com/hadoopy-cython-based-mapreduce-library-for-py">http://brandynwhite.com/hadoopy-cython-based-mapreduce-library-for-py</a></li>
+<li><a class="reference external" href="http://blog.pythonisito.com/2011/07/zarkov-is-lightweight-map-reduce.html">http://blog.pythonisito.com/2011/07/zarkov-is-lightweight-map-reduce.html</a></li>
+<li><a class="reference external" href="http://architects.dzone.com/articles/map-reduce-python-and-named">http://architects.dzone.com/articles/map-reduce-python-and-named</a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Techniques behind:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://clouddbs.blogspot.com/2010/10/googles-mapreduce-in-98-lines-of-python.html">http://clouddbs.blogspot.com/2010/10/googles-mapreduce-in-98-lines-of-python.html</a></li>
+</ul>
+</dd>
+</dl>
+<p>The <em>map-reduce</em> concept is a unified way of implementing algorithms
+such that one can easily utilize (large-scale) parallel computing
+resources.  A famous version of the concept, branded as <em>MapReduce</em>,
+was introduced by Google in 2004 and plays a key role when Google&#8217;s
+search engines work with large sets of documents on large clusters of
+computers. Many different software libraries support variants of
+map-reduce. The purpose of the forthcoming text is to illustrate and
+explore the map-reduce concept for numerical computing.</p>
+</div>
+<div class="section" id="numerical-integration">
+<h1>Numerical Integration<a class="headerlink" href="#numerical-integration" title="Permalink to this headline">¶</a></h1>
+<p>Our first example on map-reduce regards the implementation of
+a particular type of numerical integration rules:</p>
+<div class="math">
+\[\int_a^b f(x)dx \approx {b-a}{n}\sum_{i=0}^{n-1} f(x_i) .\]</div>
+<p>Here, <span class="math">\(x_i\)</span> is a set of points. Choosing <span class="math">\(x_i = a + (i + 0.5)h\)</span>,
+<span class="math">\(h=(b-a)/n\)</span> gives the Midpoint rule, where the area below the <span class="math">\(f(x)\)</span>
+is approximated by <span class="math">\(n\)</span> rectangles of width <span class="math">\(h\)</span>. Width <span class="math">\(x_i\)</span> as random
+points distributed uniformly in <span class="math">\([a,b]\)</span> we get the Monte Carlo
+integration method.</p>
+<div class="section" id="plain-python-implementation">
+<h2>Plain Python Implementation<a class="headerlink" href="#plain-python-implementation" title="Permalink to this headline">¶</a></h2>
+<p>The Midpoint integration rule can be coded directly in Python as</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">midpoint</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">x_i</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="n">h</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="n">f</span><span class="p">(</span><span class="n">x_i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">h</span><span class="o">*</span><span class="n">s</span>
+</pre></div>
+</div>
+<p>The Monte Carlo integration method follows a very similar implementation:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">MonteCarlo</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">x_i</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="n">f</span><span class="p">(</span><span class="n">x_i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">s</span>
+</pre></div>
+</div>
+<p>Testing the two methods on a linear function <span class="math">\(f(x)=2x\)</span>,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">midpoint</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">MonteCarlo</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">4000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>results in</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="mf">1.0</span>
+<span class="mf">0.999962735888</span>
+</pre></div>
+</div>
+<p>The Midpoint rule integrates a linear function exactly for any <span class="math">\(n&gt;0\)</span>,
+while Monte Carlo integration is always approximate.</p>
+</div>
+<div class="section" id="vectorized-python-implementation">
+<h2>Vectorized Python Implementation<a class="headerlink" href="#vectorized-python-implementation" title="Permalink to this headline">¶</a></h2>
+<p>Computations can be speeded up by vectorization, which means that we
+replace the <tt class="docutils literal"><span class="pre">for</span></tt> loop by <tt class="docutils literal"><span class="pre">numpy</span></tt> operations on arrays.
+Three steps are required to vectorize the sum <span class="math">\(\sum_i f(x_i)\)</span>: 1) all
+the <span class="math">\(x_i\)</span> values must be generated at once and stored in an array,
+2) <span class="math">\(f\)</span> must be applied
+to the array of <span class="math">\(x_i\)</span> values, and 3) a summation function must be
+applied to the array of <span class="math">\(f(x_i)\)</span> values. The resulting code looks like</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;Integration example: vectorized implementation.&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="nb">reduce</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">midpoint</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="n">b</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">h</span><span class="o">*</span><span class="n">s</span>
+
+<span class="k">def</span> <span class="nf">MonteCarlo</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">s</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">print</span> <span class="n">midpoint</span>  <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">MonteCarlo</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">4000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The vectorized code is shorter and (much) faster.
+Observe that we have also saved some space by using lambda functions
+instead of <tt class="docutils literal"><span class="pre">f(x)</span></tt>: <tt class="docutils literal"><span class="pre">lambda</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">...:</span> <span class="pre">expression</span></tt> is the same
+as</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">expression</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="classical-map-reduce">
+<h2>Classical Map-Reduce<a class="headerlink" href="#classical-map-reduce" title="Permalink to this headline">¶</a></h2>
+<p>Functional programming makes frequent use of two functions named
+<tt class="docutils literal"><span class="pre">map</span></tt> and <tt class="docutils literal"><span class="pre">reduce</span></tt>. Python also has these functions. Calling <tt class="docutils literal"><span class="pre">map(f,</span> <span class="pre">L)</span></tt>
+applies the function <tt class="docutils literal"><span class="pre">f(e)</span></tt> to every element <tt class="docutils literal"><span class="pre">e</span></tt> in a list <tt class="docutils literal"><span class="pre">L</span></tt> and
+returns the resulting values as a list. We can implement our own
+<tt class="docutils literal"><span class="pre">map</span></tt> function by</p>
+<div class="highlight-py"><div class="highlight"><pre><span class="k">def</span> <span class="nf">mymap1</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">L</span><span class="p">:</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">r</span>
+
+<span class="k">def</span> <span class="nf">mymap2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">L</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>List comprehensions, as used in <tt class="docutils literal"><span class="pre">mymap2</span></tt>, are recommended as replacement
+of <tt class="docutils literal"><span class="pre">map</span></tt> in modern Python.</p>
+<p>The <tt class="docutils literal"><span class="pre">reduce</span></tt> function is a bit more complicated. It operates on a list,
+usually the result of <tt class="docutils literal"><span class="pre">map</span></tt>, and reduces it to a single object.
+If a list <tt class="docutils literal"><span class="pre">L</span></tt> has 5 elements, the call <tt class="docutils literal"><span class="pre">reduce(f,</span> <span class="pre">L)</span></tt> calculates</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">L</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">L</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span> <span class="n">L</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>For example, with <tt class="docutils literal"><span class="pre">f=lambda</span> <span class="pre">x,y:</span> <span class="pre">x+y</span></tt> we have</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">(((</span><span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">L</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">+</span> <span class="n">L</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">+</span> <span class="n">L</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>which is nothing but the sum of the elements in <tt class="docutils literal"><span class="pre">L</span></tt>. Here is a demo
+program:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="nb">reduce</span>
+
+<span class="k">def</span> <span class="nf">mapper</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;mapper: </span><span class="si">%s</span><span class="s"> -&gt; </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">reducer</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;reducer: </span><span class="si">%s</span><span class="s">, </span><span class="si">%s</span><span class="s"> -&gt; </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span><span class="n">reducer</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span><span class="n">mapper</span><span class="p">,</span> <span class="n">L</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>yielding the output</p>
+<div class="highlight-py"><pre>mapper: 1 -&gt; 1
+mapper: 2 -&gt; 4
+mapper: 3 -&gt; 9
+mapper: 4 -&gt; 16
+reducer: 1, 4 -&gt; 5
+reducer: 5, 9 -&gt; 14
+reducer: 14, 16 -&gt; 30</pre>
+</div>
+<p>We see how <tt class="docutils literal"><span class="pre">x</span></tt> in <tt class="docutils literal"><span class="pre">reducer</span></tt> is always the result of the previous call
+to <tt class="docutils literal"><span class="pre">reducer</span></tt> and that <tt class="docutils literal"><span class="pre">y</span></tt> is the next element in the list.</p>
+<p>The <tt class="docutils literal"><span class="pre">reduce</span></tt> function can take a third argument which acts as an
+initial value of the reduce operations. Calling</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">r</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span><span class="n">reducer</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span><span class="n">mapper</span><span class="p">,</span> <span class="n">L</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>results in different output in the <tt class="docutils literal"><span class="pre">reducer</span></tt> function since the
+first call will not consists of the first two elements in the
+list returned by <tt class="docutils literal"><span class="pre">map</span></tt>, but by the result so far (0) and the first
+element in the list:</p>
+<div class="highlight-python"><pre>reducer: 0, 1 -&gt; 1
+reducer: 1, 4 -&gt; 5
+reducer: 5, 9 -&gt; 14
+reducer: 14, 16 -&gt; 30</pre>
+</div>
+<p>The use of an initial value makes it conceptually clearer what the
+reducer does: <tt class="docutils literal"><span class="pre">reducer(res,</span> <span class="pre">e)</span></tt> computes the combination of the
+reduce results so far, <tt class="docutils literal"><span class="pre">res</span></tt>, and a new element <tt class="docutils literal"><span class="pre">e</span></tt> in the list returned
+from <tt class="docutils literal"><span class="pre">map</span></tt>. In these writings we will mostly use an initial value
+when calling <tt class="docutils literal"><span class="pre">reduce</span></tt> and write the reducer as <tt class="docutils literal"><span class="pre">reduce(res,</span> <span class="pre">e)</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">reducer</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;reducer: </span><span class="si">%s</span><span class="s">, </span><span class="si">%s</span><span class="s"> -&gt; </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">res</span> <span class="o">+</span> <span class="n">e</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span> <span class="o">+</span> <span class="n">e</span>
+</pre></div>
+</div>
+<p>The numerical integration rules are easily implemented using the
+map-reduce concept since the map phase is to apply <span class="math">\(f\)</span> to the list of
+<span class="math">\(x_i\)</span> points, and the reduce phase is to sum the elements in the
+list returned from <tt class="docutils literal"><span class="pre">map</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;Integration example: map-reduce implementation and numpy constructs.&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="nb">reduce</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">midpoint</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="n">b</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">fx</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">res</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span> <span class="n">res</span> <span class="o">+</span> <span class="n">e</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">h</span><span class="o">*</span><span class="n">s</span>
+
+<span class="k">def</span> <span class="nf">MonteCarlo</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">fx</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">res</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span> <span class="n">res</span> <span class="o">+</span> <span class="n">e</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">s</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">print</span> <span class="n">midpoint</span>  <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">MonteCarlo</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">4000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Basically, the vectorized operation <tt class="docutils literal"><span class="pre">f(x)</span></tt> is replaced by <tt class="docutils literal"><span class="pre">map</span></tt>, and
+<tt class="docutils literal"><span class="pre">np.sum</span></tt> is replaced by <tt class="docutils literal"><span class="pre">reduce</span></tt>.</p>
+<p>The computation of <tt class="docutils literal"><span class="pre">x</span></tt> can also be done my <tt class="docutils literal"><span class="pre">map</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="mf">0.5</span><span class="o">+</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>We remark that lambda functions as well as functions defined inside <tt class="docutils literal"><span class="pre">midpoint</span></tt>
+or <tt class="docutils literal"><span class="pre">MonteCarlo</span></tt> &#8220;remembers&#8221; variables like <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>, and <tt class="docutils literal"><span class="pre">n</span></tt> (such
+functions are referred to as <em>closures</em>).</p>
+</div>
+<div class="section" id="parallelism">
+<h2>Parallelism<a class="headerlink" href="#parallelism" title="Permalink to this headline">¶</a></h2>
+<p>Looking at the numerical integration formula, we realize that all the
+<span class="math">\(x_i\)</span> points can be calculated in parallel, and the same goes with all
+the <span class="math">\(f(x_i)\)</span> evaluations. This is particularly evident when these operations
+are expressed by <tt class="docutils literal"><span class="pre">map</span></tt>, since <tt class="docutils literal"><span class="pre">map</span></tt> applies the same function to each
+element of a list, and all these actions are independent of each other.
+That is, writing a <tt class="docutils literal"><span class="pre">map</span></tt> operation immediately makes it clear that the
+operations on the list are independent and can be done in parallel.</p>
+<p>Imagine that a set of <span class="math">\(n\)</span> compute units works in parallel such that
+unit <span class="math">\(i\)</span> computes <span class="math">\(x_i\)</span> and <span class="math">\(f(x_i)\)</span>.
+The summation step in the numerical integration formula requires
+the compute units to <em>communicate</em>: unit 0 needs to send its <span class="math">\(f(x_0)\)</span>
+value to unit 1, which adds that value with its own value <span class="math">\(f(x_1)\)</span> and
+sends the sum <span class="math">\(f(x_0)+f(x_1)\)</span> to unit 2, which adds that value to
+<span class="math">\(f(x_2)\)</span> and sends <span class="math">\(f(x_0)+f(x_1)+f(x_2)\)</span> to unit 3, which adds that
+value to its own, and so forth until all partial sums have been
+communicated and we have the final sum. These actions are the same
+as expressed in the reduce step.</p>
+<p>The idea is that software libraries can implement their parallel version
+of <tt class="docutils literal"><span class="pre">map</span></tt> and the communicating version of <tt class="docutils literal"><span class="pre">reduce</span></tt>. If our algorithm
+can be expressed as calls to <tt class="docutils literal"><span class="pre">map</span></tt> and <tt class="docutils literal"><span class="pre">reduce</span></tt>, this is an easy way of
+parallelizing the algorithm. However, it does not make much sense to
+distribute each <span class="math">\(x_i\)</span> and <span class="math">\(f(x_i)\)</span> computation to separate compute units:
+we need to distribute a chunck of <span class="math">\(x_i\)</span> and <span class="math">\(f(x_i)\)</span> to a compute unit.
+The next section explains the idea in a serial setting.</p>
+</div>
+<div class="section" id="large-data-sets">
+<h2>Large Data Sets<a class="headerlink" href="#large-data-sets" title="Permalink to this headline">¶</a></h2>
+<p>Suppose <span class="math">\(n\)</span> is very large. We then want to compute parts of the sum
+<span class="math">\(\sum_i f(x_i)\)</span> separately and thereafter merge the results.
+The collection <span class="math">\(x_0,\ldots,x_{n-1}\)</span> is divided into <span class="math">\(N\)</span> chunks
+of sizes <span class="math">\(c_0,\ldots,c_{N-1}\)</span>, such that <span class="math">\(n = \sum_{k=0}^{N-1} c_k\)</span>.
+The <span class="math">\(x_i\)</span> values of chunk number <span class="math">\(k\)</span> is written as <span class="math">\(x_{k,0}, x_{k,1},
+\ldots, x_{k, c_k-1}\)</span>.
+Mathematically, we write</p>
+<div class="math">
+\[\sum_{i=0}^{n-1} f(x_i) = \sum_{k=0}^{N-1} \underbrace{\sum_{j=0}^{c_k-1} f(x_{k,j})}{= s_k} .\]</div>
+<p>The idea is that the map step computes <span class="math">\(s_k\)</span>, while the reduce step
+adds the <span class="math">\(s_k\)</span> values.</p>
+<p>Partitioning the array of <span class="math">\(x_i\)</span> values into equal-sized chunks, and putting
+remaining elements into the last chunk can be done by this function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">partition</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a list of N chunks of x.&quot;&quot;&quot;</span>
+    <span class="n">chunk_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="n">chunk_size</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+    <span class="n">c</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">chunk_size</span>  <span class="c"># remaining elements</span>
+    <span class="n">chunks</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[:</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]]]</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="c">#print &#39;k=%d, c[k]=%d, slice: %d:%d = %s&#39; % (k, c[k], start, start+c[k], x[start:start+c[k]].tolist())</span>
+        <span class="n">chunks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">start</span><span class="o">+</span><span class="n">c</span><span class="p">[</span><span class="n">k</span><span class="p">]])</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+    <span class="n">chunks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">start</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="n">chunks</span>
+</pre></div>
+</div>
+<p>Note that the return value is a list of slices of (views into) the <tt class="docutils literal"><span class="pre">x</span></tt> array.</p>
+<p>A simpler approach to partitioning would be to just make <tt class="docutils literal"><span class="pre">x</span></tt> a two-dimensional
+array where each row represent a chunk of data. We would then normally
+need to throw away some of the last elements in <tt class="docutils literal"><span class="pre">x</span></tt> to create a two-dimensional
+shape (i.e., to create equal-sized chunks):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">partition</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+    <span class="n">chunk_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">[:</span><span class="n">chunk_size</span><span class="o">*</span><span class="n">N</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">chunk_size</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The returned object is now a two-dimensional <tt class="docutils literal"><span class="pre">numpy</span></tt> array, but <tt class="docutils literal"><span class="pre">map</span></tt>
+can easily iterate over the first index, i.e., the rows in this object.
+Below, we use the first version of <tt class="docutils literal"><span class="pre">partition</span></tt> where the final chunk
+may have a different size from the other ones.</p>
+<p>The <tt class="docutils literal"><span class="pre">map</span></tt> operation on each element
+in the <tt class="docutils literal"><span class="pre">chunk</span></tt> list must first apply the <tt class="docutils literal"><span class="pre">f</span></tt> function (on the slice),
+yielding a <tt class="docutils literal"><span class="pre">numpy</span></tt> array, and then apply the <tt class="docutils literal"><span class="pre">np.sum</span></tt> function on
+this array. The result is the partial sum <span class="math">\(s_k\)</span> as defined above.
+The <tt class="docutils literal"><span class="pre">midpoint</span></tt> method can be implemented as</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">midpoint</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="n">b</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">chunks</span> <span class="o">=</span> <span class="n">partition</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    <span class="n">mapped_values</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x_k</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x_k</span><span class="p">)),</span> <span class="n">chunks</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">res</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span> <span class="n">res</span> <span class="o">+</span> <span class="n">e</span><span class="p">,</span> <span class="n">mapped_values</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">h</span><span class="o">*</span><span class="n">s</span>
+</pre></div>
+</div>
+<p>To understand what is computed and if the intermediate results are right,
+we call</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">midpoint</span>  <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This results in <tt class="docutils literal"><span class="pre">x</span></tt> as <tt class="docutils literal"><span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">...,</span> <span class="pre">10]</span></tt>. With <span class="math">\(n=11\)</span> and <span class="math">\(N=4\)</span>,
+the <tt class="docutils literal"><span class="pre">chunk_size</span></tt> becomes 2 (recall that division between two integers
+in Python version 2.x implies integer division, while in Python 3.x
+a float results, but the next <tt class="docutils literal"><span class="pre">int</span></tt> transformation truncates the
+decimals so the final result is identical to integer division).
+The resulting 4 chunks now become
+<tt class="docutils literal"><span class="pre">[0,</span> <span class="pre">1]</span></tt>, <tt class="docutils literal"><span class="pre">[2,</span> <span class="pre">3]</span></tt>, <tt class="docutils literal"><span class="pre">[4,</span> <span class="pre">5]</span></tt>, and <tt class="docutils literal"><span class="pre">[6,</span> <span class="pre">7,</span> <span class="pre">8,</span> <span class="pre">9,</span> <span class="pre">10]</span></tt>.
+The <tt class="docutils literal"><span class="pre">s</span></tt> list returned from <tt class="docutils literal"><span class="pre">map</span></tt> is <tt class="docutils literal"><span class="pre">[2,</span> <span class="pre">10,</span> <span class="pre">18,</span> <span class="pre">80]</span></tt>.</p>
+<p>Here is an example on how to run the code inside the debugger in
+<tt class="docutils literal"><span class="pre">ipython</span></tt> and inspect the intermediate results inside the <tt class="docutils literal"><span class="pre">midpoint</span></tt>
+function:</p>
+<div class="highlight-python"><pre>In [1]: run -d int_mrc.py
+Breakpoint 1 at /some/path/int_mrc.py:1
+NOTE: Enter 'c' at the ipdb&gt;  prompt to start your script.
+&gt; &lt;string&gt;(1)&lt;module&gt;()
+
+ipdb&gt; c
+&gt; /some/path/int_mrc.py(1)&lt;module&gt;()
+1---&gt; 1 import numpy as np
+      2
+      3 def partition(x, N):
+
+ipdb&gt; break midpoint
+Breakpoint 2 at /some/path/int_mrc.py:17
+ipdb&gt; c
+&gt; /some/path/int_mrc.py(18)midpoint()
+2    17 def midpoint(f, a, b, n, N=5):
+---&gt; 18     h = (b-a)/float(n)
+     19     x = np.linspace(a + 0.5*h, b - 0.5*h, n)
+
+ipdb&gt; n
+&gt; /some/path/int_mrc.py(19)midpoint()
+     18     h = (b-a)/float(n)
+---&gt; 19     x = np.linspace(a + 0.5*h, b - 0.5*h, n)
+     20     chunks = partition(x, N)
+
+ipdb&gt; n
+&gt; /some/path/int_mrc.py(20)midpoint()
+     19     x = np.linspace(a + 0.5*h, b - 0.5*h, n)
+---&gt; 20     chunks = partition(x, N)
+     21     s = map(lambda x_k: np.sum(f(x_k)), chunks)
+
+ipdb&gt; n
+&gt; /some/path/int_mrc.py(21)midpoint()
+     20     chunks = partition(x, N)
+---&gt; 21     s = map(lambda x_k: np.sum(f(x_k)), chunks)
+     22     s = reduce(lambda x,y: x+y, s)
+
+ipdb&gt; import pprint; pprint.pprint(chunks)
+[array([ 0.,  1.]),
+ array([ 2.,  3.]),
+ array([ 4.,  5.]),
+ array([  6.,   7.,   8.,   9.,  10.])]
+ipdb&gt; n
+&gt; /some/path/int_mrc.py(22)midpoint()
+     21     s = map(lambda x_k: np.sum(f(x_k)), chunks)
+---&gt; 22     s = reduce(lambda x,y: x+y, s)
+     23     return h*s
+
+ipdb&gt; print s
+[2.0, 10.0, 18.0, 80.0]
+ipdb&gt; print sum(s), b**2-a**2
+110.0 110.0</pre>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">MonteCarlo</span></tt> function working with chunks is similar to function
+<tt class="docutils literal"><span class="pre">midpoint</span></tt>, but we can drop the <tt class="docutils literal"><span class="pre">partition</span></tt> function and instead
+generate the random numbers for each chunk directly. Equal-sized
+chunks will then be convenient so we adjust <span class="math">\(n\)</span> to fit <span class="math">\(N\)</span> equal-sized
+chunks. The code reads</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">MonteCarlo</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">chunk_size</span> <span class="o">=</span> <span class="n">c_k</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">N</span><span class="o">*</span><span class="n">c_k</span>  <span class="c"># adjust n to ensure equal-sized chunks</span>
+    <span class="n">chunks</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c_k</span><span class="p">),</span>
+                 <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+    <span class="n">mapped_values</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x_k</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x_k</span><span class="p">)),</span> <span class="n">chunks</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">res</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span> <span class="n">res</span> <span class="o">+</span> <span class="n">e</span><span class="p">,</span> <span class="n">mapped_values</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="map-with-independent-monte-carlo-integrals">
+<span id="mapreduce-pmc"></span><h2>Map with Independent Monte Carlo Integrals<a class="headerlink" href="#map-with-independent-monte-carlo-integrals" title="Permalink to this headline">¶</a></h2>
+<p>Now we assume that the map step is a complete Monte Carlo integration
+procedure calculating the integral <span class="math">\(\int_a^b f(x)dx\)</span> based on <span class="math">\(x_i\)</span> samples
+in some chunk number <span class="math">\(k\)</span>:</p>
+<div class="math">
+\[I_k = \frac{b-a}{c_k}\sum_{j=1}^{c_k-1} f(x_{k,j}).\]</div>
+<p>The reduce step is now not a simple sum. To compute the integral
+<span class="math">\(I=\int_a^b f(x)dx\)</span> from the individual approximations <span class="math">\(I_0,\ldots,I_N\)</span>,
+we need a weighted sum,</p>
+<div class="math">
+\[I = \sum_{k=0}^{N} c_k I_k .\]</div>
+<p>This means that <tt class="docutils literal"><span class="pre">map</span></tt> must return a list of <span class="math">\((c_k, I_k)\)</span> tuples, and
+<tt class="docutils literal"><span class="pre">reduce</span></tt> must combine these correctly. The forthcoming code will provide
+the details.</p>
+<p>The vectorized <tt class="docutils literal"><span class="pre">MonteCarlo</span></tt> function shown earlier is a good candidate
+for computing <span class="math">\(I_k\)</span>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">MonteCarlo</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">s</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>The mapper function called for each element in the list that <tt class="docutils literal"><span class="pre">map</span></tt>
+operates on must call this <tt class="docutils literal"><span class="pre">MonteCarlo</span></tt> function. To this end, the mapper
+function needs to pass <tt class="docutils literal"><span class="pre">f</span></tt>, <tt class="docutils literal"><span class="pre">a</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt>, and the chunk size on to
+<tt class="docutils literal"><span class="pre">MonteCarlo</span></tt>. Since the mapper function can take only one argument,
+we need to pack the necessary data in this argument. A list, here called
+<tt class="docutils literal"><span class="pre">e</span></tt> (for element), is used for this purpose:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">mapper</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+    <span class="n">c_k</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">e</span>
+    <span class="n">I_k</span> <span class="o">=</span> <span class="n">MonteCarlo</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c_k</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">c_k</span><span class="p">,</span> <span class="n">I_k</span>
+</pre></div>
+</div>
+<p>Note that <tt class="docutils literal"><span class="pre">mapper</span></tt> returns a tuple <span class="math">\((c_k, I_k)\)</span> since the reduce step
+needs access to these data.</p>
+<p>The map step consists of packing a list of <tt class="docutils literal"><span class="pre">e</span></tt> objects as expected
+by <tt class="docutils literal"><span class="pre">mapper</span></tt> and pass this on to <tt class="docutils literal"><span class="pre">map</span></tt>. With <tt class="docutils literal"><span class="pre">c_k</span></tt> denoting the chunk size
+we can write</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="n">c_k</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="n">intermediate</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">mapper</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this particular example, all the elements in <tt class="docutils literal"><span class="pre">data</span></tt> are equal, but this
+does not need to be the case. If we imagine that the <tt class="docutils literal"><span class="pre">mapper</span></tt> function
+is run on computers with very different speed and memory, we would
+adapt the chunk sizes to the size of the individual compute units.</p>
+<p>The reducer function takes in general two arguments: the result of
+the reduce operations so far, <tt class="docutils literal"><span class="pre">res</span></tt>, and a new element <tt class="docutils literal"><span class="pre">e</span></tt> from the
+list returned by <tt class="docutils literal"><span class="pre">map</span></tt>. Recall that <tt class="docutils literal"><span class="pre">e</span></tt> is a tuple <span class="math">\((c_k, I_k)\)</span>.
+The reducer must add <span class="math">\(c_kI_k\)</span> to the previous result <tt class="docutils literal"><span class="pre">res</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">reducer</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+    <span class="n">c_k</span><span class="p">,</span> <span class="n">I_k</span> <span class="o">=</span> <span class="n">e</span>
+    <span class="k">return</span> <span class="n">res</span> <span class="o">+</span> <span class="n">c_k</span><span class="o">*</span><span class="n">I_k</span>
+</pre></div>
+</div>
+<p>A remark is important here. The above <tt class="docutils literal"><span class="pre">reducer</span></tt> function will work
+if <tt class="docutils literal"><span class="pre">reduce</span></tt> is called with a third argument <tt class="docutils literal"><span class="pre">0</span></tt>. If not, the
+first call to <tt class="docutils literal"><span class="pre">reducer</span></tt> will have the two first elements of the
+the list returned from <tt class="docutils literal"><span class="pre">map</span></tt> as the <tt class="docutils literal"><span class="pre">res</span></tt> and <tt class="docutils literal"><span class="pre">e</span></tt> arguments. That case
+calls for a special treatment:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">reducer</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+    <span class="n">c_k</span><span class="p">,</span> <span class="n">I_k</span> <span class="o">=</span> <span class="n">e</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+        <span class="n">c_k0</span><span class="p">,</span> <span class="n">I_k0</span> <span class="o">=</span> <span class="n">res</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">c_k0</span><span class="o">*</span><span class="n">I_k0</span>
+    <span class="k">return</span> <span class="n">res</span> <span class="o">+</span> <span class="n">c_k</span><span class="o">*</span><span class="n">I_k</span>
+</pre></div>
+</div>
+<p>Situations like this always happens if the object type of <tt class="docutils literal"><span class="pre">res</span></tt> and
+<tt class="docutils literal"><span class="pre">e</span></tt> can be different, which is a rather common case. The test on
+the type of <tt class="docutils literal"><span class="pre">res</span></tt> breaks the logic that <tt class="docutils literal"><span class="pre">res</span></tt> is <em>always</em> the result so far and
+that <tt class="docutils literal"><span class="pre">e</span></tt> is to update <tt class="docutils literal"><span class="pre">res</span></tt>. We therefore recommend to always use <tt class="docutils literal"><span class="pre">reduce</span></tt>
+with a third argument, at least in these cases where <tt class="docutils literal"><span class="pre">reduce</span></tt> performs
+a summation.</p>
+<p>Now we have the building blocks for creating a parallel Monte Carlo
+integration function where essentially specify a chunk size and
+the map-reduce construction runs independent integral approximations
+for each chunk (in parallel if desired) and combines the results:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">parallel_MonteCarlo</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">chunk_size</span> <span class="o">=</span> <span class="n">c_k</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">N</span><span class="o">*</span><span class="n">c_k</span>   <span class="c"># adjust n to fit equal-sized chunks</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="n">c_k</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+    <span class="n">mapped_values</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">mapper</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">I</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span><span class="n">reducer</span><span class="p">,</span> <span class="n">mapped_values</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+    <span class="k">return</span> <span class="n">I</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">mapped_values</span></tt> list is handy for debugging purposes, but is often
+omitted:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">parallel_MonteCarlo2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">c_k</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>  <span class="c"># chunk size</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">c_k</span><span class="o">*</span><span class="n">N</span>       <span class="c"># adjust n to fit equal-sized chunks</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="n">c_k</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="nb">reduce</span><span class="p">(</span><span class="n">reducer</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span><span class="n">mapper</span><span class="p">,</span> <span class="n">data</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="the-mapreduce-framework">
+<h1>The MapReduce Framework<a class="headerlink" href="#the-mapreduce-framework" title="Permalink to this headline">¶</a></h1>
+<p>So far we have applied the classical map and reduce functions known from
+functional programming. The MapReduce framework as used by Google and many
+software libraries differs from the classical map-reduce framework in
+that the map and reduce functions take different input and produce
+different output. There is also an intermediate step between map and reduce.</p>
+<p>In the MapReduce framework, the map step takes an iterable object as
+input (list, tuple, array, or any object <tt class="docutils literal"><span class="pre">obj</span></tt> allowing <tt class="docutils literal"><span class="pre">for</span> <span class="pre">element</span>
+<span class="pre">in</span> <span class="pre">obj</span></tt>), and produces a list of (key, value) pairs as output.  The
+next step is a partition step where the list of (key, value) pairs are
+turned into a list of (key, values) pairs, where all values associated
+with a key are collected in a list.  The reduce step takes the list
+from the partition step and applies the reducer to each key and its
+values. There is no possibility for accumulation of results as in the
+classical <tt class="docutils literal"><span class="pre">reduce</span></tt> method.  The reduce step in the MapReduce framework
+is basically a map step, because elements from a list are fed to the
+reducer (without any previous results of the reduced step), and the
+output is collected in a list. A more classical reduce
+step is then required to process that list and calculate the final
+results. The next example will illustrate the differences between
+classical map-reduce and the &#8220;modern&#8221; MapReduce framework.</p>
+<div class="section" id="monte-carlo-integration-with-mapreduce">
+<h2>Monte Carlo Integration with MapReduce<a class="headerlink" href="#monte-carlo-integration-with-mapreduce" title="Permalink to this headline">¶</a></h2>
+<p>Let us turn the Monte Carlo implementation from the section <a class="reference internal" href="#mapreduce-pmc"><em>Map with Independent Monte Carlo Integrals</em></a>
+and into the MapReduce formulation.
+We need to define what the keys and values are as produced by the mapper.
+Since our <tt class="docutils literal"><span class="pre">mapper</span></tt> function already returns a 2-tuple <span class="math">\((c_k, I_k)\)</span>,
+we may take <span class="math">\(c_k\)</span> as key and <span class="math">\(I_k\)</span> as value. The <tt class="docutils literal"><span class="pre">mapper</span></tt> function can
+therefore be reused without changes.</p>
+<p>The partition step &#8220;sorts&#8221; the (key, value) pairs to (key, values) pairs.
+That is, all the values associated with one key are collected in a list.
+In the present example, this means that all the <span class="math">\(I_k\)</span> values with the
+same chunk size <span class="math">\(c_k\)</span> are to be collected in a list.
+The following general function performs the task, using a dictionary
+for convenience to collect keys and values:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">partition</span><span class="p">(</span><span class="n">mapped_values</span><span class="p">):</span>
+    <span class="n">partitioned_data</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">mapped_values</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">partitioned_data</span><span class="p">:</span>
+            <span class="n">partitioned_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">partitioned_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">partitioned_data</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The return statement turns dictionary into a list of pairs
+<tt class="docutils literal"><span class="pre">(key,</span> <span class="pre">partitioned_data[key])</span></tt>, as required for the partition step.
+Since all our
+chunks have the same size, there is only one key (<span class="math">\(c_k\)</span>) and hence
+one element in the list returned from <tt class="docutils literal"><span class="pre">partition</span></tt>.</p>
+<p>Treatment of the special case that <tt class="docutils literal"><span class="pre">key</span></tt> is not yet registered as a list
+in the dictionary can be avoided by utilizing a dictionary with
+default values (here empty lists):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">partition</span><span class="p">(</span><span class="n">mapped_values</span><span class="p">):</span>
+    <span class="n">partitioned_data</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="p">[])</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">mapped_values</span><span class="p">:</span>
+        <span class="n">partitioned_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">partitioned_data</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The reducer is supposed to have the signature <tt class="docutils literal"><span class="pre">reducer(key,</span> <span class="pre">values)</span></tt>,
+where <tt class="docutils literal"><span class="pre">(key,</span> <span class="pre">values)</span></tt> is an element in the list produced by the partition
+step. In our case, there is only one key and <tt class="docutils literal"><span class="pre">reducer</span></tt> is called only
+once, but we code it as there can be different keys (chunk sizes):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">reducer</span><span class="p">(</span><span class="n">c_k</span><span class="p">,</span> <span class="n">I_values</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">c_k</span><span class="o">*</span><span class="nb">sum</span><span class="p">(</span><span class="n">I_values</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To produce the final result, all the returned values <tt class="docutils literal"><span class="pre">c_k*sum(I_values)</span></tt>
+must be summed and divided by the total number of samples (<tt class="docutils literal"><span class="pre">n</span></tt>).</p>
+<p>The reduce function to be used in the MapReduce framework is quite
+different from the classical <tt class="docutils literal"><span class="pre">reduce</span></tt> function in Python. Our new
+<tt class="docutils literal"><span class="pre">reduce</span></tt> takes a reducer and a sequence as input, but the reducer only
+receives elements from this sequence and no result from the previous
+<tt class="docutils literal"><span class="pre">reducer</span></tt> operation. More precisely, we can define the new <tt class="docutils literal"><span class="pre">reduce</span></tt> as
+follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nb">reduce</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">reducer</span><span class="p">,</span> <span class="n">sequence</span><span class="p">:</span> \
+         <span class="p">[</span><span class="n">reducer</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The result in our case of calling <tt class="docutils literal"><span class="pre">reduce(reducer,</span> <span class="pre">partitioned_data)</span></tt>
+is a list <tt class="docutils literal"><span class="pre">reduced_values</span></tt> of <span class="math">\(c_k\sum_j I_j\)</span> values, where
+the <span class="math">\(I_j\)</span> in each sum are integral approximations using the same number (<span class="math">\(c_k\)</span>)
+of samples. The final integral is then computed by</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">reduced_values</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span><span class="n">reducer</span><span class="p">,</span> <span class="n">partitioned_data</span><span class="p">)</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">reduced_values</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+</pre></div>
+</div>
+<p>The complete parallel Monte Carlo function using the MapReduce framework
+takes the form</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">parallel_MonteCarlo</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">chunk_size</span> <span class="o">=</span> <span class="n">c_k</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">N</span><span class="o">*</span><span class="n">c_k</span>   <span class="c"># adjust n to fit equal-sized chunks</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="n">c_k</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+    <span class="n">mapped_values</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">mapper</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">partitioned_data</span> <span class="o">=</span> <span class="n">partition</span><span class="p">(</span><span class="n">mapped_values</span><span class="p">)</span>
+    <span class="nb">reduce</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">reducer</span><span class="p">,</span> <span class="n">sequence</span><span class="p">:</span> \
+             <span class="p">[</span><span class="n">reducer</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">]</span>
+    <span class="n">reduced_values</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span><span class="n">reducer</span><span class="p">,</span> <span class="n">partitioned_data</span><span class="p">)</span>
+    <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">reduced_values</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+    <span class="k">return</span> <span class="n">I</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="monte-carlo-integration-with-a-mapreduce-class">
+<h2>Monte Carlo Integration with a MapReduce Class<a class="headerlink" href="#monte-carlo-integration-with-a-mapreduce-class" title="Permalink to this headline">¶</a></h2>
+<p>Rather than calling the traditional Python <tt class="docutils literal"><span class="pre">map</span></tt> function
+and making our own <tt class="docutils literal"><span class="pre">partition</span></tt> and <tt class="docutils literal"><span class="pre">reduce</span></tt> functions, we can
+use a simple class framework that has the appropriate map, partition,
+and reduce steps, and that also supports true parallel computing.</p>
+<p>The <tt class="docutils literal"><span class="pre">MapReduce</span></tt> module contains the class <tt class="docutils literal"><span class="pre">SimpleMapReduce</span></tt>, which is
+used as follows:</p>
+<div class="highlight-python"><pre>       from MapReduce import SimpleMapReduce
+       map_reduce = SimpleMapReduce(mapper, reducer)
+       reduced_values = map_reduce(data)
+
+
+
+
+
+
+* MC with map making integral approx based on chunk, reduce combines integral approx
+
+* diffusion equation and DD, in 1D
+
+* parallel
+
+* pyina.ez_map, pathos.mp_map/pp_map
+
+* chunks: list of lists</pre>
+</div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="mean-and-variance-computations">
+<span id="mapreduce-ex-meanvar"></span><h2>Mean and Variance Computations<a class="headerlink" href="#mean-and-variance-computations" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we have some data in a one-dimensional array <tt class="docutils literal"><span class="pre">data</span></tt> with
+numbers and that we want to calculate the mean and variance of the data.
+This is easily done with
+However, we want to independently run <tt class="docutils literal"><span class="pre">numpy.mean</span></tt> and <tt class="docutils literal"><span class="pre">numpy.var</span></tt> on a set of
+<span class="math">\(N\)</span> chunks of <tt class="docutils literal"><span class="pre">data</span></tt> via the map-reduce concept. Applying a mapper
+function on chunk number <span class="math">\(k\)</span> results in a tuple <span class="math">\((c_k, m_k, v_k)\)</span>, where
+<span class="math">\(c_k\)</span> is the chunk size, <span class="math">\(m_k\)</span> is the mean of this chunk of data, and <span class="math">\(v_k\)</span>
+is the variance. The reducer function must combine two means and two
+variances to yield a new mean and variance. Relevant formulas are</p>
+<p>Make a program that calculates the mean and variance using <span class="math">\(N\)</span> chunks
+in a map-reduce implementation.
+Check that the result compare well to applying <tt class="docutils literal"><span class="pre">numpy.mean</span></tt> and <tt class="docutils literal"><span class="pre">numpy.var</span></tt>
+on the whole array <tt class="docutils literal"><span class="pre">data</span></tt>.
+<em>Filename</em>: <tt class="docutils literal"><span class="pre">meanvar_mr.py</span></tt></p>
+<div class="highlight-python"><pre>mean = numpy.mean(data)
+var  = numpy.var(data</pre>
+</div>
+<div class="math">
+\[\begin{split}m_i &amp;= \frac{c_jm_j + c_km_k}{c_j + c_k},\\
+v_i &amp;= \frac{c_jv_j + c_kv_k}{c_j+c_k} + c_jc_k\left(\frac{m_j - m_k}{c_j+c_k}\right)^2\end{split}\]</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Application of Map-Reduce in Scientific Computing</a></li>
+<li><a class="reference internal" href="#numerical-integration">Numerical Integration</a><ul>
+<li><a class="reference internal" href="#plain-python-implementation">Plain Python Implementation</a></li>
+<li><a class="reference internal" href="#vectorized-python-implementation">Vectorized Python Implementation</a></li>
+<li><a class="reference internal" href="#classical-map-reduce">Classical Map-Reduce</a></li>
+<li><a class="reference internal" href="#parallelism">Parallelism</a></li>
+<li><a class="reference internal" href="#large-data-sets">Large Data Sets</a></li>
+<li><a class="reference internal" href="#map-with-independent-monte-carlo-integrals">Map with Independent Monte Carlo Integrals</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-mapreduce-framework">The MapReduce Framework</a><ul>
+<li><a class="reference internal" href="#monte-carlo-integration-with-mapreduce">Monte Carlo Integration with MapReduce</a></li>
+<li><a class="reference internal" href="#monte-carlo-integration-with-a-mapreduce-class">Monte Carlo Integration with a MapReduce Class</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exercises">Exercises</a><ul>
+<li><a class="reference internal" href="#mean-and-variance-computations">Mean and Variance Computations</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Application of Map-Reduce in Scientific Computing</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/MapReduce.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Application of Map-Reduce in Scientific Computing"
+             >previous</a> |</li>
+        <li><a href="index.html">Application of Map-Reduce in Scientific Computing 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Hans Petter Langtangen and Mohammed Sourouri.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>
