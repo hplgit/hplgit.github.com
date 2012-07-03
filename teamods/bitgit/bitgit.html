@@ -8,6 +8,19 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
 </head>
 
 <body bgcolor="white">
@@ -22,7 +35,7 @@ Automatically generated HTML file from Doconce source
 <center>[2] <b>Deptartment of Informatics, University of Oslo</b></center>
 
 
-<center><h3>May 2, 2012</h3></center>
+<center><h3>Jul 3, 2012</h3></center>
 <P>
 <a name="bitgit:top"></A>
 
@@ -52,12 +65,14 @@ started with Dropbox, and it allows you to share files among
 laptops and mobile units.
 
 <P>
-When several people may edit files simultaneously, it can be
-difficult detect who did what when, roll back to previous versions,
-and to manually merge the edits when these are incompatible. Then ones needs
-more sophisticated tools than Dropbox:
-project hosting services with true version control systems.
-This is what we aim at getting you started with here.
+When several people may edit files simultaneously, it can be difficult
+detect who did what when, roll back to previous versions, and to
+manually merge the edits when these are incompatible. Then one needs
+more sophisticated tools than Dropbox: project hosting services with
+true version control systems.  The following text aims at providing
+you with the minimum information to started with such
+systems. Numerous other tutorials contain more comprehensive material
+and in-depth explanations of the concepts and tools.
 
 <P>
 The idea with project hosting services is that you have the files
@@ -82,15 +97,16 @@ Four popular project hosting services are
   <li> Launchpad at <tt>launchpad.net</tt>
 </ul>
 
-All these services are very similar. Here we describe how you get
+All these services are very similar. Below we describe how you get
 started with Bitbucket, GitHub, and Googlecode. Launchpad works very
 similarly to the latter three. All the project hosting services have
-good introductions available at their web sites, but the recipes below
-are much shorter and aim at getting you started even quicker by
+excellent introductions available at their web sites, but the recipes
+below are much shorter and aim at getting you started even quicker by
 concentrating on the most important need-to-know commands.
+The tutorials at the cites contain more detailed information.
 
 <P>
-The mention services host all your files in a specific project in what
+The mentioned services host all your files in a specific project in what
 is known as a <em>repository</em>, or <em>repo</em> for short.  When a copy of the
 files are wanted on a certain computer, one clones the repository on
 that computer.  This creates a local copy of the files. Now files can
@@ -100,7 +116,9 @@ different computers synchronize their files frequently with the
 repository, most modern version control systems will be able to merge
 changes in files that have been edited simultaneously on different
 computers. This is perhaps one of the most useful features of project
-hosting services.
+hosting services. However, the merge functionality clearly works best
+for pure text files and less well for binary files, such as PDF files,
+MS Word or Excel documents, and OpenOffice documents.
 
 <P>
 <!-- Next we describe how to get started with Bitbucket and GitHub.  If you -->
@@ -146,14 +164,17 @@ The plugin is easy to install (<tt>easy-install hg-git</tt> or
 Git to work with Subversion and Mercurial repositories.
 
 <P>
-The author's experience from teaching contexts points to the combination
-of Bitbucket and Mercurial is the simplest to get started with,
-foremost because it appears that Mercurial is easier to learn than Git
-beyond the very basic commands.
-The
-combination of GitHub and Git seems to have the strongest momentum and
-popularity in the software development community at the time of this
-writing.
+<!-- The author's experience from teaching contexts points to the combination -->
+<!-- of Bitbucket and Mercurial is the simplest to get started with, -->
+<!-- foremost because it appears that Mercurial is easier to learn than Git -->
+<!-- beyond the very basic commands. -->
+
+<P>
+The combination of GitHub and Git seems to have the strongest momentum
+and popularity in the software development community at present.
+However, my experience is that the learning curve of Git
+is steeper than that of Mercurial so the choice of Mercurial with
+Bitbucket or Googlecode will for many be the most convenient start.
 
 <P>
 <h3>Installing Mercurial</h3>
@@ -162,14 +183,14 @@ writing.
 <P>
 The <a href="http://mercurial.selenic.com/">Mercurial website</a> has information
 on downloading Mercurial on different platforms.
-On Ubuntu and Debian-based Linx systems, you just perform
+On Ubuntu and Debian-based Linux systems, you just perform
 <blockquote>    <!-- begin verbatim block   sys-->
 <pre>
 sudo apt-get install mercurial
 </pre>
 </blockquote>   <! -- end verbatim block -->
-You can alternatively click in the Synaptic Package
-Manager and choose the Mercurial package in the graphical interface.
+You can alternatively click in the Ubuntu Software Center application
+and choose the Mercurial package in the graphical interface.
 
 <P>
 Mercurial is pure Python code so it is trivial on any system with Python
@@ -202,7 +223,7 @@ ignore=~/.hgignore
 </blockquote>   <! -- end verbatim block -->
 The <tt>.hgignore</tt> file lists the types of files that will be skipped
 when bringing new directories under Mercurial version control.
-Typically this is temporary files sich as object files (<tt>*.o</tt>),
+Typically this is temporary files such as object files (<tt>*.o</tt>),
 shared libraries (<tt>*.so</tt>), and backup files (<tt>*.bak</tt> and <tt>*~</tt>).
 The file types are usually specified using Unix Shell Wildcard notation,
 also referred to as <tt>glob</tt> syntax, as in <tt>*.o</tt> (where <tt>*</tt> means any
@@ -297,13 +318,26 @@ tmp*
 
 <P>
 To start using Bitbucket, go to <tt>bitbucket.org</tt> and create an account.
-My favorite communication channel with Bitbucket repositories is
-through SSH and HTTPS as used in their examples.  To use SSH, you must
-upload your SSH key, typically the contents of the file <tt>id_rsa.pub</tt>
-or <tt>id_dsa.pub</tt> in the <tt>.ssh</tt> subdirectory of your home directory. Go
-to the page for your account and upload one of these files. If you do
-not have any of them, click on the link <em>Using SSH</em>, which explains
-what you need to know.
+The communication channel with Bitbucket repositories is either
+through SSH or HTTPS.  To use SSH, you must upload your SSH key,
+typically the contents of the file <tt>id_rsa.pub</tt> or <tt>id_dsa.pub</tt> in the
+<tt>.ssh</tt> subdirectory of your home directory. Go to the page for your
+account, choose <em>SSH keys</em>, and upload one of these files.
+The essence of the SSH keys is that they allow you to communicate with
+Bitbucket without using a password, which is very convenient.
+
+<P>
+There are links to extensive help pages if you do not have such keys
+or if you are unfamiliar with SSH. Follow these steps on Mac or Linux
+machines to generate keys: 1) check that you have <tt>ssh</tt> installed; 2)
+create a <tt>.ssh</tt> directory in your home directory; and 3) run
+<tt>ssh-keygen</tt> in the <tt>.ssh</tt> directory (you are prompted for a
+passphrase - just write something). On Windows one applies the PuTTY
+and the TortoiseHG programs to generate and register keys, see the
+help pages on Bitbucket. Once the keys are generated, you can continue
+using them on any current and future computer.
+
+<P>
 
 <P>
 <h3>Create a New Project</h3>
@@ -320,7 +354,7 @@ You can now
    private repos for a user is limited unless you pay),
  <li> click whether you want issue tracking for reporting errors,
    suggesting improvements, etc.,
- <li> click whether you want a wiki page associated witht the project.
+ <li> click whether you want a wiki page associated with the project.
 </ul>
 
 You may also want to have the <a href="http://confluence.atlassian.com/display/BITBUCKET/Bitbucket+101">Bitbucket 101 guide</a>
@@ -338,11 +372,17 @@ hg clone ssh://hg@bitbucket.org/username/my-project
 git clone ssh://hg@bitbucket.org/username/my-project.git
 </pre>
 </blockquote>   <! -- end verbatim block -->
-Only the <tt>hg</tt> or the <tt>git</tt> command is display since your project was
-initialized with either Merucial or Git as version control system (this
-cannot be changed later).
-In the above command you must replace <tt>username</tt> by your own user name
-at Bitbucket.
+Only the <tt>hg</tt> or the <tt>git</tt> clone command is displayed on Bitbucket since
+your project was initialized with either Merucial or Git as version
+control system (this cannot be changed later).  In the above command
+you must replace <tt>username</tt> with your own user name at Bitbucket.
+
+<P>
+The first time you do the clone command you may be prompted by cryptic
+Unix output ending with "Are you sure you want to continue connecting
+(yes/no)?".  Just answer yes.
+
+<P>
 
 <P>
 The next step is to collect files and directories that should make up
@@ -362,7 +402,7 @@ git add .
 
 <P>
 Thereafter, the changes to the repository (adding of files) must
-be registered, or <em>commited</em> if we use standard version control system
+be registered, or <em>committed</em> if we use standard version control system
 terminology. The command reads
 <blockquote>    <!-- begin verbatim block   sys-->
 <pre>
@@ -374,7 +414,7 @@ git commit -m 'Initial import of files.'
 The <tt>-m</tt> option is a required description of the changes that have taken
 place. This description does not matter much for this initial import
 of files into the repository, but is of importance for future commit
-commands such that you can easily track the history of your project files.
+commands so that you can easily track the history of your project files.
 
 <P>
 The final step is to push the local changes to the master repo at
@@ -393,7 +433,7 @@ it sends file information to the <tt>bitbucket.org</tt> site.
 <P>
 Further work with the files must always follow the pull, edit, commit, and
 push steps explained in the section <a href="#bitgit:hg">Using Mercurial</a> for Mercurial and
-Section {bitgit:git} for Git.
+the section <a href="#bitgit:git">Using Git</a> for Git.
 
 <P>
 <h2>Googlecode <a name="bitgit:googlecode"></A></h2>
@@ -403,7 +443,7 @@ Section {bitgit:git} for Git.
 
 <P>
 To use Googlecode you need a general account on Google, which allows
-you to use Gmail, Googledocs, and other products.
+you to use Gmail, Google Docs, and other products.
 
 <P>
 
@@ -414,7 +454,7 @@ Go to <a href="http://code.google.com/hosting"><tt>http://code.google.com/hostin
 <em>Create a new project</em>. Fill out <em>all</em> the fields. For now
 the project name is <tt>my-project</tt>.
 You have
-to choose between Git, Mercurial, and Subversion as version control
+to choose between Git, Mercurial, or Subversion as version control
 system for your project, and this choice cannot be changed.
 Git and Mercurial are preferred over Subversion nowadays.
 If you choose Git, you must create a file <tt>.netrc</tt> in your
@@ -444,17 +484,17 @@ Perform
 <blockquote>    <!-- begin verbatim block   sys-->
 <pre>
 git add .
-git commit am 'First import of files.'
+git commit -am 'First import of files.'
 git push origin master
 </pre>
 </blockquote>   <! -- end verbatim block -->
 Click on <em>Source</em> and
-<em>Browse</em> on the project's web page, and realize that the added
+<em>Browse</em> on the project's web page, and observe that the added
 files are visible on the project page.
 
 <P>
 If you use Mercurial as version control system on Googlecode and
-you want to avoid giving your password when you push changes to
+you want to avoid typing your password when you push changes to
 the repository, you should add the following section to your
 <tt>.hgrc</tt> file:
 <blockquote>    <!-- begin verbatim block   dat-->
@@ -551,83 +591,51 @@ for many formats) and that the wiki pages are frequently updated.
 <P>
 
 <P>
-Go to <tt>github.com</tt> and create an account. Then
-go to your account settings, choose <em>SSH Public Keys</em>, and provide
-your SSH key. Everyone who is supposed to use your repository must
-provide their SSH key.  There is a help that explains what this is all
-about. Often, it is just a matter of pasting the contents of
-<tt>id_rsa.pub</tt> or <tt>id_dsa.pub</tt> in the <tt>.ssh</tt> subdirectory of your home
-directory into the <em>Key</em> box in the web page. Make sure to cut and
-paste the text from, e.g., <tt>id_dsa.pub</tt> without any extra whitespaces
-or other text.
+Go to <tt>github.com</tt> and create an account. Then go to your account
+settings, choose <em>SSH Keys</em>, and provide your SSH key. Everyone who is
+supposed to use your repository must provide their SSH key.  There is
+a help that explains what this is all about. Often, it is just a
+matter of pasting the contents of <tt>id_rsa.pub</tt> or <tt>id_dsa.pub</tt> in the
+<tt>.ssh</tt> subdirectory of your home directory into the <em>Key</em> box in the
+web page. Make sure to cut and paste the text from, e.g., <tt>id_dsa.pub</tt>
+without any extra whitespaces or other text.
 
 <P>
-A next step is to provide your so called API Token. Go to your account
-settings and choose <em>Account Admin</em>, copy the API Token and place
-it in the <tt>~/.gitconfig</tt> file like this
-<blockquote>    <!-- begin verbatim block   dat-->
-<pre>
-[github]
-token = 4b17350d7ea9d9xse4c98749a89fc15dfc4
-</pre>
-</blockquote>   <! -- end verbatim block -->
 
 <P>
 <h3>Create a New Project</h3>
 <P>
-Click on <em>New Repository</em> on the main page and fill out a project
-name, here <em>My Project</em>.
-Then create your project directory, here named <tt>My-Project</tt>,
-on your computer and initialize the project:
-<blockquote>    <!-- begin verbatim block   sys-->
-<pre>
-mkdir My-Project
-cd My-Project
-git init
-touch README
-git add README
-git commit -m 'First import of files.'
-</pre>
-</blockquote>   <! -- end verbatim block -->
-These commands initialize a local repository.
-The next step is to copy all files that you want to have
-has part of the project and
-add them to Git by the command
-<blockquote>    <!-- begin verbatim block   sys-->
-<pre>
-git add .
-git commit -m 'Adding more files.'
-</pre>
-</blockquote>   <! -- end verbatim block -->
-Create a remote name (usually <tt>origin</tt>)
-for your repository at GitHub and push your local files to
-the global repository:
-<blockquote>    <!-- begin verbatim block   sys-->
-<pre>
-git remote add origin git@github.com:username/My-Project.git
-git push -u origin master
-</pre>
-</blockquote>   <! -- end verbatim block -->
-Make sure you replace <tt>username</tt> by your real username at GitHub.
-Also note that when your project was registered with the name
-"My Project", <tt>My-Project.git</tt> is the name you should use in the
-<tt>git remote</tt> command (spaces in the project name on GitHub are replaced
-by dashes in the similar directory name).
+Click on <em>New repository</em> on the main page and fill out a project
+name, here <em>My Project</em>, click the check button <em>Initialize this
+repository with a README</em>, and click on <em>Create repository</em>.
 
 <P>
-Find your new project on your personal <tt>github.com</tt> pages and check
-that the project files you added are viewable on the web pages.
+The next step is to clone the project on your personal computer. Click
+on the <em>Git Read-Only</em> button to see the correct address of the project,
+paste this address into a terminal window, after <tt>git clone</tt>:
+<blockquote>    <!-- begin verbatim block   sys-->
+<pre>
+git clone git://github.com/username/My-Project.git
+</pre>
+</blockquote>   <! -- end verbatim block -->
+Make sure you substitute <tt>username</tt> by your own user name on GitHub.
 
 <P>
+The result of the <tt>git clone</tt> command is a new directory <tt>My-Project</tt>.
+It contains the file <tt>.git</tt>, which shows that it is a Git repository.
+It also contains a default <tt>README.md</tt> file with the project name and
+description. The extension <tt>.md</tt> signifies a file written in the
+<a href="http://daringfireball.net/projects/markdown/">Markdown</a> format.
+You may use the <a href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> format as an alternative
+(<tt>README.rst</tt>), or simply write a plain text file (<tt>README</tt>).
 
 <P>
 To give others permissions to push their edits of files to the
-repository, you go to the project's page on <tt>github.com</tt>,
-click on <em>Admin</em>, click on <em>Collaborators</em> on the left, and
-fill in the name of a collaborator (her or his user name on GitHub).
-You can click on <em>Service Hooks</em> and then <em>Email</em> in the list
-to make each <tt>git commit</tt> command send an email to yourself or
-others.
+repository, you click on <em>Admin</em>, centered at the top of the project's
+page, then click on <em>Collaborators</em> on the left, and fill in the name
+of a collaborator (her or his user name on GitHub).  You can click on
+<em>Service Hooks</em> and then <em>Email</em> in the list to make each <tt>git commit</tt>
+command send an email to yourself or others.
 
 <P>
 The daily file operations are explained in Section {bitgit:git}.
@@ -653,7 +661,7 @@ The wiki pages can be written and maintained through the web browser
 interface, but it is usually more convenient to clone them on
 your computer as this makes it easy to add figures and other documents
 you may want to link to. It also makes it straightforward to edit
-the wiki text in your favorit text editor. The wiki pages are
+the wiki text in your favorite text editor. The wiki pages are
 stored in a separate repo: click on <em>Git Access</em> and then on
 <em>Git Read-Only</em> to see the
 Git address for a standard <tt>git clone</tt> command, typically
@@ -728,9 +736,9 @@ user name and <tt>My-Project</tt> is the project name.
 <P>
 The web pages and project files are now in two different branches.
 To see the branches, type <tt>git branch</tt> and the one you are in will
-be marked with a star in the output. Swithing to the master branch
+be marked with a star in the output. Switching to the master branch
 is done by <tt>git checkout master</tt>. Similarly, <tt>git checkout gh-pages</tt>
-swithces to the gh-pages branch.
+switches to the gh-pages branch.
 
 <P>
 When branches diverge you can merge them by
@@ -746,14 +754,20 @@ in the merge, there will be markers in problematic files. Run
 of what has happened.
 
 <P>
-I recommend to have the master and gh-pages synchronized, at least in
-projects where you need the source code files for generating API
-documentation in the gh-pages branch. Then you will start with pulling
-everything from the master branch to the gh-pages branch.  Make sure
-the master branch is updated with anything that was generated for the
-gh-pages branch. Finally you switch to the master branch and merge
-with gh-pages so you get the autogenerated <tt>index.html</tt> file in the
-root directory:
+My preference is to have the master and gh-pages synchronized, at least in
+projects where I need the source code files for generating API
+documentation in the gh-pages branch. Sometimes I also update files
+in the gh-pages branch without remembering to switch to the master branch.
+Merging the branches is then an easy way out of this potential trouble.
+
+<P>
+Start with pulling everything from the master branch to the gh-pages
+branch.  Make sure the master branch is updated with anything that was
+generated for the gh-pages branch. Finally you switch to the master
+branch and merge with gh-pages so you get the autogenerated
+<tt>index.html</tt> file in the root directory:
+
+<P>
 <blockquote>    <!-- begin verbatim block   sys-->
 <pre>
 git merge master
@@ -766,6 +780,8 @@ You can now add the documentation to the project files and
 keep them in the master branch.
 Before publishing documents online,
 make sure to update the gh-pages branch by
+
+<P>
 <blockquote>    <!-- begin verbatim block   sys-->
 <pre>
 git commit -am 'Ensure commit of everything in master branch'
@@ -794,6 +810,10 @@ installing special Sphinx extensions (<a href="https://github.com/michaeljones/s
 <!-- Sphinx extension for github: https://github.com/michaeljones/sphinx-to-github -->
 
 <P>
+Linking to source code files or other files in the project is easy:
+just find the file in the web interface, choose which version of
+the file you want to link to (nicely HTML formatted version or the raw
+file), and then cut and paste the URL into the link.
 
 <P>
 <h3>User Web Pages</h3>
@@ -802,7 +822,7 @@ installing special Sphinx extensions (<a href="https://github.com/michaeljones/s
 <P>
 GitHub also allows you to create user pages and organization pages not
 tied to any specific project.
-Your personal cite has address
+Your personal site has address
 <tt>http://username.github.com</tt>.
 Go to your home page on <tt>github.com</tt> and click <em>New repository</em>,
 and give it the project name <tt>username.github.com</tt>.
@@ -815,7 +835,7 @@ git init
 # make an index.html file with some test text
 git add index.html
 git commit -m 'First commit'
-git remote add origin git@github.com:username/username.githun.com.git
+git remote add origin git@github.com:username/username.github.com.git
 git push -u origin master
 </pre>
 </blockquote>   <! -- end verbatim block -->
@@ -824,6 +844,10 @@ rendered. You can now add various contents as in any ordinary
 Git repository.
 If you want to use Sphinx generated HTML pages, recall to add an empty file
 <tt>.nojekyll</tt>.
+
+<P>
+
+<P>
 
 <P>
 <!-- Use gh-pages in a subfolder of the master branch: https://gist.github.com/825950 -->
@@ -922,6 +946,9 @@ hg commit -m 'Description of changes.'
 hg push
 </pre>
 </blockquote>   <! -- end verbatim block -->
+Note that you cannot redo the description (i.e., be careful with
+recalling and executing old commit commands without updating the
+description).
 
 <P>
 The command
@@ -1058,7 +1085,7 @@ at the same time. How should the edits then be combined?  Often the
 different users automatically. If not, you have to run an explicit <tt>hg
 merge</tt> command.  This command tries to use some merge
 program on your computer system to automatically merge files. If this
-failes, <tt>hg merge</tt> invokes some graphical tool to help you resolve the
+fails, <tt>hg merge</tt> invokes some graphical tool to help you resolve the
 conflict between files.  Example on popular merge programs for this
 purpose are <tt>meld</tt>, <tt>xxdiff</tt>, <tt>kdiff3</tt>, and <tt>diffuse</tt>.  You can
 specify the merge program, say <tt>xxdiff</tt>, by <tt>hg merge --tool xxdiff</tt>.
@@ -1201,7 +1228,7 @@ Try to run this <a href="html/_static-bitgithg_merge.sh">file</a> named
 To resolve the resulting merge conflict you need to go to the <tt>tmp2</tt>
 directory, run <tt>hg merge --tool meld</tt> and use the <tt>meld</tt> tool to
 select which text snippets that should make up the final, merged
-version. Save and quit <tt>meld</tt> and peform <tt>hg commit -m merge</tt>.  You
+version. Save and quit <tt>meld</tt> and perform <tt>hg commit -m merge</tt>.  You
 can now do <tt>hg push</tt> successfully to update the global repository.
 
 <P>
@@ -1267,6 +1294,10 @@ it is time to commit your changes (note the <tt>-am</tt> option):
 git commit -am 'Description of changes.'
 </pre>
 </blockquote>   <! -- end verbatim block -->
+The description is tagged to this commit and cannot be changed so think
+a bit before executing this command.
+
+<P>
 You may perform many commits, to keep track of small changes, before
 you push your changes to the global repository:
 <blockquote>    <!-- begin verbatim block   sys-->
