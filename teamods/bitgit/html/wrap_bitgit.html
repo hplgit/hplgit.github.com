@@ -56,7 +56,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jul 3, 2012</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jul 9, 2012</td>
 </tr>
 </tbody>
 </table>
@@ -279,20 +279,22 @@ help pages on Bitbucket. Once the keys are generated, you can continue
 using them on any current and future computer.</p>
 <div class="section" id="create-a-new-project">
 <h2>Create a New Project<a class="headerlink" href="#create-a-new-project" title="Permalink to this headline">¶</a></h2>
-<p>Click at <em>Repositories</em> and at <em>create repository</em>.
+<p>Click at <em>Repositories</em> and at <em>Create repository</em>.
 You can now</p>
 <blockquote>
 <div><ul class="simple">
 <li>fill in the name of the project, here <tt class="docutils literal"><span class="pre">my-project</span></tt>,</li>
-<li>choose between the Git or Mercurial version control system,</li>
 <li>decide whether the project is private or public (the number of
 private repos for a user is limited unless you pay),</li>
+<li>choose between the Git or Mercurial version control system,</li>
 <li>click whether you want issue tracking for reporting errors,
 suggesting improvements, etc.,</li>
-<li>click whether you want a wiki page associated with the project.</li>
+<li>click whether you want a wiki page associated with the project,</li>
+<li>fill in a brief description,</li>
+<li>click on <em>Create repository</em>.</li>
 </ul>
 </div></blockquote>
-<p>You may also want to have the <a class="reference external" href="http://confluence.atlassian.com/display/BITBUCKET/Bitbucket+101">Bitbucket 101 guide</a>
+<p>While doing this you may also want to have the <a class="reference external" href="http://confluence.atlassian.com/display/BITBUCKET/Bitbucket+101">Bitbucket 101 guide</a>
 available (open the link in another tab or window in your browser).</p>
 <p>It is now time to copy the project to your laptop, or <em>clone</em> it
 in Git and Mercurial terminology. Go to the project page
@@ -300,7 +302,7 @@ and find the <em>Clone this repository</em> line. Click on <em>SSH</em>,
 copy the <em>clone</em> line and run this command in a terminal:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">hg clone ssh://hg@bitbucket.org/username/my-project</span>
 <span class="gp">#</span> or
-<span class="go">git clone ssh://hg@bitbucket.org/username/my-project.git</span>
+<span class="go">git clone git@bitbucket.org:usernamet/my-project.git</span>
 </pre></div>
 </div>
 <p>Only the <tt class="docutils literal"><span class="pre">hg</span></tt> or the <tt class="docutils literal"><span class="pre">git</span></tt> clone command is displayed on Bitbucket since
@@ -323,9 +325,9 @@ Issue the following command in the <tt class="docutils literal"><span class="pre
 <p>Thereafter, the changes to the repository (adding of files) must
 be registered, or <em>committed</em> if we use standard version control system
 terminology. The command reads</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">hg commit  -m &#39;Initial import of files.&#39;</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">hg commit   -m &#39;Initial import of files.&#39;</span>
 <span class="gp">#</span> or
-<span class="go">git commit -m &#39;Initial import of files.&#39;</span>
+<span class="go">git commit -am &#39;Initial import of files.&#39;</span>
 </pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">-m</span></tt> option is a required description of the changes that have taken
@@ -345,6 +347,21 @@ it sends file information to the <tt class="docutils literal"><span class="pre">
 <p>Further work with the files must always follow the pull, edit, commit, and
 push steps explained in the section <a class="reference internal" href="#bitgit-hg"><em>Using Mercurial</em></a> for Mercurial and
 the section <a class="reference internal" href="#bitgit-git"><em>Using Git</em></a> for Git.</p>
+</div>
+<div class="section" id="project-web-pages">
+<h2>Project Web Pages<a class="headerlink" href="#project-web-pages" title="Permalink to this headline">¶</a></h2>
+<p>The site <a class="reference external" href="http://pages.bitbucket.org">http://pages.bitbucket.org</a> can host web pages associated
+with a Bitbucket account. Say your account/user name is <tt class="docutils literal"><span class="pre">username</span></tt>.
+Make a new repository on Bitbucket called <tt class="docutils literal"><span class="pre">username.bitbucket.org</span></tt>.
+Clone it, fill it with a file, and push back, e.g.,</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git clone git@bitbucket.org:username/username.bitbucket.org.git</span>
+<span class="go">cd username.bitbucket.org</span>
+<span class="go">echo &quot;Welcome to my web pages!&quot; &gt; test.html</span>
+<span class="go">git add test.html</span>
+<span class="go">git commit -am &#39;First web page&#39;</span>
+<span class="go">git push origin master</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="googlecode">
@@ -460,7 +477,8 @@ a help that explains what this is all about. Often, it is just a
 matter of pasting the contents of <tt class="docutils literal"><span class="pre">id_rsa.pub</span></tt> or <tt class="docutils literal"><span class="pre">id_dsa.pub</span></tt> in the
 <tt class="docutils literal"><span class="pre">.ssh</span></tt> subdirectory of your home directory into the <em>Key</em> box in the
 web page. Make sure to cut and paste the text from, e.g., <tt class="docutils literal"><span class="pre">id_dsa.pub</span></tt>
-without any extra whitespaces or other text.</p>
+without any extra whitespaces or other text. How to generate these
+files is briefly described in the introduction to Bitbucket above.</p>
 <div class="section" id="id2">
 <h2>Create a New Project<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>Click on <em>New repository</em> on the main page and fill out a project
@@ -529,8 +547,8 @@ generate the wiki in reStructuredText format.</p>
 <p>The address can be stored as <tt class="docutils literal"><span class="pre">url</span></tt> in <tt class="docutils literal"><span class="pre">.git/config</span></tt> so that just a
 <tt class="docutils literal"><span class="pre">git</span> <span class="pre">push</span></tt> works.</p>
 </div>
-<div class="section" id="project-web-pages">
-<h2>Project Web Pages<a class="headerlink" href="#project-web-pages" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>Project Web Pages<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>GitHub can also host a set of web pages for your project where you can
 store various types of documentation. Here is a simple
 recipe for creating a set of project web pages.</p>
@@ -662,6 +680,11 @@ to document the changes.</li>
 Bitbucket account.</li>
 </ul>
 </div></blockquote>
+<p>Many prefer to work in Visual Studio with their program files on Windows.
+This is easy also when you adopt Bitbucket as repo. Just start VisualStudio,
+make a solution and a project, create the desired files, then one can
+just right-click with the mouse on the solution, the project, or the
+file one wants to commit and choose <em>Commit</em>.</p>
 </div>
 <div class="section" id="basic-commands-of-mercurial">
 <h2>Basic Commands of Mercurial<a class="headerlink" href="#basic-commands-of-mercurial" title="Permalink to this headline">¶</a></h2>
@@ -954,10 +977,16 @@ can now do <tt class="docutils literal"><span class="pre">hg</span> <span class=
 </div>
 <div class="section" id="using-git">
 <span id="bitgit-git"></span><h1>Using Git<a class="headerlink" href="#using-git" title="Permalink to this headline">¶</a></h1>
+<p id="index-9">Most Mac and Linux users prefer to work with Git via a commands in a
+terminal window. Windows users prefer a graphical user interface (GUI).
+There are many <a class="reference external" href="http://git-scm.com/downloads/guis">options</a> in
+this respect. There are also GUIs for Mac users.
+Most GUIs are easy to use once the basic concepts of Git and version
+control are understood.</p>
 <div class="section" id="basic-commands-of-git">
-<span id="index-9"></span><h2>Basic Commands of Git<a class="headerlink" href="#basic-commands-of-git" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id4">
-<h3>Cloning<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h2>Basic Commands of Git<a class="headerlink" href="#basic-commands-of-git" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>Cloning<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>You get started with your project on a new machine, or another user
 can get started with the project,
 by running</p>
@@ -969,8 +998,8 @@ by running</p>
 <p>Recall to replace <tt class="docutils literal"><span class="pre">username</span></tt> by your real user name and <tt class="docutils literal"><span class="pre">My-Project</span></tt> by the
 actual project name.</p>
 </div>
-<div class="section" id="id5">
-<h3>The Pull-Change-Push Cycle<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>The Pull-Change-Push Cycle<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>The typical work flow with the &#8220;My Project&#8221; project starts with
 updating the local repository by going to the <tt class="docutils literal"><span class="pre">My-Project</span></tt> directory
 and writing</p>
@@ -1004,8 +1033,8 @@ you push your changes to the global repository:</p>
 <tt class="docutils literal"><span class="pre">A</span></tt> for added, <tt class="docutils literal"><span class="pre">M</span></tt> for modified, <tt class="docutils literal"><span class="pre">R</span></tt> for renamed,
 and <tt class="docutils literal"><span class="pre">??</span></tt> for not being registered in the repo.</p>
 </div>
-<div class="section" id="id6">
-<h3>Viewing the History of Files<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>Viewing the History of Files<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>A nice graphical tool allows you to view all changes, or just
 the latest ones:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">gitk --all</span>
@@ -1043,8 +1072,8 @@ say the text <tt class="docutils literal"><span class="pre">def</span> <span cla
 they occurred and who introduced them. One can also search for regular
 expressions instead of exact text: just replace <tt class="docutils literal"><span class="pre">-S</span></tt> by <tt class="docutils literal"><span class="pre">-G</span></tt>.</p>
 </div>
-<div class="section" id="id7">
-<h3>Retrieving Old Files<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>Retrieving Old Files<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>Occasionally you need to go back to an earlier version of a file,
 say its name is <tt class="docutils literal"><span class="pre">myfile</span></tt>. Start with viewing the history:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git log myfile</span>
@@ -1240,6 +1269,7 @@ Then run <tt class="docutils literal"><span class="pre">git</span> <span class="
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference external" href="http://schacon.github.com/git/everyday.html">Everyday GIT With 20 Commands Or So</a></li>
+<li><a class="reference external" href="http://sixrevisions.com/resources/git-tutorials-beginners/">Git top 10 tutorials</a></li>
 <li><a class="reference external" href="http://book.git-scm.com/">Git Community Book</a></li>
 <li><a class="reference external" href="http://hoth.entp.com/output/git_for_designers.html">Git for Designers</a> (aimed a people with no previous knowledge of version control systems)</li>
 <li><a class="reference external" href="http://www-cs-students.stanford.edu/~blynn/gitmagic/ch02.html">Git Magic: Basic Tricks</a></li>
@@ -1250,6 +1280,7 @@ Then run <tt class="docutils literal"><span class="pre">git</span> <span class="
 <li><a class="reference external" href="http://schacon.github.com/git/user-manual.html">Git User Manual</a></li>
 <li><a class="reference external" href="http://git-scm.com/">Git home page</a></li>
 <li><a class="reference external" href="http://mercurial.selenic.com/wiki/GitConcepts#Command_equivalence_table">Git and Mercurial command equivalence table</a></li>
+<li><a class="reference external" href="http://git-scm.com/downloads/guis">Git/GitHub GUIs on Windows and Mac</a></li>
 </ul>
 </div></blockquote>
 </div>
@@ -1289,6 +1320,7 @@ file</li>
 </li>
 <li><a class="reference internal" href="#bitbucket">Bitbucket</a><ul>
 <li><a class="reference internal" href="#create-a-new-project">Create a New Project</a></li>
+<li><a class="reference internal" href="#project-web-pages">Project Web Pages</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#googlecode">Googlecode</a><ul>
@@ -1299,7 +1331,7 @@ file</li>
 <li><a class="reference internal" href="#github">GitHub</a><ul>
 <li><a class="reference internal" href="#id2">Create a New Project</a></li>
 <li><a class="reference internal" href="#id3">Wiki Pages</a></li>
-<li><a class="reference internal" href="#project-web-pages">Project Web Pages</a></li>
+<li><a class="reference internal" href="#id4">Project Web Pages</a></li>
 <li><a class="reference internal" href="#user-web-pages">User Web Pages</a></li>
 </ul>
 </li>
@@ -1319,10 +1351,10 @@ file</li>
 </li>
 <li><a class="reference internal" href="#using-git">Using Git</a><ul>
 <li><a class="reference internal" href="#basic-commands-of-git">Basic Commands of Git</a><ul>
-<li><a class="reference internal" href="#id4">Cloning</a></li>
-<li><a class="reference internal" href="#id5">The Pull-Change-Push Cycle</a></li>
-<li><a class="reference internal" href="#id6">Viewing the History of Files</a></li>
-<li><a class="reference internal" href="#id7">Retrieving Old Files</a></li>
+<li><a class="reference internal" href="#id5">Cloning</a></li>
+<li><a class="reference internal" href="#id6">The Pull-Change-Push Cycle</a></li>
+<li><a class="reference internal" href="#id7">Viewing the History of Files</a></li>
+<li><a class="reference internal" href="#id8">Retrieving Old Files</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#merging-files-with-git">Merging Files with Git</a></li>

@@ -6,7 +6,7 @@ Quick Intro to Version Control Systems and Project Hosting Services
 
 :Author: Hans Petter Langtangen
 
-:Date: Jul 3, 2012
+:Date: Jul 9, 2012
 
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -301,22 +301,26 @@ using them on any current and future computer.
 Create a New Project
 --------------------
 
-Click at *Repositories* and at *create repository*.
+Click at *Repositories* and at *Create repository*.
 You can now
 
  * fill in the name of the project, here ``my-project``,
 
- * choose between the Git or Mercurial version control system,
-
  * decide whether the project is private or public (the number of
    private repos for a user is limited unless you pay),
+
+ * choose between the Git or Mercurial version control system,
 
  * click whether you want issue tracking for reporting errors,
    suggesting improvements, etc.,
 
- * click whether you want a wiki page associated with the project.
+ * click whether you want a wiki page associated with the project,
 
-You may also want to have the `Bitbucket 101 guide <http://confluence.atlassian.com/display/BITBUCKET/Bitbucket+101>`_
+ * fill in a brief description,
+
+ * click on *Create repository*.
+
+While doing this you may also want to have the `Bitbucket 101 guide <http://confluence.atlassian.com/display/BITBUCKET/Bitbucket+101>`_
 available (open the link in another tab or window in your browser).
 
 It is now time to copy the project to your laptop, or *clone* it
@@ -328,7 +332,7 @@ copy the *clone* line and run this command in a terminal:
 
         hg clone ssh://hg@bitbucket.org/username/my-project
         # or
-        git clone ssh://hg@bitbucket.org/username/my-project.git
+        git clone git@bitbucket.org:usernamet/my-project.git
 
 Only the ``hg`` or the ``git`` clone command is displayed on Bitbucket since
 your project was initialized with either Merucial or Git as version
@@ -338,7 +342,6 @@ you must replace ``username`` with your own user name at Bitbucket.
 The first time you do the clone command you may be prompted by cryptic
 Unix output ending with "Are you sure you want to continue connecting
 (yes/no)?".  Just answer yes.
-
 
 The next step is to collect files and directories that should make up
 the project and put them in the ``my-project`` directory.
@@ -360,9 +363,9 @@ terminology. The command reads
 
 .. code-block:: console
 
-        hg commit  -m 'Initial import of files.'
+        hg commit   -m 'Initial import of files.'
         # or
-        git commit -m 'Initial import of files.'
+        git commit -am 'Initial import of files.'
 
 The ``-m`` option is a required description of the changes that have taken
 place. This description does not matter much for this initial import
@@ -385,6 +388,26 @@ it sends file information to the ``bitbucket.org`` site.
 Further work with the files must always follow the pull, edit, commit, and
 push steps explained in the section :ref:`bitgit:hg` for Mercurial and
 the section :ref:`bitgit:git` for Git.
+
+Project Web Pages
+-----------------
+
+The site `<http://pages.bitbucket.org>`_ can host web pages associated
+with a Bitbucket account. Say your account/user name is ``username``.
+Make a new repository on Bitbucket called ``username.bitbucket.org``.
+Clone it, fill it with a file, and push back, e.g.,
+
+.. code-block:: console
+
+        git clone git@bitbucket.org:username/username.bitbucket.org.git
+        cd username.bitbucket.org
+        echo "Welcome to my web pages!" > test.html
+        git add test.html
+        git commit -am 'First web page'
+        git push origin master
+
+
+
 
 .. _bitgit:googlecode:
 
@@ -545,7 +568,8 @@ a help that explains what this is all about. Often, it is just a
 matter of pasting the contents of ``id_rsa.pub`` or ``id_dsa.pub`` in the
 ``.ssh`` subdirectory of your home directory into the *Key* box in the
 web page. Make sure to cut and paste the text from, e.g., ``id_dsa.pub``
-without any extra whitespaces or other text.
+without any extra whitespaces or other text. How to generate these
+files is briefly described in the introduction to Bitbucket above.
 
 
 Create a New Project
@@ -826,6 +850,12 @@ following way.
    ``push`` command), right-click in the Explorer window, choose
    *TortoiseHG - Synchronize*. You need to provide the password for the
    Bitbucket account.
+
+Many prefer to work in Visual Studio with their program files on Windows.
+This is easy also when you adopt Bitbucket as repo. Just start VisualStudio,
+make a solution and a project, create the desired files, then one can
+just right-click with the mouse on the solution, the project, or the
+file one wants to commit and choose *Commit*.
 
 Basic Commands of Mercurial
 ---------------------------
@@ -1177,6 +1207,13 @@ Using Git
 .. index:: git
 
 
+Most Mac and Linux users prefer to work with Git via a commands in a
+terminal window. Windows users prefer a graphical user interface (GUI).
+There are many `options <http://git-scm.com/downloads/guis>`_ in
+this respect. There are also GUIs for Mac users.
+Most GUIs are easy to use once the basic concepts of Git and version
+control are understood.
+
 Basic Commands of Git
 ---------------------
 
@@ -1522,6 +1559,8 @@ More Documentation on Git
 
  * `Everyday GIT With 20 Commands Or So <http://schacon.github.com/git/everyday.html>`_
 
+ * `Git top 10 tutorials <http://sixrevisions.com/resources/git-tutorials-beginners/>`_
+
  * `Git Community Book <http://book.git-scm.com/>`_
 
  * `Git for Designers <http://hoth.entp.com/output/git_for_designers.html>`_ (aimed a people with no previous knowledge of version control systems)
@@ -1541,6 +1580,8 @@ More Documentation on Git
  * `Git home page <http://git-scm.com/>`_
 
  * `Git and Mercurial command equivalence table <http://mercurial.selenic.com/wiki/GitConcepts#Command_equivalence_table>`_
+
+ * `Git/GitHub GUIs on Windows and Mac <http://git-scm.com/downloads/guis>`_
 
 Diff of The Two Most Recent Versions of a File
 ----------------------------------------------

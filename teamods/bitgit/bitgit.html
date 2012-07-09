@@ -35,7 +35,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Deptartment of Informatics, University of Oslo</b></center>
 
 
-<center><h3>Jul 3, 2012</h3></center>
+<center><h3>Jul 9, 2012</h3></center>
 <P>
 <a name="bitgit:top"></A>
 
@@ -342,22 +342,24 @@ using them on any current and future computer.
 <P>
 <h3>Create a New Project</h3>
 <P>
-Click at <em>Repositories</em> and at <em>create repository</em>.
+Click at <em>Repositories</em> and at <em>Create repository</em>.
 You can now
 
 <P>
 
 <ul>
  <li> fill in the name of the project, here <tt>my-project</tt>,
- <li> choose between the Git or Mercurial version control system,
  <li> decide whether the project is private or public (the number of
    private repos for a user is limited unless you pay),
+ <li> choose between the Git or Mercurial version control system,
  <li> click whether you want issue tracking for reporting errors,
    suggesting improvements, etc.,
- <li> click whether you want a wiki page associated with the project.
+ <li> click whether you want a wiki page associated with the project,
+ <li> fill in a brief description,
+ <li> click on <em>Create repository</em>.
 </ul>
 
-You may also want to have the <a href="http://confluence.atlassian.com/display/BITBUCKET/Bitbucket+101">Bitbucket 101 guide</a>
+While doing this you may also want to have the <a href="http://confluence.atlassian.com/display/BITBUCKET/Bitbucket+101">Bitbucket 101 guide</a>
 available (open the link in another tab or window in your browser).
 
 <P>
@@ -369,7 +371,7 @@ copy the <em>clone</em> line and run this command in a terminal:
 <pre>
 hg clone ssh://hg@bitbucket.org/username/my-project
 # or
-git clone ssh://hg@bitbucket.org/username/my-project.git
+git clone git@bitbucket.org:usernamet/my-project.git
 </pre>
 </blockquote>   <! -- end verbatim block -->
 Only the <tt>hg</tt> or the <tt>git</tt> clone command is displayed on Bitbucket since
@@ -381,8 +383,6 @@ you must replace <tt>username</tt> with your own user name at Bitbucket.
 The first time you do the clone command you may be prompted by cryptic
 Unix output ending with "Are you sure you want to continue connecting
 (yes/no)?".  Just answer yes.
-
-<P>
 
 <P>
 The next step is to collect files and directories that should make up
@@ -406,9 +406,9 @@ be registered, or <em>committed</em> if we use standard version control system
 terminology. The command reads
 <blockquote>    <!-- begin verbatim block   sys-->
 <pre>
-hg commit  -m 'Initial import of files.'
+hg commit   -m 'Initial import of files.'
 # or
-git commit -m 'Initial import of files.'
+git commit -am 'Initial import of files.'
 </pre>
 </blockquote>   <! -- end verbatim block -->
 The <tt>-m</tt> option is a required description of the changes that have taken
@@ -434,6 +434,28 @@ it sends file information to the <tt>bitbucket.org</tt> site.
 Further work with the files must always follow the pull, edit, commit, and
 push steps explained in the section <a href="#bitgit:hg">Using Mercurial</a> for Mercurial and
 the section <a href="#bitgit:git">Using Git</a> for Git.
+
+<P>
+<h3>Project Web Pages</h3>
+<P>
+The site <a href="http://pages.bitbucket.org"><tt>http://pages.bitbucket.org</tt></a> can host web pages associated
+with a Bitbucket account. Say your account/user name is <tt>username</tt>.
+Make a new repository on Bitbucket called <tt>username.bitbucket.org</tt>.
+Clone it, fill it with a file, and push back, e.g.,
+<blockquote>    <!-- begin verbatim block   sys-->
+<pre>
+git clone git@bitbucket.org:username/username.bitbucket.org.git
+cd username.bitbucket.org
+echo "Welcome to my web pages!" &gt; test.html
+git add test.html
+git commit -am 'First web page'
+git push origin master
+</pre>
+</blockquote>   <! -- end verbatim block -->
+
+<P>
+
+<P>
 
 <P>
 <h2>Googlecode <a name="bitgit:googlecode"></A></h2>
@@ -598,7 +620,8 @@ a help that explains what this is all about. Often, it is just a
 matter of pasting the contents of <tt>id_rsa.pub</tt> or <tt>id_dsa.pub</tt> in the
 <tt>.ssh</tt> subdirectory of your home directory into the <em>Key</em> box in the
 web page. Make sure to cut and paste the text from, e.g., <tt>id_dsa.pub</tt>
-without any extra whitespaces or other text.
+without any extra whitespaces or other text. How to generate these
+files is briefly described in the introduction to Bitbucket above.
 
 <P>
 
@@ -893,6 +916,14 @@ following way.
    <em>TortoiseHG - Synchronize</em>. You need to provide the password for the
    Bitbucket account.
 </ul>
+
+Many prefer to work in Visual Studio with their program files on Windows.
+This is easy also when you adopt Bitbucket as repo. Just start VisualStudio,
+make a solution and a project, create the desired files, then one can
+just right-click with the mouse on the solution, the project, or the
+file one wants to commit and choose <em>Commit</em>.
+
+<P>
 <h3>Basic Commands of Mercurial</h3>
 <P>
 <h4>Cloning</h4>
@@ -1246,6 +1277,14 @@ can now do <tt>hg push</tt> successfully to update the global repository.
 <P>
 
 <P>
+
+<P>
+Most Mac and Linux users prefer to work with Git via a commands in a
+terminal window. Windows users prefer a graphical user interface (GUI).
+There are many <a href="http://git-scm.com/downloads/guis">options</a> in
+this respect. There are also GUIs for Mac users.
+Most GUIs are easy to use once the basic concepts of Git and version
+control are understood.
 
 <P>
 <h3>Basic Commands of Git</h3>
@@ -1604,6 +1643,7 @@ Then run <tt>git commit -am merge</tt> to finalize the merge.
 
 <ul>
  <li> <a href="http://schacon.github.com/git/everyday.html">Everyday GIT With 20 Commands Or So</a>
+ <li> <a href="http://sixrevisions.com/resources/git-tutorials-beginners/">Git top 10 tutorials</a>
  <li> <a href="http://book.git-scm.com/">Git Community Book</a>
  <li> <a href="http://hoth.entp.com/output/git_for_designers.html">Git for Designers</a> (aimed a people with no previous knowledge of version control systems)
  <li> <a href="http://www-cs-students.stanford.edu/~blynn/gitmagic/ch02.html">Git Magic: Basic Tricks</a>
@@ -1614,6 +1654,7 @@ Then run <tt>git commit -am merge</tt> to finalize the merge.
  <li> <a href="http://schacon.github.com/git/user-manual.html">Git User Manual</a>
  <li> <a href="http://git-scm.com/">Git home page</a>
  <li> <a href="http://mercurial.selenic.com/wiki/GitConcepts#Command_equivalence_table">Git and Mercurial command equivalence table</a>
+ <li> <a href="http://git-scm.com/downloads/guis">Git/GitHub GUIs on Windows and Mac</a>
 </ul>
 <h3>Diff of The Two Most Recent Versions of a File</h3>
 <P>
