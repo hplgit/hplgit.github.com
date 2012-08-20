@@ -1,0 +1,904 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Automatically generated HTML file from Doconce source
+(http://code.google.com/p/doconce/)
+-->
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+
+<!--
+Color definitions:  http://www.december.com/html/spec/color0.html
+CSS examples:       http://www.w3schools.com/css/css_examples.asp
+-->
+
+<style type="text/css">
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.5em; color: #1e36ce; }
+    h3 { color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    pre { background: #ededed; color: #000; padding: 15px;}
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+</style>
+
+<!-- Use MathJax to render mathematics -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+</head>
+
+<body>
+    
+
+<!-- ---------------------------- main content ------------------------>
+
+<title>How To Read and Process XML Files in Python</title>
+
+<center><h1>How To Read and Process XML Files in Python</h1></center>  <! -- document title -->
+
+<! -- author(s) -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Department of Informatics, University of Oslo</b></center>
+
+
+<center><h4>Aug 20, 2012</h4></center> <!-- date -->
+<p>
+
+<h2>Reading XML Files  <a name="___sec0"></a></h2>
+<p>
+The purpose of this tutorial is to explain how to read XML files and
+convert the content into numerical data structures that we can compute
+with. Three different techniques will be exemplified. We start
+with the most powerful tool: the <tt>ElementTree</tt> module in Python that
+maps the hierarchical data structure in an XML file directly onto to
+a hierarchical, tree-like data structure of Python objects.
+Any XML file can be parsed and analyzed via the <tt>ElementTree</tt> module.
+We then consider two simpler techniques of more limited
+application: regular expressions and string operations.
+
+<p>
+The XML file we use here as example contains GPS coordinates
+(latitude, longitude, elevation, and time) from
+a GPS application called Trails (for iPhone). We want to
+extract the GPS coordinates from the XML file and plot the
+elevation against the length of the track.
+
+<p>
+
+<h3>The XML File Structure  <a name="___sec1"></a></h3>
+<p>
+An XML file from the Trails application typically has the look
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt;
+&lt;gpx xmlns=&quot;http://www.topografix.com/GPX/1/1&quot;
+     creator=&quot;Trails - GPS Tracker - own track&quot;
+     version=&quot;1.1&quot;
+     xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+     xsi:schemaLocation=&quot;http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd&quot;&gt;
+&lt;trk&gt;
+	&lt;name&gt;Test2&lt;/name&gt;
+	&lt;desc&gt;(null)&lt;/desc&gt;
+	&lt;trkseg&gt;
+		&lt;trkpt lat=&quot;59.982834&quot; lon=&quot;10.647849&quot;&gt;
+			&lt;ele&gt;322.450958&lt;/ele&gt;
+			&lt;time&gt;2011-07-02T16:40:37Z&lt;/time&gt;
+		&lt;/trkpt&gt;
+		&lt;trkpt lat=&quot;59.983001&quot; lon=&quot;10.647710&quot;&gt;
+			&lt;ele&gt;325.830231&lt;/ele&gt;
+			&lt;time&gt;2011-07-02T16:40:38Z&lt;/time&gt;
+		&lt;/trkpt&gt;
+                ...
+		&lt;trkpt lat=&quot;59.975699&quot; lon=&quot;10.647084&quot;&gt;
+			&lt;ele&gt;382.443115&lt;/ele&gt;
+			&lt;time&gt;2011-07-02T18:51:54Z&lt;/time&gt;
+		&lt;/trkpt&gt;
+	&lt;/trkseg&gt;
+&lt;/trk&gt;&lt;/gpx&gt;
+</pre></div>
+<p>
+The XML file contains, as usual, a set of nested tags in a tree-like
+hierarichal structure.
+A tag with name <tt>name</tt>
+has an opening tag <tt><name></tt> and a corresponding closing tag <tt></name></tt>.
+First comes the <tt>gpx</tt> tag, then the children tag <tt>trk</tt> tag, which contains
+the children tags <tt>name</tt>, <tt>desc</tt>, and <tt>trkseg</tt>. The latter
+contains the children tag <tt>trkpt</tt>, which again contains the
+children tags <tt>ele</tt> and <tt>time</tt>.
+
+<p>
+The tags of special interest are
+
+<p>
+
+<ul>
+ <li> <tt>trkpt</tt>, which holds the latitude and longitude of recorded coordinates,
+ <li> <tt>ele</tt>, which holds the elevation corresponding to the parent <tt>trkpt</tt>,
+ <li> <tt>time</tt>, which holds the time corresponding to the parent <tt>trkpt</tt>.
+</ul>
+
+Our task is to find the <tt>trkpt</tt>, <tt>ele</tt>, and <tt>time</tt> tags and store the
+associated values for the latitude, longitude, elevation, and time in
+one-dimensional <tt>numpy</tt> arrays.
+
+<p>
+
+<p>
+
+<h3>Using ElementTree with Recursive Traversal  <a name="___sec2"></a></h3>
+<p>
+First we will parse the whole XML file using
+the <tt>ElementTree</tt> module in Python. This module provides
+a general data structure for hierarchical (tree) data, which is
+exactly what we need to store XML data.
+
+<p>
+Some XML file <tt>trail1.xml</tt> is converted to an <tt>ElementTree</tt> data structure by
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">import xml.etree.ElementTree as ET
+tree = ET.parse(&#39;trail1.xml&#39;)
+root = tree.getroot()  # root of the tree
+</pre></div>
+<p>
+The <tt>ElementTree</tt> data structure contains a tree of
+<tt>Element</tt> objects. Each such object has a set of key attributes
+and functions. Consider a generic XML tag <tt>name</tt> of the form
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;name a1=&quot;v1&quot; a2=&quot;val2&quot; a3=&quot;v3&quot;&gt;
+some information
+&lt;subname1 v1=&quot;w1&quot; v2=&quot;w2&quot;&gt;some info 1&lt;/subname1&gt;
+&lt;subname2&gt;some info 2&lt;/subname2&gt;
+&lt;/name&gt;
+</pre></div>
+<p>
+This tag <tt>name</tt> corresponds to an <tt>Element</tt> object with the
+following attributes:
+
+<p>
+
+<ul>
+  <li> <tt>tag</tt>: the name of the tag, here <tt>{xmlns}name</tt> (see explanation below)
+  <li> <tt>text</tt>: the text of the tag, here <tt>some information</tt>
+  <li> <tt>attrib</tt>: a dictionary with the tag's attributes, here
+    <tt>{'a1': 'v1', 'a2': 'v2', 'a3': 'v3'}</tt>
+</ul>
+
+The name of the tag is in our example not only <tt>name</tt>, but a
+combination of the XML namespace (specified as <tt>xmlns</tt> in the top of
+the XML file) and <tt>name</tt>. In the XML file above the XML namespace
+(<tt>xmlns</tt>) equals <tt>http://www.topografix.com/GPX/1/1</tt> so a tag with
+name <tt>trkpt</tt> becomes <tt>{http://www.topografix.com/GPX/1/1}trkpt</tt> when
+we print the <tt>tag</tt> attribute of the corresponding <tt>Element</tt> instance.
+
+<p>
+An <tt>Element</tt> instance <tt>element</tt> can be iterated over, yielding a
+sequence of children <tt>Element</tt> instances:
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">for child in element:
+    # invoke child.tag, child.text, child.attrib
+</pre></div>
+<p>
+For the example above, where <tt>element</tt> has two children, <tt>subname1</tt> and
+<tt>subname2</tt>, <tt>child</tt> first equals the <tt>Element</tt> object corresponding to
+<tt>subname1</tt> and then the <tt>Element</tt> object corresponding to
+<tt>subname2</tt>. When <tt>child.tag</tt> is <tt>{xmlns}subname1</tt>, <tt>child.attrib</tt> is
+the dictionary <tt>{'v1': 'w1', 'v2': 'w2'}</tt> and
+<tt>child.text</tt> is <tt>some info 1</tt>.
+
+<p>
+Each child can also be iterated over. The problem is that children have
+new children, in general with an unknown and varying depth.
+Nested loops are therefore not possible or invconvenient, and recursion
+is the only general solution when walking through a tree structure:
+
+<p>
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">iterate</span>(element):
+    <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;element:&#39;</span>, element<span style="color: #666666">.</span>tag
+    <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;   text:&#39;</span>, element<span style="color: #666666">.</span>text<span style="color: #666666">.</span>strip()
+    <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;   attributes:&#39;</span>, element<span style="color: #666666">.</span>attrib
+    <span style="color: #AA22FF; font-weight: bold">for</span> child <span style="color: #AA22FF; font-weight: bold">in</span> element:
+        iterate(child)
+</pre></div>
+<p>
+
+<p>
+Calling <tt>iterate(root)</tt>, where <tt>root</tt> is the root <tt>Element</tt> instance
+of the <tt>ElementTree</tt> data structure corresponding to the XML file
+shown above, the output becomes (some longer parts are condensed into
+ellipsis to save space):
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">element: {http://www.topografix.com/GPX/1/1}gpx
+   text:
+   attributes: {...}
+element: {http://www.topografix.com/GPX/1/1}trk
+   text:
+   attributes: {}
+element: {http://www.topografix.com/GPX/1/1}name
+   text: Test2
+   attributes: {}
+element: {http://www.topografix.com/GPX/1/1}desc
+   text: (null)
+   attributes: {}
+element: {http://www.topografix.com/GPX/1/1}trkseg
+   text:
+   attributes: {}
+element: {http://www.topografix.com/GPX/1/1}trkpt
+   text:
+   attributes: {&#39;lat&#39;: &#39;59.982834&#39;, &#39;lon&#39;: &#39;10.647849&#39;}
+element: {http://www.topografix.com/GPX/1/1}ele
+   text: 322.450958
+   attributes: {}
+element: {http://www.topografix.com/GPX/1/1}time
+   text: 2011-07-02T16:40:37Z
+   attributes: {}
+element: {http://www.topografix.com/GPX/1/1}trkpt
+   text:
+   attributes: {&#39;lat&#39;: &#39;59.983001&#39;, &#39;lon&#39;: &#39;10.647710&#39;}
+element: {http://www.topografix.com/GPX/1/1}ele
+   text: 325.830231
+   attributes: {}
+element: {http://www.topografix.com/GPX/1/1}time
+   text: 2011-07-02T16:40:38Z
+   attributes: {}
+...
+element: {http://www.topografix.com/GPX/1/1}trkpt
+   text:
+   attributes: {&#39;lat&#39;: &#39;59.975699&#39;, &#39;lon&#39;: &#39;10.647084&#39;}
+element: {http://www.topografix.com/GPX/1/1}ele
+   text: 382.443115
+   attributes: {}
+element: {http://www.topografix.com/GPX/1/1}time
+   text: 2011-07-02T18:51:54Z
+   attributes: {}
+</pre></div>
+<p>
+The <tt>iterate</tt> function can hence be used to visit all tags in the
+tree structure and examine text and attributes of each tag.
+
+<p>
+We could make a variant of the <tt>iterate</tt> method above to
+store all the GPS coordinates:
+
+<p>
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">GPS_coor</span>(element, data):
+    <span style="color: #BB4444; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BB4444; font-style: italic">    Add GPS coordinates to data, a dict of longitude, latitude,</span>
+<span style="color: #BB4444; font-style: italic">    elevation, and time lists.</span>
+<span style="color: #BB4444; font-style: italic">    &quot;&quot;&quot;</span>
+    <span style="color: #AA22FF; font-weight: bold">if</span> element<span style="color: #666666">.</span>tag[<span style="color: #666666">-5</span>:] <span style="color: #666666">==</span> <span style="color: #BB4444">&#39;trkpt&#39;</span>:
+        data[<span style="color: #BB4444">&#39;longitude&#39;</span>]<span style="color: #666666">.</span>append(<span style="color: #AA22FF">float</span>(element<span style="color: #666666">.</span>attrib[<span style="color: #BB4444">&#39;lon&#39;</span>]))
+        data[<span style="color: #BB4444">&#39;latitude&#39;</span>]<span style="color: #666666">.</span>append(<span style="color: #AA22FF">float</span>(element<span style="color: #666666">.</span>attrib[<span style="color: #BB4444">&#39;lat&#39;</span>]))
+    <span style="color: #AA22FF; font-weight: bold">elif</span> element<span style="color: #666666">.</span>tag[<span style="color: #666666">-4</span>:] <span style="color: #666666">==</span> <span style="color: #BB4444">&#39;time&#39;</span>:
+        data[<span style="color: #BB4444">&#39;time&#39;</span>]<span style="color: #666666">.</span>append(element<span style="color: #666666">.</span>text)
+    <span style="color: #AA22FF; font-weight: bold">elif</span> element<span style="color: #666666">.</span>tag[<span style="color: #666666">-3</span>:] <span style="color: #666666">==</span> <span style="color: #BB4444">&#39;ele&#39;</span>:
+        data[<span style="color: #BB4444">&#39;elevation&#39;</span>]<span style="color: #666666">.</span>append(<span style="color: #AA22FF">float</span>(element<span style="color: #666666">.</span>text))
+    <span style="color: #008800; font-style: italic"># Recurse into subtree</span>
+    <span style="color: #AA22FF; font-weight: bold">for</span> child <span style="color: #AA22FF; font-weight: bold">in</span> element:
+        GPS_coor(child, data)
+
+data <span style="color: #666666">=</span> {<span style="color: #BB4444">&#39;longitude&#39;</span>: [], <span style="color: #BB4444">&#39;latitude&#39;</span>: [],
+        <span style="color: #BB4444">&#39;time&#39;</span>: [], <span style="color: #BB4444">&#39;elevation&#39;</span>: []}
+GPS_coor(root, data)
+<span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pprint</span>
+pprint<span style="color: #666666">.</span>pprint(data)
+</pre></div>
+<p>
+
+<p>
+The pretty print output of <tt>data</tt> becomes
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">{&#39;elevation&#39;: [322.450958,
+               325.830231,
+               340.147339,
+               ...
+               393.591003,
+               382.443115],
+ &#39;latitude&#39;: [59.982834,
+              59.983001,
+              59.983467,
+              ...
+              59.975732,
+              59.975699],
+ &#39;longitude&#39;: [10.647849,
+               10.64771,
+               10.647775,
+               ...
+               10.647996,
+               10.647084],
+ &#39;time&#39;: [&#39;2011-07-02T16:40:37Z&#39;,
+          &#39;2011-07-02T16:40:38Z&#39;,
+          &#39;2011-07-02T16:42:13Z&#39;,
+          ...
+          &#39;2011-07-02T18:50:10Z&#39;,
+          &#39;2011-07-02T18:51:54Z&#39;]}
+</pre></div>
+<p>
+We can easily convert the lists in the <tt>data</tt> dictionary to arrays:
+
+<p>
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+longitude <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array(data[<span style="color: #BB4444">&#39;longitude&#39;</span>])
+latitude  <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array(data[<span style="color: #BB4444">&#39;latitude&#39;</span>]),
+elevation <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array(data[<span style="color: #BB4444">&#39;elevation&#39;</span>])
+<span style="color: #008800; font-style: italic"># time must be a numpy array with str elements</span>
+time <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array(data[<span style="color: #BB4444">&#39;latitude&#39;</span>], dtype<span style="color: #666666">=</span>np<span style="color: #666666">.</span>object)
+</pre></div>
+<p>
+
+<p>
+
+<p>
+
+<h3>Reading ElementTree Data into Arrays  <a name="___sec3"></a></h3>
+<p>
+Instead of the recursive approach in the previous section, we may
+use the <tt>Element</tt> object's <tt>findall</tt> function to find a list of
+all tags with a certain name, in correct order. The call
+is schematically like
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">tags = element.findall(&#39;.//{xmlns}name&#39;)
+</pre></div>
+<p>
+The relevant call in our example, for finding all the
+<tt>trkpt</tt> tags as a list <tt>points</tt> of <tt>Element</tt> objects, reads
+
+<p>
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">xmlns <span style="color: #666666">=</span> root<span style="color: #666666">.</span>tag<span style="color: #666666">.</span>replace(<span style="color: #BB4444">&#39;gpx&#39;</span>, <span style="color: #BB4444">&#39;&#39;</span>)  <span style="color: #008800; font-style: italic"># extract XML namespace</span>
+name <span style="color: #666666">=</span> <span style="color: #BB4444">&#39;trkpt&#39;</span>
+points <span style="color: #666666">=</span> root<span style="color: #666666">.</span>findall(<span style="color: #BB4444">&#39;.//&#39;</span> <span style="color: #666666">+</span> xmlns <span style="color: #666666">+</span> name)
+</pre></div>
+<p>
+
+<p>
+With the <tt>points</tt> list we can write a more direct code for building the
+coordinate arrays, knowing that each <tt>trkpt</tt> element has two
+attributes with longitude and latitude coordinates
+and two children containing
+the corresponding elevation and time values:
+
+<p>
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">inspect</span>(points):
+    n <span style="color: #666666">=</span> <span style="color: #AA22FF">len</span>(points)
+    latitude   <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
+    longitude  <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
+    elevation  <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
+    timepoints <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n, dtype<span style="color: #666666">=</span>np<span style="color: #666666">.</span>object)  <span style="color: #008800; font-style: italic"># str array elements</span>
+    <span style="color: #AA22FF; font-weight: bold">for</span> i, point <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #AA22FF">enumerate</span>(points):
+        latitude [i] <span style="color: #666666">=</span> <span style="color: #AA22FF">float</span>(point<span style="color: #666666">.</span>attrib[<span style="color: #BB4444">&#39;lat&#39;</span>])
+        longitude[i] <span style="color: #666666">=</span> <span style="color: #AA22FF">float</span>(point<span style="color: #666666">.</span>attrib[<span style="color: #BB4444">&#39;lon&#39;</span>])
+        <span style="color: #008800; font-style: italic"># point has two children</span>
+        ele, time <span style="color: #666666">=</span> point
+        elevation [i] <span style="color: #666666">=</span> <span style="color: #AA22FF">float</span>(ele<span style="color: #666666">.</span>text<span style="color: #666666">.</span>strip())
+        timepoints[i] <span style="color: #666666">=</span> time<span style="color: #666666">.</span>text<span style="color: #666666">.</span>strip()
+    <span style="color: #AA22FF; font-weight: bold">return</span> latitude, longitude, elevation, timepoints
+</pre></div>
+<p>
+
+<p>
+We can then call
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">latitude, longitude, elevation, timepoints = inspect(points)
+</pre></div>
+<p>
+The XML data are by this relatively simple code transferred to
+<tt>numpy</tt> arrays which can be analyzed as described next.
+
+<p>
+
+<h3>Plotting Elevation Against Length  <a name="___sec4"></a></h3>
+<p>
+Now we want to convert the coordinates, given in degrees of
+latitude and longitude on a sphere (the earth's surface),
+to an arc length measure in meters. That is, we
+need to find the distance between the coordinates on the
+sphere. For this purpose we use the Haversine algorithm, which
+measures the distance between points on a sphere.
+The coordinates in degrees must be transformed to radians and then
+the Haversine formula can compute the distance between two points.
+It appears that the Haversine formula automatically vectorizes. That is,
+we can use it for one-dimensional arrays to compute the lengths between
+an array of points. The cumulative length as we progress through the
+points are then given as the sum of the individual
+lengths (obtained by <tt>numpy.cumsum</tt>).
+
+<p>
+The Haversine formula and its use look as
+
+<p>
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">Haversine</span>(from_lon, from_lat, to_lon, to_lat):
+    <span style="color: #BB4444; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BB4444; font-style: italic">    Calculates distance between two points (from_lon, from_lat)</span>
+<span style="color: #BB4444; font-style: italic">    and (to_lon, to_lat), given in degrees, using the Haversine</span>
+<span style="color: #BB4444; font-style: italic">    algorithm (see Wikipedia&#39;s article on the topic</span>
+<span style="color: #BB4444; font-style: italic">    Great-circle_distance).</span>
+<span style="color: #BB4444; font-style: italic">    The point arguments can be arrays of points. In that case</span>
+<span style="color: #BB4444; font-style: italic">    the progressive lengths between the coordinates are returned.</span>
+<span style="color: #BB4444; font-style: italic">    If the points are two single points, their distance is returned.</span>
+<span style="color: #BB4444; font-style: italic">    The unit of the returned length(s) is meters.</span>
+<span style="color: #BB4444; font-style: italic">    &quot;&quot;&quot;</span>
+    <span style="color: #AA22FF; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #AA22FF; font-weight: bold">import</span> sin, cos, arcsin, sqrt, deg2rad, ndarray, \ 
+         zeros, cumsum
+    from_lon <span style="color: #666666">=</span> deg2rad(from_lon)
+    from_lat <span style="color: #666666">=</span> deg2rad(from_lat)
+    to_lon <span style="color: #666666">=</span> deg2rad(to_lon)
+    to_lat <span style="color: #666666">=</span> deg2rad(to_lat)
+
+    dlon <span style="color: #666666">=</span> to_lon <span style="color: #666666">-</span> from_lon
+    dlat <span style="color: #666666">=</span> to_lat <span style="color: #666666">-</span> from_lat
+
+    a <span style="color: #666666">=</span> sin(dlat<span style="color: #666666">/2</span>)<span style="color: #666666">**2</span> <span style="color: #666666">+</span> cos(from_lat)<span style="color: #666666">*</span>cos(to_lat)<span style="color: #666666">*</span>sin(dlon<span style="color: #666666">/2</span>)<span style="color: #666666">**2</span>
+    c <span style="color: #666666">=</span> <span style="color: #666666">6367000.0*2*</span>arcsin(sqrt(a))
+    c <span style="color: #666666">=</span> cumsum(c)
+
+    <span style="color: #008800; font-style: italic"># If c is array, augment the array with a [0] element that</span>
+    <span style="color: #008800; font-style: italic"># equals 0, such that c reflects progressive length</span>
+    <span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #AA22FF">isinstance</span>(c, ndarray):
+        length <span style="color: #666666">=</span> zeros(c<span style="color: #666666">.</span>size<span style="color: #666666">+1</span>)
+        length[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+        length[<span style="color: #666666">1</span>:] <span style="color: #666666">=</span> c
+    <span style="color: #AA22FF; font-weight: bold">else</span>:
+        length <span style="color: #666666">=</span> c
+    <span style="color: #AA22FF; font-weight: bold">return</span> length
+
+from_lon <span style="color: #666666">=</span> longitude[:<span style="color: #666666">-1</span>]
+from_lat <span style="color: #666666">=</span> latitude[:<span style="color: #666666">-1</span>]
+to_lon <span style="color: #666666">=</span> longitude[<span style="color: #666666">1</span>:]
+to_lat <span style="color: #666666">=</span> latitude[<span style="color: #666666">1</span>:]
+length <span style="color: #666666">=</span> Haversine(from_lon, from_lat, to_lon, to_lat)
+</pre></div>
+<p>
+
+<p>
+Plotting the elevation versus the length along the trial is now
+a matter of calling the <tt>scitools.std.plot</tt> function:
+<tt>plot(length, elevation)</tt>.
+Figure <a href="xmlgps:fig:elevation">1</a> shows the resulting curve.
+
+<p>
+
+<p>
+<center> <! -- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  Plot of GPS data extracted from XML file. <a name="xmlgps:fig:elevation"></a> </p></center>
+<p><img src="figs-xmlgps/elevation1.png" align="bottom" width=500></p>
+</center>
+
+<p>
+
+<p>
+
+<h3>Converting a Time Format to Seconds  <a name="___sec5"></a></h3>
+<p>
+The time format used in the XML file applies ISO formatted dates,
+typically looking like <tt>2011-07-02T16:42:13Z</tt>. The <tt>dateutil.parser</tt>
+module can parse such strings and return <tt>datetime</tt> objects, which can
+be converted to seconds since the epoch (January 1, 1970):
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">dateutil.parser</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> time_format <span style="color: #666666">=</span> <span style="color: #BB4444">&#39;2011-07-02T16:42:13Z&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> dt <span style="color: #666666">=</span> dateutil<span style="color: #666666">.</span>parser<span style="color: #666666">.</span>parse(time_format)
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #AA22FF">type</span>(dt), dt
+<span style="color: #666666">&lt;</span><span style="color: #AA22FF">type</span> <span style="color: #BB4444">&#39;datetime.datetime&#39;</span><span style="color: #666666">&gt;</span> <span style="color: #666666">2011-07-02</span> <span style="color: #666666">16</span>:<span style="color: #666666">42</span>:<span style="color: #666666">13+00</span>:<span style="color: #666666">00</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">time</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #AA22FF; font-weight: bold">print</span> time<span style="color: #666666">.</span>mktime(dt<span style="color: #666666">.</span>timetuple())  <span style="color: #008800; font-style: italic"># convert to seconds since epoch</span>
+<span style="color: #666666">1309621333.0</span>
+</pre></div>
+<p>
+
+<p>
+Converting the <tt>timepoints</tt> array of strings to seconds, starting at 0,
+is done by the following code snippet:
+
+<p>
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic"># Convert time format to seconds since Jan 1, 1970</span>
+<span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">dateutil.parser</span><span style="color: #666666">,</span> <span style="color: #0000FF; font-weight: bold">time</span>
+timepoints2 <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(timepoints<span style="color: #666666">.</span>size)
+<span style="color: #AA22FF; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #AA22FF">xrange</span>(timepoints2<span style="color: #666666">.</span>size):
+    dt <span style="color: #666666">=</span> dateutil<span style="color: #666666">.</span>parser<span style="color: #666666">.</span>parse(timepoints[i])
+    timepoints2[i] <span style="color: #666666">=</span> time<span style="color: #666666">.</span>mktime(dt<span style="color: #666666">.</span>timetuple())
+<span style="color: #008800; font-style: italic"># Scale time points so they start at 0</span>
+timepoints <span style="color: #666666">=</span> timepoints2 <span style="color: #666666">-</span> timepoints2[<span style="color: #666666">0</span>]
+</pre></div>
+<p>
+
+<p>
+We can now plot <tt>elevation</tt> versus <tt>timepoints</tt>, if desired.
+
+<p>
+
+<h3>Using a SAX Parser  <a name="___sec6"></a></h3>
+<p>
+The SAX parser walks through the XML file and calls up methods in
+a user-implemented <em>handler</em> class when meeting a new tag, leaving a tag,
+encoutering contents in between opening and closing tags,
+and hitting the end of the document.
+SAX parsing is a very common technique and parsers are available in almost
+all programming languages.
+Here is a sketch of a typical handler class that must be implemented
+for a particular XML file:
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">from xml.sax import ContentHandler, make_parser
+
+class SomeContentHandler(ContentHandler):
+    def __init__(self, debug=False):
+        ContentHandler.__init__(self)
+
+    def startElement(self, tag, attrib):
+        &quot;&quot;&quot;
+        Called when entering a new tag.
+        tag: name of tag.
+        attrib: dict-like object with attributes. attrib.keys()
+        returns the attribute names, and a value is obtained
+        by attrib.get(name, default).
+        &quot;&quot;&quot;
+
+    def characters(self, text):
+        &quot;&quot;&quot;Treat text between opening and closing of current tag.&quot;&quot;&quot;
+
+    def endElement(self, tag):
+        &quot;&quot;&quot;Called when leaving a tag.&quot;&quot;&quot;
+
+    def endDocument(self):
+        &quot;&quot;&quot;Called when leaving the document.&quot;&quot;&quot;
+</pre></div>
+<p>
+
+<p>
+The implementation of a simple handler class that just reprints
+the XML data in an indented, nice, hierarchical fashion may look as
+follows:
+
+<p>
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">class</span> <span style="color: #0000FF">DebugContentHandler</span>(ContentHandler):
+    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">__init__</span>(<span style="color: #AA22FF">self</span>, debug<span style="color: #666666">=</span><span style="color: #AA22FF">False</span>):
+        ContentHandler<span style="color: #666666">.</span>__init__(<span style="color: #AA22FF">self</span>)
+        <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>debug <span style="color: #666666">=</span> debug    <span style="color: #008800; font-style: italic"># False: no output</span>
+        <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>_tag_level <span style="color: #666666">=</span> <span style="color: #666666">0</span>   <span style="color: #008800; font-style: italic"># helps to make indented output</span>
+
+    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">startElement</span>(<span style="color: #AA22FF">self</span>, tag, attrib):
+        <span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>debug:
+            <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;    &#39;</span><span style="color: #666666">*</span><span style="color: #AA22FF">self</span><span style="color: #666666">.</span>_tag_level, <span style="color: #BB4444">&#39;&lt;</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BB4444">&gt;&#39;</span> <span style="color: #666666">%</span> tag, \ 
+                  <span style="color: #BB4444">&#39;, &#39;</span><span style="color: #666666">.</span>join([<span style="color: #BB4444">&#39;</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BB4444">=</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BB4444">&#39;</span> <span style="color: #666666">%</span> (name, attrib<span style="color: #666666">.</span>get(name, <span style="color: #AA22FF">None</span>)) \ 
+                             <span style="color: #AA22FF; font-weight: bold">for</span> name <span style="color: #AA22FF; font-weight: bold">in</span> attrib<span style="color: #666666">.</span>keys()])
+        <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>_tag_level <span style="color: #666666">+=1</span>
+
+    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">characters</span>(<span style="color: #AA22FF">self</span>, text):
+        text <span style="color: #666666">=</span> text<span style="color: #666666">.</span>strip()
+        <span style="color: #AA22FF; font-weight: bold">if</span> text <span style="color: #666666">!=</span> <span style="color: #BB4444">&#39;&#39;</span> <span style="color: #AA22FF; font-weight: bold">and</span> <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>debug:
+            <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;    &#39;</span><span style="color: #666666">*</span><span style="color: #AA22FF">self</span><span style="color: #666666">.</span>_tag_level, text
+
+    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">endElement</span>(<span style="color: #AA22FF">self</span>, tag):
+        <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>_tag_level <span style="color: #666666">-=</span> <span style="color: #666666">1</span>
+        <span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>debug:
+            <span style="color: #AA22FF; font-weight: bold">print</span> <span style="color: #BB4444">&#39;    &#39;</span><span style="color: #666666">*</span><span style="color: #AA22FF">self</span><span style="color: #666666">.</span>_tag_level, <span style="color: #BB4444">&#39;&lt;/</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BB4444">&gt;&#39;</span> <span style="color: #666666">%</span> tag
+</pre></div>
+<p>
+
+<p>
+A main program for testing this class on our sample file <tt>trail1.xml</tt>
+reads
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">parser = make_parser()
+handler = DebugContentHandler(debug=True)
+parser.setContentHandler(handler)
+parser.parse(&#39;trail1.xml&#39;)
+</pre></div>
+<p>
+The typical output has the following structure:
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"> &lt;gpx&gt; xmlns:xsi=http:...
+     &lt;trk&gt;
+         &lt;name&gt;
+             Test2
+         &lt;/name&gt;
+         &lt;desc&gt;
+             (null)
+         &lt;/desc&gt;
+         &lt;trkseg&gt;
+             &lt;trkpt&gt; lat=59.982834, lon=10.647849
+                 &lt;ele&gt;
+                     322.450958
+                 &lt;/ele&gt;
+                 &lt;time&gt;
+                     2011-07-02T16:40:37Z
+                 &lt;/time&gt;
+             &lt;/trkpt&gt;
+             &lt;trkpt&gt; lat=59.983001, lon=10.647710
+                 &lt;ele&gt;
+                     325.830231
+                 &lt;/ele&gt;
+                 &lt;time&gt;
+                     2011-07-02T16:40:38Z
+                 &lt;/time&gt;
+             &lt;/trkpt&gt;
+             ...
+             &lt;trkpt&gt; lat=59.975699, lon=10.647084
+                 &lt;ele&gt;
+                     382.443115
+                 &lt;/ele&gt;
+                 &lt;time&gt;
+                     2011-07-02T18:51:54Z
+                 &lt;/time&gt;
+             &lt;/trkpt&gt;
+         &lt;/trkseg&gt;
+     &lt;/trk&gt;
+ &lt;/gpx&gt;
+</pre></div>
+<p>
+This example shows how the various methods in the handler class
+can extract data in the XML file.
+
+<p>
+The next example actually extracts data and stores them in
+a <tt>data</tt> dictionary as used in the recursive analysis via
+the <tt>ElementTree</tt> data structure. To enable output of XML
+data for debugging, we derive the handler class from
+<tt>DebugContentHandler</tt> so that the flag <tt>debug</tt> to the constructor
+can turn on or off the output of XML data. This feature may
+be convenient in the development phase of the handler.
+
+<p>
+The handler class must initialize a dictionary <tt>self.data</tt>
+with the right keys in the constructor and empty arrays as values.
+The <tt>startElement</tt> method can fill in latitude and longitude values
+from the <tt>attrib</tt> argument in case of a <tt>trkpt</tt> tag.
+The elevation and time values must be handled in the <tt>characters</tt>
+method, and then we need to know what the current tag is. The name
+of the current tag must therefore be stored in <tt>startElement</tt>.
+The <tt>endElement</tt> method has no use here, except for calling the parent
+class' <tt>endElement</tt> method in case nice output of XML data is wanted.
+The <tt>endDocument</tt> method is either omitted or empty in this application.
+
+<p>
+The complete handler class takes the form
+
+<p>
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">class</span> <span style="color: #0000FF">GPSContentHandler</span>(DebugContentHandler):
+    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">__init__</span>(<span style="color: #AA22FF">self</span>, debug<span style="color: #666666">=</span><span style="color: #AA22FF">False</span>):
+        DebugContentHandler<span style="color: #666666">.</span>__init__(<span style="color: #AA22FF">self</span>, debug)
+        <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>data <span style="color: #666666">=</span> {<span style="color: #BB4444">&#39;longitude&#39;</span>: [], <span style="color: #BB4444">&#39;latitude&#39;</span>: [],
+                     <span style="color: #BB4444">&#39;time&#39;</span>: [], <span style="color: #BB4444">&#39;elevation&#39;</span>: []}
+
+    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">startElement</span>(<span style="color: #AA22FF">self</span>, tag, attrib):
+        DebugContentHandler<span style="color: #666666">.</span>startElement(<span style="color: #AA22FF">self</span>, tag, attrib)
+
+        <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>current_tag <span style="color: #666666">=</span> tag
+        <span style="color: #AA22FF; font-weight: bold">if</span> tag <span style="color: #666666">==</span> <span style="color: #BB4444">&#39;trkpt&#39;</span>:
+            <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>data[<span style="color: #BB4444">&#39;longitude&#39;</span>]<span style="color: #666666">.</span>append(<span style="color: #AA22FF">float</span>(attrib[<span style="color: #BB4444">&#39;lon&#39;</span>]))
+            <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>data[<span style="color: #BB4444">&#39;latitude&#39;</span>]<span style="color: #666666">.</span>append(<span style="color: #AA22FF">float</span>(attrib[<span style="color: #BB4444">&#39;lat&#39;</span>]))
+
+    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">characters</span>(<span style="color: #AA22FF">self</span>, text):
+        DebugContentHandler<span style="color: #666666">.</span>characters(<span style="color: #AA22FF">self</span>, text)
+        text <span style="color: #666666">=</span> text<span style="color: #666666">.</span>strip()
+        <span style="color: #AA22FF; font-weight: bold">if</span> text <span style="color: #666666">==</span> <span style="color: #BB4444">&#39;&#39;</span>:
+            <span style="color: #AA22FF; font-weight: bold">return</span>
+        <span style="color: #AA22FF; font-weight: bold">elif</span> <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>current_tag <span style="color: #666666">==</span> <span style="color: #BB4444">&#39;ele&#39;</span>:
+            <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>data[<span style="color: #BB4444">&#39;elevation&#39;</span>]<span style="color: #666666">.</span>append(<span style="color: #AA22FF">float</span>(text))
+        <span style="color: #AA22FF; font-weight: bold">elif</span> <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>current_tag <span style="color: #666666">==</span> <span style="color: #BB4444">&#39;time&#39;</span>:
+            <span style="color: #AA22FF">self</span><span style="color: #666666">.</span>data[<span style="color: #BB4444">&#39;time&#39;</span>]<span style="color: #666666">.</span>append(text)
+
+    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">endElement</span>(<span style="color: #AA22FF">self</span>, tag):
+        DebugContentHandler<span style="color: #666666">.</span>endElement(<span style="color: #AA22FF">self</span>, tag)
+
+    <span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">endDocument</span>(<span style="color: #AA22FF">self</span>):
+        <span style="color: #BB4444">&quot;Can clean/finish up data structures here.&quot;</span>
+        <span style="color: #AA22FF; font-weight: bold">pass</span>
+</pre></div>
+<p>
+
+<p>
+The code that puts the handler in action becomes
+
+<p>
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">parser <span style="color: #666666">=</span> make_parser()
+handler <span style="color: #666666">=</span> GPSContentHandler(debug<span style="color: #666666">=</span><span style="color: #AA22FF">True</span>)
+parser<span style="color: #666666">.</span>setContentHandler(handler)
+parser<span style="color: #666666">.</span>parse(<span style="color: #BB4444">&#39;trail1.xml&#39;</span>)
+pprint<span style="color: #666666">.</span>pprint(handler<span style="color: #666666">.</span>data)
+</pre></div>
+<p>
+
+<p>
+
+<p>
+
+<p>
+
+<h3>Using Regular Expressions  <a name="___sec7"></a></h3>
+<p>
+Parts of XML files with a sufficiently simple structure can easily be
+parsed using regular expressions. This is particularly the case with the
+present sample file. We see that all the data we are interested in
+appear in text with the structure
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;trkpt lat=&quot;TEXT1&quot; lon=&quot;TEXT2&quot;&gt;somewhitespace
+&lt;ele&gt;TEXT3&lt;/ele&gt;somewhitespace
+&lt;time&gt;TEXT4&lt;/time&gt;
+</pre></div>
+<p>
+where <tt>TEXT1</tt>, <tt>TEXT2</tt>, <tt>TEXT3</tt>, and <tt>TEXT4</tt> are parts of the text
+what we are interested in extracting. The relevant regular expression
+for doing this employs groups for the desired text parts:
+
+<p>
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">regex <span style="color: #666666">=</span> <span style="color: #BB4444">r&#39;&lt;trkpt lat=&quot;([^&quot;]+)&quot; lon=&quot;([^&quot;]+)&quot;&gt;\s*&#39;</span>\ 
+        <span style="color: #BB4444">&#39;&lt;ele&gt;([^&lt;]+)&lt;/ele&gt;\s*&lt;time&gt;([^&lt;]+)&lt;/time&gt;&#39;</span>
+</pre></div>
+<p>
+
+<p>
+With the <tt>findall</tt> function in the <tt>re</tt> module we can extract
+all occurences of this regular expression. The returned result
+is a list where each list element consists of a tuple of the four groups,
+containing the latitude, longitude, elevation, and time values as
+strings.
+We can easily iterate over this list and store data in <tt>numpy</tt>
+arrays:
+
+<p>
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">re</span>
+xml_text <span style="color: #666666">=</span> <span style="color: #AA22FF">open</span>(<span style="color: #BB4444">&#39;trail1.xml&#39;</span>, <span style="color: #BB4444">&#39;r&#39;</span>)<span style="color: #666666">.</span>read()
+groups <span style="color: #666666">=</span> re<span style="color: #666666">.</span>findall(regex, xml_text)
+
+n <span style="color: #666666">=</span> <span style="color: #AA22FF">len</span>(groups)  <span style="color: #008800; font-style: italic"># no of points (occurences of trkpt tag)</span>
+latitude   <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
+longitude  <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
+elevation  <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
+timepoints <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n, dtype<span style="color: #666666">=</span>np<span style="color: #666666">.</span>object)
+
+<span style="color: #AA22FF; font-weight: bold">for</span> i, data <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #AA22FF">enumerate</span>(groups):
+    lat, lon, ele, time <span style="color: #666666">=</span> data
+    latitude  [i] <span style="color: #666666">=</span> <span style="color: #AA22FF">float</span>(lat)
+    longitude [i] <span style="color: #666666">=</span> <span style="color: #AA22FF">float</span>(lon)
+    elevation [i] <span style="color: #666666">=</span> <span style="color: #AA22FF">float</span>(ele)
+    timepoints[i] <span style="color: #666666">=</span> time<span style="color: #666666">.</span>strip()
+</pre></div>
+<p>
+
+<p>
+Reading the XML data by regular expressions turned here out to be
+much simpler than using <tt>ElementTree</tt>.
+Nevertheless, more complex XML files might not be feasible to
+parse via regular expressions.
+
+<p>
+
+<h3>Using String Operations  <a name="___sec8"></a></h3>
+<p>
+The shown XML file is also simple enough to allow for building lists
+of GPS coordinates while we read the file line by line.
+Each line is a string that can be split into pieces such that
+the desired information is readily extracted. For example, a typical line
+with the <tt>trkpt</tt> tag,
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">		&lt;trkpt lat=&quot;59.982834&quot; lon=&quot;10.647849&quot;&gt;
+</pre></div>
+<p>
+stored in some variable <tt>line</tt>, can be split into words, separated by
+white space: <tt>line.split()</tt>. The second and third word can be split with respect
+to <tt>=</tt>. The second part of those splits yields the desired coordinate,
+except for the quotes, but indexing the coordinate strings as
+<tt>[1:-1]</tt> strips off the quotes. Therefore, we can extract the <tt>lat</tt>
+and <tt>lon</tt> values by
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">line = line.strip()
+if &#39;&lt;trkpt&gt;&#39; in line:
+    words = line.split()
+    lat = words[1].split(&#39;=&#39;)[1][1:-1]
+    lon = words[2].split(&#39;=&#39;)[1][1:-2]
+</pre></div>
+<p>
+The lines with the <tt>ele</tt> and <tt>time</tt> tags are easier to deal with as
+we can strip off the start and end tags by proper indexing, e.g.,
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ele = line[5:][:-6]
+</pre></div>
+<p>
+The relevant code, building a <tt>data</tt> dictionary of lists as we showed in
+the first <tt>ElementTree</tt> example with recursive traversal of the tree structure,
+becomes like this:
+
+<p>
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic"># Parsing of XML file via string operations</span>
+data <span style="color: #666666">=</span> {<span style="color: #BB4444">&#39;longitude&#39;</span>: [], <span style="color: #BB4444">&#39;latitude&#39;</span>: [],
+        <span style="color: #BB4444">&#39;time&#39;</span>: [], <span style="color: #BB4444">&#39;elevation&#39;</span>: []}
+xml_file <span style="color: #666666">=</span> <span style="color: #AA22FF">open</span>(<span style="color: #BB4444">&#39;trail1.xml&#39;</span>, <span style="color: #BB4444">&#39;r&#39;</span>)
+<span style="color: #AA22FF; font-weight: bold">for</span> line <span style="color: #AA22FF; font-weight: bold">in</span> xml_file:
+    line <span style="color: #666666">=</span> line<span style="color: #666666">.</span>strip()
+    <span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #BB4444">&#39;&lt;trkpt&gt;&#39;</span> <span style="color: #AA22FF; font-weight: bold">in</span> line:
+        words <span style="color: #666666">=</span> line<span style="color: #666666">.</span>split()
+        lat <span style="color: #666666">=</span> words[<span style="color: #666666">1</span>]<span style="color: #666666">.</span>split(<span style="color: #BB4444">&#39;=&#39;</span>)[<span style="color: #666666">1</span>][<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]
+        lon <span style="color: #666666">=</span> words[<span style="color: #666666">2</span>]<span style="color: #666666">.</span>split(<span style="color: #BB4444">&#39;=&#39;</span>)[<span style="color: #666666">1</span>][<span style="color: #666666">1</span>:<span style="color: #666666">-2</span>]
+        data[<span style="color: #BB4444">&#39;latitude&#39;</span>]<span style="color: #666666">.</span>append(<span style="color: #AA22FF">float</span>(lat))
+        data[<span style="color: #BB4444">&#39;longitude&#39;</span>]<span style="color: #666666">.</span>append(<span style="color: #AA22FF">float</span>(lon))
+    <span style="color: #AA22FF; font-weight: bold">elif</span> <span style="color: #BB4444">&#39;&lt;ele&gt;&#39;</span> <span style="color: #AA22FF; font-weight: bold">in</span> line:
+        ele <span style="color: #666666">=</span> line[<span style="color: #666666">5</span>:][:<span style="color: #666666">-6</span>]
+        data[<span style="color: #BB4444">&#39;elevation&#39;</span>]<span style="color: #666666">.</span>append(<span style="color: #AA22FF">float</span>(ele))
+    <span style="color: #AA22FF; font-weight: bold">elif</span> <span style="color: #BB4444">&#39;&lt;time&gt;&#39;</span> <span style="color: #AA22FF; font-weight: bold">in</span> line:
+        data[<span style="color: #BB4444">&#39;time&#39;</span>]<span style="color: #666666">.</span>append(line[<span style="color: #666666">6</span>:][:<span style="color: #666666">-7</span>])
+</pre></div>
+<p>
+
+<p>
+
+<p>
+The complete Python script containing all the code examples above
+is <a href="src-xmlgps/gpsreader.py">available</a>.
+
+<!-- ---------------------------- end of main content ----------------->
+</body>
+</html>
+    
