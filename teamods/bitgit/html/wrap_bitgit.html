@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,7 +9,7 @@
     
     <title>Quick Intro to Version Control Systems and Project Hosting Services &mdash; Quick Intro to Version Control Systems and Project Hosting Services 1.0 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -27,9 +26,16 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="Quick Intro to Version Control Systems and Project Hosting Services 1.0 documentation" href="index.html" />
-    <link rel="prev" title="Quick Intro to Version Control Systems and Project Hosting Services" href="index.html" /> 
+    <link rel="prev" title="Quick Intro to Version Control Systems and Project Hosting Services" href="index.html" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
   </head>
   <body>
+
     <div class="related">
       <h3>Navigation</h3>
       <ul>
@@ -56,7 +62,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jul 9, 2012</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 21, 2012</td>
 </tr>
 </tbody>
 </table>
@@ -125,7 +131,7 @@ computers. This is perhaps one of the most useful features of project
 hosting services. However, the merge functionality clearly works best
 for pure text files and less well for binary files, such as PDF files,
 MS Word or Excel documents, and OpenOffice documents.</p>
-<p>For the examples below, assume that you have some directory tree
+<p>For the examples below, assume that you have some folder tree
 <tt class="docutils literal"><span class="pre">my-project</span></tt> with files that you want to host at Bitbucket, GitHub, or
 Googlecode and bring under version control. The official name of the
 project is &#8220;My Project&#8221;.</p>
@@ -182,7 +188,7 @@ by</p>
 </div>
 <p>on Ubuntu. TortoiseHG is the natural application to run Mercurial on a
 Windows machine.</p>
-<p>We recommend that you create two files in your home directory: <tt class="docutils literal"><span class="pre">.hgrc</span></tt> for
+<p>We recommend that you create two files in your home folder: <tt class="docutils literal"><span class="pre">.hgrc</span></tt> for
 specifying the behavior of <tt class="docutils literal"><span class="pre">hg</span></tt> (Mercurial) and <tt class="docutils literal"><span class="pre">.hgignore</span></tt> for
 listing the type of files you in general do not want to have under version
 control. A simple <tt class="docutils literal"><span class="pre">.hgrc</span></tt> file can look like this:</p>
@@ -225,7 +231,7 @@ On Ubuntu the relevant commands are</p>
 <p>Git involves compiled code so it is most convenient to download a
 precompiled binary version of the software on Windows, Mac and other
 Linux computers.</p>
-<p>Make a file <tt class="docutils literal"><span class="pre">.gitconfig</span></tt> in your home directory with information on
+<p>Make a file <tt class="docutils literal"><span class="pre">.gitconfig</span></tt> in your home folder with information on
 your full name, email address, your favorite emacs editor, and
 the name of a file which defines the file types that Git should omit
 when bringing new directories under version control.
@@ -264,15 +270,15 @@ source files. A <tt class="docutils literal"><span class="pre">.gitignore</span>
 The communication channel with Bitbucket repositories is either
 through SSH or HTTPS.  To use SSH, you must upload your SSH key,
 typically the contents of the file <tt class="docutils literal"><span class="pre">id_rsa.pub</span></tt> or <tt class="docutils literal"><span class="pre">id_dsa.pub</span></tt> in the
-<tt class="docutils literal"><span class="pre">.ssh</span></tt> subdirectory of your home directory. Go to the page for your
+<tt class="docutils literal"><span class="pre">.ssh</span></tt> subfolder of your home folder. Go to the page for your
 account, choose <em>SSH keys</em>, and upload one of these files.
 The essence of the SSH keys is that they allow you to communicate with
 Bitbucket without using a password, which is very convenient.</p>
 <p>There are links to extensive help pages if you do not have such keys
 or if you are unfamiliar with SSH. Follow these steps on Mac or Linux
 machines to generate keys: 1) check that you have <tt class="docutils literal"><span class="pre">ssh</span></tt> installed; 2)
-create a <tt class="docutils literal"><span class="pre">.ssh</span></tt> directory in your home directory; and 3) run
-<tt class="docutils literal"><span class="pre">ssh-keygen</span></tt> in the <tt class="docutils literal"><span class="pre">.ssh</span></tt> directory (you are prompted for a
+create a <tt class="docutils literal"><span class="pre">.ssh</span></tt> folder in your home folder; and 3) run
+<tt class="docutils literal"><span class="pre">ssh-keygen</span></tt> in the <tt class="docutils literal"><span class="pre">.ssh</span></tt> folder (you are prompted for a
 passphrase - just write something). On Windows one applies the PuTTY
 and the TortoiseHG programs to generate and register keys, see the
 help pages on Bitbucket. Once the keys are generated, you can continue
@@ -313,10 +319,10 @@ you must replace <tt class="docutils literal"><span class="pre">username</span><
 Unix output ending with &#8220;Are you sure you want to continue connecting
 (yes/no)?&#8221;.  Just answer yes.</p>
 <p>The next step is to collect files and directories that should make up
-the project and put them in the <tt class="docutils literal"><span class="pre">my-project</span></tt> directory.</p>
+the project and put them in the <tt class="docutils literal"><span class="pre">my-project</span></tt> folder.</p>
 <p>Then all files should be brought under version control, with the exception
 of the file types listed in <tt class="docutils literal"><span class="pre">.hgignore</span></tt>.
-Issue the following command in the <tt class="docutils literal"><span class="pre">my-project</span></tt> directory:</p>
+Issue the following command in the <tt class="docutils literal"><span class="pre">my-project</span></tt> folder:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">hg add</span>
 <span class="gp">#</span> or
 <span class="go">git add .</span>
@@ -348,12 +354,12 @@ it sends file information to the <tt class="docutils literal"><span class="pre">
 push steps explained in the section <a class="reference internal" href="#bitgit-hg"><em>Using Mercurial</em></a> for Mercurial and
 the section <a class="reference internal" href="#bitgit-git"><em>Using Git</em></a> for Git.</p>
 </div>
-<div class="section" id="project-web-pages">
-<h2>Project Web Pages<a class="headerlink" href="#project-web-pages" title="Permalink to this headline">¶</a></h2>
-<p>The site <a class="reference external" href="http://pages.bitbucket.org">http://pages.bitbucket.org</a> can host web pages associated
-with a Bitbucket account. Say your account/user name is <tt class="docutils literal"><span class="pre">username</span></tt>.
-Make a new repository on Bitbucket called <tt class="docutils literal"><span class="pre">username.bitbucket.org</span></tt>.
-Clone it, fill it with a file, and push back, e.g.,</p>
+<div class="section" id="user-web-pages">
+<h2>User Web Pages<a class="headerlink" href="#user-web-pages" title="Permalink to this headline">¶</a></h2>
+<p>Bitbucket can host web pages associated with a Bitbucket account. Say
+your account/user name is <tt class="docutils literal"><span class="pre">username</span></tt>.  Make a new repository on
+Bitbucket called <tt class="docutils literal"><span class="pre">username.bitbucket.org</span></tt>.  Clone it, fill it with a
+file, and push back, e.g.,</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git clone git@bitbucket.org:username/username.bitbucket.org.git</span>
 <span class="go">cd username.bitbucket.org</span>
 <span class="go">echo &quot;Welcome to my web pages!&quot; &gt; test.html</span>
@@ -362,6 +368,11 @@ Clone it, fill it with a file, and push back, e.g.,</p>
 <span class="go">git push origin master</span>
 </pre></div>
 </div>
+<p>You can now load the URL <tt class="docutils literal"><span class="pre">http://username.bitbucket.org/test.html</span></tt> into
+a web browser and view the page. By creating various subfolders
+you can host web pages for a series of projects in this repo.</p>
+<p>Bitbucket does not yet offer ordinary repos to host and display
+web pages.</p>
 </div>
 </div>
 <div class="section" id="googlecode">
@@ -378,7 +389,7 @@ to choose between Git, Mercurial, or Subversion as version control
 system for your project, and this choice cannot be changed.
 Git and Mercurial are preferred over Subversion nowadays.
 If you choose Git, you must create a file <tt class="docutils literal"><span class="pre">.netrc</span></tt> in your
-home directory containing the line</p>
+home folder containing the line</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">machine</span> <span class="n">code</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span> <span class="n">login</span> <span class="n">uname</span> <span class="n">password</span> <span class="n">pw</span>
 </pre></div>
 </div>
@@ -390,10 +401,10 @@ your long and complicated password every time you push changes to
 the repository on <tt class="docutils literal"><span class="pre">code.google.com</span></tt>.</p>
 <p>The next step is to clone the empty repository on your local machine
 so that you can add files:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git clone https://code.google.com/p/my-project/</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git clone https://username@code.google.com/p/my-project/</span>
 </pre></div>
 </div>
-<p>Now you can go to the <tt class="docutils literal"><span class="pre">my-project</span></tt> directory and add files.
+<p>Now you can go to the <tt class="docutils literal"><span class="pre">my-project</span></tt> folder and add files.
 Perform</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git add .</span>
 <span class="go">git commit -am &#39;First import of files.&#39;</span>
@@ -429,17 +440,20 @@ The URL to your files is</p>
 <p>When using other version control systems, <tt class="docutils literal"><span class="pre">git</span></tt> is simply replaced by
 <tt class="docutils literal"><span class="pre">hg</span></tt> or or <tt class="docutils literal"><span class="pre">svn</span></tt>.
 For example, if we have HTML documentation of our project in
-the directory <tt class="docutils literal"><span class="pre">doc/API/html</span></tt>, we can point users to</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">my</span><span class="o">-</span><span class="n">project</span><span class="o">.</span><span class="n">googlecode</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">API</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+the folder <tt class="docutils literal"><span class="pre">doc/html</span></tt>, we can point users to</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">my</span><span class="o">-</span><span class="n">project</span><span class="o">.</span><span class="n">googlecode</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
 </pre></div>
 </div>
 <p>The HTML will be rendered correctly as opposed to when you load
 the similar file into the web browser from the repository,</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">code</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">p</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">project</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">browse</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">API</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">code</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">p</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">project</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">browse</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
 </pre></div>
 </div>
 <p>Now you can only see the HTML source code of this file, as is usual
-on other project hosting sites.</p>
+on other project hosting sites. We remark that MathJax
+mathematics within the HTML code is <em>not</em> rendered correctly. At the
+time of this writing, GitHub is the only service that offers full
+MathJax support when you need web pages with mathematics.</p>
 <p>You can click on <em>Project Home</em> and then on <em>Administer</em> to edit the
 main page of the project. This is a wiki, using Google&#8217;s wiki syntax,
 but it is quite easy to add links to your documentation, e.g.,</p>
@@ -463,7 +477,7 @@ appears.</p>
 <p>Googlecode applies their own Google wiki format. My preference is
 to write documentation in the neutral <a class="reference external" href="http://code.google.com/p/doconce">Doconce</a> format and transform the document to LaTeX, Sphinx, and Google wiki.
 The wiki can then be copied from the project directories to the
-wiki directory and then pushed to the repository. This ensures
+wiki folder and then pushed to the repository. This ensures
 that there is only one source of the documentation (despite the need
 for many formats) and that the wiki pages are frequently updated.</p>
 </div>
@@ -475,7 +489,7 @@ settings, choose <em>SSH Keys</em>, and provide your SSH key. Everyone who is
 supposed to use your repository must provide their SSH key.  There is
 a help that explains what this is all about. Often, it is just a
 matter of pasting the contents of <tt class="docutils literal"><span class="pre">id_rsa.pub</span></tt> or <tt class="docutils literal"><span class="pre">id_dsa.pub</span></tt> in the
-<tt class="docutils literal"><span class="pre">.ssh</span></tt> subdirectory of your home directory into the <em>Key</em> box in the
+<tt class="docutils literal"><span class="pre">.ssh</span></tt> subfolder of your home folder into the <em>Key</em> box in the
 web page. Make sure to cut and paste the text from, e.g., <tt class="docutils literal"><span class="pre">id_dsa.pub</span></tt>
 without any extra whitespaces or other text. How to generate these
 files is briefly described in the introduction to Bitbucket above.</p>
@@ -487,23 +501,42 @@ repository with a README</em>, and click on <em>Create repository</em>.</p>
 <p>The next step is to clone the project on your personal computer. Click
 on the <em>Git Read-Only</em> button to see the correct address of the project,
 paste this address into a terminal window, after <tt class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git clone git://github.com/username/My-Project.git</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git clone git://github.com:username/My-Project.git</span>
 </pre></div>
 </div>
 <p>Make sure you substitute <tt class="docutils literal"><span class="pre">username</span></tt> by your own user name on GitHub.</p>
-<p>The result of the <tt class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span></tt> command is a new directory <tt class="docutils literal"><span class="pre">My-Project</span></tt>.
+<p>The result of the <tt class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span></tt> command is a new folder <tt class="docutils literal"><span class="pre">My-Project</span></tt>.
 It contains the file <tt class="docutils literal"><span class="pre">.git</span></tt>, which shows that it is a Git repository.
 It also contains a default <tt class="docutils literal"><span class="pre">README.md</span></tt> file with the project name and
 description. The extension <tt class="docutils literal"><span class="pre">.md</span></tt> signifies a file written in the
 <a class="reference external" href="http://daringfireball.net/projects/markdown/">Markdown</a> format.
 You may use the <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> format as an alternative
 (<tt class="docutils literal"><span class="pre">README.rst</span></tt>), or simply write a plain text file (<tt class="docutils literal"><span class="pre">README</span></tt>).</p>
+<p>You can now add files and directories into the <tt class="docutils literal"><span class="pre">My-Project</span></tt> folder.
+When your initial file collection has the desired form, you must
+run</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git add .</span>
+<span class="go">git commit -am &#39;First set of files.&#39;</span>
+<span class="go">git push -u origin master</span>
+</pre></div>
+</div>
 <p>To give others permissions to push their edits of files to the
 repository, you click on <em>Admin</em>, centered at the top of the project&#8217;s
 page, then click on <em>Collaborators</em> on the left, and fill in the name
-of a collaborator (her or his user name on GitHub).  You can click on
-<em>Service Hooks</em> and then <em>Email</em> in the list to make each <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></tt>
-command send an email to yourself or others.</p>
+of a collaborator (her or his user name on GitHub).
+Many find it convenient to be notified in email when others have
+pushed a new version of the files to the repo. Click on <em>Service Hooks</em>
+(in the project&#8217;s <em>Admin</em> menu), choose <em>Email</em>, and fill in
+up to two whitespace-separated email addresses. One can send
+to more addresses by making a mailing list.</p>
+<p>Anyone who participates in a project (has write access) or watches a
+project (having clicked the <em>watch</em> button) can monitor the
+development of the activity through email. Go to <em>Account Settings</em>
+and choose <em>Notification Center</em>.  There you see two sections,
+<em>Participating</em> and <em>Watching</em>, for those participating in the project
+(granted write access) and those watching the project (having clicked
+the <em>watch</em> button), respectively.  Clicking the <em>Email</em> button turns
+on email notifications to those participating and/or watching.</p>
 <p>The daily file operations are explained in Section {bitgit:git}.
 There you also find information on how to create wiki pages and
 web pages associated with the project.</p>
@@ -529,9 +562,9 @@ Git address for a standard <tt class="docutils literal"><span class="pre">git</s
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git clone git://github.com/username/My-Project.wiki.git</span>
 </pre></div>
 </div>
-<p>This command makes a local copy of the pages in the directory
+<p>This command makes a local copy of the pages in the folder
 <tt class="docutils literal"><span class="pre">My-Project.wiki</span></tt>, which you may prefer to have at the same level
-as the project directory itself in your directory tree.</p>
+as the project folder itself in your folder tree.</p>
 <p>Each wiki page has its own file, where the extension reflects
 the markup language used, e.g., <tt class="docutils literal"><span class="pre">.md</span></tt> for Markdown and <tt class="docutils literal"><span class="pre">.rest</span></tt> for
 reStructuredText. The wiki files are handled as other files in a
@@ -547,8 +580,8 @@ generate the wiki in reStructuredText format.</p>
 <p>The address can be stored as <tt class="docutils literal"><span class="pre">url</span></tt> in <tt class="docutils literal"><span class="pre">.git/config</span></tt> so that just a
 <tt class="docutils literal"><span class="pre">git</span> <span class="pre">push</span></tt> works.</p>
 </div>
-<div class="section" id="id4">
-<h2>Project Web Pages<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="project-web-pages">
+<h2>Project Web Pages<a class="headerlink" href="#project-web-pages" title="Permalink to this headline">¶</a></h2>
 <p>GitHub can also host a set of web pages for your project where you can
 store various types of documentation. Here is a simple
 recipe for creating a set of project web pages.</p>
@@ -556,18 +589,20 @@ recipe for creating a set of project web pages.</p>
 <li>Go to to the  project page on <tt class="docutils literal"><span class="pre">github.com</span></tt> and click <em>Admin</em>.</li>
 <li>Check the <em>GitHub Pages</em> check box.</li>
 <li>Click on the <em>Automatic GitHub Page Generator</em> button in the pop up window.</li>
-<li>Go to the root directory of the project, <tt class="docutils literal"><span class="pre">My-Project</span></tt>,
+<li>Proceed with choosing a design of the <tt class="docutils literal"><span class="pre">index.html</span></tt> page and click <em>Publish</em>.</li>
+<li>Go to the root folder of the project, <tt class="docutils literal"><span class="pre">My-Project</span></tt>
 and run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">fetch</span> <span class="pre">origin</span></tt>.</li>
-<li>Run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">gh-pages</span> <span class="pre">origin/gh-pages</span></tt></li>
+<li>Run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">gh-pages</span></tt></li>
 </ol>
 <p>You have now a <em>new branch</em> called <tt class="docutils literal"><span class="pre">gh-pages</span></tt> of your project containing an
-<tt class="docutils literal"><span class="pre">index.html</span></tt> file in the root directory (and in fact all files <em>not</em>
+<tt class="docutils literal"><span class="pre">index.html</span></tt> file in the root folder (and in fact all files <em>not</em>
 contained in the <em>master branch</em>, typically redundant files not to be
 stored in the version control system).
-You can populate this directory and subdirectories you create with
+You can populate this folder and subdirectories you create with
 HTML and other files as you like.</p>
 <p>The <tt class="docutils literal"><span class="pre">index.html</span></tt> page is invoked by the web address
-<tt class="docutils literal"><span class="pre">http://username.github.com/My-Project/</span></tt>, where <tt class="docutils literal"><span class="pre">username</span></tt> is the GitHub
+<tt class="docutils literal"><span class="pre">http://username.github.com/My-Project/index.html</span></tt>,
+where <tt class="docutils literal"><span class="pre">username</span></tt> is the GitHub
 user name and <tt class="docutils literal"><span class="pre">My-Project</span></tt> is the project name.</p>
 <p>The web pages and project files are now in two different branches.
 To see the branches, type <tt class="docutils literal"><span class="pre">git</span> <span class="pre">branch</span></tt> and the one you are in will
@@ -583,24 +618,31 @@ in the merge, there will be markers in problematic files. Run
 <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> to show the problems. After a manual edit, do
 <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></tt>. Then you may run <tt class="docutils literal"><span class="pre">gitk</span></tt> to see a graphical illustration
 of what has happened.</p>
-<p>My preference is to have the master and gh-pages synchronized, at least in
-projects where I need the source code files for generating API
-documentation in the gh-pages branch. Sometimes I also update files
-in the gh-pages branch without remembering to switch to the master branch.
-Merging the branches is then an easy way out of this potential trouble.</p>
-<p>Start with pulling everything from the master branch to the gh-pages
-branch.  Make sure the master branch is updated with anything that was
-generated for the gh-pages branch. Finally you switch to the master
+<p>My personal preference is to have the master and gh-pages
+synchronized, at least in projects where I need the source code files
+for generating API documentation in the gh-pages branch. Sometimes I
+also update files in the gh-pages branch without remembering to switch
+to the master branch.  Merging the branches is then an easy way out of
+such potential trouble.</p>
+<p>Start with merging the gh-pages branch with the master
+branch and push the complete file collection to the gh-pages branch.
+Then switch to the master
 branch and merge with gh-pages so you get the autogenerated
-<tt class="docutils literal"><span class="pre">index.html</span></tt> file in the root directory:</p>
+<tt class="docutils literal"><span class="pre">index.html</span></tt> file and associated files and directories for the web design
+in the root folder of the master branch as well:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git merge master</span>
+<span class="go">touch .nojekyll</span>
 <span class="go">git push origin gh-pages</span>
 <span class="go">git checkout master</span>
 <span class="go">git merge gh-pages</span>
 </pre></div>
 </div>
+<p>You <em>must</em> add an empty file <tt class="docutils literal"><span class="pre">.nojekyll</span></tt> in the top
+folder of the project pages if you want to use Sphinx-generated
+HTML pages (or other pages using javascripts, style sheets, and images
+in subdirectories whose names start with an underscore).</p>
 <p>You can now add the documentation to the project files and
-keep them in the master branch.
+maintain them in the master branch.
 Before publishing documents online,
 make sure to update the gh-pages branch by</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git commit -am &#39;Ensure commit of everything in master branch&#39;</span>
@@ -611,20 +653,31 @@ make sure to update the gh-pages branch by</p>
 <span class="go">git checkout master</span>
 </pre></div>
 </div>
-<p>Here is a very important point if you want to use Sphinx-generated
-HTML pages: you <em>must</em> add an empty file <tt class="docutils literal"><span class="pre">.nojekyll</span></tt> in the top
-directory of the project pages. Without it, the contents in <tt class="docutils literal"><span class="pre">_static</span></tt>
-and <tt class="docutils literal"><span class="pre">_images</span></tt> directories (or any other directory starting with an
-underscore) are not visible, i.e., the layout of the pages cannot make
-use of Sphinx styles.  The problem can also be circumvented by
-installing special Sphinx extensions (<a class="reference external" href="https://github.com/michaeljones/sphinx-to-github">sphinx-to-github</a> or <a class="reference external" href="http://pydoc.net/github-tools/0.1.3/">github-tools</a>).</p>
-<p>Linking to source code files or other files in the project is easy:
-just find the file in the web interface, choose which version of
-the file you want to link to (nicely HTML formatted version or the raw
-file), and then cut and paste the URL into the link.</p>
+<p>Personally, I like to move the generated <tt class="docutils literal"><span class="pre">index.html</span></tt> file and all
+associated scripts, stylesheets, and images from the root folder to
+some more isolated place, say <tt class="docutils literal"><span class="pre">doc/web/git</span></tt>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git mv index.html params.json stylesheets/ images/ \</span>
+<span class="go">       javascripts/ doc/web/git/</span>
+</pre></div>
 </div>
-<div class="section" id="user-web-pages">
-<h2>User Web Pages<a class="headerlink" href="#user-web-pages" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">index.html</span></tt> then has the URL</p>
+<div class="highlight-py"><div class="highlight"><pre><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">My</span><span class="o">-</span><span class="n">Project</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">web</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>Linking to source code files or other files in the project is easy:
+just find the file in GitHub&#8217;s web interface, choose which version of
+the file you want to link to (nicely HTML formatted version or the raw
+file), right-click on the link, choose <em>Copy Link</em>, and paste the
+link into the document you want. You can test that the link works by
+the Unix command <tt class="docutils literal"><span class="pre">curl</span> <span class="pre">-O</span> <span class="pre">&lt;link&gt;</span></tt>. Note that the link to a file
+is quite different from the source file&#8217;s path in the repository.
+Typically, a source file <tt class="docutils literal"><span class="pre">mydir/myfile.py</span></tt> in project <tt class="docutils literal"><span class="pre">prj</span></tt> is reached
+through</p>
+<div class="highlight-py"><pre>https://github.com/username/prj/blob/master/mydir/myfile.py?raw=true</pre>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>User Web Pages<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>GitHub also allows you to create user pages and organization pages not
 tied to any specific project.
 Your personal site has address
@@ -646,7 +699,7 @@ Then following the instructions that come up:</p>
 rendered. You can now add various contents as in any ordinary
 Git repository.
 If you want to use Sphinx generated HTML pages, recall to add an empty file
-<tt class="docutils literal"><span class="pre">.nojekyll</span></tt>.</p>
+<tt class="docutils literal"><span class="pre">.nojekyll</span></tt>. Different projects can be hosted in different subfolders.</p>
 </div>
 </div>
 <div class="section" id="using-mercurial">
@@ -671,7 +724,7 @@ URL of the Bitbucket repo as <em>Source</em> and set
 You will be prompted for a password which is the password for your
 Bitbucket account.</li>
 <li>When a file is changed and you want to commit the changes,
-right-click in the Explorer window showing the Mercurial directory
+right-click in the Explorer window showing the Mercurial folder
 and choose <em>Commit</em>. Write a comment in the text field to the right
 to document the changes.</li>
 <li>To synchronize your local files with the repository (i.e., to do a
@@ -699,7 +752,7 @@ can get started with the project by the command</p>
 <div class="section" id="the-pull-change-push-cycle">
 <h3>The Pull-Change-Push Cycle<a class="headerlink" href="#the-pull-change-push-cycle" title="Permalink to this headline">¶</a></h3>
 <p>Your typical working style with the <tt class="docutils literal"><span class="pre">my-project</span></tt> project goes as follows.
-First you go to the desired directory where this project is stored on
+First you go to the desired folder where this project is stored on
 your local computer and make sure
 you have the latest versions of the files:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">hg pull</span>
@@ -761,7 +814,7 @@ performed the change.</p>
 <p>lists the history of <tt class="docutils literal"><span class="pre">filename</span></tt> in more detail so that you can track
 the evolution of this file. Adding the <tt class="docutils literal"><span class="pre">--follow</span></tt> option will list the
 history also when <tt class="docutils literal"><span class="pre">filename</span></tt> had other names.  The history of all
-files in a directory is listed by by specifying the directory name(s).
+files in a folder is listed by by specifying the folder name(s).
 No name specification gives the history of the whole repo.</p>
 <p>More compact output from <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">log</span></tt>, without line differences, is triggered by
 the <tt class="docutils literal"><span class="pre">--stat</span></tt> option:</p>
@@ -957,7 +1010,7 @@ diff myfile ../tmp_repo/myfile
 <p>Try to run this <a class="reference external" href="_static-bitgit/hg_merge.sh">file</a> named
 <tt class="docutils literal"><span class="pre">hg_merge.sh</span></tt> by <tt class="docutils literal"><span class="pre">sh</span> <span class="pre">-x</span> <span class="pre">hg_merge.sh</span></tt>.
 To resolve the resulting merge conflict you need to go to the <tt class="docutils literal"><span class="pre">tmp2</span></tt>
-directory, run <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">merge</span> <span class="pre">--tool</span> <span class="pre">meld</span></tt> and use the <tt class="docutils literal"><span class="pre">meld</span></tt> tool to
+folder, run <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">merge</span> <span class="pre">--tool</span> <span class="pre">meld</span></tt> and use the <tt class="docutils literal"><span class="pre">meld</span></tt> tool to
 select which text snippets that should make up the final, merged
 version. Save and quit <tt class="docutils literal"><span class="pre">meld</span></tt> and perform <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">merge</span></tt>.  You
 can now do <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">push</span></tt> successfully to update the global repository.</p>
@@ -1001,7 +1054,7 @@ actual project name.</p>
 <div class="section" id="id6">
 <h3>The Pull-Change-Push Cycle<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>The typical work flow with the &#8220;My Project&#8221; project starts with
-updating the local repository by going to the <tt class="docutils literal"><span class="pre">My-Project</span></tt> directory
+updating the local repository by going to the <tt class="docutils literal"><span class="pre">My-Project</span></tt> folder
 and writing</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git pull origin master</span>
 </pre></div>
@@ -1101,7 +1154,7 @@ branch.</p>
 when <tt class="docutils literal"><span class="pre">yourfile</span></tt> existed, and do a <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;commit</span> <span class="pre">hash&gt;</span> <span class="pre">yourfile</span></tt>.</p>
 <p>The Git equivalent to <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">cat</span></tt> for just viewing old versions of files is
 <tt class="docutils literal"><span class="pre">git</span> <span class="pre">show</span></tt>, but the command requires the full path from the root
-git directory (which is sometimes inconvenient):</p>
+git folder (which is sometimes inconvenient):</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git show c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/myfile</span>
 </pre></div>
 </div>
@@ -1242,7 +1295,7 @@ cat myfile
 <p>You may run this <a class="reference external" href="_static-bitgit/git_merge.sh">file</a> named
 <tt class="docutils literal"><span class="pre">git_merge.sh</span></tt> by <tt class="docutils literal"><span class="pre">sh</span> <span class="pre">-x</span> <span class="pre">git_merge.sh</span></tt>.
 At the end, the versions of <tt class="docutils literal"><span class="pre">myfile</span></tt> in the
-repository and the <tt class="docutils literal"><span class="pre">tmp2</span></tt> directory are in conflict. Git tried
+repository and the <tt class="docutils literal"><span class="pre">tmp2</span></tt> folder are in conflict. Git tried
 to merge the two versions, but failed. Merge markers are left in
 <tt class="docutils literal"><span class="pre">tmp2/myfile</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="n">HEAD</span>
@@ -1320,7 +1373,7 @@ file</li>
 </li>
 <li><a class="reference internal" href="#bitbucket">Bitbucket</a><ul>
 <li><a class="reference internal" href="#create-a-new-project">Create a New Project</a></li>
-<li><a class="reference internal" href="#project-web-pages">Project Web Pages</a></li>
+<li><a class="reference internal" href="#user-web-pages">User Web Pages</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#googlecode">Googlecode</a><ul>
@@ -1331,8 +1384,8 @@ file</li>
 <li><a class="reference internal" href="#github">GitHub</a><ul>
 <li><a class="reference internal" href="#id2">Create a New Project</a></li>
 <li><a class="reference internal" href="#id3">Wiki Pages</a></li>
-<li><a class="reference internal" href="#id4">Project Web Pages</a></li>
-<li><a class="reference internal" href="#user-web-pages">User Web Pages</a></li>
+<li><a class="reference internal" href="#project-web-pages">Project Web Pages</a></li>
+<li><a class="reference internal" href="#id4">User Web Pages</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#using-mercurial">Using Mercurial</a><ul>
@@ -1367,11 +1420,6 @@ file</li>
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
                         title="previous chapter">Quick Intro to Version Control Systems and Project Hosting Services</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/wrap_bitgit.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">

@@ -6,7 +6,7 @@ Quick Intro to Version Control Systems and Project Hosting Services
 
 :Author: Hans Petter Langtangen
 
-:Date: Jul 9, 2012
+:Date: Aug 21, 2012
 
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -88,7 +88,7 @@ MS Word or Excel documents, and OpenOffice documents.
 .. Bitbucket first, since the description of GitHub is briefer.
 
 
-For the examples below, assume that you have some directory tree
+For the examples below, assume that you have some folder tree
 ``my-project`` with files that you want to host at Bitbucket, GitHub, or
 Googlecode and bring under version control. The official name of the
 project is "My Project".
@@ -173,7 +173,7 @@ by
 on Ubuntu. TortoiseHG is the natural application to run Mercurial on a
 Windows machine.
 
-We recommend that you create two files in your home directory: ``.hgrc`` for
+We recommend that you create two files in your home folder: ``.hgrc`` for
 specifying the behavior of ``hg`` (Mercurial) and ``.hgignore`` for
 listing the type of files you in general do not want to have under version
 control. A simple ``.hgrc`` file can look like this:
@@ -230,7 +230,7 @@ Git involves compiled code so it is most convenient to download a
 precompiled binary version of the software on Windows, Mac and other
 Linux computers.
 
-Make a file ``.gitconfig`` in your home directory with information on
+Make a file ``.gitconfig`` in your home folder with information on
 your full name, email address, your favorite emacs editor, and
 the name of a file which defines the file types that Git should omit
 when bringing new directories under version control.
@@ -282,7 +282,7 @@ To start using Bitbucket, go to ``bitbucket.org`` and create an account.
 The communication channel with Bitbucket repositories is either
 through SSH or HTTPS.  To use SSH, you must upload your SSH key,
 typically the contents of the file ``id_rsa.pub`` or ``id_dsa.pub`` in the
-``.ssh`` subdirectory of your home directory. Go to the page for your
+``.ssh`` subfolder of your home folder. Go to the page for your
 account, choose *SSH keys*, and upload one of these files.
 The essence of the SSH keys is that they allow you to communicate with
 Bitbucket without using a password, which is very convenient.
@@ -290,8 +290,8 @@ Bitbucket without using a password, which is very convenient.
 There are links to extensive help pages if you do not have such keys
 or if you are unfamiliar with SSH. Follow these steps on Mac or Linux
 machines to generate keys: 1) check that you have ``ssh`` installed; 2)
-create a ``.ssh`` directory in your home directory; and 3) run
-``ssh-keygen`` in the ``.ssh`` directory (you are prompted for a
+create a ``.ssh`` folder in your home folder; and 3) run
+``ssh-keygen`` in the ``.ssh`` folder (you are prompted for a
 passphrase - just write something). On Windows one applies the PuTTY
 and the TortoiseHG programs to generate and register keys, see the
 help pages on Bitbucket. Once the keys are generated, you can continue
@@ -344,11 +344,11 @@ Unix output ending with "Are you sure you want to continue connecting
 (yes/no)?".  Just answer yes.
 
 The next step is to collect files and directories that should make up
-the project and put them in the ``my-project`` directory.
+the project and put them in the ``my-project`` folder.
 
 Then all files should be brought under version control, with the exception
 of the file types listed in ``.hgignore``.
-Issue the following command in the ``my-project`` directory:
+Issue the following command in the ``my-project`` folder:
 
 .. code-block:: console
 
@@ -389,13 +389,14 @@ Further work with the files must always follow the pull, edit, commit, and
 push steps explained in the section :ref:`bitgit:hg` for Mercurial and
 the section :ref:`bitgit:git` for Git.
 
-Project Web Pages
------------------
+User Web Pages
+--------------
 
-The site `<http://pages.bitbucket.org>`_ can host web pages associated
-with a Bitbucket account. Say your account/user name is ``username``.
-Make a new repository on Bitbucket called ``username.bitbucket.org``.
-Clone it, fill it with a file, and push back, e.g.,
+Bitbucket can host web pages associated with a Bitbucket account. Say
+your account/user name is ``username``.  Make a new repository on
+Bitbucket called ``username.bitbucket.org``.  Clone it, fill it with a
+file, and push back, e.g.,
+
 
 .. code-block:: console
 
@@ -406,7 +407,12 @@ Clone it, fill it with a file, and push back, e.g.,
         git commit -am 'First web page'
         git push origin master
 
+You can now load the URL ``http://username.bitbucket.org/test.html`` into
+a web browser and view the page. By creating various subfolders
+you can host web pages for a series of projects in this repo.
 
+Bitbucket does not yet offer ordinary repos to host and display
+web pages.
 
 
 .. _bitgit:googlecode:
@@ -433,7 +439,7 @@ to choose between Git, Mercurial, or Subversion as version control
 system for your project, and this choice cannot be changed.
 Git and Mercurial are preferred over Subversion nowadays.
 If you choose Git, you must create a file ``.netrc`` in your
-home directory containing the line
+home folder containing the line
 
 .. code-block:: python
 
@@ -451,9 +457,9 @@ so that you can add files:
 
 .. code-block:: console
 
-        git clone https://code.google.com/p/my-project/
+        git clone https://username@code.google.com/p/my-project/
 
-Now you can go to the ``my-project`` directory and add files.
+Now you can go to the ``my-project`` folder and add files.
 Perform
 
 .. code-block:: console
@@ -497,21 +503,24 @@ The URL to your files is
 When using other version control systems, ``git`` is simply replaced by
 ``hg`` or or ``svn``.
 For example, if we have HTML documentation of our project in
-the directory ``doc/API/html``, we can point users to
+the folder ``doc/html``, we can point users to
 
 .. code-block:: python
 
-        https://my-project.googlecode.com/git/doc/API/html/index.html
+        https://my-project.googlecode.com/git/doc/html/index.html
 
 The HTML will be rendered correctly as opposed to when you load
 the similar file into the web browser from the repository,
 
 .. code-block:: python
 
-        http://code.google.com/p/my-project/source/browse/doc/API/html/index.html
+        http://code.google.com/p/my-project/source/browse/doc/html/index.html
 
 Now you can only see the HTML source code of this file, as is usual
-on other project hosting sites.
+on other project hosting sites. We remark that MathJax
+mathematics within the HTML code is *not* rendered correctly. At the
+time of this writing, GitHub is the only service that offers full
+MathJax support when you need web pages with mathematics.
 
 You can click on *Project Home* and then on *Administer* to edit the
 main page of the project. This is a wiki, using Google's wiki syntax,
@@ -541,7 +550,7 @@ appears.
 Googlecode applies their own Google wiki format. My preference is
 to write documentation in the neutral `Doconce <http://code.google.com/p/doconce>`_ format and transform the document to LaTeX, Sphinx, and Google wiki.
 The wiki can then be copied from the project directories to the
-wiki directory and then pushed to the repository. This ensures
+wiki folder and then pushed to the repository. This ensures
 that there is only one source of the documentation (despite the need
 for many formats) and that the wiki pages are frequently updated.
 
@@ -566,7 +575,7 @@ settings, choose *SSH Keys*, and provide your SSH key. Everyone who is
 supposed to use your repository must provide their SSH key.  There is
 a help that explains what this is all about. Often, it is just a
 matter of pasting the contents of ``id_rsa.pub`` or ``id_dsa.pub`` in the
-``.ssh`` subdirectory of your home directory into the *Key* box in the
+``.ssh`` subfolder of your home folder into the *Key* box in the
 web page. Make sure to cut and paste the text from, e.g., ``id_dsa.pub``
 without any extra whitespaces or other text. How to generate these
 files is briefly described in the introduction to Bitbucket above.
@@ -585,11 +594,11 @@ paste this address into a terminal window, after ``git clone``:
 
 .. code-block:: console
 
-        git clone git://github.com/username/My-Project.git
+        git clone git://github.com:username/My-Project.git
 
 Make sure you substitute ``username`` by your own user name on GitHub.
 
-The result of the ``git clone`` command is a new directory ``My-Project``.
+The result of the ``git clone`` command is a new folder ``My-Project``.
 It contains the file ``.git``, which shows that it is a Git repository.
 It also contains a default ``README.md`` file with the project name and
 description. The extension ``.md`` signifies a file written in the
@@ -597,12 +606,35 @@ description. The extension ``.md`` signifies a file written in the
 You may use the `reStructuredText <http://docutils.sourceforge.net/rst.html>`_ format as an alternative
 (``README.rst``), or simply write a plain text file (``README``).
 
+You can now add files and directories into the ``My-Project`` folder.
+When your initial file collection has the desired form, you must
+run
+
+.. code-block:: console
+
+        git add .
+        git commit -am 'First set of files.'
+        git push -u origin master
+
+
 To give others permissions to push their edits of files to the
 repository, you click on *Admin*, centered at the top of the project's
 page, then click on *Collaborators* on the left, and fill in the name
-of a collaborator (her or his user name on GitHub).  You can click on
-*Service Hooks* and then *Email* in the list to make each ``git commit``
-command send an email to yourself or others.
+of a collaborator (her or his user name on GitHub).
+Many find it convenient to be notified in email when others have
+pushed a new version of the files to the repo. Click on *Service Hooks*
+(in the project's *Admin* menu), choose *Email*, and fill in
+up to two whitespace-separated email addresses. One can send
+to more addresses by making a mailing list.
+
+Anyone who participates in a project (has write access) or watches a
+project (having clicked the *watch* button) can monitor the
+development of the activity through email. Go to *Account Settings*
+and choose *Notification Center*.  There you see two sections,
+*Participating* and *Watching*, for those participating in the project
+(granted write access) and those watching the project (having clicked
+the *watch* button), respectively.  Clicking the *Email* button turns
+on email notifications to those participating and/or watching.
 
 The daily file operations are explained in Section {bitgit:git}.
 There you also find information on how to create wiki pages and
@@ -634,9 +666,9 @@ Git address for a standard ``git clone`` command, typically
 
         git clone git://github.com/username/My-Project.wiki.git
 
-This command makes a local copy of the pages in the directory
+This command makes a local copy of the pages in the folder
 ``My-Project.wiki``, which you may prefer to have at the same level
-as the project directory itself in your directory tree.
+as the project folder itself in your folder tree.
 
 Each wiki page has its own file, where the extension reflects
 the markup language used, e.g., ``.md`` for Markdown and ``.rest`` for
@@ -671,20 +703,23 @@ recipe for creating a set of project web pages.
 
 3. Click on the *Automatic GitHub Page Generator* button in the pop up window.
 
-4. Go to the root directory of the project, ``My-Project``,
+4. Proceed with choosing a design of the ``index.html`` page and click *Publish*.
+
+5. Go to the root folder of the project, ``My-Project``
    and run ``git fetch origin``.
 
-5. Run ``git checkout -b gh-pages origin/gh-pages``
+6. Run ``git checkout gh-pages``
 
 You have now a *new branch* called ``gh-pages`` of your project containing an
-``index.html`` file in the root directory (and in fact all files *not*
+``index.html`` file in the root folder (and in fact all files *not*
 contained in the *master branch*, typically redundant files not to be
 stored in the version control system).
-You can populate this directory and subdirectories you create with
+You can populate this folder and subdirectories you create with
 HTML and other files as you like.
 
 The ``index.html`` page is invoked by the web address
-``http://username.github.com/My-Project/``, where ``username`` is the GitHub
+``http://username.github.com/My-Project/index.html``,
+where ``username`` is the GitHub
 user name and ``My-Project`` is the project name.
 
 .. Update this info when I have maintained gh-pages for a while!
@@ -712,28 +747,36 @@ in the merge, there will be markers in problematic files. Run
 ``git commit -a``. Then you may run ``gitk`` to see a graphical illustration
 of what has happened.
 
-My preference is to have the master and gh-pages synchronized, at least in
-projects where I need the source code files for generating API
-documentation in the gh-pages branch. Sometimes I also update files
-in the gh-pages branch without remembering to switch to the master branch.
-Merging the branches is then an easy way out of this potential trouble.
+My personal preference is to have the master and gh-pages
+synchronized, at least in projects where I need the source code files
+for generating API documentation in the gh-pages branch. Sometimes I
+also update files in the gh-pages branch without remembering to switch
+to the master branch.  Merging the branches is then an easy way out of
+such potential trouble.
 
-Start with pulling everything from the master branch to the gh-pages
-branch.  Make sure the master branch is updated with anything that was
-generated for the gh-pages branch. Finally you switch to the master
+Start with merging the gh-pages branch with the master
+branch and push the complete file collection to the gh-pages branch.
+Then switch to the master
 branch and merge with gh-pages so you get the autogenerated
-``index.html`` file in the root directory:
+``index.html`` file and associated files and directories for the web design
+in the root folder of the master branch as well:
 
 
 .. code-block:: console
 
         git merge master
+        touch .nojekyll
         git push origin gh-pages
         git checkout master
         git merge gh-pages
 
+You *must* add an empty file ``.nojekyll`` in the top
+folder of the project pages if you want to use Sphinx-generated
+HTML pages (or other pages using javascripts, style sheets, and images
+in subdirectories whose names start with an underscore).
+
 You can now add the documentation to the project files and
-keep them in the master branch.
+maintain them in the master branch.
 Before publishing documents online,
 make sure to update the gh-pages branch by
 
@@ -748,13 +791,32 @@ make sure to update the gh-pages branch by
         git checkout master
 
 
-Here is a very important point if you want to use Sphinx-generated
-HTML pages: you *must* add an empty file ``.nojekyll`` in the top
-directory of the project pages. Without it, the contents in ``_static``
-and ``_images`` directories (or any other directory starting with an
-underscore) are not visible, i.e., the layout of the pages cannot make
-use of Sphinx styles.  The problem can also be circumvented by
-installing special Sphinx extensions (`sphinx-to-github <https://github.com/michaeljones/sphinx-to-github>`_ or `github-tools <http://pydoc.net/github-tools/0.1.3/>`_).
+Personally, I like to move the generated ``index.html`` file and all
+associated scripts, stylesheets, and images from the root folder to
+some more isolated place, say ``doc/web/git``:
+
+
+.. code-block:: console
+
+        git mv index.html params.json stylesheets/ images/ \
+               javascripts/ doc/web/git/
+
+The ``index.html`` then has the URL
+
+.. code-block:: py
+
+
+        http://username.github.com/My-Project/doc/web/git/index.html
+
+
+.. The problem can also be circumvented by
+
+.. installing special Sphinx extensions ("sphinx-to-github":
+
+.. "https://github.com/michaeljones/sphinx-to-github" or "github-tools":
+
+.. "http://pydoc.net/github-tools/0.1.3/").
+
 
 .. See https://github.com/daler/sphinxdoc-test
 
@@ -768,9 +830,20 @@ installing special Sphinx extensions (`sphinx-to-github <https://github.com/mich
 
 
 Linking to source code files or other files in the project is easy:
-just find the file in the web interface, choose which version of
+just find the file in GitHub's web interface, choose which version of
 the file you want to link to (nicely HTML formatted version or the raw
-file), and then cut and paste the URL into the link.
+file), right-click on the link, choose *Copy Link*, and paste the
+link into the document you want. You can test that the link works by
+the Unix command ``curl -O <link>``. Note that the link to a file
+is quite different from the source file's path in the repository.
+Typically, a source file ``mydir/myfile.py`` in project ``prj`` is reached
+through
+
+.. code-block:: py
+
+
+        https://github.com/username/prj/blob/master/mydir/myfile.py?raw=true
+
 
 User Web Pages
 --------------
@@ -799,7 +872,7 @@ Go to ``http://username.github.com`` and see how the ``index.html`` is
 rendered. You can now add various contents as in any ordinary
 Git repository.
 If you want to use Sphinx generated HTML pages, recall to add an empty file
-``.nojekyll``.
+``.nojekyll``. Different projects can be hosted in different subfolders.
 
 
 
@@ -842,7 +915,7 @@ following way.
    Bitbucket account.
 
  * When a file is changed and you want to commit the changes,
-   right-click in the Explorer window showing the Mercurial directory
+   right-click in the Explorer window showing the Mercurial folder
    and choose *Commit*. Write a comment in the text field to the right
    to document the changes.
 
@@ -875,7 +948,7 @@ The Pull-Change-Push Cycle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Your typical working style with the ``my-project`` project goes as follows.
-First you go to the desired directory where this project is stored on
+First you go to the desired folder where this project is stored on
 your local computer and make sure
 you have the latest versions of the files:
 
@@ -955,7 +1028,7 @@ Another command,
 lists the history of ``filename`` in more detail so that you can track
 the evolution of this file. Adding the ``--follow`` option will list the
 history also when ``filename`` had other names.  The history of all
-files in a directory is listed by by specifying the directory name(s).
+files in a folder is listed by by specifying the folder name(s).
 No name specification gives the history of the whole repo.
 
 More compact output from ``hg log``, without line differences, is triggered by
@@ -1180,7 +1253,7 @@ merge.
 Try to run this `file <_static-bitgit/hg_merge.sh>`_ named
 ``hg_merge.sh`` by ``sh -x hg_merge.sh``.
 To resolve the resulting merge conflict you need to go to the ``tmp2``
-directory, run ``hg merge --tool meld`` and use the ``meld`` tool to
+folder, run ``hg merge --tool meld`` and use the ``meld`` tool to
 select which text snippets that should make up the final, merged
 version. Save and quit ``meld`` and perform ``hg commit -m merge``.  You
 can now do ``hg push`` successfully to update the global repository.
@@ -1237,7 +1310,7 @@ The Pull-Change-Push Cycle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The typical work flow with the "My Project" project starts with
-updating the local repository by going to the ``My-Project`` directory
+updating the local repository by going to the ``My-Project`` folder
 and writing
 
 .. code-block:: console
@@ -1373,7 +1446,7 @@ when ``yourfile`` existed, and do a ``git checkout <commit hash> yourfile``.
 
 The Git equivalent to ``hg cat`` for just viewing old versions of files is
 ``git show``, but the command requires the full path from the root
-git directory (which is sometimes inconvenient):
+git folder (which is sometimes inconvenient):
 
 .. code-block:: console
 
@@ -1528,7 +1601,7 @@ repository.
 You may run this `file <_static-bitgit/git_merge.sh>`_ named
 ``git_merge.sh`` by ``sh -x git_merge.sh``.
 At the end, the versions of ``myfile`` in the
-repository and the ``tmp2`` directory are in conflict. Git tried
+repository and the ``tmp2`` folder are in conflict. Git tried
 to merge the two versions, but failed. Merge markers are left in
 ``tmp2/myfile``:
 
