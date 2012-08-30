@@ -1,0 +1,915 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Automatically generated HTML file from Doconce source
+(http://code.google.com/p/doconce/)
+-->
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+
+<!--
+Color definitions:  http://www.december.com/html/spec/color0.html
+CSS examples:       http://www.w3schools.com/css/css_examples.asp
+-->
+
+<style type="text/css">
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.5em; color: #1e36ce; }
+    h3 { color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    pre { background: #ededed; color: #000; padding: 15px;}
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+</style>
+
+<!-- Use MathJax to render mathematics -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+</head>
+
+<body>
+    
+
+<!-- ---------------------------- main content ------------------------>
+
+<title>A Worked Example on Scientific Computing with Python</title>
+
+<center><h1>A Worked Example on Scientific Computing with Python</h1></center>  <! -- document title -->
+
+<! -- author(s) -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Simula Research Laboratory</b></center>
+<center>[2] <b>University of Oslo</b></center>
+
+
+<center><h4>Aug 30, 2012</h4></center> <!-- date -->
+<p>
+<!-- The lists below could be coded in Python via Mako and processed -->
+<!-- for table of contents, requirements, etc. of teaching modules -->
+
+<p>
+This worked example
+
+<p>
+
+<ul>
+  <li> fetches a data file from a web site,
+  <li> applies that file as input data for a differential equation modeling a vibrating system,
+  <li> solves the equation,
+  <li> visualizes various properties of the solution and the input data.
+</ul>
+
+The following programming topics are illustrated:
+
+<p>
+
+<ul>
+  <li> downloading files from a web site,
+  <li> working with <tt>numpy</tt> arrays,
+  <li> flexible storage of objects in lists,
+  <li> easy storage of objects in files (persistence),
+  <li> signal processing and FFT,
+  <li> curve plotting of data.
+</ul>
+
+Required backround:
+
+<p>
+
+<ul>
+  <li> some interest in exploring physics through numerical simulation
+  <li> some very basic knowledge of differential equations
+  <li> some very basic knowledge of finite difference approximations
+  <li> significant interest in exploring Python for scientific computations
+</ul>
+
+<em>No background in Python is assumed - the aim is to give an impression of
+how Python can be used in a MATLAB-like fashion to solve a real-world
+physical problem (with low mathematical complexity).</em>
+
+<p>
+<!-- Python Scientific are also in 5620/literature, some of those above -->
+<!-- could be copied here -->
+
+<p>
+
+<p>
+Alternative tutorials for scientific programming with Python:
+
+<p>
+
+<ul>
+  <li> <a href="http://physics.nyu.edu/pine/pymanual/">PyPrimer</a>
+  <li> <a href="http://fperez.org/py4science/starter_kit.html">Useful software</a>
+  <li> <a href="http://fperez.org/py4science/warts.html">Why Python for Scientific Computing?</a>
+  <li> <a href="http://www.scipy.org/Tentative_NumPy_Tutorial">NumPy Tutorial</a>
+  <li> <a href="http://docs.scipy.org/doc/numpy/user/">NumPy User Guide</a>
+  <li> <a href="https://github.com/pv/advanced-numpy-tutorial">Advanced NumPy Tutorial</a>
+  <li> <a href="http://scipy2010.blogspot.com/2010/06/tutorials-day-1-advanced-numpy.html">Advanced NumPy Course</a>
+  <li> <a href="http://www.scipy.org/Numpy_Example_List">NumPy Example List</a>
+  <li> <a href="http://mentat.za.net/numpy/numpy_advanced_slides/">NumPy Medkit</a>
+  <li> <a href="http://www.scipy.org/Cookbook">NumPy and SciPy Cookbook</a>
+  <li> <a href="http://www.scipy.org/NumPy_for_Matlab_Users">NumPy for Matlab Users</a>
+  <li> <a href="http://mathesaurus.sf.net">NumPy for Matlab/R/IDL Users</a>
+  <li> <a href="http://web.phys.ntnu.no/~ingves/Teaching/TFY4240/Assignments/PythonScientific.pdf">Python Scientific</a> (lecture notes)
+  <li> <a href="http://www.maths.lth.se/na/help/media/Practical_Scientific_Computing_with_Python.pdf">Practical Scientific Computing with Python</a>
+  <li> <a href="http://www.astropython.org/tutorial/2011/8/Python-Scientific-Lecture-Notes">AstroPython</a>
+  <li> <a href="http://ipython.scipy.org/doc/manual/html">IPython</a>
+  <li> <a href="http://code.google.com/p/pythonxy/wiki/Welcome">Python(x,y)</a>
+</ul>
+
+<h3>Physical Problem  <a name="___sec0"></a></h3>
+<p>
+The task is to make a simulation program that can predict how a (simple)
+mechanical system oscillates in response to environmental forces.
+Introducing \( u(t) \) as some displacement of the system at time \( t \),
+application of Newton's second law of motion to such a mechanical system often
+results in the following type of equation for \( u \):
+
+<p>
+$$
+\begin{equation}
+mu''(t) + bu'(t) + f(u) = F(t),
+\label{bumpy:eq1}
+\end{equation}
+$$
+The prime, as in \( u'(t) \), denotes differentiation with respect to time.
+Furthermore, \( m \) is the mass of the system, \( b \) is a coefficient related to
+the damping of the system, \( f(u) \) represents a restoring force, such as
+a spring, and \( F(t) \) are the external environmental forces on the system.
+Equation \eqref{bumpy:eq1} must be accompanied by two initial conditions
+for \( u(0) \) and \( u'(0) \).
+The values of these have no effect on the
+steady state behavior of \( u(t) \) for large values of \( t \), since this
+behavior is determined by the force \( F(t) \) and the system
+parameters \( m \), \( b \), and \( f(u) \). Therefore, we simply choose
+\( u(0)=I \) and \( u'(0)=0 \).
+The input data consists of \( m \), \( b \), \( f(u) \), \( F(t) \),
+\( u(0) \), and \( u'(0) \), while the \( u(t) \) is the unknown quantity to be
+computed.
+
+<p>
+One example where the model above has relevance, is the vertical
+vibration of a vehicle in response to a bumpy road. Let \( h(x) \) be the
+height of the road at some coordinate \( x \) along the road.  When
+driving along this road with constant velocity \( v \), the vehicle is
+moved up and down in time according to \( h(vt) \), resulting in an
+external vertical force \( F(t)=-mh''(vt)v^2 \). We assume that the
+vehicle has springs and dampers that here are modeled as \( bu' \)
+(damper) and \( f(s)=ku \) (spring), with given damping parameter \( b \) and
+spring constant \( k \). The unknown \( u(t) \) is the vertical displacement
+of the vehicle relative to the road. Figure <a href="bumpy:fig1">1</a>
+illustrates the situation.
+
+<p>
+
+<p>
+<center> <! -- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  Vehicle on a bumpy road. <a name="bumpy:fig1"></a> </p></center>
+<p><img src="fig-bumpy/vehicle2.png" align="bottom" width=600></p>
+</center>
+
+<p>
+
+<p>
+Another example regards the vertical shaking of a building due to
+earthquake-induced movement of the ground. If the vertical displacement of the
+ground is recorded as a function \( d(t) \), this results in a
+vertical force \( F(t)=-md''(t) \). The soil foundation acts as a
+spring and damper on the building, modeled through the damping parameter
+\( b \) and normally a linear spring term \( f(u)=ku \).
+
+<p>
+In both cases we drop the effect of gravity, which is just a constant
+compression of the spring.
+
+<p>
+<!-- wing, riser -->
+
+<p>
+Our task is to compute and analyse the vertical \( u(t) \) vibrations
+of a vehicle, given the shape \( h(x) \) of the road and some velocity \( v \).
+
+<p>
+
+<p>
+
+<h3>Numerical Model and Implementation  <a name="___sec1"></a></h3>
+<p>
+Using a standard second-order finite difference method for \eqref{bumpy:eq1}
+gives rise to an algorithm that computes an approximation \( u^n \) to
+\( u(t_n) \) at time points \( t_n=n\Delta t \), \( n=1,2,\ldots \), where \( \Delta t \)
+is a (small) time interval. For example, if \( \Delta t = 0.1 \), we
+find approximations \( u^1 \) to \( u \) at \( t=0.1 \), \( u^2 \) at \( t=0.2 \), \( u^3 \)
+to \( t=0.3 \), and so forth. Mathematically, the algorithm can be
+written as
+
+<p>
+$$
+\begin{align}
+u^0 &= 0,\\
+u^1 &= u^0 - \frac{\Delta t^2}{2m}\left( f(u^0) - F(t_0)\right),\\
+u^n &= \left(
+\left(\frac{1}{2}b\Delta t - m\right)u^{n-1} + 2mu^n - \Delta t^2\left(
+f(u^n) - F(t_n)\right)\right)\left(\frac{1}{2}b\Delta t + m\right)^{-1},\
+n=2,3,\ldots
+\end{align}
+$$
+
+<p>
+The implementation of the computational algorithm can make use
+of an array <tt>u</tt> to represent \( u^n \) as <tt>u[n]</tt>. The force \( F(t_n) \) is
+assumed to be available as an array element <tt>F[n]</tt>. The following
+Python function computes <tt>u</tt> given  an array <tt>t</tt>
+with time points \( t_0,t_1,\ldots \),
+the initial displacement <tt>I</tt>, mass <tt>m</tt>, damping parameter <tt>b</tt>,
+restoring force <tt>f(u)</tt>, environmental forces <tt>F</tt> as an array
+(corresponding to <tt>t</tt>).
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">import numpy as np
+
+def forced_vibrations(t, I, m, b, f, F):
+    &quot;&quot;&quot;
+    Solve a vibrating system problem m*u&#39;&#39; + b*u&#39; + f(u) = F(t)
+    with u(0)=I and u&#39;(0)=0, for time values in the array t,
+    by a finite difference method. Return u.
+    u is an array of the same size as the array F and t.
+    &quot;&quot;&quot;
+    dt = t[1] - t[0]           # time step
+    N = t.size - 1             # no of time intervals
+    u = np.zeros(N+1)
+
+    u[0] = I
+    u[1] = u[0] + (dt**2/(2*m))*(F[0] - f(u[0]))
+
+    for n in range(1, N):
+        u[n+1] = ((b/2*dt - m)*u[n-1] + 2*m*u[n] \
+                  - dt**2*(f(u[n]) - F[n]))/(b/2*dt + m)
+    return u
+</pre></div>
+<p>
+
+<p>
+
+<h4>Dissection of the Code  <a name="___sec2"></a></h4>
+<p>
+Functions in Python start with <tt>def</tt>, followed by the function name and
+the list of input objects separated by comma. The function body is
+indented, and the first non-indented line signifies the end of the function
+body block. The string, enclosed in triple double-quotes, right after
+the function definition, is a <em>doc string</em> used for documenting the
+function. Various tools can extract function definitions and doc strings
+to automatically produced manuals.
+
+<p>
+Array functionality is offered by
+the <tt>numpy</tt> packaged, here imported under the nickname <tt>np</tt>.
+This package contains MATLAB-like functionality. It is quite common
+to prefix a MATLAB-like function such as <tt>zeros</tt> by <tt>np</tt> (<tt>np.zeros</tt>),
+but one can also perform
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">from numpy import *
+</pre></div>
+<p>
+and then write just <tt>zeros</tt> without any prefix. The advantage is that
+the code closely  resembles similar MATLAB code.
+
+<p>
+The total number of elements in an array <tt>t</tt> is obtained by <tt>t.size</tt>.
+One could also use <tt>len(t)</tt>, but for multi-dimensional arrays <tt>len</tt>
+just gives the number of elements corresponding to the first index
+(number of rows in a matrix).
+
+<p>
+Arrays are indexed by square brackets, and indices always start at 0.
+For/do loops in Python are more general than those in Fortran, C, C++,
+and Java, as one can loop over the any set of objects with the
+syntax <tt>for element in some_set</tt>. In numerical code, it is common
+to loop over array indices, i.e., a set of integers. Such a set
+is produced by <tt>range(start, stop, increment)</tt>, which returns a
+list of integers <tt>start, start+increment, start+2*increment</tt>, and so on,
+up to <em>but not including</em> <tt>stop</tt>. Writing just <tt>range(stop)</tt> means
+<tt>range(0, stop, 1)</tt>. The particular call <tt>range(1, N)</tt> used in the code
+above results in the integer sequence <tt>1</tt>, <tt>2</tt>, ..., <tt>N-1</tt>.
+
+<p>
+Every variable in Python is an object. In particular, the <tt>f</tt> function
+above is a function object, transferred to the function as any other
+object, and called as any other function. Transferring a function as
+argument to another function is therefore simpler and cleaner in Python
+than in, e.g., C, C++, Java, and C#.
+
+<p>
+
+<p>
+
+<h3>The Force  <a name="___sec3"></a>=</h3>
+<p>
+Considering the application where the present mathematical model describes
+the vibrations of a vehicle driving along a bumpy road, we need
+to establish the force array <tt>F</tt> from the shape of the road \( h(x) \).
+Various shapes are
+available as a file with web address <a href="http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz"><tt>http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz</tt></a>. The Python functionality for downloading this <tt>gzip</tt>
+compressed file as a local file <tt>bumpy.dat.gz</tt>
+and reading it into a <tt>numpy</tt> array goes as follows:
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">filename = &#39;bumpy.dat.gz&#39;
+url = &#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;
+import urllib
+urllib.urlretrieve(url, filename)
+h_data = np.loadtxt(filename)     # read numpy array from file
+</pre></div>
+<p>
+
+<p>
+<!-- It may happen that the URL is wrong or that the Internet connection is -->
+<!-- down, resulting in a <tt>ValueError</tt> exception in <tt>np.loadtxt</tt>. -->
+<!-- This potential error can be handled in a <tt>try</tt>-`except` construction: -->
+
+<p>
+The <tt>h_data</tt> object is a rectangular <tt>numpy</tt> array where the first
+column contains the \( x \) coordinates along the road and the next columns
+contain various road shapes \( h(x) \). We can extract the \( x \) data and
+redefine <tt>h_data</tt> to contain solely the \( h(x) \) shapes:
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">x = h_data[0,:]                # 1st column: x coordinates
+h_data = h_data[1:,:]          # other columns: h shapes
+</pre></div>
+<p>
+In general, the syntax <tt>a[s:t:i,2]</tt> gives a view (not a copy) to the part of
+the array <tt>a</tt> where the first index goes from <tt>s</tt> to <tt>t</tt>,
+<em>but not including</em> the <tt>t</tt> value, in increments of <tt>i</tt>, and the
+second index is fixed at 2. Just writing <tt>:</tt> for an index means all
+legal values of this index.
+
+<p>
+Given \( h(x) \), the corresponding acceleration \( a(t) \) needed in the
+force \( F(t)=-ma(t) \), follows from \( a(t)=h''(vt)v^2 \), where \( v \) is
+the velocity of the vehicle. The compuation may utilize a finite
+difference approximation for the second-order derivative and
+be encapsulated in a Python function:
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">def acceleration(h, x, v):
+    # Compute 2nd-order derivative of h
+    d2h = np.zeros(h.size)
+    dx = x[1] - x[0]
+    for i in range(1, h.size-1, 1):
+        d2h[i] = (h[i-1] - 2*h[i] + h[i+1])/dx**2
+    # Extraplolate end values from first interior value
+    d2h[0] = d2h[1]
+    d2h[-1] = d2h[-2]
+    a = d2h*v**2
+    return a
+</pre></div>
+<p>
+Note that here, <tt>h</tt> is a one-dimensional array containing the \( h(x) \)
+values corresponding to a given coordinate array <tt>x</tt>. Also note that
+we simply set \( h''(x) \) at the end points equal to \( h''(x) \) at the
+closest interior point.
+
+<p>
+We use in this example a linear spring function \( f(u) \),
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">def f(u):
+    return k*u
+</pre></div>
+<p>
+Here, <tt>u</tt> is a <em>local variable</em>,
+which lives just inside in the function,
+while <tt>k</tt> is a <em>global variable</em>, which must be initialized outside
+the function prior to calling <tt>f</tt>.
+
+<p>
+Parameters can be set as \( m=60 \) kg, \( v=5 \) m/s, \( k=60 \) N/m,
+and \( b=80 \) Ns/m.
+This choice corresponds to a velocity of 18 km/h and a mass of 60 kg, i.e.,
+bicycle conditions.
+
+<p>
+For each shape \( h(x) \) we want to compute the corresponding
+vertical displacement \( u(t) \) using the mathematical model \eqref{bumpy:eq1}.
+This can be accomplished by looping over the columns of <tt>h_data</tt> and
+calling <tt>forced_vibrations</tt> for each column, i.e., each realization of
+the force \( F \).
+The major arrays from the computations
+are collected in a list <tt>data</tt>. The two first elements in
+<tt>data</tt> are <tt>x</tt> and <tt>t</tt>. The next elements are
+3-lists <tt>[h, a, u]</tt> for each road shape.
+Note that some elements in <tt>data</tt> are arrays while others are list of
+arrays. This composition is convenient when analyzing and visualizing
+key quantities in the problem.
+
+<p>
+The computations of <tt>u</tt> for each road shape can be done as follows:
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">data = [x, t]      # key input and output data (arrays)
+for i in range(h_data.shape[0]):
+    h = h_data[i,:]            # extract a column
+    a = acceleration(h, x, v)
+    u = forced_vibrations(t=t, I=0, m=m, b=2000, f=f, F=-m*a)
+    data.append([h, a, u])
+</pre></div>
+<p>
+
+<p>
+The code above is naturally implemented as a Python function.
+This function can take the most important physical parameters of the problem
+as input, along with information about the file with road shapes.
+We allow for defining road shapes either through a file on a web site
+or a local file.
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">def solve(url=None, m=60, b=80, k=60, v=5):
+    &quot;&quot;&quot;
+    Solve model for verticle vehicle vibrations.
+
+    =========   ==============================================
+    variable    description
+    =========   ==============================================
+    url         either URL of file with excitation force data,
+                or name of a local file
+    m           mass of system
+    b           friction parameter
+    k           spring parameter
+    v           (constant) velocity of vehicle
+    Return      data (list) holding input and output data
+                [x, t, [h,a,u], [h,a,u], ...]
+    =========   ==============================================
+    &quot;&quot;&quot;
+    # Download file (if url is not the name of a local file)
+    if url.startswith(&#39;http://&#39;) or url.startswith(&#39;file://&#39;):
+        import urllib
+        filename = os.path.basename(url)  # strip off path
+        urllib.urlretrieve(url, filename)
+    else:
+        # Check if url is the name of a local file
+        filename = url
+        if not os.path.isfile(filename):
+            print url, &#39;must be a URL or a filename&#39;
+            sys.exit(1)  # abort program
+        # else: ok
+
+    h_data = np.loadtxt(filename)  # read numpy array from file
+
+    x = h_data[0,:]                # 1st column: x coordinates
+    h_data = h_data[1:,:]          # other columns: h shapes
+
+    t = x/v                        # time corresponding to x
+    dt = t[1] - t[0]
+
+    def f(u):
+        return k*u
+
+    data = [x, t]      # key input and output data (arrays)
+    for i in range(h_data.shape[0]):
+        h = h_data[i,:]            # extract a column
+        a = acceleration(h, x, v)
+
+        u = forced_vibrations(t=t, I=0.2, m=m, b=b, f=f, F=-m*a)
+        data.append([h, a, u])
+    return data
+</pre></div>
+<p>
+Note that function arguments can be given default values (known as
+<em>keyword arguments</em> in Python). Python has a lot of operating
+system functionality, such as
+checking if a file, directory, or link exist, creating or
+removing files and directories, running stand-alone applications, etc.
+
+<p>
+Since the roads have a quite noise shape, the force \( F=-ma \) looks
+very noise, while the response \( u(t) \) to this excitation is
+significantly less noisy,
+see Figure <a href="bumpy:fig4">4</a> for an example.
+It may be useful to compute the root mean square value of the various
+realizations of \( u(t) \) and add this array to the <tt>data</tt> list of input
+and output data in the problem:
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">def rms(data):
+    t = data[1]
+    u_rms = np.zeros(t.size)  # for accumulating the rms value
+    for h, a, u in data[2:]:  # loop over results
+        u_rms += u**2
+    u_rms = np.sqrt(u_rms/u_rms.size)
+    data.append(u_rms)
+    return data
+</pre></div>
+<p>
+Observe here the <tt>for</tt> loop where three variables (<tt>h</tt>, <tt>a</tt>, and <tt>u</tt>)
+are set equal to the three arrays in each element of the sublist
+<tt>data[2:]</tt>. We only need the <tt>u</tt> array for the computation. An alternative
+loop would be to have one loop variable for each list element and
+get <tt>u</tt> as the 3rd element of each list element:
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">    for res in data[2:]:
+        u = res[2]         # res is [h,a,u]
+        ...
+</pre></div>
+<p>
+
+<p>
+
+<p>
+After calling
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">road_url = &#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;
+data = solve(url=road_url,
+             m=60, b=200, k=60, v=6)
+data = rms(data)
+</pre></div>
+<p>
+the <tt>data</tt> array contains single arrays and triplets of arrays,
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[x, t, [h,a,u], [h,a,u], ..., [h,a,u], u_rms]
+</pre></div>
+<p>
+This list, or any Python object, can be stored on file for later
+retrieval of the results, using the <em>pickling</em> functionality
+in Python:
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">import cPickle
+outfile = open(&#39;bumpy.res&#39;, &#39;w&#39;)
+cPickle.dump(data, outfile)
+outfile.close()
+</pre></div>
+<p>
+
+<p>
+<!-- joblib!! -->
+
+<p>
+
+<h3>User Input  <a name="___sec4"></a></h3>
+<p>
+We can in this example easily set the input data directly in
+the program, e.g., in the call to the <tt>solve</tt> function, as
+demonstrated above. However, most users will find it more
+convenient to set parameters through a user interface rather
+than editing the source code directly.
+
+<p>
+
+<p>
+
+<h4>Positional Command-Line Arguments  <a name="___sec5"></a></h4>
+<p>
+The simplest, and often also the most effective, type of
+user interface is to use the command line. Suppose \( m \), \( k \),
+and \( v \), as well as the URL or filename for the road shapes,
+are fixed parameters and that the user is allowed to vary
+\( b \) only. Then it is convenient, both for the user and
+the programmer, to specify \( b \) as the first command-line
+argument to the program. If the name of the program file
+is <tt>bumpy.py</tt> and \( b=10 \) is desired, we can write
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python bumpy.py 10
+</pre></div>
+<p>
+The corresponding code in the program for setting input data
+and extract the user-given value of \( b \) reads
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">def prepare_input():
+    url = &#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;
+    m = 60
+    k = 60
+    v = 5
+    try:
+        b = float(sys.argv[1])
+    except IndexError:
+        b = 80  # default
+    return url, m, b, k, v
+</pre></div>
+<p>
+The command-line arguments are available as strings in the
+list <tt>sys.argv</tt>, from the element with index 1 and onward.
+The first command-line argument <tt>sys.argv[1]</tt> is a string
+so it must be converted to a <tt>float</tt> object (representing
+real number) prior to computations. If the command-line
+argument is missing, <tt>sys.argv[1]</tt> is illegal indexing
+and the <tt>IndexError</tt> exception is raised. We can test for this
+error and provide a default value. Without the <tt>try</tt>-`except`
+construction, the program will abort with an error message
+if no command-line argument is given.
+
+<p>
+
+<h4>Option-Value Pairs on the Command Line  <a name="___sec6"></a></h4>
+<p>
+Letting the user set many parameters on the command line is most
+conveniently done by allowing option-value pairs, e.g.,
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python bumpy.py --m 40 --b 280
+</pre></div>
+<p>
+All parameters have a default value which can be overrided on
+the command line by providing the string (option) <tt>--name</tt>, where
+<tt>name</tt> is the name of the parameter, followed by the desired value of
+the parameter. Implementation of option-value input is
+most easily carried out using Python's <tt>argparse</tt> module.
+The recipe goes as follows.
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">def command_line_options():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument(&#39;--m&#39;, &#39;--mass&#39;, type=float,
+                        default=60, help=&#39;mass of vehicle&#39;)
+    parser.add_argument(&#39;--k&#39;, &#39;--spring&#39;, type=float,
+                        default=60, help=&#39;spring parameter&#39;)
+    parser.add_argument(&#39;--b&#39;, &#39;--damping&#39;, type=float,
+                        default=80, help=&#39;damping parameter&#39;)
+    parser.add_argument(&#39;--v&#39;, &#39;--velocity&#39;, type=float,
+                        default=5, help=&#39;velocity of vehicle&#39;)
+    url = &#39;http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz&#39;
+    parser.add_argument(&#39;--roadfile&#39;, type=str,
+              default=url, help=&#39;filename/URL with road data&#39;)
+    args = parser.parse_args()
+    # Extract input parameters
+    m = args.m; k = args.k; b = args.b; v = args.v
+    url = args.roadfile
+    return url, m, b, k, v
+</pre></div>
+<p>
+We may offer two options for each parameter, one reflecting the
+mathematical symbol (like <tt>--v</tt>) and one more descriptive text
+(like <tt>--velocity-</tt>).
+
+<p>
+The file <a href="_static-bumpy/bumpy.py"><tt>_static-bumpy/bumpy.py</tt></a> contains the complete code
+for downloading road shapes and solving the problem with aid of the
+code snippets above.
+
+<p>
+
+<h3>Visual Exploration  <a name="___sec7"></a></h3>
+<p>
+This section explains how to load the data from the computation, stored
+as a pickled list in the file <tt>bumpy.res</tt>, into various arrays, and how
+to visualize these arrays. We want to produce the following plots:
+
+<p>
+
+<ul>
+ <li> the root mean square value of \( u(t) \), to see the typical amplitudes
+ <li> the spectrum of \( u(t) \), for \( t>t_s \) (using FFT) to see which frequencies
+   that dominate in the signal
+ <li> for each road shape, a plot of \( h(x) \), \( a(t) \), and \( u(t) \), for
+   \( t\geq t_s \)
+</ul>
+
+We use Matplotlib's <tt>pylab</tt> module for curve plotting since it provides
+a syntax very close to that of MATLAB, which is well known by many readers.
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">from matplotlib.pylab import *
+</pre></div>
+<p>
+This import also perform as <tt>from numpy import *</tt> such that we have access
+to all the array functionality too.
+
+<p>
+Loading the computational data from file back to a list <tt>data</tt> is done
+by
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">import cPickle
+outfile = open(&#39;bumpy.res&#39;, &#39;r&#39;)
+data = cPickle.load(outfile)
+outfile.close()
+
+x, t = data[0:2]
+u_rms = data[-1]
+</pre></div>
+<p>
+The remaining data, <tt>data[2:-1]</tt>, contains all the 3-lists <tt>[h, a, u]</tt>
+from the computations in the function <tt>forced_vibrations</tt>.
+
+<p>
+Since now we concentrate on the part \( t\geq t_s \) of the data, we
+can grab the corresponding parts of the arrays in the following way,
+using boolean arrays as indices:
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">indices = t &gt;= t_s   # True/False boolean array
+t = t[indices]       # fetch the part of t for which t &gt; t_s
+x = x[indices]       # fetch the part of x for which t &gt; t_s
+</pre></div>
+<p>
+Indexing by a boolean array extracts all the elements corresponding to
+the <tt>True</tt> elements in the index array.
+
+<p>
+Plotting the root mean square value array <tt>u_rms</tt> for <tt>t >= t_s</tt> is now done by
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">figure()
+u_rms = u_rms[indices]
+plot(t, u_rms)
+legend([&#39;u&#39;])
+xlabel(&#39;t&#39;)
+title(&#39;Root mean square value of u(t) functions&#39;)
+</pre></div>
+<p>
+Figure <a href="bumpy:fig3">2</a> shows the result.
+
+<p>
+
+<p>
+<center> <! -- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 2:  Root mean square of displacement. <a name="bumpy:fig3"></a> </p></center>
+<p><img src="fig-bumpy/u_rms.png" align="bottom" width=600></p>
+</center>
+
+<p>
+
+<p>
+
+<p>
+The spectrum of a \( u(t) \) function (represented through the arrays <tt>u</tt>
+and <tt>t</tt>) can be computed by the Python function
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">def frequency_analysis(u, t):
+    A = fft(u)
+    A = 2*A
+    dt = t[1] - t[0]
+    N = t.size
+    freq = arange(N/2, dtype=float)/N/dt
+    A = abs(A[0:freq.size])/N
+    # Remove small high frequency part
+    tol = 0.05*A.max()
+    for i in xrange(len(A)-1, 0, -1):
+        if A[i] &gt; tol:
+            break
+    return freq[:i+1], A[:i+1]
+</pre></div>
+<p>
+Note here that we truncate that last part of the spectrum where the
+amplitudes are small (this usually gives a plot that is easier to inspect).
+
+<p>
+In the present case, we utilize the <tt>frequency_analysis</tt> through
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">figure()
+u = data[3][2][indices]  # 2nd realization of u
+f, A = frequency_analysis(u, t)
+plot(f, A)
+title(&#39;Spectrum of u&#39;)
+</pre></div>
+<p>
+Note the list look-up <tt>data[3][2][indices]</tt>: the element with index
+3 contains the 2nd 3-list <tt>[h, a, u]</tt>, and the element with index 2
+in this 3-list is the <tt>u</tt> array, in which we seek the part where
+\( t\geq t_s \), here corresponding to the <tt>True</tt> indices in the boolean
+array <tt>indices</tt>.
+
+<p>
+Figure <a href="bumpy:fig2">3</a> shows the amplitudes and that the
+dominating frequency is 1 Hz.
+
+<p>
+
+<p>
+<center> <! -- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 3:  Spectrum of displacement. <a name="bumpy:fig2"></a> </p></center>
+<p><img src="fig-bumpy/u_spectrum.png" align="bottom" width=600></p>
+</center>
+
+<p>
+
+<p>
+Finally, we can run through all the 3-lists <tt>[h, a, u]</tt> and plot
+these arrays:
+<p>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">case_counter = 0
+for h, a, u in data[2:-1]:
+    h = h[indices]
+    a = a[indices]
+    u = u[indices]
+
+    figure()
+    subplot(3, 1, 1)
+    plot(x, h, &#39;g-&#39;)
+    legend([&#39;h %d&#39; % case_counter])
+    hmax = (abs(h.max()) + abs(h.min()))/2
+    axis([x[0], x[-1], -hmax*5, hmax*5])
+    xlabel(&#39;distance&#39;); ylabel(&#39;height&#39;)
+
+    subplot(3, 1, 2)
+    plot(t, a)
+    legend([&#39;a %d&#39; % case_counter])
+    xlabel(&#39;t&#39;); ylabel(&#39;acceleration&#39;)
+
+    subplot(3, 1, 3)
+    plot(t, u, &#39;r-&#39;)
+    legend([&#39;u %d&#39; % case_counter])
+    xlabel(&#39;t&#39;); ylabel(&#39;displacement&#39;)
+    savefig(&#39;tmp%d.png&#39; % case_counter)
+    case_counter += 1
+</pre></div>
+<p>
+
+<p>
+<!-- A word about what happens to the <tt>h</tt> (or <tt>a</tt> or <tt>u</tt>) variable might -->
+<!-- illustrate much about dynamic typing in Python. In the loop, <tt>h</tt> is -->
+<!-- set equal to an -->
+
+<p>
+
+<p>
+<center> <! -- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 4:  First realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations. <a name="bumpy:fig4"></a> </p></center>
+<p><img src="fig-bumpy/hau0.png" align="bottom" width=700></p>
+</center>
+
+<p>
+
+<p>
+
+<p>
+<center> <! -- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 5:  Second realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations. <a name="bumpy:fig5"></a> </p></center>
+<p><img src="fig-bumpy/hau1.png" align="bottom" width=700></p>
+</center>
+
+<p>
+
+<p>
+
+<p>
+<center> <! -- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 6:  Third realization of a bumpy road, with corresponding acceleration of the wheel and resulting vibrations. <a name="bumpy:fig6"></a> </p></center>
+<p><img src="fig-bumpy/hau2.png" align="bottom" width=700></p>
+</center>
+
+<p>
+
+<p>
+If all the plot commands above are placed in a file, as in
+<a href="_static-bumpy/explore.py"><tt>_static-bumpy/explore.py</tt></a>, a final <tt>show()</tt> call is needed to show the
+plots on the screen. On the other hand, the commands are usually
+more conveniently performed in an interactive Python shell, preferably
+IPython.
+
+<p>
+<!-- include something about Cython -->
+
+<!-- ---------------------------- end of main content ----------------->
+</body>
+</html>
+    
+
