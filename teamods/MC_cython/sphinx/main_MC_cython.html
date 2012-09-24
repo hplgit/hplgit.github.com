@@ -1,0 +1,788 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Monte Carlo Simulation with Cython &mdash; Speeding Up Python Implementations of Monte Carlo Simulation 0.9 documentation</title>
+    
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Speeding Up Python Implementations of Monte Carlo Simulation 0.9 documentation" href="index.html" />
+    <link rel="prev" title="Speeding Up Python Implementations of Monte Carlo Simulation" href="index.html" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Speeding Up Python Implementations of Monte Carlo Simulation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Speeding Up Python Implementations of Monte Carlo Simulation 0.9 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="monte-carlo-simulation-with-cython">
+<h1>Monte Carlo Simulation with Cython<a class="headerlink" href="#monte-carlo-simulation-with-cython" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Sep 24, 2012</td>
+</tr>
+</tbody>
+</table>
+<p>Monte Carlo simulations are usually known to require long execution
+times. Implementing such simulations in pure Python may lead to
+inefficient code.  The purpose of this note is to show how Python
+implementations of Monte Carlo simulations, can be made much more
+efficient by porting the code to Cython. Pure C implementations are
+included for comparison of efficiency. The reader should know about
+basic Python and perhaps a bit about Monte Carlo simulations.  Cython
+will be introduced in a step-by-step fashion</p>
+</div>
+<div class="section" id="pure-python-code-for-monte-carlo-simulation">
+<h1>Pure Python Code for Monte Carlo Simulation<a class="headerlink" href="#pure-python-code-for-monte-carlo-simulation" title="Permalink to this headline">¶</a></h1>
+<p>A short, intuitive algorithm in Python is first developed.
+Then this code is vectorized using functionality of the Numerical
+Python package. Later sections migrate the algorithm to Cython
+code and also plain C code for comparison. At the end the various
+techniques are ranked according to their computational efficiency.</p>
+<div class="section" id="the-computational-problem">
+<h2>The Computational Problem<a class="headerlink" href="#the-computational-problem" title="Permalink to this headline">¶</a></h2>
+<p>A die is thrown <span class="math">\(m\)</span> times.
+What is the probability of getting six eyes <em>at least</em> <span class="math">\(n\)</span> times?
+For example, if <span class="math">\(m=5\)</span> and <span class="math">\(n=3\)</span>, this is the same as asking for
+the probability that three or more out of five dice show six eyes.</p>
+<p>The probability can be estimated by Monte Carlo simulation.
+We simulate the process a large number of times, <span class="math">\(N\)</span>, and count how
+many times, <span class="math">\(M\)</span>, the experiment turned out successfully, i.e., when we
+got at least <span class="math">\(n\)</span> out of <span class="math">\(m\)</span> dice with six eyes in a throw.</p>
+<p>Monte Carlo simulation has traditionally been viewed as a very costly
+computational method, normally requiring very sophisticated, fast
+computer implementations in compiled languages.  An interesting
+question is how useful high-level languages like Python and associated
+tools are for Monte Carlo simulation. This will now be explored.</p>
+</div>
+<div class="section" id="a-scalar-python-implementation">
+<h2>A Scalar Python Implementation<a class="headerlink" href="#a-scalar-python-implementation" title="Permalink to this headline">¶</a></h2>
+<p>Let us introduce the more descriptive variables <tt class="docutils literal"><span class="pre">ndice</span></tt> for <span class="math">\(m\)</span>
+and <tt class="docutils literal"><span class="pre">nsix</span></tt> for <span class="math">\(n\)</span>. The Monte Carlo method is
+simply a loop, repeated <tt class="docutils literal"><span class="pre">N</span></tt> times, where the body of the loop may
+directly express the problem at hand. Here, we draw <tt class="docutils literal"><span class="pre">ndice</span></tt> random
+integers <tt class="docutils literal"><span class="pre">r</span></tt> in <span class="math">\([1,6]\)</span> inside the loop and count of many (<tt class="docutils literal"><span class="pre">six</span></tt>) that
+equal 6. If <tt class="docutils literal"><span class="pre">six</span> <span class="pre">&gt;=</span> <span class="pre">nsix</span></tt>, the experiment is a success and we increase
+the counter <tt class="docutils literal"><span class="pre">M</span></tt> by one.</p>
+<p>A Python function implementing this approach may look as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">dice6_py</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">ndice</span><span class="p">,</span> <span class="n">nsix</span><span class="p">):</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="mi">0</span>                     <span class="c"># no of successful events</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>        <span class="c"># repeat N experiments</span>
+        <span class="n">six</span> <span class="o">=</span> <span class="mi">0</span>               <span class="c"># how many dice with six eyes?</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndice</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>  <span class="c"># roll die no. j</span>
+            <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+               <span class="n">six</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">six</span> <span class="o">&gt;=</span> <span class="n">nsix</span><span class="p">:</span>       <span class="c"># successful event?</span>
+            <span class="n">M</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
+    <span class="k">return</span> <span class="n">p</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">float(M)</span></tt> transformation is important since <tt class="docutils literal"><span class="pre">M/N</span></tt> will imply integer
+division when <tt class="docutils literal"><span class="pre">M</span></tt> and <tt class="docutils literal"><span class="pre">N</span></tt> both are integers in Python v2.x and many other
+languages.</p>
+<p>We will refer to this implementation is the <em>plain Python</em> implementation.
+Timing the function can be done by:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">time</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">dice6_py</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">ndice</span><span class="p">,</span> <span class="n">nsix</span><span class="p">)</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+<span class="k">print</span> <span class="s">&#39;CPU time for loops in Python:&#39;</span><span class="p">,</span> <span class="n">t1</span><span class="o">-</span><span class="n">t0</span>
+</pre></div>
+</div>
+<p>The table to appear later shows the performance of this plain, pure Python
+code relative to other approaches. There is a factor of 30+ to be
+gained in computational efficiency by reading on.</p>
+<p>The function above can be verified by studying the (somewhat
+simplified) case <span class="math">\(m=n\)</span> where the probability becomes <span class="math">\(6^{-n}\)</span>. The
+probability quickly becomes small with increasing <span class="math">\(n\)</span>.  For such small
+probabilities the number of successful events <span class="math">\(M\)</span> is small, and <span class="math">\(M/N\)</span>
+will not be a good approximation to the probability unless <span class="math">\(M\)</span> is
+reasonably large, which requires a very large <span class="math">\(N\)</span>. For example, with
+<span class="math">\(n=4\)</span> and <span class="math">\(N=10^5\)</span> the average probability in 25 full Monte Carlo
+experiments is 0.00078 while the exact answer is 0.00077. With
+<span class="math">\(N=10^6\)</span> we get the two correct significant digits from the Monte
+Carlo simulation, but the extra digit costs a factor of 10 in
+computing resources since the CPU time scales linearly with <span class="math">\(N\)</span>.</p>
+</div>
+<div class="section" id="a-vectorized-python-implementation">
+<h2>A Vectorized Python Implementation<a class="headerlink" href="#a-vectorized-python-implementation" title="Permalink to this headline">¶</a></h2>
+<p>A vectorized version of the previous program consists of replacing the
+explicit loops in Python by efficient operations on vectors or arrays,
+using functionality in the Numerical Python (<tt class="docutils literal"><span class="pre">numpy</span></tt>) package.
+Each array operation takes place in C or Fortran and is hence
+much more efficient than the corresponding loop version in Python.</p>
+<p>First, we must generate all the random numbers to be used in one
+operation, which runs fast since all numbers are then calculated in
+efficient C code. This is accomplished using the <tt class="docutils literal"><span class="pre">numpy.random</span></tt>
+module.  Second, the analysis of the large collection of random
+numbers must be done by appropriate vector/array operations such that
+no looping in Python is needed. The solution algorithm must therefore
+be expressed through a series of function calls to the <tt class="docutils literal"><span class="pre">numpy</span></tt> library.
+Vectorization requires knowledge of the library&#8217;s functionality and
+how to assemble the relevant building blocks to an algorithm without
+operations on individual array elements.</p>
+<p>Generation of <tt class="docutils literal"><span class="pre">ndice</span></tt> random number of eyes for <tt class="docutils literal"><span class="pre">N</span></tt> experiments is
+performed by</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">eyes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_integers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">ndice</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Each row in the <tt class="docutils literal"><span class="pre">eyes</span></tt> array corresponds to one Monte Carlo experiment.</p>
+<p>The next step is to count the number of successes in each experiment.
+This counting should not make use of any loop.  Instead we can test
+<tt class="docutils literal"><span class="pre">eyes</span> <span class="pre">==</span> <span class="pre">6</span></tt> to get a boolean array where an element <tt class="docutils literal"><span class="pre">i,j</span></tt> is <tt class="docutils literal"><span class="pre">True</span></tt> if
+throw (or die) number <tt class="docutils literal"><span class="pre">j</span></tt> in Monte Carlo experiment number <tt class="docutils literal"><span class="pre">i</span></tt> gave
+six eyes.  Summing up the rows in this boolean array (<tt class="docutils literal"><span class="pre">True</span></tt> is interpreted
+as 1 and <tt class="docutils literal"><span class="pre">False</span></tt> as 0), we are
+interested in the rows where the sum is equal to or greater than
+<tt class="docutils literal"><span class="pre">nsix</span></tt>, because the number of such rows equals the number of
+successful events. The vectorized algorithm can be expressed as</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">dice6_vec1</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">ndice</span><span class="p">,</span> <span class="n">nsix</span><span class="p">):</span>
+    <span class="n">eyes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_integers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">ndice</span><span class="p">))</span>
+    <span class="n">compare</span> <span class="o">=</span> <span class="n">eyes</span> <span class="o">==</span> <span class="mi">6</span>
+    <span class="n">throws_with_6</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">compare</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c"># sum over columns</span>
+    <span class="n">nsuccesses</span> <span class="o">=</span> <span class="n">throws_with_6</span> <span class="o">&gt;=</span> <span class="n">nsix</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">nsuccesses</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
+    <span class="k">return</span> <span class="n">p</span>
+</pre></div>
+</div>
+<p>The use of <tt class="docutils literal"><span class="pre">np.sum</span></tt> instead of Python&#8217;s own <tt class="docutils literal"><span class="pre">sum</span></tt> function is
+essential for the speed of this function: using <tt class="docutils literal"><span class="pre">M</span> <span class="pre">=</span> <span class="pre">sum(nsucccesses)</span></tt>
+instead slows down the code by a factor of almost 10!  We shall refer
+to the <tt class="docutils literal"><span class="pre">dice6_vec1</span></tt> function as the <em>vectorized Python, version1</em>
+implementation.</p>
+<p>The criticism against the vectorized version is that the original
+problem description, which was almost literally turned into Python
+code in the <tt class="docutils literal"><span class="pre">dice6_py</span></tt> function, has now become much more
+complicated. We have to decode the calls to various
+<tt class="docutils literal"><span class="pre">numpy</span></tt> functionality to actually realize that <tt class="docutils literal"><span class="pre">dice6_py</span></tt>
+and <tt class="docutils literal"><span class="pre">dice6_vec</span></tt> correspond to the same mathematics.</p>
+<p>Here is another possible vectorized algorithm, which is easier to
+understand, because we retain the Monte Carlo loop and vectorize only
+each individual experiment:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">dice6_vec2</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">ndice</span><span class="p">,</span> <span class="n">nsix</span><span class="p">):</span>
+    <span class="n">eyes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_integers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">ndice</span><span class="p">))</span>
+    <span class="n">six</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndice</span><span class="p">)]</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="c"># Check experiment no. i:</span>
+        <span class="n">compare</span> <span class="o">=</span> <span class="n">eyes</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">==</span> <span class="n">six</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">compare</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">nsix</span><span class="p">:</span>
+            <span class="n">M</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
+    <span class="k">return</span> <span class="n">p</span>
+</pre></div>
+</div>
+<p>We refer to this implementation as <em>vectorized Python, version 2</em>.  As
+will be shown later, this implementation is significantly slower than
+the <em>plain Python</em> implementation (!) and very much slower than the
+<em>vectorized Python, version 1</em> approach.  A conclusion is that
+readable, partially vectorized code, may run slower than
+straightforward scalar code.</p>
+</div>
+</div>
+<div class="section" id="migrating-scalar-python-code-to-cython">
+<h1>Migrating Scalar Python Code to Cython<a class="headerlink" href="#migrating-scalar-python-code-to-cython" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="a-plain-cython-implementation">
+<h2>A Plain Cython Implementation<a class="headerlink" href="#a-plain-cython-implementation" title="Permalink to this headline">¶</a></h2>
+<p>A Cython program starts with the scalar Python implementation, but all
+variables are specified with their types, using Cython&#8217;s variable
+declaration syntax, like <tt class="docutils literal"><span class="pre">cdef</span> <span class="pre">int</span> <span class="pre">M</span> <span class="pre">=</span> <span class="pre">0</span></tt> where we in standard Python
+just write <tt class="docutils literal"><span class="pre">M</span> <span class="pre">=</span> <span class="pre">0</span></tt>.  Adding such variable declarations in the scalar
+Python implementation is straightforward:</p>
+<div class="highlight-cython"><div class="highlight"><pre><span class="k">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">dice6_cy1</span><span class="p">(</span><span class="nb">int</span> <span class="n">N</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ndice</span><span class="p">,</span> <span class="nb">int</span> <span class="n">nsix</span><span class="p">):</span>
+    <span class="k">cdef</span> <span class="kt">int</span> <span class="nf">M</span> <span class="o">=</span> <span class="mf">0</span>            <span class="c"># no of successful events</span>
+    <span class="k">cdef</span> <span class="kt">int</span> <span class="nf">six</span><span class="p">,</span> <span class="nf">r</span>
+    <span class="k">cdef</span> <span class="kt">double</span> <span class="nf">p</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>        <span class="c"># repeat N experiments</span>
+        <span class="n">six</span> <span class="o">=</span> <span class="mf">0</span>               <span class="c"># how many dice with six eyes?</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndice</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="mf">6</span><span class="p">)</span>  <span class="c"># roll die no. j</span>
+            <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="mf">6</span><span class="p">:</span>
+               <span class="n">six</span> <span class="o">+=</span> <span class="mf">1</span>
+        <span class="k">if</span> <span class="n">six</span> <span class="o">&gt;=</span> <span class="n">nsix</span><span class="p">:</span>       <span class="c"># successful event?</span>
+            <span class="n">M</span> <span class="o">+=</span> <span class="mf">1</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
+    <span class="k">return</span> <span class="n">p</span>
+</pre></div>
+</div>
+<p>This code must be put in a separate file with extension <tt class="docutils literal"><span class="pre">.pyx</span></tt>.
+Running Cython on this file translates the Cython code to C.
+Thereafter, the C code must be compiled and linked to form a
+shared library, which can be imported in Python as a module.  All
+these tasks are normally automated by a <tt class="docutils literal"><span class="pre">setup.py</span></tt> script.  Let the
+<tt class="docutils literal"><span class="pre">dice6_cy1</span></tt> function above be stored in a file <tt class="docutils literal"><span class="pre">dice6.pyx</span></tt>.  A proper
+<tt class="docutils literal"><span class="pre">setup.py</span></tt> script looks as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="kn">from</span> <span class="nn">distutils.extension</span> <span class="kn">import</span> <span class="n">Extension</span>
+<span class="kn">from</span> <span class="nn">Cython.Distutils</span> <span class="kn">import</span> <span class="n">build_ext</span>
+
+<span class="n">setup</span><span class="p">(</span>
+  <span class="n">name</span><span class="o">=</span><span class="s">&#39;Monte Carlo simulation&#39;</span><span class="p">,</span>
+  <span class="n">ext_modules</span><span class="o">=</span><span class="p">[</span><span class="n">Extension</span><span class="p">(</span><span class="s">&#39;_dice6_cy&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;dice6.pyx&#39;</span><span class="p">],)],</span>
+  <span class="n">cmdclass</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;build_ext&#39;</span><span class="p">:</span> <span class="n">build_ext</span><span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Running</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; python setup.py build_ext --inplace</span>
+</pre></div>
+</div>
+<p>generates the C code and creates a (shared library)
+file <tt class="docutils literal"><span class="pre">_dice6_cy.so</span></tt> (known as a <em>C extension module</em>) which
+can be loaded into Python as a module with name <tt class="docutils literal"><span class="pre">_dice6_cy</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">_dice6_cy</span> <span class="kn">import</span> <span class="n">dice6_cy1</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">dice6_cy1</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">ndice</span><span class="p">,</span> <span class="n">nsix</span><span class="p">)</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span>
+</pre></div>
+</div>
+<p>We refer to this implementation as <em>Cython random.randint</em>.
+Although most of the statements in the <tt class="docutils literal"><span class="pre">dice6_cy1</span></tt> function
+are turned into plain and fast C code,
+the speed is not much improved compared with the original scalar
+Python code.</p>
+<p>To investigate what takes time in this Cython implementation, we can perform
+a profiling. The template for profiling a Python function whose
+call syntax is stored in some string <tt class="docutils literal"><span class="pre">statement</span></tt>, reads</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cProfile</span><span class="o">,</span> <span class="nn">pstats</span>
+<span class="n">cProfile</span><span class="o">.</span><span class="n">runctx</span><span class="p">(</span><span class="n">statement</span><span class="p">,</span> <span class="nb">globals</span><span class="p">(),</span> <span class="nb">locals</span><span class="p">(),</span> <span class="s">&#39;.prof&#39;</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">pstats</span><span class="o">.</span><span class="n">Stats</span><span class="p">(</span><span class="s">&#39;.prof&#39;</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">strip_dirs</span><span class="p">()</span><span class="o">.</span><span class="n">sort_stats</span><span class="p">(</span><span class="s">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">print_stats</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here, we set</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">statement</span> <span class="o">=</span> <span class="s">&#39;dice6_cy1(N, ndice, nsix)&#39;</span>
+</pre></div>
+</div>
+<p>In addition, a Cython file in which there are functions we want to
+profile must start with the line</p>
+<div class="highlight-cython"><div class="highlight"><pre><span class="c"># cython: profile=True</span>
+</pre></div>
+</div>
+<p>to turn on profiling when creating the extension module.
+The profiling output from the present example looks like</p>
+<div class="highlight-python"><div class="highlight"><pre>       <span class="mi">5400004</span> <span class="n">function</span> <span class="n">calls</span> <span class="ow">in</span> <span class="mf">7.525</span> <span class="n">CPU</span> <span class="n">seconds</span>
+
+ <span class="n">Ordered</span> <span class="n">by</span><span class="p">:</span> <span class="n">internal</span> <span class="n">time</span>
+
+ <span class="n">ncalls</span>  <span class="n">tottime</span>  <span class="n">percall</span>  <span class="n">cumtime</span>  <span class="n">percall</span> <span class="n">filename</span><span class="p">:</span><span class="n">lineno</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+<span class="mi">1800000</span>    <span class="mf">4.511</span>    <span class="mf">0.000</span>    <span class="mf">4.863</span>    <span class="mf">0.000</span> <span class="n">random</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">160</span><span class="p">(</span><span class="n">randrange</span><span class="p">)</span>
+<span class="mi">1800000</span>    <span class="mf">1.525</span>    <span class="mf">0.000</span>    <span class="mf">6.388</span>    <span class="mf">0.000</span> <span class="n">random</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">224</span><span class="p">(</span><span class="n">randint</span><span class="p">)</span>
+      <span class="mi">1</span>    <span class="mf">1.137</span>    <span class="mf">1.137</span>    <span class="mf">7.525</span>    <span class="mf">7.525</span> <span class="n">dice6</span><span class="o">.</span><span class="n">pyx</span><span class="p">:</span><span class="mi">6</span><span class="p">(</span><span class="n">dice6_cy1</span><span class="p">)</span>
+<span class="mi">1800000</span>    <span class="mf">0.352</span>    <span class="mf">0.000</span>    <span class="mf">0.352</span>    <span class="mf">0.000</span> <span class="p">{</span><span class="n">method</span> <span class="s">&#39;random&#39;</span> <span class="o">...</span>
+      <span class="mi">1</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">7.525</span>    <span class="mf">7.525</span> <span class="p">{</span><span class="n">dice6_cy</span><span class="o">.</span><span class="n">dice6_cy1</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>We easily see that it is the call to <tt class="docutils literal"><span class="pre">random.randint</span></tt> that consumes
+almost all the time. The reason is that the generated C code must
+call a Python module (<tt class="docutils literal"><span class="pre">random</span></tt>), which implies a lot of overhead. The C code
+should only call plain C functions, or if Python functions <em>must</em>
+be called, they should involve so much computations that the overhead
+in calling Python from C is negligible.</p>
+<p>Instead of profiling the code to uncover inefficient constructs we
+can generate a visual representation of how the Python code is
+translated to C. Running</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; cython -a dice6.pyx</span>
+</pre></div>
+</div>
+<p>creates a file <tt class="docutils literal"><span class="pre">dice6.html</span></tt> which can be loaded into a web browser
+to inspect what Cython has done with the Python code.</p>
+<div class="figure">
+<img alt="_images/dice6_html.png" src="_images/dice6_html.png" style="width: 550px;" />
+</div>
+<p>White lines indicate that the Python code is translated into C code, while
+the yellow lines indicate that the generated C code must make calls
+back to Python (using the Python C API, which implies overhead). Here,
+the <tt class="docutils literal"><span class="pre">random.randint</span></tt> call is in yellow, so this call is
+not translated to efficient C code.</p>
+</div>
+<div class="section" id="a-better-cython-implementation">
+<h2>A Better Cython Implementation<a class="headerlink" href="#a-better-cython-implementation" title="Permalink to this headline">¶</a></h2>
+<p>To speed up the previous Cython code, we have to get rid of the
+<tt class="docutils literal"><span class="pre">random.randint</span></tt> call every time we need a random variable.  Either we
+must call some C function for generating a random variable or we must
+create a bunch of random numbers simultaneously as we did in the
+vectorized functions shown above. We first try the latter well-known
+strategy and apply the <tt class="docutils literal"><span class="pre">numpy.random</span></tt> module to generate all the
+random numbers we need at once:</p>
+<div class="highlight-cython"><div class="highlight"><pre><span class="k">import</span>  <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">cimport</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">cdef</span> <span class="kt">np</span>.<span class="kt">ndarray</span>[<span class="kt">np</span>.<span class="nf">int_t</span><span class="p">,</span>
+                <span class="n">ndim</span><span class="o">=</span><span class="mf">2</span><span class="p">,</span>
+                <span class="n">negative_indices</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                <span class="n">mode</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">]</span> <span class="n">eyes</span> <span class="o">=</span> \
+                <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_integers</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="mf">6</span><span class="p">,</span> <span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">ndice</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This code needs some explanation. The <tt class="docutils literal"><span class="pre">cimport</span></tt> statement imports
+a special version of <tt class="docutils literal"><span class="pre">numpy</span></tt> for Cython and is needed <em>after</em> the
+standard <tt class="docutils literal"><span class="pre">numpy</span></tt> import. The declaration of the array of
+random numbers could just go as</p>
+<div class="highlight-cython"><div class="highlight"><pre><span class="k">cdef</span> <span class="kt">np</span>.<span class="kt">ndarray</span> <span class="nf">eyes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_integers</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="mf">6</span><span class="p">,</span> <span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">ndice</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>However, the processing of the <tt class="docutils literal"><span class="pre">eyes</span></tt> array will then be slow because
+Cython does not have enough information about the array. To generate
+optimal C code, we must provide information on the element types
+in the array, the number of dimensions of the array, that the array
+is stored in contiguous memory, and that we do not need negative
+indices (which slows down array indexing). All this information
+is inserted in square brackets: <tt class="docutils literal"><span class="pre">np.int_t</span></tt> denotes integer array
+elements (<tt class="docutils literal"><span class="pre">np.int</span></tt> is the usual data type object, but <tt class="docutils literal"><span class="pre">np.int_t</span></tt> is
+a Cython precompiled version of this object), <tt class="docutils literal"><span class="pre">ndim=2</span></tt> tells
+that the array has two dimensions (indices),
+<tt class="docutils literal"><span class="pre">negative_indices=False</span></tt> turns off the possibility for negative indices
+(counting from the end),
+and <tt class="docutils literal"><span class="pre">mode='c'</span></tt> indicates contiguous storage of the array.
+We also insert a line <tt class="docutils literal"><span class="pre">&#64;cython.boundscheck(False)</span></tt> at the line before
+the function to tell Cython to turn off the costly check that array
+indices stay within their bounds.
+With all this extra information, Cython can generate C code that
+works with <tt class="docutils literal"><span class="pre">numpy</span></tt> arrays as efficiently as native C arrays.</p>
+<p>The rest of the code is a plain copy of the <tt class="docutils literal"><span class="pre">dice6_py</span></tt> function, but
+with the <tt class="docutils literal"><span class="pre">random.randint</span></tt> call replaced by an array look-up
+<tt class="docutils literal"><span class="pre">eyes[i,j]</span></tt> to retrieve the next random number.  The two loops will
+now be as efficient as if they were coded directly in pure C.</p>
+<p>The complete code for the efficient version of the <tt class="docutils literal"><span class="pre">dice6_cy1</span></tt> function
+looks as follows:</p>
+<div class="highlight-cython"><div class="highlight"><pre><span class="k">import</span>  <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">cimport</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">import</span> <span class="nn">cython</span>
+<span class="nd">@cython</span><span class="o">.</span><span class="n">boundscheck</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">dice6_cy2</span><span class="p">(</span><span class="nb">int</span> <span class="n">N</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ndice</span><span class="p">,</span> <span class="nb">int</span> <span class="n">nsix</span><span class="p">):</span>
+    <span class="c"># Use numpy to generate all random numbers</span>
+    <span class="k">cdef</span> <span class="kt">int</span> <span class="nf">M</span> <span class="o">=</span> <span class="mf">0</span>            <span class="c"># no of successful events</span>
+    <span class="k">cdef</span> <span class="kt">int</span> <span class="nf">six</span><span class="p">,</span> <span class="nf">r</span>
+    <span class="k">cdef</span> <span class="kt">double</span> <span class="nf">p</span>
+    <span class="k">cdef</span> <span class="kt">np</span>.<span class="kt">ndarray</span>[<span class="kt">np</span>.<span class="nf">int_t</span><span class="p">,</span>
+                    <span class="n">ndim</span><span class="o">=</span><span class="mf">2</span><span class="p">,</span>
+                    <span class="n">negative_indices</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                    <span class="n">mode</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">]</span> <span class="n">eyes</span> <span class="o">=</span> \
+                    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_integers</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="mf">6</span><span class="p">,</span> <span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">ndice</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">six</span> <span class="o">=</span> <span class="mf">0</span>               <span class="c"># how many dice with six eyes?</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndice</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">eyes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>     <span class="c"># roll die no. j</span>
+            <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="mf">6</span><span class="p">:</span>
+               <span class="n">six</span> <span class="o">+=</span> <span class="mf">1</span>
+        <span class="k">if</span> <span class="n">six</span> <span class="o">&gt;=</span> <span class="n">nsix</span><span class="p">:</span>       <span class="c"># successful event?</span>
+            <span class="n">M</span> <span class="o">+=</span> <span class="mf">1</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
+    <span class="k">return</span> <span class="n">p</span>
+</pre></div>
+</div>
+<p>This Cython implementation is named <em>Cython numpy.random</em>.</p>
+<p>The disadvantage with the <tt class="docutils literal"><span class="pre">dice6_cy2</span></tt> function is that large simulations
+(large <tt class="docutils literal"><span class="pre">N</span></tt>) also require large amounts of memory, which usually limits
+the possibility for high accuracy much more than the CPU time. It would
+be advantageous to have a fast random number generator a la
+<tt class="docutils literal"><span class="pre">random.randint</span></tt> in C. The C library <tt class="docutils literal"><span class="pre">stdlib</span></tt> has a generator of
+random integers, <tt class="docutils literal"><span class="pre">rand()</span></tt>, generating numbers from 0 to up <tt class="docutils literal"><span class="pre">RAND_MAX</span></tt>.
+Both the <tt class="docutils literal"><span class="pre">rand</span></tt> function and the <tt class="docutils literal"><span class="pre">RAND_MAX</span></tt> integer are easy to
+access in a Cython program:</p>
+<div class="highlight-cython"><div class="highlight"><pre><span class="k">from</span> <span class="nn">libc.stdlib</span> <span class="k">cimport</span> <span class="n">rand</span><span class="p">,</span> <span class="n">RAND_MAX</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="mf">1</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">rand</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">RAND_MAX</span><span class="o">*</span><span class="mf">6.0</span><span class="p">))</span> <span class="c"># random integer 1,...,6</span>
+</pre></div>
+</div>
+<p>Note that <tt class="docutils literal"><span class="pre">rand()</span></tt> returns an integer so we must avoid integer
+division by ensuring that the denominator is a real number. We also
+need to explicitly convert the resulting real fraction to <tt class="docutils literal"><span class="pre">int</span></tt>
+since <tt class="docutils literal"><span class="pre">r</span></tt> is declared as <tt class="docutils literal"><span class="pre">int</span></tt>.</p>
+<p>With this way of generating random numbers we can create a version of
+<tt class="docutils literal"><span class="pre">dice6_cy1</span></tt> that is as fast as <tt class="docutils literal"><span class="pre">dice6_cy</span></tt>, but avoids all the memory
+demands and the somewhat complicated array declarations of the latter:</p>
+<div class="highlight-cython"><div class="highlight"><pre><span class="k">from</span> <span class="nn">libc.stdlib</span> <span class="k">cimport</span> <span class="n">rand</span><span class="p">,</span> <span class="n">RAND_MAX</span>
+<span class="k">def</span> <span class="nf">dice6_cy3</span><span class="p">(</span><span class="nb">int</span> <span class="n">N</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ndice</span><span class="p">,</span> <span class="nb">int</span> <span class="n">nsix</span><span class="p">):</span>
+    <span class="k">cdef</span> <span class="kt">int</span> <span class="nf">M</span> <span class="o">=</span> <span class="mf">0</span>            <span class="c"># no of successful events</span>
+    <span class="k">cdef</span> <span class="kt">int</span> <span class="nf">six</span><span class="p">,</span> <span class="nf">r</span>
+    <span class="k">cdef</span> <span class="kt">double</span> <span class="nf">p</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">six</span> <span class="o">=</span> <span class="mf">0</span>               <span class="c"># how many dice with six eyes?</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndice</span><span class="p">):</span>
+            <span class="c"># Roll die no. j</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="mf">1</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">rand</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">RAND_MAX</span><span class="o">*</span><span class="mf">6.0</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="mf">6</span><span class="p">:</span>
+               <span class="n">six</span> <span class="o">+=</span> <span class="mf">1</span>
+        <span class="k">if</span> <span class="n">six</span> <span class="o">&gt;=</span> <span class="n">nsix</span><span class="p">:</span>       <span class="c"># successful event?</span>
+            <span class="n">M</span> <span class="o">+=</span> <span class="mf">1</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
+    <span class="k">return</span> <span class="n">p</span>
+</pre></div>
+</div>
+<p>This final Cython implementation will be referred to as <em>Cython stdlib.rand</em>.</p>
+</div>
+</div>
+<div class="section" id="migrating-code-to-c">
+<h1>Migrating Code to C<a class="headerlink" href="#migrating-code-to-c" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="writing-a-c-program">
+<h2>Writing a C Program<a class="headerlink" href="#writing-a-c-program" title="Permalink to this headline">¶</a></h2>
+<p>A natural next improvement would be to program the Monte Carlo
+simulation loops directly in a compiled programming language, which
+guarantees optimal speed. Here we choose the C programming
+language for this purpose.
+The C version of our <tt class="docutils literal"><span class="pre">dice6</span></tt> function and an associated main program
+take the form</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;stdlib.h&gt;</span>
+
+<span class="kt">double</span> <span class="nf">dice6</span><span class="p">(</span><span class="kt">int</span> <span class="n">N</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ndice</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nsix</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">M</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">six</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">p</span><span class="p">;</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">six</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">ndice</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">r</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">rand</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">RAND_MAX</span><span class="o">*</span><span class="mf">6.0</span><span class="p">);</span> <span class="cm">/* roll die no. j */</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">==</span> <span class="mi">6</span><span class="p">)</span>
+        <span class="n">six</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">six</span> <span class="o">&gt;=</span> <span class="n">nsix</span><span class="p">)</span>
+      <span class="n">M</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">p</span> <span class="o">=</span> <span class="p">((</span><span class="kt">double</span><span class="p">)</span> <span class="n">M</span><span class="p">)</span><span class="o">/</span><span class="n">N</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">p</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">nargs</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+  <span class="kt">int</span> <span class="n">ndice</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">nsix</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">p</span> <span class="o">=</span> <span class="n">dice6</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">ndice</span><span class="p">,</span> <span class="n">nsix</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;C code: N=%d, p=%.6f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This code is placed in a file <tt class="docutils literal"><span class="pre">dice6_c.c</span></tt>.
+The file can typically be compiled and run by</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; gcc -O3 -o dice6.capp dice6_c.c</span>
+<span class="go">Terminal&gt; ./dice6.capp 1000000</span>
+</pre></div>
+</div>
+<p>This solution is later referred to as <em>C program</em>.</p>
+</div>
+<div class="section" id="migrating-loops-to-c-code-via-f2py">
+<h2>Migrating Loops to C Code via F2PY<a class="headerlink" href="#migrating-loops-to-c-code-via-f2py" title="Permalink to this headline">¶</a></h2>
+<p>Instead of programming the whole application in C, we may consider
+migrating the loops to the C function <tt class="docutils literal"><span class="pre">dice6</span></tt> shown above and then
+have the rest of the program (essentially the calling main program) in
+Python. This is a convenient solution if we were to do many other,
+less CPU-time critical things for convenience in Python.</p>
+<p>There are many alternative techniques for calling C functions from
+Python. Here we shall explain two. The first applies the program
+<tt class="docutils literal"><span class="pre">f2py</span></tt> to generate the necessary code that glues Python and C.
+The <tt class="docutils literal"><span class="pre">f2py</span></tt> program was actually made for gluing Python and Fortran,
+but it can work with C too. We need a specification of the C
+function to call in terms of a Fortran 90 module. Such a module can
+be written by hand, but <tt class="docutils literal"><span class="pre">f2py</span></tt> can also generate it. To this end,
+we make a Fortran file <tt class="docutils literal"><span class="pre">dice6_c_signature.f</span></tt>
+with the signature of the C function written
+in Fortran 77 syntax with some annotations:</p>
+<div class="highlight-fortran"><div class="highlight"><pre><span class="kt">real</span><span class="o">*</span><span class="mi">8</span> <span class="k">function </span><span class="nv">dice6</span><span class="p">(</span><span class="nv">n</span><span class="p">,</span> <span class="nv">ndice</span><span class="p">,</span> <span class="nv">nsix</span><span class="p">)</span>
+<span class="nv">Cf2py</span> <span class="k">intent</span><span class="p">(</span><span class="nv">c</span><span class="p">)</span> <span class="nv">dice6</span>
+      <span class="kt">integer </span><span class="nv">n</span><span class="p">,</span> <span class="nv">ndice</span><span class="p">,</span> <span class="nv">nsix</span>
+<span class="nv">Cf2py</span> <span class="k">intent</span><span class="p">(</span><span class="nv">c</span><span class="p">)</span> <span class="nv">n</span><span class="p">,</span> <span class="nv">ndice</span><span class="p">,</span> <span class="nv">nsix</span>
+      <span class="k">return</span>
+<span class="k">      end</span>
+</pre></div>
+</div>
+<p>The annotations <tt class="docutils literal"><span class="pre">intent(c)</span></tt> are necessary to tell <tt class="docutils literal"><span class="pre">f2py</span></tt> that the
+Fortran variables are to be treated as plain C variables and
+not as pointers (which is the default interpretation of variables
+in Fortran). The <tt class="docutils literal"><span class="pre">C2fpy</span></tt> are special comment lines that <tt class="docutils literal"><span class="pre">f2py</span></tt>
+recognizes, and these lines are used to provide extra information
+to <tt class="docutils literal"><span class="pre">f2py</span></tt> which have no meaning in plain Fortran 77.</p>
+<p>We must run <tt class="docutils literal"><span class="pre">f2py</span></tt> to generate a <tt class="docutils literal"><span class="pre">.pyf</span></tt> file with a Fortran 90
+module specification of the C function to call:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; f2py -m _dice6_c1 -h dice6_c.pyf \</span>
+<span class="go">          dice6_c_signature.f</span>
+</pre></div>
+</div>
+<p>Here <tt class="docutils literal"><span class="pre">_dice6_c1</span></tt> is the name of the module with the C function
+that is to be imported in Python, and <tt class="docutils literal"><span class="pre">dice6_c.pyf</span></tt> is the
+name of the Fortran 90 module file to be generated. Programmers
+who know Fortran 90 may want to write the <tt class="docutils literal"><span class="pre">dice6_c.pyf</span></tt> file
+by hand.</p>
+<p>The next step is to use the information in <tt class="docutils literal"><span class="pre">dice6_c.pyf</span></tt>
+to generate a (C extension) module <tt class="docutils literal"><span class="pre">_dice6_c1</span></tt>. Fortunately,
+<tt class="docutils literal"><span class="pre">f2py</span></tt> generates the necessary code, and compiles and links the relevant
+files, to form a shared library file <tt class="docutils literal"><span class="pre">_dice6_c1.so</span></tt>, by a short command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; f2py -c dice6_c.pyf dice6_c.c</span>
+</pre></div>
+</div>
+<p>We can now test the module:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">_dice6_c1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="nb">dir</span><span class="p">(</span><span class="n">_dice6_c1</span><span class="p">)</span>  <span class="c"># module contents</span>
+<span class="go">[&#39;__doc__&#39;, &#39;__file__&#39;, &#39;__name__&#39;, &#39;__package__&#39;,</span>
+<span class="go"> &#39;__version__&#39;, &#39;dice6&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">_dice6_c1</span><span class="o">.</span><span class="n">dice6</span><span class="o">.</span><span class="n">__doc__</span>
+<span class="go">dice6 - Function signature:</span>
+<span class="go">  dice6 = dice6(n,ndice,nsix)</span>
+<span class="go">Required arguments:</span>
+<span class="go">  n : input int</span>
+<span class="go">  ndice : input int</span>
+<span class="go">  nsix : input int</span>
+<span class="go">Return objects:</span>
+<span class="go">  dice6 : float</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_dice6_c1</span><span class="o">.</span><span class="n">dice6</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">ndice</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">nsix</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">0.145</span>
+</pre></div>
+</div>
+<p>The method of calling the C function <tt class="docutils literal"><span class="pre">dice6</span></tt> via an <tt class="docutils literal"><span class="pre">f2py</span></tt>
+generated module is referred to as <em>C via f2py</em>.</p>
+</div>
+<div class="section" id="migrating-loops-to-c-code-via-cython">
+<h2>Migrating Loops to C Code via Cython<a class="headerlink" href="#migrating-loops-to-c-code-via-cython" title="Permalink to this headline">¶</a></h2>
+<p>The Cython tool can also be used to call C code, not only generating
+C code from the Cython language.
+Our C code is in the file <tt class="docutils literal"><span class="pre">dice6_c.c</span></tt>, but for Cython to
+see this code we need to create a <em>header file</em> <tt class="docutils literal"><span class="pre">dice6_c.h</span></tt>
+listing the definition of the function(s) we want to call from Python.
+The header file takes the form</p>
+<div class="highlight-c++"><div class="highlight"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;stdlib.h&gt;</span>
+
+<span class="k">extern</span> <span class="kt">double</span> <span class="n">dice6</span><span class="p">(</span><span class="kt">int</span> <span class="n">N</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ndice</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nsix</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The next step is to make a <tt class="docutils literal"><span class="pre">.pyx</span></tt> file with a definition of the C
+function from the header file and a Python function that calls
+the C function:</p>
+<div class="highlight-cython"><div class="highlight"><pre><span class="k">cdef</span> <span class="kr">extern</span> <span class="k">from</span> <span class="s">&quot;dice6_c.h&quot;</span><span class="p">:</span>
+    <span class="n">double</span> <span class="n">dice6</span><span class="p">(</span><span class="nb">int</span> <span class="n">N</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ndice</span><span class="p">,</span> <span class="nb">int</span> <span class="n">nsix</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">dice6_cwrap</span><span class="p">(</span><span class="nb">int</span> <span class="n">N</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ndice</span><span class="p">,</span> <span class="nb">int</span> <span class="n">nsix</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">dice6</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">ndice</span><span class="p">,</span> <span class="n">nsix</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Cython must use this file, named <tt class="docutils literal"><span class="pre">dice6_cwrap.pyx</span></tt>,
+to generate C code, which is to be compiled and linked with
+the <tt class="docutils literal"><span class="pre">dice6_c.c</span></tt> code. All this is accomplished in a <tt class="docutils literal"><span class="pre">setup.py</span></tt>
+script:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="kn">from</span> <span class="nn">distutils.extension</span> <span class="kn">import</span> <span class="n">Extension</span>
+<span class="kn">from</span> <span class="nn">Cython.Distutils</span> <span class="kn">import</span> <span class="n">build_ext</span>
+
+<span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;dice6_cwrap.pyx&#39;</span><span class="p">,</span> <span class="s">&#39;dice6_c.c&#39;</span><span class="p">]</span>
+
+<span class="n">setup</span><span class="p">(</span>
+  <span class="n">name</span><span class="o">=</span><span class="s">&#39;Monte Carlo simulation&#39;</span><span class="p">,</span>
+  <span class="n">ext_modules</span><span class="o">=</span><span class="p">[</span><span class="n">Extension</span><span class="p">(</span><span class="s">&#39;_dice6_c2&#39;</span><span class="p">,</span> <span class="n">sources</span><span class="p">)],</span>
+  <span class="n">cmdclass</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;build_ext&#39;</span><span class="p">:</span> <span class="n">build_ext</span><span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>This <tt class="docutils literal"><span class="pre">setup.py</span></tt> script is run as</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; python setup.py build_ext --inplace</span>
+</pre></div>
+</div>
+<p>resulting in a shared library file <tt class="docutils literal"><span class="pre">_dice6_c2.so</span></tt>, which can
+be loaded into Python as a module:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">_dice6_c2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="nb">dir</span><span class="p">(</span><span class="n">_dice6_c2</span><span class="p">)</span>
+<span class="go">[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;, &#39;__name__&#39;,</span>
+<span class="go"> &#39;__package__&#39;, &#39;__test__&#39;, &#39;dice6_cwrap&#39;]</span>
+</pre></div>
+</div>
+<p>We see that the module contains the function <tt class="docutils literal"><span class="pre">dice6_cwrap</span></tt>, which
+was made to call the underlying C function <tt class="docutils literal"><span class="pre">dice6</span></tt>.</p>
+</div>
+<div class="section" id="comparing-efficiency">
+<h2>Comparing Efficiency<a class="headerlink" href="#comparing-efficiency" title="Permalink to this headline">¶</a></h2>
+<p>All the files corresponding to the various techniques described above
+are available
+as a <a class="reference external" href="_static/MC_cython.tar.gz">tarball</a> or accessible
+from through the GitHub project <a class="reference external" href="https://github.com/hplgit/MC_cython">MC_cython</a>.
+A file <tt class="docutils literal"><span class="pre">make.sh</span></tt> performs all the compilations, while <tt class="docutils literal"><span class="pre">compare.py</span></tt>
+runs all methods and prints out the CPU time required by each method,
+normalized by the fastest approach. The results for <span class="math">\(N=450,000\)</span>
+are listed below (MacBook Air
+running Ubuntu in a VMWare Fusion virtual machine).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Method</th>
+<th class="head">Timing</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>C program</td>
+<td>1.0</td>
+</tr>
+<tr class="row-odd"><td>Cython stdlib.rand</td>
+<td>1.2</td>
+</tr>
+<tr class="row-even"><td>Cython numpy.random</td>
+<td>1.2</td>
+</tr>
+<tr class="row-odd"><td>C via f2py</td>
+<td>1.2</td>
+</tr>
+<tr class="row-even"><td>C via Cython</td>
+<td>1.2</td>
+</tr>
+<tr class="row-odd"><td>vectorized Python, version 1</td>
+<td>1.9</td>
+</tr>
+<tr class="row-even"><td>Cython random.randint</td>
+<td>33.6</td>
+</tr>
+<tr class="row-odd"><td>plain Python</td>
+<td>37.7</td>
+</tr>
+<tr class="row-even"><td>vectorized Python, version 2</td>
+<td>105.0</td>
+</tr>
+</tbody>
+</table>
+<p>The CPU time of the plain Python version was 10 s, which is reasonably
+fast for obtaining a fairly accurate result in this problem.  The
+lesson learned is therefore that a Monte Carlo simulation can be
+implemented in plain Python first. If more speed is needed, one can
+just add type information and create a Cython code. Studying the HTML
+file with what Cython manages to translate to C may give hints about
+how successful the Cython code is and point to optimizations, like
+avoiding the call to <tt class="docutils literal"><span class="pre">random.randint</span></tt> in the present case. Optimal
+Cython code runs here at approximately the same speed as calling a
+handwritten C function with the time-consuming loops.  It is
+to be noticed that the stand-alone C program here ran faster than
+calling C from Python, probably because the amount of calculations is
+not large enough to make the overhead of calling C negligible.</p>
+<p>Vectorized Python do give a great speed-up compared to plain
+loops in Python, if done correctly, but the efficiency is not on par
+with Cython or handwritten C. Even more important is the fact that
+vectorized code is not at all as readable as the algorithm expressed
+in plain Python, Cython, or C. Cython therefore provides a very
+attractive combination of readability, ease of programming, and high
+speed.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Monte Carlo Simulation with Cython</a></li>
+<li><a class="reference internal" href="#pure-python-code-for-monte-carlo-simulation">Pure Python Code for Monte Carlo Simulation</a><ul>
+<li><a class="reference internal" href="#the-computational-problem">The Computational Problem</a></li>
+<li><a class="reference internal" href="#a-scalar-python-implementation">A Scalar Python Implementation</a></li>
+<li><a class="reference internal" href="#a-vectorized-python-implementation">A Vectorized Python Implementation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#migrating-scalar-python-code-to-cython">Migrating Scalar Python Code to Cython</a><ul>
+<li><a class="reference internal" href="#a-plain-cython-implementation">A Plain Cython Implementation</a></li>
+<li><a class="reference internal" href="#a-better-cython-implementation">A Better Cython Implementation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#migrating-code-to-c">Migrating Code to C</a><ul>
+<li><a class="reference internal" href="#writing-a-c-program">Writing a C Program</a></li>
+<li><a class="reference internal" href="#migrating-loops-to-c-code-via-f2py">Migrating Loops to C Code via F2PY</a></li>
+<li><a class="reference internal" href="#migrating-loops-to-c-code-via-cython">Migrating Loops to C Code via Cython</a></li>
+<li><a class="reference internal" href="#comparing-efficiency">Comparing Efficiency</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Speeding Up Python Implementations of Monte Carlo Simulation</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Speeding Up Python Implementations of Monte Carlo Simulation"
+             >previous</a> |</li>
+        <li><a href="index.html">Speeding Up Python Implementations of Monte Carlo Simulation 0.9 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, H. P. Langtangen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
