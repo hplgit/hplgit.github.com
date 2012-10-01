@@ -6,7 +6,7 @@ Quick Intro to Version Control Systems and Project Hosting Services
 
 :Author: Hans Petter Langtangen
 
-:Date: Aug 21, 2012
+:Date: Oct 1, 2012
 
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -501,7 +501,7 @@ The URL to your files is
         https://my-project.googlecode.com/git/
 
 When using other version control systems, ``git`` is simply replaced by
-``hg`` or or ``svn``.
+``hg`` or ``svn``.
 For example, if we have HTML documentation of our project in
 the folder ``doc/html``, we can point users to
 
@@ -697,7 +697,7 @@ GitHub can also host a set of web pages for your project where you can
 store various types of documentation. Here is a simple
 recipe for creating a set of project web pages.
 
-1. Go to to the  project page on ``github.com`` and click *Admin*.
+1. Go to the  project page on ``github.com`` and click *Admin*.
 
 2. Check the *GitHub Pages* check box.
 
@@ -1028,7 +1028,7 @@ Another command,
 lists the history of ``filename`` in more detail so that you can track
 the evolution of this file. Adding the ``--follow`` option will list the
 history also when ``filename`` had other names.  The history of all
-files in a folder is listed by by specifying the folder name(s).
+files in a folder is listed by specifying the folder name(s).
 No name specification gives the history of the whole repo.
 
 More compact output from ``hg log``, without line differences, is triggered by
@@ -1446,7 +1446,7 @@ when ``yourfile`` existed, and do a ``git checkout <commit hash> yourfile``.
 
 The Git equivalent to ``hg cat`` for just viewing old versions of files is
 ``git show``, but the command requires the full path from the root
-git folder (which is sometimes inconvenient):
+git folder:
 
 .. code-block:: console
 
@@ -1673,3 +1673,4 @@ files)? The answer consists of doing the following steps:
     file
 
   * Run some diff tool on the present and previous version of the file
+
