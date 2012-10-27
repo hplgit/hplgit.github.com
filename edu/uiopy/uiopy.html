@@ -9,36 +9,75 @@ Automatically generated HTML file from Doconce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
+<!--
+Color definitions:  http://www.december.com/html/spec/color0.html
+CSS examples:       http://www.w3schools.com/css/css_examples.asp
+-->
+
+<style type="text/css">
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.5em; color: #1e36ce; }
+    h3 { color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    pre { background: #ededed; color: #000; padding: 15px;}
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+</style>
+
+<!-- Use MathJax to render mathematics -->
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
 
 </head>
 
-<body bgcolor="white">
-    <title>Experience with Using Python as a Primary Language for Teaching Scientific Computing at the University of Oslo</title>
-<center><h1>Experience with Using Python as a Primary Language for Teaching Scientific Computing at the University of Oslo</h1></center>
+<body>
+    
+
+<!-- ------------------- main content ------------------------>
+
+<title>Experience with Using Python as a Primary Language for Teaching Scientific Computing at the University of Oslo</title>
+
+<center><h1>Experience with Using Python as a Primary Language for Teaching Scientific Computing at the University of Oslo</h1></center>  <! -- document title -->
+
+<! -- author(s) -->
+
 <center>
-<b>Hans Petter Langtangen</b>  (<tt>hpl</tt> at <tt>simula.no</tt>)
+<b>Hans Petter Langtangen</b>  (<tt>hpl at simula.no</tt>)
 </center>
+
+
+<p>
+<!-- institution(s) -->
+
+
+
+<center><h4>Oct 27, 2012</h4></center> <!-- date -->
+<p>
 
 <p>
 
-
-<center><h3>Jun 30, 2012</h3></center>
-<P>
-
-<P>
-
-<P>
+<p>
 <b>Summary.</b> This essay explains why and how we have chosen Python as the language
 of choice for teaching scientific computing at the University of Oslo.
 By teaching students Python and numerics from day one, various bachelor
@@ -47,7 +86,7 @@ science courses by using programming and numerical simulation
 to solve mathematical problems. We have learned several
 lessons:
 
-<P>
+<p>
 
 <ul>
   <li> The choice of Python as a teaching language for scientific computing
@@ -58,7 +97,7 @@ lessons:
   <li> It is possible to treat quite advanced problems very early in
     the studies. For example, at the end of the first semester our students
     implement an object-oriented toolbox for
-    solving a wide class of nonlinear vibration problems.
+    solving a wide class of nonlinear vibration problems (!).
   <li> Replacing classical mathematical solution techniques by
     programming and numerical simulation in science courses is
     indeed challenging, but possible and natural. The experience is very
@@ -70,15 +109,19 @@ lessons:
 
 <center><p><img src="figs/python5.jpg" align="bottom" width=100></p></center>
 
-<P>
-<h3>We started with a course on Python scripting</h3>
-<P>
+<p>
+
+<h3>We started with a course on Python scripting  <a name="___sec0"></a></h3>
+<p>
 In 1999, I started a course (IN228, renamed to INF3331) about scientific
 scripting at the University of Oslo. The purpose was to use a real
 scripting language, primarily Perl, to do all the administrative
-computer work associated with scientific investigations.
+computer work associated with scientific investigations. During the 90s
+we had tried to throw the "Camel Book" for Perl4 and the "Unix Power Tools"
+book at people, but few (if any) understood why and how they should apply
+such tools.
 
-<P>
+<p>
 Within a couple of years, we naturally moved from Perl to Python as
 the primary scripting language, because Python did the same as Perl,
 but with a more readable syntax and hence easier maintenance.
@@ -86,13 +129,14 @@ Students picked up Python significantly faster than Perl, and we
 started realizing the pedagogical strengths of the Python language.  I
 wrote a <a href="http://www.amazon.com/Python-Scripting-Computational-Science-Engineering/dp/3642093159/ref=sr_1_2?ie=UTF8&qid=1340530481&sr=8-2&keywords=langtangen">book</a>
 for the course, but the publisher was initially only modestly
-interested because Python was still an insignificant language in the
-science community. Our gut feeling, however, told that Python with
-time would gain a significant position.  At the time of this writing,
+interested because the market was considered too small.
+Our gut feeling, however, told that scripting with Python with
+time would gain a significant position in the scientific computing
+community.  At the time of this writing,
 this is a fact. Over 1500 students have completed the course, and the
-book is a best-seller in its category.
+book has been very popular world wide.
 
-<P>
+<p>
 The course addressed experienced Fortran, C, C++, or Java programmers
 and aimed at teaching them the power of a dynamically typed
 environment. Early in the 2000s, our research group started using
@@ -102,12 +146,13 @@ and migrated slow parts of the code to Fortran or C++ when needed.  It
 stroke us that students should learn about this effective numerical
 computing environment as early as possible.
 
-<P>
+<p>
 
-<P>
-<h3>We chose Python for learning computer programming</h3>
-<P>
-Most universities "buy" an introductory programming course from their
+<p>
+
+<h3>We chose Python for learning computer programming  <a name="___sec1"></a></h3>
+<p>
+Most universities buy an introductory programming course from their
 computer science department.  Very often the offer is a standard Java
 course.  Exceptionally the choice is C, C++, or perhaps something more
 exotic like Scheme. Beyond the very basics of programming, the content
@@ -116,7 +161,7 @@ algorithms. The result is often that students for all practical
 purposes must relearn to program when they meet programming in science
 courses, and then the language is usually MATLAB, Fortran, C, or C++.
 
-<P>
+<p>
 At the University of Oslo, the introductory Java course was free of
 any mathematics and not synchronized with the needs in later science
 courses. The mentioned relearning of programming consumed much time
@@ -129,7 +174,7 @@ simulations. We would therefore teach programming in the context of
 relevant algorithms like numerical integration, differentiation,
 solution of differential equations, and Monte Carlo simulation.
 
-<P>
+<p>
 The introductory programming course was scheduled for the very first
 semester, meaning that the students would learn to program and use the
 computer to solve mathematical problems from day one.  But what should
@@ -148,7 +193,7 @@ programming language at disposal.
 <!-- the University, I am not qualified for MathWorks' academic discount, -->
 <!-- and my MATLAB license hence costs twice as much as my laptop.) -->
 
-<P>
+<p>
 Again I wrote a <a href="http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642183654/ref=sr_1_1?ie=UTF8&qid=1340530481&sr=8-1&keywords=langtangen">book</a>
 for the introductory programming course, this time addressing
 newcomers to programming and concentrating the examples on numerical
@@ -158,13 +203,13 @@ language (because of its dynamic typing), mixing programming and
 mathematics is inferior to first mastering calculus and Java
 separately, etc. etc.
 
-<P>
+<p>
 <!-- People have constantly reminded me about the possibly marginal interest -->
 <!-- Python will obtain in science, and that going for the established, popular -->
 <!-- tools (MATLAB or C++) would be more relevant for the studentsa and also -->
 <!-- sell more books. -->
 
-<P>
+<p>
 The <a href="http://www.uio.no/studier/emner/matnat/ifi/INF1100/index-eng.xml">course</a> is
 now a huge success, and the book is a best-seller in its
 category. Since 2007, more than 1000 students have passed the exam and
@@ -189,13 +234,14 @@ and generous funding.  The ideas are being implemented at other
 Norwegian colleges and universities as well as at several institutions
 abroad.
 
-<P>
+<p>
 <!-- "awards": -->
 <!-- "http://www.uio.no/studier/aktuelt/laringsmiljoprisen.html" -->
 
-<P>
-<h3>There is impact of teaching Python</h3>
-<P>
+<p>
+
+<h3>There is impact of teaching Python  <a name="___sec2"></a></h3>
+<p>
 The world is changed only when people do new things. When students
 learn Python, they bring this knowledge to later courses and then to
 industry. Their knowledge automatically creates a demand for using the
@@ -205,7 +251,7 @@ picked up Python in the scripting course. Similarly, students create
 Python examples and projects in other courses and thereby attract
 attention to the tool and its applications.
 
-<P>
+<p>
 The science education at the University of Oslo puts much emphasis on
 learning other languages, in particular MATLAB, R, C, C++, and
 Fortran.  We teach (a subset of) Python in a way that eases the
@@ -222,36 +268,37 @@ more rooted in Python's clear syntax, powerful software engineering
 tools, easy integration with Fortran and C/C++,
 and rich set of libraries for non-numerical tasks.
 
-<P>
+<p>
 The described trend among students and professors are also found in
 industry: Python steadily eats of the MATLAB market because people find
 the language stronger and more convenient. Our efforts in teaching and
 professional use of Python contribute to the observed exponential
 growth.
 
-<P>
+<p>
 
-<P>
-<h3>We let the students play with advanced problems</h3>
-<P>
+<p>
+
+<h3>We let the students play with advanced problems  <a name="___sec3"></a></h3>
+<p>
 As mentioned, we start with numerics and programming when the 19-year
-old new students
-arrive at the University. About 300 students enter courses on classical
-calculus, numerical calculus, and programming of the latter. The
-programming course covers basic MATLAB-style procedural programming in
-the first half of the fall semester, while the second half is spent on
-statistical
-simulations, ordinary differential equations,
-and class programming (recall that classes and object-oriented programming were
-invented in Oslo so we have no other choice!). The final
-project is to create a flexible, object-oriented toolbox for
-studying nonlinear vibration problems described by
-the standard model
+old new students arrive at the University. About 300 students enter
+courses on classical calculus, numerical calculus, and programming of
+the latter. The programming course covers basic MATLAB-style
+procedural programming in the first half of the fall semester, while
+the second half is spent on statistical simulations, ordinary
+differential equations, and class programming (recall that classes and
+object-oriented programming were invented in Oslo so we have no other
+choice!). The final project is to create a flexible, object-oriented
+toolbox for studying nonlinear vibration problems described by the
+standard model
+
+<p>
 $$ m \ddot x + f(\dot x) + s(x) = F(t) $$
 The development environment for programming consists of the well-proven
 terminal window and a text editor (<tt>gedit</tt>, <tt>emacs</tt>, or <tt>vi</tt>).
 
-<P>
+<p>
 Many reviews of the <a href="http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642183654/ref=sr_1_1?ie=UTF8&qid=1340530481&sr=8-1&keywords=langtangen">course book</a>
 claim that the book is quite advanced and may fit the graduate
 level. However, most of the book is in fact covered the very first
@@ -267,9 +314,10 @@ of what they actually do needs to wait until they master a broader set
 of courses. My main message is that what is basic and what is advanced
 should be continuously up for discussion.
 
-<P>
-<h3>We use Ubuntu to minimize installation problems</h3>
-<P>
+<p>
+
+<h3>We use Ubuntu to minimize installation problems  <a name="___sec4"></a></h3>
+<p>
 Many fear to introduce programming and simulation in courses because
 there are so many technical details. For example, how shall students
 install Python and 30 software packages on their personal
@@ -278,52 +326,58 @@ We have found a solution that has proven to be successful over the last
 four years: <em>force all students to use Ubuntu</em>, and provide support for
 Ubuntu only!
 
-<P>
+<p>
 Mac users typically run Ubuntu in a virtual machine (<a href="http://www.virtualbox.org/">VirtualBox</a>, or preferably, <a href="http://www.vmware.com/products/player">VMWare Player</a> or <a href="http://www.vmware.com/products/fusion/overview.html/">VMWare Fusion</a>), while Windows
 users can run a virtual machine or have a dual boot.  The <a href="http://wubi-installer.org">Wubi</a> software makes installing the dual boot
 solution very easy.  On Ubuntu we have one package (<tt>python-scitools</tt>)
 that installs everything the students need in one command. Later courses can
 just provide a one-line command with their needs for additional packages.
 
-<P>
+<p>
 There are several reasons why we dare to force the use of only one
 operating system:
 
-<P>
+<p>
 
 <ol>
-<li> Ubuntu (or more precisely, Debian Linux) has the largest collection of mathematical software today.
-<li> Mathematical software is often complex to install, but on Ubuntu this is done by a one-line command.
-<li> Ubuntu is easier for students to operate than other Linux/Unix systems (especially Mac OS X at the command level).
-<li> Ubuntu's graphical interface is very similar to Windows or Mac OS X.
-<li> Ubuntu (or more precisely, Unix/Linux) provides more powerful support for programming in general than Windows or Mac (in my opinion).
+<li> Installation of programming tools and mathematical software on Windows and Mac OS X requires comprehensive competence that very few students have and want to gain.
+<li> On Debian Linux systems, including Ubuntu, installation of complex mathematical software is done by a one-line command.
+<li> Debian Linux has the largest collection of mathematical software today.
+<li> When the students need to compile and link their own software, this seems to be easier on Linux systems than on Mac OS X and Windows. Although Mac OS X is basically Unix, there are many technical peculiarities that quickly calls for competence beyond what students and the average teacher have.
+<li> Ubuntu's graphical interface is very similar to Windows or Mac OS X so students pick up Ubuntu without any noise.
 <li> Students struggle much more with the logic of programming than with
    Emacs and Unix commands.
 </ol>
 
-Soon we expect supercomputing in the cloud to be a reality. Then one can
-just upload the Ubuntu image (running in a virtual machine) to the
-cloud service and avoid tedious installation processes. By archiving the
-image along with scientific results, one can at any time in the future
-rerun simulations - the complete operating system, all the needed
-software, and all data reside in the image. This is key to reproducible
-science.
+I should add that <a href="http://www.floss4science.com/fedora-scientific-amit-saha/">Fedora Scientific</a> may provide a viable alternative to Ubuntu, especially on sites where Fedora is already the supported Linux system. Fedora Scientific
+now offers a lot of very useful <a href="http://spins.fedoraproject.org/scientific-kde/">mathematics software</a>
 
-<P>
+<p>
+In future cloud supercomputing I imagine one can just upload the Linux
+image (running in a virtual machine) to the cloud service and avoid
+tedious installation processes. By archiving the image along with
+scientific results, one can at any time rerun simulations - the
+complete operating system, all the needed software, and all data
+reside in the image. This is key to reproducible science.
+
+<p>
 So far, I have not heard one single negative comment that we support
-Ubuntu only. When we tried to support Unix, Linux, Windows, and Mac,
+only one operating system.
+When we tried to support Unix, Linux, Windows, and Mac,
 there were a lot of complaints from students that they did not have
 access to the right software and that technical problems with
 computers stole too much attention. These complaints have simply
-disappeared with the standardization on Ubuntu.  This outcome is
-surprising to me (and most others), but a fact.
+disappeared with the standardization on Ubuntu. So we have learned
+that giving people more
+choices does not necessarily make them happier.
 
-<P>
+<p>
 <center><p><img src="figs/python6.jpeg" align="bottom" width=100></p></center>
 
-<P>
-<h3>Resources</h3>
-<P>
+<p>
+
+<h3>Resources  <a name="___sec5"></a></h3>
+<p>
 
 <ul>
  <li> "PDF version" of this essay: "http://hplgit.github.com/teamods/uiopy/uiopy.pdf"
@@ -332,10 +386,12 @@ surprising to me (and most others), but a fact.
  <li> <a href="http://www.uio.no/studier/emner/matnat/ifi/INF1100/index-eng.xml">Student information</a> on our introductory programming course where Python is used
  <li> The <a href="http://www.mn.uio.no/english/about/collaboration/cse/">Computing in Science Education</a> reform of science courses
  <li> <a href="http://hplgit.github.com/teamods/ubuntu/vmware/index.html">How to install Ubuntu</a> on any computer using VMWare Fusion
+<!-- <a href="http://hplgit.github.com/teamods/uiopy/uiopy.do.txt">Doconce source of this document</a> -->
 </ul>
 
-<a href="http://hplgit.github.com/teamods/uiopy/uiopy.do.txt">Doconce source of this document</a>
 
+<!-- ------------------- end of main content ----------------->
 </body>
 </html>
     
+
