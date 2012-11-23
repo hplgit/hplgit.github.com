@@ -1,0 +1,261 @@
+
+<h2>Setting up Ubuntu  <a name="___sec0"></a></h2>
+<p>
+
+<h3>Customizing the Launcher  <a name="___sec1"></a></h3>
+<p>
+
+<h4>Removing icons  <a name="___sec2"></a></h4>
+<p>
+The Lanucher is the vertical stack of application icons at the left end
+of the window. Clicking on an icon starts the corresponding application.
+To remove unnecessary applications from the Lanucher,
+right-click on the icons and choose <em>Unlock from Launcher</em>.
+Unix users normally start their application from a terminal window, so you
+probably want to have few icons in the Launcher.
+
+<p>
+
+<h4>Adding a terminal application  <a name="___sec3"></a></h4>
+<p>
+You will need a terminal window to issue Unix commands. A
+recommended terminal applications is <tt>gnome-terminal</tt>.
+Click on the uppermost icon in the Launcher, called <em>Dash Home</em>. Install
+the Gnome terminal application by writing its name in the
+<em>Application</em> text field. Then right-clicking on the corresponding new
+icon in the Launcher and choose <em>Lock to Launcher</em>. Now you have an icon
+from the Gnome terminal.
+
+<p>
+You can create tabs in the Gone terminal by clicking on that window
+and type Ctrl-shift-t for each tab you want.
+
+<p>
+
+<h3>Customizing the keyboard  <a name="___sec4"></a></h3>
+<p>
+Programmers frequently need curly braces and brackets. An
+American/English keyboard has these key in convenient places to the
+right on the keyboard.  If your keyboard is not American/English, you
+can easily add a vritual American/English keybord. Click on the
+<em>System Settings</em> icon in the Lanucher, then <em>Keyboard Layout</em>, then
+<em>Options...</em>, then <em>Key(s) to change layout</em>, choose <em>Right Ctrl +
+Right Shift</em>. In the Keyboard Layout window, click on English (US)
+keyboard, then on the + button, find an the keyboard that corresponds
+to your physical keyboard (e.g., <em>Norwegian (Macintosh, eliminate dead
+keys)</em>.  Thereafter, you can switch between an English/American
+keyboard and the physical keyboard using Ctrl (on the left) and the
+right shift key.  The keyboard in action can be viewed to the right in
+the panel at the top of the Ubuntu window.
+
+<p>
+The Control key is heavily used in Unix systems, and many prefer to
+have the Control key on the Caps Lock key.  Click on the <em>System
+Settings</em> icon in the Launcher, click <em>Keyboard Layout</em>, then
+<em>Options...</em>, click <em>Ctrl key position</em>, click <em>Caps Lock as Ctrl</em>.
+
+<p>
+
+<h3>Installing packages  <a name="___sec5"></a></h3>
+<p>
+
+<h4>Text editor  <a name="___sec6"></a></h4>
+<p>
+Install an excellent text editor, either <tt>emacs</tt> or <tt>vim</tt> (<tt>gedit</tt> comes
+with standard Ubuntu):
+<blockquote>    <!-- begin verbatim block  sys-->
+<pre>
+Terminal&gt; apt-get install emacs
+Terminal&gt; apt-get install vim
+</pre>
+</blockquote>   <! -- end verbatim block -->
+
+<p>
+
+<h4>Web browser  <a name="___sec7"></a></h4>
+<p>
+Ubuntu comes with the Firefox web browser, but occasionally it does
+not launch correctly. An alternative is Gnome's Epiphany browser:
+
+<p>
+<blockquote>    <!-- begin verbatim block  sys-->
+<pre>
+Terminal&gt; apt-get install epiphany-browser
+</pre>
+</blockquote>   <! -- end verbatim block -->
+If you prefer the Chrome browser, launch
+<tt>firefox</tt> or <tt>epiphany-browser</tt>, download Chrome as a <tt>.deb</tt> file
+(downloaded files go by default to the <tt>Downloads</tt> directory).
+Then run
+
+<p>
+<blockquote>    <!-- begin verbatim block  sys-->
+<pre>
+Terminal&gt; cd Downloads
+Terminal&gt; sudo apt-get install libgconf2-4 libnss3-1d
+Terminal&gt; sudo dpkg -i google-chrome-stable_current_amd64.deb
+</pre>
+</blockquote>   <! -- end verbatim block -->
+
+<p>
+
+<h4>Useful software  <a name="___sec8"></a></h4>
+<p>
+Run the following commands:
+
+<p>
+<blockquote>    <!-- begin verbatim block  sys-->
+<pre>
+Terminal&gt; packages=&quot;mercurial git subversion bzr mercurial-git imagemagick konsole g++ gfortran autoconf automake autotools-dev wdiff kdiff3 meld latexdiff xxdiff diffpdf antiword vlc mencoder texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-math-extra texlive-bibtex-extra texlive-xetex texlive-pictures latex-xcolor latex-xft-fonts latex-beamer libreoffice unoconv libreoffice-dmaths a2ps pandoc gv pdftk pdfjam&quot;
+Terminal&gt; for p in $packages; do echo sudo apt-get install $p; done &gt; install.sh
+Terminal&gt; sh -x install.sh  # type Return for each question
+</pre>
+</blockquote>   <! -- end verbatim block -->
+
+<p>
+Here is a brief explanation of some of the most important packages
+listed above:
+
+<p>
+<table border="1">
+<tr><td align="center"><b>                    command                     </b></td> <td align="center"><b>                  description                   </b></td> </tr>
+<tr><td align="center">   <tt>mercurial</tt>                                </td> <td align="center">   version control system                            </td> </tr>
+<tr><td align="center">   <tt>git</tt>                                      </td> <td align="center">   version control system                            </td> </tr>
+<tr><td align="center">   <tt>subversion</tt>                               </td> <td align="center">   version control system                            </td> </tr>
+<tr><td align="center">   <tt>bzr</tt>                                      </td> <td align="center">   version control system                            </td> </tr>
+<tr><td align="center">   <tt>imagemagick</tt>                              </td> <td align="center">   collection of tools for image files               </td> </tr>
+<tr><td align="center">   <tt>konsole</tt>                                  </td> <td align="center">   alternative to <tt>gnome-terminal</tt>            </td> </tr>
+<tr><td align="center">   <tt>g++</tt>                                      </td> <td align="center">   GNU C++ compiler                                  </td> </tr>
+<tr><td align="center">   <tt>gfortran</tt>                                 </td> <td align="center">   GNU Fortran compiler                              </td> </tr>
+<tr><td align="center">   <tt>auto*</tt>                                    </td> <td align="center">   tools for installing software                     </td> </tr>
+<tr><td align="center">   <tt>wdiff</tt>                                    </td> <td align="center">   useful diff program for plain text                </td> </tr>
+<tr><td align="center">   <tt>kdiff3</tt>                                   </td> <td align="center">   diff program for plain text                       </td> </tr>
+<tr><td align="center">   <tt>meld</tt>                                     </td> <td align="center">   diff program for plain text                       </td> </tr>
+<tr><td align="center">   <tt>latexdiff</tt>                                </td> <td align="center">   diff program for latex files                      </td> </tr>
+<tr><td align="center">   <tt>xxdiff</tt>                                   </td> <td align="center">   diff program for plain text                       </td> </tr>
+<tr><td align="center">   <tt>diffpdf</tt>                                  </td> <td align="center">   diff program for PDF files                        </td> </tr>
+<tr><td align="center">   <tt>antiword</tt>                                 </td> <td align="center">   fast conversion of MS Word files to plain text    </td> </tr>
+<tr><td align="center">   <tt>vlc</tt>                                      </td> <td align="center">   audio and video player                            </td> </tr>
+<tr><td align="center">   <tt>mencoder</tt>                                 </td> <td align="center">   tool for making movie files                       </td> </tr>
+<tr><td align="center">   <tt>texlive-*</tt>                                </td> <td align="center">   tools for TeX and LaTeX                           </td> </tr>
+<tr><td align="center">   <tt>latex-*</tt>                                  </td> <td align="center">   tools for LaTeX                                   </td> </tr>
+<tr><td align="center">   <tt>libreoffice</tt>                              </td> <td align="center">   OpenOffice tools                                  </td> </tr>
+<tr><td align="center">   <tt>a2ps</tt>                                     </td> <td align="center">   convert plain text to PostScript for printing     </td> </tr>
+<tr><td align="center">   <tt>pandoc</tt>                                   </td> <td align="center">   convert between many file formats                 </td> </tr>
+<tr><td align="center">   <tt>gv</tt>                                       </td> <td align="center">   Ghostview PDF and PostScript viewer               </td> </tr>
+<tr><td align="center">   <tt>pdftk</tt>                                    </td> <td align="center">   tools for manipulating PDF files                  </td> </tr>
+<tr><td align="center">   <tt>pdfjam</tt>                                   </td> <td align="center">   tools for manipulating PDF files                  </td> </tr>
+</table>
+<p>
+
+
+<h4>A Python eco system for scientific computing  <a name="___sec9"></a></h4>
+<p>
+<blockquote>    <!-- begin verbatim block  sys-->
+<pre>
+Terminal&gt; packages=&quot;python-setuptools python-pip python-mode python-numpy ipython python-scipy cython python-nose python-pdftools python-profiler python-pmw python-opengl pype pydb python-sympy python-qt4 python-qt4-dev idle python-traits python-traitsgui python-enthought-traits python-enthought-traits-ui python-enthoughtbase python-sphinx python-scitools blt grace dx dx-doc mayavi2  gnuplot gnuplot-doc gnuplot-x11&quot;
+Terminal&gt; for p in $packages; do echo sudo apt-get install $p; done &gt; install.sh
+Terminal&gt; sh -x install.sh  # type Return for each question
+</pre>
+</blockquote>   <! -- end verbatim block -->
+
+<p>
+
+<h3>Ultra-quick intro to Unix (sufficient for programming)  <a name="___sec10"></a></h3>
+<p>
+<table border="1">
+<tr><td align="center"><b>                         command                          </b></td> <td align="center"><b>                       description                        </b></td> </tr>
+<tr><td align="center">   <tt>mkdir</tt>                                              </td> <td align="center">   make directory (folder)                                     </td> </tr>
+<tr><td align="center">   <tt>cd</tt>                                                 </td> <td align="center">   change directory (folder)                                   </td> </tr>
+<tr><td align="center">   <tt>emacs</tt>                                              </td> <td align="center">   start an editor for writing programs                        </td> </tr>
+<tr><td align="center">   <tt>ls</tt>                                                 </td> <td align="center">   list files (in the current folder)                          </td> </tr>
+<tr><td align="center">   <tt>ls -l</tt>                                              </td> <td align="center">   list files with size, date and owner info                   </td> </tr>
+<tr><td align="center">   <tt>rm</tt>                                                 </td> <td align="center">   remove file                                                 </td> </tr>
+<tr><td align="center">   <tt>rm -r</tt>                                              </td> <td align="center">   remove folder                                               </td> </tr>
+<tr><td align="center">   <tt>mv</tt>                                                 </td> <td align="center">   move (rename) file or folder                                </td> </tr>
+<tr><td align="center">   <tt>cp</tt>                                                 </td> <td align="center">   copy file                                                   </td> </tr>
+<tr><td align="center">   <tt>cp -r</tt>                                              </td> <td align="center">   copy folder                                                 </td> </tr>
+<tr><td align="center">   <tt>ls > res</tt>                                           </td> <td align="center">   store output of a program (here ls) in a file (here res)    </td> </tr>
+<tr><td align="center">   <tt>less res</tt>                                           </td> <td align="center">   look quickly at a file (here res), press q to quit          </td> </tr>
+<tr><td align="center">   <tt>ssh -X name@machine</tt>                                </td> <td align="center">   log in on another "machine" as "name"                       </td> </tr>
+</table>
+<p>
+Unix commands are written in a terminal window, also called console
+window, xterm, rxvt, konsole, or shell.
+
+<p>
+Below is a sample session illustrating all the commands above. We
+
+<p>
+
+<ol>
+ <li> create a new folder named <tt>mydir</tt></li>
+ <li> move to the new folder</li>
+ <li> start the emacs editor and write a program file <tt>myprog.py</tt></li>
+ <li> copy <tt>myprog.py</tt> to <tt>myprog.py-copy</tt></li>
+ <li> rename <tt>myprog.py</tt> to <tt>prog1.py</tt></li>
+ <li> list the files in the current folder</li>
+ <li> delete <tt>myprog.py-orig</tt></li>
+ <li> list the files in the current folder</li>
+ <li> move back to the parent folder</li>
+<li> rename the <tt>mydir</tt> folder to the new name <tt>trash</tt></li>
+<li> list files in this folder and redirect output of ls to a file</li>
+<li> look at the file with less</li>
+<li> delete the <tt>trash</tt> folder</li>
+<li> log on to another machine, <tt>newer.ifi.uio.no</tt>, under the name <tt>smartie</tt></li>
+</ol>
+
+Here are the 14 commands, written in a terminal window:
+<blockquote>    <!-- begin verbatim block -->
+<pre>
+Unix&gt; mkdir mydir
+Unix&gt; cd mydir
+Unix&gt; emacs myprog.py &amp;
+Unix&gt; cp myprog.py myprog.py-orig
+Unix&gt; mv myprog.py prog1.py
+Unix&gt; ls
+myprog.py     myprog.py-orig
+Unix&gt; rm myprog.py-orig
+Unix&gt; ls
+prog1.py
+Unix&gt; cd ..   # .. is the quick name of the parent folder
+Unix&gt; mv mydir trash
+Unix&gt; ls &gt; out
+Unix&gt; less out   # press q to quit less
+4 -rw-r--r-- 1 hpl hpl 6 2008-08-21 07:33 trash
+out (END)
+Unix&gt; rm -r trash    # need the -r to remove a folder
+Unix&gt; ssh -X smartie@newer.ifi.uio.no
+password:
+</pre>
+</blockquote>   <! -- end verbatim block -->
+Everything after <tt>#</tt> is a comment in Unix. Note that <tt>cd ..</tt> is a quick
+way of moving one folder up in the folder hierarchy.
+
+<p>
+Here are some more Unix goodies:
+
+<p>
+
+<ul>
+ <li> The TAB key can be used to complete filenames: just type the first
+   character of a filename and press TAB to expand the name.</li>
+ <li> The asterisk character (<tt>*</tt>) can be used as a symbol for "any sequence
+   of characters" in filenames. For example, if you want to list all
+   your Python programs in a folder, you can write <tt>ls *.py</tt>.
+   With the asterisk you can quickly specify a set of files.</li>
+ <li> Packing a set of files together as one compressed file is a useful
+   feature when you want to send the set of files in email. The Unix
+   <tt>tar</tt> command is used to pack and unpack file collections (like <tt>zip</tt>
+   or <tt>WinZip</tt> on Windows). Suppose you want to pack together all your
+   Python programs in one compressed file called <tt>myprograms.tar.gz</tt>.
+   Packing and unpacking is done by</li>
+</ul>
+
+<blockquote>    <!-- begin verbatim block -->
+<pre>
+Unix&gt; tar cvzf myprograms.tar.gz *.py   # pack
+Unix&gt; tar xvzf myprograms.tar.gz        # unpack
+</pre>
+</blockquote>   <! -- end verbatim block -->
+
