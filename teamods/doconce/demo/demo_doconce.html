@@ -2,8 +2,11 @@
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
 DATE: today
 
+# !split indicates where to split the slides
+
 !split
 
+# Headings have 5 = for h3/subsection and 7 = for h1/section
 ===== Goal =====
 
 The primary goal of this demo talk is to demonstrate how to write
@@ -16,10 +19,9 @@ demonstrated.
 
 
 !split
-
-# Comments can be inserted as this...
-
 ======= Mathematical problem =======
+
+# latex blocks are surrounded by !bt and !et
 
 !bt
 \begin{align}
@@ -70,7 +72,9 @@ The numerical method is implemented in a Python function:
 !split
 ===== The Crank-Nicolson method =====
 
-FIGURE: [fig/CN.png, width=600]
+# Figures do not need extension - the right version is picked
+
+FIGURE: [fig/CN, width=600]
 
 !split
 ===== The artifacts can be explained by some theory =====
