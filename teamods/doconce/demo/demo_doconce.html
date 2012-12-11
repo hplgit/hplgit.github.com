@@ -17,16 +17,9 @@ demonstrated.
 
 !split
 
-# Comments explain various doconce constructs for common
-# elements in talks about math and code.
-
-# Purpose: section with multi-line equation.
+# Comments can be inserted as this...
 
 ======= Mathematical problem =======
-label{math:problem}
-
-idx{model problem} idx{exponential decay}
-
 
 !bt
 \begin{align}
@@ -43,14 +36,11 @@ where
  * $u(t)$ is the unknown function
 
 !split
-
-# Purpose: section with single-line equation and a bullet list.
-
 ======= Numerical solution method =======
-label{numerical:problem}
 
-idx{mesh in time} idx{$\theta$-rule} idx{numerical scheme}
-idx{finite difference scheme}
+# !bpop and !epop surround elements that are to pop up
+# as we progress in the slide show
+# They will often not work if there is code inside
 
 !bpop
  * Mesh in time: $0= t_0&lt; t_1 \cdots &lt; t_N=T$
@@ -69,11 +59,7 @@ Numerical scheme:
 !epop
 
 !split
-
-# Purpose: section with computer code taken from a part of
-# a file. The fromto: f@t syntax copies from the regular
-# expression f up to the line, but not including, the regular
-# expression t.
+# Next: exemplify copying code from file
 
 ======= Implementation =======
 
@@ -82,19 +68,11 @@ The numerical method is implemented in a Python function:
 @@@CODE src/dc_mod.py  fromto: def solver@def verify_three
 
 !split
-
-
-# Purpose: subsection with inline figure (figure without caption).
-
 ===== The Crank-Nicolson method =====
-
-idx{CN}
 
 FIGURE: [fig/CN.png, width=600]
 
-
 !split
-
 ===== The artifacts can be explained by some theory =====
 
 !bpop
