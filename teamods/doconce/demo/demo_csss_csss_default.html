@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+    Automatically translated from Doconce source.
+    http://code.google.com/p/doconce
+-->
+
+<head>
+<meta charset="utf-8">
+
+<title></title>
+
+<!-- CSSS: http://leaverou.github.com/CSSS/ -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link href="csss/slideshow.css" rel="stylesheet" />
+<link href="csss/theme.css" rel="stylesheet" />
+<link href="csss/talk.css" rel="stylesheet" />
+<script src="csss/prefixfree.min.js"></script>
+
+
+<!-- Use MathJax to render mathematics -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+</head>
+
+<body data-duration="10">
+
+
+<section class="slide">
+<!-- ------------------- main content ------------------------>
+
+<p>
+
+<title>On Schemes for Exponential Decay</title>
+
+<center><h1>On Schemes for Exponential Decay</h1></center>  <! -- document title -->
+
+<p>
+<! -- author(s) -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Department of Informatics, University of Oslo</b></center>
+
+
+<p>
+<center><h4>Dec 10, 2012</h4></center> <!-- date -->
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<p>
+
+<h3>Goal  <a name="___sec0"></a></h3>
+<p>
+The primary goal of this demo talk is to demonstrate how to write
+talks with doconce and get them rendered in numerous HTML formats.
+
+<p>
+The current HTML format is XXX with YYY theme.
+
+<p>
+The talk investigates the accuracy of three finite difference
+schemes for the ordinary differential equation \( u'=-au \) with the
+aid of numerical experiments. Numerical artifacts are in particular
+demonstrated.
+
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<p>
+<!-- Comments explain various doconce constructs for common -->
+<!-- elements in talks about math and code. -->
+
+<p>
+<!-- Purpose: section with multi-line equation. -->
+
+<p>
+
+<h2>Mathematical problem <a name="math:problem"></a></h2>
+<p>
+
+$$
+\begin{align}
+u'(t) &= -au(t), \quad t \in (0,T],
+\label{ode}\\
+u(0)  &= I,
+\label{initial:value}
+\end{align}
+$$
+
+<p>
+where
+
+<p>
+
+<ul>
+ <p><li> \( a \), \( I \), and \( T \) are prescribed parameters</li>
+ <p><li> \( u(t) \) is the unknown function</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<p>
+<!-- Purpose: section with single-line equation and a bullet list. -->
+
+<p>
+
+<h2>Numerical solution method <a name="numerical:problem"></a></h2>
+<p>
+
+
+
+<ul>
+ <li class="delayed"> Mesh in time: \( 0= t_0< t_1 \cdots < t_N=T \)</li>
+ <li class="delayed"> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
+ <li class="delayed"> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
+</ul>
+<p>
+
+
+
+<p>
+
+<p class="delayed">
+
+Numerical scheme:
+$$
+   u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+   \quad n=0,1,\ldots,N-1
+   $$
+
+</p>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<p>
+<!-- Purpose: section with computer code taken from a part of -->
+<!-- a file. The fromto: f@t syntax copies from the regular -->
+<!-- expression f up to the line, but not including, the regular -->
+<!-- expression t. -->
+
+<p>
+
+<h2>Implementation  <a name="___sec3"></a></h2>
+<p>
+The numerical method is implemented in a Python function:
+
+<p>
+
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
+    dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)           <span style="color: #408080; font-style: italic"># avoid integer division</span>
+    N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #408080; font-style: italic"># no of time intervals</span>
+    T <span style="color: #666666">=</span> N<span style="color: #666666">*</span>dt                 <span style="color: #408080; font-style: italic"># adjust T to fit time step dt</span>
+    u <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>)           <span style="color: #408080; font-style: italic"># array of u[n] values</span>
+    t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, T, N<span style="color: #666666">+1</span>)  <span style="color: #408080; font-style: italic"># time mesh</span>
+
+    u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> I                 <span style="color: #408080; font-style: italic"># assign initial condition</span>
+    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, N):    <span style="color: #408080; font-style: italic"># n=0,1,...,N-1</span>
+        u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
+    <span style="color: #008000; font-weight: bold">return</span> u, t
+</pre></div>
+<p>
+
+(pygments style "ZZZ")
+
+</section>
+
+
+<section class="slide">
+
+<p>
+
+<!-- Purpose: subsection with inline figure (figure without caption). -->
+
+<p>
+
+<h3>The Crank-Nicolson method  <a name="___sec4"></a></h3>
+<p>
+
+<center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
+
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<p>
+
+<h3>The artifacts can be explained by some theory  <a name="___sec5"></a></h3>
+<p>
+
+<p class="delayed">
+
+Exact solution of the scheme:
+
+
+$$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .$$
+
+</p>
+
+
+<p>
+
+
+<ul>
+ <li class="delayed"> Stability: \( |A| < 1 \)</li>
+ <li class="delayed"> No oscillations: \( A>0 \)</li>
+ <li class="delayed"> Always for Backward Euler (\( \theta=1 \))</li>
+ <li class="delayed"> \( \Delta t < 1/a \) for Forward Euler (\( \theta=0 \))</li>
+ <li class="delayed"> \( \Delta t < 2/a \) for Crank-Nicolson (\( \theta=1/2 \))</li>
+</ul>
+<p>
+
+
+
+
+</section>
+
+
+
+<script src="csss/slideshow.js"></script>
+<script src="csss/plugins/css-edit.js"></script>
+<script src="csss/plugins/css-snippets.js"></script>
+<script src="csss/plugins/css-controls.js"></script>
+<script src="csss/plugins/code-highlight.js"></script>
+<script>
+var slideshow = new SlideShow();
+
+var snippets = document.querySelectorAll('.snippet');
+for(var i=0; i<snippets.length; i++) {
+	new CSSSnippet(snippets[i]);
+}
+
+var cssControls = document.querySelectorAll('.css-control');
+for(var i=0; i<cssControls.length; i++) {
+	new CSSControl(cssControls[i]);
+}
+</script>
+
+
+</body>
+</html>

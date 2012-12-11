@@ -1,0 +1,705 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>On the Technicalities of Scientific Writing Anno 2012: The Doconce Way &mdash; On the Technicalities of Scientific Writing Anno 2012: The Doconce Way 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="On the Technicalities of Scientific Writing Anno 2012: The Doconce Way 1.0 documentation" href="index.html" />
+    <link rel="prev" title="On the Technicalities of Scientific Writing Anno 2012: The Doconce Way" href="index.html" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="On the Technicalities of Scientific Writing Anno 2012: The Doconce Way"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">On the Technicalities of Scientific Writing Anno 2012: The Doconce Way 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="on-the-technicalities-of-scientific-writing-anno-2012-the-doconce-way">
+<h1>On the Technicalities of Scientific Writing Anno 2012: The Doconce Way<a class="headerlink" href="#on-the-technicalities-of-scientific-writing-anno-2012-the-doconce-way" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Dec 10, 2012</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="scope">
+<h1>Scope<a class="headerlink" href="#scope" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="scientific-writing-needs-to-address-many-new-media">
+<h1>Scientific writing needs to address many new media<a class="headerlink" href="#scientific-writing-needs-to-address-many-new-media" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="popular-tools-anno-2012">
+<h1>Popular tools anno 2012<a class="headerlink" href="#popular-tools-anno-2012" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><strong>LaTeX</strong>: de facto standard in math-instensive sciences</li>
+<li><strong>pdfLaTeX</strong>: takes over (figures in png, pdf)</li>
+<li><strong>Word</strong>: popular, but limited math support and not so good-looking
+math fonts</li>
+<li><strong>HTML with MathJax</strong>: &#8220;full&#8221; LaTeX math in HTML</li>
+<li><strong>Sphinx</strong>, based on reStructuredText (HTML, LaTeX):
+limited LaTeX math support, great support for web design</li>
+<li><strong>reStructuredText</strong>: no math support, transforms to
+lots of formats (LaTeX, HTML, XML, Word, OpenOffice, ...)</li>
+<li><strong>Markdown</strong>: email-style untagged formatting,
+limited LaTeX math support, transforms to
+lots of formats (LaTeX, HTML, XML, Word, OpenOffice, ...)</li>
+<li><strong>MediaWiki</strong>: &#8220;full&#8221; LaTeX math support (Wikipedia)</li>
+<li>Other <strong>wiki</strong> formats: no math support, great for collaborative editing</li>
+<li><strong>Epydoc</strong>: fror Python code documentation</li>
+<li><strong>IPython notebooks</strong>: combines Python code, interactivity and Markdown
+writing</li>
+<li><strong>Plain text for email</strong> (no tagging)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="latex-is-very-rich-other-tools-support-only-some-elements-1">
+<h1>LaTeX is very rich; other tools support only some elements  (1)<a class="headerlink" href="#latex-is-very-rich-other-tools-support-only-some-elements-1" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul>
+<li><p class="first">LaTeX inline math: LaTeX, MathJax, Sphinx, Markdown, MediaWiki</p>
+</li>
+<li><p class="first">LaTeX equation math:</p>
+<blockquote>
+<div><ul class="simple">
+<li>LaTeX: <tt class="docutils literal"><span class="pre">equation*</span></tt>, <tt class="docutils literal"><span class="pre">equation</span></tt>, <tt class="docutils literal"><span class="pre">align*</span></tt>, <tt class="docutils literal"><span class="pre">align</span></tt> +
+<tt class="docutils literal"><span class="pre">eqnarray</span></tt>, <tt class="docutils literal"><span class="pre">split</span></tt>, <tt class="docutils literal"><span class="pre">alignat</span></tt>, ...</li>
+<li>MathJax: <tt class="docutils literal"><span class="pre">equation*</span></tt>, <tt class="docutils literal"><span class="pre">equation</span></tt>, <tt class="docutils literal"><span class="pre">align*</span></tt>, <tt class="docutils literal"><span class="pre">align</span></tt></li>
+<li>MediaWiki: <tt class="docutils literal"><span class="pre">equation*</span></tt>, <tt class="docutils literal"><span class="pre">equation</span></tt>, <tt class="docutils literal"><span class="pre">align*</span></tt>, <tt class="docutils literal"><span class="pre">align</span></tt></li>
+<li>Sphinx: <tt class="docutils literal"><span class="pre">equation*</span></tt>, <tt class="docutils literal"><span class="pre">equation</span></tt>, <tt class="docutils literal"><span class="pre">align*</span></tt></li>
+<li>Markdown: <tt class="docutils literal"><span class="pre">equation*</span></tt>, <tt class="docutils literal"><span class="pre">equation</span></tt></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="latex-is-very-rich-other-tools-support-only-some-elements-2">
+<h1>LaTeX is very rich; other tools support only some elements  (2)<a class="headerlink" href="#latex-is-very-rich-other-tools-support-only-some-elements-2" title="Permalink to this headline">¶</a></h1>
+<p>Conclusion: Highly non-trivial to translate a LaTeX document into something
+based on HTML and vice versa.
+.. !epop</p>
+</div>
+<div class="section" id="concerns-i">
+<h1>Concerns I<a class="headerlink" href="#concerns-i" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li>Sphinx refers to figures by the caption (has to be short!) and
+strips away any math notation (avoid that!).</li>
+<li>Sphinx refers to sections by the title, but removes math in the
+reference, so avoid math in headlines.</li>
+<li>Algorithms must be written up using basic elements like lists or
+paragraphs with headings.</li>
+<li>Tables cannot be referred to by numbers and have to appear at a
+fixed position in the text.</li>
+<li>Computer code has to appear at fixed positions in the text.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="concerns-ii">
+<h1>Concerns II<a class="headerlink" href="#concerns-ii" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li>Footnotes must appear as part of the running text (e.g., sentences
+surrounded by parenthesis), since only a few formats support footnotes.</li>
+<li>Sphinx does not handle code blocks where the first line is indented.</li>
+<li>Multiple plots in the same figure: mount the plots to one image
+file and include this (<tt class="docutils literal"><span class="pre">montage</span></tt> for png, gif, jpeg; <tt class="docutils literal"><span class="pre">pdftk</span></tt>, <tt class="docutils literal"><span class="pre">pdfnup</span></tt>,
+and <tt class="docutils literal"><span class="pre">pdfcrop</span></tt> for PDF).</li>
+<li>Keys for items in the bibliography are made visible by Sphinx so
+&#8220;bibitems&#8221; a la BibTeX must look sensible and consistent.</li>
+<li>If you need several equations numbered in an <tt class="docutils literal"><span class="pre">align</span></tt> environment,
+recall that Sphinx and Markdown cannot handle this.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="concerns-iii">
+<h1>Concerns III<a class="headerlink" href="#concerns-iii" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li>Index words can appear anywhere in LaTeX, but should be outside
+paragraphs in other tools.</li>
+<li>References to tables, program code and algorithms can only be
+made in LaTeX.</li>
+<li>Figures are floating in LaTeX, but fixed in other tools, so place
+figures exactly where they are needed the first time.</li>
+<li>Curve plots with color lines do not work well in black-and-white
+printing. Make sure plots makes sense in color and BW (e.g., by
+using colors and markers).</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="solution-i-use-a-format-that-translates-to-many">
+<h1>Solution I: Use a format that translates to many<a class="headerlink" href="#solution-i-use-a-format-that-translates-to-many" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li>Sphinx can do nice HTML, LaTeX, epub, (almost) plain text,
+man pages, Gnome devhelp files, Qt help files, texinfo, JSON</li>
+<li>Markdown can do LaTeX, HTML, MS Word, OpenOffice, XML,
+reStructuredText, epub, DocBook, ... but not Sphinx</li>
+<li>IPython notebook: can convert to LaTeX, reStructuredText, HTML, PDF,
+Python script</li>
+<li>Sphinx and Markdown has some limited math support :-(</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="solution-ii-use-doconce">
+<h1>Solution II: Use Doconce<a class="headerlink" href="#solution-ii-use-doconce" title="Permalink to this headline">¶</a></h1>
+<p>Doconce offers minimalistic typing, great flexibility wrt format,
+especially for scientific writing.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Can generate LaTeX, HTML, Sphinx, Markdown, MediaWiki and other wiki formats</li>
+<li>Good support for math and code</li>
+<li>Great flexibility for typesetting code</li>
+<li>Made for science books <em>and</em> smaller teaching modules</li>
+<li>Support for code snippets from files, embedded movies, warnings/hint/info,
+generalized links</li>
+<li>Support for HTML5 slides - short way from prose to slides</li>
+<li>Integrates with preprocessors: preprocess and mako</li>
+<li>Handles multiple formats for figures</li>
+<li>Between Mardown and Sphinx wrt tagging (and richness)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="doconce-demo">
+<h1>Doconce demo<a class="headerlink" href="#doconce-demo" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/">http://hplgit.github.com/teamods/writing_reports/</a></p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/report_do.html">HTML with MathJax</a></li>
+<li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/report.pdf">PDF from LaTeX</a></li>
+<li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/sphinx-agni/index.html">Sphinx (agni theme)</a></li>
+<li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/sphinx-pyramid/index.html">Sphinx (pyramid theme)</a></li>
+<li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/sphinx-classy/index.html">Sphinx (classy theme)</a></li>
+<li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/sphinx-fenics_minimal/index.html">Sphinx (fenics theme)</a></li>
+<li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/sphinx-fenics_minimal/index.html">Sphinx (redcloud theme)</a></li>
+<li><a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/report.do.txt.html">Doconce source</a></li>
+<li><a class="reference external" href="http://code.google.com/p/doconce/wiki/Tutorial">Doconce tutorial</a></li>
+</ul>
+</div></blockquote>
+<div class="section" id="a-tour-of-doconce">
+<h2>A tour of Doconce<a class="headerlink" href="#a-tour-of-doconce" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="doconce-title-authors-date-toc">
+<h1>Doconce: title, authors, date, toc<a class="headerlink" href="#doconce-title-authors-date-toc" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-py"><div class="highlight"><pre><span class="n">TITLE</span><span class="p">:</span> <span class="n">Some</span> <span class="n">Title</span>
+<span class="n">AUTHOR</span><span class="p">:</span> <span class="n">name1</span> <span class="n">at</span> <span class="n">institution1</span><span class="p">,</span> <span class="k">with</span> <span class="n">more</span> <span class="n">info</span><span class="p">,</span> <span class="ow">and</span> <span class="n">institution2</span>
+<span class="n">AUTHOR</span><span class="p">:</span> <span class="n">name2</span> <span class="n">email</span><span class="p">:</span><span class="n">name2</span><span class="nd">@web.com</span> <span class="n">at</span> <span class="n">institution</span>
+<span class="n">DATE</span><span class="p">:</span> <span class="n">today</span>
+
+<span class="c"># A table of contents is optional:</span>
+<span class="n">TOC</span><span class="p">:</span> <span class="n">on</span>
+</pre></div>
+</div>
+<p>Note: title and authors must have everything on a single line!</p>
+</div>
+<div class="section" id="doconce-abstract">
+<h1>Doconce: abstract<a class="headerlink" href="#doconce-abstract" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-py"><div class="highlight"><pre><span class="n">__Abstract</span><span class="o">.</span><span class="n">__</span>
+<span class="n">Here</span> <span class="n">goes</span> <span class="n">the</span> <span class="n">abstract</span><span class="o">...</span>
+</pre></div>
+</div>
+<p>Or:</p>
+<div class="highlight-py"><div class="highlight"><pre><span class="n">__Summary</span><span class="o">.</span><span class="n">__</span>
+<span class="n">Here</span> <span class="n">goes</span> <span class="n">the</span> <span class="n">summary</span><span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="doconce-section-headings">
+<h1>Doconce: section headings<a class="headerlink" href="#doconce-section-headings" title="Permalink to this headline">¶</a></h1>
+<p>Headings are marked with =:</p>
+<div class="highlight-py"><div class="highlight"><pre><span class="o">=======</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">H2</span><span class="o">/</span><span class="n">section</span> <span class="n">heading</span> <span class="o">=======</span>
+
+<span class="o">=====</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">H3</span><span class="o">/</span><span class="n">subsection</span> <span class="n">heading</span> <span class="o">=====</span>
+
+<span class="o">===</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">H4</span><span class="o">/</span><span class="n">paragraph</span> <span class="n">heading</span> <span class="o">===</span>
+
+<span class="n">__This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">paragraph</span> <span class="n">heading</span><span class="o">.</span><span class="n">__</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="doconce-markup-and-lists">
+<h1>Doconce: markup and lists<a class="headerlink" href="#doconce-markup-and-lists" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-py"><div class="highlight"><pre><span class="o">*</span> <span class="n">Bullet</span> <span class="n">lists</span> <span class="n">start</span> <span class="k">with</span> <span class="sb">`*`</span>
+  <span class="ow">and</span> <span class="n">may</span> <span class="n">span</span> <span class="n">several</span> <span class="n">lines</span>
+<span class="o">*</span> <span class="o">*</span><span class="n">Emphasized</span> <span class="n">words</span><span class="o">*</span> <span class="n">are</span> <span class="n">possible</span>
+<span class="o">*</span> <span class="n">_Boldface</span> <span class="n">words_</span> <span class="n">are</span> <span class="n">also</span> <span class="n">possible</span>
+<span class="o">*</span> <span class="sb">`inline verbatim code`</span> <span class="ow">is</span> <span class="n">featured</span>
+</pre></div>
+</div>
+<p>This gets rendered as</p>
+<blockquote>
+<div><ul class="simple">
+<li>Bullet lists start with <tt class="docutils literal"><span class="pre">*</span></tt>
+and may span several lines</li>
+<li><em>Emphasized words</em> are possible</li>
+<li><strong>Boldface words</strong> are also possible</li>
+<li><tt class="docutils literal"><span class="pre">inline</span> <span class="pre">verbatim</span> <span class="pre">code</span></tt> is featured</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="doconce-labels-references-index-items">
+<h1>Doconce: labels, references, index items<a class="headerlink" href="#doconce-labels-references-index-items" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-py"><div class="highlight"><pre><span class="c"># Insert index items in the source</span>
+<span class="n">idx</span><span class="p">{</span><span class="n">key</span> <span class="n">word1</span><span class="p">}</span> <span class="n">idx</span><span class="p">{</span><span class="n">key</span> <span class="n">word2</span><span class="p">}</span>
+
+<span class="c"># Label</span>
+<span class="o">=====</span> <span class="n">Some</span> <span class="n">section</span> <span class="o">=====</span>
+<span class="n">label</span><span class="p">{</span><span class="n">this</span><span class="p">:</span><span class="n">section</span><span class="p">}</span>
+
+<span class="c"># Make reference</span>
+<span class="n">As</span> <span class="n">we</span> <span class="n">saw</span> <span class="ow">in</span> <span class="n">Section</span> <span class="n">ref</span><span class="p">{</span><span class="n">this</span><span class="p">:</span><span class="n">section</span><span class="p">},</span> <span class="n">references</span><span class="p">,</span> <span class="n">index</span>
+<span class="n">items</span> <span class="ow">and</span> <span class="n">labels</span> <span class="n">follow</span> <span class="n">a</span> <span class="n">syntax</span> <span class="n">similar</span> <span class="n">to</span> <span class="n">LaTeX</span>
+<span class="n">but</span> <span class="n">without</span> <span class="n">backslashes</span><span class="o">.</span>
+
+<span class="c"># Make reference to equations</span>
+<span class="n">See</span> <span class="p">(</span><span class="n">ref</span><span class="p">{</span><span class="n">eq1</span><span class="p">})</span><span class="o">-</span><span class="p">(</span><span class="n">ref</span><span class="p">{</span><span class="n">myeq</span><span class="p">})</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="doconce-figures-and-movies">
+<h1>Doconce: figures and movies<a class="headerlink" href="#doconce-figures-and-movies" title="Permalink to this headline">¶</a></h1>
+<p>Figure with HTML and LaTeX info, and caption, all on one line:</p>
+<div class="highlight-py"><div class="highlight"><pre><span class="n">FIGURE</span><span class="p">:</span> <span class="p">[</span><span class="n">figdir</span><span class="o">/</span><span class="n">myfig</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span> <span class="n">frac</span><span class="o">=</span><span class="mf">1.2</span><span class="p">]</span> <span class="n">My</span> <span class="n">caption</span><span class="o">.</span> <span class="n">label</span><span class="p">{</span><span class="n">fig1</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>(Will be 300 pixels wide in HTML and span 1.2 times the linewidth
+in LaTeX.)</p>
+<p>Movies are also supported:</p>
+<div class="highlight-py"><div class="highlight"><pre><span class="n">MOVIE</span><span class="p">:</span> <span class="p">[</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">youtube</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">embed</span><span class="o">/</span><span class="n">P8VcZzgdfSc</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">420</span> <span class="n">height</span><span class="o">=</span><span class="mi">315</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>and rendered as</p>
+<iframe width="420" height="315" src="http://www.youtube.com/embed/P8VcZzgdfSc" frameborder="0" allowfullscreen></iframe></div>
+<div class="section" id="doconce-math">
+<h1>Doconce: math<a class="headerlink" href="#doconce-math" title="Permalink to this headline">¶</a></h1>
+<p>Inline math as in LaTeX:</p>
+<div class="highlight-py"><pre>...where $a=\int_{\Omega}fdx$.</pre>
+</div>
+<p>gets rendered as ...where <span class="math">\(a=\int_{\Omega}fdx\)</span>.</p>
+<p>An equation environment is surrounded by <tt class="docutils literal"><span class="pre">!bt</span></tt> and <tt class="docutils literal"><span class="pre">!et</span></tt> tags
+(see the source of this document), the rest is plain LaTeX:</p>
+<div class="math">
+\[\begin{split}\frac{\partial u}{\partial t} &amp;= \nabla^2 u,
+\\
+\nabla\cdot\pmb{v} &amp; = 0\end{split}\]</div>
+<p>Limit environments to</p>
+<div class="highlight-py"><div class="highlight"><pre>\<span class="p">[</span> <span class="o">...</span> \<span class="p">]</span>
+
+\<span class="n">begin</span><span class="p">{</span><span class="n">equation</span><span class="o">*</span><span class="p">}</span>
+\<span class="n">end</span><span class="p">{</span><span class="n">equation</span><span class="o">*</span><span class="p">}</span>
+
+\<span class="n">begin</span><span class="p">{</span><span class="n">equation</span><span class="p">}</span>
+\<span class="n">end</span><span class="p">{</span><span class="n">equation</span><span class="p">}</span>
+
+\<span class="n">begin</span><span class="p">{</span><span class="n">align</span><span class="o">*</span><span class="p">}</span>
+\<span class="n">end</span><span class="p">{</span><span class="n">align</span><span class="o">*</span><span class="p">}</span>
+
+\<span class="n">begin</span><span class="p">{</span><span class="n">align</span><span class="p">}</span>
+\<span class="n">end</span><span class="p">{</span><span class="n">align</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="doconce-writing-code">
+<h1>Doconce: writing code<a class="headerlink" href="#doconce-writing-code" title="Permalink to this headline">¶</a></h1>
+<p>Code is enclosed in <tt class="docutils literal"><span class="pre">!bc</span></tt> and <tt class="docutils literal"><span class="pre">!ec</span></tt> tags (see the source for this page).</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">solver</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span>           <span class="c"># avoid integer division</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">T</span><span class="o">/</span><span class="n">dt</span><span class="p">))</span>     <span class="c"># no of time intervals</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">N</span><span class="o">*</span><span class="n">dt</span>                 <span class="c"># adjust T to fit time step dt</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>           <span class="c"># array of u[n] values</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>  <span class="c"># time mesh</span>
+
+    <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">I</span>                 <span class="c"># assign initial condition</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>    <span class="c"># n=0,1,...,N-1</span>
+        <span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">dt</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">theta</span><span class="o">*</span><span class="n">dt</span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">u</span><span class="p">,</span> <span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="doconce-copying-code-from-source-files">
+<h1>Doconce: copying code from source files<a class="headerlink" href="#doconce-copying-code-from-source-files" title="Permalink to this headline">¶</a></h1>
+<p>We recommend to copy as much code as possible directly from the
+source files:</p>
+<div class="highlight-py"><pre>       @@@CODE file  fromto: start-regex@end-regex
+
+       ex:
+
+       @@@CODE src/dc_mod.py  fromto: def solver@def verify_three
+
+
+* Computer language can be specified:
+
+  * ``!bc pycod`` for Python snippet,
+
+  * ``!bc pypro`` for complete Python program
+
+
+* Similar for C (``c``), C++ (``cpp``), Fortran (``f``),
+  Matlab (``m``): ``!bc mpro``
+
+* From files: ``.py`` gives ``!bc pycod``, ``.f`` gives ``!bc fcod``, etc.
+
+* ``ptex2tex`` can be used to choose between 40+ typesettings of
+  computer code in LaTeX
+
+* ``pygments`` is used for code typesetting in HTML</pre>
+</div>
+</div>
+<div class="section" id="doconce-tables">
+<h1>Doconce: tables<a class="headerlink" href="#doconce-tables" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-py"><div class="highlight"><pre><span class="o">|--------------------------------|</span>
+<span class="o">|</span><span class="n">time</span>  <span class="o">|</span> <span class="n">velocity</span> <span class="o">|</span> <span class="n">acceleration</span> <span class="o">|</span>
+<span class="o">|---</span><span class="n">r</span><span class="o">-------</span><span class="n">r</span><span class="o">-----------</span><span class="n">r</span><span class="o">--------|</span>
+<span class="o">|</span> <span class="mf">0.0</span>  <span class="o">|</span> <span class="mf">1.4186</span>   <span class="o">|</span> <span class="o">-</span><span class="mf">5.01</span>        <span class="o">|</span>
+<span class="o">|</span> <span class="mf">2.0</span>  <span class="o">|</span> <span class="mf">1.376512</span> <span class="o">|</span> <span class="mf">11.919</span>       <span class="o">|</span>
+<span class="o">|</span> <span class="mf">4.0</span>  <span class="o">|</span> <span class="mf">1.1E+1</span>   <span class="o">|</span> <span class="mf">14.717624</span>    <span class="o">|</span>
+<span class="o">|--------------------------------|</span>
+</pre></div>
+</div>
+<p>Gets rendered as</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">time</th>
+<th class="head">velocity</th>
+<th class="head">acceleration</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0.0</td>
+<td>1.4186</td>
+<td>-5.01</td>
+</tr>
+<tr class="row-odd"><td>2.0</td>
+<td>1.376512</td>
+<td>11.919</td>
+</tr>
+<tr class="row-even"><td>4.0</td>
+<td>1.1E+1</td>
+<td>14.717624</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="doconce-newcommands-for-math">
+<h1>Doconce: newcommands for math<a class="headerlink" href="#doconce-newcommands-for-math" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">newcommands*.tex</span></tt> files contain newcommands</li>
+<li>Used directly in LaTeX</li>
+<li>Substitution made for many other formats</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="doconce-exercises-1">
+<h1>Doconce: exercises  (1)<a class="headerlink" href="#doconce-exercises-1" title="Permalink to this headline">¶</a></h1>
+<p>Doconce offers a special format for <em>exercises</em>, <em>problems</em> and <em>projects</em>:</p>
+<div class="highlight-py"><pre>===== Problem: Flip a Coin =====
+label{demo:ex:1}
+files = flip_coin.py, flip_coin.pdf
+solutions = mysol.txt, mysol_flip_coin.py
+
+!bsubex
+Make a program that simulates flipping a coin $N$ times.
+
+!bhint
+Use `r = random.random()` and define head as `r &lt;= 0.5`.
+!ehint
+!esubex
+
+!bsubex
+Compute the probabulity of getting heads.
+
+!bans
+A short answer: 0.5.
+!eans
+
+!bsol
+A full solution to this subexercise can go here.
+!esol
+!esubex
+
+!bsubex
+Make another program that computes the probability
+of getting at least three heads out of 5 throws.
+!esubex</pre>
+</div>
+</div>
+<div class="section" id="doconce-exercises-2">
+<h1>Doconce: exercises  (2)<a class="headerlink" href="#doconce-exercises-2" title="Permalink to this headline">¶</a></h1>
+<p>Last page gets rendered as follows:</p>
+<p><em>a)</em> Make a program that simulates flipping a coin <span class="math">\(N\)</span> times.</p>
+<p><em>Hint.</em> Use <tt class="docutils literal"><span class="pre">r</span> <span class="pre">=</span> <span class="pre">random.random()</span></tt> and define head as <tt class="docutils literal"><span class="pre">r</span> <span class="pre">&lt;=</span> <span class="pre">0.5</span></tt>.</p>
+<p><em>b)</em> Compute the probabulity of getting heads.</p>
+<p><em>Answer.</em> A short answer: 0.5.
+.. &#8212; end short answer in exercise</p>
+<p><em>Solution.</em> A full solution to this subexercise can go here.</p>
+<p><em>c)</em> Make another program that computes the probability
+of getting at least three heads out of 5 throws.</p>
+<p>Filenames: <tt class="docutils literal"><span class="pre">flip_coin.py</span></tt>, <tt class="docutils literal"><span class="pre">flip_coin.pdf</span></tt>.
+.. solution files: mysol.txt, mysol_flip_coin.py</p>
+</div>
+<div class="section" id="doconce-use-of-preprocessors">
+<h1>Doconce: use of preprocessors<a class="headerlink" href="#doconce-use-of-preprocessors" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul>
+<li><p class="first">Simple if-else tests a la C preprocessor</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">FORMAT</span></tt> variable can be used to test on format</p>
+<blockquote>
+<div><ul class="simple">
+<li>if latex/pdflatex do one sort of code (raw LaTeX?)</li>
+<li>if html, do another type of code, etc.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Easy to comment out large portions of text</p>
+</li>
+<li><p class="first">Easy to make different versions of the document</p>
+</li>
+<li><p class="first">The mako preprocessor is really powerful - gives a
+complete programming language inside the document (!)</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="doconce-slides">
+<h1>Doconce: slides<a class="headerlink" href="#doconce-slides" title="Permalink to this headline">¶</a></h1>
+<p>Very effective way to generate slides from running text:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Take a copy of your Doconce prose</li>
+<li>Strip off as much text as possible</li>
+<li>Emphasize key points in bullet items</li>
+<li>Focus on figures and movies</li>
+<li>Focus on key equations</li>
+<li>Focus on key code snippets</li>
+<li>Insert <tt class="docutils literal"><span class="pre">!split</span></tt> wherever you want a new slide to
+begin</li>
+<li>Use 7 <tt class="docutils literal"><span class="pre">=</span></tt> or 5 <tt class="docutils literal"><span class="pre">=</span></tt> in headings (H2 or H3)</li>
+<li>Slides are made with HTML5 tools such as reveal.js, deck.js,
+csss, or dzslides</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="doconce-example-on-slide-code">
+<h1>Doconce: example on slide code<a class="headerlink" href="#doconce-example-on-slide-code" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-py"><pre>!split
+======= Headline =======
+
+ * Key point 1
+ * Key point 2
+
+FIGURE: [figs/myfig, width=800]
+
+MOVIE: [http://www.youtube.com/embed/P8VcZzgdfSc, width=420 height=315]
+
+Key equation:</pre>
+</div>
+<div class="math">
+\[\[ -\nabla^2 u = f \quad\hbox{in }\Omega \]\]\[And maybe a final comment?\]\[!split
+======= Next slide... =======\]</div>
+</div>
+<div class="section" id="doconce-output-in-html">
+<h1>Doconce: output in HTML<a class="headerlink" href="#doconce-output-in-html" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-py"><div class="highlight"><pre><span class="n">doconce</span> <span class="n">format</span> <span class="n">html</span> <span class="n">doconcefile</span>
+
+<span class="c"># Solarized HTML style</span>
+<span class="n">doconce</span> <span class="n">format</span> <span class="n">html</span> <span class="n">doconcefile</span> <span class="o">--</span><span class="n">html</span><span class="o">-</span><span class="n">solarized</span>
+
+<span class="c"># Control pygments typesetting of code</span>
+<span class="n">doconce</span> <span class="n">format</span> <span class="n">html</span> <span class="n">doconcefile</span> <span class="o">--</span><span class="n">pygments</span><span class="o">-</span><span class="n">html</span><span class="o">-</span><span class="n">style</span><span class="o">=</span><span class="n">native</span>
+
+<span class="c"># Or use plain &lt;pre&gt; tag</span>
+<span class="n">doconce</span> <span class="n">format</span> <span class="n">html</span> <span class="n">doconcefile</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">pygments</span><span class="o">-</span><span class="n">html</span>
+
+<span class="c"># Further making of slides</span>
+<span class="n">doconce</span> <span class="n">slides_html</span> <span class="n">doconcefile</span> <span class="n">reveal</span> <span class="o">--</span><span class="n">html</span><span class="o">-</span><span class="n">slide</span><span class="o">-</span><span class="n">theme</span><span class="o">=</span><span class="n">darkgray</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="doconce-output-in-pdflatex">
+<h1>Doconce: output in pdfLaTeX<a class="headerlink" href="#doconce-output-in-pdflatex" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-py"><div class="highlight"><pre><span class="n">doconce</span> <span class="n">format</span> <span class="n">pdflatex</span> <span class="n">doconcefile</span>
+
+<span class="c"># Result: doconcefile.p.tex (ptex2tex file)</span>
+<span class="c"># Run either</span>
+<span class="n">ptex2tex</span> <span class="n">doconcefile</span>
+<span class="c"># or</span>
+<span class="n">doconce</span> <span class="n">ptex2tex</span> <span class="n">doconcefile</span> <span class="o">-</span><span class="n">DHELVETICA</span> <span class="n">envir</span><span class="o">=</span><span class="n">minted</span>
+
+<span class="n">pdflatex</span> <span class="n">doconcefile</span>
+<span class="n">bibtex</span> <span class="n">doconcefile</span>
+<span class="n">pdflatex</span> <span class="n">doconcefile</span>
+
+<span class="c"># More control of how code is typeset</span>
+<span class="n">doconce</span> <span class="n">format</span> <span class="n">pdflatex</span> <span class="n">doconcefile</span> <span class="o">--</span><span class="n">minted</span><span class="o">-</span><span class="n">latex</span><span class="o">-</span><span class="n">style</span><span class="o">=</span><span class="n">trac</span>
+<span class="n">doconce</span> <span class="n">ptex2tex</span> <span class="n">doconcefile</span> <span class="n">envir</span><span class="o">=</span><span class="n">minted</span>
+
+<span class="n">doconce</span> <span class="n">format</span> <span class="n">pdflatex</span> <span class="n">doconcefile</span>
+<span class="n">doconce</span> <span class="n">ptex2tex</span> <span class="n">doconcefile</span> <span class="n">envir</span><span class="o">=</span><span class="n">ans</span><span class="p">:</span><span class="n">nt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="doconce-output-in-sphinx">
+<h1>Doconce: output in Sphinx<a class="headerlink" href="#doconce-output-in-sphinx" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-py"><div class="highlight"><pre><span class="n">doconce</span> <span class="n">format</span> <span class="n">sphinx</span> <span class="n">doconcefile</span>
+
+<span class="c"># Autocreate sphinx directory</span>
+<span class="n">doconce</span> <span class="n">sphinx_dir</span> <span class="n">theme</span><span class="o">=</span><span class="n">pyramid</span> <span class="n">doconcefile</span>
+<span class="c"># Copy files and build HTML document</span>
+<span class="n">python</span> <span class="n">automake</span><span class="o">-</span><span class="n">sphinx</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">google</span><span class="o">-</span><span class="n">chrome</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">rootdir</span><span class="o">/</span><span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>Much easier than running the Sphinx tools manually...</p>
+</div>
+<div class="section" id="doconce-output-in-other-formats">
+<h1>Doconce: output in other formats<a class="headerlink" href="#doconce-output-in-other-formats" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-py"><div class="highlight"><pre><span class="n">doconce</span> <span class="n">format</span> <span class="n">pandoc</span> <span class="n">doconcefile</span>  <span class="c"># Markdown (pandoc extended)</span>
+<span class="n">doconce</span> <span class="n">format</span> <span class="n">mwiki</span>  <span class="n">doconcefile</span>  <span class="c"># MediaWiki</span>
+<span class="n">doconce</span> <span class="n">format</span> <span class="n">gwiki</span>  <span class="n">doconcefile</span>  <span class="c"># Googlecode wiki</span>
+<span class="n">doconce</span> <span class="n">format</span> <span class="n">cwiki</span>  <span class="n">doconcefile</span>  <span class="c"># Creole wiki (Bitbucket)</span>
+<span class="n">doconce</span> <span class="n">format</span> <span class="n">rst</span>    <span class="n">doconcefile</span>  <span class="c"># reStructuredText</span>
+<span class="n">doconce</span> <span class="n">format</span> <span class="n">plain</span>  <span class="n">doconcefile</span>  <span class="c"># plain, untagged text for email</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">On the Technicalities of Scientific Writing Anno 2012: The Doconce Way</a></li>
+<li><a class="reference internal" href="#scope">Scope</a></li>
+<li><a class="reference internal" href="#scientific-writing-needs-to-address-many-new-media">Scientific writing needs to address many new media</a></li>
+<li><a class="reference internal" href="#popular-tools-anno-2012">Popular tools anno 2012</a></li>
+<li><a class="reference internal" href="#latex-is-very-rich-other-tools-support-only-some-elements-1">LaTeX is very rich; other tools support only some elements  (1)</a></li>
+<li><a class="reference internal" href="#latex-is-very-rich-other-tools-support-only-some-elements-2">LaTeX is very rich; other tools support only some elements  (2)</a></li>
+<li><a class="reference internal" href="#concerns-i">Concerns I</a></li>
+<li><a class="reference internal" href="#concerns-ii">Concerns II</a></li>
+<li><a class="reference internal" href="#concerns-iii">Concerns III</a></li>
+<li><a class="reference internal" href="#solution-i-use-a-format-that-translates-to-many">Solution I: Use a format that translates to many</a></li>
+<li><a class="reference internal" href="#solution-ii-use-doconce">Solution II: Use Doconce</a></li>
+<li><a class="reference internal" href="#doconce-demo">Doconce demo</a><ul>
+<li><a class="reference internal" href="#a-tour-of-doconce">A tour of Doconce</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#doconce-title-authors-date-toc">Doconce: title, authors, date, toc</a></li>
+<li><a class="reference internal" href="#doconce-abstract">Doconce: abstract</a></li>
+<li><a class="reference internal" href="#doconce-section-headings">Doconce: section headings</a></li>
+<li><a class="reference internal" href="#doconce-markup-and-lists">Doconce: markup and lists</a></li>
+<li><a class="reference internal" href="#doconce-labels-references-index-items">Doconce: labels, references, index items</a></li>
+<li><a class="reference internal" href="#doconce-figures-and-movies">Doconce: figures and movies</a></li>
+<li><a class="reference internal" href="#doconce-math">Doconce: math</a></li>
+<li><a class="reference internal" href="#doconce-writing-code">Doconce: writing code</a></li>
+<li><a class="reference internal" href="#doconce-copying-code-from-source-files">Doconce: copying code from source files</a></li>
+<li><a class="reference internal" href="#doconce-tables">Doconce: tables</a></li>
+<li><a class="reference internal" href="#doconce-newcommands-for-math">Doconce: newcommands for math</a></li>
+<li><a class="reference internal" href="#doconce-exercises-1">Doconce: exercises  (1)</a></li>
+<li><a class="reference internal" href="#doconce-exercises-2">Doconce: exercises  (2)</a></li>
+<li><a class="reference internal" href="#doconce-use-of-preprocessors">Doconce: use of preprocessors</a></li>
+<li><a class="reference internal" href="#doconce-slides">Doconce: slides</a></li>
+<li><a class="reference internal" href="#doconce-example-on-slide-code">Doconce: example on slide code</a></li>
+<li><a class="reference internal" href="#doconce-output-in-html">Doconce: output in HTML</a></li>
+<li><a class="reference internal" href="#doconce-output-in-pdflatex">Doconce: output in pdfLaTeX</a></li>
+<li><a class="reference internal" href="#doconce-output-in-sphinx">Doconce: output in Sphinx</a></li>
+<li><a class="reference internal" href="#doconce-output-in-other-formats">Doconce: output in other formats</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">On the Technicalities of Scientific Writing Anno 2012: The Doconce Way</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="On the Technicalities of Scientific Writing Anno 2012: The Doconce Way"
+             >previous</a> |</li>
+        <li><a href="index.html">On the Technicalities of Scientific Writing Anno 2012: The Doconce Way 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, H. P. Langtangen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+    </div>
+  </body>
+</html>
