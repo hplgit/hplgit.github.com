@@ -38,12 +38,13 @@ DATE: Today
 
 ======= Popular tools anno 2012 =======
 
+!bpop
  * _LaTeX_: de facto standard in math-instensive sciences
  * _pdfLaTeX_: takes over (figures in png, pdf)
  * _Word_: popular, but limited math support and not so good-looking
    math fonts
- * _HTML with MathJax_: &quot;full&quot; LaTeX math in HTML
- * _Sphinx_, based on reStructuredText (HTML, LaTeX):
+ * _HTML with MathJax_: &quot;full&quot; LaTeX math
+ * _Sphinx_:
    limited LaTeX math support, great support for web design
  * _reStructuredText_: no math support, transforms to
    lots of formats (LaTeX, HTML, XML, Word, OpenOffice, ...)
@@ -52,23 +53,24 @@ DATE: Today
    lots of formats (LaTeX, HTML, XML, Word, OpenOffice, ...)
  * _MediaWiki_: &quot;full&quot; LaTeX math support (Wikipedia)
  * Other _wiki_ formats: no math support, great for collaborative editing
- * _Epydoc_: fror Python code documentation
+ * _Epydoc_: old tool for Python code documentation
  * _IPython notebooks_: combines Python code, interactivity and Markdown
    writing
  * _Plain text for email_ (no tagging)
+!epop
 
 !split
 
 ======= LaTeX is very rich; other tools support only some elements =======
 
- * LaTeX inline math: LaTeX, MathJax, Sphinx, Markdown, MediaWiki
+ * LaTeX inline math: works with all (LaTeX, MathJax, Sphinx, Markdown, MediaWiki)
  * LaTeX equation math:
-    * LaTeX: `equation*`, `equation`, `align*`, `align` +
+    * _LaTeX_: `equation*`, `equation`, `align*`, `align` +
       `eqnarray`, `split`, `alignat`, ...
-    * MathJax: `equation*`, `equation`, `align*`, `align`
-    * MediaWiki: `equation*`, `equation`, `align*`, `align`
-    * Sphinx: `equation*`, `equation`, `align*`
-    * Markdown: `equation*`, `equation`
+    * _MathJax_: `equation*`, `equation`, `align*`, `align`
+    * _MediaWiki_: `equation*`, `equation`, `align*`, `align`
+    * _Sphinx_: `equation*`, `equation`, `align*`
+    * _Markdown_: `equation*`, `equation`
 
 !split
 ======= LaTeX is very rich; other tools support only some elements =======
@@ -96,6 +98,7 @@ based on HTML and vice versa.
 !split
 ======= Concerns I =======
 
+!bpop
  * Sphinx refers to figures by the caption (has to be short!) and
    strips away any math notation (avoid that!).
  * Sphinx refers to sections by the title, but removes math in the
@@ -105,10 +108,12 @@ based on HTML and vice versa.
  * Tables cannot be referred to by numbers and have to appear at a
    fixed position in the text.
  * Computer code has to appear at fixed positions in the text.
+!epop
 
 !split
 ======= Concerns II =======
 
+!bpop
  * Footnotes must appear as part of the running text (e.g., sentences
    surrounded by parenthesis), since only a few formats support footnotes.
  * Sphinx does not handle code blocks where the first line is indented.
@@ -119,10 +124,12 @@ based on HTML and vice versa.
    &quot;bibitems&quot; a la BibTeX must look sensible and consistent.
  * If you need several equations numbered in an `align` environment,
    recall that Sphinx and Markdown cannot handle this.
+!epop
 
 !split
 ======= Concerns III =======
 
+!bpop
  * Index words can appear anywhere in LaTeX, but should be outside
    paragraphs in other tools.
  * References to tables, program code and algorithms can only be
@@ -132,6 +139,7 @@ based on HTML and vice versa.
  * Curve plots with color lines do not work well in black-and-white
    printing. Make sure plots makes sense in color and BW (e.g., by
    using colors and markers).
+!epop
 
 !split
 ======= Solution I: Use a format that translates to many =======
@@ -140,9 +148,9 @@ based on HTML and vice versa.
    man pages, Gnome devhelp files, Qt help files, texinfo, JSON
  * Markdown can do LaTeX, HTML, MS Word, OpenOffice, XML,
    reStructuredText, epub, DocBook, ... but not Sphinx
- * IPython notebook: can convert to LaTeX, reStructuredText, HTML, PDF,
+ * IPython notebook: can do LaTeX, reStructuredText, HTML, PDF,
    Python script
- * Sphinx and Markdown has some limited math support :-(
+ * Sphinx and Markdown has some limited math support
 
 !split
 ======= Solution II: Use Doconce =======
@@ -199,7 +207,9 @@ DATE: today
 TOC: on
 !ec
 
-Note: title and authors must have everything on a single line!
+!bnotice
+Title and authors must have all information *on a single line*!
+!enotice
 
 !split
 ======= Doconce: abstract =======
@@ -234,20 +244,26 @@ __This is a paragraph heading.__
 ======= Doconce: markup and lists =======
 
 !bc
- * Bullet lists start with `*`
+ * Bullet list items start with `*`
    and may span several lines
+ * Ordered (enumerated) list items start with `o`
  * *Emphasized words* are possible
  * _Boldface words_ are also possible
  * `inline verbatim code` is featured
+   * sublists too
+   * just indent...
 !ec
 
 This gets rendered as
 
  * Bullet lists start with `*`
    and may span several lines
+ * Ordered (enumerated) list items start with `o`
  * *Emphasized words* are possible
  * _Boldface words_ are also possible
  * `inline verbatim code` is featured
+   * sublists too
+   * just indent...
 
 !split
 ======= Doconce: labels, references, index items =======
@@ -267,18 +283,27 @@ but without backslashes.
 
 # Make reference to equations
 See (ref{eq1})-(ref{myeq}).
+
+# Make hyperlink
+&quot;some link text&quot;: &quot;http://code.google.com/p/doconce/&quot;
+
+# Hyperlink with complete URL as link text
+URL: &quot;http://code.google.com/p/doconce/&quot;
 !ec
 
 !split
 ======= Doconce: figures and movies =======
 
-Figure with HTML and LaTeX info, and caption, all on one line:
+!bnotice
+Figure with HTML and LaTeX info, and caption, *all on one line*:
+!enotice
 
 !bc
 FIGURE: [figdir/myfig, width=300 frac=1.2] My caption. label{fig1}
+
+# This figure will be 300 pixels wide in HTML and span 1.2 times
+# the linewidth in LaTeX.
 !ec
-(Will be 300 pixels wide in HTML and span 1.2 times the linewidth
-in LaTeX.)
 
 Movies are also supported:
 
@@ -295,9 +320,10 @@ MOVIE: [http://www.youtube.com/embed/P8VcZzgdfSc, width=420 height=315]
 Inline math as in LaTeX:
 
 !bc
-...where $a=\int_{\Omega}fdx$.
+...where $a=\int_{\Omega}fdx$ is an integral.
 !ec
-gets rendered as ...where $a=\int_{\Omega}fdx$.
+gets rendered as ...where $a=\int_{\Omega}fdx$ is an integral.
+
 
 An equation environment is surrounded by `!bt` and `!et` tags
 (see the source of this document), the rest is plain LaTeX:
@@ -310,7 +336,9 @@ label{a:eq}\\
 label{b:eq}
 \end{align}
 !et
-Limit environments to
+
+
+Limit math environments to
 !bc
 \[ ... \]
 
@@ -329,7 +357,7 @@ Limit environments to
 
 
 !split
-======= Doconce: writing code =======
+======= Doconce: displaying code =======
 
 Code is enclosed in `!bc` and `!ec` tags (see the source for this page).
 
@@ -362,15 +390,16 @@ ex:
 @@@CODE src/dc_mod.py  fromto: def solver@def verify_three
 !ec
 
- * Computer language can be specified:
-   * `!bc pycod` for Python snippet,
-   * `!bc pypro` for complete Python program
+Computer language can be specified:
+
+ * `!bc pycod` for Python snippet,
+ * `!bc pypro` for complete Python program
  * Similar for C (`c`), C++ (`cpp`), Fortran (`f`),
-   Matlab (`m`): `!bc mpro`
+   Bash (`sh`), MATLAB (`m`), e.g., `!bc mpro`
  * From files: `.py` gives `!bc pycod`, `.f` gives `!bc fcod`, etc.
  * `ptex2tex` can be used to choose between 40+ typesettings of
    computer code in LaTeX
- * `pygments` is used for code typesetting in HTML
+ * `pygments` is used for code typesetting in HTML (about 10 different styles)
 
 !split
 ======= Doconce: tables =======
@@ -410,8 +439,10 @@ Doconce offers a special format for *exercises*, *problems* and *projects*:
 !bc
 ===== Problem: Flip a Coin =====
 label{demo:ex:1}
+
 files = flip_coin.py, flip_coin.pdf
 solutions = mysol.txt, mysol_flip_coin.py
+keywords = random numbers; Monte Carlo simulation
 
 !bsubex
 Make a program that simulates flipping a coin $N$ times.
@@ -422,7 +453,7 @@ Use `r = random.random()` and define head as `r &lt;= 0.5`.
 !esubex
 
 !bsubex
-Compute the probabulity of getting heads.
+Compute the probability of getting heads.
 
 !bans
 A short answer: 0.5.
@@ -449,6 +480,7 @@ Last page gets rendered as follows:
 label{demo:ex:1}
 files = flip_coin.py, flip_coin.pdf
 solutions = mysol.txt, mysol_flip_coin.py
+keywords = random numbers; Monte Carlo simulation
 
 !bsubex
 Make a program that simulates flipping a coin $N$ times.
@@ -459,7 +491,7 @@ Use `r = random.random()` and define head as `r &lt;= 0.5`.
 !esubex
 
 !bsubex
-Compute the probabulity of getting heads.
+Compute the probability of getting heads.
 
 !bans
 A short answer: 0.5.
@@ -476,16 +508,54 @@ of getting at least three heads out of 5 throws.
 !esubex
 
 !split
+======= Doconce: exercises =======
+
+All *exercises*, *problems*, and *projects* in a document are parsed
+and available in a data structure (list of dicts) for further
+processing.
+
+!bc
+[{&#39;answer&#39;: &#39;&#39;,
+  &#39;closing_remarks&#39;: &#39;&#39;,
+  &#39;file&#39;: [&#39;flip_coin.py&#39;, &#39;flip_coin.pdf&#39;],
+  &#39;heading&#39;: &#39;=====&#39;,
+  &#39;hints&#39;: [],
+  &#39;keywords&#39;: [&#39;random numbers&#39;, &#39;Monte Carlo simulation&#39;],
+  &#39;label&#39;: &#39;demo:ex:1&#39;,
+  &#39;no&#39;: 1,
+  &#39;solution&#39;: &#39;&#39;,
+  &#39;solution_file&#39;: [&#39;mysol.txt&#39;, &#39;mysol_flip_coin.py&#39;],
+  &#39;subex&#39;: [{&#39;answer&#39;: &#39;&#39;,
+             &#39;file&#39;: None,
+             &#39;hints&#39;: [&#39;Use `r = random.random()` ...&#39;],
+             &#39;solution&#39;: &#39;&#39;,
+             &#39;text&#39;: &#39;Make a program that simulates ...&#39;},
+            {&#39;answer&#39;: &#39;A short answer: 0.5.&#39;,
+             &#39;file&#39;: None,
+             &#39;hints&#39;: [],
+             &#39;solution&#39;: &#39;A full solution to this ...&#39;,
+             &#39;text&#39;: &#39;Compute the probability of ...&#39;},
+            {&#39;answer&#39;: &#39;&#39;,
+             &#39;file&#39;: None,
+             &#39;hints&#39;: [],
+             &#39;solution&#39;: &#39;&#39;,
+             &#39;text&#39;: &#39;Make another program that computes ...&#39;}],
+  &#39;text&#39;: &#39;&#39;,
+  &#39;title&#39;: &#39;Flip a Coin&#39;,
+  &#39;type&#39;: &#39;Problem&#39;}]
+!ec
+
+!split
 ======= Doconce: use of preprocessors =======
 
  * Simple if-else tests a la C preprocessor
  * `FORMAT` variable can be used to test on format
-    * if latex/pdflatex do one sort of code (raw LaTeX?)
-    * if html, do another type of code, etc.
+    * if latex/pdflatex do one sort of code (raw LaTeX)
+    * if html, do another type of code (raw HTML)
  * Easy to comment out large portions of text
  * Easy to make different versions of the document
  * The mako preprocessor is really powerful - gives a
-   complete programming language inside the document (!)
+   complete programming language inside the document!
 
 
 !split
@@ -501,6 +571,8 @@ Very effective way to generate slides from running text:
  * Focus on key code snippets
  * Insert `!split` wherever you want a new slide to
    begin
+ * Insert `!bpop` and `!epop` around elements to pop up
+   in sequence
  * Use 7 `=` or 5 `=` in headings (H2 or H3)
  * Slides are made with HTML5 tools such as reveal.js, deck.js,
    csss, or dzslides
@@ -515,9 +587,7 @@ Very effective way to generate slides from running text:
  * Key point 1
  * Key point 2
 
-FIGURE: [figs/myfig, width=800]
-
-MOVIE: [http://www.youtube.com/embed/P8VcZzgdfSc, width=420 height=315]
+FIGURE: [fig/teacher1, width=150]
 
 Key equation:
 
@@ -531,11 +601,52 @@ And maybe a final comment?
 ======= Next slide... =======
 !ec
 
+!split
+======= Doconce: example on slide code =======
+
+Last page gets rendered to
+
+======= Headline =======
+
+ * Key point 1
+ * Key point 2
+
+FIGURE: [fig/teacher1, width=150]
+
+Key equation:
+
+!bt
+\[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
+!et
+
+And maybe a final comment?
+
+!split
+======= Doconce: slide styles =======
+
+!bpop
+ * Supported HTML5 packages:
+   * &quot;reveal.js&quot;: &quot;http://lab.hakim.se/reveal-js/&quot;
+   * &quot;deck.js&quot;: &quot;http://imakewebthings.com/deck.js/&quot;
+   * &quot;dzslides&quot;: &quot;http://paulrouget.com/dzslides/&quot;
+   * &quot;csss&quot;: &quot;http://leaverou.github.com/csss/#intro&quot;
+   * &quot;html5slides&quot;: &quot;http://code.google.com/p/html5slides/&quot; (experimental)
+ * _Problem_: each package has its (similar) syntax
+   * _Solution_: slide code is autogenerated from compact Doconce syntax
+ * _Problem_: reveal and deck have numerous styles
+   * _Solution_: easy &quot;to autogenerate all styles&quot;: &quot;demo/index.html&quot; for a talk
+ * _Problem_: HTML5 slides need many style files
+   * _Solution_: autocopy all files to talk directory
+ * _Problem_: original versions of the styles have too large fonts,
+   centering, and other features not so suitable for lectures
+   * _Solution_: Doconce contains adjusted css files
+!epop
 
 
 !split
 ======= Doconce: output in HTML =======
 
+Run in terminal window:
 !bc
 doconce format html doconcefile
 
@@ -604,4 +715,15 @@ doconce format cwiki  doconcefile  # Creole wiki (Bitbucket)
 doconce format rst    doconcefile  # reStructuredText
 doconce format plain  doconcefile  # plain, untagged text for email
 !ec
+
+!split
+======= Doconce: installation =======
+
+ * Ubuntu: `sudo apt-get install python-doconce` (old version)
+ * Source at &quot;Googlecode&quot;: &quot;http://code.google.com/p/doconce&quot; (recommended!)
+ * Check out source, `sudo python setyp.py install`
+ * Many dependencies...
+ * Must have `preprocess` and `mako`
+ * Need `latex`, `sphinx`, `pandoc`, etc. (see Installation in &quot;manual&quot;: &quot;http://code.google.com/p/doconce/wiki/Description&quot;)
+ * For slides: only `preprocess` is needed :-)
 </pre></div>

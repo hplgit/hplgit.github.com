@@ -118,8 +118,6 @@ MathJax.Hub.Config({
 <section class="slide">
 <!-- ------------------- main content ------------------------>
 
-<p>
-
 <title>On Schemes for Exponential Decay</title>
 
 <center><h1>On Schemes for Exponential Decay</h1></center>  <! -- document title -->
@@ -140,7 +138,7 @@ MathJax.Hub.Config({
 
 
 <p>
-<center><h4>Dec 10, 2012</h4></center> <!-- date -->
+<center><h4>Dec 11, 2012</h4></center> <!-- date -->
 <p>
 
 </section>
@@ -149,6 +147,14 @@ MathJax.Hub.Config({
 <section class="slide">
 
 <p>
+
+</section>
+
+
+<section class="slide">
+
+<p>
+<!-- Headings have 5 = for h3/subsection and 7 = for h1/section -->
 
 <h3>Goal  <a name="___sec0"></a></h3>
 <p>
@@ -169,18 +175,11 @@ demonstrated.
 
 <section class="slide">
 
+<h2>Mathematical problem  <a name="___sec1"></a></h2>
 <p>
-<!-- Comments explain various doconce constructs for common -->
-<!-- elements in talks about math and code. -->
+<!-- latex blocks are surrounded by !bt and !et -->
 
 <p>
-<!-- Purpose: section with multi-line equation. -->
-
-<p>
-
-<h2>Mathematical problem <a name="math:problem"></a></h2>
-<p>
-
 $$
 \begin{align}
 u'(t) &= -au(t), \quad t \in (0,T],
@@ -207,20 +206,19 @@ where
 
 <section class="slide">
 
-<p>
-<!-- Purpose: section with single-line equation and a bullet list. -->
-
+<h2>Numerical solution method  <a name="___sec2"></a></h2>
 <p>
 
-<h2>Numerical solution method <a name="numerical:problem"></a></h2>
+<!-- as we progress in the slide show -->
+<!-- They will often not work if there is code inside -->
+
 <p>
-
-
+<!-- !bpop -->
 
 <ul>
- <li class="slide"> Mesh in time: \( 0= t_0< t_1 \cdots < t_N=T \)</li>
- <li class="slide"> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
- <li class="slide"> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
+ <li class="slide and !epop surround elements that are to pop up"> Mesh in time: \( 0= t_0< t_1 \cdots < t_N=T \)</li>
+ <li class="slide and !epop surround elements that are to pop up"> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
+ <li class="slide and !epop surround elements that are to pop up"> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
 </ul>
 <p>
 
@@ -245,12 +243,7 @@ $$
 
 
 <section class="slide">
-
-<p>
-<!-- Purpose: section with computer code taken from a part of -->
-<!-- a file. The fromto: f@t syntax copies from the regular -->
-<!-- expression f up to the line, but not including, the regular -->
-<!-- expression t. -->
+<!-- Next: exemplify copying code from file -->
 
 <p>
 
@@ -283,26 +276,19 @@ The numerical method is implemented in a Python function:
 
 <section class="slide">
 
-<p>
-
-<!-- Purpose: subsection with inline figure (figure without caption). -->
-
-<p>
-
 <h3>The Crank-Nicolson method  <a name="___sec4"></a></h3>
 <p>
+<!-- Figures do not need extension - the right version is picked -->
 
+<p>
 <center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
 
 <p>
-
 
 </section>
 
 
 <section class="slide">
-
-<p>
 
 <h3>The artifacts can be explained by some theory  <a name="___sec5"></a></h3>
 <p>

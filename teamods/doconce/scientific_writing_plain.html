@@ -32,20 +32,20 @@ CSS examples:       http://www.w3schools.com/css/css_examples.asp
     p.caption { width: 80%; font-style: normal; text-align: left; }
     hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
-    .notice, .success, .warning, .error, .validation {
+    .notice, .summary, .warning, .hint, .question {
     border: 1px solid; margin: 10px 0px; padding:15px 10px 15px 50px;
     background-repeat: no-repeat; background-position: 10px center;
     }
     .notice   { color: #00529B; background-color: #BDE5F8;
-                background-image: url('html_images/Knob_Message.png'); }
+                background-image: url('https://doconce.googlecode.com/hg/lib/doconce/misc_software/html_images/Knob_Message.png'); }
     .summary  { color: #4F8A10; background-color: #DFF2BF;
-                background-image:url('html_images/Knob_Valid_Green.png'); }
+                background-image:url('https://doconce.googlecode.com/hg/lib/doconce/misc_software/html_images/Knob_Valid_Green.png'); }
     .warning  { color: #9F6000; background-color: #FEEFB3;
-                background-image: url('html_images/Knob_Attention.png'); }
+                background-image: url('https://doconce.googlecode.com/hg/lib/doconce/misc_software/html_images/Knob_Attention.png'); }
     .hint     { color: #00529B; background-color: #BDE5F8;
-                background-image: url('html_images/Knob_Info.png'); }
+                background-image: url('https://doconce.googlecode.com/hg/lib/doconce/misc_software/html_images/Knob_Info.png'); }
     .question { color: #4F8A10; background-color: #DFF2BF;
-                background-image:url('html_images/Knob_Forward.png'); }
+                background-image:url('https://doconce.googlecode.com/hg/lib/doconce/misc_software/html_images/Knob_Forward.png'); }
 
 </style>
 
@@ -89,7 +89,7 @@ MathJax.Hub.Config({
 
 
 <p>
-<center><h4>Dec 10, 2012</h4></center> <!-- date -->
+<center><h4>Dec 11, 2012</h4></center> <!-- date -->
 <p>
 
 <!-- !split -->
@@ -145,14 +145,15 @@ MathJax.Hub.Config({
 
 <h2>Popular tools anno 2012  <a name="___sec2"></a></h2>
 <p>
+<!-- !bpop -->
 
 <ul>
  <li> <b>LaTeX</b>: de facto standard in math-instensive sciences</li>
  <li> <b>pdfLaTeX</b>: takes over (figures in png, pdf)</li>
  <li> <b>Word</b>: popular, but limited math support and not so good-looking
    math fonts</li>
- <li> <b>HTML with MathJax</b>: "full" LaTeX math in HTML</li>
- <li> <b>Sphinx</b>, based on reStructuredText (HTML, LaTeX):
+ <li> <b>HTML with MathJax</b>: "full" LaTeX math</li>
+ <li> <b>Sphinx</b>:
    limited LaTeX math support, great support for web design</li>
  <li> <b>reStructuredText</b>: no math support, transforms to
    lots of formats (LaTeX, HTML, XML, Word, OpenOffice, ...)</li>
@@ -161,12 +162,15 @@ MathJax.Hub.Config({
    lots of formats (LaTeX, HTML, XML, Word, OpenOffice, ...)</li>
  <li> <b>MediaWiki</b>: "full" LaTeX math support (Wikipedia)</li>
  <li> Other <b>wiki</b> formats: no math support, great for collaborative editing</li>
- <li> <b>Epydoc</b>: fror Python code documentation</li>
+ <li> <b>Epydoc</b>: old tool for Python code documentation</li>
  <li> <b>IPython notebooks</b>: combines Python code, interactivity and Markdown
    writing</li>
  <li> <b>Plain text for email</b> (no tagging)</li>
 </ul>
 
+<!-- !epop -->
+
+<p>
 <!-- !split -->
 
 <p>
@@ -175,16 +179,16 @@ MathJax.Hub.Config({
 <p>
 
 <ul>
- <li> LaTeX inline math: LaTeX, MathJax, Sphinx, Markdown, MediaWiki</li>
+ <li> LaTeX inline math: works with all (LaTeX, MathJax, Sphinx, Markdown, MediaWiki)</li>
  <li> LaTeX equation math:</li>
 
 <ul>
-    <li> LaTeX: <tt>equation*</tt>, <tt>equation</tt>, <tt>align*</tt>, <tt>align</tt> +
+    <li> <b>LaTeX</b>: <tt>equation*</tt>, <tt>equation</tt>, <tt>align*</tt>, <tt>align</tt> +
       <tt>eqnarray</tt>, <tt>split</tt>, <tt>alignat</tt>, ...</li>
-    <li> MathJax: <tt>equation*</tt>, <tt>equation</tt>, <tt>align*</tt>, <tt>align</tt></li>
-    <li> MediaWiki: <tt>equation*</tt>, <tt>equation</tt>, <tt>align*</tt>, <tt>align</tt></li>
-    <li> Sphinx: <tt>equation*</tt>, <tt>equation</tt>, <tt>align*</tt></li>
-    <li> Markdown: <tt>equation*</tt>, <tt>equation</tt></li>
+    <li> <b>MathJax</b>: <tt>equation*</tt>, <tt>equation</tt>, <tt>align*</tt>, <tt>align</tt></li>
+    <li> <b>MediaWiki</b>: <tt>equation*</tt>, <tt>equation</tt>, <tt>align*</tt>, <tt>align</tt></li>
+    <li> <b>Sphinx</b>: <tt>equation*</tt>, <tt>equation</tt>, <tt>align*</tt></li>
+    <li> <b>Markdown</b>: <tt>equation*</tt>, <tt>equation</tt></li>
 </ul>
 
 </ul>
@@ -223,6 +227,7 @@ based on HTML and vice versa.
 
 <h2>Concerns I  <a name="___sec5"></a></h2>
 <p>
+<!-- !bpop -->
 
 <ul>
  <li> Sphinx refers to figures by the caption (has to be short!) and
@@ -236,10 +241,14 @@ based on HTML and vice versa.
  <li> Computer code has to appear at fixed positions in the text.</li>
 </ul>
 
+<!-- !epop -->
+
+<p>
 <!-- !split -->
 
 <h2>Concerns II  <a name="___sec6"></a></h2>
 <p>
+<!-- !bpop -->
 
 <ul>
  <li> Footnotes must appear as part of the running text (e.g., sentences
@@ -254,10 +263,14 @@ based on HTML and vice versa.
    recall that Sphinx and Markdown cannot handle this.</li>
 </ul>
 
+<!-- !epop -->
+
+<p>
 <!-- !split -->
 
 <h2>Concerns III  <a name="___sec7"></a></h2>
 <p>
+<!-- !bpop -->
 
 <ul>
  <li> Index words can appear anywhere in LaTeX, but should be outside
@@ -271,6 +284,9 @@ based on HTML and vice versa.
    using colors and markers).</li>
 </ul>
 
+<!-- !epop -->
+
+<p>
 <!-- !split -->
 
 <h2>Solution I: Use a format that translates to many  <a name="___sec8"></a></h2>
@@ -281,9 +297,9 @@ based on HTML and vice versa.
    man pages, Gnome devhelp files, Qt help files, texinfo, JSON</li>
  <li> Markdown can do LaTeX, HTML, MS Word, OpenOffice, XML,
    reStructuredText, epub, DocBook, ... but not Sphinx</li>
- <li> IPython notebook: can convert to LaTeX, reStructuredText, HTML, PDF,
+ <li> IPython notebook: can do LaTeX, reStructuredText, HTML, PDF,
    Python script</li>
- <li> Sphinx and Markdown has some limited math support :-(</li>
+ <li> Sphinx and Markdown has some limited math support</li>
 </ul>
 
 <!-- !split -->
@@ -351,8 +367,20 @@ TOC: on
 </pre></div>
 <p>
 
-Note: title and authors must have everything on a single line!
 
+<table width="95%" border="0">
+<tr>
+<td width="25" align="center" valign="top">
+<img src="https://doconce.googlecode.com/hg/lib/doconce/misc_software/html_images/lyx_notice.png" hspace="5" alt="Notice"></td>
+<th align="left" valign="middle"><b>Notice</b></th>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td align="left" valign="top">
+<p>Title and authors must have all information <em>on a single line</em>!</p>
+</td>
+</tr>
+</table>
 <p>
 <!-- !split -->
 
@@ -400,11 +428,14 @@ __This is a paragraph heading.__
 
 
 <!-- code typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"> * Bullet lists start with `*`
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"> * Bullet list items start with `*`
    and may span several lines
+ * Ordered (enumerated) list items start with `o`
  * *Emphasized words* are possible
  * _Boldface words_ are also possible
  * `inline verbatim code` is featured
+   * sublists too
+   * just indent...
 </pre></div>
 <p>
 
@@ -415,9 +446,16 @@ This gets rendered as
 <ul>
  <li> Bullet lists start with <tt>*</tt>
    and may span several lines</li>
+ <li> Ordered (enumerated) list items start with <tt>o</tt></li>
  <li> <em>Emphasized words</em> are possible</li>
  <li> <b>Boldface words</b> are also possible</li>
  <li> <tt>inline verbatim code</tt> is featured</li>
+
+<ul>
+   <li> sublists too</li>
+   <li> just indent...</li>
+</ul>
+
 </ul>
 
 <!-- !split -->
@@ -441,6 +479,12 @@ but without backslashes.
 
 # Make reference to equations
 See \eqref{eq1}-\eqref{myeq}.
+
+# Make hyperlink
+&quot;some link text&quot;: &quot;http://code.google.com/p/doconce/&quot;
+
+# Hyperlink with complete URL as link text
+URL: &quot;http://code.google.com/p/doconce/&quot;
 </pre></div>
 <p>
 
@@ -448,19 +492,31 @@ See \eqref{eq1}-\eqref{myeq}.
 
 <h2>Doconce: figures and movies  <a name="___sec17"></a></h2>
 <p>
-Figure with HTML and LaTeX info, and caption, all on one line:
 
+<table width="95%" border="0">
+<tr>
+<td width="25" align="center" valign="top">
+<img src="https://doconce.googlecode.com/hg/lib/doconce/misc_software/html_images/lyx_notice.png" hspace="5" alt="Notice"></td>
+<th align="left" valign="middle"><b>Notice</b></th>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td align="left" valign="top">
+<p>Figure with HTML and LaTeX info, and caption, <em>all on one line</em>:</p>
+</td>
+</tr>
+</table>
 <p>
 
 
 <!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">FIGURE: [figdir/myfig, width=300 frac=1.2] My caption. \label{fig1}
+
+# This figure will be 300 pixels wide in HTML and span 1.2 times
+# the linewidth in LaTeX.
 </pre></div>
 <p>
-(Will be 300 pixels wide in HTML and span 1.2 times the linewidth
-in LaTeX.)
 
-<p>
 Movies are also supported:
 
 <p>
@@ -488,12 +544,13 @@ Inline math as in LaTeX:
 
 
 <!-- code typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">...where $a=\int_{\Omega}fdx$.
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">...where $a=\int_{\Omega}fdx$ is an integral.
 </pre></div>
 <p>
-gets rendered as ...where \( a=\int_{\Omega}fdx \).
+gets rendered as ...where \( a=\int_{\Omega}fdx \) is an integral.
 
 <p>
+
 An equation environment is surrounded by <tt>!bt</tt> and <tt>!et</tt> tags
 (see the source of this document), the rest is plain LaTeX:
 
@@ -506,7 +563,10 @@ $$
 \label{b:eq}
 \end{align}
 $$
-Limit environments to
+
+<p>
+
+Limit math environments to
 <p>
 
 <!-- code typeset with pygments style "default" -->
@@ -528,7 +588,7 @@ Limit environments to
 
 <!-- !split -->
 
-<h2>Doconce: writing code  <a name="___sec19"></a></h2>
+<h2>Doconce: displaying code  <a name="___sec19"></a></h2>
 <p>
 Code is enclosed in <tt>!bc</tt> and <tt>!ec</tt> tags (see the source for this page).
 
@@ -570,21 +630,19 @@ ex:
 </pre></div>
 <p>
 
+Computer language can be specified:
+
+<p>
 
 <ul>
- <li> Computer language can be specified:</li>
-
-<ul>
-   <li> <tt>!bc pycod</tt> for Python snippet,</li>
-   <li> <tt>!bc pypro</tt> for complete Python program</li>
-</ul>
-
+ <li> <tt>!bc pycod</tt> for Python snippet,</li>
+ <li> <tt>!bc pypro</tt> for complete Python program</li>
  <li> Similar for C (<tt>c</tt>), C++ (<tt>cpp</tt>), Fortran (<tt>f</tt>),
-   Matlab (<tt>m</tt>): <tt>!bc mpro</tt></li>
+   Bash (<tt>sh</tt>), MATLAB (<tt>m</tt>), e.g., <tt>!bc mpro</tt></li>
  <li> From files: <tt>.py</tt> gives <tt>!bc pycod</tt>, <tt>.f</tt> gives <tt>!bc fcod</tt>, etc.</li>
  <li> <tt>ptex2tex</tt> can be used to choose between 40+ typesettings of
    computer code in LaTeX</li>
- <li> <tt>pygments</tt> is used for code typesetting in HTML</li>
+ <li> <tt>pygments</tt> is used for code typesetting in HTML (about 10 different styles)</li>
 </ul>
 
 <!-- !split -->
@@ -637,8 +695,10 @@ Doconce offers a special format for <em>exercises</em>, <em>problems</em> and <e
 <!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">===== Problem: Flip a Coin =====
 \label{demo:ex:1}
+
 files = flip_coin.py, flip_coin.pdf
 solutions = mysol.txt, mysol_flip_coin.py
+keywords = random numbers; Monte Carlo simulation
 
 !bsubex
 Make a program that simulates flipping a coin $N$ times.
@@ -649,7 +709,7 @@ Use `r = random.random()` and define head as `r &lt;= 0.5`.
 !esubex
 
 !bsubex
-Compute the probabulity of getting heads.
+Compute the probability of getting heads.
 
 !bans
 A short answer: 0.5.
@@ -680,6 +740,8 @@ Last page gets rendered as follows:
 <p>
 
 <h3>Problem 1: Flip a Coin <a name="demo:ex:1"></a></h3>
+<!-- keywords = random numbers; Monte Carlo simulation -->
+
 <p>
 
 <b>a)</b> Make a program that simulates flipping a coin \( N \) times.
@@ -688,7 +750,7 @@ Last page gets rendered as follows:
 <b>Hint.</b> Use <tt>r = random.random()</tt> and define head as <tt>r <= 0.5</tt>.
 
 <p>
-<b>b)</b> Compute the probabulity of getting heads.
+<b>b)</b> Compute the probability of getting heads.
 
 <p>
 <!-- --- begin short answer in exercise -->
@@ -721,7 +783,50 @@ Filenames: <tt>flip_coin.py</tt>, <tt>flip_coin.pdf</tt>.
 
 <!-- !split -->
 
-<h2>Doconce: use of preprocessors  <a name="___sec26"></a></h2>
+<h2>Doconce: exercises  <a name="___sec26"></a></h2>
+<p>
+All <em>exercises</em>, <em>problems</em>, and <em>projects</em> in a document are parsed
+and available in a data structure (list of dicts) for further
+processing.
+
+<p>
+
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[{&#39;answer&#39;: &#39;&#39;,
+  &#39;closing_remarks&#39;: &#39;&#39;,
+  &#39;file&#39;: [&#39;flip_coin.py&#39;, &#39;flip_coin.pdf&#39;],
+  &#39;heading&#39;: &#39;=====&#39;,
+  &#39;hints&#39;: [],
+  &#39;keywords&#39;: [&#39;random numbers&#39;, &#39;Monte Carlo simulation&#39;],
+  &#39;label&#39;: &#39;demo:ex:1&#39;,
+  &#39;no&#39;: 1,
+  &#39;solution&#39;: &#39;&#39;,
+  &#39;solution_file&#39;: [&#39;mysol.txt&#39;, &#39;mysol_flip_coin.py&#39;],
+  &#39;subex&#39;: [{&#39;answer&#39;: &#39;&#39;,
+             &#39;file&#39;: None,
+             &#39;hints&#39;: [&#39;Use `r = random.random()` ...&#39;],
+             &#39;solution&#39;: &#39;&#39;,
+             &#39;text&#39;: &#39;Make a program that simulates ...&#39;},
+            {&#39;answer&#39;: &#39;A short answer: 0.5.&#39;,
+             &#39;file&#39;: None,
+             &#39;hints&#39;: [],
+             &#39;solution&#39;: &#39;A full solution to this ...&#39;,
+             &#39;text&#39;: &#39;Compute the probability of ...&#39;},
+            {&#39;answer&#39;: &#39;&#39;,
+             &#39;file&#39;: None,
+             &#39;hints&#39;: [],
+             &#39;solution&#39;: &#39;&#39;,
+             &#39;text&#39;: &#39;Make another program that computes ...&#39;}],
+  &#39;text&#39;: &#39;&#39;,
+  &#39;title&#39;: &#39;Flip a Coin&#39;,
+  &#39;type&#39;: &#39;Problem&#39;}]
+</pre></div>
+<p>
+
+<!-- !split -->
+
+<h2>Doconce: use of preprocessors  <a name="___sec27"></a></h2>
 <p>
 
 <ul>
@@ -729,19 +834,19 @@ Filenames: <tt>flip_coin.py</tt>, <tt>flip_coin.pdf</tt>.
  <li> <tt>FORMAT</tt> variable can be used to test on format</li>
 
 <ul>
-    <li> if latex/pdflatex do one sort of code (raw LaTeX?)</li>
-    <li> if html, do another type of code, etc.</li>
+    <li> if latex/pdflatex do one sort of code (raw LaTeX)</li>
+    <li> if html, do another type of code (raw HTML)</li>
 </ul>
 
  <li> Easy to comment out large portions of text</li>
  <li> Easy to make different versions of the document</li>
  <li> The mako preprocessor is really powerful - gives a
-   complete programming language inside the document (!)</li>
+   complete programming language inside the document!</li>
 </ul>
 
 <!-- !split -->
 
-<h2>Doconce: slides  <a name="___sec27"></a></h2>
+<h2>Doconce: slides  <a name="___sec28"></a></h2>
 <p>
 Very effective way to generate slides from running text:
 
@@ -756,6 +861,8 @@ Very effective way to generate slides from running text:
  <li> Focus on key code snippets</li>
  <li> Insert <tt>!split</tt> wherever you want a new slide to
    begin</li>
+ <li> Insert <tt>!bpop</tt> and <tt>!epop</tt> around elements to pop up
+   in sequence</li>
  <li> Use 7 <tt>=</tt> or 5 <tt>=</tt> in headings (H2 or H3)</li>
  <li> Slides are made with HTML5 tools such as reveal.js, deck.js,
    csss, or dzslides</li>
@@ -763,7 +870,7 @@ Very effective way to generate slides from running text:
 
 <!-- !split -->
 
-<h2>Doconce: example on slide code  <a name="___sec28"></a></h2>
+<h2>Doconce: example on slide code  <a name="___sec29"></a></h2>
 <p>
 
 
@@ -774,9 +881,7 @@ Very effective way to generate slides from running text:
  * Key point 1
  * Key point 2
 
-FIGURE: [figs/myfig, width=800]
-
-MOVIE: [http://www.youtube.com/embed/P8VcZzgdfSc, width=420 height=315]
+FIGURE: [fig/teacher1, width=150]
 
 Key equation:
 
@@ -789,12 +894,88 @@ And maybe a final comment?
 </pre></div>
 <p>
 
+<!-- !split -->
+
+<h2>Doconce: example on slide code  <a name="___sec30"></a></h2>
+<p>
+Last page gets rendered to
+
+<p>
+
+<h2>Headline  <a name="___sec31"></a></h2>
+<p>
+
+<ul>
+ <li> Key point 1</li>
+ <li> Key point 2</li>
+</ul>
+
+<center><p><img src="fig/teacher1.gif" align="bottom" width=150></p></center>
+
+<p>
+Key equation:
+
+<p>
+$$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
+
+<p>
+And maybe a final comment?
+
+<p>
+<!-- !split -->
+
+<h2>Doconce: slide styles  <a name="___sec32"></a></h2>
+<p>
+<!-- !bpop -->
+
+<ul>
+ <li> Supported HTML5 packages:</li>
+
+<ul>
+   <li> <a href="http://lab.hakim.se/reveal-js/">reveal.js</a></li>
+   <li> <a href="http://imakewebthings.com/deck.js/">deck.js</a></li>
+   <li> <a href="http://paulrouget.com/dzslides/">dzslides</a></li>
+   <li> <a href="http://leaverou.github.com/csss/#intro">csss</a></li>
+   <li> <a href="http://code.google.com/p/html5slides/">html5slides</a> (experimental)</li>
+</ul>
+
+ <li> <b>Problem</b>: each package has its (similar) syntax</li>
+
+<ul>
+   <li> <b>Solution</b>: slide code is autogenerated from compact Doconce syntax</li>
+</ul>
+
+ <li> <b>Problem</b>: reveal and deck have numerous styles</li>
+
+<ul>
+   <li> <b>Solution</b>: easy <a href="demo/index.html">to autogenerate all styles</a> for a talk</li>
+</ul>
+
+ <li> <b>Problem</b>: HTML5 slides need many style files</li>
+
+<ul>
+   <li> <b>Solution</b>: autocopy all files to talk directory</li>
+</ul>
+
+ <li> <b>Problem</b>: original versions of the styles have too large fonts,
+   centering, and other features not so suitable for lectures</li>
+
+<ul>
+   <li> <b>Solution</b>: Doconce contains adjusted css files</li>
+</ul>
+
+</ul>
+
+<!-- !epop -->
+
+<p>
 
 <!-- !split -->
 
-<h2>Doconce: output in HTML  <a name="___sec29"></a></h2>
+<h2>Doconce: output in HTML  <a name="___sec33"></a></h2>
 <p>
-
+Run in terminal window:
+<p>
 
 <!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html doconcefile
@@ -815,7 +996,7 @@ doconce slides_html doconcefile reveal --html-slide-theme=darkgray
 
 <!-- !split -->
 
-<h2>Doconce: output in pdfLaTeX  <a name="___sec30"></a></h2>
+<h2>Doconce: output in pdfLaTeX  <a name="___sec34"></a></h2>
 <p>
 
 
@@ -843,7 +1024,7 @@ doconce ptex2tex doconcefile envir=ans:nt
 
 <!-- !split -->
 
-<h2>Doconce: output in Sphinx  <a name="___sec31"></a></h2>
+<h2>Doconce: output in Sphinx  <a name="___sec35"></a></h2>
 <p>
 
 
@@ -864,7 +1045,7 @@ Much easier than running the Sphinx tools manually...
 <p>
 <!-- !split -->
 
-<h2>Doconce: output in other formats  <a name="___sec32"></a></h2>
+<h2>Doconce: output in other formats  <a name="___sec36"></a></h2>
 <p>
 
 
@@ -878,6 +1059,20 @@ doconce format plain  doconcefile  # plain, untagged text for email
 </pre></div>
 <p>
 
+<!-- !split -->
+
+<h2>Doconce: installation  <a name="___sec37"></a></h2>
+<p>
+
+<ul>
+ <li> Ubuntu: <tt>sudo apt-get install python-doconce</tt> (old version)</li>
+ <li> Source at <a href="http://code.google.com/p/doconce">Googlecode</a> (recommended!)</li>
+ <li> Check out source, <tt>sudo python setyp.py install</tt></li>
+ <li> Many dependencies...</li>
+ <li> Must have <tt>preprocess</tt> and <tt>mako</tt></li>
+ <li> Need <tt>latex</tt>, <tt>sphinx</tt>, <tt>pandoc</tt>, etc. (see Installation in <a href="http://code.google.com/p/doconce/wiki/Description">manual</a>)</li>
+ <li> For slides: only <tt>preprocess</tt> is needed :-)</li>
+</ul>
 
 
 <!-- ------------------- end of main content ----------------->
