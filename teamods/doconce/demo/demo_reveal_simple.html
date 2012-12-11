@@ -109,9 +109,6 @@ The primary goal of this demo talk is to demonstrate how to write
 talks with doconce and get them rendered in numerous HTML formats.
 
 <p>
-The current HTML format is XXX with YYY theme.
-
-<p>
 The talk investigates the accuracy of three finite difference
 schemes for the ordinary differential equation \( u'=-au \) with the
 aid of numerical experiments. Numerical artifacts are in particular
@@ -217,23 +214,22 @@ The numerical method is implemented in a Python function:
 <p>
 
 
-<!-- code typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
-    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
-    dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)           <span style="color: #408080; font-style: italic"># avoid integer division</span>
-    N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #408080; font-style: italic"># no of time intervals</span>
-    T <span style="color: #666666">=</span> N<span style="color: #666666">*</span>dt                 <span style="color: #408080; font-style: italic"># adjust T to fit time step dt</span>
-    u <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>)           <span style="color: #408080; font-style: italic"># array of u[n] values</span>
-    t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, T, N<span style="color: #666666">+1</span>)  <span style="color: #408080; font-style: italic"># time mesh</span>
+<!-- code typeset with pygments style "autumn" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #0000aa">def</span> <span style="color: #00aa00">solver</span>(I, a, T, dt, theta):
+    <span style="color: #aa5500">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
+    dt = <span style="color: #00aaaa">float</span>(dt)           <span style="color: #aaaaaa; font-style: italic"># avoid integer division</span>
+    N = <span style="color: #00aaaa">int</span>(<span style="color: #00aaaa">round</span>(T/dt))     <span style="color: #aaaaaa; font-style: italic"># no of time intervals</span>
+    T = N*dt                 <span style="color: #aaaaaa; font-style: italic"># adjust T to fit time step dt</span>
+    u = zeros(N+<span style="color: #009999">1</span>)           <span style="color: #aaaaaa; font-style: italic"># array of u[n] values</span>
+    t = linspace(<span style="color: #009999">0</span>, T, N+<span style="color: #009999">1</span>)  <span style="color: #aaaaaa; font-style: italic"># time mesh</span>
 
-    u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> I                 <span style="color: #408080; font-style: italic"># assign initial condition</span>
-    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, N):    <span style="color: #408080; font-style: italic"># n=0,1,...,N-1</span>
-        u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
-    <span style="color: #008000; font-weight: bold">return</span> u, t
+    u[<span style="color: #009999">0</span>] = I                 <span style="color: #aaaaaa; font-style: italic"># assign initial condition</span>
+    <span style="color: #0000aa">for</span> n <span style="color: #0000aa">in</span> <span style="color: #00aaaa">range</span>(<span style="color: #009999">0</span>, N):    <span style="color: #aaaaaa; font-style: italic"># n=0,1,...,N-1</span>
+        u[n+<span style="color: #009999">1</span>] = (<span style="color: #009999">1</span> - (<span style="color: #009999">1</span>-theta)*a*dt)/(<span style="color: #009999">1</span> + theta*dt*a)*u[n]
+    <span style="color: #0000aa">return</span> u, t
 </pre></div>
 <p>
 
-(pygments style "ZZZ")
 
 </section>
 
