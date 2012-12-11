@@ -1,0 +1,115 @@
+<div class="highlight"><pre>TITLE: On Schemes for Exponential Decay
+AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
+DATE: today
+
+!split
+
+===== Goal =====
+
+The primary goal of this demo talk is to demonstrate how to write
+talks with doconce and get them rendered in numerous HTML formats.
+
+The talk investigates the accuracy of three finite difference
+schemes for the ordinary differential equation $u&#39;=-au$ with the
+aid of numerical experiments. Numerical artifacts are in particular
+demonstrated.
+
+
+!split
+
+# Comments explain various doconce constructs for common
+# elements in talks about math and code.
+
+# Purpose: section with multi-line equation.
+
+======= Mathematical problem =======
+label{math:problem}
+
+idx{model problem} idx{exponential decay}
+
+
+!bt
+\begin{align}
+u&#39;(t) &amp;= -au(t), \quad t \in (0,T],
+label{ode}\\
+u(0)  &amp;= I,
+label{initial:value}
+\end{align}
+!et
+
+where
+
+ * $a$, $I$, and $T$ are prescribed parameters
+ * $u(t)$ is the unknown function
+
+!split
+
+# Purpose: section with single-line equation and a bullet list.
+
+======= Numerical solution method =======
+label{numerical:problem}
+
+idx{mesh in time} idx{$\theta$-rule} idx{numerical scheme}
+idx{finite difference scheme}
+
+!bpop
+ * Mesh in time: $0= t_0&lt; t_1 \cdots &lt; t_N=T$
+ * Assume constant $\Delta t = t_{n}-t_{n-1}$
+ * $u^n$: numerical approx to the exact solution at $t_n$
+!epop
+
+!bpop
+Numerical scheme:
+!bt
+   \[
+   u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+   \quad n=0,1,\ldots,N-1
+   \]
+!et
+!epop
+
+!split
+
+# Purpose: section with computer code taken from a part of
+# a file. The fromto: f@t syntax copies from the regular
+# expression f up to the line, but not including, the regular
+# expression t.
+
+======= Implementation =======
+
+The numerical method is implemented in a Python function:
+
+@@@CODE src/dc_mod.py  fromto: def solver@def verify_three
+
+!split
+
+
+# Purpose: subsection with inline figure (figure without caption).
+
+===== The Crank-Nicolson method =====
+
+idx{CN}
+
+FIGURE: [fig/CN.png, width=600]
+
+
+!split
+
+===== The artifacts can be explained by some theory =====
+
+!bpop
+Exact solution of the scheme:
+
+!bt
+\[ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .\]
+!et
+!epop
+
+!bpop
+ * Stability: $|A| &lt; 1$
+ * No oscillations: $A&gt;0$
+ * Always for Backward Euler ($\theta=1$)
+ * $\Delta t &lt; 1/a$ for Forward Euler ($\theta=0$)
+ * $\Delta t &lt; 2/a$ for Crank-Nicolson ($\theta=1/2$)
+!epop
+</pre></div>
