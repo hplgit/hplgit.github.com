@@ -1,6 +1,6 @@
 % On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
 % Hans Petter Langtangen
-% Dec 11, 2012
+% Dec 13, 2012
 
 <!-- !split -->
 Scope
