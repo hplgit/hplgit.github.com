@@ -14,7 +14,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -62,7 +62,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Oct 6, 2012</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 18, 2013</td>
 </tr>
 </tbody>
 </table>
@@ -137,7 +137,7 @@ Googlecode and bring under version control. The official name of the
 project is &#8220;My Project&#8221;.</p>
 </div>
 <div class="section" id="installing-version-control-systems">
-<h1>Installing Version Control Systems<a class="headerlink" href="#installing-version-control-systems" title="Permalink to this headline">¶</a></h1>
+<h1>Installing version control systems<a class="headerlink" href="#installing-version-control-systems" title="Permalink to this headline">¶</a></h1>
 <p>The various project hosting sites work with different version
 control systems:</p>
 <blockquote>
@@ -199,26 +199,45 @@ control. A simple <tt class="docutils literal"><span class="pre">.hgrc</span></t
 </div>
 <p>The <tt class="docutils literal"><span class="pre">.hgignore</span></tt> file lists the types of files that will be skipped
 when bringing new directories under Mercurial version control.
-Typically this is temporary files such as object files (<tt class="docutils literal"><span class="pre">*.o</span></tt>),
-shared libraries (<tt class="docutils literal"><span class="pre">*.so</span></tt>), and backup files (<tt class="docutils literal"><span class="pre">*.bak</span></tt> and <tt class="docutils literal"><span class="pre">*~</span></tt>).
-The file types are usually specified using Unix Shell Wildcard notation,
-also referred to as <tt class="docutils literal"><span class="pre">glob</span></tt> syntax, as in <tt class="docutils literal"><span class="pre">*.o</span></tt> (where <tt class="docutils literal"><span class="pre">*</span></tt> means any
+Typically, the list contains file types that represent temporary
+information or just garbage, or files that are easily regenerated,
+such as object files (<tt class="docutils literal"><span class="pre">*.o</span></tt>) and
+libraries (<tt class="docutils literal"><span class="pre">*.so</span></tt>).
+The file types are normally specified using the Unix Shell Wildcard notation,
+also referred to as <tt class="docutils literal"><span class="pre">glob</span></tt> syntax (e.g., <tt class="docutils literal"><span class="pre">*.o</span></tt>, where <tt class="docutils literal"><span class="pre">*</span></tt> means any
 sequence of characters).
 An example of a <tt class="docutils literal"><span class="pre">.hgignore</span></tt> file may be</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">syntax</span><span class="p">:</span> <span class="n">glob</span>
+<span class="c"># compiled files:</span>
 <span class="o">*.</span><span class="n">o</span>
 <span class="o">*.</span><span class="n">so</span>
 <span class="o">*.</span><span class="n">a</span>
+<span class="c"># temporary files:</span>
+<span class="o">*.</span><span class="n">bak</span>
+<span class="o">*.</span><span class="n">swp</span>
 <span class="o">*~</span>
 <span class="o">.*~</span>
+<span class="o">*.</span><span class="n">old</span>
+<span class="n">tmp</span><span class="o">*</span>
+<span class="n">temp</span><span class="o">*</span>
+<span class="c"># tex files:</span>
 <span class="o">*.</span><span class="n">log</span>
 <span class="o">*.</span><span class="n">dvi</span>
 <span class="o">*.</span><span class="n">aux</span>
-<span class="o">*.</span><span class="n">old</span>
-<span class="o">*.</span><span class="n">bak</span>
-<span class="n">tmp</span><span class="o">*</span>
+<span class="o">*.</span><span class="n">blg</span>
+<span class="o">*.</span><span class="n">idx</span>
+<span class="c"># eclipse files:</span>
+<span class="o">*.</span><span class="n">cproject</span>
+<span class="o">*.</span><span class="n">project</span>
+<span class="c"># misc:</span>
+<span class="o">.</span><span class="n">DS_Store</span>
 </pre></div>
 </div>
+<p>In addition to having an <tt class="docutils literal"><span class="pre">.hgignore</span></tt> file, you should always be careful with
+what kind of files you really need to add to your
+repo. Many computer tools produce a lot of big files that can
+easily be regenerated and that do not need to fill up repos with full
+information on previous versions.</p>
 </div>
 <div class="section" id="installing-git">
 <h2>Installing Git<a class="headerlink" href="#installing-git" title="Permalink to this headline">¶</a></h2>
@@ -246,22 +265,39 @@ Here is a simplified version of the author&#8217;s <tt class="docutils literal">
 </pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">.gitignore</span></tt> file should list, using the Unix Shell Wildcard notation,
-the type of files that you do not want to have under version control,
-typically (large) files that can easily be regenerated from some other
-source files. A <tt class="docutils literal"><span class="pre">.gitignore</span></tt> file may look like</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="o">*.</span><span class="n">o</span>
+the type of files that you do not need to have under version control,
+because they represent garbage or temporary information,
+or they can easily be regenerated from
+some other source files. A suggested <tt class="docutils literal"><span class="pre">.gitignore</span></tt> file looks like</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># compiled files:</span>
+<span class="o">*.</span><span class="n">o</span>
 <span class="o">*.</span><span class="n">so</span>
 <span class="o">*.</span><span class="n">a</span>
+<span class="c"># temporary files:</span>
+<span class="o">*.</span><span class="n">bak</span>
+<span class="o">*.</span><span class="n">swp</span>
 <span class="o">*~</span>
 <span class="o">.*~</span>
+<span class="o">*.</span><span class="n">old</span>
+<span class="n">tmp</span><span class="o">*</span>
+<span class="n">temp</span><span class="o">*</span>
+<span class="c"># tex files:</span>
 <span class="o">*.</span><span class="n">log</span>
 <span class="o">*.</span><span class="n">dvi</span>
 <span class="o">*.</span><span class="n">aux</span>
-<span class="o">*.</span><span class="n">old</span>
-<span class="o">*.</span><span class="n">bak</span>
-<span class="n">tmp</span><span class="o">*</span>
+<span class="o">*.</span><span class="n">blg</span>
+<span class="o">*.</span><span class="n">idx</span>
+<span class="c"># eclipse files:</span>
+<span class="o">*.</span><span class="n">cproject</span>
+<span class="o">*.</span><span class="n">project</span>
+<span class="c"># misc:</span>
+<span class="o">.</span><span class="n">DS_Store</span>
 </pre></div>
 </div>
+<p>Be critical to what kind of files you really need a full history of.
+For example, you do not want to populate the repository with
+big graphics files of the type that can easily be regenerated by
+some program.</p>
 </div>
 </div>
 <div class="section" id="bitbucket">
@@ -283,8 +319,8 @@ passphrase - just write something). On Windows one applies the PuTTY
 and the TortoiseHG programs to generate and register keys, see the
 help pages on Bitbucket. Once the keys are generated, you can continue
 using them on any current and future computer.</p>
-<div class="section" id="create-a-new-project">
-<h2>Create a New Project<a class="headerlink" href="#create-a-new-project" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-a-new-project-1">
+<h2>Create a new project  (1)<a class="headerlink" href="#create-a-new-project-1" title="Permalink to this headline">¶</a></h2>
 <p>Click at <em>Repositories</em> and at <em>Create repository</em>.
 You can now</p>
 <blockquote>
@@ -355,8 +391,8 @@ it sends file information to the <tt class="docutils literal"><span class="pre">
 push steps explained in the section <a class="reference internal" href="#bitgit-hg"><em>Using Mercurial</em></a> for Mercurial and
 the section <a class="reference internal" href="#bitgit-git"><em>Using Git</em></a> for Git.</p>
 </div>
-<div class="section" id="user-web-pages">
-<h2>User Web Pages<a class="headerlink" href="#user-web-pages" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="user-web-pages-1">
+<h2>User web pages  (1)<a class="headerlink" href="#user-web-pages-1" title="Permalink to this headline">¶</a></h2>
 <p>Bitbucket can host web pages associated with a Bitbucket account. Say
 your account/user name is <tt class="docutils literal"><span class="pre">username</span></tt>.  Make a new repository on
 Bitbucket called <tt class="docutils literal"><span class="pre">username.bitbucket.org</span></tt>.  Clone it, fill it with a
@@ -380,8 +416,8 @@ web pages.</p>
 <span id="bitgit-googlecode"></span><h1>Googlecode<a class="headerlink" href="#googlecode" title="Permalink to this headline">¶</a></h1>
 <p id="index-4">To use Googlecode you need a general account on Google, which allows
 you to use Gmail, Google Docs, and other products.</p>
-<div class="section" id="id1">
-<h2>Create a New Project<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-a-new-project-2">
+<h2>Create a new project  (2)<a class="headerlink" href="#create-a-new-project-2" title="Permalink to this headline">¶</a></h2>
 <p>Go to <a class="reference external" href="http://code.google.com/hosting">http://code.google.com/hosting</a> and click on
 <em>Create a new project</em>. Fill out <em>all</em> the fields. For now
 the project name is <tt class="docutils literal"><span class="pre">my-project</span></tt>.
@@ -468,8 +504,8 @@ repository: click on <em>Sharing</em> and then on <em>Administer</em>.
 The Google account names of people you allow write access can be
 listed under each other in the <em>Project committers</em> field.</p>
 </div>
-<div class="section" id="wiki-pages">
-<h2>Wiki Pages<a class="headerlink" href="#wiki-pages" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="wiki-pages-1">
+<h2>Wiki pages  (1)<a class="headerlink" href="#wiki-pages-1" title="Permalink to this headline">¶</a></h2>
 <p>Wiki pages can intuitively be made directly in the browser. However,
 it is often more convenient to have them locally on your computer.
 Click on <em>Source</em> and choose <em>wiki</em> on the <em>Repository</em> pull down menu.
@@ -494,11 +530,13 @@ matter of pasting the contents of <tt class="docutils literal"><span class="pre"
 web page. Make sure to cut and paste the text from, e.g., <tt class="docutils literal"><span class="pre">id_dsa.pub</span></tt>
 without any extra whitespaces or other text. How to generate these
 files is briefly described in the introduction to Bitbucket above.</p>
-<div class="section" id="id2">
-<h2>Create a New Project<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-a-new-project-3">
+<h2>Create a new project  (3)<a class="headerlink" href="#create-a-new-project-3" title="Permalink to this headline">¶</a></h2>
 <p>Click on <em>New repository</em> on the main page and fill out a project
 name, here <em>My Project</em>, click the check button <em>Initialize this
-repository with a README</em>, and click on <em>Create repository</em>.</p>
+repository with a README</em>, and click on <em>Create repository</em>.
+Unless you pay, all repos are public, but students and teachers
+can request <a class="reference external" href="https://github.com/edu">free, private repos</a>.</p>
 <p>The next step is to clone the project on your personal computer. Click
 on the <em>Git Read-Only</em> button to see the correct address of the project,
 paste this address into a terminal window, after <tt class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span></tt>:</p>
@@ -542,8 +580,8 @@ on email notifications to those participating and/or watching.</p>
 There you also find information on how to create wiki pages and
 web pages associated with the project.</p>
 </div>
-<div class="section" id="id3">
-<h2>Wiki Pages<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="wiki-pages-2">
+<h2>Wiki pages  (2)<a class="headerlink" href="#wiki-pages-2" title="Permalink to this headline">¶</a></h2>
 <p>With every GitHub project there is an option to create wiki pages.
 Click on the <em>Wiki</em> button right under the line with the project
 name of the main page of the project. Click on <em>New Page</em> to create
@@ -582,7 +620,7 @@ generate the wiki in reStructuredText format.</p>
 <tt class="docutils literal"><span class="pre">git</span> <span class="pre">push</span></tt> works.</p>
 </div>
 <div class="section" id="project-web-pages">
-<h2>Project Web Pages<a class="headerlink" href="#project-web-pages" title="Permalink to this headline">¶</a></h2>
+<h2>Project web pages<a class="headerlink" href="#project-web-pages" title="Permalink to this headline">¶</a></h2>
 <p>GitHub can also host a set of web pages for your project where you can
 store various types of documentation. Here is a simple
 recipe for creating a set of project web pages.</p>
@@ -662,7 +700,7 @@ some more isolated place, say <tt class="docutils literal"><span class="pre">doc
 </pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">index.html</span></tt> then has the URL</p>
-<div class="highlight-py"><div class="highlight"><pre><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">My</span><span class="o">-</span><span class="n">Project</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">web</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+<div class="highlight-text"><div class="highlight"><pre>http://username.github.com/My-Project/doc/web/git/index.html
 </pre></div>
 </div>
 <p>Linking to source code files or other files in the project is easy:
@@ -674,18 +712,19 @@ the Unix command <tt class="docutils literal"><span class="pre">curl</span> <spa
 is quite different from the source file&#8217;s path in the repository.
 Typically, a source file <tt class="docutils literal"><span class="pre">mydir/myfile.py</span></tt> in project <tt class="docutils literal"><span class="pre">prj</span></tt> is reached
 through</p>
-<div class="highlight-py"><pre>https://github.com/username/prj/blob/master/mydir/myfile.py?raw=true</pre>
+<div class="highlight-text"><div class="highlight"><pre>https://github.com/username/prj/blob/master/mydir/myfile.py?raw=true
+</pre></div>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>User Web Pages<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="user-web-pages-2">
+<h2>User web pages  (2)<a class="headerlink" href="#user-web-pages-2" title="Permalink to this headline">¶</a></h2>
 <p>GitHub also allows you to create user pages and organization pages not
 tied to any specific project.
 Your personal site has address
 <tt class="docutils literal"><span class="pre">http://username.github.com</span></tt>.
 Go to your home page on <tt class="docutils literal"><span class="pre">github.com</span></tt> and click <em>New repository</em>,
 and give it the project name <tt class="docutils literal"><span class="pre">username.github.com</span></tt>.
-Then following the instructions that come up:</p>
+Then follow the instructions that come up:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">mkdir username.github.com</span>
 <span class="go">cd username.github.com</span>
 <span class="go">git init</span>
@@ -710,7 +749,7 @@ a terminal window, which is the emphasized interface described here.
 Windows users will prefer to use TortoiseHG. This graphical interface is
 mostly self-explanatory, but a brief description appears below.</p>
 <div class="section" id="basic-use-of-tortoisehg-on-a-windows-machine">
-<h2>Basic use of TortoiseHG on a Windows Machine<a class="headerlink" href="#basic-use-of-tortoisehg-on-a-windows-machine" title="Permalink to this headline">¶</a></h2>
+<h2>Basic use of TortoiseHG on a Windows machine<a class="headerlink" href="#basic-use-of-tortoisehg-on-a-windows-machine" title="Permalink to this headline">¶</a></h2>
 <p>When you have an account on Bitbucket and have downloaded and installed
 TortoiseHG, you are ready to work with Mercurial repositories the
 following way.</p>
@@ -740,18 +779,18 @@ make a solution and a project, create the desired files, then one can
 just right-click with the mouse on the solution, the project, or the
 file one wants to commit and choose <em>Commit</em>.</p>
 </div>
-<div class="section" id="basic-commands-of-mercurial">
-<h2>Basic Commands of Mercurial<a class="headerlink" href="#basic-commands-of-mercurial" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="cloning">
-<h3>Cloning<a class="headerlink" href="#cloning" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="basic-mercurial-commands">
+<h2>Basic Mercurial commands<a class="headerlink" href="#basic-mercurial-commands" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cloning-1">
+<h3>Cloning  (1)<a class="headerlink" href="#cloning-1" title="Permalink to this headline">¶</a></h3>
 <p>You get started with your project on a new machine or another user
 can get started with the project by the command</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">hg clone ssh://hg@bitbucket.org/username/my-project</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="the-pull-change-push-cycle">
-<h3>The Pull-Change-Push Cycle<a class="headerlink" href="#the-pull-change-push-cycle" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="the-pull-change-push-cycle-1">
+<h3>The pull-change-push cycle  (1)<a class="headerlink" href="#the-pull-change-push-cycle-1" title="Permalink to this headline">¶</a></h3>
 <p>Your typical working style with the <tt class="docutils literal"><span class="pre">my-project</span></tt> project goes as follows.
 First you go to the desired folder where this project is stored on
 your local computer and make sure
@@ -770,7 +809,7 @@ connection.</p>
 <span class="go">hg rename oldfilename ../somedir/newfilename</span>
 </pre></div>
 </div>
-<p>The removal of a file is physically performed when you to a
+<p>The removal of a file is physically performed when you do a
 <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">commit</span></tt>. The file is never removed from the repository, only
 hidden, so it is easy to get the file and its entire history
 back at a later stage.</p>
@@ -780,9 +819,9 @@ repository at <tt class="docutils literal"><span class="pre">bitbucket.org</span
 <span class="go">hg push</span>
 </pre></div>
 </div>
-<p>Note that you cannot redo the description (i.e., be careful with
-recalling and executing old commit commands without updating the
-description).</p>
+<p>Note that you cannot easily redo the description so be careful with
+the wording. You can run <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">diff</span></tt> to get a listing of all
+the changes you have made since the last commit or pull command.</p>
 <p>The command</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">hg stat</span>
 </pre></div>
@@ -794,8 +833,8 @@ very easy to forget adding new files so <tt class="docutils literal"><span class
 to ensure that all files you want to track have been added to the
 repository.</p>
 </div>
-<div class="section" id="viewing-the-history-of-files">
-<h3>Viewing the History of Files<a class="headerlink" href="#viewing-the-history-of-files" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="viewing-the-history-of-files-1">
+<h3>Viewing the history of files  (1)<a class="headerlink" href="#viewing-the-history-of-files-1" title="Permalink to this headline">¶</a></h3>
 <p>The power of <tt class="docutils literal"><span class="pre">hg</span></tt> and your file repository <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt> is that
 you can work with the project files on several computers and others can
 also contribute to this project. The history of each file is recorded
@@ -829,8 +868,8 @@ of which files that were changed in each revision.</p>
 local repository, just run <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">log</span> <span class="pre">-p</span> <span class="pre">--stat</span></tt>: the last changes appear
 in the beginning of the output.</p>
 </div>
-<div class="section" id="retrieving-old-files">
-<h3>Retrieving Old Files<a class="headerlink" href="#retrieving-old-files" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="retrieving-old-files-1">
+<h3>Retrieving old files  (1)<a class="headerlink" href="#retrieving-old-files-1" title="Permalink to this headline">¶</a></h3>
 <p>To restore an old version of a file with name <tt class="docutils literal"><span class="pre">filename</span></tt>,
 check the file history with
 <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">log</span> <span class="pre">-p</span> <span class="pre">filename</span></tt> and find the revision number corresponding to the
@@ -851,7 +890,7 @@ Sometimes it is better to store the old version in a separate file:</p>
 </div>
 </div>
 <div class="section" id="comments-on-two-level-repositories">
-<h3>Comments on Two-Level Repositories<a class="headerlink" href="#comments-on-two-level-repositories" title="Permalink to this headline">¶</a></h3>
+<h3>Comments on two-level repositories<a class="headerlink" href="#comments-on-two-level-repositories" title="Permalink to this headline">¶</a></h3>
 <p>Mercurial has a two-level type of repository: there is global
 repository for all users of the <tt class="docutils literal"><span class="pre">my-project</span></tt> tree at <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt>,
 but each user also has a local repository (automatically made). To
@@ -875,7 +914,7 @@ merging of files.</p>
 </div>
 </div>
 <div class="section" id="merging-files-with-mercurial">
-<span id="bitgit-hgmerge"></span><h2>Merging Files with Mercurial<a class="headerlink" href="#merging-files-with-mercurial" title="Permalink to this headline">¶</a></h2>
+<span id="bitgit-hg-merge"></span><h2>Merging files with Mercurial<a class="headerlink" href="#merging-files-with-mercurial" title="Permalink to this headline">¶</a></h2>
 <p id="index-8">It might have happened that others and you have edited the same files
 at the same time. How should the edits then be combined?  Often the
 <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">update</span></tt> command is clever enough to merge the changes made by
@@ -1017,7 +1056,7 @@ version. Save and quit <tt class="docutils literal"><span class="pre">meld</span
 can now do <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">push</span></tt> successfully to update the global repository.</p>
 </div>
 <div class="section" id="more-documentation-on-mercurial">
-<h2>More Documentation on Mercurial<a class="headerlink" href="#more-documentation-on-mercurial" title="Permalink to this headline">¶</a></h2>
+<h2>More documentation on Mercurial<a class="headerlink" href="#more-documentation-on-mercurial" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference external" href="http://mercurial.selenic.com/wiki/QuickStart">Mercurial Quick Start</a> (for the impatient)</li>
@@ -1037,10 +1076,10 @@ There are many <a class="reference external" href="http://git-scm.com/downloads/
 this respect. There are also GUIs for Mac users.
 Most GUIs are easy to use once the basic concepts of Git and version
 control are understood.</p>
-<div class="section" id="basic-commands-of-git">
-<h2>Basic Commands of Git<a class="headerlink" href="#basic-commands-of-git" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id5">
-<h3>Cloning<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="basic-git-commands">
+<h2>Basic Git commands<a class="headerlink" href="#basic-git-commands" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cloning-2">
+<h3>Cloning  (2)<a class="headerlink" href="#cloning-2" title="Permalink to this headline">¶</a></h3>
 <p>You get started with your project on a new machine, or another user
 can get started with the project,
 by running</p>
@@ -1052,8 +1091,8 @@ by running</p>
 <p>Recall to replace <tt class="docutils literal"><span class="pre">username</span></tt> by your real user name and <tt class="docutils literal"><span class="pre">My-Project</span></tt> by the
 actual project name.</p>
 </div>
-<div class="section" id="id6">
-<h3>The Pull-Change-Push Cycle<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="the-pull-change-push-cycle-2">
+<h3>The pull-change-push cycle  (2)<a class="headerlink" href="#the-pull-change-push-cycle-2" title="Permalink to this headline">¶</a></h3>
 <p>The typical work flow with the &#8220;My Project&#8221; project starts with
 updating the local repository by going to the <tt class="docutils literal"><span class="pre">My-Project</span></tt> folder
 and writing</p>
@@ -1072,8 +1111,11 @@ and writing</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git commit -am &#39;Description of changes.&#39;</span>
 </pre></div>
 </div>
-<p>The description is tagged to this commit and cannot be changed so think
-a bit before executing this command.</p>
+<p>If typos or errors enter the message, the <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">--amend</span></tt> command
+can be used to reformulate the message.  Running <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> makes it
+easier to formulate descriptive commit messages since this command
+gives a listing of all the changes you have made to the files since
+the last commit or pull command.</p>
 <p>You may perform many commits, to keep track of small changes, before
 you push your changes to the global repository:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git push origin master</span>
@@ -1087,8 +1129,8 @@ you push your changes to the global repository:</p>
 <tt class="docutils literal"><span class="pre">A</span></tt> for added, <tt class="docutils literal"><span class="pre">M</span></tt> for modified, <tt class="docutils literal"><span class="pre">R</span></tt> for renamed,
 and <tt class="docutils literal"><span class="pre">??</span></tt> for not being registered in the repo.</p>
 </div>
-<div class="section" id="id7">
-<h3>Viewing the History of Files<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="viewing-the-history-of-files-2">
+<h3>Viewing the history of files  (2)<a class="headerlink" href="#viewing-the-history-of-files-2" title="Permalink to this headline">¶</a></h3>
 <p>A nice graphical tool allows you to view all changes, or just
 the latest ones:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">gitk --all</span>
@@ -1126,8 +1168,8 @@ say the text <tt class="docutils literal"><span class="pre">def</span> <span cla
 they occurred and who introduced them. One can also search for regular
 expressions instead of exact text: just replace <tt class="docutils literal"><span class="pre">-S</span></tt> by <tt class="docutils literal"><span class="pre">-G</span></tt>.</p>
 </div>
-<div class="section" id="id8">
-<h3>Retrieving Old Files<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="retrieving-old-files-2">
+<h3>Retrieving old files  (2)<a class="headerlink" href="#retrieving-old-files-2" title="Permalink to this headline">¶</a></h3>
 <p>Occasionally you need to go back to an earlier version of a file,
 say its name is <tt class="docutils literal"><span class="pre">myfile</span></tt>. Start with viewing the history:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git log myfile</span>
@@ -1162,7 +1204,7 @@ git folder:</p>
 </div>
 </div>
 <div class="section" id="merging-files-with-git">
-<span id="bitgit-gitmerge"></span><h2>Merging Files with Git<a class="headerlink" href="#merging-files-with-git" title="Permalink to this headline">¶</a></h2>
+<span id="bitgit-git-merge"></span><h2>Merging files with Git<a class="headerlink" href="#merging-files-with-git" title="Permalink to this headline">¶</a></h2>
 <p id="index-10">The <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> command fetches new files from the repository and
 tries to perform an automatic merge if there are conflicts between
 the local files and the files in the repository.
@@ -1318,13 +1360,86 @@ to merge the two versions, but failed. Merge markers are left in
 so that the file becomes correct.
 Then run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-am</span> <span class="pre">merge</span></tt> to finalize the merge.</p>
 </div>
+<div class="section" id="git-working-style-with-branching-and-stashing">
+<span id="bitgit-git-branch-stash"></span><h2>Git working style with branching and stashing<a class="headerlink" href="#git-working-style-with-branching-and-stashing" title="Permalink to this headline">¶</a></h2>
+<p>Branching and stashing are nice feature of Git that allow you to try out
+new things without affecting the stable version of your files.
+Suppose you work on software documentation together with others.
+As you add material to the documentation you may use <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></tt> to
+record the changes in your local repository. However, suppose some
+reader emails you about a set of typos. You want to correct these and
+push the corrections. The problem is that in your version of the documentation,
+you also have some unfinished new writings. You do not want to push these
+before they are finished and have undergone proof reading. The correction
+of the typos will not be available to your coworkers until you push
+your new extended version of the documentation.</p>
+<p>The solution is to create a new branch where you update the documentation
+and switch back to the master branch to fix the typos:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git branch newstuff      # create and switch to new branch</span>
+<span class="gp">#</span> write more material
+<span class="go">git commit -am &#39;Started writing about ...&#39;</span>
+<span class="go">git checkout master      # swith back to master</span>
+<span class="gp">#</span> correct typos
+<span class="go">git checkout newstuff    # switch to other branch</span>
+<span class="gp">#</span> <span class="k">continue </span>writing
+<span class="go">git commit -am &#39;Written subsection about ...&#39;  # record changes</span>
+</pre></div>
+</div>
+<p>At some point you feel ready to incorporate your new writings in the
+master branch. This is done via a merge:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git checkout master</span>
+<span class="go">git merge newstuff</span>
+</pre></div>
+</div>
+<p>You no longer need the <tt class="docutils literal"><span class="pre">newstuff</span></tt> branch and can delete it:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git branch -d newstuff</span>
+</pre></div>
+</div>
+<p>A commit is usually performed when some tasks are finished such that you
+have a new version of the files that anyone can later roll back to.
+It is not possible to switch branches
+unless you have committed the files in the current branch. If your work
+is in a mess, and you want to change to another branch, you may not want to
+perform a commit. Then the <a class="reference external" href="http://git-scm.com/book/en/Git-Tools-Stashing">git stash</a> command is handy. It records the
+state of your files and sets you back to the state of the last commit
+in the current branch. With <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">apply</span></tt> you get the files in this
+branch back to the state when you did the last <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span></tt>.</p>
+<p>Stashing is ideal if you want to perform incremental, experimental
+work, especially with programming.  Suppose an experimental task
+consists of subtasks A, B, C, and D.  You create a new branch and
+start working on A. Halfway into that work, you are interrupted and
+need to do something more safe on the master branch.  You perform</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git stash</span>
+<span class="go">git checkout master</span>
+<span class="gp">#</span> fix a thing in master
+<span class="go">git commit -am &#39;Fixed ...&#39;</span>
+<span class="go">git checkout newstuff</span>
+<span class="go">git apply stash</span>
+<span class="gp">#</span> finalize subtask A
+<span class="go">git stash  # record files after subtask A and set back to last commit</span>
+<span class="go">git stash apply  # set back to files before last git stash</span>
+</pre></div>
+</div>
+<p>You can now continue with tasks B, C, and D and do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span></tt>
+whenever you want a piece of work to be saved. Maybe it turns out that
+the experimental task was not a good idea. With <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span></tt> you are
+back to the state where you were prior to working on A. On the other
+hand, if A and B were successful, but not C and D, you may roll back
+to the state after B was finished, if you did a <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span></tt> at that
+stage (see the <a class="reference external" href="http://git-scm.com/book/en/Git-Tools-Stashing">chapter about stashing</a> in the <a class="reference external" href="http://git-scm.com/book">Pro Git</a> for details). If A, B, C, and D were all
+successful, you just perform a commit to get a new &#8220;official&#8221; version
+of your files. Later, you can switch back to the master branch and
+merge with the new, experimental branch.</p>
+</div>
 <div class="section" id="more-documentation-on-git">
-<h2>More Documentation on Git<a class="headerlink" href="#more-documentation-on-git" title="Permalink to this headline">¶</a></h2>
+<h2>More documentation on Git<a class="headerlink" href="#more-documentation-on-git" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
+<li><a class="reference external" href="http://try.github.com/">Web course on Git</a></li>
 <li><a class="reference external" href="http://schacon.github.com/git/everyday.html">Everyday GIT With 20 Commands Or So</a></li>
 <li><a class="reference external" href="http://sixrevisions.com/resources/git-tutorials-beginners/">Git top 10 tutorials</a></li>
-<li><a class="reference external" href="http://book.git-scm.com/">Git Community Book</a></li>
+<li><a class="reference external" href="http://www.vogella.com/articles/Git/article.html">Lars Vogel&#8217;s Git Tutorial</a></li>
+<li><a class="reference external" href="http://book.git-scm.com/">Git Community Book</a> (<em>explains</em> Git very well)</li>
 <li><a class="reference external" href="http://hoth.entp.com/output/git_for_designers.html">Git for Designers</a> (aimed a people with no previous knowledge of version control systems)</li>
 <li><a class="reference external" href="http://www-cs-students.stanford.edu/~blynn/gitmagic/ch02.html">Git Magic: Basic Tricks</a></li>
 <li>The official <a class="reference external" href="http://schacon.github.com/git/gittutorial.html">Git Tutorial</a></li>
@@ -1339,7 +1454,7 @@ Then run <tt class="docutils literal"><span class="pre">git</span> <span class="
 </div></blockquote>
 </div>
 <div class="section" id="diff-of-the-two-most-recent-versions-of-a-file">
-<h2>Diff of The Two Most Recent Versions of a File<a class="headerlink" href="#diff-of-the-two-most-recent-versions-of-a-file" title="Permalink to this headline">¶</a></h2>
+<h2>Diff of the two most recent versions of a file<a class="headerlink" href="#diff-of-the-two-most-recent-versions-of-a-file" title="Permalink to this headline">¶</a></h2>
 <p>Both Mercurial and Git have &#8220;diff&#8221; commands for viewing differences
 in files. However, it sometimes takes quite some manual steps to
 answer the following question: I have just pulled new changes and
@@ -1367,53 +1482,54 @@ file</li>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Quick Intro to Version Control Systems and Project Hosting Services</a></li>
-<li><a class="reference internal" href="#installing-version-control-systems">Installing Version Control Systems</a><ul>
+<li><a class="reference internal" href="#installing-version-control-systems">Installing version control systems</a><ul>
 <li><a class="reference internal" href="#installing-mercurial">Installing Mercurial</a></li>
 <li><a class="reference internal" href="#installing-git">Installing Git</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#bitbucket">Bitbucket</a><ul>
-<li><a class="reference internal" href="#create-a-new-project">Create a New Project</a></li>
-<li><a class="reference internal" href="#user-web-pages">User Web Pages</a></li>
+<li><a class="reference internal" href="#create-a-new-project-1">Create a new project  (1)</a></li>
+<li><a class="reference internal" href="#user-web-pages-1">User web pages  (1)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#googlecode">Googlecode</a><ul>
-<li><a class="reference internal" href="#id1">Create a New Project</a></li>
-<li><a class="reference internal" href="#wiki-pages">Wiki Pages</a></li>
+<li><a class="reference internal" href="#create-a-new-project-2">Create a new project  (2)</a></li>
+<li><a class="reference internal" href="#wiki-pages-1">Wiki pages  (1)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#github">GitHub</a><ul>
-<li><a class="reference internal" href="#id2">Create a New Project</a></li>
-<li><a class="reference internal" href="#id3">Wiki Pages</a></li>
-<li><a class="reference internal" href="#project-web-pages">Project Web Pages</a></li>
-<li><a class="reference internal" href="#id4">User Web Pages</a></li>
+<li><a class="reference internal" href="#create-a-new-project-3">Create a new project  (3)</a></li>
+<li><a class="reference internal" href="#wiki-pages-2">Wiki pages  (2)</a></li>
+<li><a class="reference internal" href="#project-web-pages">Project web pages</a></li>
+<li><a class="reference internal" href="#user-web-pages-2">User web pages  (2)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#using-mercurial">Using Mercurial</a><ul>
-<li><a class="reference internal" href="#basic-use-of-tortoisehg-on-a-windows-machine">Basic use of TortoiseHG on a Windows Machine</a></li>
-<li><a class="reference internal" href="#basic-commands-of-mercurial">Basic Commands of Mercurial</a><ul>
-<li><a class="reference internal" href="#cloning">Cloning</a></li>
-<li><a class="reference internal" href="#the-pull-change-push-cycle">The Pull-Change-Push Cycle</a></li>
-<li><a class="reference internal" href="#viewing-the-history-of-files">Viewing the History of Files</a></li>
-<li><a class="reference internal" href="#retrieving-old-files">Retrieving Old Files</a></li>
-<li><a class="reference internal" href="#comments-on-two-level-repositories">Comments on Two-Level Repositories</a></li>
+<li><a class="reference internal" href="#basic-use-of-tortoisehg-on-a-windows-machine">Basic use of TortoiseHG on a Windows machine</a></li>
+<li><a class="reference internal" href="#basic-mercurial-commands">Basic Mercurial commands</a><ul>
+<li><a class="reference internal" href="#cloning-1">Cloning  (1)</a></li>
+<li><a class="reference internal" href="#the-pull-change-push-cycle-1">The pull-change-push cycle  (1)</a></li>
+<li><a class="reference internal" href="#viewing-the-history-of-files-1">Viewing the history of files  (1)</a></li>
+<li><a class="reference internal" href="#retrieving-old-files-1">Retrieving old files  (1)</a></li>
+<li><a class="reference internal" href="#comments-on-two-level-repositories">Comments on two-level repositories</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#merging-files-with-mercurial">Merging Files with Mercurial</a></li>
-<li><a class="reference internal" href="#more-documentation-on-mercurial">More Documentation on Mercurial</a></li>
+<li><a class="reference internal" href="#merging-files-with-mercurial">Merging files with Mercurial</a></li>
+<li><a class="reference internal" href="#more-documentation-on-mercurial">More documentation on Mercurial</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#using-git">Using Git</a><ul>
-<li><a class="reference internal" href="#basic-commands-of-git">Basic Commands of Git</a><ul>
-<li><a class="reference internal" href="#id5">Cloning</a></li>
-<li><a class="reference internal" href="#id6">The Pull-Change-Push Cycle</a></li>
-<li><a class="reference internal" href="#id7">Viewing the History of Files</a></li>
-<li><a class="reference internal" href="#id8">Retrieving Old Files</a></li>
+<li><a class="reference internal" href="#basic-git-commands">Basic Git commands</a><ul>
+<li><a class="reference internal" href="#cloning-2">Cloning  (2)</a></li>
+<li><a class="reference internal" href="#the-pull-change-push-cycle-2">The pull-change-push cycle  (2)</a></li>
+<li><a class="reference internal" href="#viewing-the-history-of-files-2">Viewing the history of files  (2)</a></li>
+<li><a class="reference internal" href="#retrieving-old-files-2">Retrieving old files  (2)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#merging-files-with-git">Merging Files with Git</a></li>
-<li><a class="reference internal" href="#more-documentation-on-git">More Documentation on Git</a></li>
-<li><a class="reference internal" href="#diff-of-the-two-most-recent-versions-of-a-file">Diff of The Two Most Recent Versions of a File</a></li>
+<li><a class="reference internal" href="#merging-files-with-git">Merging files with Git</a></li>
+<li><a class="reference internal" href="#git-working-style-with-branching-and-stashing">Git working style with branching and stashing</a></li>
+<li><a class="reference internal" href="#more-documentation-on-git">More documentation on Git</a></li>
+<li><a class="reference internal" href="#diff-of-the-two-most-recent-versions-of-a-file">Diff of the two most recent versions of a file</a></li>
 </ul>
 </li>
 </ul>
@@ -1451,8 +1567,8 @@ file</li>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2012, H. P. Langtangen.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        &copy; Copyright 2013, H. P. Langtangen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>
