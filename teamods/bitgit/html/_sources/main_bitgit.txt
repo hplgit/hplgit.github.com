@@ -1774,6 +1774,13 @@ the last commit out in a new branch by
         git stash branch newstuff
 
 
+The real power of branching and stashing becomes clear when you push and
+hence share your clearly separated, unfinished work with other users
+or other computers.
+
+*Remark.* A recent `extension module <http://mercurial.selenic.com/wiki/ShelveExtension>`_ for Mercurial allows stashing for that version control system as well:
+``hg shelve --all`` is similar for ``git stash``, and ``hg unshelve``
+is similar to ``git stash apply``.
 
 
 
