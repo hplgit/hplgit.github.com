@@ -1362,31 +1362,34 @@ Then run <tt class="docutils literal"><span class="pre">git</span> <span class="
 </div>
 <div class="section" id="git-working-style-with-branching-and-stashing">
 <span id="bitgit-git-branch-stash"></span><h2>Git working style with branching and stashing<a class="headerlink" href="#git-working-style-with-branching-and-stashing" title="Permalink to this headline">¶</a></h2>
-<p>Branching and stashing are nice feature of Git that allow you to try out
-new things without affecting the stable version of your files.
-Suppose you work on software documentation together with others.
-As you add material to the documentation you may use <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></tt> to
-record the changes in your local repository. However, suppose some
-reader emails you about a set of typos. You want to correct these and
-push the corrections. The problem is that in your version of the documentation,
-you also have some unfinished new writings. You do not want to push these
-before they are finished and have undergone proof reading. The correction
-of the typos will not be available to your coworkers until you push
-your new extended version of the documentation.</p>
-<p>The solution is to create a new branch where you update the documentation
-and switch back to the master branch to fix the typos:</p>
+<p>Branching and stashing are nice features of Git that allow you to try
+out new things without affecting the stable version of your files.
+Usually, you extend and modify files quite often and perform a <tt class="docutils literal"><span class="pre">git</span>
+<span class="pre">commit</span></tt> every time you want to record the changes in your local
+repository. Imagine that you want to correct a set of errors in some
+files and push these corrections immediately.  The problem is that
+such a push will also include the latest, unfinished files that you
+have committed.</p>
+<p>A better organization of your work would
+be to keep the latest, ongoing
+developments separate from the more official and stable version
+of the files. This is easily achieved by creating a separate branch
+where new developments takes place:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git branch newstuff      # create and switch to new branch</span>
-<span class="gp">#</span> write more material
-<span class="go">git commit -am &#39;Started writing about ...&#39;</span>
+<span class="gp">#</span> extend and modify files
+<span class="go">git commit -am &#39;Modified ... and added a file on ...&#39;</span>
+
 <span class="go">git checkout master      # swith back to master</span>
-<span class="gp">#</span> correct typos
+<span class="gp">#</span> correct errors
+<span class="go">git push origin master</span>
+
 <span class="go">git checkout newstuff    # switch to other branch</span>
-<span class="gp">#</span> <span class="k">continue </span>writing
-<span class="go">git commit -am &#39;Written subsection about ...&#39;  # record changes</span>
+<span class="gp">#</span> <span class="k">continue </span>development work
+<span class="go">git commit -am &#39;More modifications of ...&#39;  # record changes</span>
 </pre></div>
 </div>
-<p>At some point you feel ready to incorporate your new writings in the
-master branch. This is done via a merge:</p>
+<p>At some point, your new developments are mature enough to be incorporated
+in the master branch. This is done via a merge:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git checkout master</span>
 <span class="go">git merge newstuff</span>
 </pre></div>
@@ -1395,20 +1398,22 @@ master branch. This is done via a merge:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git branch -d newstuff</span>
 </pre></div>
 </div>
-<p>A commit is usually performed when some tasks are finished such that you
-have a new version of the files that anyone can later roll back to.
-It is not possible to switch branches
-unless you have committed the files in the current branch. If your work
-is in a mess, and you want to change to another branch, you may not want to
-perform a commit. Then the <a class="reference external" href="http://git-scm.com/book/en/Git-Tools-Stashing">git stash</a> command is handy. It records the
-state of your files and sets you back to the state of the last commit
-in the current branch. With <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">apply</span></tt> you get the files in this
-branch back to the state when you did the last <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span></tt>.</p>
+<p>It is not possible to switch branches unless you have committed the
+files in the current branch. If your work on some files is in a mess,
+and you want to change to another branch or commit other files, a
+&#8220;global&#8221; commit might be immature.  Then the <a class="reference external" href="http://git-scm.com/book/en/Git-Tools-Stashing">git stash</a> command is handy. It
+records the state of your files and sets you back to the state of the
+last commit in the current branch. With <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">apply</span></tt> you get the
+files in this branch back to the state when you did the last <tt class="docutils literal"><span class="pre">git</span>
+<span class="pre">stash</span></tt>.</p>
 <p>Stashing is ideal if you want to perform incremental, experimental
 work, especially with programming.  Suppose an experimental task
 consists of subtasks A, B, C, and D.  You create a new branch and
 start working on A. Halfway into that work, you are interrupted and
-need to do something more safe on the master branch.  You perform</p>
+need to do correct some other files. Instead of committing messy
+files, you stash the changes, switch to the master branch and
+address the other files. Later, you can go back to the stashed files.
+Here is a typical session:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git stash</span>
 <span class="go">git checkout master</span>
 <span class="gp">#</span> fix a thing in master
@@ -1428,8 +1433,17 @@ hand, if A and B were successful, but not C and D, you may roll back
 to the state after B was finished, if you did a <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span></tt> at that
 stage (see the <a class="reference external" href="http://git-scm.com/book/en/Git-Tools-Stashing">chapter about stashing</a> in the <a class="reference external" href="http://git-scm.com/book">Pro Git</a> for details). If A, B, C, and D were all
 successful, you just perform a commit to get a new &#8220;official&#8221; version
-of your files. Later, you can switch back to the master branch and
+of your files. At some later stage,
+you can switch back to the master branch and
 merge with the new, experimental branch.</p>
+<p>Sometimes you have not planned your new work well enough to start a new
+branch, but suddenly you just realize that you are the process of bringing some
+files into a mess. It is easy to take all the new developments since
+the last commit out in a new branch by</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git stash</span>
+<span class="go">git stash branch newstuff</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="more-documentation-on-git">
 <h2>More documentation on Git<a class="headerlink" href="#more-documentation-on-git" title="Permalink to this headline">¶</a></h2>
