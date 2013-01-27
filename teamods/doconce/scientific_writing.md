@@ -53,7 +53,6 @@ Scientific writing needs to address many new media
 ==================================================
 
 <!-- !bslidecell 00 -->
-<!-- !bpop -->
  * Old days (1985-2005): BW for printing
 
  * Now:
@@ -79,7 +78,6 @@ Scientific writing needs to address many new media
 
  * We need to write for multiple formats!
 
-<!-- !epop -->
 <!-- !eslidecell -->
 
 <!-- !bslidecell 01 -->
@@ -894,7 +892,7 @@ Doconce: example on slide code
    bullet points are not recommended in general, we need
    it here for demonstration purposes
 
-FIGURE: [fig/teacher1, width=150]
+FIGURE: [fig/teacher1, width=100]
 
 Key equation:
 
@@ -919,7 +917,7 @@ Headline
 
  * Key point 2
 
-FIGURE: [fig/teacher1, width=150, frac=0.4]
+FIGURE: [fig/teacher1, width=100, frac=0.4]
 
 Key equation:
 
