@@ -492,8 +492,13 @@ var Reveal = (function(){
 				var node = nodes[i];
 
 				if( node.textContent && !node.querySelector( 'img' ) && ( !node.className || !node.classList.contains( node, 'roll' ) ) ) {
+                    var span = document.createElement('span');
+                    span.setAttribute('data-title', node.text);
+                    span.innerHTML = node.innerHTML;
+
 					node.classList.add( 'roll' );
-					node.innerHTML = '<span data-title="'+ node.text +'">' + node.innerHTML + '</span>';
+                    node.innerHTML = '';
+                    node.appendChild(span);
 				}
 			}
 		}
@@ -958,7 +963,8 @@ var Reveal = (function(){
 			var slideAutoSlide = slides[index].getAttribute( 'data-autoslide' );
 			if( slideAutoSlide ) {
 				autoSlide = parseInt( slideAutoSlide, 10 );
-			} else {
+			} 
+			else {
 				autoSlide = config.autoSlide;
 			}
 
@@ -1165,7 +1171,7 @@ var Reveal = (function(){
 
 			// If this is a vertical slide, grab the vertical index
 			if( isVertical ) {
-				v = Math.max( toArray( slide.parentNode.children ).indexOf( slide ), 0 );
+				v = Math.max( toArray( slide.parentNode.querySelectorAll( 'section' ) ).indexOf( slide ), 0 );
 			}
 		}
 
