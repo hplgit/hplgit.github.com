@@ -7,7 +7,7 @@ Scope
 =====
 
 <!-- !bpop -->
-  * *scientific writing* = lecture notes, slides, reports, thesis, books,  ...
+  * *Scientific writing* = lecture notes, slides, reports, thesis, books,  ...
 
   * (Journal papers typeset by journals are out of scope)
 
@@ -63,7 +63,7 @@ Scientific writing needs to address many new media
 
   3. Colorful PDFs with hyperlinks
 
-  4. HTML web pages (plain or fancy design)
+  4. Designed web pages
 
   5. Wiki
 
@@ -73,6 +73,8 @@ Scientific writing needs to address many new media
 
   8. Next new fancy format
 
+
+ * PC, iPad, phone, Kindle, ...
 
  * LaTeX does not support all of this
 
