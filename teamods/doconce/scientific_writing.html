@@ -70,7 +70,7 @@ MathJax.Hub.Config({
 
 <section>
 <!-- ------------------- main content ------------------------>
-
+    
 <title>On the Technicalities of Scientific Writing Anno 2012: The Doconce Way</title>
 
 <center><h1>On the Technicalities of Scientific Writing Anno 2012: The Doconce Way</h1></center>  <! -- document title -->
@@ -89,7 +89,7 @@ MathJax.Hub.Config({
 
 
 <p>
-<center><h4>Dec 13, 2012</h4></center> <!-- date -->
+<center><h4>Jan 27, 2013</h4></center> <!-- date -->
 <p>
 
 
@@ -102,19 +102,61 @@ MathJax.Hub.Config({
 <p>
 
 
-<p>
-
 <ul>
-  <li class="fragment"> <em>scientific writing</em> = lecture notes, slides, reports, thesis, books,  ...</li>
+  <li class="fragment"> <em>Scientific writing</em> = lecture notes, slides, reports, thesis, books,  ...</li>
   <li class="fragment"> (Journal papers typeset by journals are out of scope)</li>
   <li class="fragment"> Scope: documents with much <em>math</em> and <em>computer code</em></li>
   <li class="fragment"> Key question: What tools should I use for writing?</li>
   <li class="fragment"> Default answer: LaTeX</li>
   <li class="fragment"> Alternative: MS Word w/math</li>
-  <li class="fragment"> Recent popular alternative tools: Sphinx, Markdown, IPython notebook</li>
+  <li class="fragment"> Recent popular alternative tools: Sphinx, Markdown, MediaWiki,
+    IPython notebook</li>
 </ul>
 <p>
 
+
+
+<p>
+
+<table border="0">
+<tr>
+<td> 
+<center><p><img src="fig/LaTeX_logo.jpg" align="bottom" width=120></p></center>
+ </td>
+<td> 
+<center><p><img src="fig/MS_Word_logo.jpg" align="bottom" width=80></p></center>
+ </td>
+<td> 
+<center><p><img src="fig/sphinx_logo.png" align="bottom" width=200></p></center>
+ </td>
+</tr>
+<tr>
+<td> 
+<center><p><img src="fig/markdown_logo.jpg" align="bottom" width=80></p></center>
+ </td>
+<td> 
+<center><p><img src="fig/MediaWiki_logo.jpg" align="bottom" width=80></p></center>
+ </td>
+<td> 
+<center><p><img src="fig/IPython_logo.png" align="bottom" width=300></p></center>
+ </td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+
+<p>
+
+
+<p>
+
+
+<p>
 
 
 <p>
@@ -127,26 +169,41 @@ MathJax.Hub.Config({
 <h2>Scientific writing needs to address many new media  <a name="___sec1"></a></h2>
 <p>
 
+<table border="0">
+<tr>
+<td> 
 
 <ul>
- <li class="fragment"> Old days (1985-2005): mostly black-and-white documents aimed at printing</li>
- <li class="fragment"> Now:</li>
+ <p><li> Old days (1985-2005): BW for printing</li>
+ <p><li> Now:</li>
 
 <ol>
-  <li class="fragment"> Black-and-white books</li>
-  <li class="fragment"> Colorful books and PDFs</li>
-  <li class="fragment"> PDFs with hyperlinks</li>
-  <li class="fragment"> HTML web pages (plain or fancy design)</li>
-  <li class="fragment"> Wikis</li>
-  <li class="fragment"> epub</li>
+  <p><li> BW books</li>
+  <p><li> Colorful books and PDFs</li>
+  <p><li> Colorful PDFs with hyperlinks</li>
+  <p><li> Designed web pages</li>
+  <p><li> Wiki</li>
+  <p><li> Blogg</li>
+  <p><li> epub</li>
+  <p><li> Next new fancy format</li>
 </ol>
 <p>
 
- <li class="fragment"> LaTeX does not support all of this</li>
- <li class="fragment"> We need to write for multiple formats!</li>
+ <p><li> PC, iPad, phone, Kindle, ...</li>
+ <p><li> LaTeX does not support all of this</li>
+ <p><li> We need to write for multiple formats!</li>
 </ul>
 <p>
 
+ </td>
+<td> 
+<center><p><img src="fig/jungle_with_mess.jpg" align="bottom" width=500></p></center>
+ </td>
+</tr>
+</table>
+
+
+<p>
 
 
 <p>
@@ -156,8 +213,6 @@ MathJax.Hub.Config({
 
 <section>
 
-<p>
-
 <h2>Popular tools anno 2012  <a name="___sec2"></a></h2>
 <p>
 
@@ -165,9 +220,8 @@ MathJax.Hub.Config({
 <ul>
  <li class="fragment"> <b>LaTeX</b>: de facto standard in math-instensive sciences</li>
  <li class="fragment"> <b>pdfLaTeX</b>: takes over (figures in png, pdf)</li>
- <li class="fragment"> <b>Word</b>: popular, but limited math support and not so good-looking
-   math fonts</li>
- <li class="fragment"> <b>HTML with MathJax</b>: "full" LaTeX math</li>
+ <li class="fragment"> <b>MS Word</b>: popular, but too clicky math support and ugly fonts</li>
+ <li class="fragment"> <b>HTML with MathJax</b>: "full" LaTeX <em>math</em></li>
  <li class="fragment"> <b>Sphinx</b>:
    limited LaTeX math support, great support for web design</li>
  <li class="fragment"> <b>reStructuredText</b>: no math support, transforms to
@@ -175,11 +229,12 @@ MathJax.Hub.Config({
  <li class="fragment"> <b>Markdown</b>: email-style untagged formatting,
    limited LaTeX math support, transforms to
    lots of formats (LaTeX, HTML, XML, Word, OpenOffice, ...)</li>
- <li class="fragment"> <b>MediaWiki</b>: "full" LaTeX math support (Wikipedia)</li>
+ <li class="fragment"> <b>IPython notebooks</b>: combines Python code, interactivity,
+   visualization, and Markdown code/math</li>
+ <li class="fragment"> <b>MediaWiki</b>: good LaTeX math support (Wikipedia)</li>
  <li class="fragment"> Other <b>wiki</b> formats: no math support, great for collaborative editing</li>
+ <li class="fragment"> <b>Wordpress</b>: supports LaTeX <em>formulas</em></li>
  <li class="fragment"> <b>Epydoc</b>: old tool for Python code documentation</li>
- <li class="fragment"> <b>IPython notebooks</b>: combines Python code, interactivity and Markdown
-   writing</li>
  <li class="fragment"> <b>Plain text for email</b> (no tagging)</li>
 </ul>
 <p>
@@ -204,11 +259,11 @@ MathJax.Hub.Config({
 
 <ul>
     <p><li> <b>LaTeX</b>: <tt>equation*</tt>, <tt>equation</tt>, <tt>align*</tt>, <tt>align</tt> +
-      <tt>eqnarray</tt>, <tt>split</tt>, <tt>alignat</tt>, ...</li>
+      <tt>eqnarray</tt>, <tt>split</tt>, <tt>alignat</tt>, ... (numerous!)</li>
     <p><li> <b>MathJax</b>: <tt>equation*</tt>, <tt>equation</tt>, <tt>align*</tt>, <tt>align</tt></li>
     <p><li> <b>MediaWiki</b>: <tt>equation*</tt>, <tt>equation</tt>, <tt>align*</tt>, <tt>align</tt></li>
     <p><li> <b>Sphinx</b>: <tt>equation*</tt>, <tt>equation</tt>, <tt>align*</tt></li>
-    <p><li> <b>Markdown</b>: <tt>equation*</tt>, <tt>equation</tt></li>
+    <p><li> <b>Markdown</b>: <tt>equation*</tt>, <tt>equation</tt>, <tt>align*</tt> (but no labels)</li>
 </ul>
 <p>
 
@@ -237,7 +292,7 @@ MathJax.Hub.Config({
  <li class="fragment"> Margin notes: LaTeX</li>
  <li class="fragment"> Footnotes: LaTeX, Sphinx, reStructuredText, MediaWiki</li>
  <li class="fragment"> Bibliography: LaTeX, Sphinx, reStructuredText, MediaWiki</li>
- <li class="fragment"> Hyperlinks: all (but does not work on paper!)</li>
+ <li class="fragment"> Hyperlinks: all (but not on paper!)</li>
 </ul>
 <p>
 
@@ -271,8 +326,8 @@ based on HTML and vice versa.
    reference, so avoid math in headlines.</li>
  <li class="fragment"> Algorithms must be written up using basic elements like lists or
    paragraphs with headings.</li>
- <li class="fragment"> Tables cannot be referred to by numbers and have to appear at a
-   fixed position in the text.</li>
+ <li class="fragment"> Tables cannot be referred to by numbers and have to appear at
+   fixed positions in the text.</li>
  <li class="fragment"> Computer code has to appear at fixed positions in the text.</li>
 </ul>
 <p>
@@ -299,8 +354,10 @@ based on HTML and vice versa.
    and <tt>pdfcrop</tt> for PDF).</li>
  <li class="fragment"> Keys for items in the bibliography are made visible by Sphinx so
    "bibitems" a la BibTeX must look sensible and consistent.</li>
- <li class="fragment"> If you need several equations numbered in an <tt>align</tt> environment,
-   recall that Sphinx and Markdown cannot handle this.</li>
+ <li class="fragment"> If you need several equations <em>numbered</em> in an <tt>align</tt> environment,
+   recall that Sphinx, Markdown, and MediaWiki cannot handle this,
+   although they have LaTeX math support.</li>
+ <li class="fragment"> Markdown tolerates labels in equations but cannot refer to them.</li>
 </ul>
 <p>
 
@@ -326,7 +383,7 @@ based on HTML and vice versa.
    figures exactly where they are needed the first time.</li>
  <li class="fragment"> Curve plots with color lines do not work well in black-and-white
    printing. Make sure plots makes sense in color and BW (e.g., by
-   using colors and markers).</li>
+   using colors <em>and</em> markers).</li>
 </ul>
 <p>
 
@@ -367,10 +424,13 @@ especially for scientific writing.
 <p>
 
 <ul>
- <p><li> Can generate LaTeX, HTML, Sphinx, Markdown, MediaWiki and other wiki formats</li>
- <p><li> Good support for math and code</li>
+ <p><li> Can generate LaTeX, HTML, Sphinx, Markdown, MediaWiki, Google wiki,
+   Creole wiki, reST, plain text</li>
+ <p><li> Particularly good support for math and code</li>
  <p><li> Great flexibility for typesetting code</li>
  <p><li> Made for science books <em>and</em> smaller teaching modules</li>
+ <p><li> Targets traditional books, electronic PDF, PDF for phones,
+   web pages, Google and Wordpress blogs (with math and code)</li>
  <p><li> Support for code snippets from files, embedded movies, warnings/hint/info,
    generalized links</li>
  <p><li> Support for HTML5 slides - short way from prose to slides</li>
@@ -440,7 +500,7 @@ TOC: on
 <table width="95%" border="0">
 <tr>
 <td width="25" align="center" valign="top">
-<img src="https://doconce.googlecode.com/hg/lib/doconce/misc_software/html_images/lyx_notice.png" hspace="5" alt="Notice"></td>
+<img src="https://doconce.googlecode.com/hg/bundled/html_images/lyx_notice.png" hspace="5" alt="Notice"></td>
 <th align="left" valign="middle"><b>Notice</b></th>
 </tr>
 <tr>
@@ -484,11 +544,13 @@ Here goes the summary...
 
 <h2>Doconce: section headings  <a name="___sec14"></a></h2>
 <p>
-Headings are marked with =:
+Headings are surrounded by <tt>=</tt> signs:
 <p>
 
 <!-- code typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="line-height: 125%">======= This is an H2/section heading =======
+<div class="highlight" style="background: #202020"><pre style="line-height: 125%">========= This is an H1/chapter heading =========
+
+======= This is an H2/section heading =======
 
 ===== This is an H3/subsection heading =====
 
@@ -498,13 +560,30 @@ __This is a paragraph heading.__
 </pre></div>
 <p>
 
+Result:
+
+<p>
+
+<h1>This is an H1/chapter heading  <a name="___sec15"></a></h1>
+<p>
+
+<h2>This is an H2/section heading  <a name="___sec16"></a></h2>
+<p>
+
+<h3>This is an H3/subsection heading  <a name="___sec17"></a></h3>
+<p>
+
+<h4>This is an H4/paragraph heading  <a name="___sec18"></a></h4>
+<p>
+<b>This is a paragraph heading.</b> <p>
+
 
 </section>
 
 
 <section>
 
-<h2>Doconce: markup and lists  <a name="___sec15"></a></h2>
+<h2>Doconce: markup and lists  <a name="___sec19"></a></h2>
 <p>
 
 
@@ -547,7 +626,7 @@ This gets rendered as
 
 <section>
 
-<h2>Doconce: labels, references, index items  <a name="___sec16"></a></h2>
+<h2>Doconce: labels, references, index items  <a name="___sec20"></a></h2>
 <p>
 
 
@@ -581,13 +660,13 @@ URL: &quot;http://code.google.com/p/doconce/&quot;
 
 <section>
 
-<h2>Doconce: figures and movies  <a name="___sec17"></a></h2>
+<h2>Doconce: figures and movies  <a name="___sec21"></a></h2>
 <p>
 
 <table width="95%" border="0">
 <tr>
 <td width="25" align="center" valign="top">
-<img src="https://doconce.googlecode.com/hg/lib/doconce/misc_software/html_images/lyx_notice.png" hspace="5" alt="Notice"></td>
+<img src="https://doconce.googlecode.com/hg/bundled/html_images/lyx_notice.png" hspace="5" alt="Notice"></td>
 <th align="left" valign="middle"><b>Notice</b></th>
 </tr>
 <tr>
@@ -631,7 +710,7 @@ and rendered as
 
 <section>
 
-<h2>Doconce: math  <a name="___sec18"></a></h2>
+<h2>Doconce: math  <a name="___sec22"></a></h2>
 <p>
 Inline math as in LaTeX:
 
@@ -646,8 +725,24 @@ gets rendered as ...where \( a=\int_{\Omega}fdx \) is an integral.
 
 <p>
 
-An equation environment is surrounded by <tt>!bt</tt> and <tt>!et</tt> tags
-(see the source of this document), the rest is plain LaTeX:
+An equation environment is surrounded by <tt>!bt</tt> and <tt>!et</tt> tags,
+the rest is plain LaTeX:
+
+<p>
+
+
+<!-- code typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="line-height: 125%">!bt
+\begin{align}
+\frac{\partial u}{\partial t} &amp;= \nabla^2 u,
+label{a:eq}\\
+\nabla\cdot\pmb{v} &amp; = 0
+label{b:eq}
+\end{align}
+!et
+</pre></div>
+<p>
+which is rendered as
 
 <p>
 $$
@@ -659,10 +754,20 @@ $$
 \end{align}
 $$
 
+
 <p>
 
-Limit math environments to
+</section>
+
+
+<section>
+
+<h2>Doconce: math flexibility  <a name="___sec23"></a></h2>
 <p>
+Limit math environments to
+
+<p>
+
 
 <!-- code typeset with pygments style "native" -->
 <div class="highlight" style="background: #202020"><pre style="line-height: 125%">\[ ... \]
@@ -681,15 +786,42 @@ Limit math environments to
 </pre></div>
 <p>
 
+Even though Sphinx, Markdown, and MediaWiki have problems with
+the latter, Doconce splits it into separate, single equations
+such that align with labels works accross formats.
+
+<p>
 
 </section>
 
 
 <section>
 
-<h2>Doconce: displaying code  <a name="___sec19"></a></h2>
+<h2>Doconce: displaying code  <a name="___sec24"></a></h2>
 <p>
-Code is enclosed in <tt>!bc</tt> and <tt>!ec</tt> tags (see the source for this page).
+Code is enclosed in <tt>!bc</tt> and <tt>!ec</tt> tags:
+
+<p>
+
+
+<!-- code typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="line-height: 125%">!bc pycod
+def solver(I, a, T, dt, theta):
+    &quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;
+    dt = float(dt)           # avoid integer division
+    N = int(round(T/dt))     # no of time intervals
+    T = N*dt                 # adjust T to fit time step dt
+    u = zeros(N+1)           # array of u[n] values
+    t = linspace(0, T, N+1)  # time mesh
+
+    u[0] = I                 # assign initial condition
+    for n in range(0, N):    # n=0,1,...,N-1
+        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
+    return u, t
+!ec
+</pre></div>
+<p>
+This gets rendered as
 
 <p>
 
@@ -710,13 +842,20 @@ Code is enclosed in <tt>!bc</tt> and <tt>!ec</tt> tags (see the source for this 
 </pre></div>
 <p>
 
+The <tt>!bc</tt> command can be followed by a specification of the computer
+language: <tt>pycod</tt> for Python code snippet, <tt>pypro</tt> for complete Python
+program, <tt>fcod</tt> for Fortran snippet, <tt>fpro</tt> for Fortran program, and so
+forth (<tt>c</tt> for C, <tt>cpp</tt> for C++, <tt>sh</tt> for Unix shells, <tt>m</tt> for Matlab).
+
+<p>
+
 
 </section>
 
 
 <section>
 
-<h2>Doconce: copying code from source files  <a name="___sec20"></a></h2>
+<h2>Doconce: copying code from source files  <a name="___sec25"></a></h2>
 <p>
 We recommend to copy as much code as possible directly from the
 source files:
@@ -725,24 +864,34 @@ source files:
 
 
 <!-- code typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="line-height: 125%">@@@CODE file  fromto: start-regex@end-regex
+<div class="highlight" style="background: #202020"><pre style="line-height: 125%">@@@CODE path/to/file
+@@@CODE path/to/file   fromto: start-regex@end-regex
+</pre></div>
+<p>
+For example, copying a code snippet starting with <tt>def solver(</tt> and
+ending with (line not included) <tt>def next(x, y,</tt> is specified by
+start and end regular expressions:
 
-ex:
+<p>
 
-@@@CODE src/dc_mod.py  fromto: def solver@def verify_three
+
+<!-- code typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="line-height: 125%">@@@CODE src/dc_mod.py  fromto: def solver\(@def next\(x,\s*y,
 </pre></div>
 <p>
 
-Computer language can be specified:
+Typesetting of code is implied by the file extension:
 
 <p>
 
 <ul>
- <p><li> <tt>!bc pycod</tt> for Python snippet,</li>
- <p><li> <tt>!bc pypro</tt> for complete Python program</li>
- <p><li> Similar for C (<tt>c</tt>), C++ (<tt>cpp</tt>), Fortran (<tt>f</tt>),
-   Bash (<tt>sh</tt>), MATLAB (<tt>m</tt>), e.g., <tt>!bc mpro</tt></li>
- <p><li> From files: <tt>.py</tt> gives <tt>!bc pycod</tt>, <tt>.f</tt> gives <tt>!bc fcod</tt>, etc.</li>
+ <p><li> <tt>.py</tt>: <tt>pypro</tt> if complete file, <tt>pycod</tt> if snippet</li>
+ <p><li> <tt>.pyopt</tt>: visualized execution via the <a href="http://pythontutor.com">Online Python Tutor</a></li>
+ <p><li> <tt>.f</tt>, <tt>.f90</tt>, <tt>f.95</tt>: <tt>fpro</tt> and <tt>fcod</tt></li>
+ <p><li> <tt>.cpp</tt>, <tt>.cxx</tt>: <tt>cpppro</tt> and <tt>cppcod</tt></li>
+ <p><li> <tt>.c</tt>: <tt>cpro</tt> and <tt>ccod</tt></li>
+ <p><li> <tt>.*sh</tt>: <tt>shpro</tt> and <tt>shcod</tt></li>
+ <p><li> <tt>.m</tt>: <tt>mpro</tt> and <tt>mcod</tt></li>
  <p><li> <tt>ptex2tex</tt> can be used to choose between 40+ typesettings of
    computer code in LaTeX</li>
  <p><li> <tt>pygments</tt> is used for code typesetting in HTML (about 10 different styles)</li>
@@ -755,7 +904,27 @@ Computer language can be specified:
 
 <section>
 
-<h2>Doconce: tables  <a name="___sec21"></a></h2>
+<h2>Doconce: displaying interactive demo code  <a name="___sec26"></a></h2>
+<p>
+With <tt>!bc pyoptpro</tt> or a file <tt>*.pyopt</tt>, the code applies the
+<a href="http://pythontutor.com">Online Python Tutor</a> for displaying
+program flow and state of variables:
+
+<p>
+
+
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=def+solver%28I%2C+a%2C+T%2C+dt%2C+theta%29%3A%0A++++dt+%3D+float%28dt%29%0A++++N+%3D+int%28round%28T%2Fdt%29%29%0A++++T+%3D+N%2Adt%0A++++u+%3D+%5B0.0%5D%2A%28N%2B1%29%0A++++t+%3D+%5Bi%2Adt+for+i+in+range%28N%2B1%29%5D%0A%0A++++u%5B0%5D+%3D+I%0A++++for+n+in+range%280%2C+N%29%3A%0A++++++++u%5Bn%2B1%5D+%3D+%281+-+%281-theta%29%2Aa%2Adt%29%2F%281+%2B+theta%2Adt%2Aa%29%2Au%5Bn%5D%0A++++return+u%2C+t%0A%0Au%2C+t+%3D+solver%28I%3D1%2C+a%3D1%2C+T%3D3%2C+dt%3D1.%2C+theta%3D0.5%29%0Aprint+u&curInstr=0&py=2&cumulative=false">
+</iframe>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2>Doconce: tables  <a name="___sec27"></a></h2>
 <p>
 
 
@@ -786,7 +955,7 @@ Gets rendered as
 
 <section>
 
-<h2>Doconce: newcommands for math  <a name="___sec22"></a></h2>
+<h2>Doconce: newcommands for math  <a name="___sec28"></a></h2>
 <p>
 
 <ul>
@@ -802,9 +971,10 @@ Gets rendered as
 
 <section>
 
-<h2>Doconce: exercises  <a name="___sec23"></a></h2>
+<h2>Doconce: exercises  <a name="___sec29"></a></h2>
 <p>
-Doconce offers a special format for <em>exercises</em>, <em>problems</em> and <em>projects</em>:
+Doconce offers a special format for <em>exercises</em>, <em>problems</em>, <em>projects</em>,
+and <em>examples</em>:
 
 <p>
 
@@ -844,13 +1014,16 @@ of getting at least three heads out of 5 throws.
 </pre></div>
 <p>
 
+Solutions/answers can easily be left out of the document.
+
+<p>
 
 </section>
 
 
 <section>
 
-<h2>Doconce: exercises  <a name="___sec24"></a></h2>
+<h2>Doconce: exercises  <a name="___sec30"></a></h2>
 <p>
 Last page gets rendered as follows:
 
@@ -908,11 +1081,11 @@ Filenames: <tt>flip_coin.py</tt>, <tt>flip_coin.pdf</tt>.
 
 <section>
 
-<h2>Doconce: exercises  <a name="___sec26"></a></h2>
+<h2>Doconce: exercises  <a name="___sec32"></a></h2>
 <p>
 All <em>exercises</em>, <em>problems</em>, and <em>projects</em> in a document are parsed
 and available in a data structure (list of dicts) for further
-processing.
+processing (e.g., making a book of problems).
 
 <p>
 
@@ -955,7 +1128,7 @@ processing.
 
 <section>
 
-<h2>Doconce: use of preprocessors  <a name="___sec27"></a></h2>
+<h2>Doconce: use of preprocessors  <a name="___sec33"></a></h2>
 <p>
 
 <ul>
@@ -981,7 +1154,7 @@ processing.
 
 <section>
 
-<h2>Doconce: slides  <a name="___sec28"></a></h2>
+<h2>Doconce: slides  <a name="___sec34"></a></h2>
 <p>
 Very effective way to generate slides from running text:
 
@@ -1010,7 +1183,7 @@ Very effective way to generate slides from running text:
 
 <section>
 
-<h2>Doconce: example on slide code  <a name="___sec29"></a></h2>
+<h2>Doconce: example on slide code  <a name="___sec35"></a></h2>
 <p>
 
 
@@ -1020,12 +1193,17 @@ Very effective way to generate slides from running text:
 
  * Key point 1
  * Key point 2
+ * Key point 3 takes very much more text to explain because
+   this point is really comprehensive, and although long
+   bullet points are not recommended in general, we need
+   it here for demonstration purposes
 
-FIGURE: [fig/teacher1, width=150]
+FIGURE: [fig/teacher1, width=100]
 
 Key equation:
 
 $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
+
 
 And maybe a final comment?
 
@@ -1040,13 +1218,13 @@ And maybe a final comment?
 
 <section>
 
-<h2>Doconce: example on slide code  <a name="___sec30"></a></h2>
+<h2>Doconce: example on slide code  <a name="___sec36"></a></h2>
 <p>
 Last page gets rendered to
 
 <p>
 
-<h2>Headline  <a name="___sec31"></a></h2>
+<h2>Headline  <a name="___sec37"></a></h2>
 <p>
 
 <ul>
@@ -1055,13 +1233,14 @@ Last page gets rendered to
 </ul>
 <p>
 
-<center><p><img src="fig/teacher1.gif" align="bottom" width=150></p></center>
+<center><p><img src="fig/teacher1.gif" align="bottom" width=100,></p></center>
 
 <p>
 Key equation:
 
 <p>
 $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
+
 
 <p>
 And maybe a final comment?
@@ -1073,7 +1252,111 @@ And maybe a final comment?
 
 <section>
 
-<h2>Doconce: slide styles  <a name="___sec32"></a></h2>
+<h2>Doconce: example on slide code with cells  <a name="___sec38"></a></h2>
+<p>
+One can introduce a table-like layout with MxN cells and
+put slide elements in various cell. A cell with position
+MN is surrounded by <tt>!bslidecell MN</tt> and <tt>!eslidecell</tt>
+tags. Below is an example with a bullet list to the left and
+a figure to the right (two cells, numbered 00 and 01).
+
+<p>
+
+
+<!-- code typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="line-height: 125%">!split
+======= Headline =======
+
+!bslidecell 00
+!bpop
+ * Key point 1
+ * Key point 2
+ * Key point 3 takes very much more text to explain because
+   this point is really comprehensive, and although long
+   bullet points are not recommended in general, we need
+   it here for demonstration purposes
+!epop
+
+!bpop
+!bt
+\[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
+!et
+!epop
+
+!eslidecell
+
+!bslidecell 01
+FIGURE: [fig/broken_pen_and_paper, width=400, frac=0.8]
+!eslidecell
+
+!split
+======= Next slide... =======
+</pre></div>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2>Doconce: example on slide code  <a name="___sec39"></a></h2>
+<p>
+Last page gets rendered to
+
+<p>
+
+<h2>Headline  <a name="___sec40"></a></h2>
+<p>
+
+<table border="0">
+<tr>
+<td> 
+
+
+<ul>
+ <li class="fragment"> Key point 1</li>
+ <li class="fragment"> Key point 2</li>
+ <li class="fragment"> Key point 3 takes very much more text to explain because
+   this point is really comprehensive, and although long
+   bullet points are not recommended in general, we need
+   it here for demonstration purposes</li>
+</ul>
+<p>
+
+
+
+<p>
+
+<p class="fragment">
+
+$$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
+
+
+</p>
+
+
+<p>
+ </td>
+<td> 
+<center><p><img src="fig/broken_pen_and_paper.jpg" align="bottom" width=400></p></center>
+ </td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2>Doconce: slide styles  <a name="___sec41"></a></h2>
 <p>
 
 
@@ -1089,7 +1372,7 @@ And maybe a final comment?
 </ul>
 <p>
 
- <li class="fragment"> <b>Problem</b>: each package has its (similar) syntax</li>
+ <li class="fragment"> <b>Problem</b>: each package has its own syntax (though similar)</li>
 
 <ul>
    <li class="fragment"> <b>Solution</b>: slide code is autogenerated from compact Doconce syntax</li>
@@ -1111,7 +1394,8 @@ And maybe a final comment?
 <p>
 
  <li class="fragment"> <b>Problem</b>: original versions of the styles have too large fonts,
-   centering, and other features not so suitable for lectures</li>
+   centering, and other features not so suitable for lectures
+   with much math and code</li>
 
 <ul>
    <li class="fragment"> <b>Solution</b>: Doconce contains adjusted css files</li>
@@ -1131,7 +1415,7 @@ And maybe a final comment?
 
 <section>
 
-<h2>Doconce: output in HTML  <a name="___sec33"></a></h2>
+<h2>Doconce: output in HTML  <a name="___sec42"></a></h2>
 <p>
 Run in terminal window:
 <p>
@@ -1159,7 +1443,38 @@ doconce slides_html doconcefile reveal --html-slide-theme=darkgray
 
 <section>
 
-<h2>Doconce: output in pdfLaTeX  <a name="___sec34"></a></h2>
+<h2>Doconce: output for blogging  <a name="___sec43"></a></h2>
+<p>
+Two types of blogs are supported:
+
+<p>
+
+<ul>
+ <p><li> Google's blogspot.com: just paste the raw HTML
+   (full support of math and code)</li>
+ <p><li> Wordpress: despite limited math, Doconce manipulates the math
+   such that even <tt>equation</tt> and <tt>align</tt> work in Wordpress :-)</li>
+</ul>
+<p>
+
+For wordpress, add <tt>--wordpress</tt>:
+<p>
+
+<!-- code typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="line-height: 125%">doconce format html doconcefile --wordpress
+</pre></div>
+<p>
+and paste the code into the text area.
+
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2>Doconce: output in pdfLaTeX  <a name="___sec44"></a></h2>
 <p>
 
 
@@ -1191,7 +1506,7 @@ doconce ptex2tex doconcefile envir=ans:nt
 
 <section>
 
-<h2>Doconce: output in Sphinx  <a name="___sec35"></a></h2>
+<h2>Doconce: output in Sphinx  <a name="___sec45"></a></h2>
 <p>
 
 
@@ -1200,6 +1515,7 @@ doconce ptex2tex doconcefile envir=ans:nt
 
 # Autocreate sphinx directory
 doconce sphinx_dir theme=pyramid doconcefile
+
 # Copy files and build HTML document
 python automake-sphinx.py
 
@@ -1207,7 +1523,7 @@ google-chrome sphinx-rootdir/_build/html/index.html
 </pre></div>
 <p>
 
-Much easier than running the Sphinx tools manually...
+Much easier than running the Sphinx tools manually!
 
 <p>
 
@@ -1216,13 +1532,50 @@ Much easier than running the Sphinx tools manually...
 
 <section>
 
-<h2>Doconce: output in other formats  <a name="___sec36"></a></h2>
+<h2>Doconce: output for wiki  <a name="___sec46"></a></h2>
+<p>
+Only MediaWiki supports math.
+
 <p>
 
 
 <!-- code typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="line-height: 125%">doconce format pandoc doconcefile  # Markdown (pandoc extended)
-doconce format mwiki  doconcefile  # MediaWiki
+<div class="highlight" style="background: #202020"><pre style="line-height: 125%">doconce format mwiki doconcefile
+</pre></div>
+<p>
+
+Recommended site:
+
+<p>
+
+<ul>
+ <p><li> <a href="http://shoutwiki.com">ShoutWiki</a> for standard wikis</li>
+</ul>
+<p>
+
+Publishing of "official" documents:
+
+<p>
+
+<ul>
+ <p><li> <a href="http://en.wikibooks.org/wiki/Wikibooks:WIW">Wikibooks</a>
+   (can test code in the "sandbox": <a href="http://en.wikibooks.org/wiki/Wikibooks"><tt>http://en.wikibooks.org/wiki/Wikibooks</tt></a>:Sandbox)</li>
+ <p><li> Wikipedia</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2>Doconce: output in other formats  <a name="___sec47"></a></h2>
+<p>
+
+
+<!-- code typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="line-height: 125%">doconce format pandoc doconcefile  # (Pandoc extended) Markdown
 doconce format gwiki  doconcefile  # Googlecode wiki
 doconce format cwiki  doconcefile  # Creole wiki (Bitbucket)
 doconce format rst    doconcefile  # reStructuredText
@@ -1236,17 +1589,75 @@ doconce format plain  doconcefile  # plain, untagged text for email
 
 <section>
 
-<h2>Doconce: installation  <a name="___sec37"></a></h2>
+<h2>Doconce: installation  <a name="___sec48"></a></h2>
 <p>
 
 <ul>
- <p><li> Ubuntu: <tt>sudo apt-get install python-doconce</tt> (old version)</li>
+ <p><li> Ubuntu: <tt>sudo apt-get install python-doconce</tt> (old version!)</li>
  <p><li> Source at <a href="http://code.google.com/p/doconce">Googlecode</a> (recommended!)</li>
  <p><li> Check out source, <tt>sudo python setyp.py install</tt></li>
- <p><li> Many dependencies...</li>
+ <p><li> Many <a href="https://doconce.googlecode.com/hg/doc/demos/manual/manual.html#___sec1">dependencies...</a></li>
  <p><li> Must have <tt>preprocess</tt> and <tt>mako</tt></li>
- <p><li> Need <tt>latex</tt>, <tt>sphinx</tt>, <tt>pandoc</tt>, etc. (see Installation in <a href="http://code.google.com/p/doconce/wiki/Description">manual</a>)</li>
- <p><li> For slides: only <tt>preprocess</tt> is needed :-)</li>
+ <p><li> Need <tt>latex</tt>, <tt>sphinx</tt>, <tt>pandoc</tt>, etc. (see Installation in <a href="https://doconce.googlecode.com/hg/doc/demos/manual/manual.html#___sec1">manual</a>)</li>
+ <p><li> Easy for slides: only <tt>preprocess</tt> is needed :-)</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2>Writing tips  <a name="___sec49"></a></h2>
+<p>
+
+<ul>
+ <p><li> See the previous <em>Concerns I, II and III</em> slides for issues when writing
+   for multiple formats. However: Doconce makes a fix so that Sphinx and
+   other formats works with labels in align environments :-)</li>
+ <p><li> Prepare figures in the right format: EPS for <tt>latex</tt>, PDF for <tt>pdflatex</tt>,
+   PNG, GIF or JPEG for HTML formats (<tt>html</tt>, and HTML output from
+   <tt>sphinx</tt>, <tt>rst</tt>, <tt>pandoc</tt>). One can omit the figure file extension and
+   <tt>doconce</tt> will pick the most appropriate file for the given output format.</li>
+ <p><li> Let plotting programs produce both PDF/EPS and PNG files.
+   (Recall that PDF and EPS are vector graphics formats that can scale to
+   any size with much higher quality than PNG or other bitmap formats.)</li>
+ <p><li> Use <tt>doconce combine_images</tt> to combine several images into one.</li>
+ <p><li> Use <tt>doconce spellcheck *.do.txt</tt> to automatically spellcheck files.</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2>Writing tips for sphinx and other formats  <a name="___sec50"></a></h2>
+<p>
+For output formats different from <tt>latex</tt>, <tt>pdflatex</tt>, and <tt>html</tt>, the
+following points are important:
+
+<p>
+
+<ul>
+ <p><li> Do not use math in section headings or figure captions if output in
+   <tt>sphinx</tt> is wanted (such math are removed in references).</li>
+ <p><li> Let all running text start in column 1 (<tt>sphinx</tt> is annoyed by intended
+   lines).</li>
+ <p><li> Use progressive section headings: after chapter (<tt>=========</tt>) comes
+   section (<tt>=======</tt>), and then subsection (<tt>=====</tt>) before paragraph
+   heading (<tt>===</tt>). "Jumps", say <tt>===</tt> after <tt>======</tt> works fine for
+   <tt>latex</tt>, <tt>pdflatex</tt>, and <tt>html</tt>, but not for <tt>rst</tt> and <tt>sphinx</tt>.</li>
+ <p><li> Place index entries (``) before the paragraph where they
+   are introduced (not inside the text). Also place index entries before
+   <tt>===</tt> headings.</li>
+ <p><li> Be careful with labels in <tt>align</tt> math environments: <tt>pandoc</tt>
+   and <tt>mwiki</tt> cannot refer to them.</li>
+ <p><li> Always have a line of running text before a code snippet or program.</li>
+ <p><li> Do not insert comments before intented text, such as computer code and
+   lists.</li>
 </ul>
 <p>
 

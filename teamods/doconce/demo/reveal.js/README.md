@@ -1,4 +1,4 @@
-# reveal.js
+# reveal.js [![Build Status](https://travis-ci.org/hakimel/reveal.js.png?branch=master)](https://travis-ci.org/hakimel/reveal.js)
 
 A framework for easily creating beautiful presentations using HTML. [Check out the live demo](http://lab.hakim.se/reveal-js/).
 
@@ -23,7 +23,7 @@ Markup heirarchy needs to be ``<div class="reveal"> <div class="slides"> <sectio
 
 ```html
 <div class="reveal">
-	<div class="slides"> 
+	<div class="slides">
 		<section>Single Horizontal Slide</section>
 		<section>
 			<section>Vertical Slide 1</section>
@@ -43,12 +43,11 @@ This is based on [data-markdown](https://gist.github.com/1343518) from [Paul Iri
 <section data-markdown>
 	<script type="text/template">
 		## Page title
-		
+
 		A paragraph with some text and a [link](http://hakim.se).
 	</script>
 </section>
 ```
-
 
 ### Configuration
 
@@ -92,7 +91,7 @@ Reveal.initialize({
 	rollingLinks: true,
 
 	// Transition style
-	transition: 'default' // default/cube/page/concave/zoom/linear/none
+	transition: 'default' // default/cube/page/concave/zoom/linear/fade/none
 });
 ```
 
@@ -107,14 +106,14 @@ Reveal.initialize({
 	dependencies: [
 		// Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
 		{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-		
+
 		// Interpret Markdown in <section> elements
 		{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 		{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-		
+
 		// Syntax highlight for <code> elements
 		{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-		
+
 		// Zoom in and out with Alt+click
 		{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
 
@@ -234,7 +233,7 @@ Multiple fragments can be applied to the same element sequentially by wrapping i
 
 ```html
 <section>
-	<span class="fragment fade-out">
+	<span class="fragment fade-in">
 		<span class="fragment fade-out">I'll fade in, then out</span>
 	</span>
 </section>
@@ -253,10 +252,35 @@ Reveal.addEventListener( 'fragmenthidden', function( event ) {
 } );
 ```
 
+### Code syntax higlighting
+
+By default, Reveal is configured with [highlight.js](http://softwaremaniacs.org/soft/highlight/en/) for code syntax highlighting. Below is an example with clojure code that will be syntax highlighted:
+
+```html
+<section>
+	<pre><code>
+(def lazy-fib
+  (concat
+   [0 1]
+   ((fn rfib [a b]
+        (lazy-cons (+ a b) (rfib b (+ a b)))) 0 1)))
+	</code></pre>
+</section>
+```
+
+
 ### Overview mode
 
 Press "Esc" key to toggle the overview mode on and off. While you're in this mode, you can still navigate between slides,
-as if you were at 1,000 feet above your presentation.
+as if you were at 1,000 feet above your presentation. The overview mode comes with a few API hooks:
+
+```javascript
+Reveal.addEventListener( 'overviewshown', function( event ) { /* ... */ } );
+Reveal.addEventListener( 'overviewhidden', function( event ) { /* ... */ } );
+
+// Toggle the overview mode programmatically
+Reveal.toggleOverview();
+```
 
 ### Fullscreen mode
 Just press »F« on your keyboard to show your presentation in fullscreen mode. Press the »ESC« key to exit fullscreen mode.
@@ -309,7 +333,27 @@ Then:
 3. Run ```node plugin/notes-server```
 
 
-## Development Environment 
+## Theming
+
+The framework comes with a few different themes included:
+
+- default: Gray background, white text, blue links
+- beige: Beige background, dark text, brown links
+- sky: Blue background, thin white text, blue links
+- night: Black background, thick white text, orange links
+- serif: Cappuccino background, gray text, brown links
+- simple: White background, black text, blue links
+
+Each theme is available as a separate stylesheet. To change theme you will need to replace **default** below with your desired theme name in index.html:
+
+```html
+<link rel="stylesheet" href="css/theme/default.css" id="theme">
+```
+
+If you want to add a theme of your own see the instructions here: [/css/theme/README.md](https://github.com/hakimel/reveal.js/blob/master/css/theme/README.md).
+
+
+## Development Environment
 
 reveal.js is built using the task-based command line build tool [grunt.js](http://gruntjs.com) ([installation instructions](https://github.com/gruntjs/grunt#installing-grunt)). With Node.js and grunt.js installed, you need to start by running ```npm install``` in the reveal.js root. When the dependencies have been installed you should run ```grunt watch``` to start monitoring files for changes.
 
@@ -326,5 +370,5 @@ If you want to customise reveal.js without running grunt.js you can alter the HT
 
 MIT licensed
 
-Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+Copyright (C) 2011-2013 Hakim El Hattab, http://hakim.se
 
