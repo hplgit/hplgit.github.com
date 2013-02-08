@@ -9,12 +9,11 @@ Automatically generated HTML file from Doconce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
-<!--
-Color definitions:  http://www.december.com/html/spec/color0.html
-CSS examples:       http://www.w3schools.com/css/css_examples.asp
--->
 
 <style type="text/css">
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
     body {
       margin-top: 1.0em;
       background-color: #ffffff;
@@ -32,34 +31,33 @@ CSS examples:       http://www.w3schools.com/css/css_examples.asp
     p.caption { width: 80%; font-style: normal; text-align: left; }
     hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
+    .notice, .summary, .warning, .hint, .question {
+    border: 1px solid; margin: 10px 0px; padding:15px 10px 15px 50px;
+    background-repeat: no-repeat; background-position: 10px center;
+    }
+    .notice   { color: #00529B; background-color: #BDE5F8;
+                background-image: url('https://doconce.googlecode.com/hg/bundled/html_images/Knob_Message.png'); }
+    .summary  { color: #4F8A10; background-color: #DFF2BF;
+                background-image:url('https://doconce.googlecode.com/hg/bundled/html_images/Knob_Valid_Green.png'); }
+    .warning  { color: #9F6000; background-color: #FEEFB3;
+                background-image: url('https://doconce.googlecode.com/hg/bundled/html_images/Knob_Attention.png'); }
+    .hint     { color: #00529B; background-color: #BDE5F8;
+                background-image: url('https://doconce.googlecode.com/hg/bundled/html_images/Knob_Info.png'); }
+    .question { color: #4F8A10; background-color: #DFF2BF;
+                background-image:url('https://doconce.googlecode.com/hg/bundled/html_images/Knob_Forward.png'); }
+
 </style>
 
-<!-- Use MathJax to render mathematics -->
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {
-     equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
-  }
-});
-</script>
-<script type="text/javascript"
- src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 </head>
-
 <body>
-    
 
 <!-- ------------------- main content ------------------------>
-
+    
 <title>Quick Intro to Version Control Systems and Project Hosting Services</title>
 
 <center><h1>Quick Intro to Version Control Systems and Project Hosting Services</h1></center>  <! -- document title -->
 
+<p>
 <! -- author(s) -->
 
 <center>
@@ -72,9 +70,8 @@ MathJax.Hub.Config({
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory,</b></center>
 <center>[2] <b>Deptartment of Informatics, University of Oslo</b></center>
-
-
-<center><h4>Oct 6, 2012</h4></center> <!-- date -->
+<p>
+<center><h4>Feb 8, 2013</h4></center> <!-- date -->
 <p>
 <a name="bitgit:top"></a>
 
@@ -130,10 +127,11 @@ Four popular project hosting services are
 <p>
 
 <ul>
-  <li> Bitbucket at <tt>bitbucket.org</tt>
-  <li> GitHub at <tt>github.com</tt>
-  <li> Googlecode at <tt>code.google.com</tt>
-  <li> Launchpad at <tt>launchpad.net</tt>
+  <li> <a href="http://bigbucket.org">Bitbucket</a> at <tt>bitbucket.org</tt></li>
+  <li> <a href="http://github.com">GitHub</a> at <tt>github.com</tt></li>
+  <li> <a href="http://code.google.com">Googlecode</a> at <tt>code.google.com</tt></li>
+  <li> <a href="https://launchpad.net">Launchpad</a> at <tt>launchpad.net</tt></li>
+  <li> <a href="http://sourceforge.net/">Sourceforge</a> at <tt>sourceforge.net</tt></li>
 </ul>
 
 All these services are very similar. Below we describe how you get
@@ -172,7 +170,7 @@ project is "My Project".
 
 <p>
 
-<h2>Installing Version Control Systems  <a name="___sec0"></a></h2>
+<h2>Installing version control systems  <a name="___sec0"></a></h2>
 <p>
 The various project hosting sites work with different version
 control systems:
@@ -180,53 +178,124 @@ control systems:
 <p>
 
 <ul>
- <li> <tt>bitbucket.org</tt> offers Git (<tt>git</tt>) or Mercurial (<tt>hg</tt>),
- <li> <tt>github.com</tt> offers Git (<tt>git</tt>),
- <li> <tt>code.google.com</tt> offers Git (<tt>git</tt>), Mercurial (<tt>hg</tt>), or Subversion (<tt>svn</tt>),
- <li> <tt>launchpad.net</tt> offers Bazaar (<tt>bzr</tt>).
+ <li> <tt>bitbucket.org</tt> offers Git (<tt>git</tt>) or Mercurial (<tt>hg</tt>),</li>
+ <li> <tt>github.com</tt> offers Git (<tt>git</tt>),</li>
+ <li> <tt>code.google.com</tt> offers Git (<tt>git</tt>), Mercurial (<tt>hg</tt>), or Subversion (<tt>svn</tt>),</li>
+ <li> <tt>launchpad.net</tt> offers Bazaar (<tt>bzr</tt>),</li>
+ <li> <tt>sourceforge.net</tt> offers CVS (<tt>cvs</tt>), Subversion (<tt>svn</tt>), Mercurial (<tt>hg</tt>),
+   Bazaar (<tt>bzr</tt>), and Git (<tt>git</tt>).</li>
 </ul>
 
 All the version control systems are quite similar in the way users
 operate them, but Subversion is technically different from Git,
-Mercurial, and Bazaar. The latter three work very much in the same way
+Mercurial, and Bazaar. The latter three work much in the same way
 for a beginner, but their more advanced commands and their
 nomenclature differ significantly.  Which system to choose is mainly a
 matter of personal preference and experience. For some people the
 choice of project hosting site comes first, while others prefer a
 particular version control system and let this preference govern the
-choice of project hosting site.
+choice of the project hosting site.
 
 <p>
-It is possible to use Mercurial also with a GitHub project. This
-requires a plugin for Mercurial, described in <a href="http://hg-git.github.com"><tt>http://hg-git.github.com</tt></a>.
-The plugin is easy to install (<tt>easy-install hg-git</tt> or
-<tt>sudo apt-get install mercurial-git</tt> on Ubuntu). You can also use
-Git to work with Subversion and Mercurial repositories.
-
-<p>
-<!-- The author's experience from teaching contexts points to the combination -->
-<!-- of Bitbucket and Mercurial is the simplest to get started with, -->
-<!-- foremost because it appears that Mercurial is easier to learn than Git -->
-<!-- beyond the very basic commands. -->
-
-<p>
-The combination of GitHub and Git seems to have the strongest momentum
-and popularity in the software development community at present.
-However, my experience is that the learning curve of Git
-is steeper than that of Mercurial so the choice of Mercurial with
-Bitbucket or Googlecode will for many be the most convenient start.
+It is fair to say that Git has evolved as the most versatile version
+control system and is at the time of this writing (2013) the
+recommended choice.  The combination of GitHub and Git seems to have
+the strongest momentum and popularity in the software development
+community.  Bitbucket offers private repos for free, which is a
+desired feature for many. Googlecode has the advantage that any HTML
+file in the repo can be used to make a web page, thereby greatly
+simplifying the building of web pages for the project.
 
 <p>
 
-<h3>Installing Mercurial  <a name="___sec1"></a></h3>
+
+
+<h3>Installing Git  <a name="___sec1"></a></h3>
 <p>
 
+The installation of Git on various systems is described
+on the <a href="http://git-scm.com/">Git website</a> under the <em>Download</em> section.
+On Ubuntu the relevant commands are
 <p>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install git gitk git-doc
+</pre></div>
+<p>
+Git involves compiled code so it is most convenient to download a
+precompiled binary version of the software on Windows, Mac and other
+Linux computers.
+
+<p>
+Make a file <tt>.gitconfig</tt> in your home folder with information on
+your full name, email address, your favorite emacs editor, and
+the name of an "excludes file" which defines the file types that Git
+should omit when bringing new directories under version control.
+Here is a simplified version of the author's <tt>.gitconfig</tt> file:
+<p>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[user]
+name = Hans Petter Langtangen
+email = hpl@simula.no
+editor = emacs
+
+[core]
+excludesfile = ~/.gitignore
+</pre></div>
+<p>
+
+The "excludes file" is called <tt>.gitignore</tt> and must list,
+using the Unix Shell Wildcard notation,
+the type of files that you do not need to have under version control,
+because they represent garbage or temporary information,
+or they can easily be regenerated from
+some other source files. A suggested <tt>.gitignore</tt> file looks like
+<p>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># compiled files:
+*.o
+*.so
+*.a
+# temporary files:
+*.bak
+*.swp
+*~
+.*~
+*.old
+tmp*
+temp*
+# tex files:
+*.log
+*.dvi
+*.aux
+*.blg
+*.idx
+# eclipse files:
+*.cproject
+*.project
+# misc:
+.DS_Store
+</pre></div>
+<p>
+Be critical to what kind of files you really need a full history of.
+For example, you do not want to populate the repository with
+big graphics files of the type that can easily be regenerated by
+some program.
+
+<p>
+
+
+<h3>Installing Mercurial  <a name="___sec2"></a></h3>
+<p>
+
 The <a href="http://mercurial.selenic.com/">Mercurial website</a> has information
 on downloading Mercurial on different platforms.
 On Ubuntu and Debian-based Linux systems, you just perform
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install mercurial
 </pre></div>
 <p>
@@ -244,6 +313,7 @@ is also a graphical interface called TortoiseHG, which can be installed
 by
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install tortoisehg
 </pre></div>
 <p>
@@ -257,6 +327,7 @@ listing the type of files you in general do not want to have under version
 control. A simple <tt>.hgrc</tt> file can look like this:
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[ui]
 username = &quot;Hans Petter Langtangen &lt;hpl@simula.no&gt;&quot;
 ignore=~/.hgignore
@@ -264,102 +335,55 @@ ignore=~/.hgignore
 <p>
 The <tt>.hgignore</tt> file lists the types of files that will be skipped
 when bringing new directories under Mercurial version control.
-Typically this is temporary files such as object files (<tt>*.o</tt>),
-shared libraries (<tt>*.so</tt>), and backup files (<tt>*.bak</tt> and <tt>*~</tt>).
-The file types are usually specified using Unix Shell Wildcard notation,
-also referred to as <tt>glob</tt> syntax, as in <tt>*.o</tt> (where <tt>*</tt> means any
+Typically, the list contains file types that represent temporary
+information or just garbage, or files that are easily regenerated,
+such as object files (<tt>*.o</tt>) and
+libraries (<tt>*.so</tt>).
+The file types are normally specified using the Unix Shell Wildcard notation,
+also referred to as <tt>glob</tt> syntax (e.g., <tt>*.o</tt>, where <tt>*</tt> means any
 sequence of characters).
 An example of a <tt>.hgignore</tt> file may be
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">syntax: glob
+# compiled files:
 *.o
 *.so
 *.a
+# temporary files:
+*.bak
+*.swp
 *~
 .*~
+*.old
+tmp*
+temp*
+# tex files:
 *.log
 *.dvi
 *.aux
-*.old
-*.bak
-tmp*
+*.blg
+*.idx
+# eclipse files:
+*.cproject
+*.project
+# misc:
+.DS_Store
 </pre></div>
 <p>
+In addition to having an <tt>.hgignore</tt> file, you should always be careful with
+what kind of files you really need to add to your
+repo. Many computer tools produce a lot of big files that can
+easily be regenerated and that do not need to fill up repos with full
+information on previous versions.
 
 <p>
 
-<p>
-
-<p>
-
-<h3>Installing Git  <a name="___sec2"></a></h3>
-<p>
-
-<p>
-The installation of Git on various systems is described
-on the <a href="http://git-scm.com/">Git website</a> under the <em>Download</em> section.
-On Ubuntu the relevant commands are
-<p>
-
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install git gitk git-doc
-</pre></div>
-<p>
-Git involves compiled code so it is most convenient to download a
-precompiled binary version of the software on Windows, Mac and other
-Linux computers.
-
-<p>
-Make a file <tt>.gitconfig</tt> in your home folder with information on
-your full name, email address, your favorite emacs editor, and
-the name of a file which defines the file types that Git should omit
-when bringing new directories under version control.
-Here is a simplified version of the author's <tt>.gitconfig</tt> file:
-<p>
-
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[user]
-name = Hans Petter Langtangen
-email = hpl@simula.no
-editor = emacs
-
-[core]
-excludesfile = ~/.gitignore
-</pre></div>
-<p>
-
-<p>
-The <tt>.gitignore</tt> file should list, using the Unix Shell Wildcard notation,
-the type of files that you do not want to have under version control,
-typically (large) files that can easily be regenerated from some other
-source files. A <tt>.gitignore</tt> file may look like
-<p>
-
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">*.o
-*.so
-*.a
-*~
-.*~
-*.log
-*.dvi
-*.aux
-*.old
-*.bak
-tmp*
-</pre></div>
-<p>
-
-<p>
-
-<p>
-
-<p>
 
 <h2>Bitbucket <a name="bitgit:bitbucket"></a></h2>
 <p>
 
-<p>
-
-<p>
 To start using Bitbucket, go to <tt>bitbucket.org</tt> and create an account.
 The communication channel with Bitbucket repositories is either
 through SSH or HTTPS.  To use SSH, you must upload your SSH key,
@@ -382,9 +406,8 @@ using them on any current and future computer.
 
 <p>
 
-<p>
 
-<h3>Create a New Project  <a name="___sec4"></a></h3>
+<h3>Create a new project  <a name="___sec4"></a></h3>
 <p>
 Click at <em>Repositories</em> and at <em>Create repository</em>.
 You can now
@@ -392,37 +415,37 @@ You can now
 <p>
 
 <ul>
- <li> fill in the name of the project, here <tt>my-project</tt>,
+ <li> fill in the name of the project, here <tt>my-project</tt>,</li>
  <li> decide whether the project is private or public (the number of
    private repos is unlimited for yourself, but you have to pay to
-   invite more than five users in total to share your private repos),
- <li> choose between the Git or Mercurial version control system,
+   invite more than five users in total to share your private repos),</li>
+ <li> choose between the Git or Mercurial version control system
+   (here we assume you run Git),</li>
  <li> click whether you want issue tracking for reporting errors,
-   suggesting improvements, etc.,
- <li> click whether you want a wiki page associated with the project,
- <li> fill in a brief description,
- <li> click on <em>Create repository</em>.
+   suggesting improvements, etc.,</li>
+ <li> click whether you want a wiki page associated with the project,</li>
+ <li> fill in a brief description,</li>
+ <li> click on <em>Create repository</em>.</li>
 </ul>
 
 While doing this you may also want to have the <a href="http://confluence.atlassian.com/display/BITBUCKET/Bitbucket+101">Bitbucket 101 guide</a>
-available (open the link in another tab or window in your browser).
+available.
 
 <p>
-It is now time to copy the project to your laptop, or <em>clone</em> it
-in Git and Mercurial terminology. Go to the project page
-and find the <em>Clone this repository</em> line. Click on <em>SSH</em>,
-copy the <em>clone</em> line and run this command in a terminal:
+It is now time to <em>clone</em> (copy) the project to your laptop.
+Go to the project page
+(you are automatically
+brought to the project page when creating a new project).
+Find the <em>Clone</em> button, click on it, choose
+<em>SSH</em>, copy the <em>clone</em> line and run this command in a terminal:
 <p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg clone ssh://hg@bitbucket.org/username/my-project
-<span style="color: #008800; font-style: italic"># or</span>
-git clone git@bitbucket.org:usernamet/my-project.git
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git clone git@bitbucket.org:usernamet/my-project.git
 </pre></div>
 <p>
-Only the <tt>hg</tt> or the <tt>git</tt> clone command is displayed on Bitbucket since
-your project was initialized with either Merucial or Git as version
-control system (this cannot be changed later).  In the above command
-you must replace <tt>username</tt> with your own user name at Bitbucket.
+You must replace <tt>username</tt> with your own user name at Bitbucket and
+<tt>my-project</tt> by the real project name.
 
 <p>
 The first time you do the clone command you may be prompted by cryptic
@@ -432,44 +455,37 @@ Unix output ending with "Are you sure you want to continue connecting
 <p>
 The next step is to collect files and directories that should make up
 the project and put them in the <tt>my-project</tt> folder.
-
-<p>
-Then all files should be brought under version control, with the exception
-of the file types listed in <tt>.hgignore</tt>.
-Issue the following command in the <tt>my-project</tt> folder:
+Standing in the <tt>my-project</tt> folder, the following Git command is used
+to add all files in the current
+directory <em>tree</em>, except those having file types listed in <tt>.gitignore</tt>:
 <p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg add
-<span style="color: #008800; font-style: italic"># or</span>
-git add .
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git add .
 </pre></div>
 <p>
 
-<p>
-Thereafter, the changes to the repository (adding of files) must
-be registered, or <em>committed</em> if we use standard version control system
-terminology. The command reads
+Thereafter, the changes to the repository (here adding of files) must
+<em>committed</em> (registered):
 <p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg commit   -m <span style="color: #BB4444">&#39;Initial import of files.&#39;</span>
-<span style="color: #008800; font-style: italic"># or</span>
-git commit -am <span style="color: #BB4444">&#39;Initial import of files.&#39;</span>
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git commit -am <span style="color: #BA2121">&#39;Initial import of files.&#39;</span>
 </pre></div>
 <p>
-The <tt>-m</tt> option is a required description of the changes that have taken
-place. This description does not matter much for this initial import
-of files into the repository, but is of importance for future commit
-commands so that you can easily track the history of your project files.
+The text following the <tt>-am</tt> option is a required description of the
+changes that have taken place. This description does not matter much
+for this initial import of files into the repository, but is of
+importance for future commit commands so that you can easily track the
+history of your project files.
 
 <p>
 The final step is to push the local changes to the master repo at
 Bitbucket:
-perform
 <p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg push
-<span style="color: #008800; font-style: italic"># or</span>
-git push -u origin master
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git push -u origin master
 </pre></div>
 <p>
 You must be connected to the Internet for the <tt>push</tt> command to work since
@@ -482,7 +498,7 @@ the section <a href="#bitgit:git">Using Git</a> for Git.
 
 <p>
 
-<h3>User Web Pages  <a name="___sec5"></a></h3>
+<h3>User web pages  <a name="___sec5"></a></h3>
 <p>
 Bitbucket can host web pages associated with a Bitbucket account. Say
 your account/user name is <tt>username</tt>.  Make a new repository on
@@ -490,13 +506,14 @@ Bitbucket called <tt>username.bitbucket.org</tt>.  Clone it, fill it with a
 file, and push back, e.g.,
 
 <p>
-<p>
 
+
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git clone git@bitbucket.org:username/username.bitbucket.org.git
-<span style="color: #AA22FF">cd </span>username.bitbucket.org
-<span style="color: #AA22FF">echo</span> <span style="color: #BB4444">&quot;Welcome to my web pages!&quot;</span> &gt; test.html
+<span style="color: #008000">cd </span>username.bitbucket.org
+<span style="color: #008000">echo</span> <span style="color: #BA2121">&quot;Welcome to my web pages!&quot;</span> &gt; test.html
 git add test.html
-git commit -am <span style="color: #BB4444">&#39;First web page&#39;</span>
+git commit -am <span style="color: #BA2121">&#39;First web page&#39;</span>
 git push origin master
 </pre></div>
 <p>
@@ -510,22 +527,17 @@ web pages.
 
 <p>
 
-<p>
 
 <h2>Googlecode <a name="bitgit:googlecode"></a></h2>
 <p>
 
-<p>
-
-<p>
 To use Googlecode you need a general account on Google, which allows
 you to use Gmail, Google Docs, and other products.
 
 <p>
 
-<p>
 
-<h3>Create a New Project  <a name="___sec4"></a></h3>
+<h3>Create a new project  <a name="___sec7"></a></h3>
 <p>
 Go to <a href="http://code.google.com/hosting"><tt>http://code.google.com/hosting</tt></a> and click on
 <em>Create a new project</em>. Fill out <em>all</em> the fields. For now
@@ -533,11 +545,12 @@ the project name is <tt>my-project</tt>.
 You have
 to choose between Git, Mercurial, or Subversion as version control
 system for your project, and this choice cannot be changed.
-Git and Mercurial are preferred over Subversion nowadays.
+Git and Mercurial are clearly preferred over Subversion nowadays.
 If you choose Git, you must create a file <tt>.netrc</tt> in your
 home folder containing the line
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">machine code.google.com login uname password pw
 </pre></div>
 <p>
@@ -553,15 +566,17 @@ The next step is to clone the empty repository on your local machine
 so that you can add files:
 <p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git clone https://username@code.google.com/p/my-project/
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git clone https://code.google.com/p/my-project/
 </pre></div>
 <p>
 Now you can go to the <tt>my-project</tt> folder and add files.
 Perform
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git add .
-git commit -am <span style="color: #BB4444">&#39;First import of files.&#39;</span>
+git commit -am <span style="color: #BA2121">&#39;First import of files.&#39;</span>
 git push origin master
 </pre></div>
 <p>
@@ -576,6 +591,7 @@ the repository, you should add the following section to your
 <tt>.hgrc</tt> file:
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[auth]
 my-project.prefix = https://my-project.googlecode.com/hg/
 my-project.username = uname
@@ -596,6 +612,7 @@ demands either wiki pages or special web areas for locating documentation.
 The URL to your files is
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://my-project.googlecode.com/git/
 </pre></div>
 <p>
@@ -605,6 +622,7 @@ For example, if we have HTML documentation of our project in
 the folder <tt>doc/html</tt>, we can point users to
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://my-project.googlecode.com/git/doc/html/index.html
 </pre></div>
 <p>
@@ -612,6 +630,7 @@ The HTML will be rendered correctly as opposed to when you load
 the similar file into the web browser from the repository,
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://code.google.com/p/my-project/source/browse/doc/html/index.html
 </pre></div>
 <p>
@@ -627,13 +646,13 @@ main page of the project. This is a wiki, using Google's wiki syntax,
 but it is quite easy to add links to your documentation, e.g.,
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Browse the
 [https://my-project.googlecode.com/git/doc/API/html/index.html
 API documentation].
 </pre></div>
 <p>
 
-<p>
 It is easy to allow others to push their changes to the
 repository: click on <em>Sharing</em> and then on <em>Administer</em>.
 The Google account names of people you allow write access can be
@@ -641,7 +660,7 @@ listed under each other in the <em>Project committers</em> field.
 
 <p>
 
-<h3>Wiki Pages  <a name="___sec8"></a></h3>
+<h3>Wiki pages  <a name="___sec8"></a></h3>
 <p>
 Wiki pages can intuitively be made directly in the browser. However,
 it is often more convenient to have them locally on your computer.
@@ -658,21 +677,15 @@ that there is only one source of the documentation (despite the need
 for many formats) and that the wiki pages are frequently updated.
 
 <p>
-<!-- https://odespy.googlecode.com/git/doc/API/index.html -->
-<!-- https://odespy.googlecode.com/git/doc/tutorial/html/wrap_odesolvers.html -->
+<!-- <a href="https://odespy.googlecode.com/git/doc/API/index.html"><tt>https://odespy.googlecode.com/git/doc/API/index.html</tt></a> -->
+<!-- <a href="https://odespy.googlecode.com/git/doc/tutorial/html/wrap_odesolvers.html"><tt>https://odespy.googlecode.com/git/doc/tutorial/html/wrap_odesolvers.html</tt></a> -->
 
 <p>
 
-<p>
 
 <h2>GitHub <a name="bitgit:github"></a></h2>
 <p>
 
-<p>
-
-<p>
-
-<p>
 Go to <tt>github.com</tt> and create an account. Then go to your account
 settings, choose <em>SSH Keys</em>, and provide your SSH key. Everyone who is
 supposed to use your repository must provide their SSH key.  There is
@@ -685,13 +698,14 @@ files is briefly described in the introduction to Bitbucket above.
 
 <p>
 
-<p>
 
-<h3>Create a New Project  <a name="___sec4"></a></h3>
+<h3>Create a new project  <a name="___sec10"></a></h3>
 <p>
 Click on <em>New repository</em> on the main page and fill out a project
 name, here <em>My Project</em>, click the check button <em>Initialize this
 repository with a README</em>, and click on <em>Create repository</em>.
+Unless you pay, all repos are public, but students and teachers
+can request <a href="https://github.com/edu">free, private repos</a>.
 
 <p>
 The next step is to clone the project on your personal computer. Click
@@ -699,6 +713,7 @@ on the <em>Git Read-Only</em> button to see the correct address of the project,
 paste this address into a terminal window, after <tt>git clone</tt>:
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git clone git://github.com:username/My-Project.git
 </pre></div>
 <p>
@@ -719,13 +734,13 @@ When your initial file collection has the desired form, you must
 run
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git add .
-git commit -am <span style="color: #BB4444">&#39;First set of files.&#39;</span>
+git commit -am <span style="color: #BA2121">&#39;First set of files.&#39;</span>
 git push -u origin master
 </pre></div>
 <p>
 
-<p>
 To give others permissions to push their edits of files to the
 repository, you click on <em>Admin</em>, centered at the top of the project's
 page, then click on <em>Collaborators</em> on the left, and fill in the name
@@ -753,9 +768,8 @@ web pages associated with the project.
 
 <p>
 
-<p>
 
-<h3>Wiki Pages  <a name="___sec8"></a></h3>
+<h3>Wiki pages  <a name="___sec11"></a></h3>
 <p>
 With every GitHub project there is an option to create wiki pages.
 Click on the <em>Wiki</em> button right under the line with the project
@@ -777,6 +791,7 @@ stored in a separate repo: click on <em>Git Access</em> and then on
 Git address for a standard <tt>git clone</tt> command, typically
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git clone git://github.com/username/My-Project.wiki.git
 </pre></div>
 <p>
@@ -800,6 +815,7 @@ generate the wiki in reStructuredText format.
 Do changes, commit the usual way, and push by
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git push git@github.com:username/My-project.wiki.git
 </pre></div>
 <p>
@@ -808,9 +824,8 @@ The address can be stored as <tt>url</tt> in <tt>.git/config</tt> so that just a
 
 <p>
 
-<p>
 
-<h3>Project Web Pages  <a name="___sec12"></a></h3>
+<h3>Project web pages  <a name="___sec12"></a></h3>
 <p>
 GitHub can also host a set of web pages for your project where you can
 store various types of documentation. Here is a simple
@@ -819,13 +834,13 @@ recipe for creating a set of project web pages.
 <p>
 
 <ol>
-<li> Go to the  project page on <tt>github.com</tt> and click <em>Admin</em>.
-<li> Check the <em>GitHub Pages</em> check box.
-<li> Click on the <em>Automatic GitHub Page Generator</em> button in the pop up window.
-<li> Proceed with choosing a design of the <tt>index.html</tt> page and click <em>Publish</em>.
+<li> Go to the  project page on <tt>github.com</tt> and click <em>Admin</em>.</li>
+<li> Check the <em>GitHub Pages</em> check box.</li>
+<li> Click on the <em>Automatic GitHub Page Generator</em> button in the pop up window.</li>
+<li> Proceed with choosing a design of the <tt>index.html</tt> page and click <em>Publish</em>.</li>
 <li> Go to the root folder of the project, <tt>My-Project</tt>
-   and run <tt>git fetch origin</tt>.
-<li> Run <tt>git checkout gh-pages</tt>
+   and run <tt>git fetch origin</tt>.</li>
+<li> Run <tt>git checkout gh-pages</tt></li>
 </ol>
 
 You have now a <em>new branch</em> called <tt>gh-pages</tt> of your project containing an
@@ -837,7 +852,14 @@ HTML and other files as you like.
 
 <p>
 The <tt>index.html</tt> page is invoked by the web address
-<tt>http://username.github.com/My-Project/index.html</tt>,
+
+<p>
+
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://username.github.com/My-Project/index.html
+</pre></div>
+<p>
 where <tt>username</tt> is the GitHub
 user name and <tt>My-Project</tt> is the project name.
 
@@ -857,6 +879,7 @@ switches to the gh-pages branch.
 When branches diverge you can merge them by
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git merge otherbranch
 </pre></div>
 <p>
@@ -883,8 +906,9 @@ branch and merge with gh-pages so you get the autogenerated
 in the root folder of the master branch as well:
 
 <p>
-<p>
 
+
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git merge master
 touch .nojekyll
 git push origin gh-pages
@@ -904,9 +928,10 @@ Before publishing documents online,
 make sure to update the gh-pages branch by
 
 <p>
-<p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git commit -am <span style="color: #BB4444">&#39;Ensure commit of everything in master branch&#39;</span>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git commit -am <span style="color: #BA2121">&#39;Ensure commit of everything in master branch&#39;</span>
 git push origin master
 git checkout gh-pages
 git merge master
@@ -915,14 +940,14 @@ git checkout master
 </pre></div>
 <p>
 
-<p>
 Personally, I like to move the generated <tt>index.html</tt> file and all
 associated scripts, stylesheets, and images from the root folder to
 some more isolated place, say <tt>doc/web/git</tt>:
 
 <p>
-<p>
 
+
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git mv index.html params.json stylesheets/ images/ <span style="color: #BB6622; font-weight: bold">\</span>
        javascripts/ doc/web/git/
 </pre></div>
@@ -930,22 +955,22 @@ some more isolated place, say <tt>doc/web/git</tt>:
 The <tt>index.html</tt> then has the URL
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://username.github.com/My-Project/doc/web/git/index.html
 </pre></div>
 <p>
 
-<p>
 <!-- The problem can also be circumvented by -->
 <!-- installing special Sphinx extensions ("sphinx-to-github": -->
 <!-- "https://github.com/michaeljones/sphinx-to-github" or "github-tools": -->
 <!-- "http://pydoc.net/github-tools/0.1.3/"). -->
 
 <p>
-<!-- See https://github.com/daler/sphinxdoc-test -->
+<!-- See <a href="https://github.com/daler/sphinxdoc-test"><tt>https://github.com/daler/sphinxdoc-test</tt></a> -->
 <!-- for ideas on how to do sphinx documentation without full -->
 <!-- mirroring as I do. -->
-<!-- See also http://lucasbardella.com/report/hosting-your-sphinx-docs-in-github/ -->
-<!-- Sphinx extension for github: https://github.com/michaeljones/sphinx-to-github -->
+<!-- See also <a href="http://lucasbardella.com/report/hosting-your-sphinx-docs-in-github/"><tt>http://lucasbardella.com/report/hosting-your-sphinx-docs-in-github/</tt></a> -->
+<!-- Sphinx extension for github: <a href="https://github.com/michaeljones/sphinx-to-github"><tt>https://github.com/michaeljones/sphinx-to-github</tt></a> -->
 
 <p>
 Linking to source code files or other files in the project is easy:
@@ -959,31 +984,31 @@ Typically, a source file <tt>mydir/myfile.py</tt> in project <tt>prj</tt> is rea
 through
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://github.com/username/prj/blob/master/mydir/myfile.py?raw=true
 </pre></div>
 <p>
 
+
+<h3>User web pages  <a name="___sec13"></a></h3>
 <p>
 
-<h3>User Web Pages  <a name="___sec5"></a></h3>
-<p>
-
-<p>
 GitHub also allows you to create user pages and organization pages not
 tied to any specific project.
 Your personal site has address
 <tt>http://username.github.com</tt>.
 Go to your home page on <tt>github.com</tt> and click <em>New repository</em>,
 and give it the project name <tt>username.github.com</tt>.
-Then following the instructions that come up:
+Then follow the instructions that come up:
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">mkdir username.github.com
-<span style="color: #AA22FF">cd </span>username.github.com
+<span style="color: #008000">cd </span>username.github.com
 git init
-<span style="color: #008800; font-style: italic"># make an index.html file with some test text</span>
+<span style="color: #408080; font-style: italic"># make an index.html file with some test text</span>
 git add index.html
-git commit -m <span style="color: #BB4444">&#39;First commit&#39;</span>
+git commit -m <span style="color: #BA2121">&#39;First commit&#39;</span>
 git remote add origin git@github.com:username/username.github.com.git
 git push -u origin master
 </pre></div>
@@ -996,426 +1021,14 @@ If you want to use Sphinx generated HTML pages, recall to add an empty file
 
 <p>
 
-<p>
-
-<p>
-<!-- Use gh-pages in a subfolder of the master branch: https://gist.github.com/825950 -->
-
-<p>
-
-<p>
-
-<h2>Using Mercurial <a name="bitgit:hg"></a></h2>
-<p>
-
-<p>
-
-<p>
-Mac and Linux users will normally work with Mercurial through commands in
-a terminal window, which is the emphasized interface described here.
-Windows users will prefer to use TortoiseHG. This graphical interface is
-mostly self-explanatory, but a brief description appears below.
-
-<p>
-
-<h3>Basic use of TortoiseHG on a Windows Machine  <a name="___sec15"></a></h3>
-<p>
-When you have an account on Bitbucket and have downloaded and installed
-TortoiseHG, you are ready to work with Mercurial repositories the
-following way.
-
-<p>
-
-<ul>
- <li> Start  <em>Hg workbench</em>
- <li> Register your username as your email address: choose <em>File - Settings</em>
-   and then <em>Commit</em>.
- <li> Clone a repository: choose <em>File - clone repository</em>. Paste the
-   URL of the Bitbucket repo as <em>Source</em> and set
-   <em>Destination</em> as some preferred folder on your machine.
-   You will be prompted for a password which is the password for your
-   Bitbucket account.
- <li> When a file is changed and you want to commit the changes,
-   right-click in the Explorer window showing the Mercurial folder
-   and choose <em>Commit</em>. Write a comment in the text field to the right
-   to document the changes.
- <li> To synchronize your local files with the repository (i.e., to do a
-   <tt>push</tt> command), right-click in the Explorer window, choose
-   <em>TortoiseHG - Synchronize</em>. You need to provide the password for the
-   Bitbucket account.
-</ul>
-
-Many prefer to work in Visual Studio with their program files on Windows.
-This is easy also when you adopt Bitbucket as repo. Just start VisualStudio,
-make a solution and a project, create the desired files, then one can
-just right-click with the mouse on the solution, the project, or the
-file one wants to commit and choose <em>Commit</em>.
-
-<p>
-
-<h3>Basic Commands of Mercurial   <a name="___sec16"></a></h3>
-<p>
-
-<h4>Cloning  <a name="___sec17"></a></h4>
-<p>
-You get started with your project on a new machine or another user
-can get started with the project by the command
-<p>
-
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg clone ssh://hg@bitbucket.org/username/my-project
-</pre></div>
-<p>
-
-<p>
-
-<h4>The Pull-Change-Push Cycle  <a name="___sec18"></a></h4>
-<p>
-Your typical working style with the <tt>my-project</tt> project goes as follows.
-First you go to the desired folder where this project is stored on
-your local computer and make sure
-you have the latest versions of the files:
-<p>
-
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg pull
-hg update
-</pre></div>
-<p>
-These commands download the latest versions of the files from
-your <tt>bitbucket.org</tt> repository and make them ready for changes on
-your computer. The <tt>pull</tt> command requires a functioning Internet
-connection.
-
-<p>
-You can now edit some files. Maybe you also add, remove, and move some files:
-<p>
-
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg add filename
-hg remove filename
-hg rename oldfilename ../somedir/newfilename
-</pre></div>
-<p>
-The removal of a file is physically performed when you to a
-<tt>hg commit</tt>. The file is never removed from the repository, only
-hidden, so it is easy to get the file and its entire history
-back at a later stage.
-
-<p>
-After some changes, you have to commit and push the files to the
-repository at <tt>bitbucket.org</tt>:
-<p>
-
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg commit -m <span style="color: #BB4444">&#39;Description of changes.&#39;</span>
-hg push
-</pre></div>
-<p>
-Note that you cannot redo the description (i.e., be careful with
-recalling and executing old commit commands without updating the
-description).
-
-<p>
-The command
-<p>
-
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg stat
-</pre></div>
-<p>
-shows the status of the individual files (<tt>M</tt> for modified, <tt>A</tt> for
-added, <tt>R</tt> for removed), and you should pay attention to files with a
-question mark because these are not tracked in the repository. It is
-very easy to forget adding new files so <tt>hg stat</tt> is a useful command
-to ensure that all files you want to track have been added to the
-repository.
-
-<p>
-
-<h4>Viewing the History of Files  <a name="___sec19"></a></h4>
-<p>
-The power of <tt>hg</tt> and your file repository <tt>bitbucket.org</tt> is that
-you can work with the project files on several computers and others can
-also contribute to this project. The history of each file is recorded
-and anyone can roll back to previous versions, if needed. You can easily see
-who did what with the various files.
-
-<p>
-For example,
-<p>
-
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg annotate -aun myfile
-</pre></div>
-<p>
-lists the various lines in the file <tt>myfile</tt> annotated with the revision
-number of the latest change of the line and the name of the user who
-performed the change.
-
-<p>
-Another command,
-<p>
-
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg log -p filename | less
-</pre></div>
-<p>
-lists the history of <tt>filename</tt> in more detail so that you can track
-the evolution of this file. Adding the <tt>--follow</tt> option will list the
-history also when <tt>filename</tt> had other names.  The history of all
-files in a folder is listed by specifying the folder name(s).
-No name specification gives the history of the whole repo.
-
-<p>
-More compact output from <tt>hg log</tt>, without line differences, is triggered by
-the <tt>--stat</tt> option:
-<p>
-
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg log --stat filename | less   <span style="color: #008800; font-style: italic"># changes in a specific file</span>
-hg log --stat | less            <span style="color: #008800; font-style: italic"># changes in the whole repo</span>
-</pre></div>
-<p>
-The combination <tt>-p --stat</tt> equips the line differences with an overview
-of which files that were changed in each revision.
-
-<p>
-If you wonder what has recently happened to a file after updating your
-local repository, just run <tt>hg log -p --stat</tt>: the last changes appear
-in the beginning of the output.
-
-<p>
-
-<p>
-
-<h4>Retrieving Old Files  <a name="___sec20"></a></h4>
-<p>
-To restore an old version of a file with name <tt>filename</tt>,
-check the file history with
-<tt>hg log -p filename</tt> and find the revision number corresponding to the
-version of the file you want. Say this revision number is 152.
-The command
-<p>
-
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg revert -r 152 filename
-</pre></div>
-<p>
-replaces the current version of the file by the old one from revision 152.
-Sometimes it is better to store the old version in a separate file:
-<p>
-
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg cat -r 152 filename &gt; somefile
-</pre></div>
-<p>
-The entire local repo can also be set back:
-<p>
-
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg update -r 152
-hg update            <span style="color: #008800; font-style: italic"># go back to the latest version again</span>
-</pre></div>
-<p>
-
-<p>
-
-<p>
-
-<h4>Comments on Two-Level Repositories  <a name="___sec21"></a></h4>
-<p>
-Mercurial has a two-level type of repository: there is global
-repository for all users of the <tt>my-project</tt> tree at <tt>bitbucket.org</tt>,
-but each user also has a local repository (automatically made). To
-update files, one must first pull new files from the global repository
-(<tt>pull</tt>) and then update the local repository (<tt>update</tt>), before any
-file can be edited. The <tt>hg commit</tt> command saves files in the local
-repository. One may run many <tt>hg commit</tt> commands to make a sequence
-of corresponding versions of files in the local repository. Finally,
-when the local versions are ready to be pushed to the global
-repository, one runs the <tt>hg push</tt> command.
-
-<p>
-Older version control systems, including Subversion and CVS, have only
-a global repository and no local ones.  The advantage of the two-level
-repository is that you can change your files locally and keep track of
-the changes (by doing <tt>hg commit</tt>) without affecting other users of
-the files.  This feature allows you to commit changes to the global
-repository only when you feel comfortable with the state of the files.
-Nevertheless, if others work actively on the same files as you, it is
-generally recommended to push often in order to exchange the latest
-version of the files. This strategy may avoid problems with future
-merging of files.
-
-<p>
-
-<h3>Merging Files with Mercurial <a name="bitgit:hgmerge"></a></h3>
-<p>
-
-<p>
-
-<p>
-It might have happened that others and you have edited the same files
-at the same time. How should the edits then be combined?  Often the
-<tt>hg update</tt> command is clever enough to merge the changes made by
-different users automatically. If not, you have to run an explicit <tt>hg
-merge</tt> command.  This command tries to use some merge
-program on your computer system to automatically merge files. If this
-fails, <tt>hg merge</tt> invokes some graphical tool to help you resolve the
-conflict between files.  Example on popular merge programs for this
-purpose are <tt>meld</tt>, <tt>xxdiff</tt>, <tt>kdiff3</tt>, and <tt>diffuse</tt>.  You can
-specify the merge program, say <tt>xxdiff</tt>, by <tt>hg merge --tool xxdiff</tt>.
-How you now proceed is dependent on the particular program. Usually,
-for each change you must choose either your new local version of the
-text, or your old local version of the text, or the version of the
-text pulled from the global repository.  After using the merge program
-successfully you must save the merged file and perform an <tt>hg commit</tt>
-command on it, and perhaps do an <tt>hg push</tt> to also update the global
-repository with the merged file(s).
-
-<p>
-Suppose you do not manage to merge using the merge tool. Then you have
-to invoke the file, say <tt>myfile</tt> in an editor and do the merge
-manually. There will often be lines starting with '<<<<', '=====',
-and '>>>>` to mark conflicting texts (<em>merge markers</em>). After removing
-these lines and editing the text manually, you must register the conflict
-as resolved:
-<p>
-
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg resolve -m merge myfile
-hg commit -m merge myfile
-</pre></div>
-<p>
-
-<p>
-You can read more about merging files in the <a href="http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html">hgbook</a>.
-We shall now illustrate the merge problems through an example.
-Suppose we have a global repository <tt>tmp_repo</tt>, and two (cloned)
-directories <tt>tmp1</tt> and <tt>tmp2</tt>, corresponding to two users, each with
-their copy of the global repository.  There is only one file <tt>myfile</tt>
-in the repository. We then simulate the two users and perform edits in
-parallel. The shell script below simulates the two users and
-illustrates the importance of pulling before editing and the need of
-merge.
-
-<p>
-<p>
-
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic">#!/bin/sh</span>
-<span style="color: #008800; font-style: italic"># Demo script for exemplifying hg merge</span>
-
-rm -rf tmp1 tmp2 tmp_repo   <span style="color: #008800; font-style: italic"># Clean up previous runs</span>
-
-mkdir tmp_repo   <span style="color: #008800; font-style: italic"># Global repository for testing</span>
-<span style="color: #AA22FF">cd </span>tmp_repo
-cat &gt; myfile <span style="color: #BB4444">&lt;&lt;EOF</span>
-<span style="color: #BB4444">This is a little</span>
-<span style="color: #BB4444">test file for</span>
-<span style="color: #BB4444">exemplifying merge</span>
-<span style="color: #BB4444">of files in different</span>
-<span style="color: #BB4444">hg directories.</span>
-<span style="color: #BB4444">EOF</span>
-hg init   <span style="color: #008800; font-style: italic"># Make hg global repository out of this directory</span>
-hg add    <span style="color: #008800; font-style: italic"># Add all files not mentioned in ~/.hgignore</span>
-hg commit -m <span style="color: #BB4444">&#39;first commit&#39;</span>
-<span style="color: #AA22FF">cd</span> ..
-
-<span style="color: #008800; font-style: italic"># Make a new hg repositories tmp1 and tmp2 (two users)</span>
-hg clone tmp_repo tmp1
-hg clone tmp_repo tmp2
-
-<span style="color: #008800; font-style: italic"># Change myfile in the directory tmp1</span>
-<span style="color: #AA22FF">cd </span>tmp1
-<span style="color: #008800; font-style: italic"># Edit myfile: insert a new second line</span>
-perl -pi -e <span style="color: #BB4444">&#39;s/a little\n/a little\ntmp1-add1\n/g&#39;</span> myfile
-<span style="color: #008800; font-style: italic"># Register change in local repository</span>
-hg commit -m <span style="color: #BB4444">&#39;Inserted a new second line in myfile.&#39;</span>
-<span style="color: #008800; font-style: italic"># Look at changes in this clone</span>
-hg log -p
-<span style="color: #008800; font-style: italic"># Register change in global repository tmp_repo</span>
-hg push
-<span style="color: #AA22FF">cd</span> ..
-
-<span style="color: #008800; font-style: italic"># Change myfile in the directory tmp2 &quot;in parallel&quot;</span>
-<span style="color: #AA22FF">cd </span>tmp2
-<span style="color: #008800; font-style: italic"># Edit myfile: add a line at the end</span>
-cat &gt;&gt; myfile <span style="color: #BB4444">&lt;&lt;EOF</span>
-<span style="color: #BB4444">tmp2-add1</span>
-<span style="color: #BB4444">EOF</span>
-<span style="color: #008800; font-style: italic"># Register change locally</span>
-hg commit -m <span style="color: #BB4444">&#39;Added a new line at the end&#39;</span>
-<span style="color: #008800; font-style: italic"># Register change globally</span>
-hg push
-<span style="color: #008800; font-style: italic"># Error message: global repository has changed,</span>
-<span style="color: #008800; font-style: italic"># we need to pull those changes to local repository first</span>
-<span style="color: #008800; font-style: italic"># and see if all files are compatible before we can update</span>
-<span style="color: #008800; font-style: italic"># our own changes to the global repository.</span>
-<span style="color: #008800; font-style: italic"># hg writes</span>
-<span style="color: #008800; font-style: italic"># abort: push creates new remote head d0a2f8e6b9d9!</span>
-<span style="color: #008800; font-style: italic"># (you should pull and merge or use push -f to force)</span>
-
-hg pull
-<span style="color: #008800; font-style: italic"># hg writes:</span>
-<span style="color: #008800; font-style: italic"># added 1 changesets with 1 changes to 1 files (+1 heads)</span>
-<span style="color: #008800; font-style: italic"># (run &#39;hg heads&#39; to see heads, &#39;hg merge&#39; to merge)</span>
-hg merge
-<span style="color: #008800; font-style: italic"># Successful merge!</span>
-cat myfile
-hg commit -m merge
-hg push
-<span style="color: #AA22FF">cd</span> ..
-
-<span style="color: #008800; font-style: italic"># Perform new changes in parallel in tmp1 and tmp2,</span>
-<span style="color: #008800; font-style: italic"># this time causing hg merge to fail</span>
-
-<span style="color: #008800; font-style: italic"># Change myfile in the directory tmp1</span>
-<span style="color: #AA22FF">cd </span>tmp1
-<span style="color: #008800; font-style: italic"># Do it all right by pulling and updating first</span>
-hg pull
-hg update
-<span style="color: #008800; font-style: italic"># Edit myfile: insert &quot;just&quot; in first line.</span>
-perl -pi -e <span style="color: #BB4444">&#39;s/a little/tmp1-add2 a little/g&#39;</span> myfile
-<span style="color: #008800; font-style: italic"># Register change in local repository</span>
-hg commit -m <span style="color: #BB4444">&#39;Inserted &quot;just&quot; in first line.&#39;</span>
-<span style="color: #008800; font-style: italic"># Register change in global repository tmp_repo</span>
-hg push
-<span style="color: #AA22FF">cd</span> ..
-
-<span style="color: #008800; font-style: italic"># Change myfile in the directory tmp2 &quot;in parallel&quot;</span>
-<span style="color: #AA22FF">cd </span>tmp2
-<span style="color: #008800; font-style: italic"># Edit myfile: replace little by modest</span>
-perl -pi -e <span style="color: #BB4444">&#39;s/a little/a tmp2-replace1\ntmp2-add2\n/g&#39;</span> myfile
-<span style="color: #008800; font-style: italic"># Register change locally</span>
-hg commit -m <span style="color: #BB4444">&#39;Replaced &quot;little&quot; by &quot;modest&quot;&#39;</span>
-<span style="color: #008800; font-style: italic"># Register change globally</span>
-hg push
-<span style="color: #008800; font-style: italic"># Not possible: need to pull changes in the global repository</span>
-hg pull
-hg update
-<span style="color: #008800; font-style: italic"># hg update aborts: we have to run hg merge</span>
-diff myfile ../tmp_repo/myfile
-<span style="color: #AA22FF">echo</span> <span style="color: #BB4444">&#39;Now you must do hg merge manually&#39;</span>
-</pre></div>
-<p>
-
-<p>
-Try to run this <a href="html/_static-bitgithg_merge.sh">file</a> named
-<tt>hg_merge.sh</tt> by <tt>sh -x hg_merge.sh</tt>.
-To resolve the resulting merge conflict you need to go to the <tt>tmp2</tt>
-folder, run <tt>hg merge --tool meld</tt> and use the <tt>meld</tt> tool to
-select which text snippets that should make up the final, merged
-version. Save and quit <tt>meld</tt> and perform <tt>hg commit -m merge</tt>.  You
-can now do <tt>hg push</tt> successfully to update the global repository.
-
-<p>
+<!-- Use gh-pages in a subfolder of the master branch: <a href="https://gist.github.com/825950"><tt>https://gist.github.com/825950</tt></a> -->
 
-<h3>More Documentation on Mercurial  <a name="___sec23"></a></h3>
 <p>
 
-<ul>
- <li> <a href="http://mercurial.selenic.com/wiki/QuickStart">Mercurial Quick Start</a> (for the impatient)
- <li> <a href="http://hgbook.red-bean.com/read/a-tour-of-mercurial-the-basics.html">A Tour of Mercurial - The Basics</a>
- <li> <a href="http://mercurial.selenic.com/wiki/FAQ">Mercurial FAQ</a>
- <li> <a href="http://mercurial.selenic.com/wiki/Tutorial">Mercurial Tutorial</a>
- <li> <a href="http://hgbook.red-bean.com/">Mercurial: The Definitive Guide</a> (online or printed book)
-</ul>
 
 <h2>Using Git <a name="bitgit:git"></a></h2>
 <p>
 
-<p>
-
-<p>
 Most Mac and Linux users prefer to work with Git via a commands in a
 terminal window. Windows users prefer a graphical user interface (GUI).
 There are many <a href="http://git-scm.com/downloads/guis">options</a> in
@@ -1425,18 +1038,19 @@ control are understood.
 
 <p>
 
-<h3>Basic Commands of Git   <a name="___sec25"></a></h3>
+<h3>Basic Git commands  <a name="___sec15"></a></h3>
 <p>
 
-<h4>Cloning  <a name="___sec17"></a></h4>
+<h4>Cloning  <a name="___sec16"></a></h4>
 <p>
 You get started with your project on a new machine, or another user
 can get started with the project,
 by running
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git clone git@github.com:username/My-Project.git
-<span style="color: #AA22FF">cd </span>My-Project
+<span style="color: #008000">cd </span>My-Project
 ls
 </pre></div>
 <p>
@@ -1445,21 +1059,23 @@ actual project name.
 
 <p>
 
-<h4>The Pull-Change-Push Cycle  <a name="___sec18"></a></h4>
+<h4>The pull-change-push cycle  <a name="___sec17"></a></h4>
 <p>
 The typical work flow with the "My Project" project starts with
 updating the local repository by going to the <tt>My-Project</tt> folder
 and writing
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git pull origin master
 </pre></div>
 <p>
 
-<p>
-After editing files, adding new files, deleting files, or renaming files,
+You can now edit files, add new files, delete files, or rename files.
+Typical commands are
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git add file1 file2.* dir1 dir2
 git rm filename
 git rm -r dirname
@@ -1467,28 +1083,41 @@ git mv oldname newname
 git mv oldname ../newdir
 </pre></div>
 <p>
+When your chunk of work is ready,
 it is time to commit your changes (note the <tt>-am</tt> option):
 <p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git commit -am <span style="color: #BB4444">&#39;Description of changes.&#39;</span>
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git commit -am <span style="color: #BA2121">&#39;Description of changes.&#39;</span>
 </pre></div>
 <p>
-The description is tagged to this commit and cannot be changed so think
-a bit before executing this command.
+If typos or errors enter the message, the <tt>git commit --amend</tt> command
+can be used to reformulate the message.  Running <tt>git diff</tt> prior to
+<tt>git commit</tt> makes it
+easier to formulate descriptive commit messages since this command
+gives a listing of all the changes you have made to the files since
+the last commit or pull command.
 
 <p>
 You may perform many commits, to keep track of small changes, before
 you push your changes to the global repository:
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git push origin master
 </pre></div>
 <p>
+It is recommended to push and pull frequently if work takes place in several
+clones of the repo (i.e., there are many users or you work with the
+repo on different
+computers). Infrequent push and pull easily leads to merge problems
+(see the section <a href="#bitgit:git:merge">Merging files with Git</a>).
 
 <p>
 To see the status of files, run
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git status -s
 </pre></div>
 <p>
@@ -1498,26 +1127,27 @@ and <tt>??</tt> for not being registered in the repo.
 
 <p>
 
-<h4>Viewing the History of Files  <a name="___sec19"></a></h4>
+<h4>Viewing the history of files  <a name="___sec18"></a></h4>
 <p>
 A nice graphical tool allows you to view all changes, or just
 the latest ones:
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">gitk --all
-gitk --since<span style="color: #666666">=</span><span style="color: #BB4444">&quot;2 weeks ago&quot;</span>
+gitk --since<span style="color: #666666">=</span><span style="color: #BA2121">&quot;2 weeks ago&quot;</span>
 </pre></div>
 <p>
 
-<p>
 You can also view changes to all files or some selected ones
 in the terminal window:
 <p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git log -p                        <span style="color: #008800; font-style: italic"># all changes to all files</span>
-git log -p filename               <span style="color: #008800; font-style: italic"># all changes to a specific file</span>
-git log --stat --summary          <span style="color: #008800; font-style: italic"># compact summary of changed files</span>
-git log --stat --summary  subdir  <span style="color: #008800; font-style: italic"># only files in subdir folder</span>
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git log -p                        <span style="color: #408080; font-style: italic"># all changes to all files</span>
+git log -p filename               <span style="color: #408080; font-style: italic"># all changes to a specific file</span>
+git log --stat --summary          <span style="color: #408080; font-style: italic"># compact summary of changed files</span>
+git log --stat --summary  subdir  <span style="color: #408080; font-style: italic"># only files in subdir folder</span>
 </pre></div>
 <p>
 Adding <tt>--follow</tt> will print the history of file versions before the
@@ -1528,14 +1158,16 @@ To show the author who is responsible for the last modification of each
 line in the file, use <tt>git blame</tt>:
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git blame filename
-git blame --since<span style="color: #666666">=</span><span style="color: #BB4444">&quot;1 week&quot;</span> filename
+git blame --since<span style="color: #666666">=</span><span style="color: #BA2121">&quot;1 week&quot;</span> filename
 </pre></div>
 <p>
 A useful command to see the history of who did what, where individual
 edits of words are highlighted (<tt>--word-diff</tt>), is
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git log -p --stat --word-diff filename
 </pre></div>
 <p>
@@ -1546,7 +1178,8 @@ Looking for when a particular piece of text entered or left the file,
 say the text <tt>def myfunc</tt>, one can run
 <p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git log -p --word-diff --stat -S<span style="color: #BB4444">&#39;def myfunc&#39;</span> filename
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git log -p --word-diff --stat -S<span style="color: #BA2121">&#39;def myfunc&#39;</span> filename
 </pre></div>
 <p>
 This is useful to track down particular changes in the files to see when
@@ -1555,12 +1188,13 @@ expressions instead of exact text: just replace <tt>-S</tt> by <tt>-G</tt>.
 
 <p>
 
-<h4>Retrieving Old Files  <a name="___sec20"></a></h4>
+<h4>Retrieving old files  <a name="___sec19"></a></h4>
 <p>
 Occasionally you need to go back to an earlier version of a file,
 say its name is <tt>myfile</tt>. Start with viewing the history:
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git log myfile
 </pre></div>
 <p>
@@ -1569,6 +1203,7 @@ present version to and copy the commit hash (string like
 <tt>c7673487...</tt>) and run
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git diff c7673487763ec2bb374758fb8e7efefa12f16dea myfile
 </pre></div>
 <p>
@@ -1577,6 +1212,7 @@ differences between the most recent version and the one in
 the commit you picked. If you want to restore the old file, write
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git checkout c7673487763ec2bb374758fb8e7efefa12f16dea myfile
 </pre></div>
 <p>
@@ -1597,18 +1233,15 @@ The Git equivalent to <tt>hg cat</tt> for just viewing old versions of files is
 git folder:
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git show c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/myfile
 </pre></div>
 <p>
 
+
+<h3>Merging files with Git <a name="bitgit:git:merge"></a></h3>
 <p>
 
-<h3>Merging Files with Git <a name="bitgit:gitmerge"></a></h3>
-<p>
-
-<p>
-
-<p>
 The <tt>git pull</tt> command fetches new files from the repository and
 tries to perform an automatic merge if there are conflicts between
 the local files and the files in the repository.
@@ -1636,119 +1269,119 @@ perform edits in parallel. There is one file <tt>myfile</tt> in the
 repository.
 
 <p>
-<p>
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic">#!/bin/sh</span>
-<span style="color: #008800; font-style: italic"># Demo script for exemplifying git and merge</span>
 
-rm -rf tmp1 tmp2 tmp_repo   <span style="color: #008800; font-style: italic"># Clean up previous runs</span>
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#!/bin/sh</span>
+<span style="color: #408080; font-style: italic"># Demo script for exemplifying git and merge</span>
 
-mkdir tmp_repo   <span style="color: #008800; font-style: italic"># Global repository for testing</span>
-<span style="color: #AA22FF">cd </span>tmp_repo
+rm -rf tmp1 tmp2 tmp_repo   <span style="color: #408080; font-style: italic"># Clean up previous runs</span>
+
+mkdir tmp_repo   <span style="color: #408080; font-style: italic"># Global repository for testing</span>
+<span style="color: #008000">cd </span>tmp_repo
 git --bare init --shared
-<span style="color: #AA22FF">cd</span> ..
+<span style="color: #008000">cd</span> ..
 
-<span style="color: #008800; font-style: italic"># Make a repo that can be pushed to tmp_repo</span>
+<span style="color: #408080; font-style: italic"># Make a repo that can be pushed to tmp_repo</span>
 mkdir _tmp
-<span style="color: #AA22FF">cd </span>_tmp
-cat &gt; myfile <span style="color: #BB4444">&lt;&lt;EOF</span>
-<span style="color: #BB4444">This is a little</span>
-<span style="color: #BB4444">test file for</span>
-<span style="color: #BB4444">exemplifying merge</span>
-<span style="color: #BB4444">of files in different</span>
-<span style="color: #BB4444">git directories.</span>
-<span style="color: #BB4444">EOF</span>
+<span style="color: #008000">cd </span>_tmp
+cat &gt; myfile <span style="color: #BA2121">&lt;&lt;EOF</span>
+<span style="color: #BA2121">This is a little</span>
+<span style="color: #BA2121">test file for</span>
+<span style="color: #BA2121">exemplifying merge</span>
+<span style="color: #BA2121">of files in different</span>
+<span style="color: #BA2121">git directories.</span>
+<span style="color: #BA2121">EOF</span>
 git init
-git add .   <span style="color: #008800; font-style: italic"># Add all files not mentioned in ~/.gitignore</span>
-git commit -am <span style="color: #BB4444">&#39;first commit&#39;</span>
+git add .   <span style="color: #408080; font-style: italic"># Add all files not mentioned in ~/.gitignore</span>
+git commit -am <span style="color: #BA2121">&#39;first commit&#39;</span>
 git push ../tmp_repo master
-<span style="color: #AA22FF">cd</span> ..
+<span style="color: #008000">cd</span> ..
 rm -rf _tmp
 
-<span style="color: #008800; font-style: italic"># Make a new hg repositories tmp1 and tmp2 (two users)</span>
+<span style="color: #408080; font-style: italic"># Make a new hg repositories tmp1 and tmp2 (two users)</span>
 git clone tmp_repo tmp1
 git clone tmp_repo tmp2
-<span style="color: #008800; font-style: italic"># Change myfile in the directory tmp1</span>
-<span style="color: #AA22FF">cd </span>tmp1
-<span style="color: #008800; font-style: italic"># Edit myfile: insert a new second line</span>
-perl -pi -e <span style="color: #BB4444">&#39;s/a little\n/a little\ntmp1-add1\n/g&#39;</span> myfile
-<span style="color: #008800; font-style: italic"># Register change in local repository</span>
-git commit -am <span style="color: #BB4444">&#39;Inserted a new second line in myfile.&#39;</span>
-<span style="color: #008800; font-style: italic"># Look at changes in this clone</span>
+<span style="color: #408080; font-style: italic"># Change myfile in the directory tmp1</span>
+<span style="color: #008000">cd </span>tmp1
+<span style="color: #408080; font-style: italic"># Edit myfile: insert a new second line</span>
+perl -pi -e <span style="color: #BA2121">&#39;s/a little\n/a little\ntmp1-add1\n/g&#39;</span> myfile
+<span style="color: #408080; font-style: italic"># Register change in local repository</span>
+git commit -am <span style="color: #BA2121">&#39;Inserted a new second line in myfile.&#39;</span>
+<span style="color: #408080; font-style: italic"># Look at changes in this clone</span>
 git log -p
-<span style="color: #008800; font-style: italic"># or a more compact summary</span>
+<span style="color: #408080; font-style: italic"># or a more compact summary</span>
 git log --stat --summary
-<span style="color: #008800; font-style: italic"># or graphically</span>
-<span style="color: #008800; font-style: italic">#gitk</span>
-<span style="color: #008800; font-style: italic"># Register change in global repository tmp_repo</span>
+<span style="color: #408080; font-style: italic"># or graphically</span>
+<span style="color: #408080; font-style: italic">#gitk</span>
+<span style="color: #408080; font-style: italic"># Register change in global repository tmp_repo</span>
 git push origin master
-<span style="color: #AA22FF">cd</span> ..
+<span style="color: #008000">cd</span> ..
 
-<span style="color: #008800; font-style: italic"># Change myfile in the directory tmp2 &quot;in parallel&quot;</span>
-<span style="color: #AA22FF">cd </span>tmp2
-<span style="color: #008800; font-style: italic"># Edit myfile: add a line at the end</span>
-cat &gt;&gt; myfile <span style="color: #BB4444">&lt;&lt;EOF</span>
-<span style="color: #BB4444">tmp2-add1</span>
-<span style="color: #BB4444">EOF</span>
-<span style="color: #008800; font-style: italic"># Register change locally</span>
-git commit -am <span style="color: #BB4444">&#39;Added a new line at the end&#39;</span>
-<span style="color: #008800; font-style: italic"># Register change globally</span>
+<span style="color: #408080; font-style: italic"># Change myfile in the directory tmp2 &quot;in parallel&quot;</span>
+<span style="color: #008000">cd </span>tmp2
+<span style="color: #408080; font-style: italic"># Edit myfile: add a line at the end</span>
+cat &gt;&gt; myfile <span style="color: #BA2121">&lt;&lt;EOF</span>
+<span style="color: #BA2121">tmp2-add1</span>
+<span style="color: #BA2121">EOF</span>
+<span style="color: #408080; font-style: italic"># Register change locally</span>
+git commit -am <span style="color: #BA2121">&#39;Added a new line at the end&#39;</span>
+<span style="color: #408080; font-style: italic"># Register change globally</span>
 git push origin master
-<span style="color: #008800; font-style: italic"># Error message: global repository has changed,</span>
-<span style="color: #008800; font-style: italic"># we need to pull those changes to local repository first</span>
-<span style="color: #008800; font-style: italic"># and see if all files are compatible before we can update</span>
-<span style="color: #008800; font-style: italic"># our own changes to the global repository.</span>
-<span style="color: #008800; font-style: italic"># git writes</span>
-<span style="color: #008800; font-style: italic">#To /home/hpl/vc/scripting/manu/py/bitgit/src-bitgit/tmp_repo</span>
-<span style="color: #008800; font-style: italic"># ! [rejected]        master -&gt; master (non-fast-forward)</span>
-<span style="color: #008800; font-style: italic">#error: failed to push some refs to ...</span>
+<span style="color: #408080; font-style: italic"># Error message: global repository has changed,</span>
+<span style="color: #408080; font-style: italic"># we need to pull those changes to local repository first</span>
+<span style="color: #408080; font-style: italic"># and see if all files are compatible before we can update</span>
+<span style="color: #408080; font-style: italic"># our own changes to the global repository.</span>
+<span style="color: #408080; font-style: italic"># git writes</span>
+<span style="color: #408080; font-style: italic">#To /home/hpl/vc/scripting/manu/py/bitgit/src-bitgit/tmp_repo</span>
+<span style="color: #408080; font-style: italic"># ! [rejected]        master -&gt; master (non-fast-forward)</span>
+<span style="color: #408080; font-style: italic">#error: failed to push some refs to ...</span>
 
 git pull origin master
-<span style="color: #008800; font-style: italic"># git writes:</span>
-<span style="color: #008800; font-style: italic">#Auto-merging myfile</span>
-<span style="color: #008800; font-style: italic">#Merge made by recursive.</span>
-<span style="color: #008800; font-style: italic"># myfile |    1 +</span>
-<span style="color: #008800; font-style: italic"># 1 files changed, 1 insertions(+), 0 deletions(-)</span>
-cat myfile  <span style="color: #008800; font-style: italic"># successful merge!</span>
+<span style="color: #408080; font-style: italic"># git writes:</span>
+<span style="color: #408080; font-style: italic">#Auto-merging myfile</span>
+<span style="color: #408080; font-style: italic">#Merge made by recursive.</span>
+<span style="color: #408080; font-style: italic"># myfile |    1 +</span>
+<span style="color: #408080; font-style: italic"># 1 files changed, 1 insertions(+), 0 deletions(-)</span>
+cat myfile  <span style="color: #408080; font-style: italic"># successful merge!</span>
 git commit -am merge
 git push origin master
-<span style="color: #AA22FF">cd</span> ..
+<span style="color: #008000">cd</span> ..
 
-<span style="color: #008800; font-style: italic"># Perform new changes in parallel in tmp1 and tmp2,</span>
-<span style="color: #008800; font-style: italic"># this time causing hg merge to fail</span>
+<span style="color: #408080; font-style: italic"># Perform new changes in parallel in tmp1 and tmp2,</span>
+<span style="color: #408080; font-style: italic"># this time causing hg merge to fail</span>
 
-<span style="color: #008800; font-style: italic"># Change myfile in the directory tmp1</span>
-<span style="color: #AA22FF">cd </span>tmp1
-<span style="color: #008800; font-style: italic"># Do it all right by pulling and updating first</span>
+<span style="color: #408080; font-style: italic"># Change myfile in the directory tmp1</span>
+<span style="color: #008000">cd </span>tmp1
+<span style="color: #408080; font-style: italic"># Do it all right by pulling and updating first</span>
 git pull origin master
-<span style="color: #008800; font-style: italic"># Edit myfile: insert &quot;just&quot; in first line.</span>
-perl -pi -e <span style="color: #BB4444">&#39;s/a little/tmp1-add2 a little/g&#39;</span> myfile
-<span style="color: #008800; font-style: italic"># Register change in local repository</span>
-git commit -am <span style="color: #BB4444">&#39;Inserted &quot;just&quot; in first line.&#39;</span>
-<span style="color: #008800; font-style: italic"># Register change in global repository tmp_repo</span>
+<span style="color: #408080; font-style: italic"># Edit myfile: insert &quot;just&quot; in first line.</span>
+perl -pi -e <span style="color: #BA2121">&#39;s/a little/tmp1-add2 a little/g&#39;</span> myfile
+<span style="color: #408080; font-style: italic"># Register change in local repository</span>
+git commit -am <span style="color: #BA2121">&#39;Inserted &quot;just&quot; in first line.&#39;</span>
+<span style="color: #408080; font-style: italic"># Register change in global repository tmp_repo</span>
 git push origin master
-<span style="color: #AA22FF">cd</span> ..
+<span style="color: #008000">cd</span> ..
 
-<span style="color: #008800; font-style: italic"># Change myfile in the directory tmp2 &quot;in parallel&quot;</span>
-<span style="color: #AA22FF">cd </span>tmp2
-<span style="color: #008800; font-style: italic"># Edit myfile: replace little by modest</span>
-perl -pi -e <span style="color: #BB4444">&#39;s/a little/a tmp2-replace1\ntmp2-add2\n/g&#39;</span> myfile
-<span style="color: #008800; font-style: italic"># Register change locally</span>
-git commit -am <span style="color: #BB4444">&#39;Replaced &quot;little&quot; by &quot;modest&quot;&#39;</span>
-<span style="color: #008800; font-style: italic"># Register change globally</span>
+<span style="color: #408080; font-style: italic"># Change myfile in the directory tmp2 &quot;in parallel&quot;</span>
+<span style="color: #008000">cd </span>tmp2
+<span style="color: #408080; font-style: italic"># Edit myfile: replace little by modest</span>
+perl -pi -e <span style="color: #BA2121">&#39;s/a little/a tmp2-replace1\ntmp2-add2\n/g&#39;</span> myfile
+<span style="color: #408080; font-style: italic"># Register change locally</span>
+git commit -am <span style="color: #BA2121">&#39;Replaced &quot;little&quot; by &quot;modest&quot;&#39;</span>
+<span style="color: #408080; font-style: italic"># Register change globally</span>
 git push origin master
-<span style="color: #008800; font-style: italic"># Not possible: need to pull changes in the global repository</span>
+<span style="color: #408080; font-style: italic"># Not possible: need to pull changes in the global repository</span>
 git pull origin master
-<span style="color: #008800; font-style: italic"># git writes</span>
-<span style="color: #008800; font-style: italic">#CONFLICT (content): Merge conflict in myfile</span>
-<span style="color: #008800; font-style: italic">#Automatic merge failed; fix conflicts and then commit the result.</span>
-<span style="color: #008800; font-style: italic"># we have to do a manual merge</span>
+<span style="color: #408080; font-style: italic"># git writes</span>
+<span style="color: #408080; font-style: italic">#CONFLICT (content): Merge conflict in myfile</span>
+<span style="color: #408080; font-style: italic">#Automatic merge failed; fix conflicts and then commit the result.</span>
+<span style="color: #408080; font-style: italic"># we have to do a manual merge</span>
 cat myfile
-<span style="color: #AA22FF">echo</span> <span style="color: #BB4444">&#39;Now you must edit myfile manually&#39;</span>
+<span style="color: #008000">echo</span> <span style="color: #BA2121">&#39;Now you must edit myfile manually&#39;</span>
 </pre></div>
 <p>
 
-<p>
 You may run this <a href="html/_static-bitgitgit_merge.sh">file</a> named
 <tt>git_merge.sh</tt> by <tt>sh -x git_merge.sh</tt>.
 At the end, the versions of <tt>myfile</tt> in the
@@ -1757,6 +1390,7 @@ to merge the two versions, but failed. Merge markers are left in
 <tt>tmp2/myfile</tt>:
 <p>
 
+<!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 This is a tmp2-replace1
 tmp2-add2
@@ -1778,46 +1412,532 @@ Then run <tt>git commit -am merge</tt> to finalize the merge.
 
 <p>
 
+
+<h3>Git working style with branching and stashing <a name="bitgit:git:branch:stash"></a></h3>
 <p>
+Branching and stashing are nice features of Git that allow you to try
+out new things without affecting the stable version of your files.
+Usually, you extend and modify files quite often and perform a <tt>git
+commit</tt> every time you want to record the changes in your local
+repository. Imagine that you want to correct a set of errors in some
+files and push these corrections immediately.  The problem is that
+such a push will also include the latest, unfinished files that you
+have committed.
+
+<p>
+A better organization of your work would
+be to keep the latest, ongoing
+developments separate from the more official and stable version
+of the files. This is easily achieved by creating a separate branch
+where new developments takes place:
 
 <p>
 
-<h3>More Documentation on Git  <a name="___sec31"></a></h3>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git branch newstuff      <span style="color: #408080; font-style: italic"># create and switch to new branch</span>
+<span style="color: #408080; font-style: italic"># extend and modify files</span>
+git commit -am <span style="color: #BA2121">&#39;Modified ... and added a file on ...&#39;</span>
+
+git checkout master      <span style="color: #408080; font-style: italic"># swith back to master</span>
+<span style="color: #408080; font-style: italic"># correct errors</span>
+git push origin master
+
+git checkout newstuff    <span style="color: #408080; font-style: italic"># switch to other branch</span>
+<span style="color: #408080; font-style: italic"># continue development work</span>
+git commit -am <span style="color: #BA2121">&#39;More modifications of ...&#39;</span>  <span style="color: #408080; font-style: italic"># record changes</span>
+</pre></div>
+<p>
+At some point, your new developments are mature enough to be incorporated
+in the master branch. This is done via a merge:
+
+<p>
+
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git checkout master
+git merge newstuff
+</pre></div>
+<p>
+You no longer need the <tt>newstuff</tt> branch and can delete it:
+
+<p>
+
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git branch -d newstuff
+</pre></div>
+<p>
+
+It is not possible to switch branches unless you have committed the
+files in the current branch. If your work on some files is in a mess,
+and you want to change to another branch or fix other files in the
+current branch, a
+"global" commit affecting all files might be immature.  Then the <a href="http://git-scm.com/book/en/Git-Tools-Stashing"><tt>git stash</tt></a> command is handy. It
+records the state of your files and sets you back to the state of the
+last commit in the current branch. With <tt>git stash apply</tt> you get the
+files in this branch back to the state when you did the last <tt>git
+stash</tt>, or you can use <tt>git stash branch newstuff</tt> to move the edits
+since the last commit into a new branch.
+
+<p>
+Suppose you have performed some extensive edits in some files and then
+you are suddenly interrupted. You need to fix some typos in some
+other files, commit the changes, and push. The problem is that many files are
+in an unfinished state - in hindsight you realize that those files
+should have been modified in a separate branch.
+It is not too late to create that branch! First run <tt>git stash</tt>
+to get the files back to the
+state they were at the last commit. Then run
+<tt>git stash branch newstuff</tt> to create a new branch <tt>newstuff</tt> containing
+the state of the files when you did the (last) <tt>git stash</tt> command.
+Stashing used this way is a convenient technique to
+move some immature edits after the last commit out in a new branch for
+further experimental work.
+
+<p>
+(You can get the stashed files back by <tt>git stash apply</tt>. It is
+possible to multiple <tt>git stash</tt> and <tt>git stash apply</tt>
+commands. However, it is easy to run into trouble with multiple
+stashes, especially if they occur in multiple branches, as it becomes
+difficult to recognize which stashes that belong to which branch.  A
+good advice is therefore to do <tt>git stash</tt> <em>only once</em> to get back to
+a clean state and then move the unfinished messy files to a separate
+branch with <tt>git stash branch newstuff</tt>.)
+
+<p>
+
+<b>Remark.</b> A recent <a href="http://mercurial.selenic.com/wiki/ShelveExtension">extension module</a> for Mercurial allows stashing for that version control system as well:
+<tt>hg shelve --all</tt> is similar for <tt>git stash</tt>, and <tt>hg unshelve</tt>
+is similar to <tt>git stash apply</tt>.
+
+<p>
+
+
+<h3>More documentation on Git  <a name="___sec22"></a></h3>
 <p>
 
 <ul>
- <li> <a href="http://schacon.github.com/git/everyday.html">Everyday GIT With 20 Commands Or So</a>
- <li> <a href="http://sixrevisions.com/resources/git-tutorials-beginners/">Git top 10 tutorials</a>
- <li> <a href="http://book.git-scm.com/">Git Community Book</a>
- <li> <a href="http://hoth.entp.com/output/git_for_designers.html">Git for Designers</a> (aimed a people with no previous knowledge of version control systems)
- <li> <a href="http://www-cs-students.stanford.edu/~blynn/gitmagic/ch02.html">Git Magic: Basic Tricks</a>
- <li> The official <a href="http://schacon.github.com/git/gittutorial.html">Git Tutorial</a>
- <li> <a href="http://www.youtube.com/watch?v=TPY8UwlTIc0&feature=related">Git Tutorial Video</a> on YouTube
- <li> <a href="http://wiki.sourcemage.org/Git_Guide">Git Questions</a>
- <li> <a href="http://gitref.org">Git Reference</a> (can also be used as a tutorial on Git)
- <li> <a href="http://schacon.github.com/git/user-manual.html">Git User Manual</a>
- <li> <a href="http://git-scm.com/">Git home page</a>
- <li> <a href="http://mercurial.selenic.com/wiki/GitConcepts#Command_equivalence_table">Git and Mercurial command equivalence table</a>
- <li> <a href="http://git-scm.com/downloads/guis">Git/GitHub GUIs on Windows and Mac</a>
+ <li> <a href="http://try.github.com/">Web course on Git</a></li>
+ <li> <a href="http://schacon.github.com/git/everyday.html">Everyday GIT With 20 Commands Or So</a></li>
+ <li> <a href="http://sixrevisions.com/resources/git-tutorials-beginners/">Git top 10 tutorials</a></li>
+ <li> <a href="http://www.vogella.com/articles/Git/article.html">Lars Vogel's Git Tutorial</a></li>
+ <li> <a href="http://book.git-scm.com/">Git Community Book</a> (<em>explains</em> Git very well)</li>
+ <li> <a href="http://hoth.entp.com/output/git_for_designers.html">Git for Designers</a> (aimed a people with no previous knowledge of version control systems)</li>
+ <li> <a href="http://www-cs-students.stanford.edu/~blynn/gitmagic/ch02.html">Git Magic: Basic Tricks</a></li>
+ <li> The official <a href="http://schacon.github.com/git/gittutorial.html">Git Tutorial</a></li>
+ <li> <a href="http://www.youtube.com/watch?v=TPY8UwlTIc0&feature=related">Git Tutorial Video</a> on YouTube</li>
+ <li> <a href="http://wiki.sourcemage.org/Git_Guide">Git Questions</a></li>
+ <li> <a href="http://gitref.org">Git Reference</a> (can also be used as a tutorial on Git)</li>
+ <li> <a href="http://schacon.github.com/git/user-manual.html">Git User Manual</a></li>
+ <li> <a href="http://git-scm.com/">Git home page</a></li>
+ <li> <a href="http://mercurial.selenic.com/wiki/GitConcepts#Command_equivalence_table">Git and Mercurial command equivalence table</a></li>
+ <li> <a href="http://git-scm.com/downloads/guis">Git/GitHub GUIs on Windows and Mac</a></li>
 </ul>
 
-<h3>Diff of The Two Most Recent Versions of a File  <a name="___sec32"></a></h3>
+<h2>Using Mercurial <a name="bitgit:hg"></a></h2>
 <p>
-Both Mercurial and Git have "diff" commands for viewing differences
-in files. However, it sometimes takes quite some manual steps to
-answer the following question: I have just pulled new changes and
-want to view what these changes are for some selected files, using
-my favorite diff tools (maybe different tools for different types of
-files)? The answer consists of doing the following steps:
+
+Mac and Linux users will normally work with Mercurial through commands in
+a terminal window, which is the emphasized interface described here.
+Windows users will prefer to use TortoiseHG. This graphical interface is
+mostly self-explanatory, but a brief description appears below.
+
+<p>
+
+<h3>Basic use of TortoiseHG on a Windows machine  <a name="___sec24"></a></h3>
+<p>
+When you have an account on Bitbucket and have downloaded and installed
+TortoiseHG, you are ready to work with Mercurial repositories the
+following way.
 
 <p>
 
 <ul>
-  <li> Run a log command to see the identity of the previous version
-  <li> Run <tt>hg cat</tt> or <tt>git checkout</tt> (or <tt>git show</tt>) to get the
-    previous version of the file, and save that version as a separate
-    file
-  <li> Run some diff tool on the present and previous version of the file
+ <li> Start  <em>Hg workbench</em></li>
+ <li> Register your username as your email address: choose <em>File - Settings</em>
+   and then <em>Commit</em>.</li>
+ <li> Clone a repository: choose <em>File - clone repository</em>. Paste the
+   URL of the Bitbucket repo as <em>Source</em> and set
+   <em>Destination</em> as some preferred folder on your machine.
+   You will be prompted for a password which is the password for your
+   Bitbucket account.</li>
+ <li> When a file is changed and you want to commit the changes,
+   right-click in the Explorer window showing the Mercurial folder
+   and choose <em>Commit</em>. Write a comment in the text field to the right
+   to document the changes.</li>
+ <li> To synchronize your local files with the repository (i.e., to do a
+   <tt>push</tt> command), right-click in the Explorer window, choose
+   <em>TortoiseHG - Synchronize</em>. You need to provide the password for the
+   Bitbucket account.</li>
+</ul>
+
+Many prefer to work in Visual Studio with their program files on Windows.
+This is easy also when you adopt Bitbucket as repo. Just start VisualStudio,
+make a solution and a project, create the desired files, then one can
+just right-click with the mouse on the solution, the project, or the
+file one wants to commit and choose <em>Commit</em>.
+
+<p>
+
+<h3>Basic Mercurial commands   <a name="___sec25"></a></h3>
+<p>
+
+<h4>Cloning  <a name="___sec26"></a></h4>
+<p>
+You get started with your project on a new machine or another user
+can get started with the project by the command
+<p>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg clone ssh://hg@bitbucket.org/username/my-project
+</pre></div>
+<p>
+
+
+<h4>The pull-change-push cycle  <a name="___sec27"></a></h4>
+<p>
+Your typical working style with the <tt>my-project</tt> project goes as follows.
+First you go to the desired folder where this project is stored on
+your local computer and make sure
+you have the latest versions of the files:
+<p>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg pull
+hg update
+</pre></div>
+<p>
+These commands download the latest versions of the files from
+your <tt>bitbucket.org</tt> repository and make them ready for changes on
+your computer. The <tt>pull</tt> command requires a functioning Internet
+connection.
+
+<p>
+You can now edit some files. Maybe you also add, remove, and move some files:
+<p>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg add filename
+hg remove filename
+hg rename oldfilename ../somedir/newfilename
+</pre></div>
+<p>
+The removal of a file is physically performed when you do a
+<tt>hg commit</tt>. The file is never removed from the repository, only
+hidden, so it is easy to get the file and its entire history
+back at a later stage.
+
+<p>
+After some changes, you have to commit and push the files to the
+repository at <tt>bitbucket.org</tt>:
+<p>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg commit -m <span style="color: #BA2121">&#39;Description of changes.&#39;</span>
+hg push
+</pre></div>
+<p>
+Note that you cannot easily redo the description so be careful with
+the wording. You can run <tt>hg diff</tt> to get a listing of all
+the changes you have made since the last commit or pull command.
+
+<p>
+The command
+<p>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg stat
+</pre></div>
+<p>
+shows the status of the individual files (<tt>M</tt> for modified, <tt>A</tt> for
+added, <tt>R</tt> for removed), and you should pay attention to files with a
+question mark because these are not tracked in the repository. It is
+very easy to forget adding new files so <tt>hg stat</tt> is a useful command
+to ensure that all files you want to track have been added to the
+repository.
+
+<p>
+
+<h4>Viewing the history of files  <a name="___sec28"></a></h4>
+<p>
+The power of <tt>hg</tt> and your file repository <tt>bitbucket.org</tt> is that
+you can work with the project files on several computers and others can
+also contribute to this project. The history of each file is recorded
+and anyone can roll back to previous versions, if needed. You can easily see
+who did what with the various files.
+
+<p>
+For example,
+<p>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg annotate -aun myfile
+</pre></div>
+<p>
+lists the various lines in the file <tt>myfile</tt> annotated with the revision
+number of the latest change of the line and the name of the user who
+performed the change.
+
+<p>
+Another command,
+<p>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg log -p filename | less
+</pre></div>
+<p>
+lists the history of <tt>filename</tt> in more detail so that you can track
+the evolution of this file. Adding the <tt>--follow</tt> option will list the
+history also when <tt>filename</tt> had other names.  The history of all
+files in a folder is listed by specifying the folder name(s).
+No name specification gives the history of the whole repo.
+
+<p>
+More compact output from <tt>hg log</tt>, without line differences, is triggered by
+the <tt>--stat</tt> option:
+<p>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg log --stat filename | less   <span style="color: #408080; font-style: italic"># changes in a specific file</span>
+hg log --stat | less            <span style="color: #408080; font-style: italic"># changes in the whole repo</span>
+</pre></div>
+<p>
+The combination <tt>-p --stat</tt> equips the line differences with an overview
+of which files that were changed in each revision.
+
+<p>
+If you wonder what has recently happened to a file after updating your
+local repository, just run <tt>hg log -p --stat</tt>: the last changes appear
+in the beginning of the output.
+
+<p>
+
+
+<h4>Retrieving old files  <a name="___sec29"></a></h4>
+<p>
+To restore an old version of a file with name <tt>filename</tt>,
+check the file history with
+<tt>hg log -p filename</tt> and find the revision number corresponding to the
+version of the file you want. Say this revision number is 152.
+The command
+<p>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg revert -r 152 filename
+</pre></div>
+<p>
+replaces the current version of the file by the old one from revision 152.
+Sometimes it is better to store the old version in a separate file:
+<p>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg cat -r 152 filename &gt; somefile
+</pre></div>
+<p>
+The entire local repo can also be set back:
+<p>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg update -r 152
+hg update            <span style="color: #408080; font-style: italic"># go back to the latest version again</span>
+</pre></div>
+<p>
+
+
+<h4>Comments on two-level repositories  <a name="___sec30"></a></h4>
+<p>
+Mercurial has a two-level type of repository: there is global
+repository for all users of the <tt>my-project</tt> tree at <tt>bitbucket.org</tt>,
+but each user also has a local repository (automatically made). To
+update files, one must first pull new files from the global repository
+(<tt>pull</tt>) and then update the local repository (<tt>update</tt>), before any
+file can be edited. The <tt>hg commit</tt> command saves files in the local
+repository. One may run many <tt>hg commit</tt> commands to make a sequence
+of corresponding versions of files in the local repository. Finally,
+when the local versions are ready to be pushed to the global
+repository, one runs the <tt>hg push</tt> command.
+
+<p>
+Older version control systems, including Subversion and CVS, have only
+a global repository and no local ones.  The advantage of the two-level
+repository is that you can change your files locally and keep track of
+the changes (by doing <tt>hg commit</tt>) without affecting other users of
+the files.  This feature allows you to commit changes to the global
+repository only when you feel comfortable with the state of the files.
+Nevertheless, if others work actively on the same files as you, it is
+generally recommended to push often in order to exchange the latest
+version of the files. This strategy may avoid problems with future
+merging of files.
+
+<p>
+
+<h3>Merging files with Mercurial <a name="bitgit:hg:merge"></a></h3>
+<p>
+
+It might have happened that others and you have edited the same files
+at the same time. How should the edits then be combined?  Often the
+<tt>hg update</tt> command is clever enough to merge the changes made by
+different users automatically. If not, you have to run an explicit <tt>hg
+merge</tt> command.  This command tries to use some merge
+program on your computer system to automatically merge files. If this
+fails, <tt>hg merge</tt> invokes some graphical tool to help you resolve the
+conflict between files.  Example on popular merge programs for this
+purpose are <tt>meld</tt>, <tt>xxdiff</tt>, <tt>kdiff3</tt>, and <tt>diffuse</tt>.  You can
+specify the merge program, say <tt>xxdiff</tt>, by <tt>hg merge --tool xxdiff</tt>.
+How you now proceed is dependent on the particular program. Usually,
+for each change you must choose either your new local version of the
+text, or your old local version of the text, or the version of the
+text pulled from the global repository.  After using the merge program
+successfully you must save the merged file and perform an <tt>hg commit</tt>
+command on it, and perhaps do an <tt>hg push</tt> to also update the global
+repository with the merged file(s).
+
+<p>
+Suppose you do not manage to merge using the merge tool. Then you have
+to invoke the file, say <tt>myfile</tt> in an editor and do the merge
+manually. There will often be lines starting with '<<<<', '=====',
+and '>>>>` to mark conflicting texts (<em>merge markers</em>). After removing
+these lines and editing the text manually, you must register the conflict
+as resolved:
+<p>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg resolve -m merge myfile
+hg commit -m merge myfile
+</pre></div>
+<p>
+
+You can read more about merging files in the <a href="http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html">hgbook</a>.
+We shall now illustrate the merge problems through an example.
+Suppose we have a global repository <tt>tmp_repo</tt>, and two (cloned)
+directories <tt>tmp1</tt> and <tt>tmp2</tt>, corresponding to two users, each with
+their copy of the global repository.  There is only one file <tt>myfile</tt>
+in the repository. We then simulate the two users and perform edits in
+parallel. The shell script below simulates the two users and
+illustrates the importance of pulling before editing and the need of
+merge.
+
+<p>
+
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#!/bin/sh</span>
+<span style="color: #408080; font-style: italic"># Demo script for exemplifying hg merge</span>
+
+rm -rf tmp1 tmp2 tmp_repo   <span style="color: #408080; font-style: italic"># Clean up previous runs</span>
+
+mkdir tmp_repo   <span style="color: #408080; font-style: italic"># Global repository for testing</span>
+<span style="color: #008000">cd </span>tmp_repo
+cat &gt; myfile <span style="color: #BA2121">&lt;&lt;EOF</span>
+<span style="color: #BA2121">This is a little</span>
+<span style="color: #BA2121">test file for</span>
+<span style="color: #BA2121">exemplifying merge</span>
+<span style="color: #BA2121">of files in different</span>
+<span style="color: #BA2121">hg directories.</span>
+<span style="color: #BA2121">EOF</span>
+hg init   <span style="color: #408080; font-style: italic"># Make hg global repository out of this directory</span>
+hg add    <span style="color: #408080; font-style: italic"># Add all files not mentioned in ~/.hgignore</span>
+hg commit -m <span style="color: #BA2121">&#39;first commit&#39;</span>
+<span style="color: #008000">cd</span> ..
+
+<span style="color: #408080; font-style: italic"># Make a new hg repositories tmp1 and tmp2 (two users)</span>
+hg clone tmp_repo tmp1
+hg clone tmp_repo tmp2
+
+<span style="color: #408080; font-style: italic"># Change myfile in the directory tmp1</span>
+<span style="color: #008000">cd </span>tmp1
+<span style="color: #408080; font-style: italic"># Edit myfile: insert a new second line</span>
+perl -pi -e <span style="color: #BA2121">&#39;s/a little\n/a little\ntmp1-add1\n/g&#39;</span> myfile
+<span style="color: #408080; font-style: italic"># Register change in local repository</span>
+hg commit -m <span style="color: #BA2121">&#39;Inserted a new second line in myfile.&#39;</span>
+<span style="color: #408080; font-style: italic"># Look at changes in this clone</span>
+hg log -p
+<span style="color: #408080; font-style: italic"># Register change in global repository tmp_repo</span>
+hg push
+<span style="color: #008000">cd</span> ..
+
+<span style="color: #408080; font-style: italic"># Change myfile in the directory tmp2 &quot;in parallel&quot;</span>
+<span style="color: #008000">cd </span>tmp2
+<span style="color: #408080; font-style: italic"># Edit myfile: add a line at the end</span>
+cat &gt;&gt; myfile <span style="color: #BA2121">&lt;&lt;EOF</span>
+<span style="color: #BA2121">tmp2-add1</span>
+<span style="color: #BA2121">EOF</span>
+<span style="color: #408080; font-style: italic"># Register change locally</span>
+hg commit -m <span style="color: #BA2121">&#39;Added a new line at the end&#39;</span>
+<span style="color: #408080; font-style: italic"># Register change globally</span>
+hg push
+<span style="color: #408080; font-style: italic"># Error message: global repository has changed,</span>
+<span style="color: #408080; font-style: italic"># we need to pull those changes to local repository first</span>
+<span style="color: #408080; font-style: italic"># and see if all files are compatible before we can update</span>
+<span style="color: #408080; font-style: italic"># our own changes to the global repository.</span>
+<span style="color: #408080; font-style: italic"># hg writes</span>
+<span style="color: #408080; font-style: italic"># abort: push creates new remote head d0a2f8e6b9d9!</span>
+<span style="color: #408080; font-style: italic"># (you should pull and merge or use push -f to force)</span>
+
+hg pull
+<span style="color: #408080; font-style: italic"># hg writes:</span>
+<span style="color: #408080; font-style: italic"># added 1 changesets with 1 changes to 1 files (+1 heads)</span>
+<span style="color: #408080; font-style: italic"># (run &#39;hg heads&#39; to see heads, &#39;hg merge&#39; to merge)</span>
+hg merge
+<span style="color: #408080; font-style: italic"># Successful merge!</span>
+cat myfile
+hg commit -m merge
+hg push
+<span style="color: #008000">cd</span> ..
+
+<span style="color: #408080; font-style: italic"># Perform new changes in parallel in tmp1 and tmp2,</span>
+<span style="color: #408080; font-style: italic"># this time causing hg merge to fail</span>
+
+<span style="color: #408080; font-style: italic"># Change myfile in the directory tmp1</span>
+<span style="color: #008000">cd </span>tmp1
+<span style="color: #408080; font-style: italic"># Do it all right by pulling and updating first</span>
+hg pull
+hg update
+<span style="color: #408080; font-style: italic"># Edit myfile: insert &quot;just&quot; in first line.</span>
+perl -pi -e <span style="color: #BA2121">&#39;s/a little/tmp1-add2 a little/g&#39;</span> myfile
+<span style="color: #408080; font-style: italic"># Register change in local repository</span>
+hg commit -m <span style="color: #BA2121">&#39;Inserted &quot;just&quot; in first line.&#39;</span>
+<span style="color: #408080; font-style: italic"># Register change in global repository tmp_repo</span>
+hg push
+<span style="color: #008000">cd</span> ..
+
+<span style="color: #408080; font-style: italic"># Change myfile in the directory tmp2 &quot;in parallel&quot;</span>
+<span style="color: #008000">cd </span>tmp2
+<span style="color: #408080; font-style: italic"># Edit myfile: replace little by modest</span>
+perl -pi -e <span style="color: #BA2121">&#39;s/a little/a tmp2-replace1\ntmp2-add2\n/g&#39;</span> myfile
+<span style="color: #408080; font-style: italic"># Register change locally</span>
+hg commit -m <span style="color: #BA2121">&#39;Replaced &quot;little&quot; by &quot;modest&quot;&#39;</span>
+<span style="color: #408080; font-style: italic"># Register change globally</span>
+hg push
+<span style="color: #408080; font-style: italic"># Not possible: need to pull changes in the global repository</span>
+hg pull
+hg update
+<span style="color: #408080; font-style: italic"># hg update aborts: we have to run hg merge</span>
+diff myfile ../tmp_repo/myfile
+<span style="color: #008000">echo</span> <span style="color: #BA2121">&#39;Now you must do hg merge manually&#39;</span>
+</pre></div>
+<p>
+
+Try to run this <a href="html/_static-bitgithg_merge.sh">file</a> named
+<tt>hg_merge.sh</tt> by <tt>sh -x hg_merge.sh</tt>.
+To resolve the resulting merge conflict you need to go to the <tt>tmp2</tt>
+folder, run <tt>hg merge --tool meld</tt> and use the <tt>meld</tt> tool to
+select which text snippets that should make up the final, merged
+version. Save and quit <tt>meld</tt> and perform <tt>hg commit -m merge</tt>.  You
+can now do <tt>hg push</tt> successfully to update the global repository.
+
+<p>
+
+<h3>More documentation on Mercurial  <a name="___sec32"></a></h3>
+<p>
+
+<ul>
+ <li> <a href="http://mercurial.selenic.com/wiki/QuickStart">Mercurial Quick Start</a> (for the impatient)</li>
+ <li> <a href="http://hgbook.red-bean.com/read/a-tour-of-mercurial-the-basics.html">A Tour of Mercurial - The Basics</a></li>
+ <li> <a href="http://mercurial.selenic.com/wiki/FAQ">Mercurial FAQ</a></li>
+ <li> <a href="http://mercurial.selenic.com/wiki/Tutorial">Mercurial Tutorial</a></li>
+ <li> <a href="http://hgbook.red-bean.com/">Mercurial: The Definitive Guide</a> (online or printed book)</li>
 </ul>
 
 

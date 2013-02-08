@@ -5,8 +5,7 @@ Quick Intro to Version Control Systems and Project Hosting Services
 ===================================================================
 
 :Author: Hans Petter Langtangen
-
-:Date: Oct 6, 2012
+:Date: Feb 8, 2013
 
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -51,13 +50,15 @@ what various people have done with the files in the various versions.
 
 Four popular project hosting services are
 
-  * Bitbucket at ``bitbucket.org``
+  * `Bitbucket <http://bigbucket.org>`_ at ``bitbucket.org``
 
-  * GitHub at ``github.com``
+  * `GitHub <http://github.com>`_ at ``github.com``
 
-  * Googlecode at ``code.google.com``
+  * `Googlecode <http://code.google.com>`_ at ``code.google.com``
 
-  * Launchpad at ``launchpad.net``
+  * `Launchpad <https://launchpad.net>`_ at ``launchpad.net``
+
+  * `Sourceforge <http://sourceforge.net/>`_ at ``sourceforge.net``
 
 All these services are very similar. Below we describe how you get
 started with Bitbucket, GitHub, and Googlecode. Launchpad works very
@@ -93,7 +94,7 @@ For the examples below, assume that you have some folder tree
 Googlecode and bring under version control. The official name of the
 project is "My Project".
 
-Installing Version Control Systems
+Installing version control systems
 ==================================
 
 The various project hosting sites work with different version
@@ -105,38 +106,107 @@ control systems:
 
  * ``code.google.com`` offers Git (``git``), Mercurial (``hg``), or Subversion (``svn``),
 
- * ``launchpad.net`` offers Bazaar (``bzr``).
+ * ``launchpad.net`` offers Bazaar (``bzr``),
+
+ * ``sourceforge.net`` offers CVS (``cvs``), Subversion (``svn``), Mercurial (``hg``),
+   Bazaar (``bzr``), and Git (``git``).
 
 All the version control systems are quite similar in the way users
 operate them, but Subversion is technically different from Git,
-Mercurial, and Bazaar. The latter three work very much in the same way
+Mercurial, and Bazaar. The latter three work much in the same way
 for a beginner, but their more advanced commands and their
 nomenclature differ significantly.  Which system to choose is mainly a
 matter of personal preference and experience. For some people the
 choice of project hosting site comes first, while others prefer a
 particular version control system and let this preference govern the
-choice of project hosting site.
+choice of the project hosting site.
 
-It is possible to use Mercurial also with a GitHub project. This
-requires a plugin for Mercurial, described in `<http://hg-git.github.com>`_.
-The plugin is easy to install (``easy-install hg-git`` or
-``sudo apt-get install mercurial-git`` on Ubuntu). You can also use
-Git to work with Subversion and Mercurial repositories.
-
-.. The author's experience from teaching contexts points to the combination
-
-.. of Bitbucket and Mercurial is the simplest to get started with,
-
-.. foremost because it appears that Mercurial is easier to learn than Git
-
-.. beyond the very basic commands.
+It is fair to say that Git has evolved as the most versatile version
+control system and is at the time of this writing (2013) the
+recommended choice.  The combination of GitHub and Git seems to have
+the strongest momentum and popularity in the software development
+community.  Bitbucket offers private repos for free, which is a
+desired feature for many. Googlecode has the advantage that any HTML
+file in the repo can be used to make a web page, thereby greatly
+simplifying the building of web pages for the project.
 
 
-The combination of GitHub and Git seems to have the strongest momentum
-and popularity in the software development community at present.
-However, my experience is that the learning curve of Git
-is steeper than that of Mercurial so the choice of Mercurial with
-Bitbucket or Googlecode will for many be the most convenient start.
+
+
+Installing Git
+--------------
+
+
+.. index:: git
+
+
+The installation of Git on various systems is described
+on the `Git website <http://git-scm.com/>`_ under the *Download* section.
+On Ubuntu the relevant commands are
+
+.. code-block:: console
+
+        sudo apt-get install git gitk git-doc
+
+Git involves compiled code so it is most convenient to download a
+precompiled binary version of the software on Windows, Mac and other
+Linux computers.
+
+Make a file ``.gitconfig`` in your home folder with information on
+your full name, email address, your favorite emacs editor, and
+the name of an "excludes file" which defines the file types that Git
+should omit when bringing new directories under version control.
+Here is a simplified version of the author's ``.gitconfig`` file:
+
+.. code-block:: python
+
+        [user]
+        name = Hans Petter Langtangen
+        email = hpl@simula.no
+        editor = emacs
+        
+        [core]
+        excludesfile = ~/.gitignore
+
+
+The "excludes file" is called ``.gitignore`` and must list,
+using the Unix Shell Wildcard notation,
+the type of files that you do not need to have under version control,
+because they represent garbage or temporary information,
+or they can easily be regenerated from
+some other source files. A suggested ``.gitignore`` file looks like
+
+.. code-block:: python
+
+        # compiled files:
+        *.o
+        *.so
+        *.a
+        # temporary files:
+        *.bak
+        *.swp
+        *~
+        .*~
+        *.old
+        tmp*
+        temp*
+        # tex files:
+        *.log
+        *.dvi
+        *.aux
+        *.blg
+        *.idx
+        # eclipse files:
+        *.cproject
+        *.project
+        # misc:
+        .DS_Store
+
+Be critical to what kind of files you really need a full history of.
+For example, you do not want to populate the repository with
+big graphics files of the type that can easily be regenerated by
+some program.
+
 
 Installing Mercurial
 --------------------
@@ -186,86 +256,47 @@ control. A simple ``.hgrc`` file can look like this:
 
 The ``.hgignore`` file lists the types of files that will be skipped
 when bringing new directories under Mercurial version control.
-Typically this is temporary files such as object files (``*.o``),
-shared libraries (``*.so``), and backup files (``*.bak`` and ``*~``).
-The file types are usually specified using Unix Shell Wildcard notation,
-also referred to as ``glob`` syntax, as in ``*.o`` (where ``*`` means any
+Typically, the list contains file types that represent temporary
+information or just garbage, or files that are easily regenerated,
+such as object files (``*.o``) and
+libraries (``*.so``).
+The file types are normally specified using the Unix Shell Wildcard notation,
+also referred to as ``glob`` syntax (e.g., ``*.o``, where ``*`` means any
 sequence of characters).
 An example of a ``.hgignore`` file may be
 
 .. code-block:: python
 
         syntax: glob
+        # compiled files:
         *.o
         *.so
         *.a
+        # temporary files:
+        *.bak
+        *.swp
         *~
         .*~
+        *.old
+        tmp*
+        temp*
+        # tex files:
         *.log
         *.dvi
         *.aux
-        *.old
-        *.bak
-        tmp*
+        *.blg
+        *.idx
+        # eclipse files:
+        *.cproject
+        *.project
+        # misc:
+        .DS_Store
 
-
-
-
-Installing Git
---------------
-
-
-.. index:: git
-
-
-The installation of Git on various systems is described
-on the `Git website <http://git-scm.com/>`_ under the *Download* section.
-On Ubuntu the relevant commands are
-
-.. code-block:: console
-
-        sudo apt-get install git gitk git-doc
-
-Git involves compiled code so it is most convenient to download a
-precompiled binary version of the software on Windows, Mac and other
-Linux computers.
-
-Make a file ``.gitconfig`` in your home folder with information on
-your full name, email address, your favorite emacs editor, and
-the name of a file which defines the file types that Git should omit
-when bringing new directories under version control.
-Here is a simplified version of the author's ``.gitconfig`` file:
-
-.. code-block:: python
-
-        [user]
-        name = Hans Petter Langtangen
-        email = hpl@simula.no
-        editor = emacs
-        
-        [core]
-        excludesfile = ~/.gitignore
-
-
-The ``.gitignore`` file should list, using the Unix Shell Wildcard notation,
-the type of files that you do not want to have under version control,
-typically (large) files that can easily be regenerated from some other
-source files. A ``.gitignore`` file may look like
-
-.. code-block:: python
-
-        *.o
-        *.so
-        *.a
-        *~
-        .*~
-        *.log
-        *.dvi
-        *.aux
-        *.old
-        *.bak
-        tmp*
-
+In addition to having an ``.hgignore`` file, you should always be careful with
+what kind of files you really need to add to your
+repo. Many computer tools produce a lot of big files that can
+easily be regenerated and that do not need to fill up repos with full
+information on previous versions.
 
 
 
@@ -298,8 +329,8 @@ help pages on Bitbucket. Once the keys are generated, you can continue
 using them on any current and future computer.
 
 
-Create a New Project
---------------------
+Create a new project  (1)
+-------------------------
 
 Click at *Repositories* and at *Create repository*.
 You can now
@@ -310,7 +341,8 @@ You can now
    private repos is unlimited for yourself, but you have to pay to
    invite more than five users in total to share your private repos),
 
- * choose between the Git or Mercurial version control system,
+ * choose between the Git or Mercurial version control system
+   (here we assume you run Git),
 
  * click whether you want issue tracking for reporting errors,
    suggesting improvements, etc.,
@@ -322,23 +354,21 @@ You can now
  * click on *Create repository*.
 
 While doing this you may also want to have the `Bitbucket 101 guide <http://confluence.atlassian.com/display/BITBUCKET/Bitbucket+101>`_
-available (open the link in another tab or window in your browser).
+available.
 
-It is now time to copy the project to your laptop, or *clone* it
-in Git and Mercurial terminology. Go to the project page
-and find the *Clone this repository* line. Click on *SSH*,
-copy the *clone* line and run this command in a terminal:
+It is now time to *clone* (copy) the project to your laptop.
+Go to the project page
+(you are automatically
+brought to the project page when creating a new project).
+Find the *Clone* button, click on it, choose
+*SSH*, copy the *clone* line and run this command in a terminal:
 
 .. code-block:: console
 
-        hg clone ssh://hg@bitbucket.org/username/my-project
-        # or
         git clone git@bitbucket.org:usernamet/my-project.git
 
-Only the ``hg`` or the ``git`` clone command is displayed on Bitbucket since
-your project was initialized with either Merucial or Git as version
-control system (this cannot be changed later).  In the above command
-you must replace ``username`` with your own user name at Bitbucket.
+You must replace ``username`` with your own user name at Bitbucket and
+``my-project`` by the real project name.
 
 The first time you do the clone command you may be prompted by cryptic
 Unix output ending with "Are you sure you want to continue connecting
@@ -346,41 +376,33 @@ Unix output ending with "Are you sure you want to continue connecting
 
 The next step is to collect files and directories that should make up
 the project and put them in the ``my-project`` folder.
-
-Then all files should be brought under version control, with the exception
-of the file types listed in ``.hgignore``.
-Issue the following command in the ``my-project`` folder:
+Standing in the ``my-project`` folder, the following Git command is used
+to add all files in the current
+directory *tree*, except those having file types listed in ``.gitignore``:
 
 .. code-block:: console
 
-        hg add
-        # or
         git add .
 
 
-Thereafter, the changes to the repository (adding of files) must
-be registered, or *committed* if we use standard version control system
-terminology. The command reads
+Thereafter, the changes to the repository (here adding of files) must
+*committed* (registered):
 
 .. code-block:: console
 
-        hg commit   -m 'Initial import of files.'
-        # or
         git commit -am 'Initial import of files.'
 
-The ``-m`` option is a required description of the changes that have taken
-place. This description does not matter much for this initial import
-of files into the repository, but is of importance for future commit
-commands so that you can easily track the history of your project files.
+The text following the ``-am`` option is a required description of the
+changes that have taken place. This description does not matter much
+for this initial import of files into the repository, but is of
+importance for future commit commands so that you can easily track the
+history of your project files.
 
 The final step is to push the local changes to the master repo at
 Bitbucket:
-perform
 
 .. code-block:: console
 
-        hg push
-        # or
         git push -u origin master
 
 You must be connected to the Internet for the ``push`` command to work since
@@ -390,8 +412,8 @@ Further work with the files must always follow the pull, edit, commit, and
 push steps explained in the section :ref:`bitgit:hg` for Mercurial and
 the section :ref:`bitgit:git` for Git.
 
-User Web Pages
---------------
+User web pages  (1)
+-------------------
 
 Bitbucket can host web pages associated with a Bitbucket account. Say
 your account/user name is ``username``.  Make a new repository on
@@ -429,8 +451,8 @@ To use Googlecode you need a general account on Google, which allows
 you to use Gmail, Google Docs, and other products.
 
 
-Create a New Project
---------------------
+Create a new project  (2)
+-------------------------
 
 Go to `<http://code.google.com/hosting>`_ and click on
 *Create a new project*. Fill out *all* the fields. For now
@@ -438,7 +460,7 @@ the project name is ``my-project``.
 You have
 to choose between Git, Mercurial, or Subversion as version control
 system for your project, and this choice cannot be changed.
-Git and Mercurial are preferred over Subversion nowadays.
+Git and Mercurial are clearly preferred over Subversion nowadays.
 If you choose Git, you must create a file ``.netrc`` in your
 home folder containing the line
 
@@ -458,7 +480,7 @@ so that you can add files:
 
 .. code-block:: console
 
-        git clone https://username@code.google.com/p/my-project/
+        git clone https://code.google.com/p/my-project/
 
 Now you can go to the ``my-project`` folder and add files.
 Perform
@@ -539,8 +561,8 @@ repository: click on *Sharing* and then on *Administer*.
 The Google account names of people you allow write access can be
 listed under each other in the *Project committers* field.
 
-Wiki Pages
-----------
+Wiki pages  (1)
+---------------
 
 Wiki pages can intuitively be made directly in the browser. However,
 it is often more convenient to have them locally on your computer.
@@ -555,9 +577,9 @@ wiki folder and then pushed to the repository. This ensures
 that there is only one source of the documentation (despite the need
 for many formats) and that the wiki pages are frequently updated.
 
-.. https://odespy.googlecode.com/git/doc/API/index.html
+.. `<https://odespy.googlecode.com/git/doc/API/index.html>`_
 
-.. https://odespy.googlecode.com/git/doc/tutorial/html/wrap_odesolvers.html
+.. `<https://odespy.googlecode.com/git/doc/tutorial/html/wrap_odesolvers.html>`_
 
 
 
@@ -582,12 +604,14 @@ without any extra whitespaces or other text. How to generate these
 files is briefly described in the introduction to Bitbucket above.
 
 
-Create a New Project
---------------------
+Create a new project  (3)
+-------------------------
 
 Click on *New repository* on the main page and fill out a project
 name, here *My Project*, click the check button *Initialize this
 repository with a README*, and click on *Create repository*.
+Unless you pay, all repos are public, but students and teachers
+can request `free, private repos <https://github.com/edu>`_.
 
 The next step is to clone the project on your personal computer. Click
 on the *Git Read-Only* button to see the correct address of the project,
@@ -642,8 +666,8 @@ There you also find information on how to create wiki pages and
 web pages associated with the project.
 
 
-Wiki Pages
-----------
+Wiki pages  (2)
+---------------
 
 With every GitHub project there is an option to create wiki pages.
 Click on the *Wiki* button right under the line with the project
@@ -691,7 +715,7 @@ The address can be stored as ``url`` in ``.git/config`` so that just a
 ``git push`` works.
 
 
-Project Web Pages
+Project web pages
 -----------------
 
 GitHub can also host a set of web pages for your project where you can
@@ -719,7 +743,13 @@ You can populate this folder and subdirectories you create with
 HTML and other files as you like.
 
 The ``index.html`` page is invoked by the web address
-``http://username.github.com/My-Project/index.html``,
+
+
+.. code-block:: text
+
+
+        http://username.github.com/My-Project/index.html
+
 where ``username`` is the GitHub
 user name and ``My-Project`` is the project name.
 
@@ -804,7 +834,7 @@ some more isolated place, say ``doc/web/git``:
 
 The ``index.html`` then has the URL
 
-.. code-block:: py
+.. code-block:: text
 
 
         http://username.github.com/My-Project/doc/web/git/index.html
@@ -819,15 +849,15 @@ The ``index.html`` then has the URL
 .. "http://pydoc.net/github-tools/0.1.3/").
 
 
-.. See https://github.com/daler/sphinxdoc-test
+.. See `<https://github.com/daler/sphinxdoc-test>`_
 
 .. for ideas on how to do sphinx documentation without full
 
 .. mirroring as I do.
 
-.. See also http://lucasbardella.com/report/hosting-your-sphinx-docs-in-github/
+.. See also `<http://lucasbardella.com/report/hosting-your-sphinx-docs-in-github/>`_
 
-.. Sphinx extension for github: https://github.com/michaeljones/sphinx-to-github
+.. Sphinx extension for github: `<https://github.com/michaeljones/sphinx-to-github>`_
 
 
 Linking to source code files or other files in the project is easy:
@@ -840,14 +870,14 @@ is quite different from the source file's path in the repository.
 Typically, a source file ``mydir/myfile.py`` in project ``prj`` is reached
 through
 
-.. code-block:: py
+.. code-block:: text
 
 
         https://github.com/username/prj/blob/master/mydir/myfile.py?raw=true
 
 
-User Web Pages
---------------
+User web pages  (2)
+-------------------
 
 
 GitHub also allows you to create user pages and organization pages not
@@ -856,7 +886,7 @@ Your personal site has address
 ``http://username.github.com``.
 Go to your home page on ``github.com`` and click *New repository*,
 and give it the project name ``username.github.com``.
-Then following the instructions that come up:
+Then follow the instructions that come up:
 
 .. code-block:: console
 
@@ -877,400 +907,9 @@ If you want to use Sphinx generated HTML pages, recall to add an empty file
 
 
 
-.. Use gh-pages in a subfolder of the master branch: https://gist.github.com/825950
+.. Use gh-pages in a subfolder of the master branch: `<https://gist.github.com/825950>`_
 
 
-
-.. _bitgit:hg:
-
-Using Mercurial
-===============
-
-
-.. index:: Mercurial
-
-.. index:: hg
-
-
-Mac and Linux users will normally work with Mercurial through commands in
-a terminal window, which is the emphasized interface described here.
-Windows users will prefer to use TortoiseHG. This graphical interface is
-mostly self-explanatory, but a brief description appears below.
-
-Basic use of TortoiseHG on a Windows Machine
---------------------------------------------
-
-When you have an account on Bitbucket and have downloaded and installed
-TortoiseHG, you are ready to work with Mercurial repositories the
-following way.
-
- * Start  *Hg workbench*
-
- * Register your username as your email address: choose *File - Settings*
-   and then *Commit*.
-
- * Clone a repository: choose *File - clone repository*. Paste the
-   URL of the Bitbucket repo as *Source* and set
-   *Destination* as some preferred folder on your machine.
-   You will be prompted for a password which is the password for your
-   Bitbucket account.
-
- * When a file is changed and you want to commit the changes,
-   right-click in the Explorer window showing the Mercurial folder
-   and choose *Commit*. Write a comment in the text field to the right
-   to document the changes.
-
- * To synchronize your local files with the repository (i.e., to do a
-   ``push`` command), right-click in the Explorer window, choose
-   *TortoiseHG - Synchronize*. You need to provide the password for the
-   Bitbucket account.
-
-Many prefer to work in Visual Studio with their program files on Windows.
-This is easy also when you adopt Bitbucket as repo. Just start VisualStudio,
-make a solution and a project, create the desired files, then one can
-just right-click with the mouse on the solution, the project, or the
-file one wants to commit and choose *Commit*.
-
-Basic Commands of Mercurial
----------------------------
-
-Cloning
-~~~~~~~
-
-You get started with your project on a new machine or another user
-can get started with the project by the command
-
-.. code-block:: console
-
-        hg clone ssh://hg@bitbucket.org/username/my-project
-
-
-The Pull-Change-Push Cycle
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Your typical working style with the ``my-project`` project goes as follows.
-First you go to the desired folder where this project is stored on
-your local computer and make sure
-you have the latest versions of the files:
-
-.. code-block:: console
-
-        hg pull
-        hg update
-
-These commands download the latest versions of the files from
-your ``bitbucket.org`` repository and make them ready for changes on
-your computer. The ``pull`` command requires a functioning Internet
-connection.
-
-You can now edit some files. Maybe you also add, remove, and move some files:
-
-.. code-block:: console
-
-        hg add filename
-        hg remove filename
-        hg rename oldfilename ../somedir/newfilename
-
-The removal of a file is physically performed when you to a
-``hg commit``. The file is never removed from the repository, only
-hidden, so it is easy to get the file and its entire history
-back at a later stage.
-
-After some changes, you have to commit and push the files to the
-repository at ``bitbucket.org``:
-
-.. code-block:: console
-
-        hg commit -m 'Description of changes.'
-        hg push
-
-Note that you cannot redo the description (i.e., be careful with
-recalling and executing old commit commands without updating the
-description).
-
-The command
-
-.. code-block:: console
-
-        hg stat
-
-shows the status of the individual files (``M`` for modified, ``A`` for
-added, ``R`` for removed), and you should pay attention to files with a
-question mark because these are not tracked in the repository. It is
-very easy to forget adding new files so ``hg stat`` is a useful command
-to ensure that all files you want to track have been added to the
-repository.
-
-Viewing the History of Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The power of ``hg`` and your file repository ``bitbucket.org`` is that
-you can work with the project files on several computers and others can
-also contribute to this project. The history of each file is recorded
-and anyone can roll back to previous versions, if needed. You can easily see
-who did what with the various files.
-
-For example,
-
-.. code-block:: console
-
-        hg annotate -aun myfile
-
-lists the various lines in the file ``myfile`` annotated with the revision
-number of the latest change of the line and the name of the user who
-performed the change.
-
-Another command,
-
-.. code-block:: console
-
-        hg log -p filename | less
-
-lists the history of ``filename`` in more detail so that you can track
-the evolution of this file. Adding the ``--follow`` option will list the
-history also when ``filename`` had other names.  The history of all
-files in a folder is listed by specifying the folder name(s).
-No name specification gives the history of the whole repo.
-
-More compact output from ``hg log``, without line differences, is triggered by
-the ``--stat`` option:
-
-.. code-block:: console
-
-        hg log --stat filename | less   # changes in a specific file
-        hg log --stat | less            # changes in the whole repo
-
-The combination ``-p --stat`` equips the line differences with an overview
-of which files that were changed in each revision.
-
-If you wonder what has recently happened to a file after updating your
-local repository, just run ``hg log -p --stat``: the last changes appear
-in the beginning of the output.
-
-
-Retrieving Old Files
-~~~~~~~~~~~~~~~~~~~~
-
-To restore an old version of a file with name ``filename``,
-check the file history with
-``hg log -p filename`` and find the revision number corresponding to the
-version of the file you want. Say this revision number is 152.
-The command
-
-.. code-block:: console
-
-        hg revert -r 152 filename
-
-replaces the current version of the file by the old one from revision 152.
-Sometimes it is better to store the old version in a separate file:
-
-.. code-block:: console
-
-        hg cat -r 152 filename > somefile
-
-The entire local repo can also be set back:
-
-.. code-block:: console
-
-        hg update -r 152
-        hg update            # go back to the latest version again
-
-
-
-Comments on Two-Level Repositories
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Mercurial has a two-level type of repository: there is global
-repository for all users of the ``my-project`` tree at ``bitbucket.org``,
-but each user also has a local repository (automatically made). To
-update files, one must first pull new files from the global repository
-(``pull``) and then update the local repository (``update``), before any
-file can be edited. The ``hg commit`` command saves files in the local
-repository. One may run many ``hg commit`` commands to make a sequence
-of corresponding versions of files in the local repository. Finally,
-when the local versions are ready to be pushed to the global
-repository, one runs the ``hg push`` command.
-
-Older version control systems, including Subversion and CVS, have only
-a global repository and no local ones.  The advantage of the two-level
-repository is that you can change your files locally and keep track of
-the changes (by doing ``hg commit``) without affecting other users of
-the files.  This feature allows you to commit changes to the global
-repository only when you feel comfortable with the state of the files.
-Nevertheless, if others work actively on the same files as you, it is
-generally recommended to push often in order to exchange the latest
-version of the files. This strategy may avoid problems with future
-merging of files.
-
-.. _bitgit:hgmerge:
-
-Merging Files with Mercurial
-----------------------------
-
-
-.. index:: merging files
-
-
-It might have happened that others and you have edited the same files
-at the same time. How should the edits then be combined?  Often the
-``hg update`` command is clever enough to merge the changes made by
-different users automatically. If not, you have to run an explicit ``hg
-merge`` command.  This command tries to use some merge
-program on your computer system to automatically merge files. If this
-fails, ``hg merge`` invokes some graphical tool to help you resolve the
-conflict between files.  Example on popular merge programs for this
-purpose are ``meld``, ``xxdiff``, ``kdiff3``, and ``diffuse``.  You can
-specify the merge program, say ``xxdiff``, by ``hg merge --tool xxdiff``.
-How you now proceed is dependent on the particular program. Usually,
-for each change you must choose either your new local version of the
-text, or your old local version of the text, or the version of the
-text pulled from the global repository.  After using the merge program
-successfully you must save the merged file and perform an ``hg commit``
-command on it, and perhaps do an ``hg push`` to also update the global
-repository with the merged file(s).
-
-Suppose you do not manage to merge using the merge tool. Then you have
-to invoke the file, say ``myfile`` in an editor and do the merge
-manually. There will often be lines starting with '<<<<', '=====',
-and '>>>>` to mark conflicting texts (*merge markers*). After removing
-these lines and editing the text manually, you must register the conflict
-as resolved:
-
-.. code-block:: console
-
-        hg resolve -m merge myfile
-        hg commit -m merge myfile
-
-
-You can read more about merging files in the `hgbook <http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html>`_.
-We shall now illustrate the merge problems through an example.
-Suppose we have a global repository ``tmp_repo``, and two (cloned)
-directories ``tmp1`` and ``tmp2``, corresponding to two users, each with
-their copy of the global repository.  There is only one file ``myfile``
-in the repository. We then simulate the two users and perform edits in
-parallel. The shell script below simulates the two users and
-illustrates the importance of pulling before editing and the need of
-merge.
-
-
-.. code-block:: bash
-
-        #!/bin/sh
-        # Demo script for exemplifying hg merge
-        
-        rm -rf tmp1 tmp2 tmp_repo   # Clean up previous runs
-        
-        mkdir tmp_repo   # Global repository for testing
-        cd tmp_repo
-        cat > myfile <<EOF
-        This is a little
-        test file for
-        exemplifying merge
-        of files in different
-        hg directories.
-        EOF
-        hg init   # Make hg global repository out of this directory
-        hg add    # Add all files not mentioned in ~/.hgignore
-        hg commit -m 'first commit'
-        cd ..
-        
-        # Make a new hg repositories tmp1 and tmp2 (two users)
-        hg clone tmp_repo tmp1
-        hg clone tmp_repo tmp2
-        
-        # Change myfile in the directory tmp1
-        cd tmp1
-        # Edit myfile: insert a new second line
-        perl -pi -e 's/a little\n/a little\ntmp1-add1\n/g' myfile
-        # Register change in local repository
-        hg commit -m 'Inserted a new second line in myfile.'
-        # Look at changes in this clone
-        hg log -p
-        # Register change in global repository tmp_repo
-        hg push
-        cd ..
-        
-        # Change myfile in the directory tmp2 "in parallel"
-        cd tmp2
-        # Edit myfile: add a line at the end
-        cat >> myfile <<EOF
-        tmp2-add1
-        EOF
-        # Register change locally
-        hg commit -m 'Added a new line at the end'
-        # Register change globally
-        hg push
-        # Error message: global repository has changed,
-        # we need to pull those changes to local repository first
-        # and see if all files are compatible before we can update
-        # our own changes to the global repository.
-        # hg writes
-        # abort: push creates new remote head d0a2f8e6b9d9!
-        # (you should pull and merge or use push -f to force)
-        
-        hg pull
-        # hg writes:
-        # added 1 changesets with 1 changes to 1 files (+1 heads)
-        # (run 'hg heads' to see heads, 'hg merge' to merge)
-        hg merge
-        # Successful merge!
-        cat myfile
-        hg commit -m merge
-        hg push
-        cd ..
-        
-        # Perform new changes in parallel in tmp1 and tmp2,
-        # this time causing hg merge to fail
-        
-        # Change myfile in the directory tmp1
-        cd tmp1
-        # Do it all right by pulling and updating first
-        hg pull
-        hg update
-        # Edit myfile: insert "just" in first line.
-        perl -pi -e 's/a little/tmp1-add2 a little/g' myfile
-        # Register change in local repository
-        hg commit -m 'Inserted "just" in first line.'
-        # Register change in global repository tmp_repo
-        hg push
-        cd ..
-        
-        # Change myfile in the directory tmp2 "in parallel"
-        cd tmp2
-        # Edit myfile: replace little by modest
-        perl -pi -e 's/a little/a tmp2-replace1\ntmp2-add2\n/g' myfile
-        # Register change locally
-        hg commit -m 'Replaced "little" by "modest"'
-        # Register change globally
-        hg push
-        # Not possible: need to pull changes in the global repository
-        hg pull
-        hg update
-        # hg update aborts: we have to run hg merge
-        diff myfile ../tmp_repo/myfile
-        echo 'Now you must do hg merge manually'
-
-
-Try to run this `file <_static-bitgit/hg_merge.sh>`_ named
-``hg_merge.sh`` by ``sh -x hg_merge.sh``.
-To resolve the resulting merge conflict you need to go to the ``tmp2``
-folder, run ``hg merge --tool meld`` and use the ``meld`` tool to
-select which text snippets that should make up the final, merged
-version. Save and quit ``meld`` and perform ``hg commit -m merge``.  You
-can now do ``hg push`` successfully to update the global repository.
-
-More Documentation on Mercurial
--------------------------------
-
- * `Mercurial Quick Start <http://mercurial.selenic.com/wiki/QuickStart>`_ (for the impatient)
-
- * `A Tour of Mercurial - The Basics <http://hgbook.red-bean.com/read/a-tour-of-mercurial-the-basics.html>`_
-
- * `Mercurial FAQ <http://mercurial.selenic.com/wiki/FAQ>`_
-
- * `Mercurial Tutorial <http://mercurial.selenic.com/wiki/Tutorial>`_
-
- * `Mercurial: The Definitive Guide <http://hgbook.red-bean.com/>`_ (online or printed book)
 
 .. _bitgit:git:
 
@@ -1288,11 +927,11 @@ this respect. There are also GUIs for Mac users.
 Most GUIs are easy to use once the basic concepts of Git and version
 control are understood.
 
-Basic Commands of Git
----------------------
+Basic Git commands
+------------------
 
-Cloning
-~~~~~~~
+Cloning  (1)
+~~~~~~~~~~~~
 
 You get started with your project on a new machine, or another user
 can get started with the project,
@@ -1307,8 +946,8 @@ by running
 Recall to replace ``username`` by your real user name and ``My-Project`` by the
 actual project name.
 
-The Pull-Change-Push Cycle
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+The pull-change-push cycle  (1)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The typical work flow with the "My Project" project starts with
 updating the local repository by going to the ``My-Project`` folder
@@ -1319,7 +958,8 @@ and writing
         git pull origin master
 
 
-After editing files, adding new files, deleting files, or renaming files,
+You can now edit files, add new files, delete files, or rename files.
+Typical commands are
 
 .. code-block:: console
 
@@ -1329,14 +969,19 @@ After editing files, adding new files, deleting files, or renaming files,
         git mv oldname newname
         git mv oldname ../newdir
 
+When your chunk of work is ready,
 it is time to commit your changes (note the ``-am`` option):
 
 .. code-block:: console
 
         git commit -am 'Description of changes.'
 
-The description is tagged to this commit and cannot be changed so think
-a bit before executing this command.
+If typos or errors enter the message, the ``git commit --amend`` command
+can be used to reformulate the message.  Running ``git diff`` prior to
+``git commit`` makes it
+easier to formulate descriptive commit messages since this command
+gives a listing of all the changes you have made to the files since
+the last commit or pull command.
 
 You may perform many commits, to keep track of small changes, before
 you push your changes to the global repository:
@@ -1345,6 +990,11 @@ you push your changes to the global repository:
 
         git push origin master
 
+It is recommended to push and pull frequently if work takes place in several
+clones of the repo (i.e., there are many users or you work with the
+repo on different
+computers). Infrequent push and pull easily leads to merge problems
+(see the section :ref:`bitgit:git:merge`).
 
 To see the status of files, run
 
@@ -1356,8 +1006,8 @@ Files are marked with different symbols, e.g.,
 ``A`` for added, ``M`` for modified, ``R`` for renamed,
 and ``??`` for not being registered in the repo.
 
-Viewing the History of Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Viewing the history of files  (1)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A nice graphical tool allows you to view all changes, or just
 the latest ones:
@@ -1409,8 +1059,8 @@ This is useful to track down particular changes in the files to see when
 they occurred and who introduced them. One can also search for regular
 expressions instead of exact text: just replace ``-S`` by ``-G``.
 
-Retrieving Old Files
-~~~~~~~~~~~~~~~~~~~~
+Retrieving old files  (1)
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Occasionally you need to go back to an earlier version of a file,
 say its name is ``myfile``. Start with viewing the history:
@@ -1454,9 +1104,9 @@ git folder:
         git show c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/myfile
 
 
-.. _bitgit:gitmerge:
+.. _bitgit:git:merge:
 
-Merging Files with Git
+Merging files with Git
 ----------------------
 
 
@@ -1627,15 +1277,111 @@ so that the file becomes correct.
 Then run ``git commit -am merge`` to finalize the merge.
 
 
+.. _bitgit:git:branch:stash:
 
-More Documentation on Git
+Git working style with branching and stashing
+---------------------------------------------
+
+Branching and stashing are nice features of Git that allow you to try
+out new things without affecting the stable version of your files.
+Usually, you extend and modify files quite often and perform a ``git
+commit`` every time you want to record the changes in your local
+repository. Imagine that you want to correct a set of errors in some
+files and push these corrections immediately.  The problem is that
+such a push will also include the latest, unfinished files that you
+have committed.
+
+A better organization of your work would
+be to keep the latest, ongoing
+developments separate from the more official and stable version
+of the files. This is easily achieved by creating a separate branch
+where new developments takes place:
+
+
+.. code-block:: console
+
+        git branch newstuff      # create and switch to new branch
+        # extend and modify files
+        git commit -am 'Modified ... and added a file on ...'
+        
+        git checkout master      # swith back to master
+        # correct errors
+        git push origin master
+        
+        git checkout newstuff    # switch to other branch
+        # continue development work
+        git commit -am 'More modifications of ...'  # record changes
+
+At some point, your new developments are mature enough to be incorporated
+in the master branch. This is done via a merge:
+
+
+.. code-block:: console
+
+        git checkout master
+        git merge newstuff
+
+You no longer need the ``newstuff`` branch and can delete it:
+
+
+.. code-block:: console
+
+        git branch -d newstuff
+
+
+It is not possible to switch branches unless you have committed the
+files in the current branch. If your work on some files is in a mess,
+and you want to change to another branch or fix other files in the
+current branch, a
+"global" commit affecting all files might be immature.  Then the `git stash <http://git-scm.com/book/en/Git-Tools-Stashing>`_ command is handy. It
+records the state of your files and sets you back to the state of the
+last commit in the current branch. With ``git stash apply`` you get the
+files in this branch back to the state when you did the last ``git
+stash``, or you can use ``git stash branch newstuff`` to move the edits
+since the last commit into a new branch.
+
+Suppose you have performed some extensive edits in some files and then
+you are suddenly interrupted. You need to fix some typos in some
+other files, commit the changes, and push. The problem is that many files are
+in an unfinished state - in hindsight you realize that those files
+should have been modified in a separate branch.
+It is not too late to create that branch! First run ``git stash``
+to get the files back to the
+state they were at the last commit. Then run
+``git stash branch newstuff`` to create a new branch ``newstuff`` containing
+the state of the files when you did the (last) ``git stash`` command.
+Stashing used this way is a convenient technique to
+move some immature edits after the last commit out in a new branch for
+further experimental work.
+
+(You can get the stashed files back by ``git stash apply``. It is
+possible to multiple ``git stash`` and ``git stash apply``
+commands. However, it is easy to run into trouble with multiple
+stashes, especially if they occur in multiple branches, as it becomes
+difficult to recognize which stashes that belong to which branch.  A
+good advice is therefore to do ``git stash`` *only once* to get back to
+a clean state and then move the unfinished messy files to a separate
+branch with ``git stash branch newstuff``.)
+
+
+*Remark.* A recent `extension module <http://mercurial.selenic.com/wiki/ShelveExtension>`_ for Mercurial allows stashing for that version control system as well:
+``hg shelve --all`` is similar for ``git stash``, and ``hg unshelve``
+is similar to ``git stash apply``.
+
+
+
+More documentation on Git
 -------------------------
+
+ * `Web course on Git <http://try.github.com/>`_
 
  * `Everyday GIT With 20 Commands Or So <http://schacon.github.com/git/everyday.html>`_
 
  * `Git top 10 tutorials <http://sixrevisions.com/resources/git-tutorials-beginners/>`_
 
- * `Git Community Book <http://book.git-scm.com/>`_
+ * `Lars Vogel's Git Tutorial <http://www.vogella.com/articles/Git/article.html>`_
+
+ * `Git Community Book <http://book.git-scm.com/>`_ (*explains* Git very well)
 
  * `Git for Designers <http://hoth.entp.com/output/git_for_designers.html>`_ (aimed a people with no previous knowledge of version control systems)
 
@@ -1657,21 +1403,393 @@ More Documentation on Git
 
  * `Git/GitHub GUIs on Windows and Mac <http://git-scm.com/downloads/guis>`_
 
-Diff of The Two Most Recent Versions of a File
-----------------------------------------------
+.. _bitgit:hg:
 
-Both Mercurial and Git have "diff" commands for viewing differences
-in files. However, it sometimes takes quite some manual steps to
-answer the following question: I have just pulled new changes and
-want to view what these changes are for some selected files, using
-my favorite diff tools (maybe different tools for different types of
-files)? The answer consists of doing the following steps:
+Using Mercurial
+===============
 
-  * Run a log command to see the identity of the previous version
 
-  * Run ``hg cat`` or ``git checkout`` (or ``git show``) to get the
-    previous version of the file, and save that version as a separate
-    file
+.. index:: Mercurial
 
-  * Run some diff tool on the present and previous version of the file
+.. index:: hg
 
+
+Mac and Linux users will normally work with Mercurial through commands in
+a terminal window, which is the emphasized interface described here.
+Windows users will prefer to use TortoiseHG. This graphical interface is
+mostly self-explanatory, but a brief description appears below.
+
+Basic use of TortoiseHG on a Windows machine
+--------------------------------------------
+
+When you have an account on Bitbucket and have downloaded and installed
+TortoiseHG, you are ready to work with Mercurial repositories the
+following way.
+
+ * Start  *Hg workbench*
+
+ * Register your username as your email address: choose *File - Settings*
+   and then *Commit*.
+
+ * Clone a repository: choose *File - clone repository*. Paste the
+   URL of the Bitbucket repo as *Source* and set
+   *Destination* as some preferred folder on your machine.
+   You will be prompted for a password which is the password for your
+   Bitbucket account.
+
+ * When a file is changed and you want to commit the changes,
+   right-click in the Explorer window showing the Mercurial folder
+   and choose *Commit*. Write a comment in the text field to the right
+   to document the changes.
+
+ * To synchronize your local files with the repository (i.e., to do a
+   ``push`` command), right-click in the Explorer window, choose
+   *TortoiseHG - Synchronize*. You need to provide the password for the
+   Bitbucket account.
+
+Many prefer to work in Visual Studio with their program files on Windows.
+This is easy also when you adopt Bitbucket as repo. Just start VisualStudio,
+make a solution and a project, create the desired files, then one can
+just right-click with the mouse on the solution, the project, or the
+file one wants to commit and choose *Commit*.
+
+Basic Mercurial commands
+------------------------
+
+Cloning  (2)
+~~~~~~~~~~~~
+
+You get started with your project on a new machine or another user
+can get started with the project by the command
+
+.. code-block:: console
+
+        hg clone ssh://hg@bitbucket.org/username/my-project
+
+
+The pull-change-push cycle  (2)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Your typical working style with the ``my-project`` project goes as follows.
+First you go to the desired folder where this project is stored on
+your local computer and make sure
+you have the latest versions of the files:
+
+.. code-block:: console
+
+        hg pull
+        hg update
+
+These commands download the latest versions of the files from
+your ``bitbucket.org`` repository and make them ready for changes on
+your computer. The ``pull`` command requires a functioning Internet
+connection.
+
+You can now edit some files. Maybe you also add, remove, and move some files:
+
+.. code-block:: console
+
+        hg add filename
+        hg remove filename
+        hg rename oldfilename ../somedir/newfilename
+
+The removal of a file is physically performed when you do a
+``hg commit``. The file is never removed from the repository, only
+hidden, so it is easy to get the file and its entire history
+back at a later stage.
+
+After some changes, you have to commit and push the files to the
+repository at ``bitbucket.org``:
+
+.. code-block:: console
+
+        hg commit -m 'Description of changes.'
+        hg push
+
+Note that you cannot easily redo the description so be careful with
+the wording. You can run ``hg diff`` to get a listing of all
+the changes you have made since the last commit or pull command.
+
+The command
+
+.. code-block:: console
+
+        hg stat
+
+shows the status of the individual files (``M`` for modified, ``A`` for
+added, ``R`` for removed), and you should pay attention to files with a
+question mark because these are not tracked in the repository. It is
+very easy to forget adding new files so ``hg stat`` is a useful command
+to ensure that all files you want to track have been added to the
+repository.
+
+Viewing the history of files  (2)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The power of ``hg`` and your file repository ``bitbucket.org`` is that
+you can work with the project files on several computers and others can
+also contribute to this project. The history of each file is recorded
+and anyone can roll back to previous versions, if needed. You can easily see
+who did what with the various files.
+
+For example,
+
+.. code-block:: console
+
+        hg annotate -aun myfile
+
+lists the various lines in the file ``myfile`` annotated with the revision
+number of the latest change of the line and the name of the user who
+performed the change.
+
+Another command,
+
+.. code-block:: console
+
+        hg log -p filename | less
+
+lists the history of ``filename`` in more detail so that you can track
+the evolution of this file. Adding the ``--follow`` option will list the
+history also when ``filename`` had other names.  The history of all
+files in a folder is listed by specifying the folder name(s).
+No name specification gives the history of the whole repo.
+
+More compact output from ``hg log``, without line differences, is triggered by
+the ``--stat`` option:
+
+.. code-block:: console
+
+        hg log --stat filename | less   # changes in a specific file
+        hg log --stat | less            # changes in the whole repo
+
+The combination ``-p --stat`` equips the line differences with an overview
+of which files that were changed in each revision.
+
+If you wonder what has recently happened to a file after updating your
+local repository, just run ``hg log -p --stat``: the last changes appear
+in the beginning of the output.
+
+
+Retrieving old files  (2)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To restore an old version of a file with name ``filename``,
+check the file history with
+``hg log -p filename`` and find the revision number corresponding to the
+version of the file you want. Say this revision number is 152.
+The command
+
+.. code-block:: console
+
+        hg revert -r 152 filename
+
+replaces the current version of the file by the old one from revision 152.
+Sometimes it is better to store the old version in a separate file:
+
+.. code-block:: console
+
+        hg cat -r 152 filename > somefile
+
+The entire local repo can also be set back:
+
+.. code-block:: console
+
+        hg update -r 152
+        hg update            # go back to the latest version again
+
+
+
+Comments on two-level repositories
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Mercurial has a two-level type of repository: there is global
+repository for all users of the ``my-project`` tree at ``bitbucket.org``,
+but each user also has a local repository (automatically made). To
+update files, one must first pull new files from the global repository
+(``pull``) and then update the local repository (``update``), before any
+file can be edited. The ``hg commit`` command saves files in the local
+repository. One may run many ``hg commit`` commands to make a sequence
+of corresponding versions of files in the local repository. Finally,
+when the local versions are ready to be pushed to the global
+repository, one runs the ``hg push`` command.
+
+Older version control systems, including Subversion and CVS, have only
+a global repository and no local ones.  The advantage of the two-level
+repository is that you can change your files locally and keep track of
+the changes (by doing ``hg commit``) without affecting other users of
+the files.  This feature allows you to commit changes to the global
+repository only when you feel comfortable with the state of the files.
+Nevertheless, if others work actively on the same files as you, it is
+generally recommended to push often in order to exchange the latest
+version of the files. This strategy may avoid problems with future
+merging of files.
+
+.. _bitgit:hg:merge:
+
+Merging files with Mercurial
+----------------------------
+
+
+.. index:: merging files
+
+
+It might have happened that others and you have edited the same files
+at the same time. How should the edits then be combined?  Often the
+``hg update`` command is clever enough to merge the changes made by
+different users automatically. If not, you have to run an explicit ``hg
+merge`` command.  This command tries to use some merge
+program on your computer system to automatically merge files. If this
+fails, ``hg merge`` invokes some graphical tool to help you resolve the
+conflict between files.  Example on popular merge programs for this
+purpose are ``meld``, ``xxdiff``, ``kdiff3``, and ``diffuse``.  You can
+specify the merge program, say ``xxdiff``, by ``hg merge --tool xxdiff``.
+How you now proceed is dependent on the particular program. Usually,
+for each change you must choose either your new local version of the
+text, or your old local version of the text, or the version of the
+text pulled from the global repository.  After using the merge program
+successfully you must save the merged file and perform an ``hg commit``
+command on it, and perhaps do an ``hg push`` to also update the global
+repository with the merged file(s).
+
+Suppose you do not manage to merge using the merge tool. Then you have
+to invoke the file, say ``myfile`` in an editor and do the merge
+manually. There will often be lines starting with '<<<<', '=====',
+and '>>>>` to mark conflicting texts (*merge markers*). After removing
+these lines and editing the text manually, you must register the conflict
+as resolved:
+
+.. code-block:: console
+
+        hg resolve -m merge myfile
+        hg commit -m merge myfile
+
+
+You can read more about merging files in the `hgbook <http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html>`_.
+We shall now illustrate the merge problems through an example.
+Suppose we have a global repository ``tmp_repo``, and two (cloned)
+directories ``tmp1`` and ``tmp2``, corresponding to two users, each with
+their copy of the global repository.  There is only one file ``myfile``
+in the repository. We then simulate the two users and perform edits in
+parallel. The shell script below simulates the two users and
+illustrates the importance of pulling before editing and the need of
+merge.
+
+
+.. code-block:: bash
+
+        #!/bin/sh
+        # Demo script for exemplifying hg merge
+        
+        rm -rf tmp1 tmp2 tmp_repo   # Clean up previous runs
+        
+        mkdir tmp_repo   # Global repository for testing
+        cd tmp_repo
+        cat > myfile <<EOF
+        This is a little
+        test file for
+        exemplifying merge
+        of files in different
+        hg directories.
+        EOF
+        hg init   # Make hg global repository out of this directory
+        hg add    # Add all files not mentioned in ~/.hgignore
+        hg commit -m 'first commit'
+        cd ..
+        
+        # Make a new hg repositories tmp1 and tmp2 (two users)
+        hg clone tmp_repo tmp1
+        hg clone tmp_repo tmp2
+        
+        # Change myfile in the directory tmp1
+        cd tmp1
+        # Edit myfile: insert a new second line
+        perl -pi -e 's/a little\n/a little\ntmp1-add1\n/g' myfile
+        # Register change in local repository
+        hg commit -m 'Inserted a new second line in myfile.'
+        # Look at changes in this clone
+        hg log -p
+        # Register change in global repository tmp_repo
+        hg push
+        cd ..
+        
+        # Change myfile in the directory tmp2 "in parallel"
+        cd tmp2
+        # Edit myfile: add a line at the end
+        cat >> myfile <<EOF
+        tmp2-add1
+        EOF
+        # Register change locally
+        hg commit -m 'Added a new line at the end'
+        # Register change globally
+        hg push
+        # Error message: global repository has changed,
+        # we need to pull those changes to local repository first
+        # and see if all files are compatible before we can update
+        # our own changes to the global repository.
+        # hg writes
+        # abort: push creates new remote head d0a2f8e6b9d9!
+        # (you should pull and merge or use push -f to force)
+        
+        hg pull
+        # hg writes:
+        # added 1 changesets with 1 changes to 1 files (+1 heads)
+        # (run 'hg heads' to see heads, 'hg merge' to merge)
+        hg merge
+        # Successful merge!
+        cat myfile
+        hg commit -m merge
+        hg push
+        cd ..
+        
+        # Perform new changes in parallel in tmp1 and tmp2,
+        # this time causing hg merge to fail
+        
+        # Change myfile in the directory tmp1
+        cd tmp1
+        # Do it all right by pulling and updating first
+        hg pull
+        hg update
+        # Edit myfile: insert "just" in first line.
+        perl -pi -e 's/a little/tmp1-add2 a little/g' myfile
+        # Register change in local repository
+        hg commit -m 'Inserted "just" in first line.'
+        # Register change in global repository tmp_repo
+        hg push
+        cd ..
+        
+        # Change myfile in the directory tmp2 "in parallel"
+        cd tmp2
+        # Edit myfile: replace little by modest
+        perl -pi -e 's/a little/a tmp2-replace1\ntmp2-add2\n/g' myfile
+        # Register change locally
+        hg commit -m 'Replaced "little" by "modest"'
+        # Register change globally
+        hg push
+        # Not possible: need to pull changes in the global repository
+        hg pull
+        hg update
+        # hg update aborts: we have to run hg merge
+        diff myfile ../tmp_repo/myfile
+        echo 'Now you must do hg merge manually'
+
+
+Try to run this `file <_static-bitgit/hg_merge.sh>`_ named
+``hg_merge.sh`` by ``sh -x hg_merge.sh``.
+To resolve the resulting merge conflict you need to go to the ``tmp2``
+folder, run ``hg merge --tool meld`` and use the ``meld`` tool to
+select which text snippets that should make up the final, merged
+version. Save and quit ``meld`` and perform ``hg commit -m merge``.  You
+can now do ``hg push`` successfully to update the global repository.
+
+More documentation on Mercurial
+-------------------------------
+
+ * `Mercurial Quick Start <http://mercurial.selenic.com/wiki/QuickStart>`_ (for the impatient)
+
+ * `A Tour of Mercurial - The Basics <http://hgbook.red-bean.com/read/a-tour-of-mercurial-the-basics.html>`_
+
+ * `Mercurial FAQ <http://mercurial.selenic.com/wiki/FAQ>`_
+
+ * `Mercurial Tutorial <http://mercurial.selenic.com/wiki/Tutorial>`_
+
+ * `Mercurial: The Definitive Guide <http://hgbook.red-bean.com/>`_ (online or printed book)
