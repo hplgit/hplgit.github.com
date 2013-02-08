@@ -1,6 +1,6 @@
 % On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
 % Hans Petter Langtangen
-% Jan 27, 2013
+% Feb 8, 2013
 
 <!-- !split -->
 Scope
@@ -25,27 +25,27 @@ Scope
 <!-- !epop -->
 
 <!-- !bslidecell 00 -->
-FIGURE: [fig/LaTeX_logo.jpg, width=120]
+![](fig/LaTeX_logo.jpg)
 <!-- !eslidecell -->
 
 <!-- !bslidecell 01 -->
-FIGURE: [fig/MS_Word_logo.jpg, width=80]
+![](fig/MS_Word_logo.jpg)
 <!-- !eslidecell -->
 
 <!-- !bslidecell 02 -->
-FIGURE: [fig/sphinx_logo.png, width=200]
+![](fig/sphinx_logo.png)
 <!-- !eslidecell -->
 
 <!-- !bslidecell 10 -->
-FIGURE: [fig/markdown_logo.jpg, width=80]
+![](fig/markdown_logo.jpg)
 <!-- !eslidecell -->
 
 <!-- !bslidecell 11 -->
-FIGURE: [fig/MediaWiki_logo.jpg, width=80]
+![](fig/MediaWiki_logo.jpg)
 <!-- !eslidecell -->
 
 <!-- !bslidecell 12 -->
-FIGURE: [fig/IPython_logo.png, width=300]
+![](fig/IPython_logo.png)
 <!-- !eslidecell -->
 
 <!-- !split -->
@@ -83,7 +83,7 @@ Scientific writing needs to address many new media
 <!-- !eslidecell -->
 
 <!-- !bslidecell 01 -->
-FIGURE: [fig/jungle_with_mess.jpg, width=500]
+![](fig/jungle_with_mess.jpg)
 <!-- !eslidecell -->
 
 <!-- !split -->
@@ -898,7 +898,7 @@ FIGURE: [fig/teacher1, width=100]
 
 Key equation:
 
-$$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
+\[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
 
 And maybe a final comment?
 
@@ -919,11 +919,13 @@ Headline
 
  * Key point 2
 
-FIGURE: [fig/teacher1, width=100, frac=0.4]
+![](fig/teacher1.gif)
 
 Key equation:
 
-$$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
+$$
+ -\nabla^2 u = f \quad\hbox{in }\Omega 
+$$
 
 And maybe a final comment?
 
@@ -991,13 +993,15 @@ Headline
 <!-- !epop -->
 
 <!-- !bpop -->
-$$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
+$$
+ -\nabla^2 u = f \quad\hbox{in }\Omega 
+$$
 <!-- !epop -->
 
 <!-- !eslidecell -->
 
 <!-- !bslidecell 01 -->
-FIGURE: [fig/broken_pen_and_paper, width=400]
+![](fig/broken_pen_and_paper.jpg)
 <!-- !eslidecell -->
 
 

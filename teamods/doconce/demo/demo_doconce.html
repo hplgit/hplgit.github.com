@@ -21,21 +21,33 @@ demonstrated.
 !split
 ======= Mathematical problem =======
 
+# Use !bslidecell XY and !eslidecell as begin and end for
+# defining a cell XY in a table layout of the slide.
+# X=0,1,..., Y=0,1,... XY=00 is upper left cell.
+
+!bslidecell 00
+
 # latex blocks are surrounded by !bt and !et
 
 !bt
 \begin{align}
-u&#39;(t) &amp;= -au(t), \quad t \in (0,T],
+u&#39;(t) &amp;= -au(t),
 label{ode}\\
 u(0)  &amp;= I,
 label{initial:value}
 \end{align}
 !et
 
-where
+where $t\in (0,T]$ and
 
  * $a$, $I$, and $T$ are prescribed parameters
  * $u(t)$ is the unknown function
+
+!eslidecell
+
+!bslidecell 01
+FIGURE: [fig/teacher2, width=250]
+!eslidecell
 
 !split
 ======= Numerical solution method =======

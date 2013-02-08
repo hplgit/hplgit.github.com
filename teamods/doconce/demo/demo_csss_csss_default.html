@@ -20,6 +20,16 @@
 <script src="csss/prefixfree.min.js"></script>
 
 
+<!-- padding of cells in tables: <td class="padding">...</td> -->    
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
 <!-- Use MathJax to render mathematics -->
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -60,10 +70,8 @@ MathJax.Hub.Config({
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
-
-
 <p>
-<center><h4>Jan 27, 2013</h4></center> <!-- date -->
+<center><h4>Feb 8, 2013</h4></center> <!-- date -->
 <p>
 
 </section>
@@ -102,12 +110,23 @@ demonstrated.
 
 <h2>Mathematical problem  <a name="___sec1"></a></h2>
 <p>
+<!-- Use !bslidecell XY and !eslidecell as begin and end for -->
+<!-- defining a cell XY in a table layout of the slide. -->
+<!-- X=0,1,..., Y=0,1,... XY=00 is upper left cell. -->
+
+<p>
+
+<table border="0">
+<tr>
+<td class="padding"> 
+
+<p>
 <!-- latex blocks are surrounded by !bt and !et -->
 
 <p>
 $$
 \begin{align}
-u'(t) &= -au(t), \quad t \in (0,T],
+u'(t) &= -au(t),
 \label{ode}\\
 u(0)  &= I,
 \label{initial:value}
@@ -116,7 +135,7 @@ $$
 
 
 <p>
-where
+where \( t\in (0,T] \) and
 
 <p>
 
@@ -126,6 +145,18 @@ where
 </ul>
 <p>
 
+ </td>
+<td class="padding"> 
+<center><p><img src="fig/teacher2.jpg" align="bottom" width=250></p></center>
+ </td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
 
 </section>
 
