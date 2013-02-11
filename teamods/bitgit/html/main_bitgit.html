@@ -14,7 +14,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -62,7 +62,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 8, 2013</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 11, 2013</td>
 </tr>
 </tbody>
 </table>
@@ -116,9 +116,12 @@ what various people have done with the files in the various versions.</p>
 started with Bitbucket, GitHub, and Googlecode. Launchpad works very
 similarly to the latter three. All the project hosting services have
 excellent introductions available at their web sites, but the recipes
-below are much shorter and aim at getting you started even quicker by
-concentrating on the most important need-to-know commands.
-The tutorials at the cites contain more detailed information.</p>
+below are much shorter and aim at getting you started as quickly as
+possible by concentrating on the most important need-to-know commands.
+The Git tutorials we refer to later in this document contain more
+detailed information and constitute of course very valuable readings
+when you use version control systems every day. The point now is
+to get started.</p>
 <p>The mentioned services host all your files in a specific project in what
 is known as a <em>repository</em>, or <em>repo</em> for short.  When a copy of the
 files are wanted on a certain computer, one clones the repository on
@@ -554,12 +557,12 @@ run</p>
 </pre></div>
 </div>
 <p>To give others permissions to push their edits of files to the
-repository, you click on <em>Admin</em>, centered at the top of the project&#8217;s
-page, then click on <em>Collaborators</em> on the left, and fill in the name
+repository, you click on the <em>Settings</em> tab,
+then click on <em>Collaborators</em> on the left, and fill in the name
 of a collaborator (her or his user name on GitHub).
 Many find it convenient to be notified in email when others have
 pushed a new version of the files to the repo. Click on <em>Service Hooks</em>
-(in the project&#8217;s <em>Admin</em> menu), choose <em>Email</em>, and fill in
+(in the project&#8217;s <em>Settings</em> menu), choose <em>Email</em>, and fill in
 up to two whitespace-separated email addresses. One can send
 to more addresses by making a mailing list.</p>
 <p>Anyone who participates in a project (has write access) or watches a
@@ -619,13 +622,12 @@ generate the wiki in reStructuredText format.</p>
 store various types of documentation. Here is a simple
 recipe for creating a set of project web pages.</p>
 <ol class="arabic simple">
-<li>Go to the  project page on <tt class="docutils literal"><span class="pre">github.com</span></tt> and click <em>Admin</em>.</li>
-<li>Check the <em>GitHub Pages</em> check box.</li>
-<li>Click on the <em>Automatic GitHub Page Generator</em> button in the pop up window.</li>
+<li>Go to the  project page on <tt class="docutils literal"><span class="pre">github.com</span></tt> and click <em>Settings</em>.</li>
+<li>Click on generating <em>GitHub Pages</em>.</li>
 <li>Proceed with choosing a design of the <tt class="docutils literal"><span class="pre">index.html</span></tt> page and click <em>Publish</em>.</li>
 <li>Go to the root folder of the project, <tt class="docutils literal"><span class="pre">My-Project</span></tt>
 and run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">fetch</span> <span class="pre">origin</span></tt>.</li>
-<li>Run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">gh-pages</span></tt></li>
+<li>Run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">gh-pages</span></tt>.</li>
 </ol>
 <p>You have now a <em>new branch</em> called <tt class="docutils literal"><span class="pre">gh-pages</span></tt> of your project containing an
 <tt class="docutils literal"><span class="pre">index.html</span></tt> file in the root folder (and in fact all files <em>not</em>
@@ -644,7 +646,7 @@ To see the branches, type <tt class="docutils literal"><span class="pre">git</sp
 be marked with a star in the output. Switching to the master branch
 is done by <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">master</span></tt>. Similarly, <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">gh-pages</span></tt>
 switches to the gh-pages branch.</p>
-<p>When branches diverge you can merge them by</p>
+<p>When Git branches diverge you can merge them by</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git merge otherbranch</span>
 </pre></div>
 </div>
@@ -654,11 +656,11 @@ in the merge, there will be markers in problematic files. Run
 <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></tt>. Then you may run <tt class="docutils literal"><span class="pre">gitk</span></tt> to see a graphical illustration
 of what has happened.</p>
 <p>My personal preference is to have the master and gh-pages
-synchronized, at least in projects where I need the source code files
-for generating API documentation in the gh-pages branch. Sometimes I
-also update files in the gh-pages branch without remembering to switch
-to the master branch.  Merging the branches is then an easy way out of
-such potential trouble.</p>
+synchronized, at least in projects where I want to link to various
+source code files or other files from the web documentation.
+Sometimes I also update files in the gh-pages branch without
+remembering to switch to the master branch.  Merging the branches is
+then an easy way out of such potential trouble.</p>
 <p>Start with merging the gh-pages branch with the master
 branch and push the complete file collection to the gh-pages branch.
 Then switch to the master
@@ -1555,7 +1557,7 @@ can now do <tt class="docutils literal"><span class="pre">hg</span> <span class=
     </div>
     <div class="footer">
         &copy; Copyright 2013, H. P. Langtangen.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

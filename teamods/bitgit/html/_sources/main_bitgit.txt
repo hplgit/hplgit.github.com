@@ -5,7 +5,7 @@ Quick Intro to Version Control Systems and Project Hosting Services
 ===================================================================
 
 :Author: Hans Petter Langtangen
-:Date: Feb 8, 2013
+:Date: Feb 11, 2013
 
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -64,9 +64,12 @@ All these services are very similar. Below we describe how you get
 started with Bitbucket, GitHub, and Googlecode. Launchpad works very
 similarly to the latter three. All the project hosting services have
 excellent introductions available at their web sites, but the recipes
-below are much shorter and aim at getting you started even quicker by
-concentrating on the most important need-to-know commands.
-The tutorials at the cites contain more detailed information.
+below are much shorter and aim at getting you started as quickly as
+possible by concentrating on the most important need-to-know commands.
+The Git tutorials we refer to later in this document contain more
+detailed information and constitute of course very valuable readings
+when you use version control systems every day. The point now is
+to get started.
 
 The mentioned services host all your files in a specific project in what
 is known as a *repository*, or *repo* for short.  When a copy of the
@@ -643,12 +646,12 @@ run
 
 
 To give others permissions to push their edits of files to the
-repository, you click on *Admin*, centered at the top of the project's
-page, then click on *Collaborators* on the left, and fill in the name
+repository, you click on the *Settings* tab,
+then click on *Collaborators* on the left, and fill in the name
 of a collaborator (her or his user name on GitHub).
 Many find it convenient to be notified in email when others have
 pushed a new version of the files to the repo. Click on *Service Hooks*
-(in the project's *Admin* menu), choose *Email*, and fill in
+(in the project's *Settings* menu), choose *Email*, and fill in
 up to two whitespace-separated email addresses. One can send
 to more addresses by making a mailing list.
 
@@ -722,18 +725,16 @@ GitHub can also host a set of web pages for your project where you can
 store various types of documentation. Here is a simple
 recipe for creating a set of project web pages.
 
-1. Go to the  project page on ``github.com`` and click *Admin*.
+1. Go to the  project page on ``github.com`` and click *Settings*.
 
-2. Check the *GitHub Pages* check box.
+2. Click on generating *GitHub Pages*.
 
-3. Click on the *Automatic GitHub Page Generator* button in the pop up window.
+3. Proceed with choosing a design of the ``index.html`` page and click *Publish*.
 
-4. Proceed with choosing a design of the ``index.html`` page and click *Publish*.
-
-5. Go to the root folder of the project, ``My-Project``
+4. Go to the root folder of the project, ``My-Project``
    and run ``git fetch origin``.
 
-6. Run ``git checkout gh-pages``
+5. Run ``git checkout gh-pages``.
 
 You have now a *new branch* called ``gh-pages`` of your project containing an
 ``index.html`` file in the root folder (and in fact all files *not*
@@ -766,7 +767,7 @@ be marked with a star in the output. Switching to the master branch
 is done by ``git checkout master``. Similarly, ``git checkout gh-pages``
 switches to the gh-pages branch.
 
-When branches diverge you can merge them by
+When Git branches diverge you can merge them by
 
 .. code-block:: console
 
@@ -779,11 +780,11 @@ in the merge, there will be markers in problematic files. Run
 of what has happened.
 
 My personal preference is to have the master and gh-pages
-synchronized, at least in projects where I need the source code files
-for generating API documentation in the gh-pages branch. Sometimes I
-also update files in the gh-pages branch without remembering to switch
-to the master branch.  Merging the branches is then an easy way out of
-such potential trouble.
+synchronized, at least in projects where I want to link to various
+source code files or other files from the web documentation.
+Sometimes I also update files in the gh-pages branch without
+remembering to switch to the master branch.  Merging the branches is
+then an easy way out of such potential trouble.
 
 Start with merging the gh-pages branch with the master
 branch and push the complete file collection to the gh-pages branch.
