@@ -71,7 +71,7 @@ Automatically generated HTML file from Doconce source
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory,</b></center>
 <center>[2] <b>Deptartment of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Feb 11, 2013</h4></center> <!-- date -->
+<center><h4>Feb 12, 2013</h4></center> <!-- date -->
 <p>
 <a name="bitgit:top"></a>
 
@@ -690,14 +690,24 @@ for many formats) and that the wiki pages are frequently updated.
 <p>
 
 Go to <tt>github.com</tt> and create an account. Then go to your account
-settings, choose <em>SSH Keys</em>, and provide your SSH key. Everyone who is
-supposed to use your repository must provide their SSH key.  There is
-a help that explains what this is all about. Often, it is just a
-matter of pasting the contents of <tt>id_rsa.pub</tt> or <tt>id_dsa.pub</tt> in the
-<tt>.ssh</tt> subfolder of your home folder into the <em>Key</em> box in the
-web page. Make sure to cut and paste the text from, e.g., <tt>id_dsa.pub</tt>
+settings (icon in the upper left corner of the page),
+choose <em>SSH Keys</em>, and provide your SSH key
+<em>unless you have already registered this key with another GitHub
+account</em> (see Appendix <a href="#appendix:github:multiple:accounts">Appendix: Working with multiple GitHub accounts</a>).  There are
+help links that explain what this is all about. Often, it is just a
+matter of pasting the contents of <tt>id_rsa.pub</tt> or <tt>id_dsa.pub</tt> files,
+located in the
+<tt>.ssh</tt> subfolder of your home folder, into the <em>Key</em> box in the
+web page. Make sure to cut and paste the text from, e.g., <tt>id_rsa.pub</tt>
 without any extra whitespaces or other text. How to generate these
-files is briefly described in the introduction to Bitbucket above.
+files is described in the link <em>generating SSH keys</em> above the SSH Keys
+box (or see the introduction to Bitbucket above).
+
+<p>
+If the account is a project account and not a personal account,
+I do not recommend to provide an SSH key although it can be
+done (see Appendix <a href="#appendix:github:multiple:accounts">Appendix: Working with multiple GitHub accounts</a>). It is easier
+to log in and add collaborators using their personal GitHub usernames.
 
 <p>
 
@@ -712,7 +722,7 @@ can request <a href="https://github.com/edu">free, private repos</a>.
 
 <p>
 The next step is to clone the project on your personal computer. Click
-on the <em>Git Read-Only</em> button to see the correct address of the project,
+on the <em>SSH</em> button to see the address of the project, and
 paste this address into a terminal window, after <tt>git clone</tt>:
 <p>
 
@@ -981,13 +991,26 @@ the file you want to link to (nicely HTML formatted version or the raw
 file), right-click on the link, choose <em>Copy Link</em>, and paste the
 link into the document you want. You can test that the link works by
 the Unix command <tt>curl -O <link></tt>. Note that the link to a file
-is quite different from the source file's path in the repository.
+is different from the source file's intuitive path in the repository.
 Typically, a source file <tt>mydir/myfile.py</tt> in project <tt>prj</tt> is reached
 through
 <p>
 
 <!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://github.com/username/prj/blob/master/mydir/myfile.py?raw=true
+</pre></div>
+<p>
+
+Sometimes you want to link to another HTML file, PDF file, movie file,
+or a file that is to be interpreted as a web resource by the browser.
+Do not use the path to the file in the repo as explained above as it will
+just bring the reader to the repo page. Instead, make sure the file is in
+the gh-pages branch and use a local link, like <tt>../mydoc.pdf</tt>, or the
+complete gh-pages URL to the file:
+<p>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://username.github.com/My-Project/doc/misc/mydoc.pdf
 </pre></div>
 <p>
 
@@ -1942,6 +1965,56 @@ can now do <tt>hg push</tt> successfully to update the global repository.
  <li> <a href="http://hgbook.red-bean.com/">Mercurial: The Definitive Guide</a> (online or printed book)</li>
 </ul>
 
+<h2>Appendix: Working with multiple GitHub accounts <a name="appendix:github:multiple:accounts"></a></h2>
+<p>
+Working against different GitHub accounts is easy if each project you work
+with on each account adds you as a collaborator. The term "you" here means your
+primary username on GitHub. My strong recommendation is to always check
+out a project
+using your primary GitHub username.
+
+<p>
+Occasionally you want to create a new GitHub account, say for a project <tt>XYZ</tt>.
+For such a non-personal account, do <em>not</em> provide an SSH key of any
+particular user. The reason is that this user will then get two
+GitHub identities, and switching between these identities will require
+some special tweakings. Just forget about the SSH key for a project
+account and add
+collaborators to repos using each collaborators personal GitHub username.
+
+<p>
+If you really need to operate the <tt>XYZ</tt> account as a
+personal account, you must provide an SSH key that is different from
+any other key at any other GitHub account (you will get an error message
+if you try to register an already registered SSH key, but it is possible to
+get around the error message by providing
+an <tt>id_rsa.pub</tt> key on one account and an <tt>id_dsa.pub</tt> on another - that
+will cause trouble). A recipe for how to operate multiple GitHub accounts
+using multiple identities is provided <a href="http://net.tutsplus.com/tutorials/tools-and-tips/how-to-work-with-github-and-multiple-accounts/">here</a>:
+<p>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://net.tutsplus.com/tutorials/tools-and-tips/how-to-work-with-github-and-multiple-accounts/
+</pre></div>
+<p>
+To debug which identity that is used when you pull and push to
+GitHub accounts, you can first run
+<p>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ssh -Tv git@github.com
+</pre></div>
+<p>
+to see your current identity and which SSH key that was used to identify you.
+Typing
+<p>
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ssh-add -l
+</pre></div>
+<p>
+lists all your SSH keys. The shown strings can be compared with the
+string in the SSH key field of any GitHub account.
 
 <!-- ------------------- end of main content ----------------->
 </body>
