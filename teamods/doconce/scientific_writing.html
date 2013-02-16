@@ -42,7 +42,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
 </script>
 
 
-<!-- padding of cells in tables: <td class="padding">...</td> -->    
+<!-- Styles for table layout of slides -->
 <style type="text/css">
 td.padding {
   padding-top:20px;
@@ -96,7 +96,7 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Feb 8, 2013</h4></center> <!-- date -->
+<center><h4>Feb 16, 2013</h4></center> <!-- date -->
 <p>
 
 
@@ -582,7 +582,8 @@ Result:
 
 <h4>This is an H4/paragraph heading  <a name="___sec18"></a></h4>
 <p>
-<b>This is a paragraph heading.</b> <p>
+<b>This is a paragraph heading.</b>
+<p>
 
 
 </section>
@@ -1036,7 +1037,7 @@ Last page gets rendered as follows:
 
 <p>
 
-<!-- --- begin exercise -->
+<!-- --- begin exercise --- -->
 
 <p>
 
@@ -1045,32 +1046,38 @@ Last page gets rendered as follows:
 
 <p>
 
-<b>a)</b> Make a program that simulates flipping a coin \( N \) times.
+<b>a)</b>
+Make a program that simulates flipping a coin \( N \) times.
 
 <p>
-<b>Hint.</b> Use <tt>r = random.random()</tt> and define head as <tt>r <= 0.5</tt>.
+<!-- --- begin hint in exercise --- -->
 
 <p>
-<b>b)</b> Compute the probability of getting heads.
+<b>Hint.</b>
+Use <tt>r = random.random()</tt> and define head as <tt>r <= 0.5</tt>.
+<!-- --- end hint in exercise --- -->
 
 <p>
-<!-- --- begin short answer in exercise -->
+<b>b)</b>
+Compute the probability of getting heads.
 
 <p>
-<b>Answer.</b> A short answer: 0.5.
-<!-- --- end short answer in exercise -->
+
+<!-- --- begin answer of exercise --- -->
+<b>Answer.</b>
+A short answer: 0.5.
+<!-- --- end answer of exercise --- -->
 
 <p>
-<!-- --- begin solution of exercise -->
+
+<!-- --- begin solution of exercise --- -->
+<b>Solution.</b>
+A full solution to this subexercise can go here.
+<!-- --- end solution of exercise --- -->
 
 <p>
-<b>Solution.</b> A full solution to this subexercise can go here.
-
-<p>
-<!-- --- end solution of exercise -->
-
-<p>
-<b>c)</b> Make another program that computes the probability
+<b>c)</b>
+Make another program that computes the probability
 of getting at least three heads out of 5 throws.
 
 <p>
@@ -1078,7 +1085,7 @@ Filenames: <tt>flip_coin.py</tt>, <tt>flip_coin.pdf</tt>.
 <!-- solution files: mysol.txt, mysol_flip_coin.py -->
 
 <p>
-<!-- --- end of exercise -->
+<!-- --- end exercise --- -->
 
 <p>
 
@@ -1209,8 +1216,9 @@ FIGURE: [fig/teacher1, width=100]
 
 Key equation:
 
-$$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
-
+!bt
+\[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
+!et
 
 And maybe a final comment?
 

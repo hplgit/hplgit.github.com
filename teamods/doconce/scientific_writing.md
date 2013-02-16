@@ -1,6 +1,6 @@
 % On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
 % Hans Petter Langtangen
-% Feb 8, 2013
+% Feb 16, 2013
 
 <!-- !split -->
 Scope
@@ -755,7 +755,7 @@ Last page gets rendered as follows:
 
 
 
-<!-- --- begin exercise -->
+<!-- --- begin exercise --- -->
 
 Problem 1: Flip a Coin
 ----------------------
@@ -765,20 +765,22 @@ Problem 1: Flip a Coin
 
 *a)* Make a program that simulates flipping a coin $N$ times.
 
+<!-- --- begin hint in exercise --- -->
+
 *Hint.* Use `r = random.random()` and define head as `r <= 0.5`.
+<!-- --- end hint in exercise --- -->
 
 *b)* Compute the probability of getting heads.
 
-<!-- --- begin short answer in exercise -->
 
+<!-- --- begin answer of exercise --- -->
 *Answer.* A short answer: 0.5.
-<!-- --- end short answer in exercise -->
+<!-- --- end answer of exercise --- -->
 
-<!-- --- begin solution of exercise -->
 
+<!-- --- begin solution of exercise --- -->
 *Solution.* A full solution to this subexercise can go here.
-
-<!-- --- end solution of exercise -->
+<!-- --- end solution of exercise --- -->
 
 *c)* Make another program that computes the probability
 of getting at least three heads out of 5 throws.
@@ -786,7 +788,7 @@ of getting at least three heads out of 5 throws.
 Filenames: `flip_coin.py`, `flip_coin.pdf`.
 <!-- solution files: mysol.txt, mysol_flip_coin.py -->
 
-<!-- --- end of exercise -->
+<!-- --- end exercise --- -->
 
 
 <!-- !split -->
@@ -898,7 +900,9 @@ FIGURE: [fig/teacher1, width=100]
 
 Key equation:
 
+!bt
 \[ -\nabla^2 u = f \quad\hbox{in }\Omega \]
+!et
 
 And maybe a final comment?
 
