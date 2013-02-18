@@ -71,7 +71,7 @@ Automatically generated HTML file from Doconce source
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory,</b></center>
 <center>[2] <b>Deptartment of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Feb 12, 2013</h4></center> <!-- date -->
+<center><h4>Feb 18, 2013</h4></center> <!-- date -->
 <p>
 <a name="bitgit:top"></a>
 
@@ -789,9 +789,9 @@ Click on the <em>Wiki</em> button right under the line with the project
 name of the main page of the project. Click on <em>New Page</em> to create
 a new page. The wiki pages can be written in different markup
 languages. Markdown is the default choice, but you can alternatively
-use reStructuredText (unfortunately not the Sphinx extension
-with nice LaTeX mathematics) or MediaWiki (the markup used for
-Wikipedia).
+use MediaWiki (the LaTeX-supported markup used for
+Wikipedia) and reStructuredText (unfortunately not the Sphinx extension
+with nice LaTeX mathematics).
 
 <p>
 The wiki pages can be written and maintained through the web browser
@@ -840,16 +840,27 @@ The address can be stored as <tt>url</tt> in <tt>.git/config</tt> so that just a
 
 <h3>Project web pages  <a name="___sec12"></a></h3>
 <p>
-GitHub can also host a set of web pages for your project where you can
-store various types of documentation. Here is a simple
-recipe for creating a set of project web pages.
+HTML pages stored in your repo cannot be linked to and rendered <em>as HTML</em>.
+Links to HTML files at GitHub will be either rendered as nicely typeset
+HTML code or as plain text. The URL of images, however, can be used
+in web pages to insert images from your repo, provided the image files
+are in the <em>raw</em> format (click the <em>Raw</em> button when viewing a file at
+<tt>github.com</tt> and use the corresponding URL in the <tt>img</tt> tag).
+
+<p>
+Quite often you want to create a set of HTML pages to document your
+project. This can be done as part of your repo, but you must apply
+a special technique consisting in creating a separate <em>gh-pages</em>
+branch in Git and making the HTML files in this particular branch.
+The recipe is described in detail below.
 
 <p>
 
 <ol>
 <li> Go to the  project page on <tt>github.com</tt> and click <em>Settings</em>.</li>
-<li> Click on generating <em>GitHub Pages</em>.</li>
-<li> Proceed with choosing a design of the <tt>index.html</tt> page and click <em>Publish</em>.</li>
+<li> Click on generating <em>Automatic Page Generator</em> under the <em>GitHub Pages</em>.</li>
+<li> Proceed clicking <em>Continue to Layouts</em>, choose
+   a design of the <tt>index.html</tt> page, and click <em>Publish</em>.</li>
 <li> Go to the root folder of the project, <tt>My-Project</tt>
    and run <tt>git fetch origin</tt>.</li>
 <li> Run <tt>git checkout gh-pages</tt>.</li>
@@ -1532,7 +1543,8 @@ branch with <tt>git stash branch newstuff</tt>.)
 
 <p>
 
-<b>Remark.</b> A recent <a href="http://mercurial.selenic.com/wiki/ShelveExtension">extension module</a> for Mercurial allows stashing for that version control system as well:
+<b>Remark.</b>
+A recent <a href="http://mercurial.selenic.com/wiki/ShelveExtension">extension module</a> for Mercurial allows stashing for that version control system as well:
 <tt>hg shelve --all</tt> is similar for <tt>git stash</tt>, and <tt>hg unshelve</tt>
 is similar to <tt>git stash apply</tt>.
 

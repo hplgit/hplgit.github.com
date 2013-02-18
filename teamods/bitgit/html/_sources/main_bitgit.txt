@@ -5,7 +5,7 @@ Quick Intro to Version Control Systems and Project Hosting Services
 ===================================================================
 
 :Author: Hans Petter Langtangen
-:Date: Feb 12, 2013
+:Date: Feb 18, 2013
 
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -686,9 +686,9 @@ Click on the *Wiki* button right under the line with the project
 name of the main page of the project. Click on *New Page* to create
 a new page. The wiki pages can be written in different markup
 languages. Markdown is the default choice, but you can alternatively
-use reStructuredText (unfortunately not the Sphinx extension
-with nice LaTeX mathematics) or MediaWiki (the markup used for
-Wikipedia).
+use MediaWiki (the LaTeX-supported markup used for
+Wikipedia) and reStructuredText (unfortunately not the Sphinx extension
+with nice LaTeX mathematics).
 
 The wiki pages can be written and maintained through the web browser
 interface, but it is usually more convenient to clone them on
@@ -730,15 +730,25 @@ The address can be stored as ``url`` in ``.git/config`` so that just a
 Project web pages
 -----------------
 
-GitHub can also host a set of web pages for your project where you can
-store various types of documentation. Here is a simple
-recipe for creating a set of project web pages.
+HTML pages stored in your repo cannot be linked to and rendered *as HTML*.
+Links to HTML files at GitHub will be either rendered as nicely typeset
+HTML code or as plain text. The URL of images, however, can be used
+in web pages to insert images from your repo, provided the image files
+are in the *raw* format (click the *Raw* button when viewing a file at
+``github.com`` and use the corresponding URL in the ``img`` tag).
+
+Quite often you want to create a set of HTML pages to document your
+project. This can be done as part of your repo, but you must apply
+a special technique consisting in creating a separate *gh-pages*
+branch in Git and making the HTML files in this particular branch.
+The recipe is described in detail below.
 
 1. Go to the  project page on ``github.com`` and click *Settings*.
 
-2. Click on generating *GitHub Pages*.
+2. Click on generating *Automatic Page Generator* under the *GitHub Pages*.
 
-3. Proceed with choosing a design of the ``index.html`` page and click *Publish*.
+3. Proceed clicking *Continue to Layouts*, choose
+   a design of the ``index.html`` page, and click *Publish*.
 
 4. Go to the root folder of the project, ``My-Project``
    and run ``git fetch origin``.

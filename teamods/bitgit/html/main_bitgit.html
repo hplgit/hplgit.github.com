@@ -14,7 +14,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -62,7 +62,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 12, 2013</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 18, 2013</td>
 </tr>
 </tbody>
 </table>
@@ -592,9 +592,9 @@ Click on the <em>Wiki</em> button right under the line with the project
 name of the main page of the project. Click on <em>New Page</em> to create
 a new page. The wiki pages can be written in different markup
 languages. Markdown is the default choice, but you can alternatively
-use reStructuredText (unfortunately not the Sphinx extension
-with nice LaTeX mathematics) or MediaWiki (the markup used for
-Wikipedia).</p>
+use MediaWiki (the LaTeX-supported markup used for
+Wikipedia) and reStructuredText (unfortunately not the Sphinx extension
+with nice LaTeX mathematics).</p>
 <p>The wiki pages can be written and maintained through the web browser
 interface, but it is usually more convenient to clone them on
 your computer as this makes it easy to add figures and other documents
@@ -626,13 +626,22 @@ generate the wiki in reStructuredText format.</p>
 </div>
 <div class="section" id="project-web-pages">
 <h2>Project web pages<a class="headerlink" href="#project-web-pages" title="Permalink to this headline">¶</a></h2>
-<p>GitHub can also host a set of web pages for your project where you can
-store various types of documentation. Here is a simple
-recipe for creating a set of project web pages.</p>
+<p>HTML pages stored in your repo cannot be linked to and rendered <em>as HTML</em>.
+Links to HTML files at GitHub will be either rendered as nicely typeset
+HTML code or as plain text. The URL of images, however, can be used
+in web pages to insert images from your repo, provided the image files
+are in the <em>raw</em> format (click the <em>Raw</em> button when viewing a file at
+<tt class="docutils literal"><span class="pre">github.com</span></tt> and use the corresponding URL in the <tt class="docutils literal"><span class="pre">img</span></tt> tag).</p>
+<p>Quite often you want to create a set of HTML pages to document your
+project. This can be done as part of your repo, but you must apply
+a special technique consisting in creating a separate <em>gh-pages</em>
+branch in Git and making the HTML files in this particular branch.
+The recipe is described in detail below.</p>
 <ol class="arabic simple">
 <li>Go to the  project page on <tt class="docutils literal"><span class="pre">github.com</span></tt> and click <em>Settings</em>.</li>
-<li>Click on generating <em>GitHub Pages</em>.</li>
-<li>Proceed with choosing a design of the <tt class="docutils literal"><span class="pre">index.html</span></tt> page and click <em>Publish</em>.</li>
+<li>Click on generating <em>Automatic Page Generator</em> under the <em>GitHub Pages</em>.</li>
+<li>Proceed clicking <em>Continue to Layouts</em>, choose
+a design of the <tt class="docutils literal"><span class="pre">index.html</span></tt> page, and click <em>Publish</em>.</li>
 <li>Go to the root folder of the project, <tt class="docutils literal"><span class="pre">My-Project</span></tt>
 and run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">fetch</span> <span class="pre">origin</span></tt>.</li>
 <li>Run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">gh-pages</span></tt>.</li>
@@ -1613,7 +1622,7 @@ string in the SSH key field of any GitHub account.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, H. P. Langtangen.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2pre.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>
