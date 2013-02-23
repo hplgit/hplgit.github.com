@@ -1,0 +1,318 @@
+<html>
+<head>
+<!--
+Style adopted from the vagrant web pages. The vagrant style
+builds on the Twitter Bootstrap style.
+Modifications by Hans Petter Langtangen, hpl@simula.no.
+-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+
+<link rel="stylesheet" href="css/twitter_bootstrap.css">
+<link rel="stylesheet" href="css/vagrant.css">
+</head>
+<body>
+
+<title> Error vs $\Delta t$ </title>
+
+<!-- ------------------- main content ------------------------>
+
+<div class="container">
+ <div class="row Header with-border">
+  <div class="span3 Module logo">
+   <h1><a href="/">DiffEq<span class="subtitle">Project</span></a></h1>
+  </div>
+  <div class="span9">
+   <div class="Module navigation">
+   <!-- Navigation at the top of the page -->
+    <ul>
+     <li> <a href="http://wikipedia.org">Wikipedia</a></li>
+     <li> <a href="http://wolframalpha.com">WolframAlpha</a></li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</div
+
+<!-- can extract all 7 and/or 9 headings (dep. on how many)
+make a doconce vagrantcss command that creates the css and header?
+should be some easy customization. Needs integration with split_html.
+Maybe a style choice, or more general, a navigation panel?
+Can probably easily in split_html grep for h1 and h2 titles and spit
+out the navigation panel. Can let parts be equipped with a list of
+headings in each part. For example [(heading, level), ...].
+--vagrant-css option turns on these constructions and adds a
+customized header. Can provide a python file that defines
+navigation, logo word. The vagrant css file with bootstrap
+can be stored along with the .zip files and just included from
+there (no - what if the html file is deployed? must have it locally,
+being copied like images).
+
+Can this file be made as an HTML template? Seems so! But we need
+more: toc, navigation at the top, "button" to next page at the bottom.
+Can just provide this in the dict and the template may or may not
+use them. The toc to be generated is just a set of li points.
+YES: try to make a template out of this file. The nav at the top
+is hardcoded in the template. Likewise the logo word.
+-->
+
+<!-- Here goes the table of contents in the sidebar
+     <li class="active"> means dark blue background for current section
+-->
+<div class="row">
+ <div class="span3 Module sidebar">
+  <div class="well" style="padding: 8px 0px;">
+   <ul class="nav nav-list">
+     <!-- Syntax:
+     <li> <a href="...">Section 1</a></li>
+     <li> <a href="...">Section 2</a></li>
+     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2a</a></li>
+     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
+     -->
+     <!-- Doconce automatically fills in the table of contents -->
+          <!-- vagrant nav toc: " Mathematical problem " --> <li>  <a href="#math:problem"> Mathematical problem </a>
+     <!-- vagrant nav toc: " Numerical solution method " --> <li>  <a href="#numerical:problem"> Numerical solution method </a>
+     <!-- vagrant nav toc: " Implementation " --> <li>  <a href="#___sec2"> Implementation </a>
+     <!-- vagrant nav toc: " Numerical experiments " --> <li>  <a href="#___sec3"> Numerical experiments </a>
+     <!-- vagrant nav toc: " The Backward Euler method " --> <li> &nbsp;  <a href="#___sec4"> The Backward Euler method </a>
+     <!-- vagrant nav toc: " The Crank-Nicolson method " --> <li> &nbsp;  <a href="#___sec5"> The Crank-Nicolson method </a>
+     <!-- vagrant nav toc: " The Forward Euler method " --> <li> &nbsp;  <a href="#___sec6"> The Forward Euler method </a>
+     <!-- vagrant nav toc: " Error vs $\Delta t$ " --> <li> &nbsp;  <a href="#___sec7"> Error vs $\Delta t$ </a>
+
+    </ul>
+   </div>
+  </div>
+
+  <div class="span9">
+
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Mathematical problem ', 1, 'math:problem', 'math:problem'),
+              (' Numerical solution method ',
+               1,
+               'numerical:problem',
+               'numerical:problem'),
+              (' Implementation ', 1, None, '___sec2'),
+              (' Numerical experiments ', 1, None, '___sec3'),
+              (' The Backward Euler method ', 2, None, '___sec4'),
+              (' The Crank-Nicolson method ', 2, None, '___sec5'),
+              (' The Forward Euler method ', 2, None, '___sec6'),
+              (' Error vs $\\Delta t$ ', 2, None, '___sec7')]}
+end of tocinfo -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+<!-- ------------------- main content ---------------------- -->
+
+
+<p>
+
+<h1>Experiments with Schemes for Exponential Decay</h1>
+
+<!-- AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo. -->
+<p>
+
+<p>
+<b>Summary.</b> This report investigates the accuracy of three finite difference
+schemes for the ordinary differential equation \( u'=-au \) with the
+aid of numerical experiments. Numerical artifacts are in particular
+demonstrated.
+
+<p>
+
+<!-- 
+TOC: on -->
+
+<p>
+
+
+<h2>Mathematical problem <a name="math:problem"></a></h2>
+<p>
+
+We address the initial-value problem
+
+<p>
+$$
+\begin{align}
+u'(t) &= -au(t), \quad t \in (0,T], \label{ode}\\
+u(0)  &= I,                         \label{initial:value}
+\end{align}
+$$
+
+where \( a \), \( I \), and \( T \) are prescribed parameters, and \( u(t) \) is
+the unknown function to be estimated. This mathematical model
+is relevant for physical phenomena featuring exponential decay
+in time.
+
+<p>
+
+<h2>Numerical solution method <a name="numerical:problem"></a></h2>
+<p>
+
+We introduce a mesh in time with points \( 0= t_0< t_1 \cdots < t_N=T \).
+For simplicity, we assume constant spacing \( \Delta t \) between the
+mesh points: \( \Delta t = t_{n}-t_{n-1} \), \( n=1,\ldots,N \). Let
+\( u^n \) be the numerical approximation to the exact solution at \( t_n \).
+
+<p>
+The \( \theta \)-rule is used to solve \eqref{ode} numerically:
+
+<p>
+$$
+u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+$$
+
+for \( n=0,1,\ldots,N-1 \). This scheme corresponds to
+
+<p>
+
+<ul>
+  <li> The <a href="http://en.wikipedia.org/wiki/Forward_Euler_method">Forward Euler</a>
+    scheme when \( \theta=0 \)</li>
+  <li> The <a href="http://en.wikipedia.org/wiki/Backward_Euler_method">Backward Euler</a>
+    scheme when \( \theta=1 \)</li>
+  <li> The <a href="http://en.wikipedia.org/wiki/Crank-Nicolson">Crank-Nicolson</a>
+    scheme when \( \theta=1/2 \)</li>
+</ul>
+
+<h2>Implementation  <a name="___sec2"></a></h2>
+<p>
+
+The numerical method is implemented in a Python function
+<code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py"><tt>decay_mod</tt></a> module):
+
+<p>
+
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
+    dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)           <span style="color: #408080; font-style: italic"># avoid integer division</span>
+    N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #408080; font-style: italic"># no of time intervals</span>
+    T <span style="color: #666666">=</span> N<span style="color: #666666">*</span>dt                 <span style="color: #408080; font-style: italic"># adjust T to fit time step dt</span>
+    u <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>)           <span style="color: #408080; font-style: italic"># array of u[n] values</span>
+    t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, T, N<span style="color: #666666">+1</span>)  <span style="color: #408080; font-style: italic"># time mesh</span>
+
+    u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> I                 <span style="color: #408080; font-style: italic"># assign initial condition</span>
+    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, N):    <span style="color: #408080; font-style: italic"># n=0,1,...,N-1</span>
+        u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
+    <span style="color: #008000; font-weight: bold">return</span> u, t
+</pre></div>
+<p>
+
+
+<h2>Numerical experiments  <a name="___sec3"></a></h2>
+<p>
+
+We define a set of numerical experiments where \( I \), \( a \), and \( T \) are
+fixed, while \( \Delta t \) and \( \theta \) are varied.
+In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
+
+<p>
+
+
+<h3>The Backward Euler method  <a name="___sec4"></a></h3>
+<p>
+
+
+<center><p><img src="BE.png" align="bottom" width=800></p></center>
+
+<p>
+
+
+<h3>The Crank-Nicolson method  <a name="___sec5"></a></h3>
+<p>
+
+
+<center><p><img src="CN.png" align="bottom" width=800></p></center>
+
+<p>
+
+
+<h3>The Forward Euler method  <a name="___sec6"></a></h3>
+<p>
+
+
+<center><p><img src="FE.png" align="bottom" width=800></p></center>
+
+<p>
+
+
+<h3>Error vs \( \Delta t \)  <a name="___sec7"></a></h3>
+<p>
+
+How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
+is shown in Figure <a href="#fig:E">1</a>.
+
+<p>
+
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  Error versus time step. <a name="fig:E"></a> </p></center>
+<p><img src="error.png" align="bottom" width=400></p>
+</center>
+<!-- ------------------- end of main content --------------- -->
+
+
+<!--
+Preliminary examples/discussion on vagrant style syntax
+
+<div class='alert alert-block alert-notice'>
+  <h3>What about PHP? Python? Java?</h3>
+<p>
+We need to extend the concept of templates to title, date,
+body, toc, next_page, previous_page.
+</div>
+
+<p>
+While the <div class="deep-blue">rest of the</div> getting started
+-->
+
+<!-- bottom navigation buttons -->
+<!-- Doconce will automatically fill in the right URL in these
+     buttons when doconce html_split is run. Otherwise they are empty.
+-->
+<ul class="pager">
+  <li class="previous">
+    <a href="">&larr; </a>
+  </li>
+  <li class="next">
+  <a href=""> &rarr;</a>
+ </li>
+</ul>
+<!--- end of bottom navigation buttons -->
+
+ </div>
+
+ <div class="row Footer">
+  <div class="span12">
+  H. P. Langtangen &copy; 2013
+  </div>
+ </div>
+</div>
+</body>
+</html>
+
+
+

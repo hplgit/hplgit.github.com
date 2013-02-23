@@ -1,0 +1,122 @@
+<html>
+<head>
+<!--
+Style adopted from the vagrant web pages. The vagrant style
+builds on the Twitter Bootstrap style.
+Modifications by Hans Petter Langtangen, hpl@simula.no.
+-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+
+<link rel="stylesheet" href="css/twitter_bootstrap.css">
+<link rel="stylesheet" href="css/vagrant.css">
+</head>
+<body>
+
+<title>%(title)s</title>
+
+<!-- ------------------- main content ------------------------>
+
+<div class="container">
+ <div class="row Header with-border">
+  <div class="span3 Module logo">
+   <h1><a href="/">DiffEq<span class="subtitle">Project</span></a></h1>
+  </div>
+  <div class="span9">
+   <div class="Module navigation">
+   <!-- Navigation at the top of the page -->
+    <ul>
+     <li> <a href="http://wikipedia.org">Wikipedia</a></li>
+     <li> <a href="http://wolframalpha.com">WolframAlpha</a></li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</div
+
+<!-- can extract all 7 and/or 9 headings (dep. on how many)
+make a doconce vagrantcss command that creates the css and header?
+should be some easy customization. Needs integration with split_html.
+Maybe a style choice, or more general, a navigation panel?
+Can probably easily in split_html grep for h1 and h2 titles and spit
+out the navigation panel. Can let parts be equipped with a list of
+headings in each part. For example [(heading, level), ...].
+--vagrant-css option turns on these constructions and adds a
+customized header. Can provide a python file that defines
+navigation, logo word. The vagrant css file with bootstrap
+can be stored along with the .zip files and just included from
+there (no - what if the html file is deployed? must have it locally,
+being copied like images).
+
+Can this file be made as an HTML template? Seems so! But we need
+more: toc, navigation at the top, "button" to next page at the bottom.
+Can just provide this in the dict and the template may or may not
+use them. The toc to be generated is just a set of li points.
+YES: try to make a template out of this file. The nav at the top
+is hardcoded in the template. Likewise the logo word.
+-->
+
+<!-- Here goes the table of contents in the sidebar
+     <li class="active"> means dark blue background for current section
+-->
+<div class="row">
+ <div class="span3 Module sidebar">
+  <div class="well" style="padding: 8px 0px;">
+   <ul class="nav nav-list">
+     <!-- Syntax:
+     <li> <a href="...">Section 1</a></li>
+     <li> <a href="...">Section 2</a></li>
+     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2a</a></li>
+     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
+     -->
+     <!-- Doconce automatically fills in the table of contents -->
+     %(table_of_contents)s
+    </ul>
+   </div>
+  </div>
+
+  <div class="span9">
+
+%(main)s
+
+<!--
+Preliminary examples/discussion on vagrant style syntax
+
+<div class='alert alert-block alert-notice'>
+  <h3>What about PHP? Python? Java?</h3>
+<p>
+We need to extend the concept of templates to title, date,
+body, toc, next_page, previous_page.
+</div>
+
+<p>
+While the <div class="deep-blue">rest of the</div> getting started
+-->
+
+<!-- bottom navigation buttons -->
+<!-- Doconce will automatically fill in the right URL in these
+     buttons when doconce html_split is run. Otherwise they are empty.
+-->
+<ul class="pager">
+  <li class="previous">
+    <a href="%(previous_page_url)s">&larr; %(previous_page_title)s</a>
+  </li>
+  <li class="next">
+  <a href="%(next_page_url)s">%(next_page_title)s &rarr;</a>
+ </li>
+</ul>
+<!--- end of bottom navigation buttons -->
+
+ </div>
+
+ <div class="row Footer">
+  <div class="span12">
+  H. P. Langtangen &copy; 2013
+  </div>
+ </div>
+</div>
+</body>
+</html>
+
+
