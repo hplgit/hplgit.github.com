@@ -1,0 +1,432 @@
+
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>“Cloud” sphinx theme &mdash; Experiments with Schemes for Exponential Decay</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+<link rel="stylesheet" href="../../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="../../_static/css/font-awesome.min.css">
+<!--[if IE 7]>
+<link rel="stylesheet" href="../../_static/css/font-awesome-ie7.min.css">
+<![endif]-->
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+}
+</style>
+<link rel="stylesheet" href="../../_static/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../../_static/css/bootstrap-responsive.min.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../../',
+            VERSION:     '1.0',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+<script type="text/javascript" src="../../_static/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../_static/underscore.js"></script>
+<script type="text/javascript" src="../../_static/doctools.js"></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="../../_static/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.show-sidebar').click(function(e) {
+       e.preventDefault();
+       if ($(".show-sidebar").html() == "Open Table Of Contents") {
+          $('.for-mobile').removeClass('hidden-phone');
+          $(".show-sidebar").html("Close Table Of Contents");
+       } else {
+          $(".show-sidebar").html("Open Table Of Contents");
+       }
+    });
+  });
+</script>
+    <link rel="top" title="Experiments with Schemes for Exponential Decay" href="../../index.html" /> 
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top ">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="../../index.html">Experiments with Schemes for Exponential Decay</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+              
+                <li>
+                <a href="../../genindex.html" title="General Index" accesskey="I">index</a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container-fluid">
+
+
+      
+      <div class="row-fluid hidden-desktop hidden-tablet">
+      
+<div class="span3 ">
+  <a class="visible-phone btn btn-small show-sidebar" data-toggle="collapse" data-target=".for-mobile">Open Table Of Contents</a>
+  <div class="for-mobile sidebar hidden-phone">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">&#8220;Cloud&#8221; sphinx theme</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#list-of-options">List of Options</a><ul>
+<li><a class="reference internal" href="#structure">Structure</a></li>
+<li><a class="reference internal" href="#layout">Layout</a></li>
+<li><a class="reference internal" href="#styling">Styling</a></li>
+<li><a class="reference internal" href="#other">Other</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#usage">Usage</a><ul>
+<li><a class="reference internal" href="#using-the-theme">Using the theme</a></li>
+<li><a class="reference internal" href="#section-styles">Section Styles</a><ul>
+<li><a class="reference internal" href="#emphasized-children">Emphasized Children</a></li>
+<li><a class="reference internal" href="#toggleable-sections">Toggleable Sections</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#table-styles">Table Styles</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/_themes/redcloud/doc.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox">
+  <h3>Quick search</h3>
+  <form class="search form-search" action="../../search.html" method="get">
+      <div class="input-append">
+        <input type="text" class="search-query" name="q">
+        <input type="submit" class="btn" value="Go" />
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div>
+      </div>
+      
+
+      <!-- row -->
+      <div class="row-fluid">
+         
+<div class="span3 visible-desktop visible-tablet">
+  <div class=" sidebar hidden-phone">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">&#8220;Cloud&#8221; sphinx theme</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#list-of-options">List of Options</a><ul>
+<li><a class="reference internal" href="#structure">Structure</a></li>
+<li><a class="reference internal" href="#layout">Layout</a></li>
+<li><a class="reference internal" href="#styling">Styling</a></li>
+<li><a class="reference internal" href="#other">Other</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#usage">Usage</a><ul>
+<li><a class="reference internal" href="#using-the-theme">Using the theme</a></li>
+<li><a class="reference internal" href="#section-styles">Section Styles</a><ul>
+<li><a class="reference internal" href="#emphasized-children">Emphasized Children</a></li>
+<li><a class="reference internal" href="#toggleable-sections">Toggleable Sections</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#table-styles">Table Styles</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/_themes/redcloud/doc.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox">
+  <h3>Quick search</h3>
+  <form class="search form-search" action="../../search.html" method="get">
+      <div class="input-append">
+        <input type="text" class="search-query" name="q">
+        <input type="submit" class="btn" value="Go" />
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+  </div>
+</div> 
+        
+
+        <div class="span9">
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="cloud-sphinx-theme">
+<span id="index-0"></span><h1>&#8220;Cloud&#8221; sphinx theme<a class="headerlink" href="#cloud-sphinx-theme" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<p>This package provides a theme called &#8220;Cloud&#8221;, used to generate this documentation.
+Aside from being just another Sphinx theme, it has a few special features:</p>
+<dl class="docutils">
+<dt><em>Toggleable sections</em></dt>
+<dd>You can mark sections with <tt class="docutils literal"><span class="pre">..</span> <span class="pre">rst-class::</span> <span class="pre">html-toggle</span></tt>,
+which will make the section default to being collapsed under html,
+with a &#8220;show section&#8221; toggle link to the right of the title.</dd>
+<dt><em>Additional CSS classes</em></dt>
+<dd><p class="first">It provides a couple of simple styling directives for adding
+variety to long Python library documentation:</p>
+<ul class="last simple">
+<li>You can mark tables with <tt class="docutils literal"><span class="pre">..</span> <span class="pre">rst-class::</span> <span class="pre">html-plain-table</span></tt>
+to remove separating lines between rows.</li>
+<li>You can mark <tt class="docutils literal"><span class="pre">&lt;h2&gt;</span></tt> sections with <tt class="docutils literal"><span class="pre">..</span> <span class="pre">rst-class::</span> <span class="pre">emphasize-children</span></tt>
+to provide addition visual dividers between large numbers of sub-sub-sections.</li>
+</ul>
+</dd>
+<dt><em>Navigation enhancements</em></dt>
+<dd>It provides options (<tt class="docutils literal"><span class="pre">roottarget</span></tt>, <tt class="docutils literal"><span class="pre">logotarget</span></tt>) which
+allow the table of contents to be a distinct
+from the front page (<tt class="docutils literal"><span class="pre">index.html</span></tt>) of the document. This allows
+a master table of contents to be maintained, while still allowing
+the front page to be fully customized to welcome readers.</dd>
+<dt><em>Additional styling options</em></dt>
+<dd><p class="first">It also provides a number of styling options controlling
+small details such as external links, document sizing, etc.
+See below.</p>
+<p class="last">It also uses an adaptive layout to work well on all screen sizes
+from mobile phones to widescreen desktops.</p>
+</dd>
+<dt><em>Google Analytics Integration</em></dt>
+<dd>By enabling two theme options with <tt class="docutils literal"><span class="pre">conf.py</span></tt>, Cloud will
+automatically insert a Google Analytics tracker to the bottom of each
+page, along with a polite link allowing users to set a cookie
+which opts them out.</dd>
+</dl>
+</div>
+<div class="section" id="list-of-options">
+<h2>List of Options<a class="headerlink" href="#list-of-options" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="structure">
+<h3>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">roottarget</span></tt></dt>
+<dd>Sets which page which the title link in the navigation bar should point to
+(defaults to the special value <tt class="docutils literal"><span class="pre">&quot;&lt;toc&gt;&quot;</span></tt>, which uses the table of contents).</dd>
+<dt><tt class="docutils literal"><span class="pre">logotarget</span></tt></dt>
+<dd>Sets the page which the sidebar logo (if any) should point to
+(defaults to the special value <tt class="docutils literal"><span class="pre">&lt;root&gt;</span></tt>, which just mirrors <tt class="docutils literal"><span class="pre">roottarget</span></tt>).</dd>
+</dl>
+</div>
+<div class="section" id="layout">
+<h3>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">max_width</span></tt></dt>
+<dd>Sets the maximum document width, so the documentation does not stretch
+too far on wide monitors (defaults to <tt class="docutils literal"><span class="pre">11in</span></tt>).</dd>
+<dt><tt class="docutils literal"><span class="pre">compact_width</span></tt></dt>
+<dd>Sets the maximum width where the &#8220;compact&#8221; layout will be used.
+This layout omits some of the padding and styling,
+and is more suitable for smaller screens (defaults to <tt class="docutils literal"><span class="pre">960px</span></tt>).</dd>
+<dt><tt class="docutils literal"><span class="pre">minimal_width</span></tt></dt>
+<dd>Sets the maximum width where the &#8220;mobile&#8221; layout will be used.
+This layout omits the sidebar and everything else that can be trimmed,
+and is designed to (hopefully) be more usuable on mobile devices.
+(defaults to <tt class="docutils literal"><span class="pre">700px</span></tt>).</dd>
+<dt><tt class="docutils literal"><span class="pre">min_height</span></tt></dt>
+<dd>sets the minimum height of the page body (defaults to <tt class="docutils literal"><span class="pre">6in</span></tt>).</dd>
+<dt><tt class="docutils literal"><span class="pre">collapsiblesidebar</span></tt></dt>
+<dd>whether the sidebar can be hidden or not (defaults to <tt class="docutils literal"><span class="pre">true</span></tt>).</dd>
+<dt><tt class="docutils literal"><span class="pre">defaultcollapsed</span></tt></dt>
+<dd>whether the sidebar should start collapsed (defaults to <tt class="docutils literal"><span class="pre">false</span></tt>).</dd>
+<dt><tt class="docutils literal"><span class="pre">stickysidebar</span></tt></dt>
+<dd>whether the sidebar should &#8220;stick&#8221; in the current window
+(defaults to <tt class="docutils literal"><span class="pre">true</span></tt>), otherwise it will scroll along with the page.</dd>
+<dt><tt class="docutils literal"><span class="pre">highlighttoc</span></tt></dt>
+<dd>whether sidebar should highlight the sections which are currently
+being viewed (defaults to <tt class="docutils literal"><span class="pre">true</span></tt>).</dd>
+</dl>
+</div>
+<div class="section" id="styling">
+<h3>Styling<a class="headerlink" href="#styling" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">externalrefs</span></tt></dt>
+<dd>Boolean flag that controls whether references should be displayed with an icon.
+(defaults to <tt class="docutils literal"><span class="pre">True</span></tt>).</dd>
+<dt><tt class="docutils literal"><span class="pre">externalicon</span></tt></dt>
+<dd>Optional image or string to prefix before any external links
+(defaults to <tt class="docutils literal"><span class="pre">â‡—</span></tt>, ignored if <tt class="docutils literal"><span class="pre">externalrefs=False</span></tt>).</dd>
+<dt><tt class="docutils literal"><span class="pre">issueicon</span></tt></dt>
+<dd>Optional image or string to prefix before any issue tracker links
+generated by <tt class="xref py py-mod docutils literal"><span class="pre">cloud_sptheme.ext.issue_tracker</span></tt>
+(defaults to <tt class="docutils literal"><span class="pre">âœ§</span></tt>, ignored if <tt class="docutils literal"><span class="pre">externalrefs=False</span></tt>).</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There are a number of options for changing the various colors
+and fonts used by this theme, which are still undocumented.
+A complete list can be found in the theme&#8217;s configuration file
+(<tt class="docutils literal"><span class="pre">/cloud_sptheme/themes/cloud/theme.conf</span></tt>).</p>
+</div>
+</div>
+<div class="section" id="other">
+<h3>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">googleanalytics_id</span></tt></dt>
+<dd>Setting this via <tt class="docutils literal"><span class="pre">html_theme_options</span></tt> to your GA id (e.g. <tt class="docutils literal"><span class="pre">UA-XXXXXXXX-X</span></tt>)
+will enable a <a class="reference external" href="http://www.google.com/analytics">Google Analytics</a>
+tracker for all pages in the document, as well insert a link in
+the footer allowing users to opt out of tracking.</dd>
+<dt><tt class="docutils literal"><span class="pre">googleanalytics_path</span></tt></dt>
+<dd>Setting this allows limiting the tracker to a subpath,
+useful for shared documentation hosting (e.g. PyPI or ReadTheDocs).</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="usage">
+<span id="cloud-theme-usage"></span><h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="using-the-theme">
+<h3>Using the theme<a class="headerlink" href="#using-the-theme" title="Permalink to this headline">¶</a></h3>
+<p>To use the cloud theme, open your documentation&#8217;s Sphinx <tt class="docutils literal"><span class="pre">conf.py</span></tt> file,
+make the following changes:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># import Cloud</span>
+<span class="kn">import</span> <span class="nn">cloud_sptheme</span> <span class="kn">as</span> <span class="nn">csp</span>
+
+<span class="c"># ... some contents omitted ...</span>
+
+<span class="c"># set the html theme</span>
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s">&quot;cloud&quot;</span>
+    <span class="c"># NOTE: there is also a red-colored version named &quot;redcloud&quot;</span>
+
+<span class="c"># ... some contents omitted ...</span>
+
+<span class="c"># set the theme path to point to cloud&#39;s theme data</span>
+<span class="n">html_theme_path</span> <span class="o">=</span> <span class="p">[</span><span class="n">csp</span><span class="o">.</span><span class="n">get_theme_dir</span><span class="p">()]</span>
+
+<span class="c"># [optional] set some of the options listed above...</span>
+<span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&quot;roottarget&quot;</span><span class="p">:</span> <span class="s">&quot;index&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition-see-also floater admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">See the next page (<tt class="xref doc docutils literal"><span class="pre">cloud_theme_test</span></tt>) for examples of
+these options in action.</p>
+</div>
+</div>
+<div class="section" id="section-styles">
+<h3>Section Styles<a class="headerlink" href="#section-styles" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="emphasized-children">
+<h4>Emphasized Children<a class="headerlink" href="#emphasized-children" title="Permalink to this headline">¶</a></h4>
+<p>Adding <tt class="docutils literal"><span class="pre">..</span> <span class="pre">rst-class::</span> <span class="pre">emphasize-children</span></tt> to a 2nd-level section header
+will cause the headers of all of it&#8217;s child sections to be emphasized with a solid background.
+This is mainly useful for very long sections, where there needs to be
+a visual divide between 3rd-level sections.</p>
+</div>
+<div class="section" id="toggleable-sections">
+<h4>Toggleable Sections<a class="headerlink" href="#toggleable-sections" title="Permalink to this headline">¶</a></h4>
+<p>By adding <tt class="docutils literal"><span class="pre">..</span> <span class="pre">rst-class::</span> <span class="pre">html-toggle</span></tt> before any section header,
+it can be made toggleable:</p>
+<div class="highlight-python"><pre>.. rst-class:: html-toggle
+
+Toggleable Section
+------------------
+
+This section is collapsed by default.</pre>
+</div>
+<p>While toggleable sections start out collapsed by default,
+you can use <tt class="docutils literal"><span class="pre">..</span> <span class="pre">rst-class::</span> <span class="pre">html-toggle</span> <span class="pre">expanded</span></tt> to override this.</p>
+</div>
+</div>
+<div class="section" id="table-styles">
+<h3>Table Styles<a class="headerlink" href="#table-styles" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Adding <tt class="docutils literal"><span class="pre">..</span> <span class="pre">rst-class::</span> <span class="pre">plain</span></tt> can be used to remove
+the row shading and other styling from a table.</li>
+<li>Adding <tt class="docutils literal"><span class="pre">..</span> <span class="pre">rst-class::</span> <span class="pre">centered</span></tt> can be used to center a table.</li>
+<li>Adding <tt class="docutils literal"><span class="pre">..</span> <span class="pre">rst-class::</span> <span class="pre">fullwidth</span></tt> can be used to expand a table
+to the full width of the page.</li>
+</ul>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">The <tt class="xref py py-mod docutils literal"><span class="pre">table_styling</span></tt> extension
+for additional table styling abilities, e.g. per-column text alignment.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row-fluid">
+<div class="related navbar ">
+  <div class="navbar-inner">
+    <ul class="nav pull-right">
+      
+        <li><a href="../../genindex.html" title="General Index" >index</a></li>
+        <li><a href="../../index.html">Experiments with Schemes for Exponential Decay</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer>
+          &copy; Copyright 2013, Hans Petter Langtangen.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>
