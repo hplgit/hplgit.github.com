@@ -4,7 +4,7 @@
 <html>
 <head>
   <title></title>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=latin1">
   <style type="text/css">
 td.linenos { background-color: #f0f0f0; padding-right: 10px; }
 span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
@@ -24,11 +24,11 @@ body .ge { font-style: italic } /* Generic.Emph */
 body .gr { color: #FF0000 } /* Generic.Error */
 body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
 body .gi { color: #00A000 } /* Generic.Inserted */
-body .go { color: #808080 } /* Generic.Output */
+body .go { color: #888888 } /* Generic.Output */
 body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
 body .gs { font-weight: bold } /* Generic.Strong */
 body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
-body .gt { color: #0040D0 } /* Generic.Traceback */
+body .gt { color: #0044DD } /* Generic.Traceback */
 body .kc { color: #AA22FF; font-weight: bold } /* Keyword.Constant */
 body .kd { color: #AA22FF; font-weight: bold } /* Keyword.Declaration */
 body .kn { color: #AA22FF; font-weight: bold } /* Keyword.Namespace */
@@ -91,8 +91,7 @@ Table of contents: Run pandoc with --toc option --&gt;
 
 
 
-Mathematical problem
-====================
+## Mathematical problem
 
 
 We address the initial-value problem
@@ -113,8 +112,7 @@ the unknown function to be estimated. This mathematical model
 is relevant for physical phenomena featuring exponential decay
 in time.
 
-Numerical solution method
-=========================
+## Numerical solution method
 
 
 We introduce a mesh in time with points <span class="s">$</span><span class="m">0</span><span class="o">=</span><span class="nb"> t_</span><span class="m">0</span><span class="nb">&lt; t_</span><span class="m">1</span><span class="nb"> </span><span class="nv">\cdots</span><span class="nb"> &lt; t_N</span><span class="o">=</span><span class="nb">T</span><span class="s">$</span>.
@@ -122,7 +120,7 @@ For simplicity, we assume constant spacing <span class="s">$</span><span class="
 mesh points: <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t </span><span class="o">=</span><span class="nb"> t_{n}</span><span class="o">-</span><span class="nb">t_{n</span><span class="o">-</span><span class="m">1</span><span class="nb">}</span><span class="s">$</span>, <span class="s">$</span><span class="nb">n</span><span class="o">=</span><span class="m">1</span><span class="nb">,</span><span class="nv">\ldots</span><span class="nb">,N</span><span class="s">$</span>. Let
 <span class="s">$</span><span class="nb">u^n</span><span class="s">$</span> be the numerical approximation to the exact solution at <span class="s">$</span><span class="nb">t_n</span><span class="s">$</span>.
 
-The <span class="s">$</span><span class="nv">\theta</span><span class="s">$</span>-rule is used to solve <span class="k">\eqref</span><span class="nb">{</span>ode<span class="nb">}</span> numerically:
+The <span class="s">$</span><span class="nv">\theta</span><span class="s">$</span>-rule is used to solve EQREF<span class="nb">{</span>ode<span class="nb">}</span> numerically:
 
 <span class="sb">$$</span><span class="nb"></span>
 
@@ -140,8 +138,7 @@ for <span class="s">$</span><span class="nb">n</span><span class="o">=</span><sp
   * The [Crank-Nicolson](http://en.wikipedia.org/wiki/Crank-Nicolson)
     scheme when <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="s">$</span>
 
-Implementation
-==============
+## Implementation
 
 
 The numerical method is implemented in a Python function
@@ -163,8 +160,7 @@ def solver(I, a, T, dt, theta):
     return u, t
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Numerical experiments
-=====================
+## Numerical experiments
 
 
 
@@ -174,8 +170,7 @@ In particular, <span class="s">$</span><span class="nb">I</span><span class="o">
 
 
 
-The Backward Euler method
--------------------------
+### The Backward Euler method
 
 
 
@@ -184,8 +179,7 @@ The Backward Euler method
 
 
 
-The Crank-Nicolson method
--------------------------
+### The Crank-Nicolson method
 
 
 
@@ -194,8 +188,7 @@ The Crank-Nicolson method
 
 
 
-The Forward Euler method
-------------------------
+### The Forward Euler method
 
 
 
@@ -204,8 +197,7 @@ The Forward Euler method
 
 
 
-Error vs <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span>
--------------------
+### Error vs <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span>
 
 
 

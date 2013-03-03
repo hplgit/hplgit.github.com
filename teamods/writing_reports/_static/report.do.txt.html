@@ -1,127 +1,48 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">TITLE:</span> Experiments with Schemes for Exponential Decay
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo.
+<span style="color: #000080; font-weight: bold">DATE:</span> today
 
-<html>
-<head>
-  <title></title>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <style type="text/css">
-td.linenos { background-color: #f0f0f0; padding-right: 10px; }
-span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
-pre { line-height: 125%; }
-body .hll { background-color: #ffffcc }
-body  { background: #f8f8f8; }
-body .c { color: #008800; font-style: italic } /* Comment */
-body .err { border: 1px solid #FF0000 } /* Error */
-body .k { color: #AA22FF; font-weight: bold } /* Keyword */
-body .o { color: #666666 } /* Operator */
-body .cm { color: #008800; font-style: italic } /* Comment.Multiline */
-body .cp { color: #008800 } /* Comment.Preproc */
-body .c1 { color: #008800; font-style: italic } /* Comment.Single */
-body .cs { color: #008800; font-weight: bold } /* Comment.Special */
-body .gd { color: #A00000 } /* Generic.Deleted */
-body .ge { font-style: italic } /* Generic.Emph */
-body .gr { color: #FF0000 } /* Generic.Error */
-body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
-body .gi { color: #00A000 } /* Generic.Inserted */
-body .go { color: #808080 } /* Generic.Output */
-body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
-body .gs { font-weight: bold } /* Generic.Strong */
-body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
-body .gt { color: #0040D0 } /* Generic.Traceback */
-body .kc { color: #AA22FF; font-weight: bold } /* Keyword.Constant */
-body .kd { color: #AA22FF; font-weight: bold } /* Keyword.Declaration */
-body .kn { color: #AA22FF; font-weight: bold } /* Keyword.Namespace */
-body .kp { color: #AA22FF } /* Keyword.Pseudo */
-body .kr { color: #AA22FF; font-weight: bold } /* Keyword.Reserved */
-body .kt { color: #00BB00; font-weight: bold } /* Keyword.Type */
-body .m { color: #666666 } /* Literal.Number */
-body .s { color: #BB4444 } /* Literal.String */
-body .na { color: #BB4444 } /* Name.Attribute */
-body .nb { color: #AA22FF } /* Name.Builtin */
-body .nc { color: #0000FF } /* Name.Class */
-body .no { color: #880000 } /* Name.Constant */
-body .nd { color: #AA22FF } /* Name.Decorator */
-body .ni { color: #999999; font-weight: bold } /* Name.Entity */
-body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
-body .nf { color: #00A000 } /* Name.Function */
-body .nl { color: #A0A000 } /* Name.Label */
-body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
-body .nt { color: #008000; font-weight: bold } /* Name.Tag */
-body .nv { color: #B8860B } /* Name.Variable */
-body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
-body .w { color: #bbbbbb } /* Text.Whitespace */
-body .mf { color: #666666 } /* Literal.Number.Float */
-body .mh { color: #666666 } /* Literal.Number.Hex */
-body .mi { color: #666666 } /* Literal.Number.Integer */
-body .mo { color: #666666 } /* Literal.Number.Oct */
-body .sb { color: #BB4444 } /* Literal.String.Backtick */
-body .sc { color: #BB4444 } /* Literal.String.Char */
-body .sd { color: #BB4444; font-style: italic } /* Literal.String.Doc */
-body .s2 { color: #BB4444 } /* Literal.String.Double */
-body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
-body .sh { color: #BB4444 } /* Literal.String.Heredoc */
-body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
-body .sx { color: #008000 } /* Literal.String.Other */
-body .sr { color: #BB6688 } /* Literal.String.Regex */
-body .s1 { color: #BB4444 } /* Literal.String.Single */
-body .ss { color: #B8860B } /* Literal.String.Symbol */
-body .bp { color: #AA22FF } /* Name.Builtin.Pseudo */
-body .vc { color: #B8860B } /* Name.Variable.Class */
-body .vg { color: #B8860B } /* Name.Variable.Global */
-body .vi { color: #B8860B } /* Name.Variable.Instance */
-body .il { color: #666666 } /* Literal.Number.Integer.Long */
-
-  </style>
-</head>
-<body>
-<h2></h2>
-
-<div class="highlight"><pre>TITLE: Experiments with Schemes for Exponential Decay
-AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo.
-DATE: today
-
-__Summary.__
+<span style="color: #800080; font-weight: bold">__Summary.__</span>
 This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation $u&#39;=-au$ with the
 aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
 
-## Include table of contents (latex and html; sphinx always has a toc).
-## (Lines starting with ## are not propagated to the output file,
-## otherwise comments lines starting with # are visible in the
-## output file.)
+<span style="color: #228B22">## Include table of contents (latex and html; sphinx always has a toc).</span>
+<span style="color: #228B22">## (Lines starting with ## are not propagated to the output file,</span>
+<span style="color: #228B22">## otherwise comments lines starting with # are visible in the</span>
+<span style="color: #228B22">## output file.)</span>
 
-TOC: on
+<span style="color: #000080; font-weight: bold">TOC:</span> on
 
 
-======= Mathematical problem =======
-label{math:problem}
+<span style="color: #000080; font-weight: bold">======= Mathematical problem =======</span>
+<span style="color: #658b00">label{math:problem}</span>
 
-## Purpose: section with multi-line equation.
-## idx{keyword} adds keyword to the index
-## (to be place before the actual paragraph).
+<span style="color: #228B22">## Purpose: section with multi-line equation.</span>
+<span style="color: #228B22">## idx{keyword} adds keyword to the index</span>
+<span style="color: #228B22">## (to be place before the actual paragraph).</span>
 
 idx{model problem} idx{exponential decay}
 
 We address the initial-value problem
 
-!bt
+<span style="color: #658b00">!bt</span>
 \begin{align}
 u&#39;(t) &amp;= -au(t), \quad t \in (0,T], label{ode}\\
 u(0)  &amp;= I,                         label{initial:value}
 \end{align}
-!et
+<span style="color: #658b00">!et</span>
 where $a$, $I$, and $T$ are prescribed parameters, and $u(t)$ is
 the unknown function to be estimated. This mathematical model
 is relevant for physical phenomena featuring exponential decay
 in time.
 
-======= Numerical solution method =======
-label{numerical:problem}
+<span style="color: #000080; font-weight: bold">======= Numerical solution method =======</span>
+<span style="color: #658b00">label{numerical:problem}</span>
 
-## Purpose: section with single-line equation, equation reference,
-## a bullet list, and links to URLs (&quot;link text&quot;: &quot;url&quot;).
+<span style="color: #228B22">## Purpose: section with single-line equation, equation reference,</span>
+<span style="color: #228B22">## a bullet list, and links to URLs (&quot;link text&quot;: &quot;url&quot;).</span>
 
 idx{mesh in time} idx{$\theta$-rule} idx{numerical scheme}
 idx{finite difference scheme}
@@ -133,11 +54,11 @@ $u^n$ be the numerical approximation to the exact solution at $t_n$.
 
 The $\theta$-rule is used to solve (ref{ode}) numerically:
 
-!bt
+<span style="color: #658b00">!bt</span>
 \[
 u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
 \]
-!et
+<span style="color: #658b00">!et</span>
 for $n=0,1,\ldots,N-1$. This scheme corresponds to
 
   * The &quot;Forward Euler&quot;:
@@ -151,23 +72,23 @@ for $n=0,1,\ldots,N-1$. This scheme corresponds to
     scheme when $\theta=1/2$
 
 
-======= Implementation =======
+<span style="color: #000080; font-weight: bold">======= Implementation =======</span>
 
-## Purpose: section with computer code taken from a part of
-## a file. The fromto: f@t syntax copies from the regular
-## expression f up to the line, but not including, the regular
-## expression t.
+<span style="color: #228B22">## Purpose: section with computer code taken from a part of</span>
+<span style="color: #228B22">## a file. The fromto: f@t syntax copies from the regular</span>
+<span style="color: #228B22">## expression f up to the line, but not including, the regular</span>
+<span style="color: #228B22">## expression t.</span>
 
 The numerical method is implemented in a Python function
-`solver` (found in the &quot;`decay_mod`&quot;:
-&quot;https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py&quot; module):
+<span style="color: #CD5555">`solver`</span> (found in the &quot;`decay_mod`&quot;:
+<span style="color: #CD5555">&quot;https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py&quot;</span> module):
 
-@@@CODE ../decay_mod.py  fromto: def solver@def verify_three
+<span style="color: #800080; font-weight: bold">@@@CODE ../decay_mod.py  fromto: def solver@def verify_three</span>
 
 
-======= Numerical experiments =======
+<span style="color: #000080; font-weight: bold">======= Numerical experiments =======</span>
 
-## Purpose: section with figures.
+<span style="color: #228B22">## Purpose: section with figures.</span>
 
 idx{numerical experiments}
 
@@ -177,49 +98,47 @@ In particular, $I=1$, $a=2$, $\Delta t = 1.25, 0.75, 0.5, 0.1$.
 
 
 
-===== The Backward Euler method =====
+<span style="color: #000080; font-weight: bold">===== The Backward Euler method =====</span>
 
-## Purpose: subsection with inline figure (figure without caption).
+<span style="color: #228B22">## Purpose: subsection with inline figure (figure without caption).</span>
 
 
 idx{BE}
 
-FIGURE: [BE.png, width=800]
+<span style="color: #658b00">FIGURE: [BE.png, width=800]</span>
 
 
 
-===== The Crank-Nicolson method =====
+<span style="color: #000080; font-weight: bold">===== The Crank-Nicolson method =====</span>
 
-## Purpose: subsection with inline figure (figure without caption).
+<span style="color: #228B22">## Purpose: subsection with inline figure (figure without caption).</span>
 
 
 idx{CN}
 
-FIGURE: [CN.png, width=800]
+<span style="color: #658b00">FIGURE: [CN.png, width=800]</span>
 
 
 
-===== The Forward Euler method =====
+<span style="color: #000080; font-weight: bold">===== The Forward Euler method =====</span>
 
-## Purpose: subsection with inline figure (figure without caption).
+<span style="color: #228B22">## Purpose: subsection with inline figure (figure without caption).</span>
 
 
 idx{FE}
 
-FIGURE: [FE.png, width=800]
+<span style="color: #658b00">FIGURE: [FE.png, width=800]</span>
 
 
 
-===== Error vs $\Delta t$ =====
+<span style="color: #000080; font-weight: bold">===== Error vs $\Delta t$ =====</span>
 
-## Purpose: exemplify referring to a figure with label and caption.
+<span style="color: #228B22">## Purpose: exemplify referring to a figure with label and caption.</span>
 
 idx{error vs time step}
 
 How $E$ varies with $\Delta t$ for $\theta=0,0.5,1$
 is shown in Figure ref{fig:E}.
 
-FIGURE: [error, width=400] Error versus time step. label{fig:E}
+<span style="color: #658b00">FIGURE: [error, width=400] Error versus time step. label{fig:E}</span>
 </pre></div>
-</body>
-</html>

@@ -8,6 +8,9 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="description" content="Experiments with Schemes for Exponential Decay">
+<meta name="keywords" content="keyword,model problem,exponential decay,mesh in time,$\theta$-rule,numerical scheme,finite difference scheme,numerical experiments,BE,CN,FE,error vs time step">
+
 
 
 <style type="text/css">
@@ -30,43 +33,6 @@ Automatically generated HTML file from Doconce source
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     p.caption { width: 80%; font-style: normal; text-align: left; }
     hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .notice, .summary, .warning, .hint, .question {
-    border: 1px solid; margin: 10px 0px; padding:15px 10px 15px 50px;
-    background-repeat: no-repeat; background-position: 10px center;
-    }
-    .notice   { color: #00529B; background-color: #BDE5F8;
-                background-image: url('https://doconce.googlecode.com/hg/bundled/html_images/Knob_Message.png'); }
-    .summary  { color: #4F8A10; background-color: #DFF2BF;
-                background-image:url('https://doconce.googlecode.com/hg/bundled/html_images/Knob_Valid_Green.png'); }
-    .warning  { color: #9F6000; background-color: #FEEFB3;
-                background-image: url('https://doconce.googlecode.com/hg/bundled/html_images/Knob_Attention.png'); }
-    .hint     { color: #00529B; background-color: #BDE5F8;
-                background-image: url('https://doconce.googlecode.com/hg/bundled/html_images/Knob_Info.png'); }
-    .question { color: #4F8A10; background-color: #DFF2BF;
-                background-image:url('https://doconce.googlecode.com/hg/bundled/html_images/Knob_Forward.png'); }
-
-    .alert {
-      padding:8px 35px 8px 14px; margin-bottom:18px;
-      color:#c09853; text-shadow:0 1px 0 rgba(255,255,255,0.5);
-      background-color:#fcf8e3; border:1px solid #fbeed5;
-      -webkit-border-radius:4px; -moz-border-radius:4px;
-       border-radius:4px}
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:0}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice, .alert-warning, .alert-question, .alert-hint, alert-summary {
-       color: #555;
-       background-color: whiteSmoke;
-       background-position: 10px 10px;
-       background-repeat: no-repeat;
-       padding-left: 52px;
-       font-size: 0.8em;
-      }
-     .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/Knob_Message.png); }
-    .alert-summary  { background-image:url('https://doconce.googlecode.com/hg/bundled/html_images/Knob_Valid_Green.png'); }
-    .alert-warning { background-image: url('https://doconce.googlecode.com/hg/bundled/html_images/Knob_Attention.png'); }
-    .alert-hint { background-image: url('https://doconce.googlecode.com/hg/bundled/html_images/Knob_Info.png'); }
-    .alert-question {background-image:url('https://doconce.googlecode.com/hg/bundled/html_images/Knob_Forward.png'); }
 
 </style>
 
@@ -132,7 +98,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo.</b></center>
 <p>
-<center><h4>Feb 23, 2013</h4></center> <!-- date -->
+<center><h4>Mar 3, 2013</h4></center> <!-- date -->
 <p>
 <b>Summary.</b> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation \( u'=-au \) with the
