@@ -68,7 +68,7 @@ u(0)  = I,                         \label{initial:value}
 <li><p>The <a href="http://en.wikipedia.org/wiki/Crank-Nicolson">Crank-Nicolson</a> scheme when \(\theta=1/2\)</p></li>
 </ul>
 <h2 id="implementation">Implementation</h2>
-<p>The numerical method is implemented in a Python function <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py"><code>decay_mod</code></a> module):</p>
+<p>The numerical method is implemented in a Python function <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py"><code>decay_mod</code></a> module):</p>
 <pre class="sourceCode Python"><code class="sourceCode python"><span class="kw">def</span> solver(I, a, T, dt, theta):
     <span class="co">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     dt = <span class="dt">float</span>(dt)           <span class="co"># avoid integer division</span>
