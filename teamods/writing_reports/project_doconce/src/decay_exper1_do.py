@@ -136,7 +136,7 @@ if inline_figures:
 
 idx{%s}
 
-FIGURE: [%s.png, width=800]
+FIGURE: [%s, width=800]
 
 """ % (short2long[method], method, method))
 else:
@@ -149,7 +149,7 @@ Figures ref{fig:BE}-ref{fig:FE} display the results.
 """)
     # Full figures with captions
     for method in methods:
-        fig = 'FIGURE: [%s.png, width=800] %s. '\
+        fig = 'FIGURE: [%s, width=800] %s. '\
               'label{fig:%s}\n\n' % \
               (method, short2long[method], method)
         do.write(fig)
