@@ -12,14 +12,14 @@ module.exports = function(grunt) {
 		outputCSS: 'css/reveal.min.css',
 
 		meta: {
-			version: '2.2',
+			version: '2.3',
 			banner: 
 				'/*!\n' +
 				' * reveal.js <%= meta.version %> (<%= grunt.template.today("yyyy-mm-dd, HH:MM") %>)\n' +
 				' * http://lab.hakim.se/reveal-js\n' +
 				' * MIT licensed\n' +
 				' *\n' +
-				' * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se\n' +
+				' * Copyright (C) 2013 Hakim El Hattab, http://hakim.se\n' +
 				' */'
 		},
 
@@ -74,7 +74,7 @@ module.exports = function(grunt) {
 		}
 
 	});
-	
+
 	// Dependencies
 	grunt.loadNpmTasks( 'grunt-contrib-mincss' );
 

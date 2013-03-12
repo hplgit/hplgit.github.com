@@ -1,13 +1,10 @@
-#summary On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
+<wiki:comment> TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way </wiki:comment>
+#summary On the Technicalities of Scientific Writing: The Doconce 2013 Way
 
 By *Hans Petter Langtangen*
-
-==== Feb 16, 2013 ====
+==== Mar 12, 2013 ====
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Scope ==
 
 <wiki:comment> !bpop </wiki:comment>
@@ -131,9 +128,6 @@ googlecode repository) and substitute the line above with the URL.
 <wiki:comment> !eslidecell </wiki:comment>
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Scientific writing needs to address many new media ==
 
 <wiki:comment> !bslidecell 00 </wiki:comment>
@@ -176,10 +170,7 @@ googlecode repository) and substitute the line above with the URL.
 <wiki:comment> !eslidecell </wiki:comment>
 
 <wiki:comment> !split </wiki:comment>
-
-
-
-== Popular tools anno 2012 ==
+== Popular tools anno 2013 ==
 
 <wiki:comment> !bpop </wiki:comment>
 
@@ -201,9 +192,8 @@ googlecode repository) and substitute the line above with the URL.
 
 <wiki:comment> !split </wiki:comment>
 
-
-
 == LaTeX is very rich; other tools support only some elements ==
+
 
  * LaTeX inline math: works with all (LaTeX, MathJax, Sphinx, Markdown, MediaWiki)
  * LaTeX equation math:
@@ -217,9 +207,6 @@ googlecode repository) and substitute the line above with the URL.
 
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == LaTeX is very rich; other tools support only some elements ==
 
 <wiki:comment> !bpop </wiki:comment>
@@ -245,25 +232,20 @@ based on HTML and vice versa.
 <wiki:comment> !epop </wiki:comment>
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Concerns I ==
 
 <wiki:comment> !bpop </wiki:comment>
 
  * Sphinx refers to figures by the caption (has to be short!) and   strips away any math notation (avoid that!).
  * Sphinx refers to sections by the title, but removes math in the   reference, so avoid math in headlines.
- * Algorithms must be written up using basic elements like lists or   paragraphs with headings.
  * Tables cannot be referred to by numbers and have to appear at   fixed positions in the text.
  * Computer code has to appear at fixed positions in the text.
+ * Algorithms must be written up using basic elements like lists or   paragraphs with headings.
+ * Recipes are often typeset as enumerated lists. For recipes with   code or math blocks: drop the list (gives problems in some formats)   and use paragraph (or subsubsection) headings with "Step 1.",   "Step 2.", etc.
 
 <wiki:comment> !epop </wiki:comment>
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Concerns II ==
 
 <wiki:comment> !bpop </wiki:comment>
@@ -278,9 +260,6 @@ based on HTML and vice versa.
 <wiki:comment> !epop </wiki:comment>
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Concerns III ==
 
 <wiki:comment> !bpop </wiki:comment>
@@ -293,10 +272,8 @@ based on HTML and vice versa.
 <wiki:comment> !epop </wiki:comment>
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Solution I: Use a format that translates to many ==
+
 
  * Sphinx can do nice HTML, LaTeX, epub, (almost) plain text,   man pages, Gnome devhelp files, Qt help files, texinfo, JSON
  * Markdown can do LaTeX, HTML, MS Word, OpenOffice, XML,   reStructuredText, epub, DocBook, ... but not Sphinx
@@ -304,9 +281,6 @@ based on HTML and vice versa.
  * Sphinx and Markdown has some limited math support
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Solution II: Use Doconce ==
 
 Doconce offers minimalistic typing, great flexibility wrt format,
@@ -325,9 +299,6 @@ especially for scientific writing.
  * Between Mardown and Sphinx wrt tagging (and richness)
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce demo ==
 
 http://hplgit.github.com/teamods/writing_reports/
@@ -345,14 +316,9 @@ http://hplgit.github.com/teamods/writing_reports/
 
 <wiki:comment> !split </wiki:comment>
 
-
-
 = A tour of Doconce =
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: title, authors, date, toc ==
 
 {{{
@@ -370,9 +336,6 @@ TOC: on
 *Notice.* Title and authors must have all information *on a single line*!
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: abstract ==
 
 {{{
@@ -388,9 +351,6 @@ Here goes the summary...
 
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: section headings ==
 
 Headings are surrounded by `=` signs:
@@ -408,11 +368,7 @@ __This is a paragraph heading.__
 
 Result:
 
-
-
 = This is an H1/chapter heading =
-
-
 
 == This is an H2/section heading ==
 
@@ -421,40 +377,34 @@ Result:
 ==== This is an H4/paragraph heading ====
 
 *This is a paragraph heading.* !split
-
-
-
 == Doconce: markup and lists ==
 
 {{{
  * Bullet list items start with `*`
    and may span several lines
- * Ordered (enumerated) list items start with `o`
  * *Emphasized words* are possible
  * _Boldface words_ are also possible
+ * color{red}{colored words} too
  * `inline verbatim code` is featured
-   * sublists too
-   * just indent...
+   o and sublists with enumerated items starting with `o`
+   o items are just indented as you would do in email
 }}}
 
 This gets rendered as
 
 
  * Bullet lists start with `*`   and may span several lines
- * Ordered (enumerated) list items start with `o`
  * *Emphasized words* are possible
  * *Boldface words* are also possible
+ * <font color="red">colored words</font> too
  * `inline verbatim code` is featured
 
-   * sublists too
-   * just indent...
+  # and sublists with enumerated items starting with `o`
+  # items are just indented as you would do in email
 
 
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: labels, references, index items ==
 
 {{{
@@ -481,10 +431,9 @@ URL: "http://code.google.com/p/doconce/"
 }}}
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: figures and movies ==
+
+
 
 *Notice.* Figure with HTML and LaTeX info, and caption, *all on one line*:
 
@@ -502,12 +451,9 @@ MOVIE: [http://www.youtube.com/embed/P8VcZzgdfSc, width=420 height=315]
 }}}
 and rendered as
 
-: http://www.youtube.com/watch?v=P8VcZzgdfSc
+ http://www.youtube.com/watch?v=P8VcZzgdfSc
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: math ==
 
 Inline math as in LaTeX:
@@ -525,7 +471,7 @@ the rest is plain LaTeX:
 !bt
 \begin{align}
 \frac{\partial u}{\partial t} &= \nabla^2 u,
-label{a:eq}\\
+label{a:eq}\\ 
 \nabla\cdot\pmb{v} & = 0
 label{b:eq}
 \end{align}
@@ -536,16 +482,13 @@ which is rendered as
 {{{
 \begin{align}
 \frac{\partial u}{\partial t} &= \nabla^2 u,
-label{a:eq}\\
+label{a:eq}\\ 
 \nabla\cdot\pmb{v} & = 0
 label{b:eq}
 \end{align}
 }}}
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: math flexibility ==
 
 Limit math environments to
@@ -571,9 +514,6 @@ the latter, Doconce splits it into separate, single equations
 such that align with labels works accross formats.
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: displaying code ==
 
 Code is enclosed in `!bc` and `!ec` tags:
@@ -618,9 +558,6 @@ forth (`c` for C, `cpp` for C++, `sh` for Unix shells, `m` for Matlab).
 
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: copying code from source files ==
 
 We recommend to copy as much code as possible directly from the
@@ -652,10 +589,8 @@ Typesetting of code is implied by the file extension:
  * `pygments` is used for code typesetting in HTML (about 10 different styles)
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: displaying interactive demo code ==
+
 
 With `!bc pyoptpro` or a file `*.pyopt`, the code applies the
 [http://pythontutor.com Online Python Tutor] for displaying
@@ -680,9 +615,6 @@ print u
 
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: tables ==
 
 {{{
@@ -705,19 +637,52 @@ Gets rendered as
 
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: newcommands for math ==
+
 
  * `newcommands*.tex` files contain newcommands
  * Used directly in LaTeX
  * Substitution made for many other formats
 
 <wiki:comment> !split </wiki:comment>
+== Doconce: labels, citations, index, bibliography ==
+
+Lables, citations, index, and bibliography follow the ideas of
+LaTeX, but without backslashes:
+
+{{{
+===== My Section =====
+label{sec:mysec}
+
+idx{key equation} idx{$\u$ conservation}
+
+We refer to Section ref{sec:yoursec} for background material on
+the *key equation*. Here we focus on the extension
 
 
+!bt
+\begin{equation}
+\Ddt{\u} = \mycommand{v}, label{mysec:eq:Dudt}
+\end{equation}
+!et
+where $\Ddt{\u}$ is the material derivative of $\u$.
+Equation (ref{mysec:eq:Dudt}) is important in a number
+of contexts, see cite{Larsen_et_al_2002,Johnson_Friedman_2010a}.
+Also, cite{Miller_2000} supports such a view.
 
+As see in Figure ref{mysec:fig:myfig}, the key equation
+features large, smooth regions *and* abrupt changes.
+
+FIGURE: [fig/myfile, width=600] My figure. label{mysec:fig:myfig}
+
+===== References =====
+
+BIBFILE: papers.pub
+}}}
+The `papers.pub` file must be in [https://bitbucket.org/logg/publish Publish]
+format (easy to make from BibTeX).
+
+<wiki:comment> !split </wiki:comment>
 == Doconce: exercises ==
 
 Doconce offers a special format for *exercises*, *problems*, *projects*,
@@ -760,9 +725,6 @@ of getting at least three heads out of 5 throws.
 Solutions/answers can easily be left out of the document.
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: exercises ==
 
 Last page gets rendered as follows:
@@ -805,9 +767,6 @@ Filenames: `flip_coin.py`, `flip_coin.pdf`.
 
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: exercises ==
 
 All *exercises*, *problems*, and *projects* in a document are parsed
@@ -846,10 +805,8 @@ processing (e.g., making a book of problems).
 }}}
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: use of preprocessors ==
+
 
  * Simple if-else tests a la C preprocessor
  * `FORMAT` variable can be used to test on format
@@ -863,9 +820,6 @@ processing (e.g., making a book of problems).
  * The mako preprocessor is really powerful - gives a   complete programming language inside the document!
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: slides ==
 
 Very effective way to generate slides from running text:
@@ -883,9 +837,6 @@ Very effective way to generate slides from running text:
  * Slides are made with HTML5 tools such as reveal.js, deck.js,   csss, or dzslides
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: example on slide code ==
 
 {{{
@@ -914,16 +865,12 @@ And maybe a final comment?
 }}}
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: example on slide code ==
 
 Last page gets rendered to
 
-
-
 == Headline ==
+
 
  * Key point 1
  * Key point 2
@@ -951,9 +898,6 @@ Key equation:
 And maybe a final comment?
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: example on slide code with cells ==
 
 One can introduce a table-like layout with MxN cells and
@@ -993,14 +937,9 @@ FIGURE: [fig/broken_pen_and_paper, width=400, frac=0.8]
 }}}
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: example on slide code ==
 
 Last page gets rendered to
-
-
 
 == Headline ==
 
@@ -1041,9 +980,6 @@ googlecode repository) and substitute the line above with the URL.
 
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: slide styles ==
 
 <wiki:comment> !bpop </wiki:comment>
@@ -1082,9 +1018,6 @@ googlecode repository) and substitute the line above with the URL.
 
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: output in HTML ==
 
 Run in terminal window:
@@ -1105,9 +1038,6 @@ doconce slides_html doconcefile reveal --html-slide-theme=darkgray
 }}}
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: output for blogging ==
 
 Two types of blogs are supported:
@@ -1125,9 +1055,6 @@ and paste the code into the text area.
 
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: output in pdfLaTeX ==
 
 {{{
@@ -1152,9 +1079,6 @@ doconce ptex2tex doconcefile envir=ans:nt
 }}}
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: output in Sphinx ==
 
 {{{
@@ -1172,9 +1096,6 @@ google-chrome sphinx-rootdir/_build/html/index.html
 Much easier than running the Sphinx tools manually!
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: output for wiki ==
 
 Only MediaWiki supports math.
@@ -1196,9 +1117,6 @@ Publishing of "official" documents:
  * Wikipedia
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: output in other formats ==
 
 {{{
@@ -1210,10 +1128,8 @@ doconce format plain  doconcefile  # plain, untagged text for email
 }}}
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Doconce: installation ==
+
 
  * Ubuntu: `sudo apt-get install python-doconce` (old version!)
  * Source at [http://code.google.com/p/doconce Googlecode] (recommended!)
@@ -1224,10 +1140,8 @@ doconce format plain  doconcefile  # plain, untagged text for email
  * Easy for slides: only `preprocess` is needed :-)
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Writing tips ==
+
 
  * See the previous *Concerns I, II and III* slides for issues when writing   for multiple formats. However: Doconce makes a fix so that Sphinx and   other formats works with labels in align environments :-)
  * Prepare figures in the right format: EPS for `latex`, PDF for `pdflatex`,   PNG, GIF or JPEG for HTML formats (`html`, and HTML output from   `sphinx`, `rst`, `pandoc`). One can omit the figure file extension and   `doconce` will pick the most appropriate file for the given output format.
@@ -1236,9 +1150,6 @@ doconce format plain  doconcefile  # plain, untagged text for email
  * Use `doconce spellcheck *.do.txt` to automatically spellcheck files.
 
 <wiki:comment> !split </wiki:comment>
-
-
-
 == Writing tips for sphinx and other formats ==
 
 For output formats different from `latex`, `pdflatex`, and `html`, the
@@ -1249,7 +1160,9 @@ following points are important:
  * Let all running text start in column 1 (`sphinx` is annoyed by intended   lines).
  * Use progressive section headings: after chapter (`=========`) comes   section (`=======`), and then subsection (`=====`) before paragraph   heading (`===`). "Jumps", say `===` after `======` works fine for   `latex`, `pdflatex`, and `html`, but not for `rst` and `sphinx`.
  * Place index entries (``) before the paragraph where they   are introduced (not inside the text). Also place index entries before   `===` headings.
+ * Use labels only right after section headings and in equations.
  * Be careful with labels in `align` math environments: `pandoc`   and `mwiki` cannot refer to them.
  * Always have a line of running text before a code snippet or program.
  * Do not insert comments before intented text, such as computer code and   lists.
+
 

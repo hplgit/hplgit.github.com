@@ -1,10 +1,10 @@
-% On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
+<!-- TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way -->
+% On the Technicalities of Scientific Writing: The Doconce 2013 Way
 % Hans Petter Langtangen
-% Feb 16, 2013
+% Mar 12, 2013
 
 <!-- !split -->
-Scope
-=====
+## Scope
 
 <!-- !bpop -->
   * *Scientific writing* = lecture notes, slides, reports, thesis, books,  ...
@@ -49,8 +49,7 @@ Scope
 <!-- !eslidecell -->
 
 <!-- !split -->
-Scientific writing needs to address many new media
-==================================================
+## Scientific writing needs to address many new media
 
 <!-- !bslidecell 00 -->
  * Old days (1985-2005): BW for printing
@@ -87,8 +86,7 @@ Scientific writing needs to address many new media
 <!-- !eslidecell -->
 
 <!-- !split -->
-Popular tools anno 2012
-=======================
+## Popular tools anno 2013
 
 <!-- !bpop -->
  * _LaTeX_: de facto standard in math-instensive sciences
@@ -126,8 +124,7 @@ Popular tools anno 2012
 
 <!-- !split -->
 
-LaTeX is very rich; other tools support only some elements
-==========================================================
+## LaTeX is very rich; other tools support only some elements
 
  * LaTeX inline math: works with all (LaTeX, MathJax, Sphinx, Markdown, MediaWiki)
 
@@ -146,8 +143,7 @@ LaTeX is very rich; other tools support only some elements
 
 
 <!-- !split -->
-LaTeX is very rich; other tools support only some elements
-==========================================================
+## LaTeX is very rich; other tools support only some elements
 
 <!-- !bpop -->
  * Figures: all
@@ -182,8 +178,7 @@ based on HTML and vice versa.
 <!-- !epop -->
 
 <!-- !split -->
-Concerns I
-==========
+## Concerns I
 
 <!-- !bpop -->
  * Sphinx refers to figures by the caption (has to be short!) and
@@ -192,19 +187,23 @@ Concerns I
  * Sphinx refers to sections by the title, but removes math in the
    reference, so avoid math in headlines.
 
- * Algorithms must be written up using basic elements like lists or
-   paragraphs with headings.
-
  * Tables cannot be referred to by numbers and have to appear at
    fixed positions in the text.
 
  * Computer code has to appear at fixed positions in the text.
 
+ * Algorithms must be written up using basic elements like lists or
+   paragraphs with headings.
+
+ * Recipes are often typeset as enumerated lists. For recipes with
+   code or math blocks: drop the list (gives problems in some formats)
+   and use paragraph (or subsubsection) headings with "Step 1.",
+   "Step 2.", etc.
+
 <!-- !epop -->
 
 <!-- !split -->
-Concerns II
-===========
+## Concerns II
 
 <!-- !bpop -->
  * Footnotes must appear as part of the running text (e.g., sentences
@@ -228,8 +227,7 @@ Concerns II
 <!-- !epop -->
 
 <!-- !split -->
-Concerns III
-============
+## Concerns III
 
 <!-- !bpop -->
  * Index words can appear anywhere in LaTeX, but should be outside
@@ -248,8 +246,7 @@ Concerns III
 <!-- !epop -->
 
 <!-- !split -->
-Solution I: Use a format that translates to many
-================================================
+## Solution I: Use a format that translates to many
 
  * Sphinx can do nice HTML, LaTeX, epub, (almost) plain text,
    man pages, Gnome devhelp files, Qt help files, texinfo, JSON
@@ -263,8 +260,7 @@ Solution I: Use a format that translates to many
  * Sphinx and Markdown has some limited math support
 
 <!-- !split -->
-Solution II: Use Doconce
-========================
+## Solution II: Use Doconce
 
 Doconce offers minimalistic typing, great flexibility wrt format,
 especially for scientific writing.
@@ -293,8 +289,7 @@ especially for scientific writing.
  * Between Mardown and Sphinx wrt tagging (and richness)
 
 <!-- !split -->
-Doconce demo
-============
+## Doconce demo
 
 <http://hplgit.github.com/teamods/writing_reports/>
 
@@ -318,12 +313,10 @@ Doconce demo
 
 <!-- !split -->
 
-A tour of Doconce
-%%%%%%%%%%%%%%%%%
+# A tour of Doconce
 
 <!-- !split -->
-Doconce: title, authors, date, toc
-==================================
+## Doconce: title, authors, date, toc
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -339,8 +332,7 @@ TOC: on
 *Notice.* Title and authors must have all information *on a single line*!
 
 <!-- !split -->
-Doconce: abstract
-=================
+## Doconce: abstract
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -356,8 +348,7 @@ Here goes the summary...
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- !split -->
-Doconce: section headings
-=========================
+## Doconce: section headings
 
 Headings are surrounded by `=` signs:
 
@@ -375,32 +366,27 @@ __This is a paragraph heading.__
 
 Result:
 
-This is an H1/chapter heading
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# This is an H1/chapter heading
 
-This is an H2/section heading
-=============================
+## This is an H2/section heading
 
-This is an H3/subsection heading
---------------------------------
+### This is an H3/subsection heading
 
-This is an H4/paragraph heading
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#### This is an H4/paragraph heading
 
 *This is a paragraph heading.* !split
-Doconce: markup and lists
-=========================
+## Doconce: markup and lists
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * Bullet list items start with `*`
    and may span several lines
- * Ordered (enumerated) list items start with `o`
  * *Emphasized words* are possible
  * _Boldface words_ are also possible
+ * color{red}{colored words} too
  * `inline verbatim code` is featured
-   * sublists too
-   * just indent...
+   o and sublists with enumerated items starting with `o`
+   o items are just indented as you would do in email
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This gets rendered as
@@ -408,22 +394,21 @@ This gets rendered as
  * Bullet lists start with `*`
    and may span several lines
 
- * Ordered (enumerated) list items start with `o`
-
  * *Emphasized words* are possible
 
  * _Boldface words_ are also possible
 
+ * <font color="red">colored words</font> too
+
  * `inline verbatim code` is featured
 
-   * sublists too
+  1. and sublists with enumerated items starting with `o`
 
-   * just indent...
+  2. items are just indented as you would do in email
 
 
 <!-- !split -->
-Doconce: labels, references, index items
-========================================
+## Doconce: labels, references, index items
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -450,8 +435,7 @@ URL: "http://code.google.com/p/doconce/"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- !split -->
-Doconce: figures and movies
-===========================
+## Doconce: figures and movies
 
 
 
@@ -479,8 +463,7 @@ and rendered as
 
 
 <!-- !split -->
-Doconce: math
-=============
+## Doconce: math
 
 Inline math as in LaTeX:
 
@@ -500,7 +483,7 @@ the rest is plain LaTeX:
 !bt
 \begin{align}
 \frac{\partial u}{\partial t} &= \nabla^2 u,
-\label{a:eq}\\
+\label{a:eq}\\ 
 \nabla\cdot\pmb{v} & = 0
 \label{b:eq}
 \end{align}
@@ -517,15 +500,14 @@ $$
 $$
 
 $$
-\begin{equation} 
+\begin{equation}  
 \nabla\cdot\pmb{v}  = 0
 \label{b:eq}
 \end{equation}
 $$
 
 <!-- !split -->
-Doconce: math flexibility
-=========================
+## Doconce: math flexibility
 
 Limit math environments to
 
@@ -551,8 +533,7 @@ the latter, Doconce splits it into separate, single equations
 such that align with labels works accross formats.
 
 <!-- !split -->
-Doconce: displaying code
-========================
+## Doconce: displaying code
 
 Code is enclosed in `!bc` and `!ec` tags:
 
@@ -599,8 +580,7 @@ forth (`c` for C, `cpp` for C++, `sh` for Unix shells, `m` for Matlab).
 
 
 <!-- !split -->
-Doconce: copying code from source files
-=======================================
+## Doconce: copying code from source files
 
 We recommend to copy as much code as possible directly from the
 source files:
@@ -642,8 +622,7 @@ Typesetting of code is implied by the file extension:
  * `pygments` is used for code typesetting in HTML (about 10 different styles)
 
 <!-- !split -->
-Doconce: displaying interactive demo code
-=========================================
+## Doconce: displaying interactive demo code
 
 With `!bc pyoptpro` or a file `*.pyopt`, the code applies the
 [Online Python Tutor](http://pythontutor.com) for displaying
@@ -668,8 +647,7 @@ print u
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- !split -->
-Doconce: tables
-===============
+## Doconce: tables
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -694,8 +672,7 @@ Gets rendered as
 
 
 <!-- !split -->
-Doconce: newcommands for math
-=============================
+## Doconce: newcommands for math
 
  * `newcommands*.tex` files contain newcommands
 
@@ -704,8 +681,47 @@ Doconce: newcommands for math
  * Substitution made for many other formats
 
 <!-- !split -->
-Doconce: exercises
-==================
+## Doconce: labels, citations, index, bibliography
+
+Lables, citations, index, and bibliography follow the ideas of
+LaTeX, but without backslashes:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+===== My Section =====
+\label{sec:mysec}
+
+idx{key equation} idx{$\u$ conservation}
+
+We refer to Section ref{sec:yoursec} for background material on
+the *key equation*. Here we focus on the extension
+
+
+!bt
+\begin{equation}
+\Ddt{\u} = \mycommand{v}, \label{mysec:eq:Dudt}
+\end{equation}
+!et
+where $\Ddt{\u}$ is the material derivative of $\u$.
+Equation \eqref{mysec:eq:Dudt} is important in a number
+of contexts, see cite{Larsen_et_al_2002,Johnson_Friedman_2010a}.
+Also, cite{Miller_2000} supports such a view.
+
+As see in Figure ref{mysec:fig:myfig}, the key equation
+features large, smooth regions *and* abrupt changes.
+
+FIGURE: [fig/myfile, width=600] My figure. \label{mysec:fig:myfig}
+
+===== References =====
+
+BIBFILE: papers.pub
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The `papers.pub` file must be in [Publish](https://bitbucket.org/logg/publish)
+format (easy to make from BibTeX).
+
+<!-- !split -->
+## Doconce: exercises
 
 Doconce offers a special format for *exercises*, *problems*, *projects*,
 and *examples*:
@@ -748,8 +764,7 @@ of getting at least three heads out of 5 throws.
 Solutions/answers can easily be left out of the document.
 
 <!-- !split -->
-Doconce: exercises
-==================
+## Doconce: exercises
 
 Last page gets rendered as follows:
 
@@ -757,8 +772,7 @@ Last page gets rendered as follows:
 
 <!-- --- begin exercise --- -->
 
-Problem 1: Flip a Coin
-----------------------
+### Problem 1: Flip a Coin
 
 <!-- keywords = random numbers; Monte Carlo simulation -->
 
@@ -792,8 +806,7 @@ Filenames: `flip_coin.py`, `flip_coin.pdf`.
 
 
 <!-- !split -->
-Doconce: exercises
-==================
+## Doconce: exercises
 
 All *exercises*, *problems*, and *projects* in a document are parsed
 and available in a data structure (list of dicts) for further
@@ -832,8 +845,7 @@ processing (e.g., making a book of problems).
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- !split -->
-Doconce: use of preprocessors
-=============================
+## Doconce: use of preprocessors
 
  * Simple if-else tests a la C preprocessor
 
@@ -852,8 +864,7 @@ Doconce: use of preprocessors
    complete programming language inside the document!
 
 <!-- !split -->
-Doconce: slides
-===============
+## Doconce: slides
 
 Very effective way to generate slides from running text:
 
@@ -881,8 +892,7 @@ Very effective way to generate slides from running text:
    csss, or dzslides
 
 <!-- !split -->
-Doconce: example on slide code
-==============================
+## Doconce: example on slide code
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -911,13 +921,11 @@ And maybe a final comment?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- !split -->
-Doconce: example on slide code
-==============================
+## Doconce: example on slide code
 
 Last page gets rendered to
 
-Headline
-========
+## Headline
 
  * Key point 1
 
@@ -934,8 +942,7 @@ $$
 And maybe a final comment?
 
 <!-- !split -->
-Doconce: example on slide code with cells
-=========================================
+## Doconce: example on slide code with cells
 
 One can introduce a table-like layout with MxN cells and
 put slide elements in various cell. A cell with position
@@ -975,13 +982,11 @@ FIGURE: [fig/broken_pen_and_paper, width=400, frac=0.8]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- !split -->
-Doconce: example on slide code
-==============================
+## Doconce: example on slide code
 
 Last page gets rendered to
 
-Headline
-========
+## Headline
 
 <!-- !bslidecell 00 -->
 <!-- !bpop -->
@@ -1010,8 +1015,7 @@ $$
 
 
 <!-- !split -->
-Doconce: slide styles
-=====================
+## Doconce: slide styles
 
 <!-- !bpop -->
  * Supported HTML5 packages:
@@ -1053,8 +1057,7 @@ Doconce: slide styles
 
 
 <!-- !split -->
-Doconce: output in HTML
-=======================
+## Doconce: output in HTML
 
 Run in terminal window:
 
@@ -1075,8 +1078,7 @@ doconce slides_html doconcefile reveal --html-slide-theme=darkgray
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- !split -->
-Doconce: output for blogging
-============================
+## Doconce: output for blogging
 
 Two types of blogs are supported:
 
@@ -1097,8 +1099,7 @@ and paste the code into the text area.
 
 
 <!-- !split -->
-Doconce: output in pdfLaTeX
-===========================
+## Doconce: output in pdfLaTeX
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1123,8 +1124,7 @@ doconce ptex2tex doconcefile envir=ans:nt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- !split -->
-Doconce: output in Sphinx
-=========================
+## Doconce: output in Sphinx
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1142,8 +1142,7 @@ google-chrome sphinx-rootdir/_build/html/index.html
 Much easier than running the Sphinx tools manually!
 
 <!-- !split -->
-Doconce: output for wiki
-========================
+## Doconce: output for wiki
 
 Only MediaWiki supports math.
 
@@ -1164,8 +1163,7 @@ Publishing of "official" documents:
  * Wikipedia
 
 <!-- !split -->
-Doconce: output in other formats
-================================
+## Doconce: output in other formats
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1177,8 +1175,7 @@ doconce format plain  doconcefile  # plain, untagged text for email
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- !split -->
-Doconce: installation
-=====================
+## Doconce: installation
 
  * Ubuntu: `sudo apt-get install python-doconce` (old version!)
 
@@ -1195,8 +1192,7 @@ Doconce: installation
  * Easy for slides: only `preprocess` is needed :-)
 
 <!-- !split -->
-Writing tips
-============
+## Writing tips
 
  * See the previous *Concerns I, II and III* slides for issues when writing
    for multiple formats. However: Doconce makes a fix so that Sphinx and
@@ -1216,8 +1212,7 @@ Writing tips
  * Use `doconce spellcheck *.do.txt` to automatically spellcheck files.
 
 <!-- !split -->
-Writing tips for sphinx and other formats
-=========================================
+## Writing tips for sphinx and other formats
 
 For output formats different from `latex`, `pdflatex`, and `html`, the
 following points are important:
@@ -1237,6 +1232,8 @@ following points are important:
    are introduced (not inside the text). Also place index entries before
    `===` headings.
 
+ * Use labels only right after section headings and in equations.
+
  * Be careful with labels in `align` math environments: `pandoc`
    and `mwiki` cannot refer to them.
 
@@ -1244,4 +1241,5 @@ following points are important:
 
  * Do not insert comments before intented text, such as computer code and
    lists.
+
 

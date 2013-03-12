@@ -55,6 +55,7 @@ At the end of your page you need to initialize reveal by running the following c
 
 ```javascript
 Reveal.initialize({
+
 	// Display controls in the bottom right corner
 	controls: true,
 
@@ -92,10 +93,40 @@ Reveal.initialize({
 
 	// Transition style
 	transition: 'default' // default/cube/page/concave/zoom/linear/fade/none
+
 });
 ```
 
 Note that the new default vertical centering option will break compatibility with slides that were using transitions with backgrounds (`cube` and `page`). To restore the previous behavior, set `center` to `false`.
+
+
+### Presentation Size
+
+All presentations have a normal size, that is the resolution at which they are authored. The framework will automatically scale presentations uniformly based on this size to ensure that everything fits on any given display or viewport. 
+
+See below for a list of configuration options related to sizing, including default values:
+
+```javascript
+Reveal.initialize({
+	
+	...
+	
+	// The "normal" size of the presentation, aspect ratio will be preserved
+	// when the presentation is scaled to fit different resolutions. Can be
+	// specified using percentage units.
+	width: 960,
+	height: 700,
+	
+	// Factor of the display size that should remain empty around the content
+	margin: 0.1,
+	
+	// Bounds for smallest/largest possible scale to apply to content
+	minScale: 0.2,
+	maxScale: 1.0
+	
+});
+```
+
 
 ### Dependencies
 
@@ -370,5 +401,5 @@ If you want to customise reveal.js without running grunt.js you can alter the HT
 
 MIT licensed
 
-Copyright (C) 2011-2013 Hakim El Hattab, http://hakim.se
+Copyright (C) 2013 Hakim El Hattab, http://hakim.se
 

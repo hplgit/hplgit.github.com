@@ -68,14 +68,15 @@ MathJax.Hub.Config({
 
 
 <article>
-<!-- ------------------- main content ------------------------>
-    
+<!-- ------------------- main content ---------------------- -->
+
+
 <title>On Schemes for Exponential Decay</title>
 
-<center><h1>On Schemes for Exponential Decay</h1></center>  <! -- document title -->
+<center><h1>On Schemes for Exponential Decay</h1></center>  <!-- document title -->
 
 <p>
-<! -- author(s) -->
+<!-- author(s): Hans Petter Langtangen -->
 
 <center>
 <b>Hans Petter Langtangen</b> [1, 2]
@@ -88,8 +89,9 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Feb 16, 2013</h4></center> <!-- date -->
+<center><h4>Mar 12, 2013</h4></center> <!-- date -->
 <p>
+
 
 </article>
 
@@ -97,31 +99,36 @@ MathJax.Hub.Config({
 <article>
 
 <p>
-
-</article>
-
-
-<article>
-
-<p>
-<!-- Headings have 5 = for h3/subsection and 7 = for h1/section -->
 
 <h2>Goal  <a name="___sec0"></a></h2>
-<p>
-The primary goal of this demo talk is to demonstrate how to write
-talks with doconce and get them rendered in numerous HTML formats.
 
 <p>
+The primary goal of this demo talk is to demonstrate how to write
+talks with <a href="http://code.google.com/p/doconce">doconce</a>
+and get them rendered in numerous HTML formats.
+This version
+utilizes html5slides slides with the theme template-io2011.
+
+<p>
+
+Speaker notes show up by
+pressing "p".
+
+<p>
+
+<aside class="note">
+<!-- press "p" to activate -->
+
 The talk investigates the accuracy of three finite difference
 schemes for the ordinary differential equation \( u'=-au \) with the
 aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
 
+</aside>
+
+
 <p>
 
-<!-- New slide is indicated by !split at the beginning of a line: -->
-
-<p>
 
 </article>
 
@@ -129,27 +136,20 @@ demonstrated.
 <article>
 
 <h2>Mathematical problem  <a name="___sec1"></a></h2>
-<p>
-<!-- Use !bslidecell XY and !eslidecell as begin and end for -->
-<!-- defining a cell XY in a table layout of the slide. -->
-<!-- X=0,1,..., Y=0,1,... XY=00 is the upper left cell. -->
-<!-- Here we define cell 00 and 01 (bullet list to the left -->
-<!-- and figure to the right). -->
 
 <p>
+
 
 <table border="0">
 <tr>
 <td class="padding"> 
 
 <p>
-<!-- latex blocks are surrounded by !bt and !et -->
 
-<p>
 $$
 \begin{align}
 u'(t) &= -au(t),
-\label{ode}\\
+\label{ode}\\ 
 u(0)  &= I,
 \label{initial:value}
 \end{align}
@@ -174,10 +174,7 @@ $$
 
 
 <p>
-<!-- Figures can have a width parameter specifying the pixel -->
-<!-- width in HTML. A caption can be added (after [...]). -->
 
-<p>
 
 
 <p>
@@ -188,15 +185,12 @@ $$
 <article>
 
 <h2>Numerical solution method  <a name="___sec2"></a></h2>
-<p>
-
-<!-- as we progress in the slide show. -->
-<!-- They will often not work if there is code inside. -->
 
 <p>
-<!-- !bpop -->
 
-<ul class="build and !epop surround elements that are to pop up">
+
+
+<ul class="build">
  <li> Mesh in time: \( 0= t_0< t_1 \cdots < t_N=T \)</li>
  <li> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
  <li> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
@@ -225,13 +219,28 @@ $$
 
 
 <article>
-<!-- Next: exemplify copying code directly from file (start -->
-<!-- with the line matching "def solver" and ending with -->
-<!-- "def verify_three", but not including this last line). -->
 
 <p>
 
-<h2>Implementation  <a name="___sec3"></a></h2>
+
+<h3>Forward Euler explained  <a name="___sec3"></a></h3>
+
+<p>
+
+<iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
+
+
+<p>
+
+</article>
+
+
+<article>
+
+<p>
+
+<h2>Implementation  <a name="___sec4"></a></h2>
+
 <p>
 The numerical method is implemented in a Python function:
 
@@ -260,11 +269,10 @@ The numerical method is implemented in a Python function:
 
 <article>
 
-<h3>The Crank-Nicolson method  <a name="___sec4"></a></h3>
-<p>
-<!-- Figures do not need extension - the right version is picked -->
+<h3>The Crank-Nicolson method  <a name="___sec5"></a></h3>
 
 <p>
+
 <center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
 
 <p>
@@ -274,7 +282,8 @@ The numerical method is implemented in a Python function:
 
 <article>
 
-<h3>The artifacts can be explained by some theory  <a name="___sec5"></a></h3>
+<h3>The artifacts can be explained by some theory  <a name="___sec6"></a></h3>
+
 <p>
 
 <p class="build">

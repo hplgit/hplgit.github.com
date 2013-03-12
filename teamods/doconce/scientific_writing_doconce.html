@@ -1,4 +1,5 @@
-<div class="highlight"><pre>TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
+<div class="highlight"><pre>#TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way
+TITLE: On the Technicalities of Scientific Writing: The Doconce 2013 Way
 AUTHOR: Hans Petter Langtangen
 DATE: Today
 
@@ -65,7 +66,7 @@ FIGURE: [fig/jungle_with_mess.jpg, width=500]
 !eslidecell
 
 !split
-======= Popular tools anno 2012 =======
+======= Popular tools anno 2013 =======
 
 !bpop
  * _LaTeX_: de facto standard in math-instensive sciences
@@ -132,11 +133,15 @@ based on HTML and vice versa.
    strips away any math notation (avoid that!).
  * Sphinx refers to sections by the title, but removes math in the
    reference, so avoid math in headlines.
- * Algorithms must be written up using basic elements like lists or
-   paragraphs with headings.
  * Tables cannot be referred to by numbers and have to appear at
    fixed positions in the text.
  * Computer code has to appear at fixed positions in the text.
+ * Algorithms must be written up using basic elements like lists or
+   paragraphs with headings.
+ * Recipes are often typeset as enumerated lists. For recipes with
+   code or math blocks: drop the list (gives problems in some formats)
+   and use paragraph (or subsubsection) headings with &quot;Step 1.&quot;,
+   &quot;Step 2.&quot;, etc.
 !epop
 
 !split
@@ -295,24 +300,24 @@ __This is a paragraph heading.__
 !bc
  * Bullet list items start with `*`
    and may span several lines
- * Ordered (enumerated) list items start with `o`
  * *Emphasized words* are possible
  * _Boldface words_ are also possible
+ * color{red}{colored words} too
  * `inline verbatim code` is featured
-   * sublists too
-   * just indent...
+   o and sublists with enumerated items starting with `o`
+   o items are just indented as you would do in email
 !ec
 
 This gets rendered as
 
  * Bullet lists start with `*`
    and may span several lines
- * Ordered (enumerated) list items start with `o`
  * *Emphasized words* are possible
  * _Boldface words_ are also possible
+ * color{red}{colored words} too
  * `inline verbatim code` is featured
-   * sublists too
-   * just indent...
+   o and sublists with enumerated items starting with `o`
+   o items are just indented as you would do in email
 
 !split
 ======= Doconce: labels, references, index items =======
@@ -500,6 +505,7 @@ Typesetting of code is implied by the file extension:
 
 !split
 ======= Doconce: displaying interactive demo code =======
+label{slide:pot}
 
 With `!bc pyoptpro` or a file `*.pyopt`, the code applies the
 &quot;Online Python Tutor&quot;: &quot;http://pythontutor.com&quot; for displaying
@@ -537,6 +543,46 @@ Gets rendered as
  * `newcommands*.tex` files contain newcommands
  * Used directly in LaTeX
  * Substitution made for many other formats
+
+!split
+======= Doconce: labels, citations, index, bibliography =======
+
+Lables, citations, index, and bibliography follow the ideas of
+LaTeX, but without backslashes:
+
+!bc
+===== My Section =====
+label{sec:mysec}
+
+## idx{keyword} is used to add keyword to the index
+idx{key equation} idx{$\u$ conservation}
+
+We refer to Section ref{sec:yoursec} for background material on
+the *key equation*. Here we focus on the extension
+
+## \Ddt, \u and \mycommand are defined in newcommands_keep.tex
+
+|bt
+\begin{equation}
+\Ddt{\u} = \mycommand{v}, label{mysec:eq:Dudt}
+\end{equation}
+|et
+where $\Ddt{\u}$ is the material derivative of $\u$.
+Equation (ref{mysec:eq:Dudt}) is important in a number
+of contexts, see cite{Larsen_et_al_2002,Johnson_Friedman_2010a}.
+Also, cite{Miller_2000} supports such a view.
+
+As see in Figure ref{mysec:fig:myfig}, the key equation
+features large, smooth regions *and* abrupt changes.
+
+FIGURE: [fig/myfile, width=600] My figure. label{mysec:fig:myfig}
+
+===== References =====
+
+BIBFILE: papers.pub
+!ec
+The `papers.pub` file must be in &quot;Publish&quot;: &quot;https://bitbucket.org/logg/publish&quot;
+format (easy to make from BibTeX).
 
 !split
 ======= Doconce: exercises =======
@@ -981,6 +1027,7 @@ following points are important:
  * Place index entries (`idx{keyword}`) before the paragraph where they
    are introduced (not inside the text). Also place index entries before
    `===` headings.
+ * Use labels only right after section headings and in equations.
  * Be careful with labels in `align` math environments: `pandoc`
    and `mwiki` cannot refer to them.
  * Always have a line of running text before a code snippet or program.
