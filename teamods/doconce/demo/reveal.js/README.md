@@ -37,7 +37,7 @@ Markup heirarchy needs to be ``<div class="reveal"> <div class="slides"> <sectio
 
 It's possible to write your slides using Markdown. To enable Markdown, add the ```data-markdown``` attribute to your ```<section>``` elements and wrap the contents in a ```<script type="text/template">``` like the example below.
 
-This is based on [data-markdown](https://gist.github.com/1343518) from [Paul Irish](https://github.com/paulirish) which in turn uses [showdown](https://github.com/coreyti/showdown/). This is sensitive to indentation (avoid mixing tabs and spaces) and line breaks (avoid consecutive breaks).
+This is based on [data-markdown](https://gist.github.com/1343518) from [Paul Irish](https://github.com/paulirish) which in turn uses [showdown](https://github.com/coreyti/showdown/). Sensitive to indentation (avoid mixing tabs and spaces) and line breaks (avoid consecutive breaks).
 
 ```html
 <section data-markdown>
@@ -47,6 +47,14 @@ This is based on [data-markdown](https://gist.github.com/1343518) from [Paul Iri
 		A paragraph with some text and a [link](http://hakim.se).
 	</script>
 </section>
+```
+
+#### External Markdown
+
+You can write your content as a separate file and have reveal.js load it at runtime. Note the separator arguments which determine how slides are delimited in the external file.
+
+```html
+<section data-markdown="example.md" data-separator="^\n\n\n" data-vertical="^\n\n"></section>
 ```
 
 ### Configuration
@@ -98,6 +106,16 @@ Reveal.initialize({
 ```
 
 Note that the new default vertical centering option will break compatibility with slides that were using transitions with backgrounds (`cube` and `page`). To restore the previous behavior, set `center` to `false`.
+
+The configuration can be update after initialization using the ```configure``` method:
+
+```javascript
+// Turn autoSlide off
+Reveal.configure({ autoSlide: 0 });
+
+// Start auto-sliding every 5s
+Reveal.configure({ autoSlide: 5000 });
+```
 
 
 ### Presentation Size
@@ -270,6 +288,16 @@ Multiple fragments can be applied to the same element sequentially by wrapping i
 </section>
 ```
 
+The display order of fragments can be controlled using the ```data-fragment-index``` attribute.
+
+```html
+<section>
+	<p class="fragment" data-fragment-index="3">Appears last</p>
+	<p class="fragment" data-fragment-index="1">Appears first</p>
+	<p class="fragment" data-fragment-index="2">Appears second</p>
+</section>
+```
+
 ### Fragment events
 
 When a slide fragment is either shown or hidden reveal.js will dispatch an event.
@@ -353,8 +381,14 @@ By default notes are written using standard HTML, see below, but you can add a `
 In some cases it can be desirable to run notes on a separate device from the one you're presenting on. The Node.js-based notes plugin lets you do this using the same note definitions as its client side counterpart. Include the requried scripts by adding the following dependencies:
 
 ```javascript
-{ src: '/socket.io/socket.io.js', async: true },
-{ src: 'plugin/notes-server/client.js', async: true }
+Reveal.initialize({
+	...
+
+	dependencies: [
+		{ src: 'socket.io/socket.io.js', async: true },
+		{ src: 'plugin/notes-server/client.js', async: true }
+	]
+});
 ```
 
 Then:
@@ -362,6 +396,36 @@ Then:
 1. Install [Node.js](http://nodejs.org/)
 2. Run ```npm install```
 3. Run ```node plugin/notes-server```
+
+
+## Multiplexing
+
+The multiplex plugin allows your audience to view the slides on their own phone, tablet or laptop. As the master navigates the slides, all clients will update in real time. See a demo at [http://revealjs.jit.su/](http://revealjs.jit.su).
+
+Configuration is via the multiplex object in ```Reveal.initialize```. To generate unique secret and token values, visit [revealjs.jit.su/token](revealjs.jit.su/token). Below is an example configuration with the multiplex plugin enabled:
+
+```javascript
+Reveal.initialize({
+	...
+
+	// Generate a unique id and secret at revealjs.jit.su/token
+	multiplex: {
+		id: '',
+		secret: '',
+		url: 'revealjs.jit.su:80'
+	},
+
+	dependencies: [
+		{ src: 'socket.io/socket.io.js', async: true },
+		{ src: 'plugin/multiplex/client.js', async: true },
+		{ src: 'plugin/multiplex/master.js', async: true },
+	]
+});
+```
+
+```multiplex.secret``` should only be configured on those pages you wish to be able to control slide navigatoin for all clients. Multi-master configurations work, but if you don't wish your audience to be able to control your slides, set the secret to null. In this master/slave setup, you should create a publicly accessible page with secret set to null, and a protected page containing your secret.
+
+You are very welcome to use the server running at reveal.jit.su, however availability and stability are not guaranteed. For anything mission critical I recommend you run your own server. It is simple to deploy to nodejitsu or run on your own environment.
 
 
 ## Theming
