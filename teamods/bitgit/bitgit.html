@@ -8,6 +8,9 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="description" content="Quick Intro to Version Control Systems and Project Hosting Services">
+<meta name="keywords" content="Mercurial,Bitbucket,Googlecode,GitHub,merging files,Mercurial,merging files">
+
 
 
 <style type="text/css">
@@ -31,34 +34,84 @@ Automatically generated HTML file from Doconce source
     p.caption { width: 80%; font-style: normal; text-align: left; }
     hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
-    .notice, .summary, .warning, .hint, .question {
-    border: 1px solid; margin: 10px 0px; padding:15px 10px 15px 50px;
-    background-repeat: no-repeat; background-position: 10px center;
-    }
-    .notice   { color: #00529B; background-color: #BDE5F8;
-                background-image: url('https://doconce.googlecode.com/hg/bundled/html_images/Knob_Message.png'); }
-    .summary  { color: #4F8A10; background-color: #DFF2BF;
-                background-image:url('https://doconce.googlecode.com/hg/bundled/html_images/Knob_Valid_Green.png'); }
-    .warning  { color: #9F6000; background-color: #FEEFB3;
-                background-image: url('https://doconce.googlecode.com/hg/bundled/html_images/Knob_Attention.png'); }
-    .hint     { color: #00529B; background-color: #BDE5F8;
-                background-image: url('https://doconce.googlecode.com/hg/bundled/html_images/Knob_Info.png'); }
-    .question { color: #4F8A10; background-color: #DFF2BF;
-                background-image:url('https://doconce.googlecode.com/hg/bundled/html_images/Knob_Forward.png'); }
-
 </style>
 
 </head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Installing version control systems ', 1, None, '___sec0'),
+              (' Installing Git ', 2, None, '___sec1'),
+              (' Installing Mercurial ', 2, None, '___sec2'),
+              (' Bitbucket ', 1, 'bitgit:bitbucket', 'bitgit:bitbucket'),
+              (' Creating a new project ', 2, None, '___sec4'),
+              (' Collaborating ', 3, None, '___sec5'),
+              (' User web pages ',
+               2,
+               'bitgit:bitbucket:web',
+               'bitgit:bitbucket:web'),
+              (' Linking to Bitbucket files ',
+               2,
+               'bitgit:bitbucket:URLs',
+               'bitgit:bitbucket:URLs'),
+              (' Googlecode ', 1, 'bitgit:googlecode', 'bitgit:googlecode'),
+              (' Creating a new project ', 2, None, '___sec9'),
+              (' Wiki pages ', 2, None, '___sec10'),
+              (' GitHub ', 1, 'bitgit:github', 'bitgit:github'),
+              (' Creating a new project ', 2, None, '___sec12'),
+              (' Collaborating ', 3, None, '___sec13'),
+              (' Wiki pages ', 2, None, '___sec14'),
+              (' Project web pages ', 2, None, '___sec15'),
+              (' User web pages ', 2, None, '___sec16'),
+              (' Using Git ', 1, 'bitgit:git', 'bitgit:git'),
+              (' Basic Git commands ', 2, None, '___sec18'),
+              (' Cloning ', 3, None, '___sec19'),
+              (' The pull-change-push cycle ', 3, None, '___sec20'),
+              (' Viewing the history of files ', 3, None, '___sec21'),
+              (' Retrieving old files ', 3, None, '___sec22'),
+              (' Merging files with Git ',
+               2,
+               'bitgit:git:merge',
+               'bitgit:git:merge'),
+              (' Git working style with branching and stashing ',
+               2,
+               'bitgit:git:branch:stash',
+               'bitgit:git:branch:stash'),
+              (' More documentation on Git ', 2, None, '___sec25'),
+              (' Using Mercurial ', 1, 'bitgit:hg', 'bitgit:hg'),
+              (' Basic use of TortoiseHG on a Windows machine ',
+               2,
+               None,
+               '___sec27'),
+              (' Basic Mercurial commands  ', 2, None, '___sec28'),
+              (' Cloning ', 3, None, '___sec29'),
+              (' The pull-change-push cycle ', 3, None, '___sec30'),
+              (' Viewing the history of files ', 3, None, '___sec31'),
+              (' Retrieving old files ', 3, None, '___sec32'),
+              (' Comments on two-level repositories ', 3, None, '___sec33'),
+              (' Merging files with Mercurial ',
+               2,
+               'bitgit:hg:merge',
+               'bitgit:hg:merge'),
+              (' More documentation on Mercurial ', 2, None, '___sec35'),
+              (' Appendix: Working with multiple GitHub accounts ',
+               1,
+               'appendix:github:multiple:accounts',
+               'appendix:github:multiple:accounts')]}
+end of tocinfo -->
+
 <body>
 
-<!-- ------------------- main content ------------------------>
     
+<!-- ------------------- main content ---------------------- -->
+
+
 <title>Quick Intro to Version Control Systems and Project Hosting Services</title>
 
-<center><h1>Quick Intro to Version Control Systems and Project Hosting Services</h1></center>  <! -- document title -->
+<center><h1>Quick Intro to Version Control Systems and Project Hosting Services</h1></center>  <!-- document title -->
 
 <p>
-<! -- author(s) -->
+<!-- author(s): Hans Petter Langtangen -->
 
 <center>
 <b>Hans Petter Langtangen</b> [1, 2]
@@ -71,7 +124,7 @@ Automatically generated HTML file from Doconce source
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory,</b></center>
 <center>[2] <b>Deptartment of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Feb 18, 2013</h4></center> <!-- date -->
+<center><h4>Apr 2, 2013</h4></center> <!-- date -->
 <p>
 <a name="bitgit:top"></a>
 
@@ -95,20 +148,25 @@ recommend you to use such sites for all serious programming and
 scientific writing work -- and all other important files.
 
 <p>
-The simplest services for hosting project files is Dropbox. Simply
-go to <a href="http://dropbox.com"><tt>http://dropbox.com</tt></a> and watch the video. It is very easy to get
-started with Dropbox, and it allows you to share files among
-laptops and mobile units.
+The simplest services for hosting project files are <a href="http://dropbox.com">Dropbox</a> and <a href="http://drive.google.com">Google Drive</a>.
+It is very easy to get started with these systems, and they allow you
+to share files among laptops and mobile units with as many users as
+you want. The systems offer a kind of version control in that the
+files are stored frequently (several times per minute), and you can go
+back to previous versions for the last 30 days. However, it is
+challenging  to find the right version from the past when there are
+so many of them.
 
 <p>
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.
+More seriously, when several people may edit files simultaneously, it
+can be difficult detect who did what when, roll back to previous
+versions, and to manually merge the edits when these are
+incompatible. Then one needs more sophisticated tools than Dropbox or
+Google Drive: project hosting services with true version control
+systems.  The following text aims at providing you with the minimum
+information to started with such systems. Numerous other tutorials
+contain more comprehensive material and in-depth explanations of the
+concepts and tools.
 
 <p>
 The idea with project hosting services is that you have the files
@@ -127,11 +185,11 @@ Four popular project hosting services are
 <p>
 
 <ul>
-  <li> <a href="http://bigbucket.org">Bitbucket</a> at <tt>bitbucket.org</tt></li>
-  <li> <a href="http://github.com">GitHub</a> at <tt>github.com</tt></li>
-  <li> <a href="http://code.google.com">Googlecode</a> at <tt>code.google.com</tt></li>
-  <li> <a href="https://launchpad.net">Launchpad</a> at <tt>launchpad.net</tt></li>
-  <li> <a href="http://sourceforge.net/">Sourceforge</a> at <tt>sourceforge.net</tt></li>
+  <li> <a href="http://bigbucket.org">Bitbucket</a> at <code>bitbucket.org</code></li>
+  <li> <a href="http://github.com">GitHub</a> at <code>github.com</code></li>
+  <li> <a href="http://code.google.com">Googlecode</a> at <code>code.google.com</code></li>
+  <li> <a href="https://launchpad.net">Launchpad</a> at <code>launchpad.net</code></li>
+  <li> <a href="http://sourceforge.net/">Sourceforge</a> at <code>sourceforge.net</code></li>
 </ul>
 
 All these services are very similar. Below we describe how you get
@@ -139,7 +197,7 @@ started with Bitbucket, GitHub, and Googlecode. Launchpad works very
 similarly to the latter three. All the project hosting services have
 excellent introductions available at their web sites, but the recipes
 below are much shorter and aim at getting you started as quickly as
-possible by concentrating on the most important need-to-know commands.
+possible by concentrating on the most important need-to-know steps.
 The Git tutorials we refer to later in this document contain more
 detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
@@ -161,19 +219,38 @@ for pure text files and less well for binary files, such as PDF files,
 MS Word or Excel documents, and OpenOffice documents.
 
 <p>
-<!-- Next we describe how to get started with Bitbucket and GitHub.  If you -->
-<!-- are new to project hosting sites, it is recommended to read about -->
-<!-- Bitbucket first, since the description of GitHub is briefer. -->
+It might seem challenging to pick the project hosting service
+and the version control system that are right for you. Below
+is some very personal advice.
 
 <p>
+
+<ul>
+ <li> I would recommend Git as the default choice of version control system.</li>
+ <li> If you need private repos and you are not a student, choose
+   Bitbucket unless you are willing to pay for private repos at GitHub.</li>
+ <li> If you want to make links to your programs in documentation,
+   stay away from Bitbucket as this site embeds the version of the
+   file into its URL (but you can get around this problem with a trick
+   described in the section <a href="#bitgit:bitbucket:URLs">Linking to Bitbucket files</a>).</li>
+ <li> If you want to easily drop HTML files for documentation around in
+   your repo, Googlecode will display them as web pages right away,
+   while the procedure on GitHub is technically more complicated
+   (Bitbucket does not yet support web pages as part of a project).</li>
+ <li> If a few collaborate on a project and everyone wants to be notified
+   in email about changes in project files, Bitbucket and Googlecode have
+   better support for this feature than GitHub.</li>
+</ul>
+
 For the examples below, assume that you have some folder tree
-<tt>my-project</tt> with files that you want to host at Bitbucket, GitHub, or
+<code>my-project</code> with files that you want to host at Bitbucket, GitHub, or
 Googlecode and bring under version control. The official name of the
 project is "My Project".
 
 <p>
 
 <h2>Installing version control systems  <a name="___sec0"></a></h2>
+
 <p>
 The various project hosting sites work with different version
 control systems:
@@ -181,12 +258,12 @@ control systems:
 <p>
 
 <ul>
- <li> <tt>bitbucket.org</tt> offers Git (<tt>git</tt>) or Mercurial (<tt>hg</tt>),</li>
- <li> <tt>github.com</tt> offers Git (<tt>git</tt>),</li>
- <li> <tt>code.google.com</tt> offers Git (<tt>git</tt>), Mercurial (<tt>hg</tt>), or Subversion (<tt>svn</tt>),</li>
- <li> <tt>launchpad.net</tt> offers Bazaar (<tt>bzr</tt>),</li>
- <li> <tt>sourceforge.net</tt> offers CVS (<tt>cvs</tt>), Subversion (<tt>svn</tt>), Mercurial (<tt>hg</tt>),
-   Bazaar (<tt>bzr</tt>), and Git (<tt>git</tt>).</li>
+ <li> <code>bitbucket.org</code> offers Git (<code>git</code>) or Mercurial (<code>hg</code>),</li>
+ <li> <code>github.com</code> offers Git (<code>git</code>),</li>
+ <li> <code>code.google.com</code> offers Git (<code>git</code>), Mercurial (<code>hg</code>), or Subversion (<code>svn</code>),</li>
+ <li> <code>launchpad.net</code> offers Bazaar (<code>bzr</code>),</li>
+ <li> <code>sourceforge.net</code> offers CVS (<code>cvs</code>), Subversion (<code>svn</code>), Mercurial (<code>hg</code>),
+   Bazaar (<code>bzr</code>), and Git (<code>git</code>).</li>
 </ul>
 
 All the version control systems are quite similar in the way users
@@ -200,41 +277,50 @@ particular version control system and let this preference govern the
 choice of the project hosting site.
 
 <p>
-It is fair to say that Git has evolved as the most versatile version
-control system and is at the time of this writing (2013) the
-recommended choice.  The combination of GitHub and Git seems to have
-the strongest momentum and popularity in the software development
-community.  Bitbucket offers private repos for free, which is a
-desired feature for many. Googlecode has the advantage that any HTML
-file in the repo can be used to make a web page, thereby greatly
-simplifying the building of web pages for the project.
+<!-- Now covered above: -->
+<!-- It is fair to say that Git has evolved as the most versatile version -->
+<!-- control system and is at the time of this writing (2013) the -->
+<!-- recommended choice.  The combination of GitHub and Git seems to have -->
+<!-- the strongest momentum and popularity in the software development -->
+<!-- community.  Bitbucket offers private repos for free, which is a -->
+<!-- desired feature for many. Googlecode has the advantage that any HTML -->
+<!-- file in the repo can be used to make a web page, thereby greatly -->
+<!-- simplifying the building of web pages for the project. -->
 
 <p>
 
 
 
 <h3>Installing Git  <a name="___sec1"></a></h3>
+
 <p>
 
 The installation of Git on various systems is described
 on the <a href="http://git-scm.com/">Git website</a> under the <em>Download</em> section.
-On Ubuntu the relevant commands are
+Git involves compiled code so it is most convenient to download a
+precompiled binary version of the software on Windows, Mac and other
+Linux computers.
+On Ubuntu or any Debian-based system the relevant installation command is
 <p>
 
 <!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install git gitk git-doc
 </pre></div>
 <p>
-Git involves compiled code so it is most convenient to download a
-precompiled binary version of the software on Windows, Mac and other
-Linux computers.
+
+This tutorial explains Git interaction through command-line applications
+in a terminal window. There are numerous <a href="https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools#Graphical_Interfaces">graphical user interfaces to
+Git</a>. Three examples are
+<a href="http://git-cola.github.com/downloads.html">git-cola</a>,
+<a href="https://code.google.com/p/tortoisegit/">TortoiseGit</a>, and
+<a href="http://sourcetreeapp.com/">SourceTree</a>.
 
 <p>
-Make a file <tt>.gitconfig</tt> in your home folder with information on
+Make a file <code>.gitconfig</code> in your home folder with information on
 your full name, email address, your favorite emacs editor, and
 the name of an "excludes file" which defines the file types that Git
 should omit when bringing new directories under version control.
-Here is a simplified version of the author's <tt>.gitconfig</tt> file:
+Here is a simplified version of the author's <code>.gitconfig</code> file:
 <p>
 
 <!-- code typeset with pygments style "default" -->
@@ -248,12 +334,12 @@ excludesfile = ~/.gitignore
 </pre></div>
 <p>
 
-The "excludes file" is called <tt>.gitignore</tt> and must list,
+The "excludes file" is called <code>.gitignore</code> and must list,
 using the Unix Shell Wildcard notation,
 the type of files that you do not need to have under version control,
 because they represent garbage or temporary information,
 or they can easily be regenerated from
-some other source files. A suggested <tt>.gitignore</tt> file looks like
+some other source files. A suggested <code>.gitignore</code> file looks like
 <p>
 
 <!-- code typeset with pygments style "default" -->
@@ -291,43 +377,40 @@ some program.
 
 
 <h3>Installing Mercurial  <a name="___sec2"></a></h3>
+
 <p>
 
 The <a href="http://mercurial.selenic.com/">Mercurial website</a> has information
 on downloading Mercurial on different platforms.
-On Ubuntu and Debian-based Linux systems, you just perform
+Mercurial is pure Python code so it is trivial on any system with Python
+installed to download the Mercurial source code and perform
+the standard <code>sudo python setup.py install</code> command.
+
+<p>
+On Ubuntu and Debian-based Linux systems, you can just perform
 <p>
 
 <!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install mercurial
 </pre></div>
 <p>
-You can alternatively click in the Ubuntu Software Center application
+Alternatively, launch the Ubuntu Software Center application
 and choose the Mercurial package in the graphical interface.
 
 <p>
-Mercurial is pure Python code so it is trivial on any system with Python
-installed to download the Mercurial source code and perform
-the standard <tt>sudo python setup.py install</tt> command.
-
-<p>
 This tutorial emphasizes the command-line interface to Mercurial, but there
-is also a graphical interface called TortoiseHG, which can be installed
-by
-<p>
-
-<!-- code typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install tortoisehg
-</pre></div>
-<p>
-on Ubuntu. TortoiseHG is the natural application to run Mercurial on a
-Windows machine.
+is also a graphical interface called <a href="http://tortoisehg.bitbucket.org/">TortoiseHG</a>, which for many Windows and Mac users will be the natural application to
+interact with Mercurial. TortoiseHG works on Linux too, and is readily
+available by <code>sudo apt-get install tortoisehg</code> on Ubuntu.
+A newer graphical application for Git and Mercurial is
+<a href="http://sourcetreeapp.com/">SourceTree</a>, which is available on Windows
+and Mac platforms.
 
 <p>
-We recommend that you create two files in your home folder: <tt>.hgrc</tt> for
-specifying the behavior of <tt>hg</tt> (Mercurial) and <tt>.hgignore</tt> for
+We recommend that you create two files in your home folder: <code>.hgrc</code> for
+specifying the behavior of <code>hg</code> (Mercurial) and <code>.hgignore</code> for
 listing the type of files you in general do not want to have under version
-control. A simple <tt>.hgrc</tt> file can look like this:
+control. A simple <code>.hgrc</code> file can look like this:
 <p>
 
 <!-- code typeset with pygments style "default" -->
@@ -336,16 +419,16 @@ username = &quot;Hans Petter Langtangen &lt;hpl@simula.no&gt;&quot;
 ignore=~/.hgignore
 </pre></div>
 <p>
-The <tt>.hgignore</tt> file lists the types of files that will be skipped
+The <code>.hgignore</code> file lists the types of files that will be skipped
 when bringing new directories under Mercurial version control.
 Typically, the list contains file types that represent temporary
 information or just garbage, or files that are easily regenerated,
-such as object files (<tt>*.o</tt>) and
-libraries (<tt>*.so</tt>).
+such as object files (<code>*.o</code>) and
+libraries (<code>*.so</code>).
 The file types are normally specified using the Unix Shell Wildcard notation,
-also referred to as <tt>glob</tt> syntax (e.g., <tt>*.o</tt>, where <tt>*</tt> means any
+also referred to as <code>glob</code> syntax (e.g., <code>*.o</code>, where <code>*</code> means any
 sequence of characters).
-An example of a <tt>.hgignore</tt> file may be
+An example of a <code>.hgignore</code> file may be
 <p>
 
 <!-- code typeset with pygments style "default" -->
@@ -375,7 +458,7 @@ temp*
 .DS_Store
 </pre></div>
 <p>
-In addition to having an <tt>.hgignore</tt> file, you should always be careful with
+In addition to having an <code>.hgignore</code> file, you should always be careful with
 what kind of files you really need to add to your
 repo. Many computer tools produce a lot of big files that can
 easily be regenerated and that do not need to fill up repos with full
@@ -385,13 +468,14 @@ information on previous versions.
 
 
 <h2>Bitbucket <a name="bitgit:bitbucket"></a></h2>
+
 <p>
 
-To start using Bitbucket, go to <tt>bitbucket.org</tt> and create an account.
+To start using Bitbucket, go to <code>bitbucket.org</code> and create an account.
 The communication channel with Bitbucket repositories is either
 through SSH or HTTPS.  To use SSH, you must upload your SSH key,
-typically the contents of the file <tt>id_rsa.pub</tt> or <tt>id_dsa.pub</tt> in the
-<tt>.ssh</tt> subfolder of your home folder. Go to the page for your
+typically the contents of the file <code>id_rsa.pub</code> or <code>id_dsa.pub</code> in the
+<code>.ssh</code> subfolder of your home folder. Go to the page for your
 account, choose <em>SSH keys</em>, and upload one of these files.
 The essence of the SSH keys is that they allow you to communicate with
 Bitbucket without using a password, which is very convenient.
@@ -399,9 +483,9 @@ Bitbucket without using a password, which is very convenient.
 <p>
 There are links to extensive help pages if you do not have such keys
 or if you are unfamiliar with SSH. Follow these steps on Mac or Linux
-machines to generate keys: 1) check that you have <tt>ssh</tt> installed; 2)
-create a <tt>.ssh</tt> folder in your home folder; and 3) run
-<tt>ssh-keygen</tt> in the <tt>.ssh</tt> folder (you are prompted for a
+machines to generate keys: 1) check that you have <code>ssh</code> installed; 2)
+create a <code>.ssh</code> folder in your home folder; and 3) run
+<code>ssh-keygen</code> in the <code>.ssh</code> folder (you are prompted for a
 passphrase - just write something). On Windows one applies the PuTTY
 and the TortoiseHG programs to generate and register keys, see the
 help pages on Bitbucket. Once the keys are generated, you can continue
@@ -410,7 +494,8 @@ using them on any current and future computer.
 <p>
 
 
-<h3>Create a new project  <a name="___sec4"></a></h3>
+<h3>Creating a new project  <a name="___sec4"></a></h3>
+
 <p>
 Click at <em>Repositories</em> and at <em>Create repository</em>.
 You can now
@@ -418,7 +503,7 @@ You can now
 <p>
 
 <ul>
- <li> fill in the name of the project, here <tt>my-project</tt>,</li>
+ <li> fill in the name of the project, here <code>my-project</code>,</li>
  <li> decide whether the project is private or public (the number of
    private repos is unlimited for yourself, but you have to pay to
    invite more than five users in total to share your private repos),</li>
@@ -447,8 +532,8 @@ Find the <em>Clone</em> button, click on it, choose
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git clone git@bitbucket.org:usernamet/my-project.git
 </pre></div>
 <p>
-You must replace <tt>username</tt> with your own user name at Bitbucket and
-<tt>my-project</tt> by the real project name.
+You must replace <code>username</code> with your own user name at Bitbucket and
+<code>my-project</code> by the real project name.
 
 <p>
 The first time you do the clone command you may be prompted by cryptic
@@ -457,10 +542,10 @@ Unix output ending with "Are you sure you want to continue connecting
 
 <p>
 The next step is to collect files and directories that should make up
-the project and put them in the <tt>my-project</tt> folder.
-Standing in the <tt>my-project</tt> folder, the following Git command is used
+the project and put them in the <code>my-project</code> folder.
+Standing in the <code>my-project</code> folder, the following Git command is used
 to add all files in the current
-directory <em>tree</em>, except those having file types listed in <tt>.gitignore</tt>:
+directory <em>tree</em>, except those having file types listed in <code>.gitignore</code>:
 <p>
 
 <!-- code typeset with pygments style "default" -->
@@ -476,7 +561,7 @@ Thereafter, the changes to the repository (here adding of files) must
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git commit -am <span style="color: #BA2121">&#39;Initial import of files.&#39;</span>
 </pre></div>
 <p>
-The text following the <tt>-am</tt> option is a required description of the
+The text following the <code>-am</code> option is a required description of the
 changes that have taken place. This description does not matter much
 for this initial import of files into the repository, but is of
 importance for future commit commands so that you can easily track the
@@ -491,8 +576,8 @@ Bitbucket:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git push -u origin master
 </pre></div>
 <p>
-You must be connected to the Internet for the <tt>push</tt> command to work since
-it sends file information to the <tt>bitbucket.org</tt> site.
+You must be connected to the Internet for the <code>push</code> command to work since
+it sends file information to the <code>bitbucket.org</code> site.
 
 <p>
 Further work with the files must always follow the pull, edit, commit, and
@@ -501,11 +586,27 @@ the section <a href="#bitgit:git">Using Git</a> for Git.
 
 <p>
 
-<h3>User web pages  <a name="___sec5"></a></h3>
+<h4>Collaborating  <a name="___sec5"></a></h4>
+
 <p>
-Bitbucket can host web pages associated with a Bitbucket account. Say
-your account/user name is <tt>username</tt>.  Make a new repository on
-Bitbucket called <tt>username.bitbucket.org</tt>.  Clone it, fill it with a
+There is a button <em>Send invitation</em> on the project home page where you
+can invite other Bitbucket users to have push (write) access to your
+repo. Many prefer to be notified in email when changes are push to
+the repo: click the settings wheel to the right, choose <em>Services</em>,
+then <em>Email</em>, and fill in the email addresses that are to receive
+notifications on updates. Under <em>Access management</em> you can fill in
+the Bitbucket names of users who are have read (pull)
+or write (push) access to the repo.
+
+<p>
+
+<h3>User web pages <a name="bitgit:bitbucket:web"></a></h3>
+
+<p>
+Bitbucket can host web pages associated with a Bitbucket account
+(but not yet have web pages as part of a project). Say
+your account/user name is <code>username</code>.  Make a new repository on
+Bitbucket called <code>username.bitbucket.org</code>.  Clone it, fill it with a
 file, and push back, e.g.,
 
 <p>
@@ -520,7 +621,7 @@ git commit -am <span style="color: #BA2121">&#39;First web page&#39;</span>
 git push origin master
 </pre></div>
 <p>
-You can now load the URL <tt>http://username.bitbucket.org/test.html</tt> into
+You can now load the URL <code>http://username.bitbucket.org/test.html</code> into
 a web browser and view the page. By creating various subfolders
 you can host web pages for a series of projects in this repo.
 
@@ -530,8 +631,42 @@ web pages.
 
 <p>
 
+<h3>Linking to Bitbucket files <a name="bitgit:bitbucket:URLs"></a></h3>
+
+<p>
+Unfortunately, the default URL shown in your browser to a file in
+a Bitbucket repo contains information about the version of the file.
+For example, a file <code>v1.c</code> under Git might appear with the URL
+
+<p>
+
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://bitbucket.org/user/proj/src/5fb228107044/dir/v1.c?at=master
+</pre></div>
+<p>
+The string <code>5fb228107044</code>, called commit hash,
+is connected to the version of this file
+and will change when the file is updated. Such unstable URLs are
+useless when you to link to
+the file in documents. To make a stable link to the
+latest version of a file (in a public repo),
+replace the commit hash by <code>master</code> and remove
+the final <code>?at=master</code>:
+
+<p>
+
+
+<!-- code typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://bitbucket.org/user/proj/src/master/dir/v1.c
+</pre></div>
+<p>
+If the file is under Mercurial, replace the commit hash by <code>tip</code>.
+
+<p>
 
 <h2>Googlecode <a name="bitgit:googlecode"></a></h2>
+
 <p>
 
 To use Googlecode you need a general account on Google, which allows
@@ -540,16 +675,17 @@ you to use Gmail, Google Docs, and other products.
 <p>
 
 
-<h3>Create a new project  <a name="___sec7"></a></h3>
+<h3>Creating a new project  <a name="___sec9"></a></h3>
+
 <p>
 Go to <a href="http://code.google.com/hosting"><tt>http://code.google.com/hosting</tt></a> and click on
-<em>Create a new project</em>. Fill out <em>all</em> the fields. For now
-the project name is <tt>my-project</tt>.
+<em>Creating a new project</em>. Fill out <em>all</em> the fields. For now
+the project name is <code>my-project</code>.
 You have
 to choose between Git, Mercurial, or Subversion as version control
 system for your project, and this choice cannot be changed.
 Git and Mercurial are clearly preferred over Subversion nowadays.
-If you choose Git, you must create a file <tt>.netrc</tt> in your
+If you choose Git, you must create a file <code>.netrc</code> in your
 home folder containing the line
 <p>
 
@@ -557,12 +693,12 @@ home folder containing the line
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">machine code.google.com login uname password pw
 </pre></div>
 <p>
-Here, <tt>uname</tt> is your user name for the Google account and
-<tt>pw</tt> is the Googlecode password which is generated for you on
-the <tt>code.google.com/p/my-project</tt>.
-The <tt>.netrc</tt> file avoids typing or pasting in
+Here, <code>uname</code> is your user name for the Google account and
+<code>pw</code> is the Googlecode password which is generated for you on
+the <code>code.google.com/p/my-project</code>.
+The <code>.netrc</code> file avoids typing or pasting in
 your long and complicated password every time you push changes to
-the repository on <tt>code.google.com</tt>.
+the repository on <code>code.google.com</code>.
 
 <p>
 The next step is to clone the empty repository on your local machine
@@ -573,7 +709,7 @@ so that you can add files:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git clone https://code.google.com/p/my-project/
 </pre></div>
 <p>
-Now you can go to the <tt>my-project</tt> folder and add files.
+Now you can go to the <code>my-project</code> folder and add files.
 Perform
 <p>
 
@@ -591,7 +727,7 @@ files are visible on the project page.
 If you use Mercurial as version control system on Googlecode and
 you want to avoid typing your password when you push changes to
 the repository, you should add the following section to your
-<tt>.hgrc</tt> file:
+<code>.hgrc</code> file:
 <p>
 
 <!-- code typeset with pygments style "default" -->
@@ -601,7 +737,7 @@ my-project.username = uname
 my-project.password = pw
 </pre></div>
 <p>
-where <tt>uname</tt> and <tt>pw</tt> must be replaced by your account name and
+where <code>uname</code> and <code>pw</code> must be replaced by your account name and
 the special Googlecode password. Other projects on Googlecode
 using Mercurial will need similar lines.
 
@@ -619,10 +755,10 @@ The URL to your files is
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://my-project.googlecode.com/git/
 </pre></div>
 <p>
-When using other version control systems, <tt>git</tt> is simply replaced by
-<tt>hg</tt> or <tt>svn</tt>.
+When using other version control systems, <code>git</code> is simply replaced by
+<code>hg</code> or <code>svn</code>.
 For example, if we have HTML documentation of our project in
-the folder <tt>doc/html</tt>, we can point users to
+the folder <code>doc/html</code>, we can point users to
 <p>
 
 <!-- code typeset with pygments style "default" -->
@@ -663,7 +799,8 @@ listed under each other in the <em>Project committers</em> field.
 
 <p>
 
-<h3>Wiki pages  <a name="___sec8"></a></h3>
+<h3>Wiki pages  <a name="___sec10"></a></h3>
+
 <p>
 Wiki pages can intuitively be made directly in the browser. However,
 it is often more convenient to have them locally on your computer.
@@ -687,18 +824,19 @@ for many formats) and that the wiki pages are frequently updated.
 
 
 <h2>GitHub <a name="bitgit:github"></a></h2>
+
 <p>
 
-Go to <tt>github.com</tt> and create an account. Then go to your account
+Go to <code>github.com</code> and create an account. Then go to your account
 settings (icon in the upper left corner of the page),
 choose <em>SSH Keys</em>, and provide your SSH key
 <em>unless you have already registered this key with another GitHub
 account</em> (see Appendix <a href="#appendix:github:multiple:accounts">Appendix: Working with multiple GitHub accounts</a>).  There are
 help links that explain what this is all about. Often, it is just a
-matter of pasting the contents of <tt>id_rsa.pub</tt> or <tt>id_dsa.pub</tt> files,
+matter of pasting the contents of <code>id_rsa.pub</code> or <code>id_dsa.pub</code> files,
 located in the
-<tt>.ssh</tt> subfolder of your home folder, into the <em>Key</em> box in the
-web page. Make sure to cut and paste the text from, e.g., <tt>id_rsa.pub</tt>
+<code>.ssh</code> subfolder of your home folder, into the <em>Key</em> box in the
+web page. Make sure to cut and paste the text from, e.g., <code>id_rsa.pub</code>
 without any extra whitespaces or other text. How to generate these
 files is described in the link <em>generating SSH keys</em> above the SSH Keys
 box (or see the introduction to Bitbucket above).
@@ -712,7 +850,8 @@ to log in and add collaborators using their personal GitHub usernames.
 <p>
 
 
-<h3>Create a new project  <a name="___sec10"></a></h3>
+<h3>Creating a new project  <a name="___sec12"></a></h3>
+
 <p>
 Click on <em>New repository</em> on the main page and fill out a project
 name, here <em>My Project</em>, click the check button <em>Initialize this
@@ -723,26 +862,26 @@ can request <a href="https://github.com/edu">free, private repos</a>.
 <p>
 The next step is to clone the project on your personal computer. Click
 on the <em>SSH</em> button to see the address of the project, and
-paste this address into a terminal window, after <tt>git clone</tt>:
+paste this address into a terminal window, after <code>git clone</code>:
 <p>
 
 <!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git clone git://github.com:username/My-Project.git
 </pre></div>
 <p>
-Make sure you substitute <tt>username</tt> by your own user name on GitHub.
+Make sure you substitute <code>username</code> by your own user name on GitHub.
 
 <p>
-The result of the <tt>git clone</tt> command is a new folder <tt>My-Project</tt>.
-It contains the file <tt>.git</tt>, which shows that it is a Git repository.
-It also contains a default <tt>README.md</tt> file with the project name and
-description. The extension <tt>.md</tt> signifies a file written in the
+The result of the <code>git clone</code> command is a new folder <code>My-Project</code>.
+It contains the file <code>.git</code>, which shows that it is a Git repository.
+It also contains a default <code>README.md</code> file with the project name and
+description. The extension <code>.md</code> signifies a file written in the
 <a href="http://daringfireball.net/projects/markdown/">Markdown</a> format.
 You may use the <a href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> format as an alternative
-(<tt>README.rst</tt>), or simply write a plain text file (<tt>README</tt>).
+(<code>README.rst</code>), or simply write a plain text file (<code>README</code>).
 
 <p>
-You can now add files and directories into the <tt>My-Project</tt> folder.
+You can now add files and directories into the <code>My-Project</code> folder.
 When your initial file collection has the desired form, you must
 run
 <p>
@@ -753,7 +892,13 @@ git commit -am <span style="color: #BA2121">&#39;First set of files.&#39;</span>
 git push -u origin master
 </pre></div>
 <p>
+The daily file operations are explained in Section {bitgit:git}.
 
+<p>
+
+<h4>Collaborating  <a name="___sec13"></a></h4>
+
+<p>
 To give others permissions to push their edits of files to the
 repository, you click on the <em>Settings</em> tab,
 then click on <em>Collaborators</em> on the left, and fill in the name
@@ -775,14 +920,10 @@ the <em>watch</em> button), respectively.  Clicking the <em>Email</em> button tu
 on email notifications to those participating and/or watching.
 
 <p>
-The daily file operations are explained in Section {bitgit:git}.
-There you also find information on how to create wiki pages and
-web pages associated with the project.
-
-<p>
 
 
-<h3>Wiki pages  <a name="___sec11"></a></h3>
+<h3>Wiki pages  <a name="___sec14"></a></h3>
+
 <p>
 With every GitHub project there is an option to create wiki pages.
 Click on the <em>Wiki</em> button right under the line with the project
@@ -801,7 +942,7 @@ you may want to link to. It also makes it straightforward to edit
 the wiki text in your favorite text editor. The wiki pages are
 stored in a separate repo: click on <em>Git Access</em> and then on
 <em>Git Read-Only</em> to see the
-Git address for a standard <tt>git clone</tt> command, typically
+Git address for a standard <code>git clone</code> command, typically
 <p>
 
 <!-- code typeset with pygments style "default" -->
@@ -809,19 +950,19 @@ Git address for a standard <tt>git clone</tt> command, typically
 </pre></div>
 <p>
 This command makes a local copy of the pages in the folder
-<tt>My-Project.wiki</tt>, which you may prefer to have at the same level
+<code>My-Project.wiki</code>, which you may prefer to have at the same level
 as the project folder itself in your folder tree.
 
 <p>
 Each wiki page has its own file, where the extension reflects
-the markup language used, e.g., <tt>.md</tt> for Markdown and <tt>.rest</tt> for
+the markup language used, e.g., <code>.md</code> for Markdown and <code>.rest</code> for
 reStructuredText. The wiki files are handled as other files in a
 GitHub project, i.e., you need to pull before editing and then
 perform commit and push. After the push you can reload the page
 in the web browser to monitor the effect.
 
 <p>
-You may consider having the original text in <tt>doconce</tt> format and
+You may consider having the original text in <code>doconce</code> format and
 generate the wiki in reStructuredText format.
 
 <p>
@@ -832,20 +973,21 @@ Do changes, commit the usual way, and push by
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git push git@github.com:username/My-project.wiki.git
 </pre></div>
 <p>
-The address can be stored as <tt>url</tt> in <tt>.git/config</tt> so that just a
-<tt>git push</tt> works.
+The address can be stored as <code>url</code> in <code>.git/config</code> so that just a
+<code>git push</code> works.
 
 <p>
 
 
-<h3>Project web pages  <a name="___sec12"></a></h3>
+<h3>Project web pages  <a name="___sec15"></a></h3>
+
 <p>
 HTML pages stored in your repo cannot be linked to and rendered <em>as HTML</em>.
 Links to HTML files at GitHub will be either rendered as nicely typeset
 HTML code or as plain text. The URL of images, however, can be used
 in web pages to insert images from your repo, provided the image files
 are in the <em>raw</em> format (click the <em>Raw</em> button when viewing a file at
-<tt>github.com</tt> and use the corresponding URL in the <tt>img</tt> tag).
+<code>github.com</code> and use the corresponding URL in the <code>img</code> tag).
 
 <p>
 Quite often you want to create a set of HTML pages to document your
@@ -857,24 +999,24 @@ The recipe is described in detail below.
 <p>
 
 <ol>
-<li> Go to the  project page on <tt>github.com</tt> and click <em>Settings</em>.</li>
+<li> Go to the  project page on <code>github.com</code> and click <em>Settings</em>.</li>
 <li> Click on generating <em>Automatic Page Generator</em> under the <em>GitHub Pages</em>.</li>
 <li> Proceed clicking <em>Continue to Layouts</em>, choose
-   a design of the <tt>index.html</tt> page, and click <em>Publish</em>.</li>
-<li> Go to the root folder of the project, <tt>My-Project</tt>
-   and run <tt>git fetch origin</tt>.</li>
-<li> Run <tt>git checkout gh-pages</tt>.</li>
+   a design of the <code>index.html</code> page, and click <em>Publish</em>.</li>
+<li> Go to the root folder of the project, <code>My-Project</code>
+   and run <code>git fetch origin</code>.</li>
+<li> Run <code>git checkout gh-pages</code>.</li>
 </ol>
 
-You have now a <em>new branch</em> called <tt>gh-pages</tt> of your project containing an
-<tt>index.html</tt> file in the root folder (and in fact all files <em>not</em>
+You have now a <em>new branch</em> called <code>gh-pages</code> of your project containing an
+<code>index.html</code> file in the root folder (and in fact all files <em>not</em>
 contained in the <em>master branch</em>, typically redundant files not to be
 stored in the version control system).
 You can populate this folder and subdirectories you create with
 HTML and other files as you like.
 
 <p>
-The <tt>index.html</tt> page is invoked by the web address
+The <code>index.html</code> page is invoked by the web address
 
 <p>
 
@@ -883,8 +1025,8 @@ The <tt>index.html</tt> page is invoked by the web address
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://username.github.com/My-Project/index.html
 </pre></div>
 <p>
-where <tt>username</tt> is the GitHub
-user name and <tt>My-Project</tt> is the project name.
+where <code>username</code> is the GitHub
+user name and <code>My-Project</code> is the project name.
 
 <p>
 <!-- Update this info when I have maintained gh-pages for a while! -->
@@ -893,9 +1035,9 @@ user name and <tt>My-Project</tt> is the project name.
 
 <p>
 The web pages and project files are now in two different branches.
-To see the branches, type <tt>git branch</tt> and the one you are in will
+To see the branches, type <code>git branch</code> and the one you are in will
 be marked with a star in the output. Switching to the master branch
-is done by <tt>git checkout master</tt>. Similarly, <tt>git checkout gh-pages</tt>
+is done by <code>git checkout master</code>. Similarly, <code>git checkout gh-pages</code>
 switches to the gh-pages branch.
 
 <p>
@@ -906,10 +1048,10 @@ When Git branches diverge you can merge them by
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git merge otherbranch
 </pre></div>
 <p>
-where <tt>otherbranch</tt> is the name of another branch. If there is a conflict
+where <code>otherbranch</code> is the name of another branch. If there is a conflict
 in the merge, there will be markers in problematic files. Run
-<tt>git diff</tt> to show the problems. After a manual edit, do
-<tt>git commit -a</tt>. Then you may run <tt>gitk</tt> to see a graphical illustration
+<code>git diff</code> to show the problems. After a manual edit, do
+<code>git commit -a</code>. Then you may run <code>gitk</code> to see a graphical illustration
 of what has happened.
 
 <p>
@@ -925,7 +1067,7 @@ Start with merging the gh-pages branch with the master
 branch and push the complete file collection to the gh-pages branch.
 Then switch to the master
 branch and merge with gh-pages so you get the autogenerated
-<tt>index.html</tt> file and associated files and directories for the web design
+<code>index.html</code> file and associated files and directories for the web design
 in the root folder of the master branch as well:
 
 <p>
@@ -939,7 +1081,7 @@ git checkout master
 git merge gh-pages
 </pre></div>
 <p>
-You <em>must</em> add an empty file <tt>.nojekyll</tt> in the top
+You <em>must</em> add an empty file <code>.nojekyll</code> in the top
 folder of the project pages if you want to use Sphinx-generated
 HTML pages (or other pages using javascripts, style sheets, and images
 in subdirectories whose names start with an underscore).
@@ -963,9 +1105,9 @@ git checkout master
 </pre></div>
 <p>
 
-Personally, I like to move the generated <tt>index.html</tt> file and all
+Personally, I like to move the generated <code>index.html</code> file and all
 associated scripts, stylesheets, and images from the root folder to
-some more isolated place, say <tt>doc/web/git</tt>:
+some more isolated place, say <code>doc/web/git</code>:
 
 <p>
 
@@ -975,7 +1117,7 @@ some more isolated place, say <tt>doc/web/git</tt>:
        javascripts/ doc/web/git/
 </pre></div>
 <p>
-The <tt>index.html</tt> then has the URL
+The <code>index.html</code> then has the URL
 <p>
 
 <!-- code typeset with pygments style "default" -->
@@ -1001,9 +1143,9 @@ just find the file in GitHub's web interface, choose which version of
 the file you want to link to (nicely HTML formatted version or the raw
 file), right-click on the link, choose <em>Copy Link</em>, and paste the
 link into the document you want. You can test that the link works by
-the Unix command <tt>curl -O <link></tt>. Note that the link to a file
+the Unix command <code>curl -O <link></code>. Note that the link to a file
 is different from the source file's intuitive path in the repository.
-Typically, a source file <tt>mydir/myfile.py</tt> in project <tt>prj</tt> is reached
+Typically, a source file <code>mydir/myfile.py</code> in project <code>prj</code> is reached
 through
 <p>
 
@@ -1016,7 +1158,7 @@ Sometimes you want to link to another HTML file, PDF file, movie file,
 or a file that is to be interpreted as a web resource by the browser.
 Do not use the path to the file in the repo as explained above as it will
 just bring the reader to the repo page. Instead, make sure the file is in
-the gh-pages branch and use a local link, like <tt>../mydoc.pdf</tt>, or the
+the gh-pages branch and use a local link, like <code>../mydoc.pdf</code>, or the
 complete gh-pages URL to the file:
 <p>
 
@@ -1026,15 +1168,16 @@ complete gh-pages URL to the file:
 <p>
 
 
-<h3>User web pages  <a name="___sec13"></a></h3>
+<h3>User web pages  <a name="___sec16"></a></h3>
+
 <p>
 
 GitHub also allows you to create user pages and organization pages not
 tied to any specific project.
 Your personal site has address
-<tt>http://username.github.com</tt>.
-Go to your home page on <tt>github.com</tt> and click <em>New repository</em>,
-and give it the project name <tt>username.github.com</tt>.
+<code>http://username.github.com</code>.
+Go to your home page on <code>github.com</code> and click <em>New repository</em>,
+and give it the project name <code>username.github.com</code>.
 Then follow the instructions that come up:
 <p>
 
@@ -1049,11 +1192,11 @@ git remote add origin git@github.com:username/username.github.com.git
 git push -u origin master
 </pre></div>
 <p>
-Go to <tt>http://username.github.com</tt> and see how the <tt>index.html</tt> is
+Go to <code>http://username.github.com</code> and see how the <code>index.html</code> is
 rendered. You can now add various contents as in any ordinary
 Git repository.
 If you want to use Sphinx generated HTML pages, recall to add an empty file
-<tt>.nojekyll</tt>. Different projects can be hosted in different subfolders.
+<code>.nojekyll</code>.
 
 <p>
 
@@ -1063,6 +1206,7 @@ If you want to use Sphinx generated HTML pages, recall to add an empty file
 
 
 <h2>Using Git <a name="bitgit:git"></a></h2>
+
 <p>
 
 Most Mac and Linux users prefer to work with Git via a commands in a
@@ -1074,10 +1218,12 @@ control are understood.
 
 <p>
 
-<h3>Basic Git commands  <a name="___sec15"></a></h3>
+<h3>Basic Git commands  <a name="___sec18"></a></h3>
+
 <p>
 
-<h4>Cloning  <a name="___sec16"></a></h4>
+<h4>Cloning  <a name="___sec19"></a></h4>
+
 <p>
 You get started with your project on a new machine, or another user
 can get started with the project,
@@ -1090,15 +1236,16 @@ by running
 ls
 </pre></div>
 <p>
-Recall to replace <tt>username</tt> by your real user name and <tt>My-Project</tt> by the
+Recall to replace <code>username</code> by your real user name and <code>My-Project</code> by the
 actual project name.
 
 <p>
 
-<h4>The pull-change-push cycle  <a name="___sec17"></a></h4>
+<h4>The pull-change-push cycle  <a name="___sec20"></a></h4>
+
 <p>
 The typical work flow with the "My Project" project starts with
-updating the local repository by going to the <tt>My-Project</tt> folder
+updating the local repository by going to the <code>My-Project</code> folder
 and writing
 <p>
 
@@ -1120,16 +1267,16 @@ git mv oldname ../newdir
 </pre></div>
 <p>
 When your chunk of work is ready,
-it is time to commit your changes (note the <tt>-am</tt> option):
+it is time to commit your changes (note the <code>-am</code> option):
 <p>
 
 <!-- code typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git commit -am <span style="color: #BA2121">&#39;Description of changes.&#39;</span>
 </pre></div>
 <p>
-If typos or errors enter the message, the <tt>git commit --amend</tt> command
-can be used to reformulate the message.  Running <tt>git diff</tt> prior to
-<tt>git commit</tt> makes it
+If typos or errors enter the message, the <code>git commit --amend</code> command
+can be used to reformulate the message.  Running <code>git diff</code> prior to
+<code>git commit</code> makes it
 easier to formulate descriptive commit messages since this command
 gives a listing of all the changes you have made to the files since
 the last commit or pull command.
@@ -1158,12 +1305,13 @@ To see the status of files, run
 </pre></div>
 <p>
 Files are marked with different symbols, e.g.,
-<tt>A</tt> for added, <tt>M</tt> for modified, <tt>R</tt> for renamed,
-and <tt>??</tt> for not being registered in the repo.
+<code>A</code> for added, <code>M</code> for modified, <code>R</code> for renamed,
+and <code>??</code> for not being registered in the repo.
 
 <p>
 
-<h4>Viewing the history of files  <a name="___sec18"></a></h4>
+<h4>Viewing the history of files  <a name="___sec21"></a></h4>
+
 <p>
 A nice graphical tool allows you to view all changes, or just
 the latest ones:
@@ -1186,12 +1334,12 @@ git log --stat --summary          <span style="color: #408080; font-style: itali
 git log --stat --summary  subdir  <span style="color: #408080; font-style: italic"># only files in subdir folder</span>
 </pre></div>
 <p>
-Adding <tt>--follow</tt> will print the history of file versions before the
+Adding <code>--follow</code> will print the history of file versions before the
 file got its present name.
 
 <p>
 To show the author who is responsible for the last modification of each
-line in the file, use <tt>git blame</tt>:
+line in the file, use <code>git blame</code>:
 <p>
 
 <!-- code typeset with pygments style "default" -->
@@ -1200,7 +1348,7 @@ git blame --since<span style="color: #666666">=</span><span style="color: #BA212
 </pre></div>
 <p>
 A useful command to see the history of who did what, where individual
-edits of words are highlighted (<tt>--word-diff</tt>), is
+edits of words are highlighted (<code>--word-diff</code>), is
 <p>
 
 <!-- code typeset with pygments style "default" -->
@@ -1211,7 +1359,7 @@ Removed words appear in brackets and added words in curly braces.
 
 <p>
 Looking for when a particular piece of text entered or left the file,
-say the text <tt>def myfunc</tt>, one can run
+say the text <code>def myfunc</code>, one can run
 <p>
 
 <!-- code typeset with pygments style "default" -->
@@ -1220,14 +1368,15 @@ say the text <tt>def myfunc</tt>, one can run
 <p>
 This is useful to track down particular changes in the files to see when
 they occurred and who introduced them. One can also search for regular
-expressions instead of exact text: just replace <tt>-S</tt> by <tt>-G</tt>.
+expressions instead of exact text: just replace <code>-S</code> by <code>-G</code>.
 
 <p>
 
-<h4>Retrieving old files  <a name="___sec19"></a></h4>
+<h4>Retrieving old files  <a name="___sec22"></a></h4>
+
 <p>
 Occasionally you need to go back to an earlier version of a file,
-say its name is <tt>myfile</tt>. Start with viewing the history:
+say its name is <code>myfile</code>. Start with viewing the history:
 <p>
 
 <!-- code typeset with pygments style "default" -->
@@ -1236,7 +1385,7 @@ say its name is <tt>myfile</tt>. Start with viewing the history:
 <p>
 Find a commit candidate from the list that you will compare the
 present version to and copy the commit hash (string like
-<tt>c7673487...</tt>) and run
+<code>c7673487...</code>) and run
 <p>
 
 <!-- code typeset with pygments style "default" -->
@@ -1253,20 +1402,20 @@ the commit you picked. If you want to restore the old file, write
 </pre></div>
 <p>
 To go back to another version (the most recent one, for instance),
-find the commit hash with <tt>git log myfile</tt>, and do <tt>get checkout
-<commit hash> myfile</tt>.  At any time you do <tt>git commit</tt> the current
-version of <tt>myfile</tt> will enter the most recent commit of the current
+find the commit hash with <code>git log myfile</code>, and do <code>get checkout
+<commit hash> myfile</code>.  At any time you do <code>git commit</code> the current
+version of <code>myfile</code> will enter the most recent commit of the current
 branch.
 
 <p>
-If <tt>myfile</tt> changed name from <tt>yourfile</tt> at some point and you want
-<tt>yourfile</tt> back, run <tt>git log --follow myfile</tt> to find the commit
-when <tt>yourfile</tt> existed, and do a <tt>git checkout <commit hash> yourfile</tt>.
+If <code>myfile</code> changed name from <code>yourfile</code> at some point and you want
+<code>yourfile</code> back, run <code>git log --follow myfile</code> to find the commit
+when <code>yourfile</code> existed, and do a <code>git checkout <commit hash> yourfile</code>.
 
 <p>
-The Git equivalent to <tt>hg cat</tt> for just viewing old versions of files is
-<tt>git show</tt>, but the command requires the full path from the root
-git folder:
+Often you just need to <em>view</em> the old file, not replace the current
+one by the old one, and then <code>git show</code> is handy. Unfortunately,
+it requires the full path from the root git folder:
 <p>
 
 <!-- code typeset with pygments style "default" -->
@@ -1276,9 +1425,10 @@ git folder:
 
 
 <h3>Merging files with Git <a name="bitgit:git:merge"></a></h3>
+
 <p>
 
-The <tt>git pull</tt> command fetches new files from the repository and
+The <code>git pull</code> command fetches new files from the repository and
 tries to perform an automatic merge if there are conflicts between
 the local files and the files in the repository.
 Git will write a message if the merge is unsuccessful for one or
@@ -1287,21 +1437,21 @@ Merge markers of the type '>>>>>', '======', and '<<<<<' have been
 inserted by Git to mark sections of a file where the version in the
 repository differ from the local version. You must decide which
 lines that are to appear in the final, merged version. When done,
-perform <tt>git commit</tt> and the conflicts are resolved.
+perform <code>git commit</code> and the conflicts are resolved.
 
 <p>
 Graphical merge tools may ease the process of merging text files.  You
-can run <tt>git mergetool --tool=meld</tt> to open the merge tool <tt>meld</tt> for
+can run <code>git mergetool --tool=meld</code> to open the merge tool <code>meld</code> for
 every file that needs to be merged (or specify the name of a
 particular file). Other popular merge tools supported by Git are
-<tt>araxis</tt>, <tt>bc3</tt>, <tt>diffuse</tt>, <tt>ecmerge</tt>, <tt>emerge</tt>, <tt>gvimdiff</tt>, <tt>kdiff3</tt>,
-<tt>opendiff</tt>, <tt>p4merge</tt>, <tt>tkdiff</tt>, <tt>tortoisemerge</tt>, <tt>vimdiff</tt>, and
-<tt>xxdiff</tt>.
+<code>araxis</code>, <code>bc3</code>, <code>diffuse</code>, <code>ecmerge</code>, <code>emerge</code>, <code>gvimdiff</code>, <code>kdiff3</code>,
+<code>opendiff</code>, <code>p4merge</code>, <code>tkdiff</code>, <code>tortoisemerge</code>, <code>vimdiff</code>, and
+<code>xxdiff</code>.
 
 <p>
 Below is a Unix shell script illustrating how to make a global
 repository in Git, and how two users clone this repository and
-perform edits in parallel. There is one file <tt>myfile</tt> in the
+perform edits in parallel. There is one file <code>myfile</code> in the
 repository.
 
 <p>
@@ -1419,11 +1569,11 @@ cat myfile
 <p>
 
 You may run this <a href="html/_static-bitgitgit_merge.sh">file</a> named
-<tt>git_merge.sh</tt> by <tt>sh -x git_merge.sh</tt>.
-At the end, the versions of <tt>myfile</tt> in the
-repository and the <tt>tmp2</tt> folder are in conflict. Git tried
+<code>git_merge.sh</code> by <code>sh -x git_merge.sh</code>.
+At the end, the versions of <code>myfile</code> in the
+repository and the <code>tmp2</code> folder are in conflict. Git tried
 to merge the two versions, but failed. Merge markers are left in
-<tt>tmp2/myfile</tt>:
+<code>tmp2/myfile</code>:
 <p>
 
 <!-- code typeset with pygments style "default" -->
@@ -1442,19 +1592,20 @@ git directories.
 tmp2-add1
 </pre></div>
 <p>
-Launch a text editor and edit the file, or use <tt>git mergetool</tt>,
+Launch a text editor and edit the file, or use <code>git mergetool</code>,
 so that the file becomes correct.
-Then run <tt>git commit -am merge</tt> to finalize the merge.
+Then run <code>git commit -am merge</code> to finalize the merge.
 
 <p>
 
 
 <h3>Git working style with branching and stashing <a name="bitgit:git:branch:stash"></a></h3>
+
 <p>
 Branching and stashing are nice features of Git that allow you to try
 out new things without affecting the stable version of your files.
-Usually, you extend and modify files quite often and perform a <tt>git
-commit</tt> every time you want to record the changes in your local
+Usually, you extend and modify files quite often and perform a <code>git
+commit</code> every time you want to record the changes in your local
 repository. Imagine that you want to correct a set of errors in some
 files and push these corrections immediately.  The problem is that
 such a push will also include the latest, unfinished files that you
@@ -1495,7 +1646,7 @@ in the master branch. This is done via a merge:
 git merge newstuff
 </pre></div>
 <p>
-You no longer need the <tt>newstuff</tt> branch and can delete it:
+You no longer need the <code>newstuff</code> branch and can delete it:
 
 <p>
 
@@ -1511,9 +1662,9 @@ and you want to change to another branch or fix other files in the
 current branch, a
 "global" commit affecting all files might be immature.  Then the <a href="http://git-scm.com/book/en/Git-Tools-Stashing"><tt>git stash</tt></a> command is handy. It
 records the state of your files and sets you back to the state of the
-last commit in the current branch. With <tt>git stash apply</tt> you get the
-files in this branch back to the state when you did the last <tt>git
-stash</tt>, or you can use <tt>git stash branch newstuff</tt> to move the edits
+last commit in the current branch. With <code>git stash apply</code> you get the
+files in this branch back to the state when you did the last <code>git
+stash</code>, or you can use <code>git stash branch newstuff</code> to move the edits
 since the last commit into a new branch.
 
 <p>
@@ -1522,36 +1673,37 @@ you are suddenly interrupted. You need to fix some typos in some
 other files, commit the changes, and push. The problem is that many files are
 in an unfinished state - in hindsight you realize that those files
 should have been modified in a separate branch.
-It is not too late to create that branch! First run <tt>git stash</tt>
+It is not too late to create that branch! First run <code>git stash</code>
 to get the files back to the
 state they were at the last commit. Then run
-<tt>git stash branch newstuff</tt> to create a new branch <tt>newstuff</tt> containing
-the state of the files when you did the (last) <tt>git stash</tt> command.
+<code>git stash branch newstuff</code> to create a new branch <code>newstuff</code> containing
+the state of the files when you did the (last) <code>git stash</code> command.
 Stashing used this way is a convenient technique to
 move some immature edits after the last commit out in a new branch for
 further experimental work.
 
 <p>
-(You can get the stashed files back by <tt>git stash apply</tt>. It is
-possible to multiple <tt>git stash</tt> and <tt>git stash apply</tt>
+(You can get the stashed files back by <code>git stash apply</code>. It is
+possible to multiple <code>git stash</code> and <code>git stash apply</code>
 commands. However, it is easy to run into trouble with multiple
 stashes, especially if they occur in multiple branches, as it becomes
 difficult to recognize which stashes that belong to which branch.  A
-good advice is therefore to do <tt>git stash</tt> <em>only once</em> to get back to
+good advice is therefore to do <code>git stash</code> <em>only once</em> to get back to
 a clean state and then move the unfinished messy files to a separate
-branch with <tt>git stash branch newstuff</tt>.)
+branch with <code>git stash branch newstuff</code>.)
 
 <p>
 
 <b>Remark.</b>
 A recent <a href="http://mercurial.selenic.com/wiki/ShelveExtension">extension module</a> for Mercurial allows stashing for that version control system as well:
-<tt>hg shelve --all</tt> is similar for <tt>git stash</tt>, and <tt>hg unshelve</tt>
-is similar to <tt>git stash apply</tt>.
+<code>hg shelve --all</code> is similar for <code>git stash</code>, and <code>hg unshelve</code>
+is similar to <code>git stash apply</code>.
 
 <p>
 
 
-<h3>More documentation on Git  <a name="___sec22"></a></h3>
+<h3>More documentation on Git  <a name="___sec25"></a></h3>
+
 <p>
 
 <ul>
@@ -1572,7 +1724,9 @@ is similar to <tt>git stash apply</tt>.
  <li> <a href="http://git-scm.com/downloads/guis">Git/GitHub GUIs on Windows and Mac</a></li>
 </ul>
 
+
 <h2>Using Mercurial <a name="bitgit:hg"></a></h2>
+
 <p>
 
 Mac and Linux users will normally work with Mercurial through commands in
@@ -1582,7 +1736,8 @@ mostly self-explanatory, but a brief description appears below.
 
 <p>
 
-<h3>Basic use of TortoiseHG on a Windows machine  <a name="___sec24"></a></h3>
+<h3>Basic use of TortoiseHG on a Windows machine  <a name="___sec27"></a></h3>
+
 <p>
 When you have an account on Bitbucket and have downloaded and installed
 TortoiseHG, you are ready to work with Mercurial repositories the
@@ -1604,7 +1759,7 @@ following way.
    and choose <em>Commit</em>. Write a comment in the text field to the right
    to document the changes.</li>
  <li> To synchronize your local files with the repository (i.e., to do a
-   <tt>push</tt> command), right-click in the Explorer window, choose
+   <code>push</code> command), right-click in the Explorer window, choose
    <em>TortoiseHG - Synchronize</em>. You need to provide the password for the
    Bitbucket account.</li>
 </ul>
@@ -1617,10 +1772,12 @@ file one wants to commit and choose <em>Commit</em>.
 
 <p>
 
-<h3>Basic Mercurial commands   <a name="___sec25"></a></h3>
+<h3>Basic Mercurial commands   <a name="___sec28"></a></h3>
+
 <p>
 
-<h4>Cloning  <a name="___sec26"></a></h4>
+<h4>Cloning  <a name="___sec29"></a></h4>
+
 <p>
 You get started with your project on a new machine or another user
 can get started with the project by the command
@@ -1632,9 +1789,10 @@ can get started with the project by the command
 <p>
 
 
-<h4>The pull-change-push cycle  <a name="___sec27"></a></h4>
+<h4>The pull-change-push cycle  <a name="___sec30"></a></h4>
+
 <p>
-Your typical working style with the <tt>my-project</tt> project goes as follows.
+Your typical working style with the <code>my-project</code> project goes as follows.
 First you go to the desired folder where this project is stored on
 your local computer and make sure
 you have the latest versions of the files:
@@ -1646,8 +1804,8 @@ hg update
 </pre></div>
 <p>
 These commands download the latest versions of the files from
-your <tt>bitbucket.org</tt> repository and make them ready for changes on
-your computer. The <tt>pull</tt> command requires a functioning Internet
+your <code>bitbucket.org</code> repository and make them ready for changes on
+your computer. The <code>pull</code> command requires a functioning Internet
 connection.
 
 <p>
@@ -1661,13 +1819,13 @@ hg rename oldfilename ../somedir/newfilename
 </pre></div>
 <p>
 The removal of a file is physically performed when you do a
-<tt>hg commit</tt>. The file is never removed from the repository, only
+<code>hg commit</code>. The file is never removed from the repository, only
 hidden, so it is easy to get the file and its entire history
 back at a later stage.
 
 <p>
 After some changes, you have to commit and push the files to the
-repository at <tt>bitbucket.org</tt>:
+repository at <code>bitbucket.org</code>:
 <p>
 
 <!-- code typeset with pygments style "default" -->
@@ -1676,7 +1834,7 @@ hg push
 </pre></div>
 <p>
 Note that you cannot easily redo the description so be careful with
-the wording. You can run <tt>hg diff</tt> to get a listing of all
+the wording. You can run <code>hg diff</code> to get a listing of all
 the changes you have made since the last commit or pull command.
 
 <p>
@@ -1687,18 +1845,19 @@ The command
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg stat
 </pre></div>
 <p>
-shows the status of the individual files (<tt>M</tt> for modified, <tt>A</tt> for
-added, <tt>R</tt> for removed), and you should pay attention to files with a
+shows the status of the individual files (<code>M</code> for modified, <code>A</code> for
+added, <code>R</code> for removed), and you should pay attention to files with a
 question mark because these are not tracked in the repository. It is
-very easy to forget adding new files so <tt>hg stat</tt> is a useful command
+very easy to forget adding new files so <code>hg stat</code> is a useful command
 to ensure that all files you want to track have been added to the
 repository.
 
 <p>
 
-<h4>Viewing the history of files  <a name="___sec28"></a></h4>
+<h4>Viewing the history of files  <a name="___sec31"></a></h4>
+
 <p>
-The power of <tt>hg</tt> and your file repository <tt>bitbucket.org</tt> is that
+The power of <code>hg</code> and your file repository <code>bitbucket.org</code> is that
 you can work with the project files on several computers and others can
 also contribute to this project. The history of each file is recorded
 and anyone can roll back to previous versions, if needed. You can easily see
@@ -1712,7 +1871,7 @@ For example,
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg annotate -aun myfile
 </pre></div>
 <p>
-lists the various lines in the file <tt>myfile</tt> annotated with the revision
+lists the various lines in the file <code>myfile</code> annotated with the revision
 number of the latest change of the line and the name of the user who
 performed the change.
 
@@ -1724,15 +1883,15 @@ Another command,
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg log -p filename | less
 </pre></div>
 <p>
-lists the history of <tt>filename</tt> in more detail so that you can track
-the evolution of this file. Adding the <tt>--follow</tt> option will list the
-history also when <tt>filename</tt> had other names.  The history of all
+lists the history of <code>filename</code> in more detail so that you can track
+the evolution of this file. Adding the <code>--follow</code> option will list the
+history also when <code>filename</code> had other names.  The history of all
 files in a folder is listed by specifying the folder name(s).
 No name specification gives the history of the whole repo.
 
 <p>
-More compact output from <tt>hg log</tt>, without line differences, is triggered by
-the <tt>--stat</tt> option:
+More compact output from <code>hg log</code>, without line differences, is triggered by
+the <code>--stat</code> option:
 <p>
 
 <!-- code typeset with pygments style "default" -->
@@ -1740,22 +1899,23 @@ the <tt>--stat</tt> option:
 hg log --stat | less            <span style="color: #408080; font-style: italic"># changes in the whole repo</span>
 </pre></div>
 <p>
-The combination <tt>-p --stat</tt> equips the line differences with an overview
+The combination <code>-p --stat</code> equips the line differences with an overview
 of which files that were changed in each revision.
 
 <p>
 If you wonder what has recently happened to a file after updating your
-local repository, just run <tt>hg log -p --stat</tt>: the last changes appear
+local repository, just run <code>hg log -p --stat</code>: the last changes appear
 in the beginning of the output.
 
 <p>
 
 
-<h4>Retrieving old files  <a name="___sec29"></a></h4>
+<h4>Retrieving old files  <a name="___sec32"></a></h4>
+
 <p>
-To restore an old version of a file with name <tt>filename</tt>,
+To restore an old version of a file with name <code>filename</code>,
 check the file history with
-<tt>hg log -p filename</tt> and find the revision number corresponding to the
+<code>hg log -p filename</code> and find the revision number corresponding to the
 version of the file you want. Say this revision number is 152.
 The command
 <p>
@@ -1782,24 +1942,25 @@ hg update            <span style="color: #408080; font-style: italic"># go back 
 <p>
 
 
-<h4>Comments on two-level repositories  <a name="___sec30"></a></h4>
+<h4>Comments on two-level repositories  <a name="___sec33"></a></h4>
+
 <p>
 Mercurial has a two-level type of repository: there is global
-repository for all users of the <tt>my-project</tt> tree at <tt>bitbucket.org</tt>,
+repository for all users of the <code>my-project</code> tree at <code>bitbucket.org</code>,
 but each user also has a local repository (automatically made). To
 update files, one must first pull new files from the global repository
-(<tt>pull</tt>) and then update the local repository (<tt>update</tt>), before any
-file can be edited. The <tt>hg commit</tt> command saves files in the local
-repository. One may run many <tt>hg commit</tt> commands to make a sequence
+(<code>pull</code>) and then update the local repository (<code>update</code>), before any
+file can be edited. The <code>hg commit</code> command saves files in the local
+repository. One may run many <code>hg commit</code> commands to make a sequence
 of corresponding versions of files in the local repository. Finally,
 when the local versions are ready to be pushed to the global
-repository, one runs the <tt>hg push</tt> command.
+repository, one runs the <code>hg push</code> command.
 
 <p>
 Older version control systems, including Subversion and CVS, have only
 a global repository and no local ones.  The advantage of the two-level
 repository is that you can change your files locally and keep track of
-the changes (by doing <tt>hg commit</tt>) without affecting other users of
+the changes (by doing <code>hg commit</code>) without affecting other users of
 the files.  This feature allows you to commit changes to the global
 repository only when you feel comfortable with the state of the files.
 Nevertheless, if others work actively on the same files as you, it is
@@ -1810,29 +1971,30 @@ merging of files.
 <p>
 
 <h3>Merging files with Mercurial <a name="bitgit:hg:merge"></a></h3>
+
 <p>
 
 It might have happened that others and you have edited the same files
 at the same time. How should the edits then be combined?  Often the
-<tt>hg update</tt> command is clever enough to merge the changes made by
-different users automatically. If not, you have to run an explicit <tt>hg
-merge</tt> command.  This command tries to use some merge
+<code>hg update</code> command is clever enough to merge the changes made by
+different users automatically. If not, you have to run an explicit <code>hg
+merge</code> command.  This command tries to use some merge
 program on your computer system to automatically merge files. If this
-fails, <tt>hg merge</tt> invokes some graphical tool to help you resolve the
+fails, <code>hg merge</code> invokes some graphical tool to help you resolve the
 conflict between files.  Example on popular merge programs for this
-purpose are <tt>meld</tt>, <tt>xxdiff</tt>, <tt>kdiff3</tt>, and <tt>diffuse</tt>.  You can
-specify the merge program, say <tt>xxdiff</tt>, by <tt>hg merge --tool xxdiff</tt>.
+purpose are <code>meld</code>, <code>xxdiff</code>, <code>kdiff3</code>, and <code>diffuse</code>.  You can
+specify the merge program, say <code>xxdiff</code>, by <code>hg merge --tool xxdiff</code>.
 How you now proceed is dependent on the particular program. Usually,
 for each change you must choose either your new local version of the
 text, or your old local version of the text, or the version of the
 text pulled from the global repository.  After using the merge program
-successfully you must save the merged file and perform an <tt>hg commit</tt>
-command on it, and perhaps do an <tt>hg push</tt> to also update the global
+successfully you must save the merged file and perform an <code>hg commit</code>
+command on it, and perhaps do an <code>hg push</code> to also update the global
 repository with the merged file(s).
 
 <p>
 Suppose you do not manage to merge using the merge tool. Then you have
-to invoke the file, say <tt>myfile</tt> in an editor and do the merge
+to invoke the file, say <code>myfile</code> in an editor and do the merge
 manually. There will often be lines starting with '<<<<', '=====',
 and '>>>>` to mark conflicting texts (<em>merge markers</em>). After removing
 these lines and editing the text manually, you must register the conflict
@@ -1847,9 +2009,9 @@ hg commit -m merge myfile
 
 You can read more about merging files in the <a href="http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html">hgbook</a>.
 We shall now illustrate the merge problems through an example.
-Suppose we have a global repository <tt>tmp_repo</tt>, and two (cloned)
-directories <tt>tmp1</tt> and <tt>tmp2</tt>, corresponding to two users, each with
-their copy of the global repository.  There is only one file <tt>myfile</tt>
+Suppose we have a global repository <code>tmp_repo</code>, and two (cloned)
+directories <code>tmp1</code> and <code>tmp2</code>, corresponding to two users, each with
+their copy of the global repository.  There is only one file <code>myfile</code>
 in the repository. We then simulate the two users and perform edits in
 parallel. The shell script below simulates the two users and
 illustrates the importance of pulling before editing and the need of
@@ -1957,16 +2119,17 @@ diff myfile ../tmp_repo/myfile
 <p>
 
 Try to run this <a href="html/_static-bitgithg_merge.sh">file</a> named
-<tt>hg_merge.sh</tt> by <tt>sh -x hg_merge.sh</tt>.
-To resolve the resulting merge conflict you need to go to the <tt>tmp2</tt>
-folder, run <tt>hg merge --tool meld</tt> and use the <tt>meld</tt> tool to
+<code>hg_merge.sh</code> by <code>sh -x hg_merge.sh</code>.
+To resolve the resulting merge conflict you need to go to the <code>tmp2</code>
+folder, run <code>hg merge --tool meld</code> and use the <code>meld</code> tool to
 select which text snippets that should make up the final, merged
-version. Save and quit <tt>meld</tt> and perform <tt>hg commit -m merge</tt>.  You
-can now do <tt>hg push</tt> successfully to update the global repository.
+version. Save and quit <code>meld</code> and perform <code>hg commit -m merge</code>.  You
+can now do <code>hg push</code> successfully to update the global repository.
 
 <p>
 
-<h3>More documentation on Mercurial  <a name="___sec32"></a></h3>
+<h3>More documentation on Mercurial  <a name="___sec35"></a></h3>
+
 <p>
 
 <ul>
@@ -1977,7 +2140,9 @@ can now do <tt>hg push</tt> successfully to update the global repository.
  <li> <a href="http://hgbook.red-bean.com/">Mercurial: The Definitive Guide</a> (online or printed book)</li>
 </ul>
 
+
 <h2>Appendix: Working with multiple GitHub accounts <a name="appendix:github:multiple:accounts"></a></h2>
+
 <p>
 Working against different GitHub accounts is easy if each project you work
 with on each account adds you as a collaborator. The term "you" here means your
@@ -1986,7 +2151,7 @@ out a project
 using your primary GitHub username.
 
 <p>
-Occasionally you want to create a new GitHub account, say for a project <tt>XYZ</tt>.
+Occasionally you want to create a new GitHub account, say for a project <code>XYZ</code>.
 For such a non-personal account, do <em>not</em> provide an SSH key of any
 particular user. The reason is that this user will then get two
 GitHub identities, and switching between these identities will require
@@ -1995,12 +2160,12 @@ account and add
 collaborators to repos using each collaborators personal GitHub username.
 
 <p>
-If you really need to operate the <tt>XYZ</tt> account as a
+If you really need to operate the <code>XYZ</code> account as a
 personal account, you must provide an SSH key that is different from
 any other key at any other GitHub account (you will get an error message
 if you try to register an already registered SSH key, but it is possible to
 get around the error message by providing
-an <tt>id_rsa.pub</tt> key on one account and an <tt>id_dsa.pub</tt> on another - that
+an <code>id_rsa.pub</code> key on one account and an <code>id_dsa.pub</code> on another - that
 will cause trouble). A recipe for how to operate multiple GitHub accounts
 using multiple identities is provided <a href="http://net.tutsplus.com/tutorials/tools-and-tips/how-to-work-with-github-and-multiple-accounts/">here</a>:
 <p>
@@ -2028,7 +2193,9 @@ Typing
 lists all your SSH keys. The shown strings can be compared with the
 string in the SSH key field of any GitHub account.
 
-<!-- ------------------- end of main content ----------------->
+<!-- ------------------- end of main content --------------- -->
+
+
 </body>
 </html>
     

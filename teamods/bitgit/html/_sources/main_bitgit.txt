@@ -5,7 +5,7 @@ Quick Intro to Version Control Systems and Project Hosting Services
 ===================================================================
 
 :Author: Hans Petter Langtangen
-:Date: Feb 18, 2013
+:Date: Apr 2, 2013
 
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -24,19 +24,24 @@ cloud" and updated through communication with that site. I strongly
 recommend you to use such sites for all serious programming and
 scientific writing work -- and all other important files.
 
-The simplest services for hosting project files is Dropbox. Simply
-go to `<http://dropbox.com>`_ and watch the video. It is very easy to get
-started with Dropbox, and it allows you to share files among
-laptops and mobile units.
+The simplest services for hosting project files are `Dropbox <http://dropbox.com>`_ and `Google Drive <http://drive.google.com>`_.
+It is very easy to get started with these systems, and they allow you
+to share files among laptops and mobile units with as many users as
+you want. The systems offer a kind of version control in that the
+files are stored frequently (several times per minute), and you can go
+back to previous versions for the last 30 days. However, it is
+challenging  to find the right version from the past when there are
+so many of them.
 
-When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.
+More seriously, when several people may edit files simultaneously, it
+can be difficult detect who did what when, roll back to previous
+versions, and to manually merge the edits when these are
+incompatible. Then one needs more sophisticated tools than Dropbox or
+Google Drive: project hosting services with true version control
+systems.  The following text aims at providing you with the minimum
+information to started with such systems. Numerous other tutorials
+contain more comprehensive material and in-depth explanations of the
+concepts and tools.
 
 The idea with project hosting services is that you have the files
 associated with a project in the cloud. Many people may share these
@@ -65,7 +70,7 @@ started with Bitbucket, GitHub, and Googlecode. Launchpad works very
 similarly to the latter three. All the project hosting services have
 excellent introductions available at their web sites, but the recipes
 below are much shorter and aim at getting you started as quickly as
-possible by concentrating on the most important need-to-know commands.
+possible by concentrating on the most important need-to-know steps.
 The Git tutorials we refer to later in this document contain more
 detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
@@ -85,12 +90,28 @@ hosting services. However, the merge functionality clearly works best
 for pure text files and less well for binary files, such as PDF files,
 MS Word or Excel documents, and OpenOffice documents.
 
-.. Next we describe how to get started with Bitbucket and GitHub.  If you
+It might seem challenging to pick the project hosting service
+and the version control system that are right for you. Below
+is some very personal advice.
 
-.. are new to project hosting sites, it is recommended to read about
+ * I would recommend Git as the default choice of version control system.
 
-.. Bitbucket first, since the description of GitHub is briefer.
+ * If you need private repos and you are not a student, choose
+   Bitbucket unless you are willing to pay for private repos at GitHub.
 
+ * If you want to make links to your programs in documentation,
+   stay away from Bitbucket as this site embeds the version of the
+   file into its URL (but you can get around this problem with a trick
+   described in the section :ref:`bitgit:bitbucket:URLs`).
+
+ * If you want to easily drop HTML files for documentation around in
+   your repo, Googlecode will display them as web pages right away,
+   while the procedure on GitHub is technically more complicated
+   (Bitbucket does not yet support web pages as part of a project).
+
+ * If a few collaborate on a project and everyone wants to be notified
+   in email about changes in project files, Bitbucket and Googlecode have
+   better support for this feature than GitHub.
 
 For the examples below, assume that you have some folder tree
 ``my-project`` with files that you want to host at Bitbucket, GitHub, or
@@ -124,14 +145,24 @@ choice of project hosting site comes first, while others prefer a
 particular version control system and let this preference govern the
 choice of the project hosting site.
 
-It is fair to say that Git has evolved as the most versatile version
-control system and is at the time of this writing (2013) the
-recommended choice.  The combination of GitHub and Git seems to have
-the strongest momentum and popularity in the software development
-community.  Bitbucket offers private repos for free, which is a
-desired feature for many. Googlecode has the advantage that any HTML
-file in the repo can be used to make a web page, thereby greatly
-simplifying the building of web pages for the project.
+.. Now covered above:
+
+.. It is fair to say that Git has evolved as the most versatile version
+
+.. control system and is at the time of this writing (2013) the
+
+.. recommended choice.  The combination of GitHub and Git seems to have
+
+.. the strongest momentum and popularity in the software development
+
+.. community.  Bitbucket offers private repos for free, which is a
+
+.. desired feature for many. Googlecode has the advantage that any HTML
+
+.. file in the repo can be used to make a web page, thereby greatly
+
+.. simplifying the building of web pages for the project.
+
 
 
 
@@ -145,15 +176,22 @@ Installing Git
 
 The installation of Git on various systems is described
 on the `Git website <http://git-scm.com/>`_ under the *Download* section.
-On Ubuntu the relevant commands are
+Git involves compiled code so it is most convenient to download a
+precompiled binary version of the software on Windows, Mac and other
+Linux computers.
+On Ubuntu or any Debian-based system the relevant installation command is
 
 .. code-block:: console
 
         sudo apt-get install git gitk git-doc
 
-Git involves compiled code so it is most convenient to download a
-precompiled binary version of the software on Windows, Mac and other
-Linux computers.
+
+This tutorial explains Git interaction through command-line applications
+in a terminal window. There are numerous `graphical user interfaces to
+Git <https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools#Graphical_Interfaces>`_. Three examples are
+`git-cola <http://git-cola.github.com/downloads.html>`_,
+`TortoiseGit <https://code.google.com/p/tortoisegit/>`_, and
+`SourceTree <http://sourcetreeapp.com/>`_.
 
 Make a file ``.gitconfig`` in your home folder with information on
 your full name, email address, your favorite emacs editor, and
@@ -222,29 +260,26 @@ Installing Mercurial
 
 The `Mercurial website <http://mercurial.selenic.com/>`_ has information
 on downloading Mercurial on different platforms.
-On Ubuntu and Debian-based Linux systems, you just perform
+Mercurial is pure Python code so it is trivial on any system with Python
+installed to download the Mercurial source code and perform
+the standard ``sudo python setup.py install`` command.
+
+On Ubuntu and Debian-based Linux systems, you can just perform
 
 .. code-block:: console
 
         sudo apt-get install mercurial
 
-You can alternatively click in the Ubuntu Software Center application
+Alternatively, launch the Ubuntu Software Center application
 and choose the Mercurial package in the graphical interface.
 
-Mercurial is pure Python code so it is trivial on any system with Python
-installed to download the Mercurial source code and perform
-the standard ``sudo python setup.py install`` command.
-
 This tutorial emphasizes the command-line interface to Mercurial, but there
-is also a graphical interface called TortoiseHG, which can be installed
-by
-
-.. code-block:: console
-
-        sudo apt-get install tortoisehg
-
-on Ubuntu. TortoiseHG is the natural application to run Mercurial on a
-Windows machine.
+is also a graphical interface called `TortoiseHG <http://tortoisehg.bitbucket.org/>`_, which for many Windows and Mac users will be the natural application to
+interact with Mercurial. TortoiseHG works on Linux too, and is readily
+available by ``sudo apt-get install tortoisehg`` on Ubuntu.
+A newer graphical application for Git and Mercurial is
+`SourceTree <http://sourcetreeapp.com/>`_, which is available on Windows
+and Mac platforms.
 
 We recommend that you create two files in your home folder: ``.hgrc`` for
 specifying the behavior of ``hg`` (Mercurial) and ``.hgignore`` for
@@ -332,8 +367,8 @@ help pages on Bitbucket. Once the keys are generated, you can continue
 using them on any current and future computer.
 
 
-Create a new project  (1)
--------------------------
+Creating a new project  (1)
+---------------------------
 
 Click at *Repositories* and at *Create repository*.
 You can now
@@ -415,10 +450,25 @@ Further work with the files must always follow the pull, edit, commit, and
 push steps explained in the section :ref:`bitgit:hg` for Mercurial and
 the section :ref:`bitgit:git` for Git.
 
+Collaborating  (1)
+~~~~~~~~~~~~~~~~~~
+
+There is a button *Send invitation* on the project home page where you
+can invite other Bitbucket users to have push (write) access to your
+repo. Many prefer to be notified in email when changes are push to
+the repo: click the settings wheel to the right, choose *Services*,
+then *Email*, and fill in the email addresses that are to receive
+notifications on updates. Under *Access management* you can fill in
+the Bitbucket names of users who are have read (pull)
+or write (push) access to the repo.
+
+.. _bitgit:bitbucket:web:
+
 User web pages  (1)
 -------------------
 
-Bitbucket can host web pages associated with a Bitbucket account. Say
+Bitbucket can host web pages associated with a Bitbucket account
+(but not yet have web pages as part of a project). Say
 your account/user name is ``username``.  Make a new repository on
 Bitbucket called ``username.bitbucket.org``.  Clone it, fill it with a
 file, and push back, e.g.,
@@ -440,6 +490,37 @@ you can host web pages for a series of projects in this repo.
 Bitbucket does not yet offer ordinary repos to host and display
 web pages.
 
+.. _bitgit:bitbucket:URLs:
+
+Linking to Bitbucket files
+--------------------------
+
+Unfortunately, the default URL shown in your browser to a file in
+a Bitbucket repo contains information about the version of the file.
+For example, a file ``v1.c`` under Git might appear with the URL
+
+
+.. code-block:: text
+
+
+        https://bitbucket.org/user/proj/src/5fb228107044/dir/v1.c?at=master
+
+The string ``5fb228107044``, called commit hash,
+is connected to the version of this file
+and will change when the file is updated. Such unstable URLs are
+useless when you to link to
+the file in documents. To make a stable link to the
+latest version of a file (in a public repo),
+replace the commit hash by ``master`` and remove
+the final ``?at=master``:
+
+
+.. code-block:: text
+
+
+        https://bitbucket.org/user/proj/src/master/dir/v1.c
+
+If the file is under Mercurial, replace the commit hash by ``tip``.
 
 .. _bitgit:googlecode:
 
@@ -454,11 +535,11 @@ To use Googlecode you need a general account on Google, which allows
 you to use Gmail, Google Docs, and other products.
 
 
-Create a new project  (2)
--------------------------
+Creating a new project  (2)
+---------------------------
 
 Go to `<http://code.google.com/hosting>`_ and click on
-*Create a new project*. Fill out *all* the fields. For now
+*Creating a new project*. Fill out *all* the fields. For now
 the project name is ``my-project``.
 You have
 to choose between Git, Mercurial, or Subversion as version control
@@ -616,8 +697,8 @@ done (see Appendix :ref:`appendix:github:multiple:accounts`). It is easier
 to log in and add collaborators using their personal GitHub usernames.
 
 
-Create a new project  (3)
--------------------------
+Creating a new project  (3)
+---------------------------
 
 Click on *New repository* on the main page and fill out a project
 name, here *My Project*, click the check button *Initialize this
@@ -653,6 +734,10 @@ run
         git commit -am 'First set of files.'
         git push -u origin master
 
+The daily file operations are explained in Section {bitgit:git}.
+
+Collaborating  (2)
+~~~~~~~~~~~~~~~~~~
 
 To give others permissions to push their edits of files to the
 repository, you click on the *Settings* tab,
@@ -673,9 +758,6 @@ and choose *Notification Center*.  There you see two sections,
 the *watch* button), respectively.  Clicking the *Email* button turns
 on email notifications to those participating and/or watching.
 
-The daily file operations are explained in Section {bitgit:git}.
-There you also find information on how to create wiki pages and
-web pages associated with the project.
 
 
 Wiki pages  (2)
@@ -937,7 +1019,7 @@ Go to ``http://username.github.com`` and see how the ``index.html`` is
 rendered. You can now add various contents as in any ordinary
 Git repository.
 If you want to use Sphinx generated HTML pages, recall to add an empty file
-``.nojekyll``. Different projects can be hosted in different subfolders.
+``.nojekyll``.
 
 
 
@@ -1129,9 +1211,9 @@ If ``myfile`` changed name from ``yourfile`` at some point and you want
 ``yourfile`` back, run ``git log --follow myfile`` to find the commit
 when ``yourfile`` existed, and do a ``git checkout <commit hash> yourfile``.
 
-The Git equivalent to ``hg cat`` for just viewing old versions of files is
-``git show``, but the command requires the full path from the root
-git folder:
+Often you just need to *view* the old file, not replace the current
+one by the old one, and then ``git show`` is handy. Unfortunately,
+it requires the full path from the root git folder:
 
 .. code-block:: console
 

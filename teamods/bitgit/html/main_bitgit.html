@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Quick Intro to Version Control Systems and Project Hosting Services &mdash; Quick Intro to Version Control Systems and Project Hosting Services 1.0 documentation</title>
+    <title>Quick Intro to Version Control Systems and Project Hosting Services</title>
     
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="Quick Intro to Version Control Systems and Project Hosting Services 1.0 documentation" href="index.html" />
+    <link rel="top" title="Quick Intro to Version Control Systems and Project Hosting Services" href="index.html" />
     <link rel="prev" title="Quick Intro to Version Control Systems and Project Hosting Services" href="index.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -45,7 +45,7 @@
         <li class="right" >
           <a href="index.html" title="Quick Intro to Version Control Systems and Project Hosting Services"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Quick Intro to Version Control Systems and Project Hosting Services 1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Quick Intro to Version Control Systems and Project Hosting Services</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -62,7 +62,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 18, 2013</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 2, 2013</td>
 </tr>
 </tbody>
 </table>
@@ -81,18 +81,23 @@ workers are today most conveniently stored at some web site &#8220;in the
 cloud&#8221; and updated through communication with that site. I strongly
 recommend you to use such sites for all serious programming and
 scientific writing work &#8211; and all other important files.</p>
-<p>The simplest services for hosting project files is Dropbox. Simply
-go to <a class="reference external" href="http://dropbox.com">http://dropbox.com</a> and watch the video. It is very easy to get
-started with Dropbox, and it allows you to share files among
-laptops and mobile units.</p>
-<p>When several people may edit files simultaneously, it can be difficult
-detect who did what when, roll back to previous versions, and to
-manually merge the edits when these are incompatible. Then one needs
-more sophisticated tools than Dropbox: project hosting services with
-true version control systems.  The following text aims at providing
-you with the minimum information to started with such
-systems. Numerous other tutorials contain more comprehensive material
-and in-depth explanations of the concepts and tools.</p>
+<p>The simplest services for hosting project files are <a class="reference external" href="http://dropbox.com">Dropbox</a> and <a class="reference external" href="http://drive.google.com">Google Drive</a>.
+It is very easy to get started with these systems, and they allow you
+to share files among laptops and mobile units with as many users as
+you want. The systems offer a kind of version control in that the
+files are stored frequently (several times per minute), and you can go
+back to previous versions for the last 30 days. However, it is
+challenging  to find the right version from the past when there are
+so many of them.</p>
+<p>More seriously, when several people may edit files simultaneously, it
+can be difficult detect who did what when, roll back to previous
+versions, and to manually merge the edits when these are
+incompatible. Then one needs more sophisticated tools than Dropbox or
+Google Drive: project hosting services with true version control
+systems.  The following text aims at providing you with the minimum
+information to started with such systems. Numerous other tutorials
+contain more comprehensive material and in-depth explanations of the
+concepts and tools.</p>
 <p>The idea with project hosting services is that you have the files
 associated with a project in the cloud. Many people may share these
 files.  Every time you want to work on the project you explicitly
@@ -117,7 +122,7 @@ started with Bitbucket, GitHub, and Googlecode. Launchpad works very
 similarly to the latter three. All the project hosting services have
 excellent introductions available at their web sites, but the recipes
 below are much shorter and aim at getting you started as quickly as
-possible by concentrating on the most important need-to-know commands.
+possible by concentrating on the most important need-to-know steps.
 The Git tutorials we refer to later in this document contain more
 detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
@@ -135,6 +140,27 @@ computers. This is perhaps one of the most useful features of project
 hosting services. However, the merge functionality clearly works best
 for pure text files and less well for binary files, such as PDF files,
 MS Word or Excel documents, and OpenOffice documents.</p>
+<p>It might seem challenging to pick the project hosting service
+and the version control system that are right for you. Below
+is some very personal advice.</p>
+<blockquote>
+<div><ul class="simple">
+<li>I would recommend Git as the default choice of version control system.</li>
+<li>If you need private repos and you are not a student, choose
+Bitbucket unless you are willing to pay for private repos at GitHub.</li>
+<li>If you want to make links to your programs in documentation,
+stay away from Bitbucket as this site embeds the version of the
+file into its URL (but you can get around this problem with a trick
+described in the section <a class="reference internal" href="#bitgit-bitbucket-urls"><em>Linking to Bitbucket files</em></a>).</li>
+<li>If you want to easily drop HTML files for documentation around in
+your repo, Googlecode will display them as web pages right away,
+while the procedure on GitHub is technically more complicated
+(Bitbucket does not yet support web pages as part of a project).</li>
+<li>If a few collaborate on a project and everyone wants to be notified
+in email about changes in project files, Bitbucket and Googlecode have
+better support for this feature than GitHub.</li>
+</ul>
+</div></blockquote>
 <p>For the examples below, assume that you have some folder tree
 <tt class="docutils literal"><span class="pre">my-project</span></tt> with files that you want to host at Bitbucket, GitHub, or
 Googlecode and bring under version control. The official name of the
@@ -163,25 +189,23 @@ matter of personal preference and experience. For some people the
 choice of project hosting site comes first, while others prefer a
 particular version control system and let this preference govern the
 choice of the project hosting site.</p>
-<p>It is fair to say that Git has evolved as the most versatile version
-control system and is at the time of this writing (2013) the
-recommended choice.  The combination of GitHub and Git seems to have
-the strongest momentum and popularity in the software development
-community.  Bitbucket offers private repos for free, which is a
-desired feature for many. Googlecode has the advantage that any HTML
-file in the repo can be used to make a web page, thereby greatly
-simplifying the building of web pages for the project.</p>
 <div class="section" id="installing-git">
 <h2>Installing Git<a class="headerlink" href="#installing-git" title="Permalink to this headline">¶</a></h2>
 <p id="index-0">The installation of Git on various systems is described
 on the <a class="reference external" href="http://git-scm.com/">Git website</a> under the <em>Download</em> section.
-On Ubuntu the relevant commands are</p>
+Git involves compiled code so it is most convenient to download a
+precompiled binary version of the software on Windows, Mac and other
+Linux computers.
+On Ubuntu or any Debian-based system the relevant installation command is</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install git gitk git-doc</span>
 </pre></div>
 </div>
-<p>Git involves compiled code so it is most convenient to download a
-precompiled binary version of the software on Windows, Mac and other
-Linux computers.</p>
+<p>This tutorial explains Git interaction through command-line applications
+in a terminal window. There are numerous <a class="reference external" href="https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools#Graphical_Interfaces">graphical user interfaces to
+Git</a>. Three examples are
+<a class="reference external" href="http://git-cola.github.com/downloads.html">git-cola</a>,
+<a class="reference external" href="https://code.google.com/p/tortoisegit/">TortoiseGit</a>, and
+<a class="reference external" href="http://sourcetreeapp.com/">SourceTree</a>.</p>
 <p>Make a file <tt class="docutils literal"><span class="pre">.gitconfig</span></tt> in your home folder with information on
 your full name, email address, your favorite emacs editor, and
 the name of an &#8220;excludes file&#8221; which defines the file types that Git
@@ -236,23 +260,22 @@ some program.</p>
 <h2>Installing Mercurial<a class="headerlink" href="#installing-mercurial" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="index-1"></span><p id="index-2">The <a class="reference external" href="http://mercurial.selenic.com/">Mercurial website</a> has information
 on downloading Mercurial on different platforms.
-On Ubuntu and Debian-based Linux systems, you just perform</p>
+Mercurial is pure Python code so it is trivial on any system with Python
+installed to download the Mercurial source code and perform
+the standard <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> command.</p>
+<p>On Ubuntu and Debian-based Linux systems, you can just perform</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install mercurial</span>
 </pre></div>
 </div>
-<p>You can alternatively click in the Ubuntu Software Center application
+<p>Alternatively, launch the Ubuntu Software Center application
 and choose the Mercurial package in the graphical interface.</p>
-<p>Mercurial is pure Python code so it is trivial on any system with Python
-installed to download the Mercurial source code and perform
-the standard <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> command.</p>
 <p>This tutorial emphasizes the command-line interface to Mercurial, but there
-is also a graphical interface called TortoiseHG, which can be installed
-by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install tortoisehg</span>
-</pre></div>
-</div>
-<p>on Ubuntu. TortoiseHG is the natural application to run Mercurial on a
-Windows machine.</p>
+is also a graphical interface called <a class="reference external" href="http://tortoisehg.bitbucket.org/">TortoiseHG</a>, which for many Windows and Mac users will be the natural application to
+interact with Mercurial. TortoiseHG works on Linux too, and is readily
+available by <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">tortoisehg</span></tt> on Ubuntu.
+A newer graphical application for Git and Mercurial is
+<a class="reference external" href="http://sourcetreeapp.com/">SourceTree</a>, which is available on Windows
+and Mac platforms.</p>
 <p>We recommend that you create two files in your home folder: <tt class="docutils literal"><span class="pre">.hgrc</span></tt> for
 specifying the behavior of <tt class="docutils literal"><span class="pre">hg</span></tt> (Mercurial) and <tt class="docutils literal"><span class="pre">.hgignore</span></tt> for
 listing the type of files you in general do not want to have under version
@@ -306,7 +329,7 @@ information on previous versions.</p>
 </div>
 </div>
 <div class="section" id="bitgit-bitbucket">
-<span id="id1"></span><h1>Bitbucket<a class="headerlink" href="#bitgit-bitbucket" title="Permalink to this headline">¶</a></h1>
+<span id="id2"></span><h1>Bitbucket<a class="headerlink" href="#bitgit-bitbucket" title="Permalink to this headline">¶</a></h1>
 <p id="index-3">To start using Bitbucket, go to <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt> and create an account.
 The communication channel with Bitbucket repositories is either
 through SSH or HTTPS.  To use SSH, you must upload your SSH key,
@@ -324,8 +347,8 @@ passphrase - just write something). On Windows one applies the PuTTY
 and the TortoiseHG programs to generate and register keys, see the
 help pages on Bitbucket. Once the keys are generated, you can continue
 using them on any current and future computer.</p>
-<div class="section" id="create-a-new-project-1">
-<h2>Create a new project  (1)<a class="headerlink" href="#create-a-new-project-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="creating-a-new-project-1">
+<h2>Creating a new project  (1)<a class="headerlink" href="#creating-a-new-project-1" title="Permalink to this headline">¶</a></h2>
 <p>Click at <em>Repositories</em> and at <em>Create repository</em>.
 You can now</p>
 <blockquote>
@@ -387,10 +410,22 @@ it sends file information to the <tt class="docutils literal"><span class="pre">
 <p>Further work with the files must always follow the pull, edit, commit, and
 push steps explained in the section <a class="reference internal" href="#bitgit-hg"><em>Using Mercurial</em></a> for Mercurial and
 the section <a class="reference internal" href="#bitgit-git"><em>Using Git</em></a> for Git.</p>
+<div class="section" id="collaborating-1">
+<h3>Collaborating  (1)<a class="headerlink" href="#collaborating-1" title="Permalink to this headline">¶</a></h3>
+<p>There is a button <em>Send invitation</em> on the project home page where you
+can invite other Bitbucket users to have push (write) access to your
+repo. Many prefer to be notified in email when changes are push to
+the repo: click the settings wheel to the right, choose <em>Services</em>,
+then <em>Email</em>, and fill in the email addresses that are to receive
+notifications on updates. Under <em>Access management</em> you can fill in
+the Bitbucket names of users who are have read (pull)
+or write (push) access to the repo.</p>
+</div>
 </div>
 <div class="section" id="user-web-pages-1">
-<h2>User web pages  (1)<a class="headerlink" href="#user-web-pages-1" title="Permalink to this headline">¶</a></h2>
-<p>Bitbucket can host web pages associated with a Bitbucket account. Say
+<span id="bitgit-bitbucket-web"></span><h2>User web pages  (1)<a class="headerlink" href="#user-web-pages-1" title="Permalink to this headline">¶</a></h2>
+<p>Bitbucket can host web pages associated with a Bitbucket account
+(but not yet have web pages as part of a project). Say
 your account/user name is <tt class="docutils literal"><span class="pre">username</span></tt>.  Make a new repository on
 Bitbucket called <tt class="docutils literal"><span class="pre">username.bitbucket.org</span></tt>.  Clone it, fill it with a
 file, and push back, e.g.,</p>
@@ -408,15 +443,36 @@ you can host web pages for a series of projects in this repo.</p>
 <p>Bitbucket does not yet offer ordinary repos to host and display
 web pages.</p>
 </div>
+<div class="section" id="linking-to-bitbucket-files">
+<span id="bitgit-bitbucket-urls"></span><h2>Linking to Bitbucket files<a class="headerlink" href="#linking-to-bitbucket-files" title="Permalink to this headline">¶</a></h2>
+<p>Unfortunately, the default URL shown in your browser to a file in
+a Bitbucket repo contains information about the version of the file.
+For example, a file <tt class="docutils literal"><span class="pre">v1.c</span></tt> under Git might appear with the URL</p>
+<div class="highlight-text"><div class="highlight"><pre>https://bitbucket.org/user/proj/src/5fb228107044/dir/v1.c?at=master
+</pre></div>
+</div>
+<p>The string <tt class="docutils literal"><span class="pre">5fb228107044</span></tt>, called commit hash,
+is connected to the version of this file
+and will change when the file is updated. Such unstable URLs are
+useless when you to link to
+the file in documents. To make a stable link to the
+latest version of a file (in a public repo),
+replace the commit hash by <tt class="docutils literal"><span class="pre">master</span></tt> and remove
+the final <tt class="docutils literal"><span class="pre">?at=master</span></tt>:</p>
+<div class="highlight-text"><div class="highlight"><pre>https://bitbucket.org/user/proj/src/master/dir/v1.c
+</pre></div>
+</div>
+<p>If the file is under Mercurial, replace the commit hash by <tt class="docutils literal"><span class="pre">tip</span></tt>.</p>
+</div>
 </div>
 <div class="section" id="bitgit-googlecode">
-<span id="id2"></span><h1>Googlecode<a class="headerlink" href="#bitgit-googlecode" title="Permalink to this headline">¶</a></h1>
+<span id="id3"></span><h1>Googlecode<a class="headerlink" href="#bitgit-googlecode" title="Permalink to this headline">¶</a></h1>
 <p id="index-4">To use Googlecode you need a general account on Google, which allows
 you to use Gmail, Google Docs, and other products.</p>
-<div class="section" id="create-a-new-project-2">
-<h2>Create a new project  (2)<a class="headerlink" href="#create-a-new-project-2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="creating-a-new-project-2">
+<h2>Creating a new project  (2)<a class="headerlink" href="#creating-a-new-project-2" title="Permalink to this headline">¶</a></h2>
 <p>Go to <a class="reference external" href="http://code.google.com/hosting">http://code.google.com/hosting</a> and click on
-<em>Create a new project</em>. Fill out <em>all</em> the fields. For now
+<em>Creating a new project</em>. Fill out <em>all</em> the fields. For now
 the project name is <tt class="docutils literal"><span class="pre">my-project</span></tt>.
 You have
 to choose between Git, Mercurial, or Subversion as version control
@@ -517,7 +573,7 @@ for many formats) and that the wiki pages are frequently updated.</p>
 </div>
 </div>
 <div class="section" id="bitgit-github">
-<span id="id3"></span><h1>GitHub<a class="headerlink" href="#bitgit-github" title="Permalink to this headline">¶</a></h1>
+<span id="id4"></span><h1>GitHub<a class="headerlink" href="#bitgit-github" title="Permalink to this headline">¶</a></h1>
 <p id="index-5">Go to <tt class="docutils literal"><span class="pre">github.com</span></tt> and create an account. Then go to your account
 settings (icon in the upper left corner of the page),
 choose <em>SSH Keys</em>, and provide your SSH key
@@ -535,8 +591,8 @@ box (or see the introduction to Bitbucket above).</p>
 I do not recommend to provide an SSH key although it can be
 done (see Appendix <a class="reference internal" href="#appendix-github-multiple-accounts"><em>Appendix: Working with multiple GitHub accounts</em></a>). It is easier
 to log in and add collaborators using their personal GitHub usernames.</p>
-<div class="section" id="create-a-new-project-3">
-<h2>Create a new project  (3)<a class="headerlink" href="#create-a-new-project-3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="creating-a-new-project-3">
+<h2>Creating a new project  (3)<a class="headerlink" href="#creating-a-new-project-3" title="Permalink to this headline">¶</a></h2>
 <p>Click on <em>New repository</em> on the main page and fill out a project
 name, here <em>My Project</em>, click the check button <em>Initialize this
 repository with a README</em>, and click on <em>Create repository</em>.
@@ -564,6 +620,9 @@ run</p>
 <span class="go">git push -u origin master</span>
 </pre></div>
 </div>
+<p>The daily file operations are explained in Section {bitgit:git}.</p>
+<div class="section" id="collaborating-2">
+<h3>Collaborating  (2)<a class="headerlink" href="#collaborating-2" title="Permalink to this headline">¶</a></h3>
 <p>To give others permissions to push their edits of files to the
 repository, you click on the <em>Settings</em> tab,
 then click on <em>Collaborators</em> on the left, and fill in the name
@@ -581,9 +640,7 @@ and choose <em>Notification Center</em>.  There you see two sections,
 (granted write access) and those watching the project (having clicked
 the <em>watch</em> button), respectively.  Clicking the <em>Email</em> button turns
 on email notifications to those participating and/or watching.</p>
-<p>The daily file operations are explained in Section {bitgit:git}.
-There you also find information on how to create wiki pages and
-web pages associated with the project.</p>
+</div>
 </div>
 <div class="section" id="wiki-pages-2">
 <h2>Wiki pages  (2)<a class="headerlink" href="#wiki-pages-2" title="Permalink to this headline">¶</a></h2>
@@ -763,7 +820,7 @@ Then follow the instructions that come up:</p>
 rendered. You can now add various contents as in any ordinary
 Git repository.
 If you want to use Sphinx generated HTML pages, recall to add an empty file
-<tt class="docutils literal"><span class="pre">.nojekyll</span></tt>. Different projects can be hosted in different subfolders.</p>
+<tt class="docutils literal"><span class="pre">.nojekyll</span></tt>.</p>
 </div>
 </div>
 <div class="section" id="using-git">
@@ -901,9 +958,9 @@ branch.</p>
 <p>If <tt class="docutils literal"><span class="pre">myfile</span></tt> changed name from <tt class="docutils literal"><span class="pre">yourfile</span></tt> at some point and you want
 <tt class="docutils literal"><span class="pre">yourfile</span></tt> back, run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">--follow</span> <span class="pre">myfile</span></tt> to find the commit
 when <tt class="docutils literal"><span class="pre">yourfile</span></tt> existed, and do a <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;commit</span> <span class="pre">hash&gt;</span> <span class="pre">yourfile</span></tt>.</p>
-<p>The Git equivalent to <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">cat</span></tt> for just viewing old versions of files is
-<tt class="docutils literal"><span class="pre">git</span> <span class="pre">show</span></tt>, but the command requires the full path from the root
-git folder:</p>
+<p>Often you just need to <em>view</em> the old file, not replace the current
+one by the old one, and then <tt class="docutils literal"><span class="pre">git</span> <span class="pre">show</span></tt> is handy. Unfortunately,
+it requires the full path from the root git folder:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git show c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/myfile</span>
 </pre></div>
 </div>
@@ -1542,17 +1599,24 @@ string in the SSH key field of any GitHub account.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#bitgit-bitbucket">Bitbucket</a><ul>
-<li><a class="reference internal" href="#create-a-new-project-1">Create a new project  (1)</a></li>
+<li><a class="reference internal" href="#creating-a-new-project-1">Creating a new project  (1)</a><ul>
+<li><a class="reference internal" href="#collaborating-1">Collaborating  (1)</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#user-web-pages-1">User web pages  (1)</a></li>
+<li><a class="reference internal" href="#linking-to-bitbucket-files">Linking to Bitbucket files</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#bitgit-googlecode">Googlecode</a><ul>
-<li><a class="reference internal" href="#create-a-new-project-2">Create a new project  (2)</a></li>
+<li><a class="reference internal" href="#creating-a-new-project-2">Creating a new project  (2)</a></li>
 <li><a class="reference internal" href="#wiki-pages-1">Wiki pages  (1)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#bitgit-github">GitHub</a><ul>
-<li><a class="reference internal" href="#create-a-new-project-3">Create a new project  (3)</a></li>
+<li><a class="reference internal" href="#creating-a-new-project-3">Creating a new project  (3)</a><ul>
+<li><a class="reference internal" href="#collaborating-2">Collaborating  (2)</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#wiki-pages-2">Wiki pages  (2)</a></li>
 <li><a class="reference internal" href="#project-web-pages">Project web pages</a></li>
 <li><a class="reference internal" href="#user-web-pages-2">User web pages  (2)</a></li>
@@ -1617,7 +1681,7 @@ string in the SSH key field of any GitHub account.</p>
         <li class="right" >
           <a href="index.html" title="Quick Intro to Version Control Systems and Project Hosting Services"
              >previous</a> |</li>
-        <li><a href="index.html">Quick Intro to Version Control Systems and Project Hosting Services 1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Quick Intro to Version Control Systems and Project Hosting Services</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
