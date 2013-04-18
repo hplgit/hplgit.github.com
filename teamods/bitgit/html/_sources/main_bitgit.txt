@@ -5,7 +5,7 @@ Quick Intro to Version Control Systems and Project Hosting Services
 ===================================================================
 
 :Author: Hans Petter Langtangen
-:Date: Apr 2, 2013
+:Date: Apr 18, 2013
 
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -108,6 +108,8 @@ is some very personal advice.
    your repo, Googlecode will display them as web pages right away,
    while the procedure on GitHub is technically more complicated
    (Bitbucket does not yet support web pages as part of a project).
+   Unfortunately, Googlecode does not allow MathJax for rendering
+   LaTeX mathematics in HTML files.
 
  * If a few collaborate on a project and everyone wants to be notified
    in email about changes in project files, Bitbucket and Googlecode have
@@ -520,6 +522,8 @@ the final ``?at=master``:
 
         https://bitbucket.org/user/proj/src/master/dir/v1.c
 
+Other endings of the URL with commit hash, e.g., ``?at=default``,
+requires the hash to be replaced by ``default``.
 If the file is under Mercurial, replace the commit hash by ``tip``.
 
 .. _bitgit:googlecode:
@@ -819,6 +823,12 @@ in web pages to insert images from your repo, provided the image files
 are in the *raw* format (click the *Raw* button when viewing a file at
 ``github.com`` and use the corresponding URL in the ``img`` tag).
 
+
+.. index:: git checkout
+
+.. index:: gh-pages on GitHub
+
+
 Quite often you want to create a set of HTML pages to document your
 project. This can be done as part of your repo, but you must apply
 a special technique consisting in creating a separate *gh-pages*
@@ -850,7 +860,7 @@ The ``index.html`` page is invoked by the web address
 .. code-block:: text
 
 
-        http://username.github.com/My-Project/index.html
+        http://username.github.io/My-Project/index.html
 
 where ``username`` is the GitHub
 user name and ``My-Project`` is the project name.
@@ -867,6 +877,16 @@ To see the branches, type ``git branch`` and the one you are in will
 be marked with a star in the output. Switching to the master branch
 is done by ``git checkout master``. Similarly, ``git checkout gh-pages``
 switches to the gh-pages branch.
+
+
+.. index:: git merge
+
+.. index:: git pull
+
+.. index:: git commit
+
+.. index:: git push
+
 
 When Git branches diverge you can merge them by
 
@@ -926,29 +946,20 @@ make sure to update the gh-pages branch by
 
 Personally, I like to move the generated ``index.html`` file and all
 associated scripts, stylesheets, and images from the root folder to
-some more isolated place, say ``doc/web/git``:
+some more isolated place, say ``doc/web``:
 
 
 .. code-block:: console
 
         git mv index.html params.json stylesheets/ images/ \
-               javascripts/ doc/web/git/
+               javascripts/ doc/web/
 
 The ``index.html`` then has the URL
 
 .. code-block:: text
 
 
-        http://username.github.com/My-Project/doc/web/git/index.html
-
-
-.. The problem can also be circumvented by
-
-.. installing special Sphinx extensions ("sphinx-to-github":
-
-.. "https://github.com/michaeljones/sphinx-to-github" or "github-tools":
-
-.. "http://pydoc.net/github-tools/0.1.3/").
+        http://username.github.io/My-Project/doc/web/index.html
 
 
 .. See `<https://github.com/daler/sphinxdoc-test>`_
@@ -960,6 +971,16 @@ The ``index.html`` then has the URL
 .. See also `<http://lucasbardella.com/report/hosting-your-sphinx-docs-in-github/>`_
 
 .. Sphinx extension for github: `<https://github.com/michaeljones/sphinx-to-github>`_
+
+
+.. The problem can also be circumvented by
+
+.. installing special Sphinx extensions ("sphinx-to-github":
+
+.. "https://github.com/michaeljones/sphinx-to-github" or "github-tools":
+
+.. "http://pydoc.net/github-tools/0.1.3/").
+
 
 
 Linking to source code files or other files in the project is easy:
@@ -1046,6 +1067,10 @@ control are understood.
 Basic Git commands
 ------------------
 
+
+.. index:: git clone
+
+
 Cloning  (1)
 ~~~~~~~~~~~~
 
@@ -1061,6 +1086,21 @@ by running
 
 Recall to replace ``username`` by your real user name and ``My-Project`` by the
 actual project name.
+
+
+.. index:: git pull
+
+.. index:: git add
+
+.. index:: git rm
+
+.. index:: git mv
+
+.. index:: git commit
+
+
+.. index:: git push
+
 
 The pull-change-push cycle  (1)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1112,6 +1152,10 @@ repo on different
 computers). Infrequent push and pull easily leads to merge problems
 (see the section :ref:`bitgit:git:merge`).
 
+
+.. index:: git status
+
+
 To see the status of files, run
 
 .. code-block:: console
@@ -1132,6 +1176,12 @@ the latest ones:
 
         gitk --all
         gitk --since="2 weeks ago"
+
+
+
+.. index:: git log
+
+.. index:: git blame
 
 
 You can also view changes to all files or some selected ones
@@ -1174,6 +1224,12 @@ say the text ``def myfunc``, one can run
 This is useful to track down particular changes in the files to see when
 they occurred and who introduced them. One can also search for regular
 expressions instead of exact text: just replace ``-S`` by ``-G``.
+
+
+.. index:: git diff
+
+.. index:: git checkout
+
 
 Retrieving old files  (1)
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1485,6 +1541,101 @@ branch with ``git stash branch newstuff``.)
 is similar to ``git stash apply``.
 
 
+.. _bitgit:git:team:
+
+Team work with forking and pull requests
+----------------------------------------
+
+
+.. index:: forking (a repo)
+
+
+.. index:: pull request
+
+
+.. index:: git fetch
+
+
+.. index:: git merge
+
+
+In small collaboration teams it is natural that everyone has push access
+to the repo. As teams grow larger, there will usually be a few
+people in charge who should approve changes to the files. Ordinary team members
+will in this case not clone a repo and push changes, but instead
+*fork* the repo and send *pull requests*.
+
+Suppose you want to fork the repo ``https://github.com/somebody/proj1.git``.
+The first step is to press the *Fork* button on the project page for
+the ``somebody/proj1`` project on GitHub.
+This action creates a new repo ``proj1``, known as the forked repo,
+on your account.
+Clone the fork the usual way:
+
+
+.. code-block:: console
+
+        git clone https://github.com/username/proj1.git
+
+When you do ``git push origin master``, you update your fork.
+However, the original
+repo is usually under development too, and you need to pull from that
+one to stay up to date. A ``git pull origin master`` pulls from
+``origin`` which is your fork. To pull from the original repo, you
+create a name ``upstream``,
+
+
+.. code-block:: console
+
+        git remote add upstream https://github.com/somebody/proj1.git
+
+You can now do ``git pull upstream`` to get the most recent files in
+the original repo. However,
+it is not recommended to do a pull this way.
+The reason is that pull tries to merge the original repo with your local
+changes, which might lead to file conflicts that require considerable
+work to resolve. It is better to *fetch* and *merge* separately.
+The typical workflow is
+
+
+.. code-block:: console
+
+        git fetch upstream               # Get new version of files
+        git merge upstream/master        # Merge with yours
+        # Your files are up to date - make changes
+        git commit -am 'Description...'
+        git push origin master           # Store changes in your fork
+
+
+At some point you would like to push your changes back to the original
+repo. This is done by a `pull request <https://help.github.com/articles/using-pull-requests>`_. Make sure you
+have selected the right branch on the project page of your forked
+project. Press the *Pull Request* button and fill out the form that
+pops up.  Trusted people in the ``somebody/proj1`` project will now
+review your changes and if they are approved, your files are merged
+into the original repo. If not, there are tools for keeping a dialog
+about how to proceed.
+
+Also in small teams where everyone has push access, the fork and pull
+request model is beneficial for review of files before the repo
+is actually updated with new contributions.
+
+Git workflows
+-------------
+
+Although the purpose of these notes is just to get the reader started
+with Git, it must be mentioned that there are advanced features of Git
+that have led to very powerful workflows with files and people,
+especially for software development.  There is an official `Git
+workflow model <https://www.kernel.org/pub/software/scm/git/docs/gitworkflows.html>`_
+that outlines the basic principles, but it can be quite advanced for
+those with modest Git knowledge.  A more detailed explanation of a
+recommended workflow for beginners is given in the `developer
+instructions <https://bitbucket.org/petsc/petsc/wiki/developer-instructions-git>`_
+for the software package PETSc. This is highly suggested reading.  The
+associated "quick summary" of Git commands for their workflow is also
+useful.
+
 
 More documentation on Git
 -------------------------
@@ -1572,6 +1723,10 @@ file one wants to commit and choose *Commit*.
 Basic Mercurial commands
 ------------------------
 
+
+.. index:: hg clone
+
+
 Cloning  (2)
 ~~~~~~~~~~~~
 
@@ -1581,6 +1736,21 @@ can get started with the project by the command
 .. code-block:: console
 
         hg clone ssh://hg@bitbucket.org/username/my-project
+
+
+
+.. index:: hg pull
+
+.. index:: hg add
+
+.. index:: hg remove
+
+.. index:: hg move
+
+.. index:: hg commit
+
+
+.. index:: hg push
 
 
 The pull-change-push cycle  (2)
@@ -1626,6 +1796,10 @@ Note that you cannot easily redo the description so be careful with
 the wording. You can run ``hg diff`` to get a listing of all
 the changes you have made since the last commit or pull command.
 
+
+.. index:: hg stat
+
+
 The command
 
 .. code-block:: console
@@ -1638,6 +1812,12 @@ question mark because these are not tracked in the repository. It is
 very easy to forget adding new files so ``hg stat`` is a useful command
 to ensure that all files you want to track have been added to the
 repository.
+
+
+.. index:: hg annotate
+
+.. index:: hg log
+
 
 Viewing the history of files  (2)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1684,6 +1864,11 @@ of which files that were changed in each revision.
 If you wonder what has recently happened to a file after updating your
 local repository, just run ``hg log -p --stat``: the last changes appear
 in the beginning of the output.
+
+
+.. index:: hg revert
+
+.. index:: hg cat
 
 
 Retrieving old files  (2)

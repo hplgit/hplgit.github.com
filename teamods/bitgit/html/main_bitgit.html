@@ -62,7 +62,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 2, 2013</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 18, 2013</td>
 </tr>
 </tbody>
 </table>
@@ -155,7 +155,9 @@ described in the section <a class="reference internal" href="#bitgit-bitbucket-u
 <li>If you want to easily drop HTML files for documentation around in
 your repo, Googlecode will display them as web pages right away,
 while the procedure on GitHub is technically more complicated
-(Bitbucket does not yet support web pages as part of a project).</li>
+(Bitbucket does not yet support web pages as part of a project).
+Unfortunately, Googlecode does not allow MathJax for rendering
+LaTeX mathematics in HTML files.</li>
 <li>If a few collaborate on a project and everyone wants to be notified
 in email about changes in project files, Bitbucket and Googlecode have
 better support for this feature than GitHub.</li>
@@ -462,7 +464,9 @@ the final <tt class="docutils literal"><span class="pre">?at=master</span></tt>:
 <div class="highlight-text"><div class="highlight"><pre>https://bitbucket.org/user/proj/src/master/dir/v1.c
 </pre></div>
 </div>
-<p>If the file is under Mercurial, replace the commit hash by <tt class="docutils literal"><span class="pre">tip</span></tt>.</p>
+<p>Other endings of the URL with commit hash, e.g., <tt class="docutils literal"><span class="pre">?at=default</span></tt>,
+requires the hash to be replaced by <tt class="docutils literal"><span class="pre">default</span></tt>.
+If the file is under Mercurial, replace the commit hash by <tt class="docutils literal"><span class="pre">tip</span></tt>.</p>
 </div>
 </div>
 <div class="section" id="bitgit-googlecode">
@@ -689,7 +693,7 @@ HTML code or as plain text. The URL of images, however, can be used
 in web pages to insert images from your repo, provided the image files
 are in the <em>raw</em> format (click the <em>Raw</em> button when viewing a file at
 <tt class="docutils literal"><span class="pre">github.com</span></tt> and use the corresponding URL in the <tt class="docutils literal"><span class="pre">img</span></tt> tag).</p>
-<p>Quite often you want to create a set of HTML pages to document your
+<span class="target" id="index-6"></span><p id="index-7">Quite often you want to create a set of HTML pages to document your
 project. This can be done as part of your repo, but you must apply
 a special technique consisting in creating a separate <em>gh-pages</em>
 branch in Git and making the HTML files in this particular branch.
@@ -710,7 +714,7 @@ stored in the version control system).
 You can populate this folder and subdirectories you create with
 HTML and other files as you like.</p>
 <p>The <tt class="docutils literal"><span class="pre">index.html</span></tt> page is invoked by the web address</p>
-<div class="highlight-text"><div class="highlight"><pre>http://username.github.com/My-Project/index.html
+<div class="highlight-text"><div class="highlight"><pre>http://username.github.io/My-Project/index.html
 </pre></div>
 </div>
 <p>where <tt class="docutils literal"><span class="pre">username</span></tt> is the GitHub
@@ -720,7 +724,7 @@ To see the branches, type <tt class="docutils literal"><span class="pre">git</sp
 be marked with a star in the output. Switching to the master branch
 is done by <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">master</span></tt>. Similarly, <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">gh-pages</span></tt>
 switches to the gh-pages branch.</p>
-<p>When Git branches diverge you can merge them by</p>
+<span class="target" id="index-8"></span><span class="target" id="index-9"></span><span class="target" id="index-10"></span><p id="index-11">When Git branches diverge you can merge them by</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git merge otherbranch</span>
 </pre></div>
 </div>
@@ -766,13 +770,13 @@ make sure to update the gh-pages branch by</p>
 </div>
 <p>Personally, I like to move the generated <tt class="docutils literal"><span class="pre">index.html</span></tt> file and all
 associated scripts, stylesheets, and images from the root folder to
-some more isolated place, say <tt class="docutils literal"><span class="pre">doc/web/git</span></tt>:</p>
+some more isolated place, say <tt class="docutils literal"><span class="pre">doc/web</span></tt>:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git mv index.html params.json stylesheets/ images/ \</span>
-<span class="go">       javascripts/ doc/web/git/</span>
+<span class="go">       javascripts/ doc/web/</span>
 </pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">index.html</span></tt> then has the URL</p>
-<div class="highlight-text"><div class="highlight"><pre>http://username.github.com/My-Project/doc/web/git/index.html
+<div class="highlight-text"><div class="highlight"><pre>http://username.github.io/My-Project/doc/web/index.html
 </pre></div>
 </div>
 <p>Linking to source code files or other files in the project is easy:
@@ -825,7 +829,7 @@ If you want to use Sphinx generated HTML pages, recall to add an empty file
 </div>
 <div class="section" id="using-git">
 <span id="bitgit-git"></span><h1>Using Git<a class="headerlink" href="#using-git" title="Permalink to this headline">¶</a></h1>
-<p id="index-6">Most Mac and Linux users prefer to work with Git via a commands in a
+<p id="index-12">Most Mac and Linux users prefer to work with Git via a commands in a
 terminal window. Windows users prefer a graphical user interface (GUI).
 There are many <a class="reference external" href="http://git-scm.com/downloads/guis">options</a> in
 this respect. There are also GUIs for Mac users.
@@ -834,7 +838,7 @@ control are understood.</p>
 <div class="section" id="basic-git-commands">
 <h2>Basic Git commands<a class="headerlink" href="#basic-git-commands" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="cloning-1">
-<h3>Cloning  (1)<a class="headerlink" href="#cloning-1" title="Permalink to this headline">¶</a></h3>
+<span id="index-13"></span><h3>Cloning  (1)<a class="headerlink" href="#cloning-1" title="Permalink to this headline">¶</a></h3>
 <p>You get started with your project on a new machine, or another user
 can get started with the project,
 by running</p>
@@ -845,9 +849,9 @@ by running</p>
 </div>
 <p>Recall to replace <tt class="docutils literal"><span class="pre">username</span></tt> by your real user name and <tt class="docutils literal"><span class="pre">My-Project</span></tt> by the
 actual project name.</p>
-</div>
+<span class="target" id="index-14"></span><span class="target" id="index-15"></span><span class="target" id="index-16"></span><span class="target" id="index-17"></span><span class="target" id="index-18"></span></div>
 <div class="section" id="the-pull-change-push-cycle-1">
-<h3>The pull-change-push cycle  (1)<a class="headerlink" href="#the-pull-change-push-cycle-1" title="Permalink to this headline">¶</a></h3>
+<span id="index-19"></span><h3>The pull-change-push cycle  (1)<a class="headerlink" href="#the-pull-change-push-cycle-1" title="Permalink to this headline">¶</a></h3>
 <p>The typical work flow with the &#8220;My Project&#8221; project starts with
 updating the local repository by going to the <tt class="docutils literal"><span class="pre">My-Project</span></tt> folder
 and writing</p>
@@ -884,7 +888,7 @@ clones of the repo (i.e., there are many users or you work with the
 repo on different
 computers). Infrequent push and pull easily leads to merge problems
 (see the section <a class="reference internal" href="#bitgit-git-merge"><em>Merging files with Git</em></a>).</p>
-<p>To see the status of files, run</p>
+<p id="index-20">To see the status of files, run</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git status -s</span>
 </pre></div>
 </div>
@@ -900,7 +904,7 @@ the latest ones:</p>
 <span class="go">gitk --since=&quot;2 weeks ago&quot;</span>
 </pre></div>
 </div>
-<p>You can also view changes to all files or some selected ones
+<span class="target" id="index-21"></span><p id="index-22">You can also view changes to all files or some selected ones
 in the terminal window:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git log -p                        # all changes to all files</span>
 <span class="go">git log -p filename               # all changes to a specific file</span>
@@ -930,9 +934,9 @@ say the text <tt class="docutils literal"><span class="pre">def</span> <span cla
 <p>This is useful to track down particular changes in the files to see when
 they occurred and who introduced them. One can also search for regular
 expressions instead of exact text: just replace <tt class="docutils literal"><span class="pre">-S</span></tt> by <tt class="docutils literal"><span class="pre">-G</span></tt>.</p>
-</div>
+<span class="target" id="index-23"></span></div>
 <div class="section" id="retrieving-old-files-1">
-<h3>Retrieving old files  (1)<a class="headerlink" href="#retrieving-old-files-1" title="Permalink to this headline">¶</a></h3>
+<span id="index-24"></span><h3>Retrieving old files  (1)<a class="headerlink" href="#retrieving-old-files-1" title="Permalink to this headline">¶</a></h3>
 <p>Occasionally you need to go back to an earlier version of a file,
 say its name is <tt class="docutils literal"><span class="pre">myfile</span></tt>. Start with viewing the history:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git log myfile</span>
@@ -968,7 +972,7 @@ it requires the full path from the root git folder:</p>
 </div>
 <div class="section" id="merging-files-with-git">
 <span id="bitgit-git-merge"></span><h2>Merging files with Git<a class="headerlink" href="#merging-files-with-git" title="Permalink to this headline">¶</a></h2>
-<p id="index-7">The <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> command fetches new files from the repository and
+<p id="index-25">The <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> command fetches new files from the repository and
 tries to perform an automatic merge if there are conflicts between
 the local files and the files in the repository.
 Git will write a message if the merge is unsuccessful for one or
@@ -1196,6 +1200,72 @@ branch with <tt class="docutils literal"><span class="pre">git</span> <span clas
 <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">shelve</span> <span class="pre">--all</span></tt> is similar for <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span></tt>, and <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">unshelve</span></tt>
 is similar to <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">apply</span></tt>.</p>
 </div>
+<div class="section" id="team-work-with-forking-and-pull-requests">
+<span id="bitgit-git-team"></span><h2>Team work with forking and pull requests<a class="headerlink" href="#team-work-with-forking-and-pull-requests" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="index-26"></span><span class="target" id="index-27"></span><span class="target" id="index-28"></span><p id="index-29">In small collaboration teams it is natural that everyone has push access
+to the repo. As teams grow larger, there will usually be a few
+people in charge who should approve changes to the files. Ordinary team members
+will in this case not clone a repo and push changes, but instead
+<em>fork</em> the repo and send <em>pull requests</em>.</p>
+<p>Suppose you want to fork the repo <tt class="docutils literal"><span class="pre">https://github.com/somebody/proj1.git</span></tt>.
+The first step is to press the <em>Fork</em> button on the project page for
+the <tt class="docutils literal"><span class="pre">somebody/proj1</span></tt> project on GitHub.
+This action creates a new repo <tt class="docutils literal"><span class="pre">proj1</span></tt>, known as the forked repo,
+on your account.
+Clone the fork the usual way:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git clone https://github.com/username/proj1.git</span>
+</pre></div>
+</div>
+<p>When you do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">origin</span> <span class="pre">master</span></tt>, you update your fork.
+However, the original
+repo is usually under development too, and you need to pull from that
+one to stay up to date. A <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">master</span></tt> pulls from
+<tt class="docutils literal"><span class="pre">origin</span></tt> which is your fork. To pull from the original repo, you
+create a name <tt class="docutils literal"><span class="pre">upstream</span></tt>,</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git remote add upstream https://github.com/somebody/proj1.git</span>
+</pre></div>
+</div>
+<p>You can now do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">upstream</span></tt> to get the most recent files in
+the original repo. However,
+it is not recommended to do a pull this way.
+The reason is that pull tries to merge the original repo with your local
+changes, which might lead to file conflicts that require considerable
+work to resolve. It is better to <em>fetch</em> and <em>merge</em> separately.
+The typical workflow is</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git fetch upstream               # Get new version of files</span>
+<span class="go">git merge upstream/master        # Merge with yours</span>
+<span class="gp">#</span> Your files are up to date - make changes
+<span class="go">git commit -am &#39;Description...&#39;</span>
+<span class="go">git push origin master           # Store changes in your fork</span>
+</pre></div>
+</div>
+<p>At some point you would like to push your changes back to the original
+repo. This is done by a <a class="reference external" href="https://help.github.com/articles/using-pull-requests">pull request</a>. Make sure you
+have selected the right branch on the project page of your forked
+project. Press the <em>Pull Request</em> button and fill out the form that
+pops up.  Trusted people in the <tt class="docutils literal"><span class="pre">somebody/proj1</span></tt> project will now
+review your changes and if they are approved, your files are merged
+into the original repo. If not, there are tools for keeping a dialog
+about how to proceed.</p>
+<p>Also in small teams where everyone has push access, the fork and pull
+request model is beneficial for review of files before the repo
+is actually updated with new contributions.</p>
+</div>
+<div class="section" id="git-workflows">
+<h2>Git workflows<a class="headerlink" href="#git-workflows" title="Permalink to this headline">¶</a></h2>
+<p>Although the purpose of these notes is just to get the reader started
+with Git, it must be mentioned that there are advanced features of Git
+that have led to very powerful workflows with files and people,
+especially for software development.  There is an official <a class="reference external" href="https://www.kernel.org/pub/software/scm/git/docs/gitworkflows.html">Git
+workflow model</a>
+that outlines the basic principles, but it can be quite advanced for
+those with modest Git knowledge.  A more detailed explanation of a
+recommended workflow for beginners is given in the <a class="reference external" href="https://bitbucket.org/petsc/petsc/wiki/developer-instructions-git">developer
+instructions</a>
+for the software package PETSc. This is highly suggested reading.  The
+associated &#8220;quick summary&#8221; of Git commands for their workflow is also
+useful.</p>
+</div>
 <div class="section" id="more-documentation-on-git">
 <h2>More documentation on Git<a class="headerlink" href="#more-documentation-on-git" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -1221,7 +1291,7 @@ is similar to <tt class="docutils literal"><span class="pre">git</span> <span cl
 </div>
 <div class="section" id="using-mercurial">
 <span id="bitgit-hg"></span><h1>Using Mercurial<a class="headerlink" href="#using-mercurial" title="Permalink to this headline">¶</a></h1>
-<span class="target" id="index-8"></span><p id="index-9">Mac and Linux users will normally work with Mercurial through commands in
+<span class="target" id="index-30"></span><p id="index-31">Mac and Linux users will normally work with Mercurial through commands in
 a terminal window, which is the emphasized interface described here.
 Windows users will prefer to use TortoiseHG. This graphical interface is
 mostly self-explanatory, but a brief description appears below.</p>
@@ -1259,15 +1329,15 @@ file one wants to commit and choose <em>Commit</em>.</p>
 <div class="section" id="basic-mercurial-commands">
 <h2>Basic Mercurial commands<a class="headerlink" href="#basic-mercurial-commands" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="cloning-2">
-<h3>Cloning  (2)<a class="headerlink" href="#cloning-2" title="Permalink to this headline">¶</a></h3>
+<span id="index-32"></span><h3>Cloning  (2)<a class="headerlink" href="#cloning-2" title="Permalink to this headline">¶</a></h3>
 <p>You get started with your project on a new machine or another user
 can get started with the project by the command</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">hg clone ssh://hg@bitbucket.org/username/my-project</span>
 </pre></div>
 </div>
-</div>
+<span class="target" id="index-33"></span><span class="target" id="index-34"></span><span class="target" id="index-35"></span><span class="target" id="index-36"></span><span class="target" id="index-37"></span></div>
 <div class="section" id="the-pull-change-push-cycle-2">
-<h3>The pull-change-push cycle  (2)<a class="headerlink" href="#the-pull-change-push-cycle-2" title="Permalink to this headline">¶</a></h3>
+<span id="index-38"></span><h3>The pull-change-push cycle  (2)<a class="headerlink" href="#the-pull-change-push-cycle-2" title="Permalink to this headline">¶</a></h3>
 <p>Your typical working style with the <tt class="docutils literal"><span class="pre">my-project</span></tt> project goes as follows.
 First you go to the desired folder where this project is stored on
 your local computer and make sure
@@ -1299,7 +1369,7 @@ repository at <tt class="docutils literal"><span class="pre">bitbucket.org</span
 <p>Note that you cannot easily redo the description so be careful with
 the wording. You can run <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">diff</span></tt> to get a listing of all
 the changes you have made since the last commit or pull command.</p>
-<p>The command</p>
+<p id="index-39">The command</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">hg stat</span>
 </pre></div>
 </div>
@@ -1309,9 +1379,9 @@ question mark because these are not tracked in the repository. It is
 very easy to forget adding new files so <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">stat</span></tt> is a useful command
 to ensure that all files you want to track have been added to the
 repository.</p>
-</div>
+<span class="target" id="index-40"></span></div>
 <div class="section" id="viewing-the-history-of-files-2">
-<h3>Viewing the history of files  (2)<a class="headerlink" href="#viewing-the-history-of-files-2" title="Permalink to this headline">¶</a></h3>
+<span id="index-41"></span><h3>Viewing the history of files  (2)<a class="headerlink" href="#viewing-the-history-of-files-2" title="Permalink to this headline">¶</a></h3>
 <p>The power of <tt class="docutils literal"><span class="pre">hg</span></tt> and your file repository <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt> is that
 you can work with the project files on several computers and others can
 also contribute to this project. The history of each file is recorded
@@ -1344,9 +1414,9 @@ of which files that were changed in each revision.</p>
 <p>If you wonder what has recently happened to a file after updating your
 local repository, just run <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">log</span> <span class="pre">-p</span> <span class="pre">--stat</span></tt>: the last changes appear
 in the beginning of the output.</p>
-</div>
+<span class="target" id="index-42"></span></div>
 <div class="section" id="retrieving-old-files-2">
-<h3>Retrieving old files  (2)<a class="headerlink" href="#retrieving-old-files-2" title="Permalink to this headline">¶</a></h3>
+<span id="index-43"></span><h3>Retrieving old files  (2)<a class="headerlink" href="#retrieving-old-files-2" title="Permalink to this headline">¶</a></h3>
 <p>To restore an old version of a file with name <tt class="docutils literal"><span class="pre">filename</span></tt>,
 check the file history with
 <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">log</span> <span class="pre">-p</span> <span class="pre">filename</span></tt> and find the revision number corresponding to the
@@ -1392,7 +1462,7 @@ merging of files.</p>
 </div>
 <div class="section" id="merging-files-with-mercurial">
 <span id="bitgit-hg-merge"></span><h2>Merging files with Mercurial<a class="headerlink" href="#merging-files-with-mercurial" title="Permalink to this headline">¶</a></h2>
-<p id="index-10">It might have happened that others and you have edited the same files
+<p id="index-44">It might have happened that others and you have edited the same files
 at the same time. How should the edits then be combined?  Often the
 <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">update</span></tt> command is clever enough to merge the changes made by
 different users automatically. If not, you have to run an explicit <tt class="docutils literal"><span class="pre">hg</span>
@@ -1632,6 +1702,8 @@ string in the SSH key field of any GitHub account.</p>
 </li>
 <li><a class="reference internal" href="#merging-files-with-git">Merging files with Git</a></li>
 <li><a class="reference internal" href="#git-working-style-with-branching-and-stashing">Git working style with branching and stashing</a></li>
+<li><a class="reference internal" href="#team-work-with-forking-and-pull-requests">Team work with forking and pull requests</a></li>
+<li><a class="reference internal" href="#git-workflows">Git workflows</a></li>
 <li><a class="reference internal" href="#more-documentation-on-git">More documentation on Git</a></li>
 </ul>
 </li>
