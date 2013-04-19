@@ -77,28 +77,33 @@ Automatically generated HTML file from Doconce source
                2,
                'bitgit:git:branch:stash',
                'bitgit:git:branch:stash'),
+              (' Replacing pull by fetch and merge ',
+               2,
+               'bitgit:git:fetch',
+               'bitgit:git:fetch'),
+              (' Configuring the `git diff` command ', 3, None, '___sec26'),
               (' Team work with forking and pull requests ',
                2,
                'bitgit:git:team',
                'bitgit:git:team'),
-              (' Git workflows ', 2, None, '___sec26'),
-              (' More documentation on Git ', 2, None, '___sec27'),
+              (' Git workflows ', 2, None, '___sec28'),
+              (' More documentation on Git ', 2, None, '___sec29'),
               (' Using Mercurial ', 1, 'bitgit:hg', 'bitgit:hg'),
               (' Basic use of TortoiseHG on a Windows machine ',
                2,
                None,
-               '___sec29'),
-              (' Basic Mercurial commands  ', 2, None, '___sec30'),
-              (' Cloning ', 3, None, '___sec31'),
-              (' The pull-change-push cycle ', 3, None, '___sec32'),
-              (' Viewing the history of files ', 3, None, '___sec33'),
-              (' Retrieving old files ', 3, None, '___sec34'),
-              (' Comments on two-level repositories ', 3, None, '___sec35'),
+               '___sec31'),
+              (' Basic Mercurial commands  ', 2, None, '___sec32'),
+              (' Cloning ', 3, None, '___sec33'),
+              (' The pull-change-push cycle ', 3, None, '___sec34'),
+              (' Viewing the history of files ', 3, None, '___sec35'),
+              (' Retrieving old files ', 3, None, '___sec36'),
+              (' Comments on two-level repositories ', 3, None, '___sec37'),
               (' Merging files with Mercurial ',
                2,
                'bitgit:hg:merge',
                'bitgit:hg:merge'),
-              (' More documentation on Mercurial ', 2, None, '___sec37'),
+              (' More documentation on Mercurial ', 2, None, '___sec39'),
               (' Appendix: Working with multiple GitHub accounts ',
                1,
                'appendix:github:multiple:accounts',
@@ -129,7 +134,7 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory,</b></center>
 <center>[2] <b>Deptartment of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Apr 18, 2013</h4></center> <!-- date -->
+<center><h4>Apr 19, 2013</h4></center> <!-- date -->
 <p>
 <a name="bitgit:top"></a>
 
@@ -1059,11 +1064,12 @@ When Git branches diverge you can merge them by
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git merge otherbranch
 </pre></div>
 <p>
-where <code>otherbranch</code> is the name of another branch. If there is a conflict
-in the merge, there will be markers in problematic files. Run
-<code>git diff</code> to show the problems. After a manual edit, do
-<code>git commit -a</code>. Then you may run <code>gitk</code> to see a graphical illustration
-of what has happened.
+where <code>otherbranch</code> is the name of another branch. If there is a
+conflict in the merge, there will be markers in problematic files. Run
+<code>git diff</code> to show the problems (you can tailor this command to your
+needs as explained in the section <a href="#bitgit:git:fetch">Replacing pull by fetch and merge</a>). After a manual
+edit, do <code>git commit -a</code>. Then you may run <code>gitk</code> to see a graphical
+illustration of what has happened.
 
 <p>
 My personal preference is to have the master and gh-pages
@@ -1267,7 +1273,10 @@ and writing
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git pull origin master
 </pre></div>
 <p>
+(You may want to do <code>git fetch</code> and <code>git merge</code> instead
+of <code>git pull</code> as explained in the section <a href="#bitgit:git:fetch">Replacing pull by fetch and merge</a>.)
 
+<p>
 You can now edit files, add new files, delete files, or rename files.
 Typical commands are
 <p>
@@ -1324,6 +1333,7 @@ Files are marked with different symbols, e.g.,
 and <code>??</code> for not being registered in the repo.
 
 <p>
+
 
 <h4>Viewing the history of files  <a name="___sec21"></a></h4>
 
@@ -1410,7 +1420,8 @@ present version to and copy the commit hash (string like
 <p>
 where the long string is the relevant commit hash. You can now view the
 differences between the most recent version and the one in
-the commit you picked. If you want to restore the old file, write
+the commit you picked (see the section <a href="#bitgit:git:fetch">Replacing pull by fetch and merge</a> for how to
+configure the tools used by the <code>git diff</code> command). If you want to restore the old file, write
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
@@ -1446,8 +1457,15 @@ it requires the full path from the root git folder:
 
 The <code>git pull</code> command fetches new files from the repository and
 tries to perform an automatic merge if there are conflicts between
-the local files and the files in the repository.
-Git will write a message if the merge is unsuccessful for one or
+the local files and the files in the repository. Alternatively,
+you may run <code>git fetch</code> and <code>git merge</code> to do the same
+thing as described in the section <a href="#bitgit:git:fetch">Replacing pull by fetch and merge</a>.
+We shall now address what do to if the merge goes wrong, which 
+occasionally happens.
+
+<p>
+Git will write a message in the terminal window
+if the merge is unsuccessful for one or
 more files. These files will have to be edited manually.
 Merge markers of the type '>>>>>', '======', and '<<<<<' have been
 inserted by Git to mark sections of a file where the version in the
@@ -1718,6 +1736,99 @@ is similar to <code>git stash apply</code>.
 <p>
 
 
+<h3>Replacing pull by fetch and merge <a name="bitgit:git:fetch"></a></h3>
+
+<p>
+The <code>git pull</code> command actually performs two steps that are sometimes
+advantageous to run separately. First, a <code>get fetch</code> is run to fetch
+new files from the repository, and thereafter a <code>git merge</code> command is
+run to merge the new files with your local version of the files.
+While <code>git pull</code> tries to do a lot and be smart in the merge, very
+often with success, the merge step may occasionally lead to
+trouble. That is why it is recommended to run a <code>git merge</code>
+separately, especially if you work with branches.
+
+<p>
+To fetch files from your repository at GitHub, which usually has
+the nickname <code>origin</code>, you write
+
+<p>
+
+
+<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git fetch origin
+</pre></div>
+<p>
+You now have the possibility to check out in detail what the differences
+are between the new files and local ones:
+
+<p>
+
+
+<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git diff origin/master
+</pre></div>
+<p>
+This command produces comparisons of the files in the current local branch
+and the <code>master</code> branch at <code>origin</code> (the GitHub repo).
+In this way you can exactly see the differences between branches.
+When you are ready to merge in the new files from the <code>master</code> branch
+of <code>origin</code> with the files in the current local branch, you say
+
+<p>
+
+
+<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git merge origin/master
+</pre></div>
+<p>
+
+
+<h4>Configuring the <code>git diff</code> command  <a name="___sec26"></a></h4>
+
+<p>
+The <code>git diff</code> command launches by default the
+Unix <code>diff</code> tool in the terminal window.
+Many users prefer to use other diff tools, and the desired one
+can be specified in
+your <code>~/.gitconfig</code> file. However, a much recommended approach is to
+wrap a shell script around the call to the diff program, because
+<code>git diff</code> actually calls the diff program with a series of
+command-line arguments that will confuse diff programs that take
+the names of the two files to be compared as arguments.
+In <code>~/.gitconfig</code> you specify a script to do the diff:
+
+<p>
+
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[diff]
+external = ~/bin/git-diff-wrapper.sh
+</pre></div>
+<p>
+It remains to write the <code>git-diff-wrapper.sh</code> script.
+The  2nd and 5th command-line arguments passed to this script are the
+name of the files to be compared in the diff. A typical script may
+therefore look like
+
+<p>
+
+
+<!-- code=bash (from !bc shpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#!/bin/sh</span>
+
+diff <span style="color: #BA2121">&quot;$2&quot;</span> <span style="color: #BA2121">&quot;$5&quot;</span> | less
+</pre></div>
+<p>
+Here we use the standard (and quite primitive) Unix <code>diff</code> program,
+but we can replace <code>diff</code> by, e.g., <code>diffuse</code>, <code>kdiff3</code>, <code>xxdiff</code>, <code>meld</code>, <code>pdiff</code>, or others. With a Python script you can easily check
+for the extensions of the files and use different diff tools for
+different types of files, e.g., <code>latexdiff</code> for LaTeX files
+and <code>pdiff</code> for pure text files.
+
+<p>
+
+
 <h3>Team work with forking and pull requests <a name="bitgit:git:team"></a></h3>
 
 <p>
@@ -1793,7 +1904,7 @@ is actually updated with new contributions.
 
 <p>
 
-<h3>Git workflows  <a name="___sec26"></a></h3>
+<h3>Git workflows  <a name="___sec28"></a></h3>
 
 <p>
 Although the purpose of these notes is just to get the reader started
@@ -1812,7 +1923,7 @@ useful.
 <p>
 
 
-<h3>More documentation on Git  <a name="___sec27"></a></h3>
+<h3>More documentation on Git  <a name="___sec29"></a></h3>
 
 <p>
 
@@ -1846,7 +1957,7 @@ mostly self-explanatory, but a brief description appears below.
 
 <p>
 
-<h3>Basic use of TortoiseHG on a Windows machine  <a name="___sec29"></a></h3>
+<h3>Basic use of TortoiseHG on a Windows machine  <a name="___sec31"></a></h3>
 
 <p>
 When you have an account on Bitbucket and have downloaded and installed
@@ -1882,12 +1993,12 @@ file one wants to commit and choose <em>Commit</em>.
 
 <p>
 
-<h3>Basic Mercurial commands   <a name="___sec30"></a></h3>
+<h3>Basic Mercurial commands   <a name="___sec32"></a></h3>
 
 <p>
 
 
-<h4>Cloning  <a name="___sec31"></a></h4>
+<h4>Cloning  <a name="___sec33"></a></h4>
 
 <p>
 You get started with your project on a new machine or another user
@@ -1900,7 +2011,7 @@ can get started with the project by the command
 <p>
 
 
-<h4>The pull-change-push cycle  <a name="___sec32"></a></h4>
+<h4>The pull-change-push cycle  <a name="___sec34"></a></h4>
 
 <p>
 Your typical working style with the <code>my-project</code> project goes as follows.
@@ -1967,7 +2078,7 @@ repository.
 <p>
 
 
-<h4>Viewing the history of files  <a name="___sec33"></a></h4>
+<h4>Viewing the history of files  <a name="___sec35"></a></h4>
 
 <p>
 The power of <code>hg</code> and your file repository <code>bitbucket.org</code> is that
@@ -2023,7 +2134,7 @@ in the beginning of the output.
 <p>
 
 
-<h4>Retrieving old files  <a name="___sec34"></a></h4>
+<h4>Retrieving old files  <a name="___sec36"></a></h4>
 
 <p>
 To restore an old version of a file with name <code>filename</code>,
@@ -2055,7 +2166,7 @@ hg update            <span style="color: #408080; font-style: italic"># go back 
 <p>
 
 
-<h4>Comments on two-level repositories  <a name="___sec35"></a></h4>
+<h4>Comments on two-level repositories  <a name="___sec37"></a></h4>
 
 <p>
 Mercurial has a two-level type of repository: there is global
@@ -2241,7 +2352,7 @@ can now do <code>hg push</code> successfully to update the global repository.
 
 <p>
 
-<h3>More documentation on Mercurial  <a name="___sec37"></a></h3>
+<h3>More documentation on Mercurial  <a name="___sec39"></a></h3>
 
 <p>
 

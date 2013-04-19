@@ -62,7 +62,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 18, 2013</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 19, 2013</td>
 </tr>
 </tbody>
 </table>
@@ -728,11 +728,12 @@ switches to the gh-pages branch.</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git merge otherbranch</span>
 </pre></div>
 </div>
-<p>where <tt class="docutils literal"><span class="pre">otherbranch</span></tt> is the name of another branch. If there is a conflict
-in the merge, there will be markers in problematic files. Run
-<tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> to show the problems. After a manual edit, do
-<tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></tt>. Then you may run <tt class="docutils literal"><span class="pre">gitk</span></tt> to see a graphical illustration
-of what has happened.</p>
+<p>where <tt class="docutils literal"><span class="pre">otherbranch</span></tt> is the name of another branch. If there is a
+conflict in the merge, there will be markers in problematic files. Run
+<tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> to show the problems (you can tailor this command to your
+needs as explained in the section <a class="reference internal" href="#bitgit-git-fetch"><em>Replacing pull by fetch and merge</em></a>). After a manual
+edit, do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></tt>. Then you may run <tt class="docutils literal"><span class="pre">gitk</span></tt> to see a graphical
+illustration of what has happened.</p>
 <p>My personal preference is to have the master and gh-pages
 synchronized, at least in projects where I want to link to various
 source code files or other files from the web documentation.
@@ -858,6 +859,8 @@ and writing</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git pull origin master</span>
 </pre></div>
 </div>
+<p>(You may want to do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">fetch</span></tt> and <tt class="docutils literal"><span class="pre">git</span> <span class="pre">merge</span></tt> instead
+of <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> as explained in the section <a class="reference internal" href="#bitgit-git-fetch"><em>Replacing pull by fetch and merge</em></a>.)</p>
 <p>You can now edit files, add new files, delete files, or rename files.
 Typical commands are</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git add file1 file2.* dir1 dir2</span>
@@ -950,7 +953,8 @@ present version to and copy the commit hash (string like
 </div>
 <p>where the long string is the relevant commit hash. You can now view the
 differences between the most recent version and the one in
-the commit you picked. If you want to restore the old file, write</p>
+the commit you picked (see the section <a class="reference internal" href="#bitgit-git-fetch"><em>Replacing pull by fetch and merge</em></a> for how to
+configure the tools used by the <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> command). If you want to restore the old file, write</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">git checkout c7673487763ec2bb374758fb8e7efefa12f16dea myfile</span>
 </pre></div>
 </div>
@@ -974,8 +978,13 @@ it requires the full path from the root git folder:</p>
 <span id="bitgit-git-merge"></span><h2>Merging files with Git<a class="headerlink" href="#merging-files-with-git" title="Permalink to this headline">¶</a></h2>
 <p id="index-25">The <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> command fetches new files from the repository and
 tries to perform an automatic merge if there are conflicts between
-the local files and the files in the repository.
-Git will write a message if the merge is unsuccessful for one or
+the local files and the files in the repository. Alternatively,
+you may run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">fetch</span></tt> and <tt class="docutils literal"><span class="pre">git</span> <span class="pre">merge</span></tt> to do the same
+thing as described in the section <a class="reference internal" href="#bitgit-git-fetch"><em>Replacing pull by fetch and merge</em></a>.
+We shall now address what do to if the merge goes wrong, which
+occasionally happens.</p>
+<p>Git will write a message in the terminal window
+if the merge is unsuccessful for one or
 more files. These files will have to be edited manually.
 Merge markers of the type &#8216;&gt;&gt;&gt;&gt;&gt;&#8217;, &#8216;======&#8217;, and &#8216;&lt;&lt;&lt;&lt;&lt;&#8217; have been
 inserted by Git to mark sections of a file where the version in the
@@ -1199,6 +1208,66 @@ branch with <tt class="docutils literal"><span class="pre">git</span> <span clas
 <p><em>Remark.</em> A recent <a class="reference external" href="http://mercurial.selenic.com/wiki/ShelveExtension">extension module</a> for Mercurial allows stashing for that version control system as well:
 <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">shelve</span> <span class="pre">--all</span></tt> is similar for <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span></tt>, and <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">unshelve</span></tt>
 is similar to <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">apply</span></tt>.</p>
+</div>
+<div class="section" id="replacing-pull-by-fetch-and-merge">
+<span id="bitgit-git-fetch"></span><h2>Replacing pull by fetch and merge<a class="headerlink" href="#replacing-pull-by-fetch-and-merge" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> command actually performs two steps that are sometimes
+advantageous to run separately. First, a <tt class="docutils literal"><span class="pre">get</span> <span class="pre">fetch</span></tt> is run to fetch
+new files from the repository, and thereafter a <tt class="docutils literal"><span class="pre">git</span> <span class="pre">merge</span></tt> command is
+run to merge the new files with your local version of the files.
+While <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> tries to do a lot and be smart in the merge, very
+often with success, the merge step may occasionally lead to
+trouble. That is why it is recommended to run a <tt class="docutils literal"><span class="pre">git</span> <span class="pre">merge</span></tt>
+separately, especially if you work with branches.</p>
+<p>To fetch files from your repository at GitHub, which usually has
+the nickname <tt class="docutils literal"><span class="pre">origin</span></tt>, you write</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git fetch origin</span>
+</pre></div>
+</div>
+<p>You now have the possibility to check out in detail what the differences
+are between the new files and local ones:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git diff origin/master</span>
+</pre></div>
+</div>
+<p>This command produces comparisons of the files in the current local branch
+and the <tt class="docutils literal"><span class="pre">master</span></tt> branch at <tt class="docutils literal"><span class="pre">origin</span></tt> (the GitHub repo).
+In this way you can exactly see the differences between branches.
+When you are ready to merge in the new files from the <tt class="docutils literal"><span class="pre">master</span></tt> branch
+of <tt class="docutils literal"><span class="pre">origin</span></tt> with the files in the current local branch, you say</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">git merge origin/master</span>
+</pre></div>
+</div>
+<div class="section" id="configuring-the-git-diff-command">
+<h3>Configuring the <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> command<a class="headerlink" href="#configuring-the-git-diff-command" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> command launches by default the
+Unix <tt class="docutils literal"><span class="pre">diff</span></tt> tool in the terminal window.
+Many users prefer to use other diff tools, and the desired one
+can be specified in
+your <tt class="docutils literal"><span class="pre">~/.gitconfig</span></tt> file. However, a much recommended approach is to
+wrap a shell script around the call to the diff program, because
+<tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> actually calls the diff program with a series of
+command-line arguments that will confuse diff programs that take
+the names of the two files to be compared as arguments.
+In <tt class="docutils literal"><span class="pre">~/.gitconfig</span></tt> you specify a script to do the diff:</p>
+<div class="highlight-text"><div class="highlight"><pre>[diff]
+external = ~/bin/git-diff-wrapper.sh
+</pre></div>
+</div>
+<p>It remains to write the <tt class="docutils literal"><span class="pre">git-diff-wrapper.sh</span></tt> script.
+The  2nd and 5th command-line arguments passed to this script are the
+name of the files to be compared in the diff. A typical script may
+therefore look like</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
+
+diff <span class="s2">&quot;$2&quot;</span> <span class="s2">&quot;$5&quot;</span> | less
+</pre></div>
+</div>
+<p>Here we use the standard (and quite primitive) Unix <tt class="docutils literal"><span class="pre">diff</span></tt> program,
+but we can replace <tt class="docutils literal"><span class="pre">diff</span></tt> by, e.g., <tt class="docutils literal"><span class="pre">diffuse</span></tt>, <tt class="docutils literal"><span class="pre">kdiff3</span></tt>, <tt class="docutils literal"><span class="pre">xxdiff</span></tt>, <tt class="docutils literal"><span class="pre">meld</span></tt>, <tt class="docutils literal"><span class="pre">pdiff</span></tt>, or others. With a Python script you can easily check
+for the extensions of the files and use different diff tools for
+different types of files, e.g., <tt class="docutils literal"><span class="pre">latexdiff</span></tt> for LaTeX files
+and <tt class="docutils literal"><span class="pre">pdiff</span></tt> for pure text files.</p>
+</div>
 </div>
 <div class="section" id="team-work-with-forking-and-pull-requests">
 <span id="bitgit-git-team"></span><h2>Team work with forking and pull requests<a class="headerlink" href="#team-work-with-forking-and-pull-requests" title="Permalink to this headline">¶</a></h2>
@@ -1702,6 +1771,10 @@ string in the SSH key field of any GitHub account.</p>
 </li>
 <li><a class="reference internal" href="#merging-files-with-git">Merging files with Git</a></li>
 <li><a class="reference internal" href="#git-working-style-with-branching-and-stashing">Git working style with branching and stashing</a></li>
+<li><a class="reference internal" href="#replacing-pull-by-fetch-and-merge">Replacing pull by fetch and merge</a><ul>
+<li><a class="reference internal" href="#configuring-the-git-diff-command">Configuring the <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> command</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#team-work-with-forking-and-pull-requests">Team work with forking and pull requests</a></li>
 <li><a class="reference internal" href="#git-workflows">Git workflows</a></li>
 <li><a class="reference internal" href="#more-documentation-on-git">More documentation on Git</a></li>

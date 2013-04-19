@@ -5,7 +5,7 @@ Quick Intro to Version Control Systems and Project Hosting Services
 ===================================================================
 
 :Author: Hans Petter Langtangen
-:Date: Apr 18, 2013
+:Date: Apr 19, 2013
 
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -894,11 +894,12 @@ When Git branches diverge you can merge them by
 
         git merge otherbranch
 
-where ``otherbranch`` is the name of another branch. If there is a conflict
-in the merge, there will be markers in problematic files. Run
-``git diff`` to show the problems. After a manual edit, do
-``git commit -a``. Then you may run ``gitk`` to see a graphical illustration
-of what has happened.
+where ``otherbranch`` is the name of another branch. If there is a
+conflict in the merge, there will be markers in problematic files. Run
+``git diff`` to show the problems (you can tailor this command to your
+needs as explained in the section :ref:`bitgit:git:fetch`). After a manual
+edit, do ``git commit -a``. Then you may run ``gitk`` to see a graphical
+illustration of what has happened.
 
 My personal preference is to have the master and gh-pages
 synchronized, at least in projects where I want to link to various
@@ -1113,6 +1114,8 @@ and writing
 
         git pull origin master
 
+(You may want to do ``git fetch`` and ``git merge`` instead
+of ``git pull`` as explained in the section :ref:`bitgit:git:fetch`.)
 
 You can now edit files, add new files, delete files, or rename files.
 Typical commands are
@@ -1165,6 +1168,7 @@ To see the status of files, run
 Files are marked with different symbols, e.g.,
 ``A`` for added, ``M`` for modified, ``R`` for renamed,
 and ``??`` for not being registered in the repo.
+
 
 Viewing the history of files  (1)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1251,7 +1255,8 @@ present version to and copy the commit hash (string like
 
 where the long string is the relevant commit hash. You can now view the
 differences between the most recent version and the one in
-the commit you picked. If you want to restore the old file, write
+the commit you picked (see the section :ref:`bitgit:git:fetch` for how to
+configure the tools used by the ``git diff`` command). If you want to restore the old file, write
 
 .. code-block:: console
 
@@ -1276,6 +1281,7 @@ it requires the full path from the root git folder:
         git show c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/myfile
 
 
+
 .. _bitgit:git:merge:
 
 Merging files with Git
@@ -1287,8 +1293,14 @@ Merging files with Git
 
 The ``git pull`` command fetches new files from the repository and
 tries to perform an automatic merge if there are conflicts between
-the local files and the files in the repository.
-Git will write a message if the merge is unsuccessful for one or
+the local files and the files in the repository. Alternatively,
+you may run ``git fetch`` and ``git merge`` to do the same
+thing as described in the section :ref:`bitgit:git:fetch`.
+We shall now address what do to if the merge goes wrong, which 
+occasionally happens.
+
+Git will write a message in the terminal window
+if the merge is unsuccessful for one or
 more files. These files will have to be edited manually.
 Merge markers of the type '>>>>>', '======', and '<<<<<' have been
 inserted by Git to mark sections of a file where the version in the
@@ -1539,6 +1551,88 @@ branch with ``git stash branch newstuff``.)
 *Remark.* A recent `extension module <http://mercurial.selenic.com/wiki/ShelveExtension>`_ for Mercurial allows stashing for that version control system as well:
 ``hg shelve --all`` is similar for ``git stash``, and ``hg unshelve``
 is similar to ``git stash apply``.
+
+
+.. _bitgit:git:fetch:
+
+Replacing pull by fetch and merge
+---------------------------------
+
+The ``git pull`` command actually performs two steps that are sometimes
+advantageous to run separately. First, a ``get fetch`` is run to fetch
+new files from the repository, and thereafter a ``git merge`` command is
+run to merge the new files with your local version of the files.
+While ``git pull`` tries to do a lot and be smart in the merge, very
+often with success, the merge step may occasionally lead to
+trouble. That is why it is recommended to run a ``git merge``
+separately, especially if you work with branches.
+
+To fetch files from your repository at GitHub, which usually has
+the nickname ``origin``, you write
+
+
+.. code-block:: console
+
+        git fetch origin
+
+You now have the possibility to check out in detail what the differences
+are between the new files and local ones:
+
+
+.. code-block:: console
+
+        git diff origin/master
+
+This command produces comparisons of the files in the current local branch
+and the ``master`` branch at ``origin`` (the GitHub repo).
+In this way you can exactly see the differences between branches.
+When you are ready to merge in the new files from the ``master`` branch
+of ``origin`` with the files in the current local branch, you say
+
+
+.. code-block:: console
+
+        git merge origin/master
+
+
+Configuring the ``git diff`` command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``git diff`` command launches by default the
+Unix ``diff`` tool in the terminal window.
+Many users prefer to use other diff tools, and the desired one
+can be specified in
+your ``~/.gitconfig`` file. However, a much recommended approach is to
+wrap a shell script around the call to the diff program, because
+``git diff`` actually calls the diff program with a series of
+command-line arguments that will confuse diff programs that take
+the names of the two files to be compared as arguments.
+In ``~/.gitconfig`` you specify a script to do the diff:
+
+
+.. code-block:: text
+
+
+        [diff]
+        external = ~/bin/git-diff-wrapper.sh
+
+It remains to write the ``git-diff-wrapper.sh`` script.
+The  2nd and 5th command-line arguments passed to this script are the
+name of the files to be compared in the diff. A typical script may
+therefore look like
+
+
+.. code-block:: bash
+
+        #!/bin/sh
+        
+        diff "$2" "$5" | less
+
+Here we use the standard (and quite primitive) Unix ``diff`` program,
+but we can replace ``diff`` by, e.g., ``diffuse``, ``kdiff3``, ``xxdiff``, ``meld``, ``pdiff``, or others. With a Python script you can easily check
+for the extensions of the files and use different diff tools for
+different types of files, e.g., ``latexdiff`` for LaTeX files
+and ``pdiff`` for pure text files.
 
 
 .. _bitgit:git:team:
