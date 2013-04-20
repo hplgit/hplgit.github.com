@@ -134,7 +134,7 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory,</b></center>
 <center>[2] <b>Deptartment of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Apr 19, 2013</h4></center> <!-- date -->
+<center><h4>Apr 20, 2013</h4></center> <!-- date -->
 <p>
 <a name="bitgit:top"></a>
 
@@ -316,7 +316,7 @@ On Ubuntu or any Debian-based system the relevant installation command is
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install git gitk git-doc
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; sudo apt-get install git gitk git-doc
 </pre></div>
 <p>
 
@@ -403,7 +403,7 @@ On Ubuntu and Debian-based Linux systems, you can just perform
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install mercurial
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; sudo apt-get install mercurial
 </pre></div>
 <p>
 Alternatively, launch the Ubuntu Software Center application
@@ -541,10 +541,10 @@ Find the <em>Clone</em> button, click on it, choose
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git clone git@bitbucket.org:usernamet/my-project.git
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone git@bitbucket.org:user/my-project.git
 </pre></div>
 <p>
-You must replace <code>username</code> with your own user name at Bitbucket and
+You must replace <code>user</code> with your own username at Bitbucket and
 <code>my-project</code> by the real project name.
 
 <p>
@@ -561,7 +561,7 @@ directory <em>tree</em>, except those having file types listed in <code>.gitigno
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git add .
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git add .
 </pre></div>
 <p>
 
@@ -570,7 +570,7 @@ Thereafter, the changes to the repository (here adding of files) must
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git commit -am <span style="color: #BA2121">&#39;Initial import of files.&#39;</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git commit -am <span style="color: #BA2121">&#39;Initial import of files.&#39;</span>
 </pre></div>
 <p>
 The text following the <code>-am</code> option is a required description of the
@@ -585,7 +585,7 @@ Bitbucket:
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git push -u origin master
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git push -u origin master
 </pre></div>
 <p>
 You must be connected to the Internet for the <code>push</code> command to work since
@@ -617,23 +617,23 @@ or write (push) access to the repo.
 <p>
 Bitbucket can host web pages associated with a Bitbucket account
 (but not yet have web pages as part of a project). Say
-your account/user name is <code>username</code>.  Make a new repository on
-Bitbucket called <code>username.bitbucket.org</code>.  Clone it, fill it with a
+your account/username is <code>user</code>.  Make a new repository on
+Bitbucket called <code>user.bitbucket.org</code>.  Clone it, fill it with a
 file, and push back, e.g.,
 
 <p>
 
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git clone git@bitbucket.org:username/username.bitbucket.org.git
-<span style="color: #008000">cd </span>username.bitbucket.org
-<span style="color: #008000">echo</span> <span style="color: #BA2121">&quot;Welcome to my web pages!&quot;</span> &gt; test.html
-git add test.html
-git commit -am <span style="color: #BA2121">&#39;First web page&#39;</span>
-git push origin master
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone git@bitbucket.org:user/user.bitbucket.org.git
+Terminal&gt; <span style="color: #008000">cd </span>user.bitbucket.org
+Terminal&gt; <span style="color: #008000">echo</span> <span style="color: #BA2121">&quot;Welcome to my web pages!&quot;</span> &gt; test.html
+Terminal&gt; git add test.html
+Terminal&gt; git commit -am <span style="color: #BA2121">&#39;First web page&#39;</span>
+Terminal&gt; git push origin master
 </pre></div>
 <p>
-You can now load the URL <code>http://username.bitbucket.org/test.html</code> into
+You can now load the URL <code>http://user.bitbucket.org/test.html</code> into
 a web browser and view the page. By creating various subfolders
 you can host web pages for a series of projects in this repo.
 
@@ -707,7 +707,7 @@ home folder containing the line
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">machine code.google.com login uname password pw
 </pre></div>
 <p>
-Here, <code>uname</code> is your user name for the Google account and
+Here, <code>uname</code> is your username for the Google account and
 <code>pw</code> is the Googlecode password which is generated for you on
 the <code>code.google.com/p/my-project</code>.
 The <code>.netrc</code> file avoids typing or pasting in
@@ -720,7 +720,7 @@ so that you can add files:
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git clone https://code.google.com/p/my-project/
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone https://code.google.com/p/my-project/
 </pre></div>
 <p>
 Now you can go to the <code>my-project</code> folder and add files.
@@ -728,9 +728,9 @@ Perform
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git add .
-git commit -am <span style="color: #BA2121">&#39;First import of files.&#39;</span>
-git push origin master
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git add .
+Terminal&gt; git commit -am <span style="color: #BA2121">&#39;First import of files.&#39;</span>
+Terminal&gt; git push origin master
 </pre></div>
 <p>
 Click on <em>Source</em> and
@@ -880,10 +880,10 @@ paste this address into a terminal window, after <code>git clone</code>:
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git clone git://github.com:username/My-Project.git
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone git://github.com:user/My-Project.git
 </pre></div>
 <p>
-Make sure you substitute <code>username</code> by your own user name on GitHub.
+Make sure you substitute <code>user</code> by your own username on GitHub.
 
 <p>
 The result of the <code>git clone</code> command is a new folder <code>My-Project</code>.
@@ -901,9 +901,9 @@ run
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git add .
-git commit -am <span style="color: #BA2121">&#39;First set of files.&#39;</span>
-git push -u origin master
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git add .
+Terminal&gt; git commit -am <span style="color: #BA2121">&#39;First set of files.&#39;</span>
+Terminal&gt; git push -u origin master
 </pre></div>
 <p>
 The daily file operations are explained in Section {bitgit:git}.
@@ -916,7 +916,7 @@ The daily file operations are explained in Section {bitgit:git}.
 To give others permissions to push their edits of files to the
 repository, you click on the <em>Settings</em> tab,
 then click on <em>Collaborators</em> on the left, and fill in the name
-of a collaborator (her or his user name on GitHub).
+of a collaborator (her or his username on GitHub).
 Many find it convenient to be notified in email when others have
 pushed a new version of the files to the repo. Click on <em>Service Hooks</em>
 (in the project's <em>Settings</em> menu), choose <em>Email</em>, and fill in
@@ -960,7 +960,7 @@ Git address for a standard <code>git clone</code> command, typically
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git clone git://github.com/username/My-Project.wiki.git
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone git://github.com/user/My-Project.wiki.git
 </pre></div>
 <p>
 This command makes a local copy of the pages in the folder
@@ -984,7 +984,7 @@ Do changes, commit the usual way, and push by
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git push git@github.com:username/My-project.wiki.git
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git push git@github.com:user/My-project.wiki.git
 </pre></div>
 <p>
 The address can be stored as <code>url</code> in <code>.git/config</code> so that just a
@@ -1037,11 +1037,11 @@ The <code>index.html</code> page is invoked by the web address
 
 
 <!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://username.github.io/My-Project/index.html
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://user.github.io/My-Project/index.html
 </pre></div>
 <p>
-where <code>username</code> is the GitHub
-user name and <code>My-Project</code> is the project name.
+where <code>user</code> is the GitHub
+username and <code>My-Project</code> is the project name.
 
 <p>
 <!-- Update this info when I have maintained gh-pages for a while! -->
@@ -1061,7 +1061,7 @@ When Git branches diverge you can merge them by
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git merge otherbranch
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git merge otherbranch
 </pre></div>
 <p>
 where <code>otherbranch</code> is the name of another branch. If there is a
@@ -1091,11 +1091,11 @@ in the root folder of the master branch as well:
 
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git merge master
-touch .nojekyll
-git push origin gh-pages
-git checkout master
-git merge gh-pages
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git merge master
+Terminal&gt; touch .nojekyll
+Terminal&gt; git push origin gh-pages
+Terminal&gt; git checkout master
+Terminal&gt; git merge gh-pages
 </pre></div>
 <p>
 You <em>must</em> add an empty file <code>.nojekyll</code> in the top
@@ -1113,12 +1113,12 @@ make sure to update the gh-pages branch by
 
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git commit -am <span style="color: #BA2121">&#39;Ensure commit of everything in master branch&#39;</span>
-git push origin master
-git checkout gh-pages
-git merge master
-git push origin gh-pages
-git checkout master
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git commit -am <span style="color: #BA2121">&#39;Ensure commit of master branch&#39;</span>
+Terminal&gt; git push origin master
+Terminal&gt; git checkout gh-pages
+Terminal&gt; git merge master
+Terminal&gt; git push origin gh-pages
+Terminal&gt; git checkout master
 </pre></div>
 <p>
 
@@ -1130,15 +1130,15 @@ some more isolated place, say <code>doc/web</code>:
 
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git mv index.html params.json stylesheets/ images/ <span style="color: #BB6622; font-weight: bold">\</span>
-       javascripts/ doc/web/
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git mv index.html params.json stylesheets/ images/ <span style="color: #BB6622; font-weight: bold">\</span>
+                 javascripts/ doc/web/
 </pre></div>
 <p>
 The <code>index.html</code> then has the URL
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://username.github.io/My-Project/doc/web/index.html
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://user.github.io/My-Project/doc/web/index.html
 </pre></div>
 <p>
 
@@ -1163,12 +1163,12 @@ file), right-click on the link, choose <em>Copy Link</em>, and paste the
 link into the document you want. You can test that the link works by
 the Unix command <code>curl -O <link></code>. Note that the link to a file
 is different from the source file's intuitive path in the repository.
-Typically, a source file <code>mydir/myfile.py</code> in project <code>prj</code> is reached
+Typically, a source file <code>dir/f.py</code> in project <code>prj</code> is reached
 through
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://github.com/username/prj/blob/master/mydir/myfile.py?raw=true
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://github.com/user/prj/blob/master/dir/f.py?raw=true
 </pre></div>
 <p>
 
@@ -1176,12 +1176,12 @@ Sometimes you want to link to another HTML file, PDF file, movie file,
 or a file that is to be interpreted as a web resource by the browser.
 Do not use the path to the file in the repo as explained above as it will
 just bring the reader to the repo page. Instead, make sure the file is in
-the gh-pages branch and use a local link, like <code>../mydoc.pdf</code>, or the
+the gh-pages branch and use a local link, like <code>../doc.pdf</code>, or the
 complete gh-pages URL to the file:
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://username.github.com/My-Project/doc/misc/mydoc.pdf
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://user.github.com/My-Project/doc/misc/doc.pdf
 </pre></div>
 <p>
 
@@ -1193,24 +1193,25 @@ complete gh-pages URL to the file:
 GitHub also allows you to create user pages and organization pages not
 tied to any specific project.
 Your personal site has address
-<code>http://username.github.com</code>.
+<code>http://user.github.com</code>.
 Go to your home page on <code>github.com</code> and click <em>New repository</em>,
-and give it the project name <code>username.github.com</code>.
+and give it the project name <code>user.github.com</code>.
 Then follow the instructions that come up:
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">mkdir username.github.com
-<span style="color: #008000">cd </span>username.github.com
-git init
-<span style="color: #408080; font-style: italic"># make an index.html file with some test text</span>
-git add index.html
-git commit -m <span style="color: #BA2121">&#39;First commit&#39;</span>
-git remote add origin git@github.com:username/username.github.com.git
-git push -u origin master
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; mkdir user.github.com
+Terminal&gt; <span style="color: #008000">cd </span>user.github.com
+Terminal&gt; git init
+Terminal&gt; <span style="color: #408080; font-style: italic"># make an index.html file with some test text</span>
+Terminal&gt; git add index.html
+Terminal&gt; git commit -m <span style="color: #BA2121">&#39;First commit&#39;</span>
+Terminal&gt; git remote add origin <span style="color: #BB6622; font-weight: bold">\</span>
+          git@github.com:user/user.github.com.git
+Terminal&gt; git push -u origin master
 </pre></div>
 <p>
-Go to <code>http://username.github.com</code> and see how the <code>index.html</code> is
+Go to <code>http://user.github.com</code> and see how the <code>index.html</code> is
 rendered. You can now add various contents as in any ordinary
 Git repository.
 If you want to use Sphinx generated HTML pages, recall to add an empty file
@@ -1250,12 +1251,12 @@ by running
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git clone git@github.com:username/My-Project.git
-<span style="color: #008000">cd </span>My-Project
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone git@github.com:user/My-Project.git
+Terminal&gt; <span style="color: #008000">cd </span>My-Project
 ls
 </pre></div>
 <p>
-Recall to replace <code>username</code> by your real user name and <code>My-Project</code> by the
+Recall to replace <code>user</code> by your real username and <code>My-Project</code> by the
 actual project name.
 
 <p>
@@ -1270,7 +1271,7 @@ and writing
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git pull origin master
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git pull origin master
 </pre></div>
 <p>
 (You may want to do <code>git fetch</code> and <code>git merge</code> instead
@@ -1282,11 +1283,11 @@ Typical commands are
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git add file1 file2.* dir1 dir2
-git rm filename
-git rm -r dirname
-git mv oldname newname
-git mv oldname ../newdir
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git add file1 file2.* dir1 dir2
+Terminal&gt; git rm filename
+Terminal&gt; git rm -r dirname
+Terminal&gt; git mv oldname newname
+Terminal&gt; git mv oldname ../newdir
 </pre></div>
 <p>
 When your chunk of work is ready,
@@ -1294,7 +1295,7 @@ it is time to commit your changes (note the <code>-am</code> option):
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git commit -am <span style="color: #BA2121">&#39;Description of changes.&#39;</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git commit -am <span style="color: #BA2121">&#39;Description of changes.&#39;</span>
 </pre></div>
 <p>
 If typos or errors enter the message, the <code>git commit --amend</code> command
@@ -1310,7 +1311,7 @@ you push your changes to the global repository:
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git push origin master
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git push origin master
 </pre></div>
 <p>
 It is recommended to push and pull frequently if work takes place in several
@@ -1325,7 +1326,7 @@ To see the status of files, run
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git status -s
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git status -s
 </pre></div>
 <p>
 Files are marked with different symbols, e.g.,
@@ -1343,20 +1344,20 @@ the latest ones:
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">gitk --all
-gitk --since<span style="color: #666666">=</span><span style="color: #BA2121">&quot;2 weeks ago&quot;</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; gitk --all
+Terminal&gt; gitk --since<span style="color: #666666">=</span><span style="color: #BA2121">&quot;2 weeks ago&quot;</span>
 </pre></div>
 <p>
 
-You can also view changes to all files or some selected ones
-in the terminal window:
+You can also view changes to all files, some selected ones, or
+a subdirectory:
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git log -p                        <span style="color: #408080; font-style: italic"># all changes to all files</span>
-git log -p filename               <span style="color: #408080; font-style: italic"># all changes to a specific file</span>
-git log --stat --summary          <span style="color: #408080; font-style: italic"># compact summary of changed files</span>
-git log --stat --summary  subdir  <span style="color: #408080; font-style: italic"># only files in subdir folder</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git log -p                 <span style="color: #408080; font-style: italic"># all changes to all files</span>
+Terminal&gt; git log -p filename        <span style="color: #408080; font-style: italic"># changes to a specific file</span>
+Terminal&gt; git log --stat --summary   <span style="color: #408080; font-style: italic"># compact summary</span>
+Terminal&gt; git log --stat --summary subdir
 </pre></div>
 <p>
 Adding <code>--follow</code> will print the history of file versions before the
@@ -1368,8 +1369,8 @@ line in the file, use <code>git blame</code>:
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git blame filename
-git blame --since<span style="color: #666666">=</span><span style="color: #BA2121">&quot;1 week&quot;</span> filename
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git blame filename
+Terminal&gt; git blame --since<span style="color: #666666">=</span><span style="color: #BA2121">&quot;1 week&quot;</span> filename
 </pre></div>
 <p>
 A useful command to see the history of who did what, where individual
@@ -1388,7 +1389,7 @@ say the text <code>def myfunc</code>, one can run
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git log -p --word-diff --stat -S<span style="color: #BA2121">&#39;def myfunc&#39;</span> filename
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git log -p --word-diff --stat -S<span style="color: #BA2121">&#39;def myfunc&#39;</span> filename
 </pre></div>
 <p>
 This is useful to track down particular changes in the files to see when
@@ -1402,11 +1403,11 @@ expressions instead of exact text: just replace <code>-S</code> by <code>-G</cod
 
 <p>
 Occasionally you need to go back to an earlier version of a file,
-say its name is <code>myfile</code>. Start with viewing the history:
+say its name is <code>f.py</code>. Start with viewing the history:
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git log myfile
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git log f.py
 </pre></div>
 <p>
 Find a commit candidate from the list that you will compare the
@@ -1415,7 +1416,7 @@ present version to and copy the commit hash (string like
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git diff c7673487763ec2bb374758fb8e7efefa12f16dea myfile
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git diff c7673487763ec2bb374758fb8e7efefa12f16dea f.py
 </pre></div>
 <p>
 where the long string is the relevant commit hash. You can now view the
@@ -1425,19 +1426,19 @@ configure the tools used by the <code>git diff</code> command). If you want to r
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git checkout c7673487763ec2bb374758fb8e7efefa12f16dea myfile
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git checkout c7673487763ec2bb374758fb8e7efefa12f16dea f.py
 </pre></div>
 <p>
 To go back to another version (the most recent one, for instance),
-find the commit hash with <code>git log myfile</code>, and do <code>get checkout
-<commit hash> myfile</code>.  At any time you do <code>git commit</code> the current
-version of <code>myfile</code> will enter the most recent commit of the current
+find the commit hash with <code>git log f.py</code>, and do <code>get checkout
+<commit hash> f.py</code>.  At any time you do <code>git commit</code> the current
+version of <code>f.py</code> will enter the most recent commit of the current
 branch.
 
 <p>
-If <code>myfile</code> changed name from <code>yourfile</code> at some point and you want
-<code>yourfile</code> back, run <code>git log --follow myfile</code> to find the commit
-when <code>yourfile</code> existed, and do a <code>git checkout <commit hash> yourfile</code>.
+If <code>f.py</code> changed name from <code>e.py</code> at some point and you want
+<code>e.py</code> back, run <code>git log --follow f.py</code> to find the commit
+when <code>yourfile</code> existed, and do a <code>git checkout <commit hash> e.py</code>.
 
 <p>
 Often you just need to <em>view</em> the old file, not replace the current
@@ -1446,7 +1447,8 @@ it requires the full path from the root git folder:
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git show c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/myfile
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git show <span style="color: #BB6622; font-weight: bold">\</span>
+          c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/f.py
 </pre></div>
 <p>
 
@@ -1460,7 +1462,7 @@ tries to perform an automatic merge if there are conflicts between
 the local files and the files in the repository. Alternatively,
 you may run <code>git fetch</code> and <code>git merge</code> to do the same
 thing as described in the section <a href="#bitgit:git:fetch">Replacing pull by fetch and merge</a>.
-We shall now address what do to if the merge goes wrong, which 
+We shall now address what do to if the merge goes wrong, which
 occasionally happens.
 
 <p>
@@ -1656,17 +1658,15 @@ where new developments takes place:
 
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git branch newstuff      <span style="color: #408080; font-style: italic"># create and switch to new branch</span>
-<span style="color: #408080; font-style: italic"># extend and modify files</span>
-git commit -am <span style="color: #BA2121">&#39;Modified ... and added a file on ...&#39;</span>
-
-git checkout master      <span style="color: #408080; font-style: italic"># swith back to master</span>
-<span style="color: #408080; font-style: italic"># correct errors</span>
-git push origin master
-
-git checkout newstuff    <span style="color: #408080; font-style: italic"># switch to other branch</span>
-<span style="color: #408080; font-style: italic"># continue development work</span>
-git commit -am <span style="color: #BA2121">&#39;More modifications of ...&#39;</span>  <span style="color: #408080; font-style: italic"># record changes</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git branch newstuff      <span style="color: #408080; font-style: italic"># create and switch to new branch</span>
+Terminal&gt; <span style="color: #408080; font-style: italic"># extend and modify files</span>
+Terminal&gt; git commit -am <span style="color: #BA2121">&#39;Modified ... and added a file on ...&#39;</span>
+Terminal&gt; git checkout master      <span style="color: #408080; font-style: italic"># swith back to master</span>
+Terminal&gt; <span style="color: #408080; font-style: italic"># correct errors</span>
+Terminal&gt; git push origin master
+Terminal&gt; git checkout newstuff    <span style="color: #408080; font-style: italic"># switch to other branch</span>
+Terminal&gt; <span style="color: #408080; font-style: italic"># continue development work</span>
+Terminal&gt; git commit -am <span style="color: #BA2121">&#39;More modifications of ...&#39;</span>
 </pre></div>
 <p>
 At some point, your new developments are mature enough to be incorporated
@@ -1676,8 +1676,8 @@ in the master branch. This is done via a merge:
 
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git checkout master
-git merge newstuff
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git checkout master
+Terminal&gt; git merge newstuff
 </pre></div>
 <p>
 You no longer need the <code>newstuff</code> branch and can delete it:
@@ -1686,7 +1686,7 @@ You no longer need the <code>newstuff</code> branch and can delete it:
 
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git branch -d newstuff
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git branch -d newstuff
 </pre></div>
 <p>
 
@@ -1756,7 +1756,7 @@ the nickname <code>origin</code>, you write
 
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git fetch origin
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git fetch origin
 </pre></div>
 <p>
 You now have the possibility to check out in detail what the differences
@@ -1766,7 +1766,7 @@ are between the new files and local ones:
 
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git diff origin/master
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git diff origin/master
 </pre></div>
 <p>
 This command produces comparisons of the files in the current local branch
@@ -1779,7 +1779,7 @@ of <code>origin</code> with the files in the current local branch, you say
 
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git merge origin/master
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git merge origin/master
 </pre></div>
 <p>
 
@@ -1851,7 +1851,7 @@ Clone the fork the usual way:
 
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git clone https://github.com/username/proj1.git
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone https://github.com/user/proj1.git
 </pre></div>
 <p>
 When you do <code>git push origin master</code>, you update your fork.
@@ -1865,7 +1865,8 @@ create a name <code>upstream</code>,
 
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git remote add upstream https://github.com/somebody/proj1.git
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git remote add upstream <span style="color: #BB6622; font-weight: bold">\</span>
+              https://github.com/somebody/proj1.git
 </pre></div>
 <p>
 You can now do <code>git pull upstream</code> to get the most recent files in
@@ -1880,11 +1881,11 @@ The typical workflow is
 
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git fetch upstream               <span style="color: #408080; font-style: italic"># Get new version of files</span>
-git merge upstream/master        <span style="color: #408080; font-style: italic"># Merge with yours</span>
-<span style="color: #408080; font-style: italic"># Your files are up to date - make changes</span>
-git commit -am <span style="color: #BA2121">&#39;Description...&#39;</span>
-git push origin master           <span style="color: #408080; font-style: italic"># Store changes in your fork</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git fetch upstream           <span style="color: #408080; font-style: italic"># Get new version of files</span>
+Terminal&gt; git merge upstream/master    <span style="color: #408080; font-style: italic"># Merge with yours</span>
+Terminal&gt; <span style="color: #408080; font-style: italic"># Your files are up to date - make changes</span>
+Terminal&gt; git commit -am <span style="color: #BA2121">&#39;Description...&#39;</span>
+Terminal&gt; git push origin master       <span style="color: #408080; font-style: italic"># Store changes in your fork</span>
 </pre></div>
 <p>
 
@@ -2006,7 +2007,7 @@ can get started with the project by the command
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg clone ssh://hg@bitbucket.org/username/my-project
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; hg clone ssh://hg@bitbucket.org/user/my-project
 </pre></div>
 <p>
 
@@ -2021,8 +2022,8 @@ you have the latest versions of the files:
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg pull
-hg update
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; hg pull
+Terminal&gt; hg update
 </pre></div>
 <p>
 These commands download the latest versions of the files from
@@ -2035,9 +2036,9 @@ You can now edit some files. Maybe you also add, remove, and move some files:
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg add filename
-hg remove filename
-hg rename oldfilename ../somedir/newfilename
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; hg add filename
+Terminal&gt; hg remove filename
+Terminal&gt; hg rename oldfilename ../somedir/newfilename
 </pre></div>
 <p>
 The removal of a file is physically performed when you do a
@@ -2051,8 +2052,8 @@ repository at <code>bitbucket.org</code>:
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg commit -m <span style="color: #BA2121">&#39;Description of changes.&#39;</span>
-hg push
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; hg commit -m <span style="color: #BA2121">&#39;Description of changes.&#39;</span>
+Terminal&gt; hg push
 </pre></div>
 <p>
 Note that you cannot easily redo the description so be careful with
@@ -2065,7 +2066,7 @@ The command
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg stat
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; hg stat
 </pre></div>
 <p>
 shows the status of the individual files (<code>M</code> for modified, <code>A</code> for
@@ -2092,10 +2093,10 @@ For example,
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg annotate -aun myfile
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; hg annotate -aun filename
 </pre></div>
 <p>
-lists the various lines in the file <code>myfile</code> annotated with the revision
+lists the various lines in the file <code>filname</code> annotated with the revision
 number of the latest change of the line and the name of the user who
 performed the change.
 
@@ -2104,7 +2105,7 @@ Another command,
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg log -p filename | less
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; hg log -p filename | less
 </pre></div>
 <p>
 lists the history of <code>filename</code> in more detail so that you can track
@@ -2119,8 +2120,8 @@ the <code>--stat</code> option:
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg log --stat filename | less   <span style="color: #408080; font-style: italic"># changes in a specific file</span>
-hg log --stat | less            <span style="color: #408080; font-style: italic"># changes in the whole repo</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; hg log --stat filename | less   <span style="color: #408080; font-style: italic"># changes to one file</span>
+Terminal&gt; hg log --stat | less            <span style="color: #408080; font-style: italic"># changes to all files</span>
 </pre></div>
 <p>
 The combination <code>-p --stat</code> equips the line differences with an overview
@@ -2145,7 +2146,7 @@ The command
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg revert -r 152 filename
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; hg revert -r 152 filename
 </pre></div>
 <p>
 replaces the current version of the file by the old one from revision 152.
@@ -2153,15 +2154,15 @@ Sometimes it is better to store the old version in a separate file:
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg cat -r 152 filename &gt; somefile
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; hg cat -r 152 filename &gt; somefile
 </pre></div>
 <p>
 The entire local repo can also be set back:
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg update -r 152
-hg update            <span style="color: #408080; font-style: italic"># go back to the latest version again</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; hg update -r 152
+Terminal&gt; hg update            <span style="color: #408080; font-style: italic"># go back to the latest version again</span>
 </pre></div>
 <p>
 
@@ -2226,8 +2227,8 @@ as resolved:
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">hg resolve -m merge myfile
-hg commit -m merge myfile
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; hg resolve -m merge myfile
+Terminal&gt; hg commit -m merge myfile
 </pre></div>
 <p>
 
@@ -2403,7 +2404,7 @@ GitHub accounts, you can first run
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ssh -Tv git@github.com
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; ssh -Tv git@github.com
 </pre></div>
 <p>
 to see your current identity and which SSH key that was used to identify you.
@@ -2411,7 +2412,7 @@ Typing
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ssh-add -l
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; ssh-add -l
 </pre></div>
 <p>
 lists all your SSH keys. The shown strings can be compared with the

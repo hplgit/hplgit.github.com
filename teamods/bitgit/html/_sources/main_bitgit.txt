@@ -5,7 +5,7 @@ Quick Intro to Version Control Systems and Project Hosting Services
 ===================================================================
 
 :Author: Hans Petter Langtangen
-:Date: Apr 19, 2013
+:Date: Apr 20, 2013
 
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -185,7 +185,7 @@ On Ubuntu or any Debian-based system the relevant installation command is
 
 .. code-block:: console
 
-        sudo apt-get install git gitk git-doc
+        Terminal> sudo apt-get install git gitk git-doc
 
 
 This tutorial explains Git interaction through command-line applications
@@ -270,7 +270,7 @@ On Ubuntu and Debian-based Linux systems, you can just perform
 
 .. code-block:: console
 
-        sudo apt-get install mercurial
+        Terminal> sudo apt-get install mercurial
 
 Alternatively, launch the Ubuntu Software Center application
 and choose the Mercurial package in the graphical interface.
@@ -405,9 +405,9 @@ Find the *Clone* button, click on it, choose
 
 .. code-block:: console
 
-        git clone git@bitbucket.org:usernamet/my-project.git
+        Terminal> git clone git@bitbucket.org:user/my-project.git
 
-You must replace ``username`` with your own user name at Bitbucket and
+You must replace ``user`` with your own username at Bitbucket and
 ``my-project`` by the real project name.
 
 The first time you do the clone command you may be prompted by cryptic
@@ -422,7 +422,7 @@ directory *tree*, except those having file types listed in ``.gitignore``:
 
 .. code-block:: console
 
-        git add .
+        Terminal> git add .
 
 
 Thereafter, the changes to the repository (here adding of files) must
@@ -430,7 +430,7 @@ Thereafter, the changes to the repository (here adding of files) must
 
 .. code-block:: console
 
-        git commit -am 'Initial import of files.'
+        Terminal> git commit -am 'Initial import of files.'
 
 The text following the ``-am`` option is a required description of the
 changes that have taken place. This description does not matter much
@@ -443,7 +443,7 @@ Bitbucket:
 
 .. code-block:: console
 
-        git push -u origin master
+        Terminal> git push -u origin master
 
 You must be connected to the Internet for the ``push`` command to work since
 it sends file information to the ``bitbucket.org`` site.
@@ -471,21 +471,21 @@ User web pages  (1)
 
 Bitbucket can host web pages associated with a Bitbucket account
 (but not yet have web pages as part of a project). Say
-your account/user name is ``username``.  Make a new repository on
-Bitbucket called ``username.bitbucket.org``.  Clone it, fill it with a
+your account/username is ``user``.  Make a new repository on
+Bitbucket called ``user.bitbucket.org``.  Clone it, fill it with a
 file, and push back, e.g.,
 
 
 .. code-block:: console
 
-        git clone git@bitbucket.org:username/username.bitbucket.org.git
-        cd username.bitbucket.org
-        echo "Welcome to my web pages!" > test.html
-        git add test.html
-        git commit -am 'First web page'
-        git push origin master
+        Terminal> git clone git@bitbucket.org:user/user.bitbucket.org.git
+        Terminal> cd user.bitbucket.org
+        Terminal> echo "Welcome to my web pages!" > test.html
+        Terminal> git add test.html
+        Terminal> git commit -am 'First web page'
+        Terminal> git push origin master
 
-You can now load the URL ``http://username.bitbucket.org/test.html`` into
+You can now load the URL ``http://user.bitbucket.org/test.html`` into
 a web browser and view the page. By creating various subfolders
 you can host web pages for a series of projects in this repo.
 
@@ -556,7 +556,7 @@ home folder containing the line
 
         machine code.google.com login uname password pw
 
-Here, ``uname`` is your user name for the Google account and
+Here, ``uname`` is your username for the Google account and
 ``pw`` is the Googlecode password which is generated for you on
 the ``code.google.com/p/my-project``.
 The ``.netrc`` file avoids typing or pasting in
@@ -568,16 +568,16 @@ so that you can add files:
 
 .. code-block:: console
 
-        git clone https://code.google.com/p/my-project/
+        Terminal> git clone https://code.google.com/p/my-project/
 
 Now you can go to the ``my-project`` folder and add files.
 Perform
 
 .. code-block:: console
 
-        git add .
-        git commit -am 'First import of files.'
-        git push origin master
+        Terminal> git add .
+        Terminal> git commit -am 'First import of files.'
+        Terminal> git push origin master
 
 Click on *Source* and
 *Browse* on the project's web page, and observe that the added
@@ -716,9 +716,9 @@ paste this address into a terminal window, after ``git clone``:
 
 .. code-block:: console
 
-        git clone git://github.com:username/My-Project.git
+        Terminal> git clone git://github.com:user/My-Project.git
 
-Make sure you substitute ``username`` by your own user name on GitHub.
+Make sure you substitute ``user`` by your own username on GitHub.
 
 The result of the ``git clone`` command is a new folder ``My-Project``.
 It contains the file ``.git``, which shows that it is a Git repository.
@@ -734,9 +734,9 @@ run
 
 .. code-block:: console
 
-        git add .
-        git commit -am 'First set of files.'
-        git push -u origin master
+        Terminal> git add .
+        Terminal> git commit -am 'First set of files.'
+        Terminal> git push -u origin master
 
 The daily file operations are explained in Section {bitgit:git}.
 
@@ -746,7 +746,7 @@ Collaborating  (2)
 To give others permissions to push their edits of files to the
 repository, you click on the *Settings* tab,
 then click on *Collaborators* on the left, and fill in the name
-of a collaborator (her or his user name on GitHub).
+of a collaborator (her or his username on GitHub).
 Many find it convenient to be notified in email when others have
 pushed a new version of the files to the repo. Click on *Service Hooks*
 (in the project's *Settings* menu), choose *Email*, and fill in
@@ -787,7 +787,7 @@ Git address for a standard ``git clone`` command, typically
 
 .. code-block:: console
 
-        git clone git://github.com/username/My-Project.wiki.git
+        Terminal> git clone git://github.com/user/My-Project.wiki.git
 
 This command makes a local copy of the pages in the folder
 ``My-Project.wiki``, which you may prefer to have at the same level
@@ -807,7 +807,7 @@ Do changes, commit the usual way, and push by
 
 .. code-block:: console
 
-        git push git@github.com:username/My-project.wiki.git
+        Terminal> git push git@github.com:user/My-project.wiki.git
 
 The address can be stored as ``url`` in ``.git/config`` so that just a
 ``git push`` works.
@@ -860,10 +860,10 @@ The ``index.html`` page is invoked by the web address
 .. code-block:: text
 
 
-        http://username.github.io/My-Project/index.html
+        http://user.github.io/My-Project/index.html
 
-where ``username`` is the GitHub
-user name and ``My-Project`` is the project name.
+where ``user`` is the GitHub
+username and ``My-Project`` is the project name.
 
 .. Update this info when I have maintained gh-pages for a while!
 
@@ -892,7 +892,7 @@ When Git branches diverge you can merge them by
 
 .. code-block:: console
 
-        git merge otherbranch
+        Terminal> git merge otherbranch
 
 where ``otherbranch`` is the name of another branch. If there is a
 conflict in the merge, there will be markers in problematic files. Run
@@ -918,11 +918,11 @@ in the root folder of the master branch as well:
 
 .. code-block:: console
 
-        git merge master
-        touch .nojekyll
-        git push origin gh-pages
-        git checkout master
-        git merge gh-pages
+        Terminal> git merge master
+        Terminal> touch .nojekyll
+        Terminal> git push origin gh-pages
+        Terminal> git checkout master
+        Terminal> git merge gh-pages
 
 You *must* add an empty file ``.nojekyll`` in the top
 folder of the project pages if you want to use Sphinx-generated
@@ -937,12 +937,12 @@ make sure to update the gh-pages branch by
 
 .. code-block:: console
 
-        git commit -am 'Ensure commit of everything in master branch'
-        git push origin master
-        git checkout gh-pages
-        git merge master
-        git push origin gh-pages
-        git checkout master
+        Terminal> git commit -am 'Ensure commit of master branch'
+        Terminal> git push origin master
+        Terminal> git checkout gh-pages
+        Terminal> git merge master
+        Terminal> git push origin gh-pages
+        Terminal> git checkout master
 
 
 Personally, I like to move the generated ``index.html`` file and all
@@ -952,15 +952,15 @@ some more isolated place, say ``doc/web``:
 
 .. code-block:: console
 
-        git mv index.html params.json stylesheets/ images/ \
-               javascripts/ doc/web/
+        Terminal> git mv index.html params.json stylesheets/ images/ \
+                         javascripts/ doc/web/
 
 The ``index.html`` then has the URL
 
 .. code-block:: text
 
 
-        http://username.github.io/My-Project/doc/web/index.html
+        http://user.github.io/My-Project/doc/web/index.html
 
 
 .. See `<https://github.com/daler/sphinxdoc-test>`_
@@ -991,26 +991,26 @@ file), right-click on the link, choose *Copy Link*, and paste the
 link into the document you want. You can test that the link works by
 the Unix command ``curl -O <link>``. Note that the link to a file
 is different from the source file's intuitive path in the repository.
-Typically, a source file ``mydir/myfile.py`` in project ``prj`` is reached
+Typically, a source file ``dir/f.py`` in project ``prj`` is reached
 through
 
 .. code-block:: text
 
 
-        https://github.com/username/prj/blob/master/mydir/myfile.py?raw=true
+        https://github.com/user/prj/blob/master/dir/f.py?raw=true
 
 
 Sometimes you want to link to another HTML file, PDF file, movie file,
 or a file that is to be interpreted as a web resource by the browser.
 Do not use the path to the file in the repo as explained above as it will
 just bring the reader to the repo page. Instead, make sure the file is in
-the gh-pages branch and use a local link, like ``../mydoc.pdf``, or the
+the gh-pages branch and use a local link, like ``../doc.pdf``, or the
 complete gh-pages URL to the file:
 
 .. code-block:: text
 
 
-        http://username.github.com/My-Project/doc/misc/mydoc.pdf
+        http://user.github.com/My-Project/doc/misc/doc.pdf
 
 
 
@@ -1021,23 +1021,24 @@ User web pages  (2)
 GitHub also allows you to create user pages and organization pages not
 tied to any specific project.
 Your personal site has address
-``http://username.github.com``.
+``http://user.github.com``.
 Go to your home page on ``github.com`` and click *New repository*,
-and give it the project name ``username.github.com``.
+and give it the project name ``user.github.com``.
 Then follow the instructions that come up:
 
 .. code-block:: console
 
-        mkdir username.github.com
-        cd username.github.com
-        git init
-        # make an index.html file with some test text
-        git add index.html
-        git commit -m 'First commit'
-        git remote add origin git@github.com:username/username.github.com.git
-        git push -u origin master
+        Terminal> mkdir user.github.com
+        Terminal> cd user.github.com
+        Terminal> git init
+        Terminal> # make an index.html file with some test text
+        Terminal> git add index.html
+        Terminal> git commit -m 'First commit'
+        Terminal> git remote add origin \
+                  git@github.com:user/user.github.com.git
+        Terminal> git push -u origin master
 
-Go to ``http://username.github.com`` and see how the ``index.html`` is
+Go to ``http://user.github.com`` and see how the ``index.html`` is
 rendered. You can now add various contents as in any ordinary
 Git repository.
 If you want to use Sphinx generated HTML pages, recall to add an empty file
@@ -1081,11 +1082,11 @@ by running
 
 .. code-block:: console
 
-        git clone git@github.com:username/My-Project.git
-        cd My-Project
+        Terminal> git clone git@github.com:user/My-Project.git
+        Terminal> cd My-Project
         ls
 
-Recall to replace ``username`` by your real user name and ``My-Project`` by the
+Recall to replace ``user`` by your real username and ``My-Project`` by the
 actual project name.
 
 
@@ -1112,7 +1113,7 @@ and writing
 
 .. code-block:: console
 
-        git pull origin master
+        Terminal> git pull origin master
 
 (You may want to do ``git fetch`` and ``git merge`` instead
 of ``git pull`` as explained in the section :ref:`bitgit:git:fetch`.)
@@ -1122,18 +1123,18 @@ Typical commands are
 
 .. code-block:: console
 
-        git add file1 file2.* dir1 dir2
-        git rm filename
-        git rm -r dirname
-        git mv oldname newname
-        git mv oldname ../newdir
+        Terminal> git add file1 file2.* dir1 dir2
+        Terminal> git rm filename
+        Terminal> git rm -r dirname
+        Terminal> git mv oldname newname
+        Terminal> git mv oldname ../newdir
 
 When your chunk of work is ready,
 it is time to commit your changes (note the ``-am`` option):
 
 .. code-block:: console
 
-        git commit -am 'Description of changes.'
+        Terminal> git commit -am 'Description of changes.'
 
 If typos or errors enter the message, the ``git commit --amend`` command
 can be used to reformulate the message.  Running ``git diff`` prior to
@@ -1147,7 +1148,7 @@ you push your changes to the global repository:
 
 .. code-block:: console
 
-        git push origin master
+        Terminal> git push origin master
 
 It is recommended to push and pull frequently if work takes place in several
 clones of the repo (i.e., there are many users or you work with the
@@ -1163,7 +1164,7 @@ To see the status of files, run
 
 .. code-block:: console
 
-        git status -s
+        Terminal> git status -s
 
 Files are marked with different symbols, e.g.,
 ``A`` for added, ``M`` for modified, ``R`` for renamed,
@@ -1178,8 +1179,8 @@ the latest ones:
 
 .. code-block:: console
 
-        gitk --all
-        gitk --since="2 weeks ago"
+        Terminal> gitk --all
+        Terminal> gitk --since="2 weeks ago"
 
 
 
@@ -1188,15 +1189,15 @@ the latest ones:
 .. index:: git blame
 
 
-You can also view changes to all files or some selected ones
-in the terminal window:
+You can also view changes to all files, some selected ones, or
+a subdirectory:
 
 .. code-block:: console
 
-        git log -p                        # all changes to all files
-        git log -p filename               # all changes to a specific file
-        git log --stat --summary          # compact summary of changed files
-        git log --stat --summary  subdir  # only files in subdir folder
+        Terminal> git log -p                 # all changes to all files
+        Terminal> git log -p filename        # changes to a specific file
+        Terminal> git log --stat --summary   # compact summary
+        Terminal> git log --stat --summary subdir
 
 Adding ``--follow`` will print the history of file versions before the
 file got its present name.
@@ -1206,8 +1207,8 @@ line in the file, use ``git blame``:
 
 .. code-block:: console
 
-        git blame filename
-        git blame --since="1 week" filename
+        Terminal> git blame filename
+        Terminal> git blame --since="1 week" filename
 
 A useful command to see the history of who did what, where individual
 edits of words are highlighted (``--word-diff``), is
@@ -1223,7 +1224,7 @@ say the text ``def myfunc``, one can run
 
 .. code-block:: console
 
-        git log -p --word-diff --stat -S'def myfunc' filename
+        Terminal> git log -p --word-diff --stat -S'def myfunc' filename
 
 This is useful to track down particular changes in the files to see when
 they occurred and who introduced them. One can also search for regular
@@ -1239,11 +1240,11 @@ Retrieving old files  (1)
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Occasionally you need to go back to an earlier version of a file,
-say its name is ``myfile``. Start with viewing the history:
+say its name is ``f.py``. Start with viewing the history:
 
 .. code-block:: console
 
-        git log myfile
+        Terminal> git log f.py
 
 Find a commit candidate from the list that you will compare the
 present version to and copy the commit hash (string like
@@ -1251,7 +1252,7 @@ present version to and copy the commit hash (string like
 
 .. code-block:: console
 
-        git diff c7673487763ec2bb374758fb8e7efefa12f16dea myfile
+        Terminal> git diff c7673487763ec2bb374758fb8e7efefa12f16dea f.py
 
 where the long string is the relevant commit hash. You can now view the
 differences between the most recent version and the one in
@@ -1260,17 +1261,17 @@ configure the tools used by the ``git diff`` command). If you want to restore th
 
 .. code-block:: console
 
-        git checkout c7673487763ec2bb374758fb8e7efefa12f16dea myfile
+        Terminal> git checkout c7673487763ec2bb374758fb8e7efefa12f16dea f.py
 
 To go back to another version (the most recent one, for instance),
-find the commit hash with ``git log myfile``, and do ``get checkout
-<commit hash> myfile``.  At any time you do ``git commit`` the current
-version of ``myfile`` will enter the most recent commit of the current
+find the commit hash with ``git log f.py``, and do ``get checkout
+<commit hash> f.py``.  At any time you do ``git commit`` the current
+version of ``f.py`` will enter the most recent commit of the current
 branch.
 
-If ``myfile`` changed name from ``yourfile`` at some point and you want
-``yourfile`` back, run ``git log --follow myfile`` to find the commit
-when ``yourfile`` existed, and do a ``git checkout <commit hash> yourfile``.
+If ``f.py`` changed name from ``e.py`` at some point and you want
+``e.py`` back, run ``git log --follow f.py`` to find the commit
+when ``yourfile`` existed, and do a ``git checkout <commit hash> e.py``.
 
 Often you just need to *view* the old file, not replace the current
 one by the old one, and then ``git show`` is handy. Unfortunately,
@@ -1278,7 +1279,8 @@ it requires the full path from the root git folder:
 
 .. code-block:: console
 
-        git show c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/myfile
+        Terminal> git show \
+                  c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/f.py
 
 
 
@@ -1296,7 +1298,7 @@ tries to perform an automatic merge if there are conflicts between
 the local files and the files in the repository. Alternatively,
 you may run ``git fetch`` and ``git merge`` to do the same
 thing as described in the section :ref:`bitgit:git:fetch`.
-We shall now address what do to if the merge goes wrong, which 
+We shall now address what do to if the merge goes wrong, which
 occasionally happens.
 
 Git will write a message in the terminal window
@@ -1484,17 +1486,15 @@ where new developments takes place:
 
 .. code-block:: console
 
-        git branch newstuff      # create and switch to new branch
-        # extend and modify files
-        git commit -am 'Modified ... and added a file on ...'
-        
-        git checkout master      # swith back to master
-        # correct errors
-        git push origin master
-        
-        git checkout newstuff    # switch to other branch
-        # continue development work
-        git commit -am 'More modifications of ...'  # record changes
+        Terminal> git branch newstuff      # create and switch to new branch
+        Terminal> # extend and modify files
+        Terminal> git commit -am 'Modified ... and added a file on ...'
+        Terminal> git checkout master      # swith back to master
+        Terminal> # correct errors
+        Terminal> git push origin master
+        Terminal> git checkout newstuff    # switch to other branch
+        Terminal> # continue development work
+        Terminal> git commit -am 'More modifications of ...'
 
 At some point, your new developments are mature enough to be incorporated
 in the master branch. This is done via a merge:
@@ -1502,15 +1502,15 @@ in the master branch. This is done via a merge:
 
 .. code-block:: console
 
-        git checkout master
-        git merge newstuff
+        Terminal> git checkout master
+        Terminal> git merge newstuff
 
 You no longer need the ``newstuff`` branch and can delete it:
 
 
 .. code-block:: console
 
-        git branch -d newstuff
+        Terminal> git branch -d newstuff
 
 
 It is not possible to switch branches unless you have committed the
@@ -1573,7 +1573,7 @@ the nickname ``origin``, you write
 
 .. code-block:: console
 
-        git fetch origin
+        Terminal> git fetch origin
 
 You now have the possibility to check out in detail what the differences
 are between the new files and local ones:
@@ -1581,7 +1581,7 @@ are between the new files and local ones:
 
 .. code-block:: console
 
-        git diff origin/master
+        Terminal> git diff origin/master
 
 This command produces comparisons of the files in the current local branch
 and the ``master`` branch at ``origin`` (the GitHub repo).
@@ -1592,7 +1592,7 @@ of ``origin`` with the files in the current local branch, you say
 
 .. code-block:: console
 
-        git merge origin/master
+        Terminal> git merge origin/master
 
 
 Configuring the ``git diff`` command
@@ -1669,7 +1669,7 @@ Clone the fork the usual way:
 
 .. code-block:: console
 
-        git clone https://github.com/username/proj1.git
+        Terminal> git clone https://github.com/user/proj1.git
 
 When you do ``git push origin master``, you update your fork.
 However, the original
@@ -1681,7 +1681,8 @@ create a name ``upstream``,
 
 .. code-block:: console
 
-        git remote add upstream https://github.com/somebody/proj1.git
+        Terminal> git remote add upstream \
+                      https://github.com/somebody/proj1.git
 
 You can now do ``git pull upstream`` to get the most recent files in
 the original repo. However,
@@ -1694,11 +1695,11 @@ The typical workflow is
 
 .. code-block:: console
 
-        git fetch upstream               # Get new version of files
-        git merge upstream/master        # Merge with yours
-        # Your files are up to date - make changes
-        git commit -am 'Description...'
-        git push origin master           # Store changes in your fork
+        Terminal> git fetch upstream           # Get new version of files
+        Terminal> git merge upstream/master    # Merge with yours
+        Terminal> # Your files are up to date - make changes
+        Terminal> git commit -am 'Description...'
+        Terminal> git push origin master       # Store changes in your fork
 
 
 At some point you would like to push your changes back to the original
@@ -1829,7 +1830,7 @@ can get started with the project by the command
 
 .. code-block:: console
 
-        hg clone ssh://hg@bitbucket.org/username/my-project
+        Terminal> hg clone ssh://hg@bitbucket.org/user/my-project
 
 
 
@@ -1857,8 +1858,8 @@ you have the latest versions of the files:
 
 .. code-block:: console
 
-        hg pull
-        hg update
+        Terminal> hg pull
+        Terminal> hg update
 
 These commands download the latest versions of the files from
 your ``bitbucket.org`` repository and make them ready for changes on
@@ -1869,9 +1870,9 @@ You can now edit some files. Maybe you also add, remove, and move some files:
 
 .. code-block:: console
 
-        hg add filename
-        hg remove filename
-        hg rename oldfilename ../somedir/newfilename
+        Terminal> hg add filename
+        Terminal> hg remove filename
+        Terminal> hg rename oldfilename ../somedir/newfilename
 
 The removal of a file is physically performed when you do a
 ``hg commit``. The file is never removed from the repository, only
@@ -1883,8 +1884,8 @@ repository at ``bitbucket.org``:
 
 .. code-block:: console
 
-        hg commit -m 'Description of changes.'
-        hg push
+        Terminal> hg commit -m 'Description of changes.'
+        Terminal> hg push
 
 Note that you cannot easily redo the description so be careful with
 the wording. You can run ``hg diff`` to get a listing of all
@@ -1898,7 +1899,7 @@ The command
 
 .. code-block:: console
 
-        hg stat
+        Terminal> hg stat
 
 shows the status of the individual files (``M`` for modified, ``A`` for
 added, ``R`` for removed), and you should pay attention to files with a
@@ -1926,9 +1927,9 @@ For example,
 
 .. code-block:: console
 
-        hg annotate -aun myfile
+        Terminal> hg annotate -aun filename
 
-lists the various lines in the file ``myfile`` annotated with the revision
+lists the various lines in the file ``filname`` annotated with the revision
 number of the latest change of the line and the name of the user who
 performed the change.
 
@@ -1936,7 +1937,7 @@ Another command,
 
 .. code-block:: console
 
-        hg log -p filename | less
+        Terminal> hg log -p filename | less
 
 lists the history of ``filename`` in more detail so that you can track
 the evolution of this file. Adding the ``--follow`` option will list the
@@ -1949,8 +1950,8 @@ the ``--stat`` option:
 
 .. code-block:: console
 
-        hg log --stat filename | less   # changes in a specific file
-        hg log --stat | less            # changes in the whole repo
+        Terminal> hg log --stat filename | less   # changes to one file
+        Terminal> hg log --stat | less            # changes to all files
 
 The combination ``-p --stat`` equips the line differences with an overview
 of which files that were changed in each revision.
@@ -1976,21 +1977,21 @@ The command
 
 .. code-block:: console
 
-        hg revert -r 152 filename
+        Terminal> hg revert -r 152 filename
 
 replaces the current version of the file by the old one from revision 152.
 Sometimes it is better to store the old version in a separate file:
 
 .. code-block:: console
 
-        hg cat -r 152 filename > somefile
+        Terminal> hg cat -r 152 filename > somefile
 
 The entire local repo can also be set back:
 
 .. code-block:: console
 
-        hg update -r 152
-        hg update            # go back to the latest version again
+        Terminal> hg update -r 152
+        Terminal> hg update            # go back to the latest version again
 
 
 
@@ -2055,8 +2056,8 @@ as resolved:
 
 .. code-block:: console
 
-        hg resolve -m merge myfile
-        hg commit -m merge myfile
+        Terminal> hg resolve -m merge myfile
+        Terminal> hg commit -m merge myfile
 
 
 You can read more about merging files in the `hgbook <http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html>`_.
@@ -2227,14 +2228,14 @@ GitHub accounts, you can first run
 
 .. code-block:: console
 
-        ssh -Tv git@github.com
+        Terminal> ssh -Tv git@github.com
 
 to see your current identity and which SSH key that was used to identify you.
 Typing
 
 .. code-block:: console
 
-        ssh-add -l
+        Terminal> ssh-add -l
 
 lists all your SSH keys. The shown strings can be compared with the
 string in the SSH key field of any GitHub account.

@@ -62,7 +62,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 19, 2013</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 20, 2013</td>
 </tr>
 </tbody>
 </table>
@@ -199,7 +199,7 @@ Git involves compiled code so it is most convenient to download a
 precompiled binary version of the software on Windows, Mac and other
 Linux computers.
 On Ubuntu or any Debian-based system the relevant installation command is</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install git gitk git-doc</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; sudo apt-get install git gitk git-doc</span>
 </pre></div>
 </div>
 <p>This tutorial explains Git interaction through command-line applications
@@ -266,7 +266,7 @@ Mercurial is pure Python code so it is trivial on any system with Python
 installed to download the Mercurial source code and perform
 the standard <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> command.</p>
 <p>On Ubuntu and Debian-based Linux systems, you can just perform</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo apt-get install mercurial</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; sudo apt-get install mercurial</span>
 </pre></div>
 </div>
 <p>Alternatively, launch the Ubuntu Software Center application
@@ -376,10 +376,10 @@ Go to the project page
 brought to the project page when creating a new project).
 Find the <em>Clone</em> button, click on it, choose
 <em>SSH</em>, copy the <em>clone</em> line and run this command in a terminal:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git clone git@bitbucket.org:usernamet/my-project.git</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git clone git@bitbucket.org:user/my-project.git</span>
 </pre></div>
 </div>
-<p>You must replace <tt class="docutils literal"><span class="pre">username</span></tt> with your own user name at Bitbucket and
+<p>You must replace <tt class="docutils literal"><span class="pre">user</span></tt> with your own username at Bitbucket and
 <tt class="docutils literal"><span class="pre">my-project</span></tt> by the real project name.</p>
 <p>The first time you do the clone command you may be prompted by cryptic
 Unix output ending with &#8220;Are you sure you want to continue connecting
@@ -389,12 +389,12 @@ the project and put them in the <tt class="docutils literal"><span class="pre">m
 Standing in the <tt class="docutils literal"><span class="pre">my-project</span></tt> folder, the following Git command is used
 to add all files in the current
 directory <em>tree</em>, except those having file types listed in <tt class="docutils literal"><span class="pre">.gitignore</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git add .</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git add .</span>
 </pre></div>
 </div>
 <p>Thereafter, the changes to the repository (here adding of files) must
 <em>committed</em> (registered):</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git commit -am &#39;Initial import of files.&#39;</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git commit -am &#39;Initial import of files.&#39;</span>
 </pre></div>
 </div>
 <p>The text following the <tt class="docutils literal"><span class="pre">-am</span></tt> option is a required description of the
@@ -404,7 +404,7 @@ importance for future commit commands so that you can easily track the
 history of your project files.</p>
 <p>The final step is to push the local changes to the master repo at
 Bitbucket:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git push -u origin master</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git push -u origin master</span>
 </pre></div>
 </div>
 <p>You must be connected to the Internet for the <tt class="docutils literal"><span class="pre">push</span></tt> command to work since
@@ -428,18 +428,18 @@ or write (push) access to the repo.</p>
 <span id="bitgit-bitbucket-web"></span><h2>User web pages  (1)<a class="headerlink" href="#user-web-pages-1" title="Permalink to this headline">¶</a></h2>
 <p>Bitbucket can host web pages associated with a Bitbucket account
 (but not yet have web pages as part of a project). Say
-your account/user name is <tt class="docutils literal"><span class="pre">username</span></tt>.  Make a new repository on
-Bitbucket called <tt class="docutils literal"><span class="pre">username.bitbucket.org</span></tt>.  Clone it, fill it with a
+your account/username is <tt class="docutils literal"><span class="pre">user</span></tt>.  Make a new repository on
+Bitbucket called <tt class="docutils literal"><span class="pre">user.bitbucket.org</span></tt>.  Clone it, fill it with a
 file, and push back, e.g.,</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git clone git@bitbucket.org:username/username.bitbucket.org.git</span>
-<span class="go">cd username.bitbucket.org</span>
-<span class="go">echo &quot;Welcome to my web pages!&quot; &gt; test.html</span>
-<span class="go">git add test.html</span>
-<span class="go">git commit -am &#39;First web page&#39;</span>
-<span class="go">git push origin master</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git clone git@bitbucket.org:user/user.bitbucket.org.git</span>
+<span class="go">Terminal&gt; cd user.bitbucket.org</span>
+<span class="go">Terminal&gt; echo &quot;Welcome to my web pages!&quot; &gt; test.html</span>
+<span class="go">Terminal&gt; git add test.html</span>
+<span class="go">Terminal&gt; git commit -am &#39;First web page&#39;</span>
+<span class="go">Terminal&gt; git push origin master</span>
 </pre></div>
 </div>
-<p>You can now load the URL <tt class="docutils literal"><span class="pre">http://username.bitbucket.org/test.html</span></tt> into
+<p>You can now load the URL <tt class="docutils literal"><span class="pre">http://user.bitbucket.org/test.html</span></tt> into
 a web browser and view the page. By creating various subfolders
 you can host web pages for a series of projects in this repo.</p>
 <p>Bitbucket does not yet offer ordinary repos to host and display
@@ -487,7 +487,7 @@ home folder containing the line</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">machine</span> <span class="n">code</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span> <span class="n">login</span> <span class="n">uname</span> <span class="n">password</span> <span class="n">pw</span>
 </pre></div>
 </div>
-<p>Here, <tt class="docutils literal"><span class="pre">uname</span></tt> is your user name for the Google account and
+<p>Here, <tt class="docutils literal"><span class="pre">uname</span></tt> is your username for the Google account and
 <tt class="docutils literal"><span class="pre">pw</span></tt> is the Googlecode password which is generated for you on
 the <tt class="docutils literal"><span class="pre">code.google.com/p/my-project</span></tt>.
 The <tt class="docutils literal"><span class="pre">.netrc</span></tt> file avoids typing or pasting in
@@ -495,14 +495,14 @@ your long and complicated password every time you push changes to
 the repository on <tt class="docutils literal"><span class="pre">code.google.com</span></tt>.</p>
 <p>The next step is to clone the empty repository on your local machine
 so that you can add files:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git clone https://code.google.com/p/my-project/</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git clone https://code.google.com/p/my-project/</span>
 </pre></div>
 </div>
 <p>Now you can go to the <tt class="docutils literal"><span class="pre">my-project</span></tt> folder and add files.
 Perform</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git add .</span>
-<span class="go">git commit -am &#39;First import of files.&#39;</span>
-<span class="go">git push origin master</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git add .</span>
+<span class="go">Terminal&gt; git commit -am &#39;First import of files.&#39;</span>
+<span class="go">Terminal&gt; git push origin master</span>
 </pre></div>
 </div>
 <p>Click on <em>Source</em> and
@@ -605,10 +605,10 @@ can request <a class="reference external" href="https://github.com/edu">free, pr
 <p>The next step is to clone the project on your personal computer. Click
 on the <em>SSH</em> button to see the address of the project, and
 paste this address into a terminal window, after <tt class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git clone git://github.com:username/My-Project.git</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git clone git://github.com:user/My-Project.git</span>
 </pre></div>
 </div>
-<p>Make sure you substitute <tt class="docutils literal"><span class="pre">username</span></tt> by your own user name on GitHub.</p>
+<p>Make sure you substitute <tt class="docutils literal"><span class="pre">user</span></tt> by your own username on GitHub.</p>
 <p>The result of the <tt class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span></tt> command is a new folder <tt class="docutils literal"><span class="pre">My-Project</span></tt>.
 It contains the file <tt class="docutils literal"><span class="pre">.git</span></tt>, which shows that it is a Git repository.
 It also contains a default <tt class="docutils literal"><span class="pre">README.md</span></tt> file with the project name and
@@ -619,9 +619,9 @@ You may use the <a class="reference external" href="http://docutils.sourceforge.
 <p>You can now add files and directories into the <tt class="docutils literal"><span class="pre">My-Project</span></tt> folder.
 When your initial file collection has the desired form, you must
 run</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git add .</span>
-<span class="go">git commit -am &#39;First set of files.&#39;</span>
-<span class="go">git push -u origin master</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git add .</span>
+<span class="go">Terminal&gt; git commit -am &#39;First set of files.&#39;</span>
+<span class="go">Terminal&gt; git push -u origin master</span>
 </pre></div>
 </div>
 <p>The daily file operations are explained in Section {bitgit:git}.</p>
@@ -630,7 +630,7 @@ run</p>
 <p>To give others permissions to push their edits of files to the
 repository, you click on the <em>Settings</em> tab,
 then click on <em>Collaborators</em> on the left, and fill in the name
-of a collaborator (her or his user name on GitHub).
+of a collaborator (her or his username on GitHub).
 Many find it convenient to be notified in email when others have
 pushed a new version of the files to the repo. Click on <em>Service Hooks</em>
 (in the project&#8217;s <em>Settings</em> menu), choose <em>Email</em>, and fill in
@@ -664,7 +664,7 @@ the wiki text in your favorite text editor. The wiki pages are
 stored in a separate repo: click on <em>Git Access</em> and then on
 <em>Git Read-Only</em> to see the
 Git address for a standard <tt class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span></tt> command, typically</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git clone git://github.com/username/My-Project.wiki.git</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git clone git://github.com/user/My-Project.wiki.git</span>
 </pre></div>
 </div>
 <p>This command makes a local copy of the pages in the folder
@@ -679,7 +679,7 @@ in the web browser to monitor the effect.</p>
 <p>You may consider having the original text in <tt class="docutils literal"><span class="pre">doconce</span></tt> format and
 generate the wiki in reStructuredText format.</p>
 <p>Do changes, commit the usual way, and push by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git push git@github.com:username/My-project.wiki.git</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git push git@github.com:user/My-project.wiki.git</span>
 </pre></div>
 </div>
 <p>The address can be stored as <tt class="docutils literal"><span class="pre">url</span></tt> in <tt class="docutils literal"><span class="pre">.git/config</span></tt> so that just a
@@ -714,18 +714,18 @@ stored in the version control system).
 You can populate this folder and subdirectories you create with
 HTML and other files as you like.</p>
 <p>The <tt class="docutils literal"><span class="pre">index.html</span></tt> page is invoked by the web address</p>
-<div class="highlight-text"><div class="highlight"><pre>http://username.github.io/My-Project/index.html
+<div class="highlight-text"><div class="highlight"><pre>http://user.github.io/My-Project/index.html
 </pre></div>
 </div>
-<p>where <tt class="docutils literal"><span class="pre">username</span></tt> is the GitHub
-user name and <tt class="docutils literal"><span class="pre">My-Project</span></tt> is the project name.</p>
+<p>where <tt class="docutils literal"><span class="pre">user</span></tt> is the GitHub
+username and <tt class="docutils literal"><span class="pre">My-Project</span></tt> is the project name.</p>
 <p>The web pages and project files are now in two different branches.
 To see the branches, type <tt class="docutils literal"><span class="pre">git</span> <span class="pre">branch</span></tt> and the one you are in will
 be marked with a star in the output. Switching to the master branch
 is done by <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">master</span></tt>. Similarly, <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">gh-pages</span></tt>
 switches to the gh-pages branch.</p>
 <span class="target" id="index-8"></span><span class="target" id="index-9"></span><span class="target" id="index-10"></span><p id="index-11">When Git branches diverge you can merge them by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git merge otherbranch</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git merge otherbranch</span>
 </pre></div>
 </div>
 <p>where <tt class="docutils literal"><span class="pre">otherbranch</span></tt> is the name of another branch. If there is a
@@ -746,11 +746,11 @@ Then switch to the master
 branch and merge with gh-pages so you get the autogenerated
 <tt class="docutils literal"><span class="pre">index.html</span></tt> file and associated files and directories for the web design
 in the root folder of the master branch as well:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git merge master</span>
-<span class="go">touch .nojekyll</span>
-<span class="go">git push origin gh-pages</span>
-<span class="go">git checkout master</span>
-<span class="go">git merge gh-pages</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git merge master</span>
+<span class="go">Terminal&gt; touch .nojekyll</span>
+<span class="go">Terminal&gt; git push origin gh-pages</span>
+<span class="go">Terminal&gt; git checkout master</span>
+<span class="go">Terminal&gt; git merge gh-pages</span>
 </pre></div>
 </div>
 <p>You <em>must</em> add an empty file <tt class="docutils literal"><span class="pre">.nojekyll</span></tt> in the top
@@ -761,23 +761,23 @@ in subdirectories whose names start with an underscore).</p>
 maintain them in the master branch.
 Before publishing documents online,
 make sure to update the gh-pages branch by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git commit -am &#39;Ensure commit of everything in master branch&#39;</span>
-<span class="go">git push origin master</span>
-<span class="go">git checkout gh-pages</span>
-<span class="go">git merge master</span>
-<span class="go">git push origin gh-pages</span>
-<span class="go">git checkout master</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git commit -am &#39;Ensure commit of master branch&#39;</span>
+<span class="go">Terminal&gt; git push origin master</span>
+<span class="go">Terminal&gt; git checkout gh-pages</span>
+<span class="go">Terminal&gt; git merge master</span>
+<span class="go">Terminal&gt; git push origin gh-pages</span>
+<span class="go">Terminal&gt; git checkout master</span>
 </pre></div>
 </div>
 <p>Personally, I like to move the generated <tt class="docutils literal"><span class="pre">index.html</span></tt> file and all
 associated scripts, stylesheets, and images from the root folder to
 some more isolated place, say <tt class="docutils literal"><span class="pre">doc/web</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git mv index.html params.json stylesheets/ images/ \</span>
-<span class="go">       javascripts/ doc/web/</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git mv index.html params.json stylesheets/ images/ \</span>
+<span class="go">                 javascripts/ doc/web/</span>
 </pre></div>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">index.html</span></tt> then has the URL</p>
-<div class="highlight-text"><div class="highlight"><pre>http://username.github.io/My-Project/doc/web/index.html
+<div class="highlight-text"><div class="highlight"><pre>http://user.github.io/My-Project/doc/web/index.html
 </pre></div>
 </div>
 <p>Linking to source code files or other files in the project is easy:
@@ -787,18 +787,18 @@ file), right-click on the link, choose <em>Copy Link</em>, and paste the
 link into the document you want. You can test that the link works by
 the Unix command <tt class="docutils literal"><span class="pre">curl</span> <span class="pre">-O</span> <span class="pre">&lt;link&gt;</span></tt>. Note that the link to a file
 is different from the source file&#8217;s intuitive path in the repository.
-Typically, a source file <tt class="docutils literal"><span class="pre">mydir/myfile.py</span></tt> in project <tt class="docutils literal"><span class="pre">prj</span></tt> is reached
+Typically, a source file <tt class="docutils literal"><span class="pre">dir/f.py</span></tt> in project <tt class="docutils literal"><span class="pre">prj</span></tt> is reached
 through</p>
-<div class="highlight-text"><div class="highlight"><pre>https://github.com/username/prj/blob/master/mydir/myfile.py?raw=true
+<div class="highlight-text"><div class="highlight"><pre>https://github.com/user/prj/blob/master/dir/f.py?raw=true
 </pre></div>
 </div>
 <p>Sometimes you want to link to another HTML file, PDF file, movie file,
 or a file that is to be interpreted as a web resource by the browser.
 Do not use the path to the file in the repo as explained above as it will
 just bring the reader to the repo page. Instead, make sure the file is in
-the gh-pages branch and use a local link, like <tt class="docutils literal"><span class="pre">../mydoc.pdf</span></tt>, or the
+the gh-pages branch and use a local link, like <tt class="docutils literal"><span class="pre">../doc.pdf</span></tt>, or the
 complete gh-pages URL to the file:</p>
-<div class="highlight-text"><div class="highlight"><pre>http://username.github.com/My-Project/doc/misc/mydoc.pdf
+<div class="highlight-text"><div class="highlight"><pre>http://user.github.com/My-Project/doc/misc/doc.pdf
 </pre></div>
 </div>
 </div>
@@ -807,21 +807,22 @@ complete gh-pages URL to the file:</p>
 <p>GitHub also allows you to create user pages and organization pages not
 tied to any specific project.
 Your personal site has address
-<tt class="docutils literal"><span class="pre">http://username.github.com</span></tt>.
+<tt class="docutils literal"><span class="pre">http://user.github.com</span></tt>.
 Go to your home page on <tt class="docutils literal"><span class="pre">github.com</span></tt> and click <em>New repository</em>,
-and give it the project name <tt class="docutils literal"><span class="pre">username.github.com</span></tt>.
+and give it the project name <tt class="docutils literal"><span class="pre">user.github.com</span></tt>.
 Then follow the instructions that come up:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">mkdir username.github.com</span>
-<span class="go">cd username.github.com</span>
-<span class="go">git init</span>
-<span class="gp">#</span> make an index.html file with some <span class="nb">test </span>text
-<span class="go">git add index.html</span>
-<span class="go">git commit -m &#39;First commit&#39;</span>
-<span class="go">git remote add origin git@github.com:username/username.github.com.git</span>
-<span class="go">git push -u origin master</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; mkdir user.github.com</span>
+<span class="go">Terminal&gt; cd user.github.com</span>
+<span class="go">Terminal&gt; git init</span>
+<span class="go">Terminal&gt; # make an index.html file with some test text</span>
+<span class="go">Terminal&gt; git add index.html</span>
+<span class="go">Terminal&gt; git commit -m &#39;First commit&#39;</span>
+<span class="go">Terminal&gt; git remote add origin \</span>
+<span class="go">          git@github.com:user/user.github.com.git</span>
+<span class="go">Terminal&gt; git push -u origin master</span>
 </pre></div>
 </div>
-<p>Go to <tt class="docutils literal"><span class="pre">http://username.github.com</span></tt> and see how the <tt class="docutils literal"><span class="pre">index.html</span></tt> is
+<p>Go to <tt class="docutils literal"><span class="pre">http://user.github.com</span></tt> and see how the <tt class="docutils literal"><span class="pre">index.html</span></tt> is
 rendered. You can now add various contents as in any ordinary
 Git repository.
 If you want to use Sphinx generated HTML pages, recall to add an empty file
@@ -843,12 +844,12 @@ control are understood.</p>
 <p>You get started with your project on a new machine, or another user
 can get started with the project,
 by running</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git clone git@github.com:username/My-Project.git</span>
-<span class="go">cd My-Project</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git clone git@github.com:user/My-Project.git</span>
+<span class="go">Terminal&gt; cd My-Project</span>
 <span class="go">ls</span>
 </pre></div>
 </div>
-<p>Recall to replace <tt class="docutils literal"><span class="pre">username</span></tt> by your real user name and <tt class="docutils literal"><span class="pre">My-Project</span></tt> by the
+<p>Recall to replace <tt class="docutils literal"><span class="pre">user</span></tt> by your real username and <tt class="docutils literal"><span class="pre">My-Project</span></tt> by the
 actual project name.</p>
 <span class="target" id="index-14"></span><span class="target" id="index-15"></span><span class="target" id="index-16"></span><span class="target" id="index-17"></span><span class="target" id="index-18"></span></div>
 <div class="section" id="the-pull-change-push-cycle-1">
@@ -856,23 +857,23 @@ actual project name.</p>
 <p>The typical work flow with the &#8220;My Project&#8221; project starts with
 updating the local repository by going to the <tt class="docutils literal"><span class="pre">My-Project</span></tt> folder
 and writing</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git pull origin master</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git pull origin master</span>
 </pre></div>
 </div>
 <p>(You may want to do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">fetch</span></tt> and <tt class="docutils literal"><span class="pre">git</span> <span class="pre">merge</span></tt> instead
 of <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> as explained in the section <a class="reference internal" href="#bitgit-git-fetch"><em>Replacing pull by fetch and merge</em></a>.)</p>
 <p>You can now edit files, add new files, delete files, or rename files.
 Typical commands are</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git add file1 file2.* dir1 dir2</span>
-<span class="go">git rm filename</span>
-<span class="go">git rm -r dirname</span>
-<span class="go">git mv oldname newname</span>
-<span class="go">git mv oldname ../newdir</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git add file1 file2.* dir1 dir2</span>
+<span class="go">Terminal&gt; git rm filename</span>
+<span class="go">Terminal&gt; git rm -r dirname</span>
+<span class="go">Terminal&gt; git mv oldname newname</span>
+<span class="go">Terminal&gt; git mv oldname ../newdir</span>
 </pre></div>
 </div>
 <p>When your chunk of work is ready,
 it is time to commit your changes (note the <tt class="docutils literal"><span class="pre">-am</span></tt> option):</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git commit -am &#39;Description of changes.&#39;</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git commit -am &#39;Description of changes.&#39;</span>
 </pre></div>
 </div>
 <p>If typos or errors enter the message, the <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">--amend</span></tt> command
@@ -883,7 +884,7 @@ gives a listing of all the changes you have made to the files since
 the last commit or pull command.</p>
 <p>You may perform many commits, to keep track of small changes, before
 you push your changes to the global repository:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git push origin master</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git push origin master</span>
 </pre></div>
 </div>
 <p>It is recommended to push and pull frequently if work takes place in several
@@ -892,7 +893,7 @@ repo on different
 computers). Infrequent push and pull easily leads to merge problems
 (see the section <a class="reference internal" href="#bitgit-git-merge"><em>Merging files with Git</em></a>).</p>
 <p id="index-20">To see the status of files, run</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git status -s</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git status -s</span>
 </pre></div>
 </div>
 <p>Files are marked with different symbols, e.g.,
@@ -903,24 +904,24 @@ and <tt class="docutils literal"><span class="pre">??</span></tt> for not being 
 <h3>Viewing the history of files  (1)<a class="headerlink" href="#viewing-the-history-of-files-1" title="Permalink to this headline">¶</a></h3>
 <p>A nice graphical tool allows you to view all changes, or just
 the latest ones:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">gitk --all</span>
-<span class="go">gitk --since=&quot;2 weeks ago&quot;</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; gitk --all</span>
+<span class="go">Terminal&gt; gitk --since=&quot;2 weeks ago&quot;</span>
 </pre></div>
 </div>
-<span class="target" id="index-21"></span><p id="index-22">You can also view changes to all files or some selected ones
-in the terminal window:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git log -p                        # all changes to all files</span>
-<span class="go">git log -p filename               # all changes to a specific file</span>
-<span class="go">git log --stat --summary          # compact summary of changed files</span>
-<span class="go">git log --stat --summary  subdir  # only files in subdir folder</span>
+<span class="target" id="index-21"></span><p id="index-22">You can also view changes to all files, some selected ones, or
+a subdirectory:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git log -p                 # all changes to all files</span>
+<span class="go">Terminal&gt; git log -p filename        # changes to a specific file</span>
+<span class="go">Terminal&gt; git log --stat --summary   # compact summary</span>
+<span class="go">Terminal&gt; git log --stat --summary subdir</span>
 </pre></div>
 </div>
 <p>Adding <tt class="docutils literal"><span class="pre">--follow</span></tt> will print the history of file versions before the
 file got its present name.</p>
 <p>To show the author who is responsible for the last modification of each
 line in the file, use <tt class="docutils literal"><span class="pre">git</span> <span class="pre">blame</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git blame filename</span>
-<span class="go">git blame --since=&quot;1 week&quot; filename</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git blame filename</span>
+<span class="go">Terminal&gt; git blame --since=&quot;1 week&quot; filename</span>
 </pre></div>
 </div>
 <p>A useful command to see the history of who did what, where individual
@@ -931,7 +932,7 @@ edits of words are highlighted (<tt class="docutils literal"><span class="pre">-
 <p>Removed words appear in brackets and added words in curly braces.</p>
 <p>Looking for when a particular piece of text entered or left the file,
 say the text <tt class="docutils literal"><span class="pre">def</span> <span class="pre">myfunc</span></tt>, one can run</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git log -p --word-diff --stat -S&#39;def myfunc&#39; filename</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git log -p --word-diff --stat -S&#39;def myfunc&#39; filename</span>
 </pre></div>
 </div>
 <p>This is useful to track down particular changes in the files to see when
@@ -941,35 +942,36 @@ expressions instead of exact text: just replace <tt class="docutils literal"><sp
 <div class="section" id="retrieving-old-files-1">
 <span id="index-24"></span><h3>Retrieving old files  (1)<a class="headerlink" href="#retrieving-old-files-1" title="Permalink to this headline">¶</a></h3>
 <p>Occasionally you need to go back to an earlier version of a file,
-say its name is <tt class="docutils literal"><span class="pre">myfile</span></tt>. Start with viewing the history:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git log myfile</span>
+say its name is <tt class="docutils literal"><span class="pre">f.py</span></tt>. Start with viewing the history:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git log f.py</span>
 </pre></div>
 </div>
 <p>Find a commit candidate from the list that you will compare the
 present version to and copy the commit hash (string like
 <tt class="docutils literal"><span class="pre">c7673487...</span></tt>) and run</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git diff c7673487763ec2bb374758fb8e7efefa12f16dea myfile</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git diff c7673487763ec2bb374758fb8e7efefa12f16dea f.py</span>
 </pre></div>
 </div>
 <p>where the long string is the relevant commit hash. You can now view the
 differences between the most recent version and the one in
 the commit you picked (see the section <a class="reference internal" href="#bitgit-git-fetch"><em>Replacing pull by fetch and merge</em></a> for how to
 configure the tools used by the <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> command). If you want to restore the old file, write</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git checkout c7673487763ec2bb374758fb8e7efefa12f16dea myfile</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git checkout c7673487763ec2bb374758fb8e7efefa12f16dea f.py</span>
 </pre></div>
 </div>
 <p>To go back to another version (the most recent one, for instance),
-find the commit hash with <tt class="docutils literal"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">myfile</span></tt>, and do <tt class="docutils literal"><span class="pre">get</span> <span class="pre">checkout</span>
-<span class="pre">&lt;commit</span> <span class="pre">hash&gt;</span> <span class="pre">myfile</span></tt>.  At any time you do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></tt> the current
-version of <tt class="docutils literal"><span class="pre">myfile</span></tt> will enter the most recent commit of the current
+find the commit hash with <tt class="docutils literal"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">f.py</span></tt>, and do <tt class="docutils literal"><span class="pre">get</span> <span class="pre">checkout</span>
+<span class="pre">&lt;commit</span> <span class="pre">hash&gt;</span> <span class="pre">f.py</span></tt>.  At any time you do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></tt> the current
+version of <tt class="docutils literal"><span class="pre">f.py</span></tt> will enter the most recent commit of the current
 branch.</p>
-<p>If <tt class="docutils literal"><span class="pre">myfile</span></tt> changed name from <tt class="docutils literal"><span class="pre">yourfile</span></tt> at some point and you want
-<tt class="docutils literal"><span class="pre">yourfile</span></tt> back, run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">--follow</span> <span class="pre">myfile</span></tt> to find the commit
-when <tt class="docutils literal"><span class="pre">yourfile</span></tt> existed, and do a <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;commit</span> <span class="pre">hash&gt;</span> <span class="pre">yourfile</span></tt>.</p>
+<p>If <tt class="docutils literal"><span class="pre">f.py</span></tt> changed name from <tt class="docutils literal"><span class="pre">e.py</span></tt> at some point and you want
+<tt class="docutils literal"><span class="pre">e.py</span></tt> back, run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">--follow</span> <span class="pre">f.py</span></tt> to find the commit
+when <tt class="docutils literal"><span class="pre">yourfile</span></tt> existed, and do a <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;commit</span> <span class="pre">hash&gt;</span> <span class="pre">e.py</span></tt>.</p>
 <p>Often you just need to <em>view</em> the old file, not replace the current
 one by the old one, and then <tt class="docutils literal"><span class="pre">git</span> <span class="pre">show</span></tt> is handy. Unfortunately,
 it requires the full path from the root git folder:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git show c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/myfile</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git show \</span>
+<span class="go">          c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/f.py</span>
 </pre></div>
 </div>
 </div>
@@ -1151,27 +1153,25 @@ be to keep the latest, ongoing
 developments separate from the more official and stable version
 of the files. This is easily achieved by creating a separate branch
 where new developments takes place:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git branch newstuff      # create and switch to new branch</span>
-<span class="gp">#</span> extend and modify files
-<span class="go">git commit -am &#39;Modified ... and added a file on ...&#39;</span>
-
-<span class="go">git checkout master      # swith back to master</span>
-<span class="gp">#</span> correct errors
-<span class="go">git push origin master</span>
-
-<span class="go">git checkout newstuff    # switch to other branch</span>
-<span class="gp">#</span> <span class="k">continue </span>development work
-<span class="go">git commit -am &#39;More modifications of ...&#39;  # record changes</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git branch newstuff      # create and switch to new branch</span>
+<span class="go">Terminal&gt; # extend and modify files</span>
+<span class="go">Terminal&gt; git commit -am &#39;Modified ... and added a file on ...&#39;</span>
+<span class="go">Terminal&gt; git checkout master      # swith back to master</span>
+<span class="go">Terminal&gt; # correct errors</span>
+<span class="go">Terminal&gt; git push origin master</span>
+<span class="go">Terminal&gt; git checkout newstuff    # switch to other branch</span>
+<span class="go">Terminal&gt; # continue development work</span>
+<span class="go">Terminal&gt; git commit -am &#39;More modifications of ...&#39;</span>
 </pre></div>
 </div>
 <p>At some point, your new developments are mature enough to be incorporated
 in the master branch. This is done via a merge:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git checkout master</span>
-<span class="go">git merge newstuff</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git checkout master</span>
+<span class="go">Terminal&gt; git merge newstuff</span>
 </pre></div>
 </div>
 <p>You no longer need the <tt class="docutils literal"><span class="pre">newstuff</span></tt> branch and can delete it:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git branch -d newstuff</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git branch -d newstuff</span>
 </pre></div>
 </div>
 <p>It is not possible to switch branches unless you have committed the
@@ -1221,12 +1221,12 @@ trouble. That is why it is recommended to run a <tt class="docutils literal"><sp
 separately, especially if you work with branches.</p>
 <p>To fetch files from your repository at GitHub, which usually has
 the nickname <tt class="docutils literal"><span class="pre">origin</span></tt>, you write</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git fetch origin</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git fetch origin</span>
 </pre></div>
 </div>
 <p>You now have the possibility to check out in detail what the differences
 are between the new files and local ones:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git diff origin/master</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git diff origin/master</span>
 </pre></div>
 </div>
 <p>This command produces comparisons of the files in the current local branch
@@ -1234,7 +1234,7 @@ and the <tt class="docutils literal"><span class="pre">master</span></tt> branch
 In this way you can exactly see the differences between branches.
 When you are ready to merge in the new files from the <tt class="docutils literal"><span class="pre">master</span></tt> branch
 of <tt class="docutils literal"><span class="pre">origin</span></tt> with the files in the current local branch, you say</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git merge origin/master</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git merge origin/master</span>
 </pre></div>
 </div>
 <div class="section" id="configuring-the-git-diff-command">
@@ -1282,7 +1282,7 @@ the <tt class="docutils literal"><span class="pre">somebody/proj1</span></tt> pr
 This action creates a new repo <tt class="docutils literal"><span class="pre">proj1</span></tt>, known as the forked repo,
 on your account.
 Clone the fork the usual way:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git clone https://github.com/username/proj1.git</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git clone https://github.com/user/proj1.git</span>
 </pre></div>
 </div>
 <p>When you do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">origin</span> <span class="pre">master</span></tt>, you update your fork.
@@ -1291,7 +1291,8 @@ repo is usually under development too, and you need to pull from that
 one to stay up to date. A <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">master</span></tt> pulls from
 <tt class="docutils literal"><span class="pre">origin</span></tt> which is your fork. To pull from the original repo, you
 create a name <tt class="docutils literal"><span class="pre">upstream</span></tt>,</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git remote add upstream https://github.com/somebody/proj1.git</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git remote add upstream \</span>
+<span class="go">              https://github.com/somebody/proj1.git</span>
 </pre></div>
 </div>
 <p>You can now do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">upstream</span></tt> to get the most recent files in
@@ -1301,11 +1302,11 @@ The reason is that pull tries to merge the original repo with your local
 changes, which might lead to file conflicts that require considerable
 work to resolve. It is better to <em>fetch</em> and <em>merge</em> separately.
 The typical workflow is</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git fetch upstream               # Get new version of files</span>
-<span class="go">git merge upstream/master        # Merge with yours</span>
-<span class="gp">#</span> Your files are up to date - make changes
-<span class="go">git commit -am &#39;Description...&#39;</span>
-<span class="go">git push origin master           # Store changes in your fork</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git fetch upstream           # Get new version of files</span>
+<span class="go">Terminal&gt; git merge upstream/master    # Merge with yours</span>
+<span class="go">Terminal&gt; # Your files are up to date - make changes</span>
+<span class="go">Terminal&gt; git commit -am &#39;Description...&#39;</span>
+<span class="go">Terminal&gt; git push origin master       # Store changes in your fork</span>
 </pre></div>
 </div>
 <p>At some point you would like to push your changes back to the original
@@ -1401,7 +1402,7 @@ file one wants to commit and choose <em>Commit</em>.</p>
 <span id="index-32"></span><h3>Cloning  (2)<a class="headerlink" href="#cloning-2" title="Permalink to this headline">¶</a></h3>
 <p>You get started with your project on a new machine or another user
 can get started with the project by the command</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">hg clone ssh://hg@bitbucket.org/username/my-project</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg clone ssh://hg@bitbucket.org/user/my-project</span>
 </pre></div>
 </div>
 <span class="target" id="index-33"></span><span class="target" id="index-34"></span><span class="target" id="index-35"></span><span class="target" id="index-36"></span><span class="target" id="index-37"></span></div>
@@ -1411,8 +1412,8 @@ can get started with the project by the command</p>
 First you go to the desired folder where this project is stored on
 your local computer and make sure
 you have the latest versions of the files:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">hg pull</span>
-<span class="go">hg update</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg pull</span>
+<span class="go">Terminal&gt; hg update</span>
 </pre></div>
 </div>
 <p>These commands download the latest versions of the files from
@@ -1420,9 +1421,9 @@ your <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt> re
 your computer. The <tt class="docutils literal"><span class="pre">pull</span></tt> command requires a functioning Internet
 connection.</p>
 <p>You can now edit some files. Maybe you also add, remove, and move some files:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">hg add filename</span>
-<span class="go">hg remove filename</span>
-<span class="go">hg rename oldfilename ../somedir/newfilename</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg add filename</span>
+<span class="go">Terminal&gt; hg remove filename</span>
+<span class="go">Terminal&gt; hg rename oldfilename ../somedir/newfilename</span>
 </pre></div>
 </div>
 <p>The removal of a file is physically performed when you do a
@@ -1431,15 +1432,15 @@ hidden, so it is easy to get the file and its entire history
 back at a later stage.</p>
 <p>After some changes, you have to commit and push the files to the
 repository at <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">hg commit -m &#39;Description of changes.&#39;</span>
-<span class="go">hg push</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg commit -m &#39;Description of changes.&#39;</span>
+<span class="go">Terminal&gt; hg push</span>
 </pre></div>
 </div>
 <p>Note that you cannot easily redo the description so be careful with
 the wording. You can run <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">diff</span></tt> to get a listing of all
 the changes you have made since the last commit or pull command.</p>
 <p id="index-39">The command</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">hg stat</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg stat</span>
 </pre></div>
 </div>
 <p>shows the status of the individual files (<tt class="docutils literal"><span class="pre">M</span></tt> for modified, <tt class="docutils literal"><span class="pre">A</span></tt> for
@@ -1457,14 +1458,14 @@ also contribute to this project. The history of each file is recorded
 and anyone can roll back to previous versions, if needed. You can easily see
 who did what with the various files.</p>
 <p>For example,</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">hg annotate -aun myfile</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg annotate -aun filename</span>
 </pre></div>
 </div>
-<p>lists the various lines in the file <tt class="docutils literal"><span class="pre">myfile</span></tt> annotated with the revision
+<p>lists the various lines in the file <tt class="docutils literal"><span class="pre">filname</span></tt> annotated with the revision
 number of the latest change of the line and the name of the user who
 performed the change.</p>
 <p>Another command,</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">hg log -p filename | less</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg log -p filename | less</span>
 </pre></div>
 </div>
 <p>lists the history of <tt class="docutils literal"><span class="pre">filename</span></tt> in more detail so that you can track
@@ -1474,8 +1475,8 @@ files in a folder is listed by specifying the folder name(s).
 No name specification gives the history of the whole repo.</p>
 <p>More compact output from <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">log</span></tt>, without line differences, is triggered by
 the <tt class="docutils literal"><span class="pre">--stat</span></tt> option:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">hg log --stat filename | less   # changes in a specific file</span>
-<span class="go">hg log --stat | less            # changes in the whole repo</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg log --stat filename | less   # changes to one file</span>
+<span class="go">Terminal&gt; hg log --stat | less            # changes to all files</span>
 </pre></div>
 </div>
 <p>The combination <tt class="docutils literal"><span class="pre">-p</span> <span class="pre">--stat</span></tt> equips the line differences with an overview
@@ -1491,17 +1492,17 @@ check the file history with
 <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">log</span> <span class="pre">-p</span> <span class="pre">filename</span></tt> and find the revision number corresponding to the
 version of the file you want. Say this revision number is 152.
 The command</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">hg revert -r 152 filename</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg revert -r 152 filename</span>
 </pre></div>
 </div>
 <p>replaces the current version of the file by the old one from revision 152.
 Sometimes it is better to store the old version in a separate file:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">hg cat -r 152 filename &gt; somefile</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg cat -r 152 filename &gt; somefile</span>
 </pre></div>
 </div>
 <p>The entire local repo can also be set back:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">hg update -r 152</span>
-<span class="go">hg update            # go back to the latest version again</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg update -r 152</span>
+<span class="go">Terminal&gt; hg update            # go back to the latest version again</span>
 </pre></div>
 </div>
 </div>
@@ -1554,8 +1555,8 @@ manually. There will often be lines starting with &#8216;&lt;&lt;&lt;&lt;&#8217;
 and &#8216;&gt;&gt;&gt;&gt;` to mark conflicting texts (<em>merge markers</em>). After removing
 these lines and editing the text manually, you must register the conflict
 as resolved:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">hg resolve -m merge myfile</span>
-<span class="go">hg commit -m merge myfile</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg resolve -m merge myfile</span>
+<span class="go">Terminal&gt; hg commit -m merge myfile</span>
 </pre></div>
 </div>
 <p>You can read more about merging files in the <a class="reference external" href="http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html">hgbook</a>.
@@ -1711,12 +1712,12 @@ using multiple identities is provided <a class="reference external" href="http:/
 </div>
 <p>To debug which identity that is used when you pull and push to
 GitHub accounts, you can first run</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">ssh -Tv git@github.com</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; ssh -Tv git@github.com</span>
 </pre></div>
 </div>
 <p>to see your current identity and which SSH key that was used to identify you.
 Typing</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">ssh-add -l</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; ssh-add -l</span>
 </pre></div>
 </div>
 <p>lists all your SSH keys. The shown strings can be compared with the
