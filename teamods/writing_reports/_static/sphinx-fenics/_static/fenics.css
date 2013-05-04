@@ -8,6 +8,7 @@
  * :copyright: Copyright 2007-2010 by the Sphinx team, see AUTHORS.
  * :license: BSD, see LICENSE for details.
  *
+ * Adjustments by Hans Petter Langtangen <hpl@simula.no> (admon styles)
  */
 
 @import url("basic.css");
@@ -198,8 +199,49 @@ div.body p, div.body dd, div.body li {
     line-height: 1.5em;
 }
 
-div.admonition p.admonition-title + p {
-    display: inline;
+
+/* admonition styles taken from agni theme, sphinxdoc.css */
+div.admonition, div.warning {
+    font-size: 0.9em;
+    margin: 1em 0 1em 0;
+    border: 1px solid #888A85;
+    background-color: #f7f7f7;
+    padding: 0;
+}
+
+div.admonition p, div.warning p {
+    margin: 0.5em 1em 0.5em 1em;
+    padding: 0;
+}
+
+div.admonition pre, div.warning pre {
+    margin: 0.4em 1em 0.4em 1em;
+}
+
+div.admonition p.admonition-title,
+div.warning p.admonition-title {
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    color: white;
+    border-bottom: 1px solid #86989B;
+    font-weight: bold;
+    background-color: #adadad;
+}
+
+div.warning {
+    border: 1px solid #940000;
+}
+
+div.warning p.admonition-title {
+    background-color: #CF0000;
+    border-bottom-color: #940000;
+}
+
+div.admonition ul, div.admonition ol,
+div.warning ul, div.warning ol {
+    margin-top: 1em;
+    margin: 0.1em 0.5em 0.5em 3em;
+    padding: 0;
 }
 
 div.highlight{
@@ -238,10 +280,11 @@ div.warning {
 	padding: 10px 20px 10px 60px;
 }
 
+/*
 p.admonition-title {
     display: none;
 }
-
+*/
 p.admonition-title:after {
     content: ":";
 }

@@ -110,24 +110,26 @@ We address the initial-value problem
 where <span class="s">$</span><span class="nb">a</span><span class="s">$</span>, <span class="s">$</span><span class="nb">I</span><span class="s">$</span>, and <span class="s">$</span><span class="nb">T</span><span class="s">$</span> are prescribed parameters, and <span class="s">$</span><span class="nb">u</span><span class="o">(</span><span class="nb">t</span><span class="o">)</span><span class="s">$</span> is
 the unknown function to be estimated. This mathematical model
 is relevant for physical phenomena featuring exponential decay
-in time.
+in time, e.g., vertical pressure variation in the atmosphere,
+cooling of an object, and radioactive decay.
 
 ## Numerical solution method
 
 
-We introduce a mesh in time with points <span class="s">$</span><span class="m">0</span><span class="o">=</span><span class="nb"> t_</span><span class="m">0</span><span class="nb">&lt; t_</span><span class="m">1</span><span class="nb"> </span><span class="nv">\cdots</span><span class="nb"> &lt; t_N</span><span class="o">=</span><span class="nb">T</span><span class="s">$</span>.
+We introduce a mesh in time with points <span class="s">$</span><span class="m">0</span><span class="o">=</span><span class="nb"> t_</span><span class="m">0</span><span class="nb">&lt; t_</span><span class="m">1</span><span class="nb"> </span><span class="nv">\cdots</span><span class="nb"> &lt; t_{N_t}</span><span class="o">=</span><span class="nb">T</span><span class="s">$</span>.
 For simplicity, we assume constant spacing <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> between the
-mesh points: <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t </span><span class="o">=</span><span class="nb"> t_{n}</span><span class="o">-</span><span class="nb">t_{n</span><span class="o">-</span><span class="m">1</span><span class="nb">}</span><span class="s">$</span>, <span class="s">$</span><span class="nb">n</span><span class="o">=</span><span class="m">1</span><span class="nb">,</span><span class="nv">\ldots</span><span class="nb">,N</span><span class="s">$</span>. Let
+mesh points: <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t </span><span class="o">=</span><span class="nb"> t_{n}</span><span class="o">-</span><span class="nb">t_{n</span><span class="o">-</span><span class="m">1</span><span class="nb">}</span><span class="s">$</span>, <span class="s">$</span><span class="nb">n</span><span class="o">=</span><span class="m">1</span><span class="nb">,</span><span class="nv">\ldots</span><span class="nb">,N_t</span><span class="s">$</span>. Let
 <span class="s">$</span><span class="nb">u^n</span><span class="s">$</span> be the numerical approximation to the exact solution at <span class="s">$</span><span class="nb">t_n</span><span class="s">$</span>.
 
-The <span class="s">$</span><span class="nv">\theta</span><span class="s">$</span>-rule is used to solve EQREF<span class="nb">{</span>ode<span class="nb">}</span> numerically:
+The <span class="s">$</span><span class="nv">\theta</span><span class="s">$</span>-rule @Iserles<span class="nb">_</span>2009
+is used to solve EQREF<span class="nb">{</span>ode<span class="nb">}</span> numerically:
 
 <span class="sb">$$</span><span class="nb"></span>
 
 <span class="nb">u^{n</span><span class="o">+</span><span class="m">1</span><span class="nb">} </span><span class="o">=</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb"> </span><span class="o">-</span><span class="nb"> </span><span class="o">(</span><span class="m">1</span><span class="o">-</span><span class="nv">\theta</span><span class="o">)</span><span class="nb"> a</span><span class="nv">\Delta</span><span class="nb"> t}{</span><span class="m">1</span><span class="nb"> </span><span class="o">+</span><span class="nb"> </span><span class="nv">\theta</span><span class="nb"> a</span><span class="nv">\Delta</span><span class="nb"> t}u^n,</span>
 
 <span class="s">$$</span>
-for <span class="s">$</span><span class="nb">n</span><span class="o">=</span><span class="m">0</span><span class="nb">,</span><span class="m">1</span><span class="nb">,</span><span class="nv">\ldots</span><span class="nb">,N</span><span class="o">-</span><span class="m">1</span><span class="s">$</span>. This scheme corresponds to
+for <span class="s">$</span><span class="nb">n</span><span class="o">=</span><span class="m">0</span><span class="nb">,</span><span class="m">1</span><span class="nb">,</span><span class="nv">\ldots</span><span class="nb">,N_t</span><span class="o">-</span><span class="m">1</span><span class="s">$</span>. This scheme corresponds to
 
   * The [Forward Euler](http://en.wikipedia.org/wiki/Forward<span class="nb">_</span>Euler<span class="nb">_</span>method)
     scheme when <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">0</span><span class="s">$</span>
@@ -142,20 +144,20 @@ for <span class="s">$</span><span class="nb">n</span><span class="o">=</span><sp
 
 
 The numerical method is implemented in a Python function
-`solver` (found in the [`decay<span class="nb">_</span>mod`](https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc<span class="nb">_</span>mod.py) module):
+@Langtangen<span class="nb">_</span>2012 `solver` (found in the [`decay<span class="nb">_</span>mod`](https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc<span class="nb">_</span>mod.py) module):
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<span class="nb">{</span>.Python<span class="nb">}</span>
 def solver(I, a, T, dt, theta):
     &quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;
-    dt = float(dt)           # avoid integer division
-    N = int(round(T/dt))     # no of time intervals
-    T = N*dt                 # adjust T to fit time step dt
-    u = zeros(N+1)           # array of u[n] values
-    t = linspace(0, T, N+1)  # time mesh
+    dt = float(dt)            # avoid integer division
+    Nt = int(round(T/dt))     # no of time intervals
+    T = Nt*dt                 # adjust T to fit time step dt
+    u = zeros(Nt+1)           # array of u[n] values
+    t = linspace(0, T, Nt+1)  # time mesh
 
-    u[0] = I                 # assign initial condition
-    for n in range(0, N):    # n=0,1,...,N-1
+    u[0] = I                  # assign initial condition
+    for n in range(0, Nt):    # n=0,1,...,Nt-1
         u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
     return u, t
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -202,9 +204,42 @@ In particular, <span class="s">$</span><span class="nb">I</span><span class="o">
 
 
 How <span class="s">$</span><span class="nb">E</span><span class="s">$</span> varies with <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> for <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">0</span><span class="nb">,</span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="nb">,</span><span class="m">1</span><span class="s">$</span>
-is shown in Figure ref<span class="nb">{</span>fig:E<span class="nb">}</span>.
+is shown below.
 
-![Error versus time step. ](error.png)
+
+*Observe:* 
+The data points for the three largest <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> values in the
+Forward Euler method are not relevant as the solution behaves
+non-physically.
+
+![](error.png)
+
+
+*Summary.* 
+1. <span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="m">1</span><span class="s">$</span>: <span class="s">$</span><span class="nb">E</span><span class="nv">\sim</span><span class="nb"> </span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> (first-order convergence).
+
+2. <span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="s">$</span>: <span class="s">$</span><span class="nb">E</span><span class="nv">\sim</span><span class="nb"> </span><span class="nv">\Delta</span><span class="nb"> t^</span><span class="m">2</span><span class="s">$</span> (second-order convergence).
+
+3. <span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="m">1</span><span class="s">$</span> is always stable and gives qualitatively corrects results.
+
+4. <span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="s">$</span> never blows up, but may give oscillating solutions
+   if <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> is not sufficiently small.
+
+5. <span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="m">0</span><span class="s">$</span> suffers from fast-growing solution if <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> is
+   not small enough, but even below this limit one can have oscillating
+   solutions that disappear if <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> is sufficiently small.
+
+## Bibliography
+
+ 1. <span class="k">\label</span><span class="nb">{</span>Iserles<span class="nb">_</span>2009<span class="nb">}</span> <span class="nb">_</span>A. Iserles<span class="nb">_</span>. 
+    *A First Course in the Numerical Analysis of Differential Equations*,
+    Cambridge University Press,
+    2009.
+
+ 2. <span class="k">\label</span><span class="nb">{</span>Langtangen<span class="nb">_</span>2012<span class="nb">}</span> <span class="nb">_</span>H. P. Langtangen<span class="nb">_</span>. 
+    *A Primer on Scientific Programming With Python*,
+    Springer,
+    2012.
 </pre></div>
 </body>
 </html>

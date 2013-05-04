@@ -82,7 +82,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
   <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content=</span><span class="s">&quot;chrome=1&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;title&gt;</span>Experiments with Schemes for Exponential Decay<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Mathematical problem<span class="nt">&lt;/title&gt;</span>
 
     <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;css/styles.css&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width, initial-scale=1, user-scalable=no&quot;</span><span class="nt">&gt;</span>
@@ -173,6 +173,7 @@ demonstrated.
 
 
 <span class="nt">&lt;h2&gt;</span>Mathematical problem <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;math:problem&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
+
 <span class="nt">&lt;p&gt;</span>
 
 We address the initial-value problem
@@ -188,27 +189,30 @@ $$
 where \( a \), \( I \), and \( T \) are prescribed parameters, and \( u(t) \) is
 the unknown function to be estimated. This mathematical model
 is relevant for physical phenomena featuring exponential decay
-in time.
+in time, e.g., vertical pressure variation in the atmosphere,
+cooling of an object, and radioactive decay.
 
 <span class="nt">&lt;p&gt;</span>
 
 <span class="nt">&lt;h2&gt;</span>Numerical solution method <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;numerical:problem&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
+
 <span class="nt">&lt;p&gt;</span>
 
-We introduce a mesh in time with points \( 0= t_0<span class="nt">&lt; t</span><span class="na">_1</span> <span class="err">\</span><span class="na">cdots</span> <span class="err">&lt;</span> <span class="na">t_N=</span><span class="s">T</span> <span class="err">\).</span>
+We introduce a mesh in time with points \( 0= t_0<span class="nt">&lt; t</span><span class="na">_1</span> <span class="err">\</span><span class="na">cdots</span> <span class="err">&lt;</span> <span class="na">t_</span><span class="err">{</span><span class="na">N_t</span><span class="err">}=</span><span class="na">T</span> <span class="err">\).</span>
 <span class="na">For</span> <span class="na">simplicity</span><span class="err">,</span> <span class="na">we</span> <span class="na">assume</span> <span class="na">constant</span> <span class="na">spacing</span> <span class="err">\(</span> <span class="err">\</span><span class="na">Delta</span> <span class="na">t</span> <span class="err">\)</span> <span class="na">between</span> <span class="na">the</span>
-<span class="na">mesh</span> <span class="na">points:</span> <span class="err">\(</span> <span class="err">\</span><span class="na">Delta</span> <span class="na">t =</span><span class="err"> </span><span class="s">t_{n}-t_{n-1}</span> <span class="err">\),</span> <span class="err">\(</span> <span class="na">n=</span><span class="s">1,\ldots,N</span> <span class="err">\).</span> <span class="na">Let</span>
+<span class="na">mesh</span> <span class="na">points:</span> <span class="err">\(</span> <span class="err">\</span><span class="na">Delta</span> <span class="na">t =</span><span class="err"> </span><span class="s">t_{n}-t_{n-1}</span> <span class="err">\),</span> <span class="err">\(</span> <span class="na">n=</span><span class="s">1,\ldots,N_t</span> <span class="err">\).</span> <span class="na">Let</span>
 <span class="err">\(</span> <span class="na">u</span><span class="err">^</span><span class="na">n</span> <span class="err">\)</span> <span class="na">be</span> <span class="na">the</span> <span class="na">numerical</span> <span class="na">approximation</span> <span class="na">to</span> <span class="na">the</span> <span class="na">exact</span> <span class="na">solution</span> <span class="na">at</span> <span class="err">\(</span> <span class="na">t_n</span> <span class="err">\).</span>
 
 <span class="err">&lt;</span><span class="na">p</span><span class="nt">&gt;</span>
-The \( \theta \)-rule is used to solve \eqref{ode} numerically:
+The \( \theta \)-rule <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#Iserles_2009&quot;</span><span class="nt">&gt;</span>[1]<span class="nt">&lt;/a&gt;</span>
+is used to solve \eqref{ode} numerically:
 
 <span class="nt">&lt;p&gt;</span>
 $$
 u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
 $$
 
-for \( n=0,1,\ldots,N-1 \). This scheme corresponds to
+for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
 
 <span class="nt">&lt;p&gt;</span>
 
@@ -221,26 +225,28 @@ for \( n=0,1,\ldots,N-1 \). This scheme corresponds to
     scheme when \( \theta=1/2 \)<span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 
+
 <span class="nt">&lt;h2&gt;</span>Implementation  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec2&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
+
 <span class="nt">&lt;p&gt;</span>
 
 The numerical method is implemented in a Python function
-<span class="nt">&lt;code&gt;</span>solver<span class="nt">&lt;/code&gt;</span> (found in the <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py&quot;</span><span class="nt">&gt;&lt;tt&gt;</span>decay_mod<span class="nt">&lt;/tt&gt;&lt;/a&gt;</span> module):
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#Langtangen_2012&quot;</span><span class="nt">&gt;</span>[2]<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;code&gt;</span>solver<span class="nt">&lt;/code&gt;</span> (found in the <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py&quot;</span><span class="nt">&gt;&lt;tt&gt;</span>decay_mod<span class="nt">&lt;/tt&gt;&lt;/a&gt;</span> module):
 
 <span class="nt">&lt;p&gt;</span>
 
 
-<span class="c">&lt;!-- code typeset with pygments style &quot;default&quot; --&gt;</span>
+<span class="c">&lt;!-- code=python (from !bc pycod) typeset with pygments style &quot;default&quot; --&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;highlight&quot;</span> <span class="na">style=</span><span class="s">&quot;background: #f8f8f8&quot;</span><span class="nt">&gt;&lt;pre</span> <span class="na">style=</span><span class="s">&quot;line-height: 125%&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>def<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #0000FF&quot;</span><span class="nt">&gt;</span>solver<span class="nt">&lt;/span&gt;</span>(I, a, T, dt, theta):
     <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #BA2121; font-style: italic&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;quot;&amp;quot;&amp;quot;</span>Solve u<span class="ni">&amp;#39;</span>=-a*u, u(0)=I, for t in (0,T] with steps of dt.<span class="ni">&amp;quot;&amp;quot;&amp;quot;</span><span class="nt">&lt;/span&gt;</span>
-    dt <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000&quot;</span><span class="nt">&gt;</span>float<span class="nt">&lt;/span&gt;</span>(dt)           <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #408080; font-style: italic&quot;</span><span class="nt">&gt;</span># avoid integer division<span class="nt">&lt;/span&gt;</span>
-    N <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000&quot;</span><span class="nt">&gt;</span>int<span class="nt">&lt;/span&gt;</span>(<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000&quot;</span><span class="nt">&gt;</span>round<span class="nt">&lt;/span&gt;</span>(T<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>/<span class="nt">&lt;/span&gt;</span>dt))     <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #408080; font-style: italic&quot;</span><span class="nt">&gt;</span># no of time intervals<span class="nt">&lt;/span&gt;</span>
-    T <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> N<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>*<span class="nt">&lt;/span&gt;</span>dt                 <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #408080; font-style: italic&quot;</span><span class="nt">&gt;</span># adjust T to fit time step dt<span class="nt">&lt;/span&gt;</span>
-    u <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> zeros(N<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>+1<span class="nt">&lt;/span&gt;</span>)           <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #408080; font-style: italic&quot;</span><span class="nt">&gt;</span># array of u[n] values<span class="nt">&lt;/span&gt;</span>
-    t <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> linspace(<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/span&gt;</span>, T, N<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>+1<span class="nt">&lt;/span&gt;</span>)  <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #408080; font-style: italic&quot;</span><span class="nt">&gt;</span># time mesh<span class="nt">&lt;/span&gt;</span>
+    dt <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000&quot;</span><span class="nt">&gt;</span>float<span class="nt">&lt;/span&gt;</span>(dt)            <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #408080; font-style: italic&quot;</span><span class="nt">&gt;</span># avoid integer division<span class="nt">&lt;/span&gt;</span>
+    Nt <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000&quot;</span><span class="nt">&gt;</span>int<span class="nt">&lt;/span&gt;</span>(<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000&quot;</span><span class="nt">&gt;</span>round<span class="nt">&lt;/span&gt;</span>(T<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>/<span class="nt">&lt;/span&gt;</span>dt))     <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #408080; font-style: italic&quot;</span><span class="nt">&gt;</span># no of time intervals<span class="nt">&lt;/span&gt;</span>
+    T <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> Nt<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>*<span class="nt">&lt;/span&gt;</span>dt                 <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #408080; font-style: italic&quot;</span><span class="nt">&gt;</span># adjust T to fit time step dt<span class="nt">&lt;/span&gt;</span>
+    u <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> zeros(Nt<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>+1<span class="nt">&lt;/span&gt;</span>)           <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #408080; font-style: italic&quot;</span><span class="nt">&gt;</span># array of u[n] values<span class="nt">&lt;/span&gt;</span>
+    t <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> linspace(<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/span&gt;</span>, T, Nt<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>+1<span class="nt">&lt;/span&gt;</span>)  <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #408080; font-style: italic&quot;</span><span class="nt">&gt;</span># time mesh<span class="nt">&lt;/span&gt;</span>
 
-    u[<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/span&gt;</span>] <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> I                 <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #408080; font-style: italic&quot;</span><span class="nt">&gt;</span># assign initial condition<span class="nt">&lt;/span&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>for<span class="nt">&lt;/span&gt;</span> n <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #AA22FF; font-weight: bold&quot;</span><span class="nt">&gt;</span>in<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000&quot;</span><span class="nt">&gt;</span>range<span class="nt">&lt;/span&gt;</span>(<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/span&gt;</span>, N):    <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #408080; font-style: italic&quot;</span><span class="nt">&gt;</span># n=0,1,...,N-1<span class="nt">&lt;/span&gt;</span>
+    u[<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/span&gt;</span>] <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> I                  <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #408080; font-style: italic&quot;</span><span class="nt">&gt;</span># assign initial condition<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>for<span class="nt">&lt;/span&gt;</span> n <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #AA22FF; font-weight: bold&quot;</span><span class="nt">&gt;</span>in<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000&quot;</span><span class="nt">&gt;</span>range<span class="nt">&lt;/span&gt;</span>(<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/span&gt;</span>, Nt):    <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #408080; font-style: italic&quot;</span><span class="nt">&gt;</span># n=0,1,...,Nt-1<span class="nt">&lt;/span&gt;</span>
         u[n<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>+1<span class="nt">&lt;/span&gt;</span>] <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> (<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>-<span class="nt">&lt;/span&gt;</span> (<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>1-<span class="nt">&lt;/span&gt;</span>theta)<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>*<span class="nt">&lt;/span&gt;</span>a<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>*<span class="nt">&lt;/span&gt;</span>dt)<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>/<span class="nt">&lt;/span&gt;</span>(<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>+<span class="nt">&lt;/span&gt;</span> theta<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>*<span class="nt">&lt;/span&gt;</span>dt<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>*<span class="nt">&lt;/span&gt;</span>a)<span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>*<span class="nt">&lt;/span&gt;</span>u[n]
     <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>return<span class="nt">&lt;/span&gt;</span> u, t
 <span class="nt">&lt;/pre&gt;&lt;/div&gt;</span>
@@ -248,6 +254,7 @@ The numerical method is implemented in a Python function
 
 
 <span class="nt">&lt;h2&gt;</span>Numerical experiments  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec3&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
+
 <span class="nt">&lt;p&gt;</span>
 
 We define a set of numerical experiments where \( I \), \( a \), and \( T \) are
@@ -258,6 +265,7 @@ In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 
 
 <span class="nt">&lt;h3&gt;</span>The Backward Euler method  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec4&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h3&gt;</span>
+
 <span class="nt">&lt;p&gt;</span>
 
 
@@ -267,6 +275,7 @@ In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 
 
 <span class="nt">&lt;h3&gt;</span>The Crank-Nicolson method  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec5&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h3&gt;</span>
+
 <span class="nt">&lt;p&gt;</span>
 
 
@@ -276,6 +285,7 @@ In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 
 
 <span class="nt">&lt;h3&gt;</span>The Forward Euler method  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec6&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h3&gt;</span>
+
 <span class="nt">&lt;p&gt;</span>
 
 
@@ -285,18 +295,57 @@ In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 
 
 <span class="nt">&lt;h3&gt;</span>Error vs \( \Delta t \)  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec7&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h3&gt;</span>
+
 <span class="nt">&lt;p&gt;</span>
 
 How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
-is shown in Figure <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#fig:E&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/a&gt;</span>.
+is shown below.
 
 <span class="nt">&lt;p&gt;</span>
 
-<span class="nt">&lt;center&gt;</span> <span class="c">&lt;!-- figure --&gt;</span>
-<span class="nt">&lt;hr</span> <span class="na">class=</span><span class="s">&quot;figure&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;center&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;caption&quot;</span><span class="nt">&gt;</span>Figure 1:  Error versus time step. <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;fig:E&quot;</span><span class="nt">&gt;&lt;/a&gt;</span> <span class="nt">&lt;/p&gt;&lt;/center&gt;</span>
-<span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;error.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">400</span><span class="nt">&gt;&lt;/p&gt;</span>
-<span class="nt">&lt;/center&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-block alert-warning&quot;</span><span class="nt">&gt;&lt;b&gt;</span>Observe:<span class="nt">&lt;/b&gt;</span>
+The data points for the three largest \( \Delta t \) values in the
+Forward Euler method are not relevant as the solution behaves
+non-physically.
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;p&gt;</span>
+
+<span class="nt">&lt;center&gt;&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;error.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">400</span><span class="nt">&gt;&lt;/p&gt;&lt;/center&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-block alert-summary&quot;</span><span class="nt">&gt;&lt;b&gt;</span>Summary.<span class="nt">&lt;/b&gt;</span>
+
+<span class="nt">&lt;ol&gt;</span>
+<span class="nt">&lt;li&gt;</span> \( \theta =1 \): \( E\sim \Delta t \) (first-order convergence).<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span> \( \theta =0.5 \): \( E\sim \Delta t^2 \) (second-order convergence).<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span> \( \theta =1 \) is always stable and gives qualitatively corrects results.<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span> \( \theta =0.5 \) never blows up, but may give oscillating solutions
+   if \( \Delta t \) is not sufficiently small.<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span> \( \theta =0 \) suffers from fast-growing solution if \( \Delta t \) is
+   not small enough, but even below this limit one can have oscillating
+   solutions that disappear if \( \Delta t \) is sufficiently small.<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;p&gt;</span>
+
+
+<span class="nt">&lt;h2&gt;</span>Bibliography<span class="nt">&lt;/h2&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>
+
+<span class="nt">&lt;ol&gt;</span>
+ <span class="nt">&lt;li&gt;</span> <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;Iserles_2009&quot;</span><span class="nt">&gt;&lt;/a&gt;</span> <span class="nt">&lt;b&gt;</span>A. Iserles<span class="nt">&lt;/b&gt;</span>. 
+    <span class="nt">&lt;em&gt;</span>A First Course in the Numerical Analysis of Differential Equations<span class="nt">&lt;/em&gt;</span>,
+    Cambridge University Press,
+    2009.<span class="nt">&lt;/li&gt;</span>
+ <span class="nt">&lt;li&gt;</span> <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;Langtangen_2012&quot;</span><span class="nt">&gt;&lt;/a&gt;</span> <span class="nt">&lt;b&gt;</span>H. P. Langtangen<span class="nt">&lt;/b&gt;</span>. 
+    <span class="nt">&lt;em&gt;</span>A Primer on Scientific Programming With Python<span class="nt">&lt;/em&gt;</span>,
+    Springer,
+    2012.<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+
+
 <span class="c">&lt;!-- ------------------- end of main content --------------- --&gt;</span>
 
 

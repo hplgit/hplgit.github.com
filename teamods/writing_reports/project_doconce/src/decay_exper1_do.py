@@ -2,7 +2,8 @@
 import os, sys, glob
 import decay_exper1
 
-decay_exper1.run_experiments()
+I = 1; a = 2; T = 5
+decay_exper1.run_experiments(I=I, a=a, T=T)
 
 # Write Doconce report
 do = open('tmp_report.do.txt', 'w')
@@ -13,9 +14,7 @@ author1 = 'Hans Petter Langtangen Email:hpl@simula.no at '\
           'Department of Informatics, University of Oslo.'
 date = 'today'
 
-# Extract input data (for use in the report)
-dt_values_str = ', '.join(sys.argv[1:])
-I = decay_exper1.I;  a = decay_exper1.a
+dt_values_str = ', '.join(sys.argv[1:])  # needed in report
 
 # Remember to use raw string because of latex commands for math
 do.write(r"""
@@ -57,7 +56,8 @@ u(0)  &= I,                         label{initial:value}
 where $a$, $I$, and $T$ are prescribed parameters, and $u(t)$ is
 the unknown function to be estimated. This mathematical model
 is relevant for physical phenomena featuring exponential decay
-in time.
+in time, e.g., vertical pressure variation in the atmosphere,
+cooling of an object, and radioactive decay.
 
 ======= Numerical solution method =======
 label{numerical:problem}
@@ -68,19 +68,20 @@ label{numerical:problem}
 idx{mesh in time} idx{$\theta$-rule} idx{numerical scheme}
 idx{finite difference scheme}
 
-We introduce a mesh in time with points $0= t_0< t_1 \cdots < t_N=T$.
+We introduce a mesh in time with points $0= t_0< t_1 \cdots < t_{N_t}=T$.
 For simplicity, we assume constant spacing $\Delta t$ between the
-mesh points: $\Delta t = t_{n}-t_{n-1}$, $n=1,\ldots,N$. Let
+mesh points: $\Delta t = t_{n}-t_{n-1}$, $n=1,\ldots,N_t$. Let
 $u^n$ be the numerical approximation to the exact solution at $t_n$.
 
-The $\theta$-rule is used to solve (ref{ode}) numerically:
+The $\theta$-rule cite{Iserles_2009}
+is used to solve (ref{ode}) numerically:
 
 !bt
 \[
 u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
 \]
 !et
-for $n=0,1,\ldots,N-1$. This scheme corresponds to
+for $n=0,1,\ldots,N_t-1$. This scheme corresponds to
 
   * The "Forward Euler":
     "http://en.wikipedia.org/wiki/Forward_Euler_method"
@@ -101,7 +102,7 @@ for $n=0,1,\ldots,N-1$. This scheme corresponds to
 ## expression t.
 
 The numerical method is implemented in a Python function
-`solver` (found in the "`decay_mod`":
+cite{Langtangen_2012} `solver` (found in the "`decay_mod`":
 "https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" module):
 
 @@@CODE ../decay_mod.py  fromto: def solver@def verify_three
@@ -164,9 +165,38 @@ do.write(r"""
 idx{error vs time step}
 
 How $E$ varies with $\Delta t$ for $\theta=0,0.5,1$
-is shown in Figure ref{fig:E}.
+is shown below.
 
-FIGURE: [error, width=400] Error versus time step. label{fig:E}
+## Here is an admonition box for warnings
+
+!bwarning Observe:
+The data points for the three largest $\Delta t$ values in the
+Forward Euler method are not relevant as the solution behaves
+non-physically.
+!ewarning
+
+## Here is a figure without caption (becomes inline)
+
+FIGURE: [error, width=400]
+
+## Here is an admonition box for summaries
+
+!bsummary
+ o $\theta =1$: $E\sim \Delta t$ (first-order convergence).
+ o $\theta =0.5$: $E\sim \Delta t^2$ (second-order convergence).
+ o $\theta =1$ is always stable and gives qualitatively corrects results.
+ o $\theta =0.5$ never blows up, but may give oscillating solutions
+   if $\Delta t$ is not sufficiently small.
+ o $\theta =0$ suffers from fast-growing solution if $\Delta t$ is
+   not small enough, but even below this limit one can have oscillating
+   solutions that disappear if $\Delta t$ is sufficiently small.
+!esummary
+
+## Publish (https://bitbucket.org/logg/publish is used to
+## handle references. The line below specifies the name of
+## the Publish database file (see the doconce manual for details).
+
+BIBFILE: .publish_references.pub
 """)
 
 # Good habits when writing for latex, sphinx and mathjax-html

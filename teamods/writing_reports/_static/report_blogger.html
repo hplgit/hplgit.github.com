@@ -66,6 +66,7 @@ Table of contents</h2>
 
 
 <h2>Mathematical problem <a name="math:problem"></a></h2>
+
 <p>
 
 We address the initial-value problem
@@ -81,27 +82,30 @@ $$
 where \( a \), \( I \), and \( T \) are prescribed parameters, and \( u(t) \) is
 the unknown function to be estimated. This mathematical model
 is relevant for physical phenomena featuring exponential decay
-in time.
+in time, e.g., vertical pressure variation in the atmosphere,
+cooling of an object, and radioactive decay.
 
 <p>
 
 <h2>Numerical solution method <a name="numerical:problem"></a></h2>
+
 <p>
 
-We introduce a mesh in time with points \( 0= t_0< t_1 \cdots < t_N=T \).
+We introduce a mesh in time with points \( 0= t_0< t_1 \cdots < t_{N_t}=T \).
 For simplicity, we assume constant spacing \( \Delta t \) between the
-mesh points: \( \Delta t = t_{n}-t_{n-1} \), \( n=1,\ldots,N \). Let
+mesh points: \( \Delta t = t_{n}-t_{n-1} \), \( n=1,\ldots,N_t \). Let
 \( u^n \) be the numerical approximation to the exact solution at \( t_n \).
 
 <p>
-The \( \theta \)-rule is used to solve \eqref{ode} numerically:
+The \( \theta \)-rule <a href="#Iserles_2009">[1]</a>
+is used to solve \eqref{ode} numerically:
 
 <p>
 $$
 u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
 $$
 
-for \( n=0,1,\ldots,N-1 \). This scheme corresponds to
+for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
 
 <p>
 
@@ -114,26 +118,28 @@ for \( n=0,1,\ldots,N-1 \). This scheme corresponds to
     scheme when \( \theta=1/2 \)</li>
 </ul>
 
+
 <h2>Implementation  <a name="___sec2"></a></h2>
+
 <p>
 
 The numerical method is implemented in a Python function
-<code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py"><tt>decay_mod</tt></a> module):
+<a href="#Langtangen_2012">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py"><tt>decay_mod</tt></a> module):
 
 <p>
 
 
-<!-- code typeset with pygments style "default" -->
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
     <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
-    dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)           <span style="color: #408080; font-style: italic"># avoid integer division</span>
-    N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #408080; font-style: italic"># no of time intervals</span>
-    T <span style="color: #666666">=</span> N<span style="color: #666666">*</span>dt                 <span style="color: #408080; font-style: italic"># adjust T to fit time step dt</span>
-    u <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>)           <span style="color: #408080; font-style: italic"># array of u[n] values</span>
-    t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, T, N<span style="color: #666666">+1</span>)  <span style="color: #408080; font-style: italic"># time mesh</span>
+    dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)            <span style="color: #408080; font-style: italic"># avoid integer division</span>
+    Nt <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #408080; font-style: italic"># no of time intervals</span>
+    T <span style="color: #666666">=</span> Nt<span style="color: #666666">*</span>dt                 <span style="color: #408080; font-style: italic"># adjust T to fit time step dt</span>
+    u <span style="color: #666666">=</span> zeros(Nt<span style="color: #666666">+1</span>)           <span style="color: #408080; font-style: italic"># array of u[n] values</span>
+    t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, T, Nt<span style="color: #666666">+1</span>)  <span style="color: #408080; font-style: italic"># time mesh</span>
 
-    u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> I                 <span style="color: #408080; font-style: italic"># assign initial condition</span>
-    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, N):    <span style="color: #408080; font-style: italic"># n=0,1,...,N-1</span>
+    u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> I                  <span style="color: #408080; font-style: italic"># assign initial condition</span>
+    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, Nt):    <span style="color: #408080; font-style: italic"># n=0,1,...,Nt-1</span>
         u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
     <span style="color: #008000; font-weight: bold">return</span> u, t
 </pre></div>
@@ -141,6 +147,7 @@ The numerical method is implemented in a Python function
 
 
 <h2>Numerical experiments  <a name="___sec3"></a></h2>
+
 <p>
 
 We define a set of numerical experiments where \( I \), \( a \), and \( T \) are
@@ -151,6 +158,7 @@ In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 
 
 <h3>The Backward Euler method  <a name="___sec4"></a></h3>
+
 <p>
 
 
@@ -160,6 +168,7 @@ In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 
 
 <h3>The Crank-Nicolson method  <a name="___sec5"></a></h3>
+
 <p>
 
 
@@ -169,6 +178,7 @@ In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 
 
 <h3>The Forward Euler method  <a name="___sec6"></a></h3>
+
 <p>
 
 
@@ -178,17 +188,56 @@ In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 
 
 <h3>Error vs \( \Delta t \)  <a name="___sec7"></a></h3>
+
 <p>
 
 How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
-is shown in Figure <a href="#fig:E">1</a>.
+is shown below.
 
 <p>
 
-<center> <!-- figure -->
-<hr class="figure">
-<center><p class="caption">Figure 1:  Error versus time step. <a name="fig:E"></a> </p></center>
-<p><img src="https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/error.png" align="bottom" width=400></p>
-</center>
+<div class="alert alert-block alert-warning"><b>Observe:</b>
+The data points for the three largest \( \Delta t \) values in the
+Forward Euler method are not relevant as the solution behaves
+non-physically.
+</div>
+<p>
+
+<center><p><img src="https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/error.png" align="bottom" width=400></p></center>
+
+<p>
+
+<div class="alert alert-block alert-summary"><b>Summary.</b>
+
+<ol>
+<li> \( \theta =1 \): \( E\sim \Delta t \) (first-order convergence).</li>
+<li> \( \theta =0.5 \): \( E\sim \Delta t^2 \) (second-order convergence).</li>
+<li> \( \theta =1 \) is always stable and gives qualitatively corrects results.</li>
+<li> \( \theta =0.5 \) never blows up, but may give oscillating solutions
+   if \( \Delta t \) is not sufficiently small.</li>
+<li> \( \theta =0 \) suffers from fast-growing solution if \( \Delta t \) is
+   not small enough, but even below this limit one can have oscillating
+   solutions that disappear if \( \Delta t \) is sufficiently small.</li>
+</ol>
+</div>
+<p>
+
+
+<h2>Bibliography</h2>
+
+<p>
+
+<ol>
+ <li> <a name="Iserles_2009"></a> <b>A. Iserles</b>. 
+    <em>A First Course in the Numerical Analysis of Differential Equations</em>,
+    Cambridge University Press,
+    2009.</li>
+ <li> <a name="Langtangen_2012"></a> <b>H. P. Langtangen</b>. 
+    <em>A Primer on Scientific Programming With Python</em>,
+    Springer,
+    2012.</li>
+</ol>
+
+
 <!-- ------------------- end of main content --------------- -->
 
