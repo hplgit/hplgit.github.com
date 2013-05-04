@@ -1,17 +1,52 @@
 <!-- TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way -->
-% On the Technicalities of Scientific Writing: The Doconce 2013 Way
+% Scientific Writing Anno 2013: The Doconce Way
 % Hans Petter Langtangen
-% Mar 12, 2013
+% May 4, 2013
+
+![](fig/doconce1b.png)
+
+<!-- Abstract: -->
+
+<!-- !split -->
+## Scientific writing for the future needs to address many new media
+
+<!-- !bslidecell 00 -->
+![](fig/ipad.png)
+
+![](fig/iphones.jpg)
+
+<!-- FIGURE: [fig/mbair, width=400] -->
+
+<!-- !eslidecell -->
+
+<!-- !bslidecell 01 -->
+![](fig/imac.png)
+<!-- !eslidecell -->
+
+<!-- !split -->
+## The book will probably survive
+
+![](fig/oldbooks.jpg)
+
+<!-- !split -->
+## The classical report will survive
+
+<!-- !bslidecell 00 -->
+![](fig/latex_thesis.jpg)
+<!-- !eslidecell -->
+
+<!-- !bslidecell 01 -->
+![](fig/latex_paper1.png)
+<!-- !eslidecell -->
 
 <!-- !split -->
 ## Scope
 
+<!-- * Scientific writing = lecture notes, slides, reports, thesis, books,  ... -->
+<!-- * (Journal papers typeset by journals are out of scope) -->
+
 <!-- !bpop -->
-  * *Scientific writing* = lecture notes, slides, reports, thesis, books,  ...
-
-  * (Journal papers typeset by journals are out of scope)
-
-  * Scope: documents with much *math* and *computer code*
+  * Scope: documents with <font color="red">much</font> *math* and *computer code*
 
   * Key question: What tools should I use for writing?
 
@@ -19,8 +54,8 @@
 
   * Alternative: MS Word w/math
 
-  * Recent popular alternative tools: Sphinx, Markdown, MediaWiki,
-    IPython notebook
+  * Recent popular alternative tools: HTML w/MathJax,
+    Sphinx, Markdown, MediaWiki, IPython notebook
 
 <!-- !epop -->
 
@@ -48,36 +83,26 @@
 ![](fig/IPython_logo.png)
 <!-- !eslidecell -->
 
+
 <!-- !split -->
-## Scientific writing needs to address many new media
+## Scientific writing for the future needs to address many new media
+
+<!-- Insert links here to reports -->
 
 <!-- !bslidecell 00 -->
- * Old days (1985-2005): BW for printing
-
- * Now:
+Old days (1985-2005): LaTeX for BW paper output, but now
 
   1. BW books
 
-  2. Colorful books and PDFs
+  2. Colorful PDF books (printed and screen)
 
-  3. Colorful PDFs with hyperlinks
+  3. Designed web pages
 
-  4. Designed web pages
+  4. Wikis
 
-  5. Wiki
+  5. Bloggs
 
-  6. Blogg
-
-  7. epub
-
-  8. Next new fancy format
-
-
- * PC, iPad, phone, Kindle, ...
-
- * LaTeX does not support all of this
-
- * We need to write for multiple formats!
+  6. Next new fancy format (iBook w/LaTeX?)
 
 <!-- !eslidecell -->
 
@@ -86,39 +111,64 @@
 <!-- !eslidecell -->
 
 <!-- !split -->
-## Popular tools anno 2013
+
+## Fundamental question
+
+When I write some scientific material,
+
+ * a LaTeX document,
+
+ * a blogg (HTML),
+
+ * some web pages (HTML),
+
+ * a Sphinx document,
+
+ * some Markdown files,
+
+and later want to collect the pieces into a larger document, maybe
+some book, or one big web document, is that at all feasible?
 
 <!-- !bpop -->
- * _LaTeX_: de facto standard in math-instensive sciences
+<font color="red">Probably not, but I have a solution :-)</font>
+<!-- !epop -->
 
- * _pdfLaTeX_: takes over (figures in png, pdf)
+<!-- !split -->
+## Popular tools anno 2013 and their math support
 
- * _MS Word_: popular, but too clicky math support and ugly fonts
+<!-- !bpop -->
+ * _LaTeX_: de facto standard for math-instensive documents
 
- * _HTML with MathJax_: "full" LaTeX *math*
+ * _pdfLaTeX_, _XeLaTeX_, _LuaLaTeX_: takes over (figures in png, pdf)
+
+ * _MS Word_: too clicky math support and ugly fonts, but much used
+
+ * _HTML with MathJax_: "full" LaTeX *math*, but too much tagging
 
  * _Sphinx_:
-   limited LaTeX math support, great support for web design
+   somewhat limited LaTeX math support, but great support for web design
 
- * _reStructuredText_: no math support, transforms to
+ * _reStructuredText_: no math support, but transforms to
    lots of formats (LaTeX, HTML, XML, Word, OpenOffice, ...)
 
- * _Markdown_: email-style untagged formatting,
-   limited LaTeX math support, transforms to
-   lots of formats (LaTeX, HTML, XML, Word, OpenOffice, ...)
+ * _Markdown_: somewhat limited LaTeX math support, but minor tagging,
+   transforms to lots of formats (LaTeX, HTML, XML, Word, OpenOffice, ...)
 
- * _IPython notebooks_: combines Python code, interactivity,
-   visualization, and Markdown code/math
+ * _IPython notebooks_: Markdown code/math,
+   combines Python code, interactivity, and
+   visualization
 
- * _MediaWiki_: good LaTeX math support (Wikipedia)
+ * _MediaWiki_: quite good LaTeX math support (cf. Wikipedia)
 
  * Other _wiki_ formats: no math support, great for collaborative editing
 
- * _Wordpress_: supports LaTeX *formulas*
+ * _Wordpress_: supports LaTeX *formulas* only, but good blogging support
+
+ * _Google blogger_: supports full HTML with MathJax
 
  * _Epydoc_: old tool for Python code documentation
 
- * _Plain text for email_ (no tagging)
+ * _Plain text for email_: no math, just raw LaTeX, and no tagging
 
 <!-- !epop -->
 
@@ -139,7 +189,7 @@
 
     * _Sphinx_: `equation*`, `equation`, `align*`
 
-    * _Markdown_: `equation*`, `equation`, `align*` (but no labels)
+    * _Markdown_: `equation*`, `equation`, `eqnarray*`, `align*` (but no labels)
 
 
 <!-- !split -->
@@ -163,6 +213,8 @@
  * Algorithms: LaTeX
 
  * Margin notes: LaTeX
+
+ * Page references: LaTeX
 
  * Footnotes: LaTeX, Sphinx, reStructuredText, MediaWiki
 
@@ -263,53 +315,41 @@ based on HTML and vice versa.
 ## Solution II: Use Doconce
 
 Doconce offers minimalistic typing, great flexibility wrt format,
-especially for scientific writing.
+especially for scientific writing with much math and code.
 
  * Can generate LaTeX, HTML, Sphinx, Markdown, MediaWiki, Google wiki,
    Creole wiki, reST, plain text
 
- * Particularly good support for math and code
+ * Made for large science books *and* small teaching modules
 
- * Great flexibility for typesetting code
+ * Targets books, electronic PDF, PDF for phones,
+   designed web pages, blogs
 
- * Made for science books *and* smaller teaching modules
+ * Many special features (code snippets from files, embedded movies,
+   admonitions, ...)
 
- * Targets traditional books, electronic PDF, PDF for phones,
-   web pages, Google and Wordpress blogs (with math and code)
+ * Very effective for generating slides from ordinary text
 
- * Support for code snippets from files, embedded movies, warnings/hint/info,
-   generalized links
+ * Applies Mako: Doconce text is a program
 
- * Support for HTML5 slides - short way from prose to slides
-
- * Integrates with preprocessors: preprocess and mako
-
- * Handles multiple formats for figures
-
- * Between Mardown and Sphinx wrt tagging (and richness)
+ * Less tagged than LaTeX, HTML, Sphinx
 
 <!-- !split -->
 ## Doconce demo
 
 <http://hplgit.github.com/teamods/writing_reports/>
 
- * [HTML with MathJax](http://hplgit.github.com/teamods/writing_reports/report_do.html)
+ * LaTeX-based PDF [for screen](http://hplgit.github.com/teamods/writing_reports/_static/report.pdf), [for printing](http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf), [for phone](http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf)
 
- * [PDF from LaTeX](http://hplgit.github.com/teamods/writing_reports/report.pdf)
+ * [Plain HTML](http://hplgit.github.com/teamods/writing_reports/_static/report_do.html) or with a [template](http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html) or [another template](http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html) or [solarized](http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html)
 
- * [Sphinx (agni theme)](http://hplgit.github.com/teamods/writing_reports/sphinx-agni/index.html)
+ * Sphinx: [agni](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-agni/index.html), [pyramid](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-pyramid/report.html), [classy](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-classy/report.html), [fenics](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html), [redcloud](http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html)
 
- * [Sphinx (pyramid theme)](http://hplgit.github.com/teamods/writing_reports/sphinx-pyramid/index.html)
+ * HTML for [Google](http://doconce-report-demo.blogspot.no/) or [Wordpress](http://doconcereportdemo.wordpress.com/) blogs
 
- * [Sphinx (classy theme)](http://hplgit.github.com/teamods/writing_reports/sphinx-classy/index.html)
+ * [MediaWiki](http://doconcedemo.shoutwiki.com/wiki/Doconce_demo_page) (Wikipedia, Wikibooks, etc)
 
- * [Sphinx (fenics theme)](http://hplgit.github.com/teamods/writing_reports/sphinx-fenics_minimal/index.html)
-
- * [Sphinx (redcloud theme)](http://hplgit.github.com/teamods/writing_reports/sphinx-fenics_minimal/index.html)
-
- * [Doconce source](http://hplgit.github.com/teamods/writing_reports/report.do.txt.html)
-
- * [Doconce tutorial](http://code.google.com/p/doconce/wiki/Tutorial)
+ * Doconce [source code](http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html) and [tutorial](http://code.google.com/p/doconce/wiki/Tutorial)
 
 <!-- !split -->
 
@@ -329,7 +369,8 @@ DATE: today
 TOC: on
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*Notice.* Title and authors must have all information *on a single line*!
+*Notice.* 
+Title and authors must have all information *on a single line*!
 
 <!-- !split -->
 ## Doconce: abstract
@@ -437,10 +478,8 @@ URL: "http://code.google.com/p/doconce/"
 <!-- !split -->
 ## Doconce: figures and movies
 
-
-
-*Notice.* Figure with HTML and LaTeX info, and caption, *all on one line*:
-
+*Notice.* 
+Figure with HTML and LaTeX info, and caption, *all on one line*:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 FIGURE: [figdir/myfig, width=300 frac=1.2] My caption. \label{fig1}
@@ -738,9 +777,9 @@ keywords = random numbers; Monte Carlo simulation
 !bsubex
 Make a program that simulates flipping a coin $N$ times.
 
-!bhint
+*Hint.* 
 Use `r = random.random()` and define head as `r <= 0.5`.
-!ehint
+
 !esubex
 
 !bsubex
@@ -1065,16 +1104,16 @@ Run in terminal window:
 doconce format html doconcefile
 
 # Solarized HTML style
-doconce format html doconcefile --html-solarized
+doconce format html doconcefile --html_solarized
 
 # Control pygments typesetting of code
-doconce format html doconcefile --pygments-html-style=native
+doconce format html doconcefile --pygments_html_style=native
 
 # Or use plain <pre> tag
-doconce format html doconcefile --no-pygments-html
+doconce format html doconcefile --no_pygments_html
 
 # Further making of slides
-doconce slides_html doconcefile reveal --html-slide-theme=darkgray
+doconce slides_html doconcefile reveal --html_slide_theme=darkgray
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- !split -->
@@ -1116,7 +1155,7 @@ bibtex doconcefile
 pdflatex doconcefile
 
 # More control of how code is typeset
-doconce format pdflatex doconcefile --minted-latex-style=trac
+doconce format pdflatex doconcefile --minted_latex_style=trac
 doconce ptex2tex doconcefile envir=minted
 
 doconce format pdflatex doconcefile
@@ -1210,6 +1249,23 @@ doconce format plain  doconcefile  # plain, untagged text for email
  * Use `doconce combine_images` to combine several images into one.
 
  * Use `doconce spellcheck *.do.txt` to automatically spellcheck files.
+
+ * Avoid page references and footnotes.
+
+<!-- !split -->
+## More writing tips
+
+ * `\boldsymbol{u}` gives nicer boldface typesetting of math symbols than
+   the alternatives `\boldsymbol{u}` and `\pmb{u}`.
+
+ * For HTML-based formats using MathJax, `\boldsymbol{u}` is not supported
+   and therefore automatically replaced by `\boldsymbol{u}` by Doconce.
+
+ * Use `\<font color="blue">formula</font>` in math expressions to color a part.
+
+ * Not all LaTeX math is supported by MathJax. Some legal LaTeX math
+   might give MathJax problems - then one has to rewrite the expression
+   to find a syntax that works both with LaTeX and MathJax.
 
 <!-- !split -->
 ## Writing tips for sphinx and other formats

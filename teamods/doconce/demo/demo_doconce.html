@@ -15,8 +15,10 @@ The primary goal of this demo talk is to demonstrate how to write
 talks with &quot;doconce&quot;: &quot;http://code.google.com/p/doconce&quot;
 and get them rendered in numerous HTML formats.
 # #if FORMAT == &quot;html&quot;
+!bnotice Layout
 This version
 utilizes ${SLIDE_TYPE} slides with the theme ${SLIDE_THEME}.
+!enotice
 # #endif
 
 ## Demonstrate use of Mako variables set on the command line
@@ -27,6 +29,7 @@ utilizes ${SLIDE_TYPE} slides with the theme ${SLIDE_THEME}.
 ## (e.g. for handouts).
 
 # #if FORMAT == &quot;html&quot;
+!bnotice
 Speaker notes show up by
 % if SLIDE_TYPE == &#39;reveal&#39;:
 pressing &quot;s&quot;.
@@ -39,9 +42,10 @@ pressing &quot;p&quot;.
 % elif SLIDE_TYPE == &#39;csss&#39;:
 using the &quot;onstage.html&quot;: &quot;https://doconce.googlecode.com/hg/bundled/dzslides/shells/onstage.html&quot; embedding page.
 % endif
+!enotice
 # #endif
 
-## Add speaker notes
+## Add speaker notes (can also use preprocess or mako for this)
 
 !bnotes
 The talk investigates the accuracy of three finite difference
@@ -157,4 +161,11 @@ Exact solution of the scheme:
  * $\Delta t &lt; 1/a$ for Forward Euler ($\theta=0$)
  * $\Delta t &lt; 2/a$ for Crank-Nicolson ($\theta=1/2$)
 !epop
+
+## The summary environment appears in a box in most formats
+## (warning, notice, hint, question are other environments)
+!bsummary Concluding remarks:
+Only the Backward Euler scheme is guaranteed to always give
+qualitatively correct results.
+!esummary
 </pre></div>

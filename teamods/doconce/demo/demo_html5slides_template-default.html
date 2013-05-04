@@ -89,7 +89,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Mar 12, 2013</h4></center> <!-- date -->
+<center><h4>May 4, 2013</h4></center> <!-- date -->
 <p>
 
 
@@ -106,14 +106,16 @@ MathJax.Hub.Config({
 The primary goal of this demo talk is to demonstrate how to write
 talks with <a href="http://code.google.com/p/doconce">doconce</a>
 and get them rendered in numerous HTML formats.
+<div class="alert alert-block alert-notice"><b>Layout.</b>
 This version
 utilizes html5slides slides with the theme template-default.
-
+</div>
 <p>
 
+<div class="alert alert-block alert-notice"><b>Notice.</b>
 Speaker notes show up by
 pressing "p".
-
+</div>
 <p>
 
 <aside class="note">
@@ -191,9 +193,9 @@ $$
 
 
 <ul class="build">
- <li> Mesh in time: \( 0= t_0< t_1 \cdots < t_N=T \)</li>
- <li> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
- <li> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
+ <p><li> Mesh in time: \( 0= t_0< t_1 \cdots < t_N=T \)</li>
+ <p><li> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
+ <p><li> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
 </ul>
 <p>
 
@@ -248,7 +250,7 @@ The numerical method is implemented in a Python function:
 <p>
 
 
-<!-- code typeset with pygments style "autumn" -->
+<!-- code=python (from !bc pycod) typeset with pygments style "autumn" -->
 <div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #0000aa">def</span> <span style="color: #00aa00">solver</span>(I, a, T, dt, theta):
     <span style="color: #aa5500">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     dt = <span style="color: #00aaaa">float</span>(dt)           <span style="color: #aaaaaa; font-style: italic"># avoid integer division</span>
@@ -302,16 +304,21 @@ $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thi
 
 
 <ul class="build">
- <li> Stability: \( |A| < 1 \)</li>
- <li> No oscillations: \( A>0 \)</li>
- <li> Always for Backward Euler (\( \theta=1 \))</li>
- <li> \( \Delta t < 1/a \) for Forward Euler (\( \theta=0 \))</li>
- <li> \( \Delta t < 2/a \) for Crank-Nicolson (\( \theta=1/2 \))</li>
+ <p><li> Stability: \( |A| < 1 \)</li>
+ <p><li> No oscillations: \( A>0 \)</li>
+ <p><li> Always for Backward Euler (\( \theta=1 \))</li>
+ <p><li> \( \Delta t < 1/a \) for Forward Euler (\( \theta=0 \))</li>
+ <p><li> \( \Delta t < 2/a \) for Crank-Nicolson (\( \theta=1/2 \))</li>
 </ul>
 <p>
 
 
 
+<p>
+<div class="alert alert-block alert-summary"><b>Concluding remarks:</b>
+Only the Backward Euler scheme is guaranteed to always give
+qualitatively correct results.
+</div>
 
 </article>
 

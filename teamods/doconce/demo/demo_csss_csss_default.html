@@ -72,7 +72,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Mar 12, 2013</h4></center> <!-- date -->
+<center><h4>May 4, 2013</h4></center> <!-- date -->
 <p>
 
 
@@ -89,14 +89,16 @@ MathJax.Hub.Config({
 The primary goal of this demo talk is to demonstrate how to write
 talks with <a href="http://code.google.com/p/doconce">doconce</a>
 and get them rendered in numerous HTML formats.
+<div class="alert alert-block alert-notice"><b>Layout.</b>
 This version
 utilizes csss slides with the theme csss_default.
-
+</div>
 <p>
 
+<div class="alert alert-block alert-notice"><b>Notice.</b>
 Speaker notes show up by
 pressing "Ctrl-P".
-
+</div>
 <p>
 
 <p class="presenter-notes">
@@ -174,9 +176,9 @@ $$
 
 
 <ul>
- <li class="delayed"> Mesh in time: \( 0= t_0< t_1 \cdots < t_N=T \)</li>
- <li class="delayed"> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
- <li class="delayed"> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
+ <p><li class="delayed"> Mesh in time: \( 0= t_0< t_1 \cdots < t_N=T \)</li>
+ <p><li class="delayed"> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
+ <p><li class="delayed"> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
 </ul>
 <p>
 
@@ -231,7 +233,7 @@ The numerical method is implemented in a Python function:
 <p>
 
 
-<!-- code typeset with pygments style "monokai" -->
+<!-- code=python (from !bc pycod) typeset with pygments style "monokai" -->
 <div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">def</span> <span style="color: #a6e22e">solver</span><span style="color: #f8f8f2">(I,</span> <span style="color: #f8f8f2">a,</span> <span style="color: #f8f8f2">T,</span> <span style="color: #f8f8f2">dt,</span> <span style="color: #f8f8f2">theta):</span>
     <span style="color: #e6db74">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     <span style="color: #f8f8f2">dt</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">float(dt)</span>           <span style="color: #75715e"># avoid integer division</span>
@@ -285,16 +287,21 @@ $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thi
 
 
 <ul>
- <li class="delayed"> Stability: \( |A| < 1 \)</li>
- <li class="delayed"> No oscillations: \( A>0 \)</li>
- <li class="delayed"> Always for Backward Euler (\( \theta=1 \))</li>
- <li class="delayed"> \( \Delta t < 1/a \) for Forward Euler (\( \theta=0 \))</li>
- <li class="delayed"> \( \Delta t < 2/a \) for Crank-Nicolson (\( \theta=1/2 \))</li>
+ <p><li class="delayed"> Stability: \( |A| < 1 \)</li>
+ <p><li class="delayed"> No oscillations: \( A>0 \)</li>
+ <p><li class="delayed"> Always for Backward Euler (\( \theta=1 \))</li>
+ <p><li class="delayed"> \( \Delta t < 1/a \) for Forward Euler (\( \theta=0 \))</li>
+ <p><li class="delayed"> \( \Delta t < 2/a \) for Crank-Nicolson (\( \theta=1/2 \))</li>
 </ul>
 <p>
 
 
 
+<p>
+<div class="alert alert-block alert-summary"><b>Concluding remarks:</b>
+Only the Backward Euler scheme is guaranteed to always give
+qualitatively correct results.
+</div>
 
 </section>
 
