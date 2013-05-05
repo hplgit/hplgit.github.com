@@ -1,16 +1,14 @@
 <!-- TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way -->
 % Scientific Writing Anno 2013: The Doconce Way
 % Hans Petter Langtangen
-% May 4, 2013
+% May 5, 2013
 
 ![](fig/doconce1b.png)
 
-<!-- Abstract: -->
-
 <!-- !split -->
-## Scientific writing for the future needs to address many new media
+## Scientific writing needs to address many new media
 
-<!-- !bslidecell 00 -->
+<!-- !bslidecell 00 0.4 -->
 ![](fig/ipad.png)
 
 ![](fig/iphones.jpg)
@@ -19,7 +17,7 @@
 
 <!-- !eslidecell -->
 
-<!-- !bslidecell 01 -->
+<!-- !bslidecell 01 0.6 -->
 ![](fig/imac.png)
 <!-- !eslidecell -->
 
@@ -52,44 +50,42 @@
 
   * Default answer: LaTeX
 
-  * Alternative: MS Word w/math
-
   * Recent popular alternative tools: HTML w/MathJax,
     Sphinx, Markdown, MediaWiki, IPython notebook
 
 <!-- !epop -->
 
-<!-- !bslidecell 00 -->
+<!-- !bslidecell 00 0.25 -->
 ![](fig/LaTeX_logo.jpg)
 <!-- !eslidecell -->
 
-<!-- !bslidecell 01 -->
+<!-- !bslidecell 01 0.25 -->
 ![](fig/MS_Word_logo.jpg)
 <!-- !eslidecell -->
 
-<!-- !bslidecell 02 -->
+<!-- !bslidecell 02 0.5 -->
 ![](fig/sphinx_logo.png)
 <!-- !eslidecell -->
 
-<!-- !bslidecell 10 -->
+<!-- !bslidecell 10 0.25 -->
 ![](fig/markdown_logo.jpg)
 <!-- !eslidecell -->
 
-<!-- !bslidecell 11 -->
+<!-- !bslidecell 11 0.25 -->
 ![](fig/MediaWiki_logo.jpg)
 <!-- !eslidecell -->
 
-<!-- !bslidecell 12 -->
+<!-- !bslidecell 12 0.5 -->
 ![](fig/IPython_logo.png)
 <!-- !eslidecell -->
 
 
 <!-- !split -->
-## Scientific writing for the future needs to address many new media
+## Scientific writing needs to address many new media
 
 <!-- Insert links here to reports -->
 
-<!-- !bslidecell 00 -->
+<!-- !bslidecell 00 0.4 -->
 Old days (1985-2005): LaTeX for BW paper output, but now
 
   1. BW books
@@ -106,7 +102,7 @@ Old days (1985-2005): LaTeX for BW paper output, but now
 
 <!-- !eslidecell -->
 
-<!-- !bslidecell 01 -->
+<!-- !bslidecell 01 0.6 -->
 ![](fig/jungle_with_mess.jpg)
 <!-- !eslidecell -->
 
@@ -129,8 +125,8 @@ When I write some scientific material,
 and later want to collect the pieces into a larger document, maybe
 some book, or one big web document, is that at all feasible?
 
-<!-- !bpop -->
-<font color="red">Probably not, but I have a solution :-)</font>
+<!-- !bpop highlight-red -->
+Probably not, but I have a solution :-)
 <!-- !epop -->
 
 <!-- !split -->
@@ -174,7 +170,7 @@ some book, or one big web document, is that at all feasible?
 
 <!-- !split -->
 
-## LaTeX is very rich; other tools support only some elements
+## LaTeX is very rich; other tools support much less
 
  * LaTeX inline math: works with all (LaTeX, MathJax, Sphinx, Markdown, MediaWiki)
 
@@ -193,7 +189,7 @@ some book, or one big web document, is that at all feasible?
 
 
 <!-- !split -->
-## LaTeX is very rich; other tools support only some elements
+## LaTeX is very rich; other tools support much less
 
 <!-- !bpop -->
  * Figures: all
@@ -206,9 +202,7 @@ some book, or one big web document, is that at all feasible?
 
  * Fixed computer code: all
 
- * Floating tables: LaTeX
-
- * Fixed tables: all
+ * Floating tables: LaTeX; inline tables: all
 
  * Algorithms: LaTeX
 
@@ -478,7 +472,7 @@ URL: "http://code.google.com/p/doconce/"
 <!-- !split -->
 ## Doconce: figures and movies
 
-*Notice.* 
+*Important:* 
 Figure with HTML and LaTeX info, and caption, *all on one line*:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -581,14 +575,11 @@ Code is enclosed in `!bc` and `!ec` tags:
 !bc pycod
 def solver(I, a, T, dt, theta):
     """Solve u'=-a*u, u(0)=I, for t in (0,T] with steps of dt."""
-    dt = float(dt)           # avoid integer division
-    N = int(round(T/dt))     # no of time intervals
-    T = N*dt                 # adjust T to fit time step dt
-    u = zeros(N+1)           # array of u[n] values
-    t = linspace(0, T, N+1)  # time mesh
+    dt = float(dt); N = int(round(T/dt)); T = N*dt
+    u = zeros(N+1); t = linspace(0, T, N+1)
 
-    u[0] = I                 # assign initial condition
-    for n in range(0, N):    # n=0,1,...,N-1
+    u[0] = I
+    for n in range(0, N):
         u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
     return u, t
 !ec
@@ -600,22 +591,17 @@ This gets rendered as
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
 def solver(I, a, T, dt, theta):
     """Solve u'=-a*u, u(0)=I, for t in (0,T] with steps of dt."""
-    dt = float(dt)           # avoid integer division
-    N = int(round(T/dt))     # no of time intervals
-    T = N*dt                 # adjust T to fit time step dt
-    u = zeros(N+1)           # array of u[n] values
-    t = linspace(0, T, N+1)  # time mesh
+    dt = float(dt); N = int(round(T/dt)); T = N*dt
+    u = zeros(N+1); t = linspace(0, T, N+1)
 
-    u[0] = I                 # assign initial condition
-    for n in range(0, N):    # n=0,1,...,N-1
+    u[0] = I
+    for n in range(0, N):
         u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
     return u, t
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The `!bc` command can be followed by a specification of the computer
-language: `pycod` for Python code snippet, `pypro` for complete Python
-program, `fcod` for Fortran snippet, `fpro` for Fortran program, and so
-forth (`c` for C, `cpp` for C++, `sh` for Unix shells, `m` for Matlab).
+`pycod`: Python snippet, `pypro`: complete Python program;
+`fcod/fpro`: Fortran; `ccod/cpro`: C, `mcod/mpro`: Matlab, etc.
 
 
 <!-- !split -->
@@ -769,43 +755,29 @@ and *examples*:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ===== Problem: Flip a Coin =====
 \label{demo:ex:1}
-
-files = flip_coin.py, flip_coin.pdf
-solutions = mysol.txt, mysol_flip_coin.py
+files=flip_coin.py, flip_coin.pdf
+solutions=mysol.txt, mysol_flip_coin.py
 keywords = random numbers; Monte Carlo simulation
 
 !bsubex
 Make a program that simulates flipping a coin $N$ times.
 
-*Hint.* 
+!bhint
 Use `r = random.random()` and define head as `r <= 0.5`.
-
+!ehint
 !esubex
 
 !bsubex
 Compute the probability of getting heads.
 
 !bans
-A short answer: 0.5.
+0.5.
 !eans
-
-!bsol
-A full solution to this subexercise can go here.
-!esol
-!esubex
-
-!bsubex
-Make another program that computes the probability
-of getting at least three heads out of 5 throws.
 !esubex
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Solutions/answers can easily be left out of the document.
-
 <!-- !split -->
-## Doconce: exercises
-
-Last page gets rendered as follows:
+## Rendering of the previous page
 
 
 
@@ -827,16 +799,8 @@ Last page gets rendered as follows:
 
 
 <!-- --- begin answer of exercise --- -->
-*Answer.* A short answer: 0.5.
+*Answer.* 0.5.
 <!-- --- end answer of exercise --- -->
-
-
-<!-- --- begin solution of exercise --- -->
-*Solution.* A full solution to this subexercise can go here.
-<!-- --- end solution of exercise --- -->
-
-*c)* Make another program that computes the probability
-of getting at least three heads out of 5 throws.
 
 Filenames: `flip_coin.py`, `flip_coin.pdf`.
 <!-- solution files: mysol.txt, mysol_flip_coin.py -->
@@ -856,29 +820,15 @@ processing (e.g., making a book of problems).
 [{'answer': '',
   'closing_remarks': '',
   'file': ['flip_coin.py', 'flip_coin.pdf'],
-  'heading': '=====',
   'hints': [],
   'keywords': ['random numbers', 'Monte Carlo simulation'],
   'label': 'demo:ex:1',
-  'no': 1,
-  'solution': '',
   'solution_file': ['mysol.txt', 'mysol_flip_coin.py'],
   'subex': [{'answer': '',
              'file': None,
              'hints': ['Use `r = random.random()` ...'],
              'solution': '',
-             'text': 'Make a program that simulates ...'},
-            {'answer': 'A short answer: 0.5.',
-             'file': None,
-             'hints': [],
-             'solution': 'A full solution to this ...',
-             'text': 'Compute the probability of ...'},
-            {'answer': '',
-             'file': None,
-             'hints': [],
-             'solution': '',
-             'text': 'Make another program that computes ...'}],
-  'text': '',
+             'text': 'Make a program that simulates ...'},],
   'title': 'Flip a Coin',
   'type': 'Problem'}]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -940,12 +890,13 @@ Very effective way to generate slides from running text:
 
  * Key point 1
  * Key point 2
- * Key point 3 takes very much more text to explain because
-   this point is really comprehensive, and although long
+ * Key point 3: Although long
    bullet points are not recommended in general, we need
-   it here for demonstration purposes
+   it here for demonstration purposes to investigate
+   what happens with the slide layout where there is
+   so much text under one point
 
-FIGURE: [fig/teacher1, width=100]
+FIGURE: [fig/teacher1, width=100 frac=0.5]
 
 Key equation:
 
@@ -998,10 +949,7 @@ a figure to the right (two cells, numbered 00 and 01).
 !bpop
  * Key point 1
  * Key point 2
- * Key point 3 takes very much more text to explain because
-   this point is really comprehensive, and although long
-   bullet points are not recommended in general, we need
-   it here for demonstration purposes
+ * Key point 3
 !epop
 
 !bpop
@@ -1025,6 +973,9 @@ FIGURE: [fig/broken_pen_and_paper, width=400, frac=0.8]
 
 Last page gets rendered to
 
+
+
+
 ## Headline
 
 <!-- !bslidecell 00 -->
@@ -1033,10 +984,7 @@ Last page gets rendered to
 
  * Key point 2
 
- * Key point 3 takes very much more text to explain because
-   this point is really comprehensive, and although long
-   bullet points are not recommended in general, we need
-   it here for demonstration purposes
+ * Key point 3
 
 <!-- !epop -->
 

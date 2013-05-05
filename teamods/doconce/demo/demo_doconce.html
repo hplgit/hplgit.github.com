@@ -2,6 +2,8 @@
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
 DATE: today
 
+FIGURE: [fig/CN_logo, width=300 frac=0.4]
+
 ## Comments start with a # and are visible as comments in the
 ## output. Lines starting with ## are also comments, but not visible
 ## in the output.
@@ -14,7 +16,7 @@ DATE: today
 The primary goal of this demo talk is to demonstrate how to write
 talks with &quot;doconce&quot;: &quot;http://code.google.com/p/doconce&quot;
 and get them rendered in numerous HTML formats.
-# #if FORMAT == &quot;html&quot;
+# #if FORMAT in (&quot;html&quot;, &quot;pdflatex&quot;, &quot;latex&quot;)
 !bnotice Layout
 This version
 utilizes ${SLIDE_TYPE} slides with the theme ${SLIDE_THEME}.
@@ -88,7 +90,7 @@ label{initial:value}
 ## width in HTML. A caption can be added (after [...]).
 
 !bslidecell 01
-FIGURE: [fig/teacher2, width=250]
+FIGURE: [fig/teacher2, width=250 frac=0.5]
 !eslidecell
 
 !split
@@ -114,10 +116,10 @@ Numerical scheme:
 !et
 !epop
 
+# #if FORMAT == &quot;html&quot;
+
 !split
 ## Next: embed YouTube video
-
-# #if FORMAT == &quot;html&quot;
 
 ===== Forward Euler explained =====
 
@@ -164,8 +166,10 @@ Exact solution of the scheme:
 
 ## The summary environment appears in a box in most formats
 ## (warning, notice, hint, question are other environments)
+!bpop
 !bsummary Concluding remarks:
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 !esummary
+!epop
 </pre></div>
