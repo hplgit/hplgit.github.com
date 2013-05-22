@@ -33,7 +33,15 @@
 <link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
 <![endif]-->
 
+  
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
   </head>
+
   <body>
 
     <div class="related">
@@ -62,7 +70,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 20, 2013</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 22, 2013</td>
 </tr>
 </tbody>
 </table>
@@ -687,12 +695,14 @@ generate the wiki in reStructuredText format.</p>
 </div>
 <div class="section" id="project-web-pages">
 <h2>Project web pages<a class="headerlink" href="#project-web-pages" title="Permalink to this headline">¶</a></h2>
-<p>HTML pages stored in your repo cannot be linked to and rendered <em>as HTML</em>.
+<p>HTML pages stored in your repo cannot be linked to and properly
+rendered as web pages.
 Links to HTML files at GitHub will be either rendered as nicely typeset
-HTML code or as plain text. The URL of images, however, can be used
+HTML code or as plain text. (On the other hand,
+the GitHub URL of images can be used
 in web pages to insert images from your repo, provided the image files
-are in the <em>raw</em> format (click the <em>Raw</em> button when viewing a file at
-<tt class="docutils literal"><span class="pre">github.com</span></tt> and use the corresponding URL in the <tt class="docutils literal"><span class="pre">img</span></tt> tag).</p>
+are in the <em>raw</em> format - click the <em>Raw</em> button when viewing a file at
+<tt class="docutils literal"><span class="pre">github.com</span></tt> and use the corresponding URL in the <tt class="docutils literal"><span class="pre">img</span></tt> tag.)</p>
 <span class="target" id="index-6"></span><p id="index-7">Quite often you want to create a set of HTML pages to document your
 project. This can be done as part of your repo, but you must apply
 a special technique consisting in creating a separate <em>gh-pages</em>
@@ -707,12 +717,16 @@ a design of the <tt class="docutils literal"><span class="pre">index.html</span>
 and run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">fetch</span> <span class="pre">origin</span></tt>.</li>
 <li>Run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">gh-pages</span></tt>.</li>
 </ol>
-<p>You have now a <em>new branch</em> called <tt class="docutils literal"><span class="pre">gh-pages</span></tt> of your project containing an
-<tt class="docutils literal"><span class="pre">index.html</span></tt> file in the root folder (and in fact all files <em>not</em>
-contained in the <em>master branch</em>, typically redundant files not to be
-stored in the version control system).
-You can populate this folder and subdirectories you create with
-HTML and other files as you like.</p>
+<p>You have now a <em>new branch</em> called <tt class="docutils literal"><span class="pre">gh-pages</span></tt> of your project
+containing an <tt class="docutils literal"><span class="pre">index.html</span></tt> file and directories for JavaScript
+programs and CSS style sheets in the root folder. The <tt class="docutils literal"><span class="pre">gh-pages</span></tt>
+branch will also all files <em>not</em> contained in the <em>master branch</em>,
+typically redundant files you have generated and which should not be
+stored in the version control system (remove these manually qith <tt class="docutils literal"><span class="pre">git</span>
+<span class="pre">rm</span></tt>).  You can populate the root folder and subdirectories of your
+<tt class="docutils literal"><span class="pre">gh-pages</span></tt> branch with HTML and other files as you like. The key issue
+is that the people out there will only see the web pages that
+corresponding to your HTML files in the <tt class="docutils literal"><span class="pre">gh-pages</span></tt> branch.</p>
 <p>The <tt class="docutils literal"><span class="pre">index.html</span></tt> page is invoked by the web address</p>
 <div class="highlight-text"><div class="highlight"><pre>http://user.github.io/My-Project/index.html
 </pre></div>
@@ -860,8 +874,9 @@ and writing</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git pull origin master</span>
 </pre></div>
 </div>
-<p>(You may want to do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">fetch</span></tt> and <tt class="docutils literal"><span class="pre">git</span> <span class="pre">merge</span></tt> instead
-of <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> as explained in the section <a class="reference internal" href="#bitgit-git-fetch"><em>Replacing pull by fetch and merge</em></a>.)</p>
+<p>You may want to do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">fetch</span></tt> and <tt class="docutils literal"><span class="pre">git</span> <span class="pre">merge</span></tt> instead
+of <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> as explained in the section <a class="reference internal" href="#bitgit-git-fetch"><em>Replacing pull by fetch and merge</em></a>,
+especially if you work with branches.</p>
 <p>You can now edit files, add new files, delete files, or rename files.
 Typical commands are</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git add file1 file2.* dir1 dir2</span>

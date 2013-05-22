@@ -5,7 +5,7 @@ Quick Intro to Version Control Systems and Project Hosting Services
 ===================================================================
 
 :Author: Hans Petter Langtangen
-:Date: Apr 20, 2013
+:Date: May 22, 2013
 
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
@@ -816,12 +816,14 @@ The address can be stored as ``url`` in ``.git/config`` so that just a
 Project web pages
 -----------------
 
-HTML pages stored in your repo cannot be linked to and rendered *as HTML*.
+HTML pages stored in your repo cannot be linked to and properly
+rendered as web pages.
 Links to HTML files at GitHub will be either rendered as nicely typeset
-HTML code or as plain text. The URL of images, however, can be used
+HTML code or as plain text. (On the other hand,
+the GitHub URL of images can be used
 in web pages to insert images from your repo, provided the image files
-are in the *raw* format (click the *Raw* button when viewing a file at
-``github.com`` and use the corresponding URL in the ``img`` tag).
+are in the *raw* format - click the *Raw* button when viewing a file at
+``github.com`` and use the corresponding URL in the ``img`` tag.)
 
 
 .. index:: git checkout
@@ -847,12 +849,16 @@ The recipe is described in detail below.
 
 5. Run ``git checkout gh-pages``.
 
-You have now a *new branch* called ``gh-pages`` of your project containing an
-``index.html`` file in the root folder (and in fact all files *not*
-contained in the *master branch*, typically redundant files not to be
-stored in the version control system).
-You can populate this folder and subdirectories you create with
-HTML and other files as you like.
+You have now a *new branch* called ``gh-pages`` of your project
+containing an ``index.html`` file and directories for JavaScript
+programs and CSS style sheets in the root folder. The ``gh-pages``
+branch will also all files *not* contained in the *master branch*,
+typically redundant files you have generated and which should not be
+stored in the version control system (remove these manually qith ``git
+rm``).  You can populate the root folder and subdirectories of your
+``gh-pages`` branch with HTML and other files as you like. The key issue
+is that the people out there will only see the web pages that
+corresponding to your HTML files in the ``gh-pages`` branch.
 
 The ``index.html`` page is invoked by the web address
 
@@ -1115,8 +1121,9 @@ and writing
 
         Terminal> git pull origin master
 
-(You may want to do ``git fetch`` and ``git merge`` instead
-of ``git pull`` as explained in the section :ref:`bitgit:git:fetch`.)
+You may want to do ``git fetch`` and ``git merge`` instead
+of ``git pull`` as explained in the section :ref:`bitgit:git:fetch`,
+especially if you work with branches.
 
 You can now edit files, add new files, delete files, or rename files.
 Typical commands are
