@@ -13,16 +13,25 @@
         return ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch;
     })();
 
-    if(!hasTouch){
+    /**
+     * Detects if notes are enable and the current page is opened inside an /iframe
+     * this prevents loading Remotes.io several times
+     */
+    var remotesAndIsNotes = (function(){
+      return !(window.RevealNotes && self == top);
+    })();
+
+    if(!hasTouch && !remotesAndIsNotes){
         head.ready( 'remotes.ne.min.js', function() {
             new Remotes("preview")
                 .on("swipe-left", function(e){ Reveal.right(); })
                 .on("swipe-right", function(e){ Reveal.left(); })
                 .on("swipe-up", function(e){ Reveal.down(); })
                 .on("swipe-down", function(e){ Reveal.up(); })
-                .on("tap", function(e){ 
-                    Reveal.toggleOverview(); 
-                });
+                .on("tap", function(e){ Reveal.next(); })
+                .on("zoom-out", function(e){ Reveal.toggleOverview(true); })
+                .on("zoom-in", function(e){ Reveal.toggleOverview(false); })
+            ;
         } );
 
         head.js('https://raw.github.com/Remotes/Remotes/master/dist/remotes.ne.min.js');

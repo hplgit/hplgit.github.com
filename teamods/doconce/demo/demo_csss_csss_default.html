@@ -9,7 +9,7 @@
 <head>
 <meta charset="utf-8">
 
-<title></title>
+<title>On Schemes for Exponential Decay</title>
 
 <!-- CSSS: http://leaverou.github.com/CSSS/ -->
 
@@ -72,19 +72,16 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>May 5, 2013</h4></center> <!-- date -->
+<center><h4>May 28, 2013</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
 <p>
 
-
 </section>
 
 
 <section class="slide">
-
-<p>
 
 <h2>Goal  <a name="___sec0"></a></h2>
 
@@ -97,13 +94,11 @@ This version
 utilizes csss slides with the theme csss_default.
 </div>
 <p>
-
 <div class="alert alert-block alert-notice"><b>Notice.</b>
 Speaker notes show up by
 pressing "Ctrl-P".
 </div>
 <p>
-
 <p class="presenter-notes">
 <!-- press "Ctrl+P" or "Shift+P" to activate -->
 
@@ -117,7 +112,6 @@ demonstrated.
 
 <p>
 
-
 </section>
 
 
@@ -127,12 +121,10 @@ demonstrated.
 
 <p>
 
-
 <table border="0">
 <tr>
 <td class="padding">
 <p>
-
 $$
 \begin{align}
 u'(t) &= -au(t),
@@ -163,7 +155,6 @@ $$
 <p>
 
 
-
 <p>
 
 </section>
@@ -174,7 +165,6 @@ $$
 <h2>Numerical solution method  <a name="___sec2"></a></h2>
 
 <p>
-
 
 
 <ul>
@@ -202,13 +192,10 @@ $$
 
 <p>
 
-
 </section>
 
 
 <section class="slide">
-
-<p>
 
 <h3>Forward Euler explained  <a name="___sec3"></a></h3>
 
@@ -219,13 +206,10 @@ $$
 
 <p>
 
-
 </section>
 
 
 <section class="slide">
-
-<p>
 
 <h2>Implementation  <a name="___sec4"></a></h2>
 
@@ -233,7 +217,6 @@ $$
 The numerical method is implemented in a Python function:
 
 <p>
-
 
 <!-- code=python (from !bc pycod) typeset with pygments style "monokai" -->
 <div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">def</span> <span style="color: #a6e22e">solver</span><span style="color: #f8f8f2">(I,</span> <span style="color: #f8f8f2">a,</span> <span style="color: #f8f8f2">T,</span> <span style="color: #f8f8f2">dt,</span> <span style="color: #f8f8f2">theta):</span>
@@ -251,7 +234,6 @@ The numerical method is implemented in a Python function:
 </pre></div>
 <p>
 
-
 </section>
 
 
@@ -260,7 +242,6 @@ The numerical method is implemented in a Python function:
 <h3>The Crank-Nicolson method  <a name="___sec5"></a></h3>
 
 <p>
-
 <center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
 
 <p>

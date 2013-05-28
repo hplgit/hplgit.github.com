@@ -9,7 +9,7 @@
 <head>
 <meta charset="utf-8">
 
-<title></title>
+<title>On Schemes for Exponential Decay</title>
 
 <!-- deck.js: https://github.com/imakewebthings/deck.js -->
 
@@ -17,7 +17,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=1024, user-scalable=no">
 
-<title></title>
+<title>On Schemes for Exponential Decay</title>
 
 <!-- Required stylesheet -->
 <link rel="stylesheet" href="deck.js/core/deck.core.css">
@@ -94,6 +94,33 @@ git://github.com/barraq/deck.ext.js.git
 <!-- Required Modernizr file -->
 <script src="deck.js/modernizr.custom.js"></script>
 
+<style type="text/css">
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .slide .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:5px solid #bababa;
+               -webkit-border-radius:14px; -moz-border-radius:14px;
+             border-radius:14px
+             background-position: 10px 10px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 30px; /* 55px; if icon */
+     }
+     .slide .alert-block {padding-top:14px; padding-bottom:14px}
+     .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
+     /*.slide .alert li {margin-top: 1em}*/
+     .deck .alert-block p+p {margin-top:5px}
+     /*.slide .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
+     .slide .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_summary.png); }
+     .slide .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_warning.png); }
+     .slide .alert-hint { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_hint.png); }
+     .slide .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
 
 
 <!-- Styles for table layout of slides -->
@@ -138,29 +165,26 @@ MathJax.Hub.Config({
 <!-- author(s): Hans Petter Langtangen -->
 
 <center>
-<b>Hans Petter Langtangen</b> [1, 2]
+<b style="font-weight: bold">Hans Petter Langtangen</b> [1, 2]
 </center>
 
 
 <p>
 <!-- institution(s) -->
 
-<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
-<center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<center>[1] <b style="font-weight: bold">Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b style="font-weight: bold">Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>May 5, 2013</h4></center> <!-- date -->
+<center><h4>May 28, 2013</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
 <p>
 
-
 </section>
 
 
 <section class="slide">
-
-<p>
 
 <h2>Goal  <a name="___sec0"></a></h2>
 
@@ -168,18 +192,16 @@ MathJax.Hub.Config({
 The primary goal of this demo talk is to demonstrate how to write
 talks with <a href="http://code.google.com/p/doconce">doconce</a>
 and get them rendered in numerous HTML formats.
-<div class="alert alert-block alert-notice"><b>Layout.</b>
+<div class="alert alert-block alert-notice"><b style="font-weight: bold">Layout.</b>
 This version
 utilizes deck slides with the theme sandstone.default.
 </div>
 <p>
-
-<div class="alert alert-block alert-notice"><b>Notice.</b>
+<div class="alert alert-block alert-notice"><b style="font-weight: bold">Notice.</b>
 Speaker notes show up by
 pressing "n".
 </div>
 <p>
-
 <div class="notes">
 <!-- press "n" to activate -->
 
@@ -193,7 +215,6 @@ demonstrated.
 
 <p>
 
-
 </section>
 
 
@@ -203,12 +224,11 @@ demonstrated.
 
 <p>
 
-
 <table border="0">
 <tr>
 <td class="padding">
 <p>
-
+<p>&nbsp;<br>
 $$
 \begin{align}
 u'(t) &= -au(t),
@@ -217,6 +237,7 @@ u(0)  &= I,
 \label{initial:value}
 \end{align}
 $$
+<p>&nbsp;<br>
 
 
 <p>
@@ -239,7 +260,6 @@ $$
 <p>
 
 
-
 <p>
 
 </section>
@@ -250,7 +270,6 @@ $$
 <h2>Numerical solution method  <a name="___sec2"></a></h2>
 
 <p>
-
 
 
 <ul>
@@ -267,10 +286,12 @@ $$
 <p class="slide">
 
 Numerical scheme:
+&nbsp;<br>&nbsp;<br>
 $$
    u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
    \quad n=0,1,\ldots,N-1
    $$
+&nbsp;<br>&nbsp;<br>
 
 
 </p>
@@ -278,13 +299,10 @@ $$
 
 <p>
 
-
 </section>
 
 
 <section class="slide">
-
-<p>
 
 <h3>Forward Euler explained  <a name="___sec3"></a></h3>
 
@@ -295,13 +313,10 @@ $$
 
 <p>
 
-
 </section>
 
 
 <section class="slide">
-
-<p>
 
 <h2>Implementation  <a name="___sec4"></a></h2>
 
@@ -309,7 +324,6 @@ $$
 The numerical method is implemented in a Python function:
 
 <p>
-
 
 <!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">solver</span>(I, a, T, dt, theta):
@@ -327,7 +341,6 @@ The numerical method is implemented in a Python function:
 </code></pre></div>
 <p>
 
-
 </section>
 
 
@@ -336,7 +349,6 @@ The numerical method is implemented in a Python function:
 <h3>The Crank-Nicolson method  <a name="___sec5"></a></h3>
 
 <p>
-
 <center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
 
 <p>
@@ -355,7 +367,9 @@ The numerical method is implemented in a Python function:
 Exact solution of the scheme:
 
 
+&nbsp;<br>&nbsp;<br>
 $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .$$
+&nbsp;<br>&nbsp;<br>
 
 
 </p>
@@ -379,7 +393,7 @@ $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thi
 
 <p class="slide">
 
-<div class="alert alert-block alert-summary"><b>Concluding remarks:</b>
+<div class="alert alert-block alert-summary"><b style="font-weight: bold">Concluding remarks:</b>
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 </div>

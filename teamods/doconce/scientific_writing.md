@@ -1,7 +1,7 @@
 <!-- TITLE: On the Technicalities of Scientific Writing Anno 2012: The Doconce Way -->
 % Scientific Writing Anno 2013: The Doconce Way
 % Hans Petter Langtangen
-% May 5, 2013
+% May 28, 2013
 
 ![](fig/doconce1b.png)
 
@@ -261,9 +261,6 @@ based on HTML and vice versa.
    file and include this (`montage` for png, gif, jpeg; `pdftk`, `pdfnup`,
    and `pdfcrop` for PDF).
 
- * Keys for items in the bibliography are made visible by Sphinx so
-   "bibitems" a la BibTeX must look sensible and consistent.
-
  * If you need several equations *numbered* in an `align` environment,
    recall that Sphinx, Markdown, and MediaWiki cannot handle this,
    although they have LaTeX math support.
@@ -271,6 +268,10 @@ based on HTML and vice versa.
  * Markdown tolerates labels in equations but cannot refer to them.
 
 <!-- !epop -->
+
+<!-- Not valid anymore: -->
+<!-- Keys for items in the bibliography are made visible by Sphinx so -->
+<!-- "bibitems" a la BibTeX must look sensible and consistent. -->
 
 <!-- !split -->
 ## Concerns III
@@ -853,6 +854,27 @@ processing (e.g., making a book of problems).
    complete programming language inside the document!
 
 <!-- !split -->
+## Doconce admonitions
+
+There is support for environments like warning, notice, question, hint,
+etc., possibly with an icon and heading.
+
+*Use with caution!* 
+Such environments may light up the document, but can be disturbing too.
+
+*Going deeper.* 
+More details can be separated from the rest.
+
+*Time for review!* 
+  * Maybe ask a question?
+
+  * Or two?
+
+*Conclusions.* 
+  * A special "block" admonition has less pronounced typesetting and
+    can be used when no special icon is desired. Good for slides.
+
+<!-- !split -->
 ## Doconce: slides
 
 Very effective way to generate slides from running text:
@@ -1179,11 +1201,47 @@ doconce format plain  doconcefile  # plain, untagged text for email
  * Easy for slides: only `preprocess` is needed :-)
 
 <!-- !split -->
-## Writing tips
+## Writing tips for LaTeX writers who wants to convert to Doconce
 
- * See the previous *Concerns I, II and III* slides for issues when writing
-   for multiple formats. However: Doconce makes a fix so that Sphinx and
-   other formats works with labels in align environments :-)
+ * `doconce latex2doconce` helps the translation
+
+ * Use `\[ \]`, `equation`, `equation*`, `align`, `align*` and nothing more for
+   equations
+
+ * Figures: avoid subfigures (combine image files instead), use `\includegraphics`, have captions after graphics, use short figure captions, position exactly where needed
+
+ * Tables: have them inline (not floating), with no caption
+
+ * Computer codes: have them inline (not floating)
+
+ * Avoid footnotes, `pageref`
+
+ * Do not use *algorithm* environments, use simple list formatting instead
+
+ * Avoid math in section headings
+
+ * Use `pdflatex` or `xetex`
+
+ * Use BibTeX (can easily be converted to [publish](https://bitbucket.org/logg/publish) used by Doconce)
+
+ * Use `\href` for links (and insert links frequently)
+
+ * Use the `bm` package and `\boldsymbol{u}` for boldface $\boldsymbol{u}$
+
+ * Place all newcommands in a separate file, with one definition per line
+   (multiline definitions goes to a separate LaTeX preamble file in Doconce)
+
+ * Avoid all fancy LaTeX constructs - more backslashes than needed in math
+   and sections is a bad thing...
+
+<!-- !split -->
+## Doconce writing tips
+
+<!-- * See the previous *Concerns I, II and III* slides for issues when writing -->
+<!-- for multiple formats. However: Doconce makes a fix so that Sphinx and -->
+<!-- other formats works with labels in align environments :-) -->
+
+Figures:
 
  * Prepare figures in the right format: EPS for `latex`, PDF for `pdflatex`,
    PNG, GIF or JPEG for HTML formats (`html`, and HTML output from
@@ -1196,12 +1254,8 @@ doconce format plain  doconcefile  # plain, untagged text for email
 
  * Use `doconce combine_images` to combine several images into one.
 
- * Use `doconce spellcheck *.do.txt` to automatically spellcheck files.
-
- * Avoid page references and footnotes.
-
 <!-- !split -->
-## More writing tips
+## Doconce writing tips
 
  * `\boldsymbol{u}` gives nicer boldface typesetting of math symbols than
    the alternatives `\boldsymbol{u}` and `\pmb{u}`.
@@ -1214,6 +1268,10 @@ doconce format plain  doconcefile  # plain, untagged text for email
  * Not all LaTeX math is supported by MathJax. Some legal LaTeX math
    might give MathJax problems - then one has to rewrite the expression
    to find a syntax that works both with LaTeX and MathJax.
+
+ * Use `doconce spellcheck *.do.txt` to automatically spellcheck files.
+
+ * Avoid page references and footnotes.
 
 <!-- !split -->
 ## Writing tips for sphinx and other formats

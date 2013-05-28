@@ -9,7 +9,7 @@
 <head>
 <meta charset="utf-8">
 
-<title></title>
+<title>On Schemes for Exponential Decay</title>
 
 <!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
 
@@ -31,6 +31,34 @@
 <script>
 document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 </script>
+
+<style type="text/css">
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .reveal .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:5px solid #bababa;
+               -webkit-border-radius:14px; -moz-border-radius:14px;
+             border-radius:14px
+             background-position: 10px 10px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 30px; /* 55px; if icon */
+     }
+     .reveal .alert-block {padding-top:14px; padding-bottom:14px}
+     .reveal .alert-block > p, .alert-block > ul {margin-bottom:0}
+     /*.reveal .alert li {margin-top: 1em}*/
+     .reveal .alert-block p+p {margin-top:5px}
+     /*.reveal .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
+     .reveal .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_summary.png); }
+     .reveal .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_warning.png); }
+     .reveal .alert-hint { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_hint.png); }
+     .reveal .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
 
 
 <!-- Styles for table layout of slides -->
@@ -85,25 +113,22 @@ MathJax.Hub.Config({
 </center>
 
 
-<p>
+<p>&nbsp;<br>
 <!-- institution(s) -->
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
-<p>
-<center><h4>May 5, 2013</h4></center> <!-- date -->
+<p>&nbsp;<br>
+<center><h4>May 28, 2013</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
 <p>
 
-
 </section>
 
 
 <section>
-
-<p>
 
 <h2>Goal  <a name="___sec0"></a></h2>
 
@@ -116,13 +141,11 @@ This version
 utilizes reveal slides with the theme simple.
 </div>
 <p>
-
 <div class="alert alert-block alert-notice"><b>Notice.</b>
 Speaker notes show up by
 pressing "s".
 </div>
 <p>
-
 <aside class="notes">
 <!-- click "s" to activate -->
 
@@ -136,7 +159,6 @@ demonstrated.
 
 <p>
 
-
 </section>
 
 
@@ -146,12 +168,11 @@ demonstrated.
 
 <p>
 
-
 <table border="0">
 <tr>
 <td class="padding">
 <p>
-
+<p>&nbsp;<br>
 $$
 \begin{align}
 u'(t) &= -au(t),
@@ -160,6 +181,7 @@ u(0)  &= I,
 \label{initial:value}
 \end{align}
 $$
+<p>&nbsp;<br>
 
 
 <p>
@@ -182,7 +204,6 @@ $$
 <p>
 
 
-
 <p>
 
 </section>
@@ -193,7 +214,6 @@ $$
 <h2>Numerical solution method  <a name="___sec2"></a></h2>
 
 <p>
-
 
 
 <ul>
@@ -210,10 +230,12 @@ $$
 <p class="fragment">
 
 Numerical scheme:
+&nbsp;<br>&nbsp;<br>
 $$
    u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
    \quad n=0,1,\ldots,N-1
    $$
+&nbsp;<br>&nbsp;<br>
 
 
 </p>
@@ -221,13 +243,10 @@ $$
 
 <p>
 
-
 </section>
 
 
 <section>
-
-<p>
 
 <h3>Forward Euler explained  <a name="___sec3"></a></h3>
 
@@ -238,13 +257,10 @@ $$
 
 <p>
 
-
 </section>
 
 
 <section>
-
-<p>
 
 <h2>Implementation  <a name="___sec4"></a></h2>
 
@@ -252,7 +268,6 @@ $$
 The numerical method is implemented in a Python function:
 
 <p>
-
 
 <!-- code=python (from !bc pycod) typeset with pygments style "autumn" -->
 <div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #0000aa">def</span> <span style="color: #00aa00">solver</span>(I, a, T, dt, theta):
@@ -270,7 +285,6 @@ The numerical method is implemented in a Python function:
 </pre></div>
 <p>
 
-
 </section>
 
 
@@ -279,7 +293,6 @@ The numerical method is implemented in a Python function:
 <h3>The Crank-Nicolson method  <a name="___sec5"></a></h3>
 
 <p>
-
 <center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
 
 <p>
@@ -298,7 +311,9 @@ The numerical method is implemented in a Python function:
 Exact solution of the scheme:
 
 
+&nbsp;<br>&nbsp;<br>
 $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .$$
+&nbsp;<br>&nbsp;<br>
 
 
 </p>
