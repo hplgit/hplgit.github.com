@@ -98,6 +98,9 @@ git://github.com/barraq/deck.ext.js.git
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
     hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .slide .alert-text-small   { font-size: 80%;  }
+    .slide .alert-text-large   { font-size: 130%; }
+    .slide .alert-text-normal  { font-size: 90%;  }
     .slide .alert {
              padding:8px 35px 8px 14px; margin-bottom:18px;
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
@@ -175,7 +178,7 @@ MathJax.Hub.Config({
 <center>[1] <b style="font-weight: bold">Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b style="font-weight: bold">Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>May 28, 2013</h4></center> <!-- date -->
+<center><h4>Jun 6, 2013</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
@@ -192,12 +195,12 @@ MathJax.Hub.Config({
 The primary goal of this demo talk is to demonstrate how to write
 talks with <a href="http://code.google.com/p/doconce">doconce</a>
 and get them rendered in numerous HTML formats.
-<div class="alert alert-block alert-notice"><b style="font-weight: bold">Layout.</b>
+<div class="alert alert-block alert-notice alert-text-normal"><b style="font-weight: bold">Layout.</b>
 This version
-utilizes deck slides with the theme swiss.
+utilizes deck slides with the theme <code>swiss</code>.
 </div>
 <p>
-<div class="alert alert-block alert-notice"><b style="font-weight: bold">Notice.</b>
+<div class="alert alert-block alert-notice alert-text-normal"><b style="font-weight: bold">Notice.</b>
 Speaker notes show up by
 pressing "n".
 </div>
@@ -393,7 +396,7 @@ $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thi
 
 <p class="slide">
 
-<div class="alert alert-block alert-summary"><b style="font-weight: bold">Concluding remarks:</b>
+<div class="alert alert-block alert-summary alert-text-normal"><b style="font-weight: bold">Concluding remarks:</b>
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 </div>

@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
 -->
 
 <script>
@@ -36,11 +37,14 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
     hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .reveal .alert-text-small   { font-size: 80%;  }
+    .reveal .alert-text-large   { font-size: 130%; }
+    .reveal .alert-text-normal  { font-size: 90%;  }
     .reveal .alert {
              padding:8px 35px 8px 14px; margin-bottom:18px;
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:5px solid #bababa;
-               -webkit-border-radius:14px; -moz-border-radius:14px;
+             -webkit-border-radius: 14px; -moz-border-radius: 14px;
              border-radius:14px
              background-position: 10px 10px;
              background-repeat: no-repeat;
@@ -119,7 +123,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>&nbsp;<br>
-<center><h4>May 28, 2013</h4></center> <!-- date -->
+<center><h4>Jun 6, 2013</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
@@ -136,12 +140,12 @@ MathJax.Hub.Config({
 The primary goal of this demo talk is to demonstrate how to write
 talks with <a href="http://code.google.com/p/doconce">doconce</a>
 and get them rendered in numerous HTML formats.
-<div class="alert alert-block alert-notice"><b>Layout.</b>
+<div class="alert alert-block alert-notice alert-text-normal"><b>Layout.</b>
 This version
-utilizes reveal slides with the theme beige.
+utilizes reveal slides with the theme <code>beige</code>.
 </div>
 <p>
-<div class="alert alert-block alert-notice"><b>Notice.</b>
+<div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
 Speaker notes show up by
 pressing "s".
 </div>
@@ -337,7 +341,7 @@ $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thi
 
 <p class="fragment">
 
-<div class="alert alert-block alert-summary"><b>Concluding remarks:</b>
+<div class="alert alert-block alert-summary alert-text-normal"><b>Concluding remarks:</b>
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 </div>
