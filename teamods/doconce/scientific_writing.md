@@ -2,7 +2,7 @@
 <!-- TITLE: Scientific Writing Anno 2013: The Doconce Way -->
 % Scientific Writing Anno 2013
 % Hans Petter Langtangen
-% Jun 14, 2013
+% Jun 15, 2013
 
 ![](fig/doconce1b.png)
 
