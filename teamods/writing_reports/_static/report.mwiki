@@ -2,7 +2,7 @@
 #TITLE (actually governed by the filename): Experiments with Schemes for Exponential Decay
 
 By '''Hans Petter Langtangen''' (hpl at simula.no)
-==== May 4, 2013 ====
+==== Jun 18, 2013 ====
 
 ''Summary.'' This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation <math>u'=-au</math> with the
@@ -124,16 +124,23 @@ is shown below.
 
 
 
-{{Observe:|The data points for the three largest <math>\Delta t</math> values in the
+{{mbox
+| type = warning
+| textstyle = font-size: 90%;
+| text = '''Observe:''' The data points for the three largest <math>\Delta t</math> values in the
 Forward Euler method are not relevant as the solution behaves
-non-physically.}}
+non-physically.
+}}
 
 [[File:Error.png|frame|400px|alt=Error.png|<span title=""></span>]] <!-- user: Avatar, filename: error.png, timestamp: 2005-11-29T09:58:44Z -->
 
 
 
-''Summary.''\n
 
+{{mbox
+| type = Summary.
+| textstyle = font-size: 90%;
+| text = '''Summary.''' 
 <ol>
 <li> <math>\theta =1</math>: <math>E\sim \Delta t</math> (first-order convergence).
 <li> <math>\theta =0.5</math>: <math>E\sim \Delta t^2</math> (second-order convergence).
@@ -144,6 +151,7 @@ non-physically.}}
    not small enough, but even below this limit one can have oscillating
    solutions that disappear if <math>\Delta t</math> is sufficiently small.
 </ol>
+}}
 
 == Bibliography ==
 

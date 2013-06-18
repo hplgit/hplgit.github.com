@@ -161,7 +161,8 @@ final,                   <span class="c">% or draft (marks overfull hboxes)</spa
 <span class="c">% Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),</span>
 <span class="c">% Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum</span>
 <span class="c">% #else</span>
-<span class="k">\usepackage</span><span class="na">[latin1]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
+<span class="c">%\usepackage[latin1]{inputenc}</span>
+<span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
 <span class="c">% #ifdef HELVETICA</span>
 <span class="c">% Set helvetica as the default font family:</span>
 <span class="k">\RequirePackage</span><span class="nb">{</span>helvet<span class="nb">}</span>
@@ -177,16 +178,13 @@ final,                   <span class="c">% or draft (marks overfull hboxes)</spa
 <span class="c">% Hyperlinks in PDF:</span>
 <span class="k">\usepackage</span>[<span class="c">%</span>
     colorlinks=true,
-    linkcolor=black,
-    <span class="c">%linkcolor=blue,</span>
+    linkcolor=blue,
+    urlcolor=blue,
     citecolor=black,
     filecolor=black,
     <span class="c">%filecolor=blue,</span>
-    urlcolor=black,
     pdfmenubar=true,
     pdftoolbar=true,
-    urlcolor=black,
-    <span class="c">%urlcolor=blue,</span>
     bookmarksdepth=3   <span class="c">% Uncomment (and tweak) for PDF bookmarks with more levels than the TOC</span>
             ]<span class="nb">{</span>hyperref<span class="nb">}</span>
 <span class="c">%\hyperbaseurl{}   % hyperlinks are relative to this root</span>
@@ -207,249 +205,25 @@ final,                   <span class="c">% or draft (marks overfull hboxes)</spa
 <span class="c">% 3. enable begin{figure}[H] (often leads to ugly pagebreaks)</span>
 <span class="c">%\usepackage{float}\restylefloat{figure}</span>
 
-<span class="c">% gray summary box</span>
-<span class="k">\definecolor</span><span class="nb">{</span>lightgray<span class="nb">}{</span>rgb<span class="nb">}{</span>0.94,0.94,0.94<span class="nb">}</span>
-<span class="c">% #ifdef A4PAPER</span>
-<span class="k">\usepackage</span><span class="nb">{</span>wrapfig,calc<span class="nb">}</span>
-<span class="k">\newdimen\barheight</span>
-<span class="k">\def\barthickness</span><span class="nb">{</span>0.5pt<span class="nb">}</span>
-
-<span class="c">% small box to the right</span>
-<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\summarybox</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\begin</span><span class="nb">{</span>wrapfigure<span class="nb">}{</span>r<span class="nb">}{</span>0.5<span class="k">\textwidth</span><span class="nb">}</span>
-<span class="k">\vspace*</span><span class="nb">{</span>-<span class="k">\baselineskip</span><span class="nb">}</span><span class="k">\colorbox</span><span class="nb">{</span>lightgray<span class="nb">}{</span><span class="k">\rule</span><span class="nb">{</span>3pt<span class="nb">}{</span>0pt<span class="nb">}</span>
-<span class="k">\begin</span><span class="nb">{</span>minipage<span class="nb">}{</span>0.5<span class="k">\textwidth</span>-6pt-<span class="k">\columnsep</span><span class="nb">}</span>
-<span class="k">\hspace*</span><span class="nb">{</span>3mm<span class="nb">}</span>
-<span class="k">\setbox</span>2=<span class="k">\hbox</span><span class="nb">{</span><span class="k">\parbox</span><span class="na">[t]</span><span class="nb">{</span>55mm<span class="nb">}{</span>
-#1 <span class="k">\rule</span><span class="na">[-8pt]</span><span class="nb">{</span>0pt<span class="nb">}{</span>10pt<span class="nb">}}}</span><span class="c">%</span>
-<span class="k">\barheight</span>=<span class="k">\ht</span>2 <span class="k">\advance\barheight</span> by <span class="k">\dp</span>2
-<span class="k">\parbox</span><span class="na">[t]</span><span class="nb">{</span>3mm<span class="nb">}{</span><span class="k">\rule</span><span class="na">[0pt]</span><span class="nb">{</span>0mm<span class="nb">}{</span>22pt<span class="nb">}</span><span class="c">%\hspace*{-2pt}%</span>
-<span class="k">\hspace*</span><span class="nb">{</span>-1mm<span class="nb">}</span><span class="k">\rule</span><span class="na">[-\barheight+16pt]</span><span class="nb">{</span><span class="k">\barthickness</span><span class="nb">}{</span><span class="k">\barheight</span>-8pt<span class="nb">}</span><span class="c">%}</span>
-<span class="nb">}</span><span class="k">\box</span>2<span class="k">\end</span><span class="nb">{</span>minipage<span class="nb">}</span><span class="k">\rule</span><span class="nb">{</span>3pt<span class="nb">}{</span>0pt<span class="nb">}}</span><span class="k">\vspace*</span><span class="nb">{</span>-<span class="k">\baselineskip</span><span class="nb">}</span>
-<span class="k">\end</span><span class="nb">{</span>wrapfigure<span class="nb">}}</span>
-<span class="c">% #else</span>
-<span class="c">% gray box of 80% width</span>
-<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\summarybox</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
-<span class="k">\colorbox</span><span class="nb">{</span>lightgray<span class="nb">}{</span><span class="k">\rule</span><span class="nb">{</span>6pt<span class="nb">}{</span>0pt<span class="nb">}</span>
-<span class="k">\begin</span><span class="nb">{</span>minipage<span class="nb">}{</span>0.8<span class="k">\linewidth</span><span class="nb">}</span>
-<span class="k">\parbox</span><span class="na">[t]</span><span class="nb">{</span>0mm<span class="nb">}{</span><span class="k">\rule</span><span class="na">[0pt]</span><span class="nb">{</span>0mm<span class="nb">}{</span>0.5<span class="k">\baselineskip</span><span class="nb">}}</span><span class="k">\hrule</span>
-<span class="k">\vspace*</span><span class="nb">{</span>0.5<span class="k">\baselineskip</span><span class="nb">}</span><span class="k">\noindent</span> #1
-<span class="k">\parbox</span><span class="na">[t]</span><span class="nb">{</span>0mm<span class="nb">}{</span><span class="k">\rule</span><span class="na">[-0.5\baselineskip]</span><span class="nb">{</span>0mm<span class="nb">}</span><span class="c">%</span>
-<span class="nb">{</span><span class="k">\baselineskip</span><span class="nb">}}</span><span class="k">\hrule\vspace*</span><span class="nb">{</span>0.5<span class="k">\baselineskip</span><span class="nb">}</span><span class="k">\end</span><span class="nb">{</span>minipage<span class="nb">}</span>
-<span class="k">\rule</span><span class="nb">{</span>6pt<span class="nb">}{</span>0pt<span class="nb">}}</span><span class="k">\end</span><span class="nb">{</span>center<span class="nb">}}</span>
-<span class="c">% #endif</span>
-
-<span class="c">% #ifndef ADMON</span>
-<span class="c">% #define ADMON &quot;colors&quot;</span>
-<span class="c">% Default is &quot;colors&quot;, i.e., framed box with color</span>
-<span class="k">\usepackage</span><span class="nb">{</span>framed<span class="nb">}</span>
-<span class="c">% #else</span>
-<span class="c">% #if ADMON == &quot;colors&quot;</span>
-<span class="k">\usepackage</span><span class="nb">{</span>framed<span class="nb">}</span>
-<span class="c">% #elif ADMON == &quot;paragraph&quot;</span>
-<span class="c">% #else</span>
 <span class="k">\usepackage</span><span class="na">[framemethod=TikZ]</span><span class="nb">{</span>mdframed<span class="nb">}</span>
-<span class="c">% #endif</span>
-<span class="c">% #endif</span>
 
-<span class="c">% Admonition environment for &quot;hint&quot;</span>
-<span class="c">% #if ADMON == &quot;colors&quot;</span>
-<span class="k">\definecolor</span><span class="nb">{</span>hintbackground<span class="nb">}{</span>rgb<span class="nb">}{</span>0.87843, 0.95686, 1.0<span class="nb">}</span>
-<span class="c">% \fboxsep sets the space between the text and the box</span>
-<span class="k">\newenvironment</span><span class="nb">{</span>hintshaded<span class="nb">}</span>
-<span class="nb">{</span><span class="k">\def\FrameCommand</span><span class="nb">{</span><span class="k">\fboxsep</span>=3mm<span class="k">\colorbox</span><span class="nb">{</span>hintbackground<span class="nb">}}</span>
- <span class="k">\MakeFramed</span> <span class="nb">{</span><span class="k">\advance\hsize</span>-<span class="k">\width</span> <span class="k">\FrameRestore</span><span class="nb">}}{</span><span class="k">\endMakeFramed</span><span class="nb">}</span>
-
-<span class="k">\newenvironment</span><span class="nb">{</span>hintadmon<span class="nb">}</span>[1][Hint]<span class="nb">{</span>
-<span class="k">\begin</span><span class="nb">{</span>hintshaded<span class="nb">}</span>
-<span class="k">\noindent</span>
-<span class="k">\includegraphics</span><span class="na">[height=0.3in]</span><span class="nb">{</span>latex<span class="nb">_</span>figs/hint<span class="nb">}</span>
-<span class="k">\ \ \ </span><span class="nb">{</span><span class="k">\large\sc</span> #1<span class="nb">}</span><span class="k">\\</span> <span class="k">\par</span>
-<span class="k">\nobreak\noindent\ignorespaces</span>
-<span class="nb">}</span>
-<span class="nb">{</span>
-<span class="k">\end</span><span class="nb">{</span>hintshaded<span class="nb">}</span>
-<span class="nb">}</span>
-<span class="c">% #elif ADMON == &quot;paragraph&quot;</span>
-<span class="c">% Admonition is just a paragraph</span>
-<span class="k">\newenvironment</span><span class="nb">{</span>hintadmon<span class="nb">}</span>[1][Hint]<span class="nb">{</span><span class="k">\paragraph</span><span class="nb">{</span>#1<span class="nb">}}{}</span>
-<span class="c">% #else</span>
+<span class="c">% Admonition is an oval gray box</span>
 <span class="k">\newmdenv</span>[
-  backgroundcolor=gray!10,  <span class="c">% white with 10% gray</span>
+  backgroundcolor=gray!10,  <span class="c">%% white with 10%% gray</span>
   skipabove=<span class="k">\topsep</span>,
   skipbelow=<span class="k">\topsep</span>,
   outerlinewidth=0.5,
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
-]<span class="nb">{</span>hintmdframed<span class="nb">}</span>
+]<span class="nb">{</span>graybox1mdframed<span class="nb">}</span>
 
-<span class="k">\newenvironment</span><span class="nb">{</span>hintadmon<span class="nb">}</span>[1][Hint]<span class="nb">{</span>
-<span class="k">\begin</span><span class="nb">{</span>hintmdframed<span class="nb">}</span>[frametitle=#1]
+<span class="k">\newenvironment</span><span class="nb">{</span>graybox1admon<span class="nb">}</span>[1][]<span class="nb">{</span>
+<span class="k">\begin</span><span class="nb">{</span>graybox1mdframed<span class="nb">}</span>[frametitle=#1]
 <span class="nb">}</span>
 <span class="nb">{</span>
-<span class="k">\end</span><span class="nb">{</span>hintmdframed<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>graybox1mdframed<span class="nb">}</span>
 <span class="nb">}</span>
-<span class="c">% #endif</span>
-
-<span class="c">% Admonition environment for &quot;notice&quot;</span>
-<span class="c">% #if ADMON == &quot;colors&quot;</span>
-<span class="k">\definecolor</span><span class="nb">{</span>noticebackground<span class="nb">}{</span>rgb<span class="nb">}{</span>0.988235, 0.964706, 0.862745<span class="nb">}</span>
-<span class="c">% \fboxsep sets the space between the text and the box</span>
-<span class="k">\newenvironment</span><span class="nb">{</span>noticeshaded<span class="nb">}</span>
-<span class="nb">{</span><span class="k">\def\FrameCommand</span><span class="nb">{</span><span class="k">\fboxsep</span>=3mm<span class="k">\colorbox</span><span class="nb">{</span>noticebackground<span class="nb">}}</span>
- <span class="k">\MakeFramed</span> <span class="nb">{</span><span class="k">\advance\hsize</span>-<span class="k">\width</span> <span class="k">\FrameRestore</span><span class="nb">}}{</span><span class="k">\endMakeFramed</span><span class="nb">}</span>
-
-<span class="k">\newenvironment</span><span class="nb">{</span>noticeadmon<span class="nb">}</span>[1][Notice]<span class="nb">{</span>
-<span class="k">\begin</span><span class="nb">{</span>noticeshaded<span class="nb">}</span>
-<span class="k">\noindent</span>
-<span class="k">\includegraphics</span><span class="na">[height=0.3in]</span><span class="nb">{</span>latex<span class="nb">_</span>figs/notice<span class="nb">}</span>
-<span class="k">\ \ \ </span><span class="nb">{</span><span class="k">\large\sc</span> #1<span class="nb">}</span><span class="k">\\</span> <span class="k">\par</span>
-<span class="k">\nobreak\noindent\ignorespaces</span>
-<span class="nb">}</span>
-<span class="nb">{</span>
-<span class="k">\end</span><span class="nb">{</span>noticeshaded<span class="nb">}</span>
-<span class="nb">}</span>
-<span class="c">% #elif ADMON == &quot;paragraph&quot;</span>
-<span class="c">% Admonition is just a paragraph</span>
-<span class="k">\newenvironment</span><span class="nb">{</span>noticeadmon<span class="nb">}</span>[1][Notice]<span class="nb">{</span><span class="k">\paragraph</span><span class="nb">{</span>#1<span class="nb">}}{}</span>
-<span class="c">% #else</span>
-<span class="k">\newmdenv</span>[
-  backgroundcolor=gray!10,  <span class="c">% white with 10% gray</span>
-  skipabove=<span class="k">\topsep</span>,
-  skipbelow=<span class="k">\topsep</span>,
-  outerlinewidth=0.5,
-  leftmargin=0,
-  rightmargin=0,
-  roundcorner=5,
-]<span class="nb">{</span>noticemdframed<span class="nb">}</span>
-
-<span class="k">\newenvironment</span><span class="nb">{</span>noticeadmon<span class="nb">}</span>[1][Notice]<span class="nb">{</span>
-<span class="k">\begin</span><span class="nb">{</span>noticemdframed<span class="nb">}</span>[frametitle=#1]
-<span class="nb">}</span>
-<span class="nb">{</span>
-<span class="k">\end</span><span class="nb">{</span>noticemdframed<span class="nb">}</span>
-<span class="nb">}</span>
-<span class="c">% #endif</span>
-
-<span class="c">% Admonition environment for &quot;summary&quot;</span>
-<span class="c">% #if ADMON == &quot;colors&quot;</span>
-<span class="k">\definecolor</span><span class="nb">{</span>summarybackground<span class="nb">}{</span>rgb<span class="nb">}{</span>0.988235, 0.964706, 0.862745<span class="nb">}</span>
-<span class="c">% \fboxsep sets the space between the text and the box</span>
-<span class="k">\newenvironment</span><span class="nb">{</span>summaryshaded<span class="nb">}</span>
-<span class="nb">{</span><span class="k">\def\FrameCommand</span><span class="nb">{</span><span class="k">\fboxsep</span>=3mm<span class="k">\colorbox</span><span class="nb">{</span>summarybackground<span class="nb">}}</span>
- <span class="k">\MakeFramed</span> <span class="nb">{</span><span class="k">\advance\hsize</span>-<span class="k">\width</span> <span class="k">\FrameRestore</span><span class="nb">}}{</span><span class="k">\endMakeFramed</span><span class="nb">}</span>
-
-<span class="k">\newenvironment</span><span class="nb">{</span>summaryadmon<span class="nb">}</span>[1][Summary]<span class="nb">{</span>
-<span class="k">\begin</span><span class="nb">{</span>summaryshaded<span class="nb">}</span>
-<span class="k">\noindent</span>
-<span class="k">\includegraphics</span><span class="na">[height=0.3in]</span><span class="nb">{</span>latex<span class="nb">_</span>figs/summary<span class="nb">}</span>
-<span class="k">\ \ \ </span><span class="nb">{</span><span class="k">\large\sc</span> #1<span class="nb">}</span><span class="k">\\</span> <span class="k">\par</span>
-<span class="k">\nobreak\noindent\ignorespaces</span>
-<span class="nb">}</span>
-<span class="nb">{</span>
-<span class="k">\end</span><span class="nb">{</span>summaryshaded<span class="nb">}</span>
-<span class="nb">}</span>
-<span class="c">% #elif ADMON == &quot;paragraph&quot;</span>
-<span class="c">% Admonition is just a paragraph</span>
-<span class="k">\newenvironment</span><span class="nb">{</span>summaryadmon<span class="nb">}</span>[1][Summary]<span class="nb">{</span><span class="k">\paragraph</span><span class="nb">{</span>#1<span class="nb">}}{}</span>
-<span class="c">% #else</span>
-<span class="k">\newmdenv</span>[
-  backgroundcolor=gray!10,  <span class="c">% white with 10% gray</span>
-  skipabove=<span class="k">\topsep</span>,
-  skipbelow=<span class="k">\topsep</span>,
-  outerlinewidth=0.5,
-  leftmargin=0,
-  rightmargin=0,
-  roundcorner=5,
-]<span class="nb">{</span>summarymdframed<span class="nb">}</span>
-
-<span class="k">\newenvironment</span><span class="nb">{</span>summaryadmon<span class="nb">}</span>[1][Summary]<span class="nb">{</span>
-<span class="k">\begin</span><span class="nb">{</span>summarymdframed<span class="nb">}</span>[frametitle=#1]
-<span class="nb">}</span>
-<span class="nb">{</span>
-<span class="k">\end</span><span class="nb">{</span>summarymdframed<span class="nb">}</span>
-<span class="nb">}</span>
-<span class="c">% #endif</span>
-
-<span class="c">% Admonition environment for &quot;warning&quot;</span>
-<span class="c">% #if ADMON == &quot;colors&quot;</span>
-<span class="k">\definecolor</span><span class="nb">{</span>warningbackground<span class="nb">}{</span>rgb<span class="nb">}{</span>1.0, 0.8235294, 0.8235294<span class="nb">}</span>
-<span class="c">% \fboxsep sets the space between the text and the box</span>
-<span class="k">\newenvironment</span><span class="nb">{</span>warningshaded<span class="nb">}</span>
-<span class="nb">{</span><span class="k">\def\FrameCommand</span><span class="nb">{</span><span class="k">\fboxsep</span>=3mm<span class="k">\colorbox</span><span class="nb">{</span>warningbackground<span class="nb">}}</span>
- <span class="k">\MakeFramed</span> <span class="nb">{</span><span class="k">\advance\hsize</span>-<span class="k">\width</span> <span class="k">\FrameRestore</span><span class="nb">}}{</span><span class="k">\endMakeFramed</span><span class="nb">}</span>
-
-<span class="k">\newenvironment</span><span class="nb">{</span>warningadmon<span class="nb">}</span>[1][Warning]<span class="nb">{</span>
-<span class="k">\begin</span><span class="nb">{</span>warningshaded<span class="nb">}</span>
-<span class="k">\noindent</span>
-<span class="k">\includegraphics</span><span class="na">[height=0.3in]</span><span class="nb">{</span>latex<span class="nb">_</span>figs/warning<span class="nb">}</span>
-<span class="k">\ \ \ </span><span class="nb">{</span><span class="k">\large\sc</span> #1<span class="nb">}</span><span class="k">\\</span> <span class="k">\par</span>
-<span class="k">\nobreak\noindent\ignorespaces</span>
-<span class="nb">}</span>
-<span class="nb">{</span>
-<span class="k">\end</span><span class="nb">{</span>warningshaded<span class="nb">}</span>
-<span class="nb">}</span>
-<span class="c">% #elif ADMON == &quot;paragraph&quot;</span>
-<span class="c">% Admonition is just a paragraph</span>
-<span class="k">\newenvironment</span><span class="nb">{</span>warningadmon<span class="nb">}</span>[1][Warning]<span class="nb">{</span><span class="k">\paragraph</span><span class="nb">{</span>#1<span class="nb">}}{}</span>
-<span class="c">% #else</span>
-<span class="k">\newmdenv</span>[
-  backgroundcolor=gray!10,  <span class="c">% white with 10% gray</span>
-  skipabove=<span class="k">\topsep</span>,
-  skipbelow=<span class="k">\topsep</span>,
-  outerlinewidth=0.5,
-  leftmargin=0,
-  rightmargin=0,
-  roundcorner=5,
-]<span class="nb">{</span>warningmdframed<span class="nb">}</span>
-
-<span class="k">\newenvironment</span><span class="nb">{</span>warningadmon<span class="nb">}</span>[1][Warning]<span class="nb">{</span>
-<span class="k">\begin</span><span class="nb">{</span>warningmdframed<span class="nb">}</span>[frametitle=#1]
-<span class="nb">}</span>
-<span class="nb">{</span>
-<span class="k">\end</span><span class="nb">{</span>warningmdframed<span class="nb">}</span>
-<span class="nb">}</span>
-<span class="c">% #endif</span>
-
-<span class="c">% Admonition environment for &quot;question&quot;</span>
-<span class="c">% #if ADMON == &quot;colors&quot;</span>
-<span class="k">\definecolor</span><span class="nb">{</span>questionbackground<span class="nb">}{</span>rgb<span class="nb">}{</span>0.87843, 0.95686, 1.0<span class="nb">}</span>
-<span class="c">% \fboxsep sets the space between the text and the box</span>
-<span class="k">\newenvironment</span><span class="nb">{</span>questionshaded<span class="nb">}</span>
-<span class="nb">{</span><span class="k">\def\FrameCommand</span><span class="nb">{</span><span class="k">\fboxsep</span>=3mm<span class="k">\colorbox</span><span class="nb">{</span>questionbackground<span class="nb">}}</span>
- <span class="k">\MakeFramed</span> <span class="nb">{</span><span class="k">\advance\hsize</span>-<span class="k">\width</span> <span class="k">\FrameRestore</span><span class="nb">}}{</span><span class="k">\endMakeFramed</span><span class="nb">}</span>
-
-<span class="k">\newenvironment</span><span class="nb">{</span>questionadmon<span class="nb">}</span>[1][Question]<span class="nb">{</span>
-<span class="k">\begin</span><span class="nb">{</span>questionshaded<span class="nb">}</span>
-<span class="k">\noindent</span>
-<span class="k">\includegraphics</span><span class="na">[height=0.3in]</span><span class="nb">{</span>latex<span class="nb">_</span>figs/question<span class="nb">}</span>
-<span class="k">\ \ \ </span><span class="nb">{</span><span class="k">\large\sc</span> #1<span class="nb">}</span><span class="k">\\</span> <span class="k">\par</span>
-<span class="k">\nobreak\noindent\ignorespaces</span>
-<span class="nb">}</span>
-<span class="nb">{</span>
-<span class="k">\end</span><span class="nb">{</span>questionshaded<span class="nb">}</span>
-<span class="nb">}</span>
-<span class="c">% #elif ADMON == &quot;paragraph&quot;</span>
-<span class="c">% Admonition is just a paragraph</span>
-<span class="k">\newenvironment</span><span class="nb">{</span>questionadmon<span class="nb">}</span>[1][Question]<span class="nb">{</span><span class="k">\paragraph</span><span class="nb">{</span>#1<span class="nb">}}{}</span>
-<span class="c">% #else</span>
-<span class="k">\newmdenv</span>[
-  backgroundcolor=gray!10,  <span class="c">% white with 10% gray</span>
-  skipabove=<span class="k">\topsep</span>,
-  skipbelow=<span class="k">\topsep</span>,
-  outerlinewidth=0.5,
-  leftmargin=0,
-  rightmargin=0,
-  roundcorner=5,
-]<span class="nb">{</span>questionmdframed<span class="nb">}</span>
-
-<span class="k">\newenvironment</span><span class="nb">{</span>questionadmon<span class="nb">}</span>[1][Question]<span class="nb">{</span>
-<span class="k">\begin</span><span class="nb">{</span>questionmdframed<span class="nb">}</span>[frametitle=#1]
-<span class="nb">}</span>
-<span class="nb">{</span>
-<span class="k">\end</span><span class="nb">{</span>questionmdframed<span class="nb">}</span>
-<span class="nb">}</span>
-<span class="c">% #endif</span>
 
 <span class="c">% #ifdef COLORED_TABLE_ROWS</span>
 <span class="c">% color every two table rows</span>
@@ -487,6 +261,8 @@ final,                   <span class="c">% or draft (marks overfull hboxes)</spa
 <span class="nb">{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span><span class="k">\thesubsection</span><span class="nb">}{</span>1em<span class="nb">}{}</span>
 <span class="c">% #endif</span>
 
+<span class="c">% --- end of standard preamble for documents ---</span>
+
 
 <span class="c">% insert custom LaTeX commands...</span>
 
@@ -506,7 +282,6 @@ final,                   <span class="c">% or draft (marks overfull hboxes)</spa
 
 <span class="c">% ----------------- title -------------------------</span>
 <span class="c">% #if LATEX_HEADING == &quot;traditional&quot;</span>
-
 <span class="k">\title</span><span class="nb">{</span>Experiments with Schemes for Exponential Decay<span class="nb">}</span>
 
 <span class="c">% #elif LATEX_HEADING == &quot;titlepage&quot;</span>
@@ -522,13 +297,13 @@ Experiments with Schemes for Exponential Decay
 <span class="nb">}}}</span>
 
 <span class="c">% #elif LATEX_HEADING == &quot;Springer_collection&quot;</span>
-
 <span class="k">\title*</span><span class="nb">{</span>Experiments with Schemes for Exponential Decay<span class="nb">}</span>
 <span class="c">% Short version of title:</span>
 <span class="c">%\titlerunning{...}</span>
 
+<span class="c">% #elif LATEX_HEADING == &quot;beamer&quot;</span>
+<span class="k">\title</span><span class="nb">{</span>Experiments with Schemes for Exponential Decay<span class="nb">}</span>
 <span class="c">% #else</span>
-
 <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
 <span class="nb">{</span><span class="k">\LARGE\bf</span>
 <span class="k">\begin</span><span class="nb">{</span>spacing<span class="nb">}{</span>1.25<span class="nb">}</span>
@@ -536,7 +311,6 @@ Experiments with Schemes for Exponential Decay
 <span class="k">\end</span><span class="nb">{</span>spacing<span class="nb">}</span>
 <span class="nb">}</span>
 <span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
-
 <span class="c">% #endif</span>
 
 <span class="c">% ----------------- author(s) -------------------------</span>
@@ -559,6 +333,11 @@ Experiments with Schemes for Exponential Decay
 <span class="c">%\authorrunning{...}</span>
 <span class="k">\institute</span><span class="nb">{</span>Hans Petter Langtangen<span class="k">\at</span> Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo.<span class="k">\email</span><span class="nb">{</span>hpl@simula.no<span class="nb">}}</span>
 
+<span class="c">% #elif LATEX_HEADING == &quot;beamer&quot;</span>
+<span class="k">\author</span><span class="nb">{</span>Hans Petter Langtangen<span class="k">\inst</span><span class="nb">{</span>1,2<span class="nb">}}</span>
+<span class="k">\institute</span><span class="nb">{</span>Center for Biomedical Computing, Simula Research Laboratory<span class="k">\inst</span><span class="nb">{</span>1<span class="nb">}</span>
+<span class="k">\and</span>
+Department of Informatics, University of Oslo.<span class="k">\inst</span><span class="nb">{</span>2<span class="nb">}}</span>
 <span class="c">% #else</span>
 
 <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
@@ -574,26 +353,25 @@ Experiments with Schemes for Exponential Decay
 <span class="c">% ----------------- end author(s) -------------------------</span>
 
 
-<span class="c">% ----------------- date -------------------------</span>
-
 <span class="c">% #if LATEX_HEADING == &quot;traditional&quot;</span>
-
-<span class="k">\date</span><span class="nb">{</span>May 4, 2013<span class="nb">}</span>
+<span class="k">\date</span><span class="nb">{</span>Jun 18, 2013<span class="nb">}</span>
 <span class="k">\maketitle</span>
-
+<span class="c">% #elif LATEX_HEADING == &quot;beamer&quot;</span>
+<span class="k">\date</span><span class="nb">{</span>Jun 18, 2013
+<span class="c">% &lt;titlepage figure&gt;</span>
+<span class="nb">}</span>
 <span class="c">% #elif LATEX_HEADING == &quot;titlepage&quot;</span>
 
 <span class="k">\ \\</span> [10mm]
-<span class="nb">{</span><span class="k">\large\textsf</span><span class="nb">{</span>May 4, 2013<span class="nb">}}</span>
+<span class="nb">{</span><span class="k">\large\textsf</span><span class="nb">{</span>Jun 18, 2013<span class="nb">}}</span>
 
 <span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
 <span class="k">\vfill</span>
 <span class="k">\clearpage</span>
 
 <span class="c">% #else</span>
-
 <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
-May 4, 2013
+Jun 18, 2013
 <span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
 
 <span class="k">\vspace</span><span class="nb">{</span>1cm<span class="nb">}</span>
@@ -764,32 +542,19 @@ is shown below.
 
 
 
-<span class="c">% #if ADMON == &quot;colors&quot;</span>
-<span class="k">\begin</span><span class="nb">{</span>warningadmon<span class="nb">}</span>[Observe:]
+<span class="k">\begin</span><span class="nb">{</span>graybox1admon<span class="nb">}</span>[Observe:]
 The data points for the three largest <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> values in the
 Forward Euler method are not relevant as the solution behaves
 non-physically.
-<span class="k">\end</span><span class="nb">{</span>warningadmon<span class="nb">}</span>
-<span class="c">% #elif ADMON == &quot;paragraph&quot;</span>
-<span class="k">\begin</span><span class="nb">{</span>warningadmon<span class="nb">}</span>[Observe:]
-The data points for the three largest <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> values in the
-Forward Euler method are not relevant as the solution behaves
-non-physically.
-<span class="k">\end</span><span class="nb">{</span>warningadmon<span class="nb">}</span>
-<span class="c">% #else</span>
-<span class="k">\begin</span><span class="nb">{</span>warningadmon<span class="nb">}</span>[Observe:]
-The data points for the three largest <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> values in the
-Forward Euler method are not relevant as the solution behaves
-non-physically.
-<span class="k">\end</span><span class="nb">{</span>warningadmon<span class="nb">}</span>
-<span class="c">% #endif</span>
+<span class="k">\end</span><span class="nb">{</span>graybox1admon<span class="nb">}</span>
 <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>  <span class="c">% inline figure</span>
   <span class="k">\centerline</span><span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[width=0.9\linewidth]</span><span class="nb">{</span>error.pdf<span class="nb">}}</span>
 <span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
 
 
 
-<span class="k">\summarybox</span><span class="nb">{</span>
+
+<span class="k">\begin</span><span class="nb">{</span>graybox1admon<span class="nb">}</span>[Summary.]
 <span class="k">\begin</span><span class="nb">{</span>enumerate<span class="nb">}</span>
 <span class="k">\item</span> <span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="m">1</span><span class="s">$</span>: <span class="s">$</span><span class="nb">E</span><span class="nv">\sim</span><span class="nb"> </span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> (first-order convergence).
 
@@ -805,7 +570,8 @@ non-physically.
    solutions that disappear if <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> is sufficiently small.
 <span class="k">\end</span><span class="nb">{</span>enumerate<span class="nb">}</span>
 
-<span class="k">\noindent</span><span class="nb">}</span>
+<span class="k">\noindent</span>
+<span class="k">\end</span><span class="nb">{</span>graybox1admon<span class="nb">}</span>
 <span class="k">\bibliographystyle</span><span class="nb">{</span>plain<span class="nb">}</span>
 <span class="k">\bibliography</span><span class="nb">{</span>.publish<span class="nb">_</span>references.bib<span class="nb">}</span>
 

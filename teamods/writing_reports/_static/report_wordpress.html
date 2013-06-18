@@ -6,19 +6,15 @@
 
 
 <p>
-
 <b>Summary.</b> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation $latex u'=-au$ with the
 aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
 
-<p>
-
 <h2>
 Table of contents</h2>
 
 <p>
-
 <a href="#math:problem"> Mathematical problem </a><br>
 <a href="#numerical:problem"> Numerical solution method </a><br>
 <a href="#___sec2"> Implementation </a><br>
@@ -28,14 +24,9 @@ Table of contents</h2>
 &nbsp; &nbsp; &nbsp; <a href="#___sec6"> The Forward Euler method </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec7"> Error vs $latex \Delta t$ </a><br>
 
-<p>
-
-
-
 <h2>Mathematical problem <a name="math:problem"></a></h2>
 
 <p>
-
 We address the initial-value problem
 
 <p>
@@ -54,12 +45,9 @@ is relevant for physical phenomena featuring exponential decay
 in time, e.g., vertical pressure variation in the atmosphere,
 cooling of an object, and radioactive decay.
 
-<p>
-
 <h2>Numerical solution method <a name="numerical:problem"></a></h2>
 
 <p>
-
 We introduce a mesh in time with points $latex 0= t_0< t_1 \cdots < t_{N_t}=T$.
 For simplicity, we assume constant spacing $latex \Delta t$ between the
 mesh points: $latex \Delta t = t_{n}-t_{n-1}$, $latex n=1,\ldots,N_t$. Let
@@ -89,16 +77,13 @@ for $latex n=0,1,\ldots,N_t-1$. This scheme corresponds to
     scheme when $latex \theta=1/2$</li>
 </ul>
 
-
 <h2>Implementation  <a name="___sec2"></a></h2>
 
 <p>
-
 The numerical method is implemented in a Python function
 <a href="#Langtangen_2012">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py"><tt>decay_mod</tt></a> module):
 
 <p>
-
 
 
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
@@ -114,71 +99,46 @@ The numerical method is implemented in a Python function
         u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
     <span style="color: #008000; font-weight: bold">return</span> u, t
 </pre></div>
-<p>
-
 
 <h2>Numerical experiments  <a name="___sec3"></a></h2>
 
 <p>
-
 We define a set of numerical experiments where $latex I$, $latex a$, and $latex T$ are
 fixed, while $latex \Delta t$ and $latex \theta$ are varied.
 In particular, $latex I=1$, $latex a=2$, $latex \Delta t = 1.25, 0.75, 0.5, 0.1$.
 
-<p>
-
-
 <h3>The Backward Euler method  <a name="___sec4"></a></h3>
 
 <p>
-
-
 <center><p><img src="https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/BE.png" align="bottom" width=800></p></center>
-
-<p>
-
 
 <h3>The Crank-Nicolson method  <a name="___sec5"></a></h3>
 
 <p>
-
-
 <center><p><img src="https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/CN.png" align="bottom" width=800></p></center>
-
-<p>
-
 
 <h3>The Forward Euler method  <a name="___sec6"></a></h3>
 
 <p>
-
-
 <center><p><img src="https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/FE.png" align="bottom" width=800></p></center>
-
-<p>
-
 
 <h3>Error vs $latex \Delta t$  <a name="___sec7"></a></h3>
 
 <p>
-
 How $latex E$ varies with $latex \Delta t$ for $latex \theta=0,0.5,1$
 is shown below.
 
 <p>
-
-<div class="alert alert-block alert-warning"><b>Observe:</b>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Observe:</b>
 The data points for the three largest $latex \Delta t$ values in the
 Forward Euler method are not relevant as the solution behaves
 non-physically.
 </div>
 <p>
-
 <center><p><img src="https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/error.png" align="bottom" width=400></p></center>
 
 <p>
-
-<div class="alert alert-block alert-summary"><b>Summary.</b>
+<div class="alert alert-block alert-summary alert-text-normal"><b>Summary.</b>
 
 <ol>
 <li> $latex \theta =1$: $latex E\sim \Delta t$ (first-order convergence).</li>
@@ -191,9 +151,6 @@ non-physically.
    solutions that disappear if $latex \Delta t$ is sufficiently small.</li>
 </ol>
 </div>
-<p>
-
-
 <h2>Bibliography</h2>
 
 <p>

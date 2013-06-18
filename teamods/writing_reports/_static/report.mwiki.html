@@ -80,7 +80,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <div class="highlight"><pre>#TITLE (actually governed by the filename): Experiments with Schemes for Exponential Decay
 
 By &#39;&#39;&#39;Hans Petter Langtangen&#39;&#39;&#39; (hpl at simula.no)
-==== May 4, 2013 ====
+==== Jun 18, 2013 ====
 
 &#39;&#39;Summary.&#39;&#39; This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation &lt;math&gt;u&#39;=-au&lt;/math&gt; with the
@@ -202,16 +202,23 @@ is shown below.
 
 
 
-{{Observe:|The data points for the three largest &lt;math&gt;\Delta t&lt;/math&gt; values in the
+{{mbox
+| type = warning
+| textstyle = font-size: 90%;
+| text = &#39;&#39;&#39;Observe:&#39;&#39;&#39; The data points for the three largest &lt;math&gt;\Delta t&lt;/math&gt; values in the
 Forward Euler method are not relevant as the solution behaves
-non-physically.}}
+non-physically.
+}}
 
 [[File:Error.png|frame|400px|alt=Error.png|&lt;span title=&quot;&quot;&gt;&lt;/span&gt;]] &lt;!-- user: Avatar, filename: error.png, timestamp: 2005-11-29T09:58:44Z --&gt;
 
 
 
-&#39;&#39;Summary.&#39;&#39;\n
 
+{{mbox
+| type = Summary.
+| textstyle = font-size: 90%;
+| text = &#39;&#39;&#39;Summary.&#39;&#39;&#39; 
 &lt;ol&gt;
 &lt;li&gt; &lt;math&gt;\theta =1&lt;/math&gt;: &lt;math&gt;E\sim \Delta t&lt;/math&gt; (first-order convergence).
 &lt;li&gt; &lt;math&gt;\theta =0.5&lt;/math&gt;: &lt;math&gt;E\sim \Delta t^2&lt;/math&gt; (second-order convergence).
@@ -222,6 +229,7 @@ non-physically.}}
    not small enough, but even below this limit one can have oscillating
    solutions that disappear if &lt;math&gt;\Delta t&lt;/math&gt; is sufficiently small.
 &lt;/ol&gt;
+}}
 
 == Bibliography ==
 
