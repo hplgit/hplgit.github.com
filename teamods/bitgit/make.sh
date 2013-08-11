@@ -8,5 +8,6 @@ rm -rf html *.html *.pdf
 cp -r $repo/sphinx-rootdir/_build/html .
 cp $repo/$wrap.pdf Langtangen_$name.pdf
 cp $repo/$wrap_4print.pdf Langtangen_${name}_4print.pdf
-cp $repo/$wrap.html $name.html
+cp $repo/${wrap}*.html $name.html
+cp -r $repo/_static-$name .
 git commit -am 'New updates (copies)'
