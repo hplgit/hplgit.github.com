@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Bitbucket &mdash; Quick Intro to Version Control Systems and Project Hosting Services</title>
+    <title>Installing version control systems &mdash; Quick Intro to Version Control Systems and Project Hosting Services</title>
     
     <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="Quick Intro to Version Control Systems and Project Hosting Services" href="index.html" />
-    <link rel="next" title="Googlecode" href="._part0002_main_bitgit.html" />
+    <link rel="next" title="Bitbucket" href="._part0002_main_bitgit.html" />
     <link rel="prev" title="Quick Intro to Version Control Systems and Project Hosting Services" href="._part0000_main_bitgit.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -44,7 +44,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="._part0002_main_bitgit.html" title="Googlecode"
+          <a href="._part0002_main_bitgit.html" title="Bitbucket"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="._part0000_main_bitgit.html" title="Quick Intro to Version Control Systems and Project Hosting Services"
@@ -58,143 +58,164 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="bitbucket">
-<span id="bitgit-bitbucket"></span><h1>Bitbucket<a class="headerlink" href="#bitbucket" title="Permalink to this headline">¶</a></h1>
-<p id="index-0">To start using Bitbucket, go to <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt> and create an account.
-The communication channel with Bitbucket repositories is either
-through SSH or HTTPS.  To use SSH, you must upload your SSH key,
-typically the contents of the file <tt class="docutils literal"><span class="pre">id_rsa.pub</span></tt> or <tt class="docutils literal"><span class="pre">id_dsa.pub</span></tt> in the
-<tt class="docutils literal"><span class="pre">.ssh</span></tt> subdirectory of your home directory. Go to the page for your
-account, choose <em>SSH keys</em>, and upload one of these files.
-The essence of the SSH keys is that they allow you to communicate with
-Bitbucket without using a password, which is very convenient.</p>
-<p>There are links to extensive help pages if you do not have such keys
-or if you are unfamiliar with SSH. Follow these steps on Mac or Linux
-machines to generate keys: 1) check that you have <tt class="docutils literal"><span class="pre">ssh</span></tt> installed; 2)
-create a <tt class="docutils literal"><span class="pre">.ssh</span></tt> directory in your home directory; and 3) run
-<tt class="docutils literal"><span class="pre">ssh-keygen</span></tt> in the <tt class="docutils literal"><span class="pre">.ssh</span></tt> directory (you are prompted for a
-passphrase - just write something). On Windows one applies the PuTTY
-and the TortoiseHG programs to generate and register keys, see the
-help pages on Bitbucket. Once the keys are generated, you can continue
-using them on any computer.</p>
-<div class="section" id="creating-a-new-project-1">
-<h2>Creating a new project  (1)<a class="headerlink" href="#creating-a-new-project-1" title="Permalink to this headline">¶</a></h2>
-<p>Click at <em>Repositories</em> and at <em>Create repository</em>.
-You can now</p>
+  <div class="section" id="installing-version-control-systems">
+<h1>Installing version control systems<a class="headerlink" href="#installing-version-control-systems" title="Permalink to this headline">¶</a></h1>
+<p>The various project hosting sites work with different version
+control systems:</p>
 <blockquote>
 <div><ul class="simple">
-<li>fill in the name of the project, here <tt class="docutils literal"><span class="pre">my-project</span></tt>,</li>
-<li>decide whether the project is private or public (the number of
-private repos is unlimited for yourself, but you have to pay to
-invite more than five users in total to share your private repos
-unless you are certified to be a student or work at an academic
-institution),</li>
-<li>choose between the Git or Mercurial version control system
-(here we assume you run Git),</li>
-<li>click whether you want issue tracking for reporting errors,
-suggesting improvements, etc.,</li>
-<li>click whether you want a wiki page associated with the project,</li>
-<li>fill in a brief description,</li>
-<li>click on <em>Create repository</em>.</li>
+<li><tt class="docutils literal"><span class="pre">bitbucket.org</span></tt> offers Git (<tt class="docutils literal"><span class="pre">git</span></tt>) or Mercurial (<tt class="docutils literal"><span class="pre">hg</span></tt>),</li>
+<li><tt class="docutils literal"><span class="pre">github.com</span></tt> offers Git (<tt class="docutils literal"><span class="pre">git</span></tt>),</li>
+<li><tt class="docutils literal"><span class="pre">code.google.com</span></tt> offers Git (<tt class="docutils literal"><span class="pre">git</span></tt>), Mercurial (<tt class="docutils literal"><span class="pre">hg</span></tt>), or Subversion (<tt class="docutils literal"><span class="pre">svn</span></tt>),</li>
+<li><tt class="docutils literal"><span class="pre">launchpad.net</span></tt> offers Bazaar (<tt class="docutils literal"><span class="pre">bzr</span></tt>),</li>
+<li><tt class="docutils literal"><span class="pre">sourceforge.net</span></tt> offers CVS (<tt class="docutils literal"><span class="pre">cvs</span></tt>), Subversion (<tt class="docutils literal"><span class="pre">svn</span></tt>), Mercurial (<tt class="docutils literal"><span class="pre">hg</span></tt>),
+Bazaar (<tt class="docutils literal"><span class="pre">bzr</span></tt>), and Git (<tt class="docutils literal"><span class="pre">git</span></tt>).</li>
 </ul>
 </div></blockquote>
-<p>While doing this you may also want to have the <a class="reference external" href="http://confluence.atlassian.com/display/BITBUCKET/Bitbucket+101">Bitbucket 101 guide</a>
-available.</p>
-<p>It is now time to <em>clone</em> (copy) the project to your laptop.
-Go to the project page
-(you are automatically
-brought to the project page when creating a new project).
-Find the <em>Clone</em> button, click on it, choose
-<em>SSH</em>, copy the <em>clone</em> line and run this command in a terminal:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git clone git@bitbucket.org:user/my-project.git</span>
+<p>All the version control systems are quite similar in the way users
+operate them, but Subversion is technically different from Git,
+Mercurial, and Bazaar. The latter three work much in the same way
+for a beginner, but their more advanced commands and their
+nomenclature differ significantly.  Which system to choose is mainly a
+matter of personal preference and experience.
+Git is the version control system of most increasing popularity.</p>
+<div class="section" id="installing-git">
+<h2>Installing Git<a class="headerlink" href="#installing-git" title="Permalink to this headline">¶</a></h2>
+<p id="index-0">The installation of Git on various systems is described
+on the <a class="reference external" href="http://git-scm.com/">Git website</a> under the <em>Download</em> section.
+Git involves compiled code so it is most convenient to download a
+precompiled binary version of the software on Windows, Mac and other
+Linux computers.
+On Ubuntu or any Debian-based system the relevant installation command is</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; sudo apt-get install git gitk git-doc</span>
 </pre></div>
 </div>
-<p>You must replace <tt class="docutils literal"><span class="pre">user</span></tt> with your own username at Bitbucket and
-<tt class="docutils literal"><span class="pre">my-project</span></tt> by the real project name.</p>
-<p>The first time you do the clone command you may be prompted by cryptic
-Unix output ending with &#8220;Are you sure you want to continue connecting
-(yes/no)?&#8221;.  Just answer yes.</p>
-<p>The next step is to collect files and directories that should make up
-the project and put them in the <tt class="docutils literal"><span class="pre">my-project</span></tt> directory.
-Standing in the <tt class="docutils literal"><span class="pre">my-project</span></tt> directory, the following Git command is used
-to add all files in the current
-directory <em>tree</em>, except those having file types listed in <tt class="docutils literal"><span class="pre">.gitignore</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git add .</span>
+<p>This tutorial explains Git interaction through command-line applications
+in a terminal window. There are numerous <a class="reference external" href="https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools#Graphical_Interfaces">graphical user interfaces to
+Git</a>. Three examples are
+<a class="reference external" href="http://git-cola.github.com/downloads.html">git-cola</a>,
+<a class="reference external" href="https://code.google.com/p/tortoisegit/">TortoiseGit</a>, and
+<a class="reference external" href="http://sourcetreeapp.com/">SourceTree</a>.</p>
+<p>Make a file <tt class="docutils literal"><span class="pre">.gitconfig</span></tt> in your home directory with information on
+your full name, email address, your favorite text editor, and
+the name of an &#8220;excludes file&#8221; which defines the file types that Git
+should omit when bringing new directories under version control.
+Here is a simplified version of the author&#8217;s <tt class="docutils literal"><span class="pre">.gitconfig</span></tt> file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">user</span><span class="p">]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">Hans</span> <span class="n">Petter</span> <span class="n">Langtangen</span>
+<span class="n">email</span> <span class="o">=</span> <span class="n">hpl</span><span class="nd">@simula.no</span>
+<span class="n">editor</span> <span class="o">=</span> <span class="n">emacs</span>
+
+<span class="p">[</span><span class="n">core</span><span class="p">]</span>
+<span class="n">excludesfile</span> <span class="o">=</span> <span class="o">~/.</span><span class="n">gitignore</span>
 </pre></div>
 </div>
-<p>Thereafter, the changes to the repository (here adding of files) must
-<em>committed</em> (registered):</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git commit -am &#39;Initial import of files.&#39;</span>
+<p>The &#8220;excludes file&#8221; is called <tt class="docutils literal"><span class="pre">.gitignore</span></tt> and must list,
+using the Unix Shell Wildcard notation,
+the type of files that you do not need to have under version control,
+because they represent garbage or temporary information,
+or they can easily be regenerated from
+some other source files. A suggested <a class="reference external" href="http://hplgit.github.com/teamods/bitgit/_static-bitgit/.gitignore">.gitignore</a> file looks like</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># compiled files:</span>
+<span class="o">*.</span><span class="n">o</span>
+<span class="o">*.</span><span class="n">so</span>
+<span class="o">*.</span><span class="n">a</span>
+<span class="c"># temporary files:</span>
+<span class="o">*.</span><span class="n">bak</span>
+<span class="o">*.</span><span class="n">swp</span>
+<span class="o">*~</span>
+<span class="o">.*~</span>
+<span class="o">*.</span><span class="n">old</span>
+<span class="n">tmp</span><span class="o">*</span>
+<span class="n">temp</span><span class="o">*</span>
+<span class="c"># tex files:</span>
+<span class="o">*.</span><span class="n">log</span>
+<span class="o">*.</span><span class="n">dvi</span>
+<span class="o">*.</span><span class="n">aux</span>
+<span class="o">*.</span><span class="n">blg</span>
+<span class="o">*.</span><span class="n">idx</span>
+<span class="c"># eclipse files:</span>
+<span class="o">*.</span><span class="n">cproject</span>
+<span class="o">*.</span><span class="n">project</span>
+<span class="c"># misc:</span>
+<span class="o">.</span><span class="n">DS_Store</span>
 </pre></div>
 </div>
-<p>The text following the <tt class="docutils literal"><span class="pre">-am</span></tt> option is a required description of the
-changes that have taken place. This description does not matter much
-for this initial import of files into the repository, but is of
-importance for future commit commands so that you can easily track the
-history of your project files and inform others (and yourself) what you have
-done with the files.</p>
-<p>The final step is to push the local changes to the master repo at
-Bitbucket:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git push -u origin master</span>
+<p>Be critical to what kind of files you really need a full history of.
+For example, you do not want to populate the repository with
+big graphics files of the type that can easily be regenerated by
+some program.</p>
+</div>
+<div class="section" id="installing-mercurial">
+<h2>Installing Mercurial<a class="headerlink" href="#installing-mercurial" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="index-1"></span><p id="index-2">The <a class="reference external" href="http://mercurial.selenic.com/">Mercurial website</a> has information
+on downloading Mercurial on different platforms.
+Mercurial is pure Python code so it is trivial on any system with Python
+installed to download the Mercurial source code and perform
+the standard <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> command.</p>
+<p>On Ubuntu and Debian-based Linux systems, you can just perform</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; sudo apt-get install mercurial</span>
 </pre></div>
 </div>
-<p>You must be connected to the Internet for the <tt class="docutils literal"><span class="pre">push</span></tt> command to work since
-it sends file information to the <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt> site.</p>
-<p>Further work with the files must always follow the pull, edit, commit, and
-push steps explained in
-the section <a class="reference internal" href="main_bitgit.html#bitgit-git"><em>Using Git</em></a> for Git.</p>
-<div class="section" id="collaborating-1">
-<h3>Collaborating  (1)<a class="headerlink" href="#collaborating-1" title="Permalink to this headline">¶</a></h3>
-<p>There is a button <em>Send invitation</em> on the project home page where you
-can invite other Bitbucket users to have push (write) access to your
-repo. Many prefer to be notified in email when changes are pushed to
-the repo: click the settings wheel to the right, choose <em>Services</em>,
-then <em>Email</em>, and fill in the email addresses that are to receive
-notifications on updates. Under <em>Access management</em> you can fill in
-the Bitbucket names of users who are have pull (read)
-or push (write) access to the repo.</p>
-</div>
-</div>
-<div class="section" id="user-web-pages-1">
-<span id="bitgit-bitbucket-web"></span><h2>User web pages  (1)<a class="headerlink" href="#user-web-pages-1" title="Permalink to this headline">¶</a></h2>
-<p>Bitbucket can host web pages associated with a Bitbucket account,
-but does not yet offer web pages as part of a project. Say
-your account/username is <tt class="docutils literal"><span class="pre">user</span></tt>.  Make a new repository on
-Bitbucket called <tt class="docutils literal"><span class="pre">user.bitbucket.org</span></tt>.  Clone it, fill it with a
-file, and push back, e.g.,</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git clone git@bitbucket.org:user/user.bitbucket.org.git</span>
-<span class="go">Terminal&gt; cd user.bitbucket.org</span>
-<span class="go">Terminal&gt; echo &quot;Welcome to my web pages!&quot; &gt; test.html</span>
-<span class="go">Terminal&gt; git add test.html</span>
-<span class="go">Terminal&gt; git commit -am &#39;First web page&#39;</span>
-<span class="go">Terminal&gt; git push origin master</span>
+<p>Alternatively, launch the Ubuntu Software Center application
+and choose the Mercurial package in the graphical interface.</p>
+<p>This tutorial emphasizes the command-line interface to Mercurial, but there
+is also a graphical interface called <a class="reference external" href="http://tortoisehg.bitbucket.org/">TortoiseHG</a>, which for many Windows and Mac users will be the natural application to
+interact with Mercurial. TortoiseHG works on Linux too, and is readily
+available by <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">tortoisehg</span></tt> on Ubuntu.
+A newer graphical application for Git and Mercurial is
+<a class="reference external" href="http://sourcetreeapp.com/">SourceTree</a>, which is available on Windows
+and Mac platforms.</p>
+<p>We recommend that you create two files in your home directory: <tt class="docutils literal"><span class="pre">.hgrc</span></tt> for
+specifying the behavior of <tt class="docutils literal"><span class="pre">hg</span></tt> (Mercurial) and <tt class="docutils literal"><span class="pre">.hgignore</span></tt> for
+listing the type of files you in general do not want to have under version
+control. A simple <tt class="docutils literal"><span class="pre">.hgrc</span></tt> file can look like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">ui</span><span class="p">]</span>
+<span class="n">username</span> <span class="o">=</span> <span class="s">&quot;Hans Petter Langtangen &lt;hpl@simula.no&gt;&quot;</span>
+<span class="n">ignore</span><span class="o">=~/.</span><span class="n">hgignore</span>
 </pre></div>
 </div>
-<p>You can now load the URL <tt class="docutils literal"><span class="pre">http://user.bitbucket.org/test.html</span></tt> into
-a web browser and view the page. By creating various subdirectories
-you can host web pages for a series of projects in this repo.</p>
-</div>
-<div class="section" id="linking-to-bitbucket-files">
-<span id="bitgit-bitbucket-urls"></span><h2>Linking to Bitbucket files<a class="headerlink" href="#linking-to-bitbucket-files" title="Permalink to this headline">¶</a></h2>
-<p>Unfortunately, the default URL shown in your browser to a file in
-a Bitbucket repo contains information about the version of the file.
-For example, a file <tt class="docutils literal"><span class="pre">v1.c</span></tt> under Git might appear with the URL</p>
-<div class="highlight-text"><div class="highlight"><pre>https://bitbucket.org/user/proj/src/5fb228107044/dir/v1.c?at=master
+<p>The <tt class="docutils literal"><span class="pre">.hgignore</span></tt> file lists the types of files that will be skipped
+when bringing new directories under Mercurial version control.
+Typically, the list contains file types that represent temporary
+information, or files that are easily regenerated,
+such as object files (<tt class="docutils literal"><span class="pre">*.o</span></tt>) and
+libraries (<tt class="docutils literal"><span class="pre">*.so</span></tt>).
+The file types are normally specified using the Unix Shell Wildcard notation,
+also referred to as <tt class="docutils literal"><span class="pre">glob</span></tt> syntax (e.g., <tt class="docutils literal"><span class="pre">*.o</span></tt>, where <tt class="docutils literal"><span class="pre">*</span></tt> means any
+sequence of characters).
+An example of a <a class="reference external" href="http://hplgit.github.com/teamods/bitgit/_static-bitgit/.hgignore">.hgignore</a> file may be</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">syntax</span><span class="p">:</span> <span class="n">glob</span>
+<span class="c"># compiled files:</span>
+<span class="o">*.</span><span class="n">o</span>
+<span class="o">*.</span><span class="n">so</span>
+<span class="o">*.</span><span class="n">a</span>
+<span class="c"># temporary files:</span>
+<span class="o">*.</span><span class="n">bak</span>
+<span class="o">*.</span><span class="n">swp</span>
+<span class="o">*~</span>
+<span class="o">.*~</span>
+<span class="o">*.</span><span class="n">old</span>
+<span class="n">tmp</span><span class="o">*</span>
+<span class="n">temp</span><span class="o">*</span>
+<span class="c"># tex files:</span>
+<span class="o">*.</span><span class="n">log</span>
+<span class="o">*.</span><span class="n">dvi</span>
+<span class="o">*.</span><span class="n">aux</span>
+<span class="o">*.</span><span class="n">blg</span>
+<span class="o">*.</span><span class="n">idx</span>
+<span class="c"># eclipse files:</span>
+<span class="o">*.</span><span class="n">cproject</span>
+<span class="o">*.</span><span class="n">project</span>
+<span class="c"># misc:</span>
+<span class="o">.</span><span class="n">DS_Store</span>
 </pre></div>
 </div>
-<p>The string <tt class="docutils literal"><span class="pre">5fb228107044</span></tt>, called commit hash,
-is connected to the version of this file
-and will change when the file is updated. Such varying URLs are
-useless when you to link to
-the file in documents. To make a stable link to the
-latest version of a file (in a public repo),
-replace the commit hash by <tt class="docutils literal"><span class="pre">master</span></tt> and remove
-the final <tt class="docutils literal"><span class="pre">?at=master</span></tt>:</p>
-<div class="highlight-text"><div class="highlight"><pre>https://bitbucket.org/user/proj/src/master/dir/v1.c
-</pre></div>
-</div>
-<p>Other endings of the URL with commit hash, e.g., <tt class="docutils literal"><span class="pre">?at=default</span></tt>,
-requires the hash to be replaced by <tt class="docutils literal"><span class="pre">default</span></tt>.</p>
+<p>In addition to having an <tt class="docutils literal"><span class="pre">.hgignore</span></tt> file, you should always be careful with
+what kind of files you really need to add to your
+repo. Many computer tools produce a lot of big files that can
+easily be regenerated and that do not need to fill up repos with full
+information on previous versions.</p>
 </div>
 </div>
 
@@ -206,13 +227,9 @@ requires the hash to be replaced by <tt class="docutils literal"><span class="pr
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Bitbucket</a><ul>
-<li><a class="reference internal" href="#creating-a-new-project-1">Creating a new project  (1)</a><ul>
-<li><a class="reference internal" href="#collaborating-1">Collaborating  (1)</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#user-web-pages-1">User web pages  (1)</a></li>
-<li><a class="reference internal" href="#linking-to-bitbucket-files">Linking to Bitbucket files</a></li>
+<li><a class="reference internal" href="#">Installing version control systems</a><ul>
+<li><a class="reference internal" href="#installing-git">Installing Git</a></li>
+<li><a class="reference internal" href="#installing-mercurial">Installing Mercurial</a></li>
 </ul>
 </li>
 </ul>
@@ -222,7 +239,7 @@ requires the hash to be replaced by <tt class="docutils literal"><span class="pr
                         title="previous chapter">Quick Intro to Version Control Systems and Project Hosting Services</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="._part0002_main_bitgit.html"
-                        title="next chapter">Googlecode</a></p>
+                        title="next chapter">Bitbucket</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -247,7 +264,7 @@ requires the hash to be replaced by <tt class="docutils literal"><span class="pr
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="._part0002_main_bitgit.html" title="Googlecode"
+          <a href="._part0002_main_bitgit.html" title="Bitbucket"
              >next</a> |</li>
         <li class="right" >
           <a href="._part0000_main_bitgit.html" title="Quick Intro to Version Control Systems and Project Hosting Services"

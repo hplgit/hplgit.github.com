@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Quick Intro to Version Control Systems and Project Hosting Services">
 <meta name="keywords" content="Bitbucket,Googlecode,GitHub,gh-pages on GitHub,merging files,forking (a repo),pull request">
 
 
 
 <style type="text/css">
+    /* solarized style */
     body {
       margin:5;
       padding:0;
@@ -56,11 +57,11 @@ Automatically generated HTML file from Doconce source
     .alert {
              padding:8px 35px 8px 14px; margin-bottom:18px;
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #bababa;
+             border:1px solid #FFBF00;
              -webkit-border-radius: 4px; -moz-border-radius: 4px;
              border-radius: 4px
              color: #555;
-             background-color: #f8f8f8;
+             background-color: #fbeed5;
              background-position: 10px 5px;
              background-repeat: no-repeat;
              background-size: 38px;
@@ -71,10 +72,10 @@ Automatically generated HTML file from Doconce source
      .alert-block > p, .alert-block > ul {margin-bottom:0}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
-     .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_summary.png); }
-     .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_warning.png); }
-     .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_question.png); }
+     .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_notice.png); }
+     .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_summary.png); }
+     .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_warning.png); }
+     .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_yellow_question.png); }
 
 </style>
 
@@ -163,7 +164,7 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory,</b></center>
 <center>[2] <b>Deptartment of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Aug 11, 2013</h4></center> <!-- date -->
+<center><h4>Aug 13, 2013</h4></center> <!-- date -->
 <p>
 <a name="bitgit:top"></a>
 
@@ -1794,13 +1795,9 @@ any other key at any other GitHub account (you will get an error message
 if you try to register an already registered SSH key, but it is possible to
 get around the error message by providing
 an <code>id_rsa.pub</code> key on one account and an <code>id_dsa.pub</code> on another - that
-will cause trouble). A recipe for how to operate multiple GitHub accounts
-using multiple identities is provided <a href="http://net.tutsplus.com/tutorials/tools-and-tips/how-to-work-with-github-and-multiple-accounts/">here</a>:
-<p>
+will cause trouble). Jeffrey Way has written a recipe for <a href="http://net.tutsplus.com/tutorials/tools-and-tips/how-to-work-with-github-and-multiple-accounts/">how to operate multiple GitHub accounts
+using multiple identities</a>.
 
-<!-- code=text typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">http://net.tutsplus.com/tutorials/tools-and-tips/how-to-work-with-github-and-multiple-accounts/
-</pre></div>
 <p>
 To debug which identity that is used when you pull and push to
 GitHub accounts, you can first run

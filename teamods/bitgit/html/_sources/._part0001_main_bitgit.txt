@@ -1,188 +1,197 @@
 .. !split
 
-.. _bitgit:bitbucket:
+Installing version control systems
+==================================
 
-Bitbucket
-=========
+The various project hosting sites work with different version
+control systems:
 
+ * ``bitbucket.org`` offers Git (``git``) or Mercurial (``hg``),
 
-.. index:: Bitbucket
+ * ``github.com`` offers Git (``git``),
 
+ * ``code.google.com`` offers Git (``git``), Mercurial (``hg``), or Subversion (``svn``),
 
-To start using Bitbucket, go to ``bitbucket.org`` and create an account.
-The communication channel with Bitbucket repositories is either
-through SSH or HTTPS.  To use SSH, you must upload your SSH key,
-typically the contents of the file ``id_rsa.pub`` or ``id_dsa.pub`` in the
-``.ssh`` subdirectory of your home directory. Go to the page for your
-account, choose *SSH keys*, and upload one of these files.
-The essence of the SSH keys is that they allow you to communicate with
-Bitbucket without using a password, which is very convenient.
+ * ``launchpad.net`` offers Bazaar (``bzr``),
 
-There are links to extensive help pages if you do not have such keys
-or if you are unfamiliar with SSH. Follow these steps on Mac or Linux
-machines to generate keys: 1) check that you have ``ssh`` installed; 2)
-create a ``.ssh`` directory in your home directory; and 3) run
-``ssh-keygen`` in the ``.ssh`` directory (you are prompted for a
-passphrase - just write something). On Windows one applies the PuTTY
-and the TortoiseHG programs to generate and register keys, see the
-help pages on Bitbucket. Once the keys are generated, you can continue
-using them on any computer.
+ * ``sourceforge.net`` offers CVS (``cvs``), Subversion (``svn``), Mercurial (``hg``),
+   Bazaar (``bzr``), and Git (``git``).
+
+All the version control systems are quite similar in the way users
+operate them, but Subversion is technically different from Git,
+Mercurial, and Bazaar. The latter three work much in the same way
+for a beginner, but their more advanced commands and their
+nomenclature differ significantly.  Which system to choose is mainly a
+matter of personal preference and experience.
+Git is the version control system of most increasing popularity.
 
 
-Creating a new project  (1)
----------------------------
+Installing Git
+--------------
 
-Click at *Repositories* and at *Create repository*.
-You can now
 
- * fill in the name of the project, here ``my-project``,
+.. index:: git
 
- * decide whether the project is private or public (the number of
-   private repos is unlimited for yourself, but you have to pay to
-   invite more than five users in total to share your private repos
-   unless you are certified to be a student or work at an academic
-   institution),
 
- * choose between the Git or Mercurial version control system
-   (here we assume you run Git),
-
- * click whether you want issue tracking for reporting errors,
-   suggesting improvements, etc.,
-
- * click whether you want a wiki page associated with the project,
-
- * fill in a brief description,
-
- * click on *Create repository*.
-
-While doing this you may also want to have the `Bitbucket 101 guide <http://confluence.atlassian.com/display/BITBUCKET/Bitbucket+101>`_
-available.
-
-It is now time to *clone* (copy) the project to your laptop.
-Go to the project page
-(you are automatically
-brought to the project page when creating a new project).
-Find the *Clone* button, click on it, choose
-*SSH*, copy the *clone* line and run this command in a terminal:
+The installation of Git on various systems is described
+on the `Git website <http://git-scm.com/>`_ under the *Download* section.
+Git involves compiled code so it is most convenient to download a
+precompiled binary version of the software on Windows, Mac and other
+Linux computers.
+On Ubuntu or any Debian-based system the relevant installation command is
 
 .. code-block:: console
 
-        Terminal> git clone git@bitbucket.org:user/my-project.git
+        Terminal> sudo apt-get install git gitk git-doc
 
-You must replace ``user`` with your own username at Bitbucket and
-``my-project`` by the real project name.
 
-The first time you do the clone command you may be prompted by cryptic
-Unix output ending with "Are you sure you want to continue connecting
-(yes/no)?".  Just answer yes.
+This tutorial explains Git interaction through command-line applications
+in a terminal window. There are numerous `graphical user interfaces to
+Git <https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools#Graphical_Interfaces>`_. Three examples are
+`git-cola <http://git-cola.github.com/downloads.html>`_,
+`TortoiseGit <https://code.google.com/p/tortoisegit/>`_, and
+`SourceTree <http://sourcetreeapp.com/>`_.
 
-The next step is to collect files and directories that should make up
-the project and put them in the ``my-project`` directory.
-Standing in the ``my-project`` directory, the following Git command is used
-to add all files in the current
-directory *tree*, except those having file types listed in ``.gitignore``:
+Make a file ``.gitconfig`` in your home directory with information on
+your full name, email address, your favorite text editor, and
+the name of an "excludes file" which defines the file types that Git
+should omit when bringing new directories under version control.
+Here is a simplified version of the author's ``.gitconfig`` file:
+
+.. code-block:: python
+
+        [user]
+        name = Hans Petter Langtangen
+        email = hpl@simula.no
+        editor = emacs
+        
+        [core]
+        excludesfile = ~/.gitignore
+
+
+The "excludes file" is called ``.gitignore`` and must list,
+using the Unix Shell Wildcard notation,
+the type of files that you do not need to have under version control,
+because they represent garbage or temporary information,
+or they can easily be regenerated from
+some other source files. A suggested `.gitignore <http://hplgit.github.com/teamods/bitgit/_static-bitgit/.gitignore>`_ file looks like
+
+.. code-block:: python
+
+        # compiled files:
+        *.o
+        *.so
+        *.a
+        # temporary files:
+        *.bak
+        *.swp
+        *~
+        .*~
+        *.old
+        tmp*
+        temp*
+        # tex files:
+        *.log
+        *.dvi
+        *.aux
+        *.blg
+        *.idx
+        # eclipse files:
+        *.cproject
+        *.project
+        # misc:
+        .DS_Store
+
+Be critical to what kind of files you really need a full history of.
+For example, you do not want to populate the repository with
+big graphics files of the type that can easily be regenerated by
+some program.
+
+Installing Mercurial
+--------------------
+
+
+.. index:: Mercurial
+
+.. index:: hg
+
+
+The `Mercurial website <http://mercurial.selenic.com/>`_ has information
+on downloading Mercurial on different platforms.
+Mercurial is pure Python code so it is trivial on any system with Python
+installed to download the Mercurial source code and perform
+the standard ``sudo python setup.py install`` command.
+
+On Ubuntu and Debian-based Linux systems, you can just perform
 
 .. code-block:: console
 
-        Terminal> git add .
+        Terminal> sudo apt-get install mercurial
 
+Alternatively, launch the Ubuntu Software Center application
+and choose the Mercurial package in the graphical interface.
 
-Thereafter, the changes to the repository (here adding of files) must
-*committed* (registered):
+This tutorial emphasizes the command-line interface to Mercurial, but there
+is also a graphical interface called `TortoiseHG <http://tortoisehg.bitbucket.org/>`_, which for many Windows and Mac users will be the natural application to
+interact with Mercurial. TortoiseHG works on Linux too, and is readily
+available by ``sudo apt-get install tortoisehg`` on Ubuntu.
+A newer graphical application for Git and Mercurial is
+`SourceTree <http://sourcetreeapp.com/>`_, which is available on Windows
+and Mac platforms.
 
-.. code-block:: console
+We recommend that you create two files in your home directory: ``.hgrc`` for
+specifying the behavior of ``hg`` (Mercurial) and ``.hgignore`` for
+listing the type of files you in general do not want to have under version
+control. A simple ``.hgrc`` file can look like this:
 
-        Terminal> git commit -am 'Initial import of files.'
+.. code-block:: python
 
-The text following the ``-am`` option is a required description of the
-changes that have taken place. This description does not matter much
-for this initial import of files into the repository, but is of
-importance for future commit commands so that you can easily track the
-history of your project files and inform others (and yourself) what you have
-done with the files.
+        [ui]
+        username = "Hans Petter Langtangen <hpl@simula.no>"
+        ignore=~/.hgignore
 
-The final step is to push the local changes to the master repo at
-Bitbucket:
+The ``.hgignore`` file lists the types of files that will be skipped
+when bringing new directories under Mercurial version control.
+Typically, the list contains file types that represent temporary
+information, or files that are easily regenerated,
+such as object files (``*.o``) and
+libraries (``*.so``).
+The file types are normally specified using the Unix Shell Wildcard notation,
+also referred to as ``glob`` syntax (e.g., ``*.o``, where ``*`` means any
+sequence of characters).
+An example of a `.hgignore <http://hplgit.github.com/teamods/bitgit/_static-bitgit/.hgignore>`_ file may be
 
-.. code-block:: console
+.. code-block:: python
 
-        Terminal> git push -u origin master
+        syntax: glob
+        # compiled files:
+        *.o
+        *.so
+        *.a
+        # temporary files:
+        *.bak
+        *.swp
+        *~
+        .*~
+        *.old
+        tmp*
+        temp*
+        # tex files:
+        *.log
+        *.dvi
+        *.aux
+        *.blg
+        *.idx
+        # eclipse files:
+        *.cproject
+        *.project
+        # misc:
+        .DS_Store
 
-You must be connected to the Internet for the ``push`` command to work since
-it sends file information to the ``bitbucket.org`` site.
+In addition to having an ``.hgignore`` file, you should always be careful with
+what kind of files you really need to add to your
+repo. Many computer tools produce a lot of big files that can
+easily be regenerated and that do not need to fill up repos with full
+information on previous versions.
 
-Further work with the files must always follow the pull, edit, commit, and
-push steps explained in
-the section :ref:`bitgit:git` for Git.
-
-Collaborating  (1)
-~~~~~~~~~~~~~~~~~~
-
-There is a button *Send invitation* on the project home page where you
-can invite other Bitbucket users to have push (write) access to your
-repo. Many prefer to be notified in email when changes are pushed to
-the repo: click the settings wheel to the right, choose *Services*,
-then *Email*, and fill in the email addresses that are to receive
-notifications on updates. Under *Access management* you can fill in
-the Bitbucket names of users who are have pull (read)
-or push (write) access to the repo.
-
-.. _bitgit:bitbucket:web:
-
-User web pages  (1)
--------------------
-
-Bitbucket can host web pages associated with a Bitbucket account,
-but does not yet offer web pages as part of a project. Say
-your account/username is ``user``.  Make a new repository on
-Bitbucket called ``user.bitbucket.org``.  Clone it, fill it with a
-file, and push back, e.g.,
-
-
-.. code-block:: console
-
-        Terminal> git clone git@bitbucket.org:user/user.bitbucket.org.git
-        Terminal> cd user.bitbucket.org
-        Terminal> echo "Welcome to my web pages!" > test.html
-        Terminal> git add test.html
-        Terminal> git commit -am 'First web page'
-        Terminal> git push origin master
-
-You can now load the URL ``http://user.bitbucket.org/test.html`` into
-a web browser and view the page. By creating various subdirectories
-you can host web pages for a series of projects in this repo.
-
-
-.. _bitgit:bitbucket:URLs:
-
-Linking to Bitbucket files
---------------------------
-
-Unfortunately, the default URL shown in your browser to a file in
-a Bitbucket repo contains information about the version of the file.
-For example, a file ``v1.c`` under Git might appear with the URL
-
-
-.. code-block:: text
-
-
-        https://bitbucket.org/user/proj/src/5fb228107044/dir/v1.c?at=master
-
-The string ``5fb228107044``, called commit hash,
-is connected to the version of this file
-and will change when the file is updated. Such varying URLs are
-useless when you to link to
-the file in documents. To make a stable link to the
-latest version of a file (in a public repo),
-replace the commit hash by ``master`` and remove
-the final ``?at=master``:
-
-
-.. code-block:: text
-
-
-        https://bitbucket.org/user/proj/src/master/dir/v1.c
-
-Other endings of the URL with commit hash, e.g., ``?at=default``,
-requires the hash to be replaced by ``default``.
 
