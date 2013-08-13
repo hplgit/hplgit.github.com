@@ -26,7 +26,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="Quick Intro to Version Control Systems and Project Hosting Services" href="index.html" />
-    <link rel="next" title="Installing version control systems" href="._part0001_main_bitgit.html" />
+    <link rel="next" title="Bitbucket" href="._part0001_main_bitgit.html" />
     <link rel="prev" title="Quick Intro to Version Control Systems and Project Hosting Services" href="index.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -44,7 +44,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="._part0001_main_bitgit.html" title="Installing version control systems"
+          <a href="._part0001_main_bitgit.html" title="Bitbucket"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Quick Intro to Version Control Systems and Project Hosting Services"
@@ -185,6 +185,73 @@ better support for this feature than GitHub.</li>
 Googlecode and bring under version control. The official name of the
 project is &#8220;My Project&#8221;.</p>
 </div>
+<div class="section" id="installing-git">
+<h2>Installing Git<a class="headerlink" href="#installing-git" title="Permalink to this headline">¶</a></h2>
+<p id="index-0">The installation of Git on various systems is described
+on the <a class="reference external" href="http://git-scm.com/">Git website</a> under the <em>Download</em> section.
+Git involves compiled code so it is most convenient to download a
+precompiled binary version of the software on Windows, Mac and other
+Linux computers.
+On Ubuntu or any Debian-based system the relevant installation command is</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; sudo apt-get install git gitk git-doc</span>
+</pre></div>
+</div>
+<p>This tutorial explains Git interaction through command-line applications
+in a terminal window. There are numerous <a class="reference external" href="https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools#Graphical_Interfaces">graphical user interfaces to
+Git</a>. Three examples are
+<a class="reference external" href="http://git-cola.github.com/downloads.html">git-cola</a>,
+<a class="reference external" href="https://code.google.com/p/tortoisegit/">TortoiseGit</a>, and
+<a class="reference external" href="http://sourcetreeapp.com/">SourceTree</a>.</p>
+<p>Make a file <tt class="docutils literal"><span class="pre">.gitconfig</span></tt> in your home directory with information on
+your full name, email address, your favorite text editor, and
+the name of an &#8220;excludes file&#8221; which defines the file types that Git
+should omit when bringing new directories under version control.
+Here is a simplified version of the author&#8217;s <tt class="docutils literal"><span class="pre">.gitconfig</span></tt> file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">user</span><span class="p">]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">Hans</span> <span class="n">Petter</span> <span class="n">Langtangen</span>
+<span class="n">email</span> <span class="o">=</span> <span class="n">hpl</span><span class="nd">@simula.no</span>
+<span class="n">editor</span> <span class="o">=</span> <span class="n">emacs</span>
+
+<span class="p">[</span><span class="n">core</span><span class="p">]</span>
+<span class="n">excludesfile</span> <span class="o">=</span> <span class="o">~/.</span><span class="n">gitignore</span>
+</pre></div>
+</div>
+<p>The &#8220;excludes file&#8221; is called <tt class="docutils literal"><span class="pre">.gitignore</span></tt> and must list,
+using the Unix Shell Wildcard notation,
+the type of files that you do not need to have under version control,
+because they represent garbage or temporary information,
+or they can easily be regenerated from
+some other source files. A suggested <a class="reference external" href="http://hplgit.github.com/teamods/bitgit/_static-bitgit/.gitignore">.gitignore</a> file looks like</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># compiled files:</span>
+<span class="o">*.</span><span class="n">o</span>
+<span class="o">*.</span><span class="n">so</span>
+<span class="o">*.</span><span class="n">a</span>
+<span class="c"># temporary files:</span>
+<span class="o">*.</span><span class="n">bak</span>
+<span class="o">*.</span><span class="n">swp</span>
+<span class="o">*~</span>
+<span class="o">.*~</span>
+<span class="o">*.</span><span class="n">old</span>
+<span class="n">tmp</span><span class="o">*</span>
+<span class="n">temp</span><span class="o">*</span>
+<span class="c"># tex files:</span>
+<span class="o">*.</span><span class="n">log</span>
+<span class="o">*.</span><span class="n">dvi</span>
+<span class="o">*.</span><span class="n">aux</span>
+<span class="o">*.</span><span class="n">blg</span>
+<span class="o">*.</span><span class="n">idx</span>
+<span class="c"># eclipse files:</span>
+<span class="o">*.</span><span class="n">cproject</span>
+<span class="o">*.</span><span class="n">project</span>
+<span class="c"># misc:</span>
+<span class="o">.</span><span class="n">DS_Store</span>
+</pre></div>
+</div>
+<p>Be critical to what kind of files you really need a full history of.
+For example, you do not want to populate the repository with
+big graphics files of the type that can easily be regenerated by
+some program.</p>
+</div>
 </div>
 
 
@@ -201,6 +268,7 @@ project is &#8220;My Project&#8221;.</p>
 <li><a class="reference internal" href="#project-hosting-services">Project hosting services</a></li>
 <li><a class="reference internal" href="#repositories-and-local-copies">Repositories and local copies</a></li>
 <li><a class="reference internal" href="#what-to-choose">What to choose?</a></li>
+<li><a class="reference internal" href="#installing-git">Installing Git</a></li>
 </ul>
 </li>
 </ul>
@@ -210,7 +278,7 @@ project is &#8220;My Project&#8221;.</p>
                         title="previous chapter">Quick Intro to Version Control Systems and Project Hosting Services</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="._part0001_main_bitgit.html"
-                        title="next chapter">Installing version control systems</a></p>
+                        title="next chapter">Bitbucket</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -235,7 +303,7 @@ project is &#8220;My Project&#8221;.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="._part0001_main_bitgit.html" title="Installing version control systems"
+          <a href="._part0001_main_bitgit.html" title="Bitbucket"
              >next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Quick Intro to Version Control Systems and Project Hosting Services"

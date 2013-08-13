@@ -1,409 +1,731 @@
 .. !split
 
-.. _bitgit:github:
+.. _bitgit:git:
 
-GitHub
-======
-
-
-.. index:: GitHub
+Using Git
+=========
 
 
-
-Go to ``github.com`` and create an account. Then go to your account
-settings (icon in the upper left corner of the page),
-choose *SSH Keys*, and provide your SSH key
-unless you have already registered this key with another GitHub
-account (see Appendix :ref:`appendix:github:multiple:accounts`).
-Often, it is just a
-matter of pasting the contents of ``id_rsa.pub`` or ``id_dsa.pub`` files,
-located in the
-``.ssh`` subdirectory of your home directory, into the *Key* box in the
-web page. Make sure to just cut and paste the text from, e.g., ``id_rsa.pub``
-without any extra whitespaces or other text. How to generate these
-files is described in the link *generating SSH keys* above the SSH Keys
-box (or see the introduction to Bitbucket above).
-
-If the account is a project account and not a personal account,
-I do not recommend to provide an SSH key although it can be
-done (see Appendix :ref:`appendix:github:multiple:accounts`). It is easier
-to log in and add collaborators using their personal GitHub usernames.
+.. index:: git
 
 
-Creating a new project  (3)
----------------------------
+Most Mac and Linux users prefer to work with Git via commands in a
+terminal window. Windows users may prefer a graphical user interface (GUI),
+and there are many `options <http://git-scm.com/downloads/guis>`_ in
+this respect. There are also GUIs for Mac users.
+Here we concentrate on the efficient command-line interface to Git.
 
-Click on *New repository* on the main page and fill out a project
-name, here *My Project*, click the check button *Initialize this
-repository with a README*, and click on *Create repository*.
-Unless you pay, all repos are public, but students and teachers
-can request `free, private repos <https://github.com/edu>`_.
+Basic Git commands
+------------------
 
-The next step is to clone the project on your personal computer. Click
-on the *SSH* button to see the address of the project, and
-paste this address into a terminal window, after ``git clone``:
+
+.. index:: git clone
+
+
+Cloning
+~~~~~~~
+
+You get started with your project on a new machine, or another user
+can get started with the project,
+by running
 
 .. code-block:: console
 
-        Terminal> git clone git://github.com:user/My-Project.git
+        Terminal> git clone git@github.com:user/My-Project.git
+        Terminal> cd My-Project
+        ls
 
-Make sure you substitute ``user`` by your own username on GitHub.
+Recall to replace ``user`` by your real username and ``My-Project`` by the
+actual project name.
 
-The result of the ``git clone`` command is a new directory ``My-Project``.
-It contains the file ``.git``, which shows that it is a Git repository.
-It also contains a default ``README.md`` file with the project name and
-description. The extension ``.md`` signifies a file written in the
-`Markdown <http://daringfireball.net/projects/markdown/>`_ format.
-You may use the `reStructuredText <http://docutils.sourceforge.net/rst.html>`_ format as an alternative
-(``README.rst``), or simply write a plain text file (``README``),
-but the ``git mv`` command must be used to change the filename.
-
-You can now add files and directories into the ``My-Project`` directory.
-When your initial file collection has the desired form, you must
-run
-
-.. code-block:: console
-
-        Terminal> git add .
-        Terminal> git commit -am 'First set of files.'
-        Terminal> git push -u origin master
-
-The daily file operations are explained in the section :ref:`bitgit:git`.
-
-Collaborating  (2)
-~~~~~~~~~~~~~~~~~~
-
-To give others permissions to push their edits of files to the
-repository, you click on the *Settings* link in the right sidebar,
-then click on *Collaborators* on the left, and fill in the name
-of a collaborator (her or his username on GitHub).
-Many find it convenient to be notified in email when others have
-pushed a new version of the files to the repo. Click on *Service Hooks*
-(in the project's *Settings* menu), choose *Email*, fill in
-at most two whitespace-separated email addresses, and mark the
-*Active* box. More addresses must be dealt with through a mailing list
-and filling in the name of that list.
-
-Anyone who participates in a project (has write access) or watches a
-project (having clicked the *watch* button) can monitor the
-development of the activity on their GitHub main page. Go to *Account Settings*
-and choose *Notification Center*.  There you see two sections,
-*Participating* and *Watching*, for those participating in the project
-(granted write access) and those watching the project (having clicked
-the *watch* button), respectively.
-
-.. No, this doesn't work: Clicking the *Email* button turns
-
-.. on email notifications to those participating and/or watching.
-
-
-
-
-Wiki pages  (2)
----------------
-
-With every GitHub project there is an option to create wiki pages.
-Click on the *Wiki* button in the right sidebar on the main page
-of the project. Click on *New Page* to create
-a new page. The wiki pages can be written in different markup
-languages. Markdown is the default choice, but you can alternatively
-use MediaWiki (the LaTeX-supported markup used for
-Wikipedia) and reStructuredText (unfortunately not the Sphinx extension
-with nice LaTeX mathematics).
-
-The wiki pages can be written and maintained through the web browser
-interface, but it is usually more convenient to clone them on
-your computer as this makes it easy to add figures and other documents
-you may want to link to. It also makes it straightforward to edit
-the wiki text in your favorite text editor. The wiki pages are
-stored in a separate repo and can be cloned by
-
-.. code-block:: console
-
-        Terminal> git clone git://github.com/user/My-Project.wiki.git
-
-This command makes a local copy of the pages in the directory
-``My-Project.wiki``, which you may prefer to have at the same level
-as the project directory itself in your directory tree.
-
-Each wiki page has its own file, where the extension reflects
-the markup language used, e.g., ``.md`` for Markdown, ``.rest`` for
-reStructuredText, ``.mediawiki`` for MediaWiki,
-and ``.creole`` for Creole wiki. The wiki files are handled as other files in a
-GitHub project, i.e., you need to pull before editing and then
-perform commit and push. After the push you can reload the page
-in the web browser to monitor the effect.
-
-You may consider having the original text in ``doconce`` format and
-generate the wiki in the reStructuredText or MediaWiki format.
-
-Do changes, commit the usual way, and push by
-
-.. code-block:: console
-
-        Terminal> git push git@github.com:user/My-project.wiki.git
-
-The address can be stored as ``url`` in ``.git/config`` in the
-root directory of the wiki project so that just a
-``git push`` works.
-
-
-Project web pages
------------------
-
-HTML pages stored in your repo cannot be linked to and properly
-rendered as web pages.
-Links to HTML files at GitHub will be either rendered as nicely typeset
-HTML code or as plain text.
-
-
-.. index:: git checkout
-
-.. index:: gh-pages on GitHub
-
-
-Quite often you want to create a set of HTML pages to document your
-project. This can be done as part of your repo, but you must apply
-a special technique consisting in creating a separate *gh-pages*
-branch in Git and making the HTML files in this particular branch.
-The recipe is described in detail below.
-
-1. Go to the  project page on ``github.com`` and click *Settings*.
-
-2. Click on *Automatic Page Generator* under the *GitHub Pages*.
-
-3. Proceed clicking *Continue to Layouts*, choose
-   a design of the ``index.html`` page that GitHub will
-   create for you, and click *Publish*.
-
-4. Go to the root directory of the project, ``My-Project``
-   and run ``git fetch origin``.
-
-5. Run ``git checkout gh-pages``.
-
-You have now a *new branch* called gh-pages of your project
-containing an ``index.html`` file and directories for JavaScript
-programs and CSS style sheets in the root directory. The gh-pages
-branch will also all files *not* contained in the *master branch*,
-typically redundant files you have generated and which should not be
-stored in the version control system (remove these manually with ``git
-rm``).  You can populate the root directory and subdirectories of your
-gh-pages branch with HTML and other files as you like. The key issue
-is that the people out there will only see the web pages that
-correspond to your HTML files in the gh-pages branch!
-
-The ``index.html`` page is invoked by the web address
-
-
-.. code-block:: text
-
-
-        http://user.github.io/My-Project/index.html
-
-where ``user`` is the GitHub
-username and ``My-Project`` is the project name.
-
-.. Update this info when I have maintained gh-pages for a while!
-
-.. Could also have a special section on branching in git (above,
-
-.. then the info here is simple... YES!).
-
-
-The web pages and project files are now in two different branches.
-To see the branches, type ``git branch`` and the one you are in will
-be marked with ``*`` in the output. Switching to the master branch
-is done by ``git checkout master``. Similarly, ``git checkout gh-pages``
-switches to the gh-pages branch.
-
-My personal preference is to have the master and gh-pages
-synchronized, at least in projects where I want to link to various
-source code files or other files from the web documentation.
-Sometimes I also update files in the gh-pages branch without
-remembering to switch to the master branch.  To this end, one needs
-to *merge* the branches, i.e., automatically edit files
-in the current branch such that they are up-to-date and
-identical to files in another branch.
-
-
-
-.. index:: git merge
 
 .. index:: git pull
 
+.. index:: git add
+
+.. index:: git rm
+
+.. index:: git mv
+
 .. index:: git commit
+
 
 .. index:: git push
 
 
-To merge the current branch with some branch named ``otherbranch``, run
+The pull-change-push cycle
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The typical work flow with the "My Project" project starts with
+updating the local repository by going to the ``My-Project`` directory
+and writing
 
 .. code-block:: console
 
-        Terminal> git merge otherbranch
+        Terminal> git pull origin master
 
-Git applies smart algorithms that very often manage to merge the
-files without human interaction. However, occasionally these algorithms
-are not able to resolve conflicts between two files.
-A message about the failure of the merge is seen in the terminal
-window, and the corresponding files have markers in them showing
-which sections that needs manual editing to resolve the conflicts.
-Run
-``git diff`` to show the problems (you can tailor this command to your
-needs as explained in the section :ref:`bitgit:git:fetch`). After a manual
-edit, do ``git commit -a``. More details on merging appears
-in the section :ref:`bitgit:git:merge`.
+You may want to do ``git fetch`` and ``git merge`` instead
+of ``git pull`` as explained in the section :ref:`bitgit:git:fetch`,
+especially if you work with branches.
 
-If you want to keep the master branch and the gh-pages branch
-synchronized,
-start with merging the gh-pages branch with the master
-branch and push the complete file collection to the gh-pages branch.
-Then switch to the master
-branch and merge with gh-pages so you get the autogenerated
-``index.html`` file and associated files and directories for web pages
-in the root directory of the master branch as well:
-
+You can now edit files, add new files, delete files, or rename files.
+Typical commands are
 
 .. code-block:: console
 
-        Terminal> git merge master
-        Terminal> touch .nojekyll
-        Terminal> git push origin gh-pages
-        Terminal> git checkout master
-        Terminal> git merge gh-pages
+        Terminal> git add file1 file2.* dir1 dir2
+        Terminal> git rm filename
+        Terminal> git rm -r dirname
+        Terminal> git mv oldname newname
+        Terminal> git mv oldname ../newdir
 
-You *must* add an empty file ``.nojekyll`` in the top
-directory of the project pages if you want to use Sphinx-generated
-HTML pages (or other pages using javascripts, style sheets, and images
-in subdirectories whose names start with an underscore).
-
-You can now add the documentation to the project files and
-maintain them in the master branch.
-Before publishing documents online,
-make sure to update the gh-pages branch by
-
+When your chunk of work is ready,
+it is time to commit your changes (note the ``-am`` option):
 
 .. code-block:: console
 
-        Terminal> git commit -am 'Ensure commit of master branch'
+        Terminal> git commit -am 'Description of changes.'
+
+If typos or errors enter the message, the ``git commit --amend`` command
+can be used to reformulate the message.  Running ``git diff`` prior to
+``git commit`` makes it
+easier to formulate descriptive commit messages since this command
+gives a listing of all the changes you have made to the files since
+the last commit or pull command.
+
+You may perform many commits, to keep track of small changes, before
+you push your changes to the global repository:
+
+.. code-block:: console
+
         Terminal> git push origin master
-        Terminal> git checkout gh-pages
-        Terminal> git merge master
-        Terminal> git push origin gh-pages
+
+It is recommended to push and pull frequently if the work takes place in several
+clones of the repo (i.e., there are many users or you work with the
+repo on different
+computers). Infrequent push and pull easily leads to merge problems
+(see the section :ref:`bitgit:git:merge`). Also remember that others
+cannot get your changes before they are pushed.
+
+
+.. index:: git status
+
+
+To see the status of files, run
+
+.. code-block:: console
+
+        Terminal> git status -s
+
+Files are marked with different symbols, e.g.,
+``A`` for added, ``M`` for modified, ``R`` for renamed,
+and ``??`` for not being registered in the repo.
+
+
+Viewing the history of files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A nice graphical tool allows you to view all changes, or just
+the latest ones:
+
+.. code-block:: console
+
+        Terminal> gitk --all
+        Terminal> gitk --since="2 weeks ago"
+
+
+
+.. index:: git log
+
+.. index:: git blame
+
+
+You can also view changes to all files, some selected ones, or
+a subdirectory:
+
+.. code-block:: console
+
+        Terminal> git log -p                 # all changes to all files
+        Terminal> git log -p filename        # changes to a specific file
+        Terminal> git log --stat --summary   # compact summary
+        Terminal> git log --stat --summary subdir
+
+Adding ``--follow`` will print the history of file versions before the
+file got its present name.
+
+To show the author who is responsible for the last modification of each
+line in the file, use ``git blame``:
+
+.. code-block:: console
+
+        Terminal> git blame filename
+        Terminal> git blame --since="1 week" filename
+
+A useful command to see the history of who did what, where individual
+edits of words are highlighted (``--word-diff``), is
+
+.. code-block:: console
+
+        git log -p --stat --word-diff filename
+
+Removed words appear in brackets and added words in curly braces.
+
+Looking for when a particular piece of text entered or left the file,
+say the text ``def myfunc``, one can run
+
+.. code-block:: console
+
+        Terminal> git log -p --word-diff --stat -S'def myfunc' filename
+
+This is useful to track down particular changes in the files to see when
+they occurred and who introduced them. One can also search for regular
+expressions instead of exact text: just replace ``-S`` by ``-G``.
+
+
+.. index:: git diff
+
+.. index:: git checkout
+
+
+Retrieving old files
+~~~~~~~~~~~~~~~~~~~~
+
+Occasionally you need to go back to an earlier version of a file,
+say its name is ``f.py``. Start with viewing the history:
+
+.. code-block:: console
+
+        Terminal> git log f.py
+
+Find a commit candidate from the list that you will compare the
+present version to, copy the commit hash (string like
+``c7673487...``), and run
+
+.. code-block:: console
+
+        Terminal> git diff c7673487763ec2bb374758fb8e7efefa12f16dea f.py
+
+where the long string is the relevant commit hash. You can now view the
+differences between the most recent version and the one in
+the commit you picked (see the section :ref:`bitgit:git:fetch` for how to
+configure the tools used by the ``git diff`` command). If you want to restore the old file, write
+
+.. code-block:: console
+
+        Terminal> git checkout c7673487763ec2bb374758fb8e7efefa12f16dea f.py
+
+To go back to another version (the most recent one, for instance),
+find the commit hash with ``git log f.py``, and do ``get checkout
+<commit hash> f.py``.
+
+If ``f.py`` changed name from ``e.py`` at some point and you want
+``e.py`` back, run ``git log --follow f.py`` to find the commit
+when ``e.py`` existed, and do a ``git checkout <commit hash> e.py``.
+
+Often you just need to *view* the old file, not replace the current
+one by the old one, and then ``git show`` is handy. Unfortunately,
+it requires the full path from the root git directory:
+
+.. code-block:: console
+
+        Terminal> git show \
+                  c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/f.py
+
+
+
+.. _bitgit:git:merge:
+
+Merging files with Git
+----------------------
+
+
+.. index:: merging files
+
+
+The ``git pull`` command fetches new files from the repository and
+tries to perform an automatic merge if there are conflicts between
+the local files and the files in the repository. Alternatively,
+you may run ``git fetch`` and ``git merge`` to do the same
+thing as described in the section :ref:`bitgit:git:fetch`.
+We shall now address what do to if the merge goes wrong, which
+occasionally happens.
+
+Git will write a message in the terminal window
+if the merge is unsuccessful for one or
+more files. These files will have to be edited manually.
+Merge markers of the type ``>>>>>``, ``======``, and ``<<<<<`` have been
+inserted by Git to mark sections of a file where the version in the
+repository differ from the local version. You must decide which
+lines that are to appear in the final, merged version. When done,
+perform ``git commit`` and the conflicts are resolved.
+
+Graphical merge tools may ease the process of merging text files.  You
+can run ``git mergetool --tool=meld`` to open the merge tool ``meld`` for
+every file that needs to be merged (or specify the name of a
+particular file). Other popular merge tools supported by Git are
+``araxis``, ``bc3``, ``diffuse``, ``ecmerge``, ``emerge``, ``gvimdiff``, ``kdiff3``,
+``opendiff``, ``p4merge``, ``tkdiff``, ``tortoisemerge``, ``vimdiff``, and
+``xxdiff``.
+
+Below is a Unix shell script illustrating how to make a global
+repository in Git, and how two users clone this repository and
+perform edits in parallel. There is one file ``myfile`` in the
+repository.
+
+
+.. code-block:: bash
+
+        #!/bin/sh
+        # Demo script for exemplifying git and merge
+        
+        rm -rf tmp1 tmp2 tmp_repo   # Clean up previous runs
+        
+        mkdir tmp_repo   # Global repository for testing
+        cd tmp_repo
+        git --bare init --shared
+        cd ..
+        
+        # Make a repo that can be pushed to tmp_repo
+        mkdir _tmp
+        cd _tmp
+        cat > myfile <<EOF
+        This is a little
+        test file for
+        exemplifying merge
+        of files in different
+        git directories.
+        EOF
+        git init
+        git add .   # Add all files not mentioned in ~/.gitignore
+        git commit -am 'first commit'
+        git push ../tmp_repo master
+        cd ..
+        rm -rf _tmp
+        
+        # Make a new hg repositories tmp1 and tmp2 (two users)
+        git clone tmp_repo tmp1
+        git clone tmp_repo tmp2
+        # Change myfile in the directory tmp1
+        cd tmp1
+        # Edit myfile: insert a new second line
+        perl -pi -e 's/a little\n/a little\ntmp1-add1\n/g' myfile
+        # Register change in local repository
+        git commit -am 'Inserted a new second line in myfile.'
+        # Look at changes in this clone
+        git log -p
+        # or a more compact summary
+        git log --stat --summary
+        # or graphically
+        #gitk
+        # Register change in global repository tmp_repo
+        git push origin master
+        cd ..
+        
+        # Change myfile in the directory tmp2 "in parallel"
+        cd tmp2
+        # Edit myfile: add a line at the end
+        cat >> myfile <<EOF
+        tmp2-add1
+        EOF
+        # Register change locally
+        git commit -am 'Added a new line at the end'
+        # Register change globally
+        git push origin master
+        # Error message: global repository has changed,
+        # we need to pull those changes to local repository first
+        # and see if all files are compatible before we can update
+        # our own changes to the global repository.
+        # git writes
+        #To /home/hpl/vc/scripting/manu/py/bitgit/src-bitgit/tmp_repo
+        # ! [rejected]        master -> master (non-fast-forward)
+        #error: failed to push some refs to ...
+        
+        git pull origin master
+        # git writes:
+        #Auto-merging myfile
+        #Merge made by recursive.
+        # myfile |    1 +
+        # 1 files changed, 1 insertions(+), 0 deletions(-)
+        cat myfile  # successful merge!
+        git commit -am merge
+        git push origin master
+        cd ..
+        
+        # Perform new changes in parallel in tmp1 and tmp2,
+        # this time causing hg merge to fail
+        
+        # Change myfile in the directory tmp1
+        cd tmp1
+        # Do it all right by pulling and updating first
+        git pull origin master
+        # Edit myfile: insert "just" in first line.
+        perl -pi -e 's/a little/tmp1-add2 a little/g' myfile
+        # Register change in local repository
+        git commit -am 'Inserted "just" in first line.'
+        # Register change in global repository tmp_repo
+        git push origin master
+        cd ..
+        
+        # Change myfile in the directory tmp2 "in parallel"
+        cd tmp2
+        # Edit myfile: replace little by modest
+        perl -pi -e 's/a little/a tmp2-replace1\ntmp2-add2\n/g' myfile
+        # Register change locally
+        git commit -am 'Replaced "little" by "modest"'
+        # Register change globally
+        git push origin master
+        # Not possible: need to pull changes in the global repository
+        git pull origin master
+        # git writes
+        #CONFLICT (content): Merge conflict in myfile
+        #Automatic merge failed; fix conflicts and then commit the result.
+        # we have to do a manual merge
+        cat myfile
+        echo 'Now you must edit myfile manually'
+
+
+You may run this file `git_merge.sh <http://hplgit.github.com/teamods/bitgit/_static-bitgit/git_merge.sh>`_ named
+by ``sh -x git_merge.sh``.
+At the end, the versions of ``myfile`` in the
+repository and the ``tmp2`` directory are in conflict. Git tried
+to merge the two versions, but failed. Merge markers are left in
+``tmp2/myfile``:
+
+.. code-block:: python
+
+        <<<<<<< HEAD
+        This is a tmp2-replace1
+        tmp2-add2
+        
+        =======
+        This is tmp1-add2 a little
+        >>>>>>> ad9b9f631c4cc586ea951390d9415ac83bcc9c01
+        tmp1-add1
+        test file for
+        exemplifying merge
+        of files in different
+        git directories.
+        tmp2-add1
+
+Launch a text editor and edit the file, or use ``git mergetool``,
+so that the file becomes correct.
+Then run ``git commit -am merge`` to finalize the merge.
+
+.. _bitgit:git:branch:stash:
+
+Git working style with branching and stashing
+---------------------------------------------
+
+Branching and stashing are nice features of Git that allow you to try
+out new things without affecting the stable version of your files.
+Usually, you extend and modify files quite often and perform a ``git
+commit`` every time you want to record the changes in your local
+repository. Imagine that you want to correct a set of errors in some
+files and push these corrections immediately.  The problem is that
+such a push will also include the latest, yet unfinished files that you
+have committed.
+
+A better organization of your work would
+be to keep the latest, ongoing
+developments separate from the more official and stable version
+of the files. This is easily achieved by creating a separate branch
+where new developments takes place:
+
+
+.. code-block:: console
+
+        Terminal> git branch newstuff      # create and switch to new branch
+        Terminal> # extend and modify files...
+        Terminal> git commit -am 'Modified ... Added a file on ...'
+        Terminal> git checkout master      # swith back to master
+        Terminal> # correct errors
+        Terminal> git push origin master
+        Terminal> git checkout newstuff    # switch to other branch
+        Terminal> git merge master         # keep branch up-to-date w/master
+        Terminal> # continue development work...
+        Terminal> git commit -am 'More modifications of ...'
+
+At some point, your developments in ``newstuff``
+are mature enough to be incorporated
+in the master branch:
+
+
+.. code-block:: console
+
+        Terminal> git checkout newstuff
+        Terminal> git merge master        # synchronize newstuff w/master
         Terminal> git checkout master
+        Terminal> git merge newstuff      # synchronize master w/newstuff
 
-
-Personally, I like to move the generated ``index.html`` file and all
-associated scripts, stylesheets, and images from the root directory to
-some more isolated place, say ``doc/web``:
+You no longer need the ``newstuff`` branch and can delete it:
 
 
 .. code-block:: console
 
-        Terminal> git mv index.html params.json stylesheets/ images/ \
-                         javascripts/ doc/web/
-
-The URL of the ``index.html`` file is
-
-.. code-block:: text
+        Terminal> git branch -d newstuff
 
 
-        http://user.github.io/My-Project/doc/web/index.html
+It is not possible to switch branches unless you have committed the
+files in the current branch. If your work on some files is in a mess
+and you want to change to another branch or fix other files in the
+current branch, a
+"global" commit affecting all files might be immature.  Then the `git stash <http://git-scm.com/book/en/Git-Tools-Stashing>`_ command is handy. It
+records the state of your files and sets you back to the state of the
+last commit in the current branch. With ``git stash apply`` you get the
+files in this branch back to the state when you did the last ``git
+stash``.
+
+Let us explain a typical case.  Suppose you have performed some
+extensive edits in some files and then you are suddenly
+interrupted. You need to fix some typos in some other files, commit
+the changes, and push. The problem is that many files are in an
+unfinished state - in hindsight you realize that those files should
+have been modified in a separate branch.  It is not too late to create
+that branch! First run ``git stash`` to get the files back to the state
+they were at the last commit. Then run ``git stash branch newstuff`` to
+create a new branch ``newstuff`` containing the state of the files when
+you did the (last) ``git stash`` command.  Stashing used this way is a
+convenient technique to move some immature edits after the last commit
+out in a new branch for further experimental work.
 
 
-.. See `<https://github.com/daler/sphinxdoc-test>`_
-
-.. for ideas on how to do sphinx documentation without full
-
-.. mirroring as I do.
-
-.. See also `<http://lucasbardella.com/report/hosting-your-sphinx-docs-in-github/>`_
-
-.. Sphinx extension for github: `<https://github.com/michaeljones/sphinx-to-github>`_
-
-
-.. The problem can also be circumvented by
-
-.. installing special Sphinx extensions ("sphinx-to-github":
-
-.. "https://github.com/michaeljones/sphinx-to-github" or "github-tools":
-
-.. "http://pydoc.net/github-tools/0.1.3/").
+.. warning::
+    You can get the stashed files back by ``git stash apply``. It is
+    possible to multiple ``git stash`` and ``git stash apply``
+    commands. However, it is easy to run into trouble with multiple
+    stashes, especially if they occur in multiple branches, as it becomes
+    difficult to recognize which stashes that belong to which branch.  A
+    good advice is therefore to do ``git stash`` *only once* to get back to
+    a clean state and then move the unfinished messy files to a separate
+    branch with ``git stash branch newstuff``.
 
 
+.. _bitgit:git:fetch:
 
-Linking to source code files or other files in the project is easy:
-just find the file in GitHub's web interface, choose which version of
-the file you want to link to (nicely HTML formatted version or the raw
-file), right-click on the link, choose *Copy Link*, and paste the
-link into the document you want. You can test that the link works by
-the Unix command ``curl -O <link>``. Note that the link to a file
-is different from the source file's intuitive path in the repository.
-Typically, a source file ``dir/f.py`` in project ``prj`` is reached
-through
+Replacing pull by fetch and merge
+---------------------------------
 
-.. code-block:: text
+The ``git pull`` command actually performs two steps that are sometimes
+advantageous to run separately. First, a ``get fetch`` is run to fetch
+new files from the repository, and thereafter a ``git merge`` command is
+run to merge the new files with your local version of the files.
+While ``git pull`` tries to do a lot and be smart in the merge, very
+often with success, the merge step may occasionally lead to
+trouble. That is why it is recommended to run a ``git merge``
+separately, especially if you work with branches.
 
+To fetch files from your repository at GitHub, which usually has
+the nickname ``origin``, you write
 
-        https://github.com/user/prj/blob/master/dir/f.py?raw=true
-
-
-Sometimes you want to link to another HTML file, PDF file, movie file,
-or a file that is to be interpreted as a web resource by the browser.
-Do not use the path to the file in the repo as explained above as it will
-just bring the reader to the repo page. Instead, make sure the file is in
-the gh-pages branch and use a local link, like ``../doc.pdf``, or the
-complete gh-pages URL to the file, say
-
-.. code-block:: text
-
-
-        http://user.github.com/My-Project/doc/misc/doc.pdf
-
-
-
-.. admonition:: Tip
-
-   The ordinary GitHub URL of image files can be used
-   in web pages to insert images from your repo, provided the image files
-   are in the *raw* format - click the *Raw* button when viewing a file at
-   ``github.com`` and use the corresponding URL in the ``img`` tag in
-   the HTML code.
-
-
-User web pages  (2)
--------------------
-
-
-GitHub also allows you to create user pages and organization pages not
-tied to any specific project.
-Your personal site has address
-``http://user.github.com``.
-Go to your home page on ``github.com`` and click *New repository*,
-and give it the project name ``user.github.com``.
-Then follow the instructions that come up:
 
 .. code-block:: console
 
-        Terminal> mkdir user.github.com
-        Terminal> cd user.github.com
-        Terminal> git init
-        Terminal> # make an index.html file with some test text
-        Terminal> git add index.html
-        Terminal> git commit -m 'First commit'
-        Terminal> git remote add origin \
-                  git@github.com:user/user.github.com.git
-        Terminal> git push -u origin master
+        Terminal> git fetch origin
 
-Go to ``http://user.github.com`` and see how the ``index.html`` is
-rendered. You can now add various contents as in any ordinary
-Git repository.
-If you want to use Sphinx generated HTML pages, recall to add an empty file
-``.nojekyll``.
+You now have the possibility to check out in detail what the differences
+are between the new files and local ones:
 
 
+.. code-block:: console
 
-.. Use gh-pages in a subdirectory of the master branch: `<https://gist.github.com/825950>`_
+        Terminal> git diff origin/master
+
+This command produces comparisons of the files in the current local branch
+and the ``master`` branch at ``origin`` (the GitHub repo).
+In this way you can exactly see the differences between branches.
+It also gives you an overview of what others have done with
+the files.
+When you are ready to merge in the new files from the ``master`` branch
+of ``origin`` with the files in the current local branch, you say
 
 
+.. code-block:: console
+
+        Terminal> git merge origin/master
+
+
+Configuring the ``git diff`` command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``git diff`` command launches by default the
+Unix ``diff`` tool in the terminal window.
+Many users prefer to use other diff tools, and the desired one
+can be specified in
+your ``~/.gitconfig`` file. However, a much recommended approach is to
+wrap a shell script around the call to the diff program, because
+``git diff`` actually calls the diff program with a series of
+command-line arguments that will confuse diff programs that take
+the names of the two files to be compared as arguments.
+In ``~/.gitconfig`` you specify a script to do the diff:
+
+
+.. code-block:: text
+
+
+        [diff]
+        external = ~/bin/git-diff-wrapper.sh
+
+It remains to write the ``git-diff-wrapper.sh`` script.
+The  2nd and 5th command-line arguments passed to this script are the
+name of the files to be compared in the diff. A typical script may
+therefore look like
+
+
+.. code-block:: bash
+
+        #!/bin/sh
+        
+        diff "$2" "$5" | less
+
+Here we use the standard (and quite primitive) Unix ``diff`` program,
+but we can replace ``diff`` by, e.g., ``diffuse``, ``kdiff3``, ``xxdiff``, ``meld``, ``pdiff``, or others. With a Python script you can easily check
+for the extensions of the files and use different diff tools for
+different types of files, e.g., ``latexdiff`` for LaTeX files
+and ``pdiff`` for pure text files.
+
+
+.. admonition:: Replacing all your files with those in the repo
+
+   Occasionally it becomes desirable to replace *all* files in
+   the local repo with those at the file hosting service.
+   One possibility is removing your repo and cloning again, or
+   use the Git commands
+   
+   
+   .. code-block:: console
+   
+           Terminal> git fetch --all
+           Terminal> git reset --hard origin/master
+
+
+.. _bitgit:git:team:
+
+Team work with forking and pull requests
+----------------------------------------
+
+
+.. index:: forking (a repo)
+
+
+.. index:: pull request
+
+
+.. index:: git fetch
+
+
+.. index:: git merge
+
+
+In small collaboration teams it is natural that everyone has push access
+to the repo. On GitHub this is known as the *Shared Repository Model*.
+As teams grow larger, there will usually be a few
+people in charge who should approve changes to the files. Ordinary team members
+will in this case not clone a repo and push changes, but instead
+*fork* the repo and send *pull requests*, which constitutes the
+*Fork and Pull Model*.
+
+Say you want to fork the repo ``https://github.com/somebody/proj1.git``.
+The first step is to press the *Fork* button on the project page for
+the ``somebody/proj1`` project on GitHub.
+This action creates a new repo ``proj1``, known as the forked repo,
+on your GitHub account.
+Clone the fork as you clone any repo:
+
+
+.. code-block:: console
+
+        Terminal> git clone https://github.com/user/proj1.git
+
+When you do ``git push origin master``, you update your fork.
+However, the original
+repo is usually under development too, and you need to pull from that
+one to stay up to date. A ``git pull origin master`` pulls from
+``origin`` which is your fork. To pull from the original repo, you
+create a name ``upstream``,
+
+
+.. code-block:: console
+
+        Terminal> git remote add upstream \
+                      https://github.com/somebody/proj1.git
+
+You can now do ``git pull upstream`` to get the most recent files in
+the original repo. However,
+it is not recommended to do a pull this way
+because heavy development of the ``sombody/proj1`` project may
+lead to serious merge problems.
+It is much better to replace the pull by a separate
+*fetch* and *merge*.
+The typical workflow is
+
+
+.. code-block:: console
+
+        Terminal> git fetch upstream           # get new version of files
+        Terminal> git merge upstream/master    # merge with yours
+        Terminal> # Your files are up to date - ready for editing
+        Terminal> git commit -am 'Description...'
+        Terminal> git push origin master       # store changes in your fork
+
+
+At some point you would like to push your changes back to the original
+repo ``somebody/proj1``. This is done by a `pull request <https://help.github.com/articles/using-pull-requests>`_. Make sure you
+have selected the right branch on the project page of your forked
+project. Press the *Pull Request* button and fill out the form that
+pops up.  Trusted people in the ``somebody/proj1`` project will now
+review your changes and if they are approved, your files are merged
+into the original repo. If not, there are tools for keeping a dialog
+about how to proceed.
+
+Also in small teams where everyone has push access, the fork and pull
+request model is beneficial for reviewing files before the repo
+is actually updated with new contributions.
+
+Git workflows
+-------------
+
+Although the purpose of these notes is just to get the reader started
+with Git, it must be mentioned that there are advanced features of Git
+that have led to very powerful workflows with files and people,
+especially for software development.  There is an official `Git
+workflow model <https://www.kernel.org/pub/software/scm/git/docs/gitworkflows.html>`_
+that outlines the basic principles, but it can be quite advanced for
+those with modest Git knowledge.  A more detailed explanation of a
+recommended workflow for beginners is given in the `developer
+instructions <https://bitbucket.org/petsc/petsc/wiki/developer-instructions-git>`_
+for the software package PETSc. This is highly suggested reading.  The
+associated "quick summary" of Git commands for their workflow is also
+useful.
+
+
+More documentation on Git
+-------------------------
+
+ * `Web course on Git <http://try.github.com/>`_
+
+ * `Everyday GIT With 20 Commands Or So <http://schacon.github.com/git/everyday.html>`_
+
+ * `Git top 10 tutorials <http://sixrevisions.com/resources/git-tutorials-beginners/>`_
+
+ * `Lars Vogel's Git Tutorial <http://www.vogella.com/articles/Git/article.html>`_
+
+ * `Git Community Book <http://book.git-scm.com/>`_ (*explains* Git very well)
+
+ * `Git for Designers <http://hoth.entp.com/output/git_for_designers.html>`_ (aimed a people with no previous knowledge of version control systems)
+
+ * `Git Magic: Basic Tricks <http://www-cs-students.stanford.edu/~blynn/gitmagic/ch02.html>`_
+
+ * The official `Git Tutorial <http://schacon.github.com/git/gittutorial.html>`_
+
+ * `Git Tutorial Video <http://www.youtube.com/watch?v=TPY8UwlTIc0&feature=related>`_ on YouTube
+
+ * `Git Questions <http://wiki.sourcemage.org/Git_Guide>`_
+
+ * `Git Reference <http://gitref.org>`_ (can also be used as a tutorial on Git)
+
+ * `Git User Manual <http://schacon.github.com/git/user-manual.html>`_
+
+ * `Git home page <http://git-scm.com/>`_
+
+ * `Git/GitHub GUIs on Windows and Mac <http://git-scm.com/downloads/guis>`_
 
