@@ -48,7 +48,7 @@ Automatically generated HTML file from Doconce source
              width: 75%;
      }
      .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
      .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
@@ -143,7 +143,7 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory,</b></center>
 <center>[2] <b>Deptartment of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Aug 13, 2013</h4></center> <!-- date -->
+<center><h4>Aug 21, 2013</h4></center> <!-- date -->
 <p>
 <a name="bitgit:top"></a>
 
@@ -268,10 +268,11 @@ is some very personal advice.
    while the procedure on GitHub is technically more complicated
    (Bitbucket does not yet support web pages as part of a project).
    Unfortunately, Googlecode does not allow MathJax for rendering
-   LaTeX mathematics in HTML files.</li>
+   LaTeX mathematics in HTML files, but MathJax works well in
+   HTML files at GitHub.</li>
  <li> If a few collaborate on a project and everyone wants to be notified
-   in email about changes in project files, Bitbucket and Googlecode have
-   better support for this feature than GitHub.</li>
+   in email about changes in project files, the procedure on
+   Bitbucket and Googlecode is easier to use than the one on GitHub.</li>
 </ul>
 
 For the examples below, assume that you have some directory tree
@@ -397,8 +398,8 @@ You can now
  <li> decide whether the project is private or public (the number of
    private repos is unlimited for yourself, but you have to pay to
    invite more than five users in total to share your private repos
-   unless you are certified to be a student or work at an academic
-   institution),</li>
+   unless you are <a href="http://blog.bitbucket.org/2012/08/20/bitbucket-academic/">certified to be a student or work at an academic
+   institution</a>),</li>
  <li> choose between the Git or Mercurial version control system
    (here we assume you run Git),</li>
  <li> click whether you want issue tracking for reporting errors,
@@ -667,7 +668,7 @@ appears.
 
 <p>
 Googlecode applies their own Google wiki format. My preference is
-to write documentation in the neutral <a href="http://code.google.com/p/doconce">Doconce</a> format and transform the document to LaTeX, HTML, Sphinx, and Google wiki.
+to write documentation in the neutral <a href="https://github.com/hplgit/doconce">Doconce</a> format and transform the document to LaTeX, HTML, Sphinx, and Google wiki.
 The wiki can then be copied from the project directories to the
 wiki directory and then pushed to the repository. This ensures
 that there is only one source of the documentation (despite the need
@@ -757,9 +758,10 @@ then click on <em>Collaborators</em> on the left, and fill in the name
 of a collaborator (her or his username on GitHub).
 Many find it convenient to be notified in email when others have
 pushed a new version of the files to the repo. Click on <em>Service Hooks</em>
-(in the project's <em>Settings</em> menu), choose <em>Email</em>, fill in
-at most two whitespace-separated email addresses, and mark the
-<em>Active</em> box. More addresses must be dealt with through a mailing list
+in the project's <em>Settings</em> menu, choose <em>Email</em>, fill in
+at most two whitespace-separated email addresses, mark the
+<em>Send from Author</em> and <em>Active</em> boxes, and click on <em>Update Settings</em>.
+More addresses must be dealt with through a <a href="http://stackoverflow.com/questions/7015300/receiving-emails-on-git-push">mailing list</a>
 and filling in the name of that list.
 
 <p>
