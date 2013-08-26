@@ -1,0 +1,147 @@
+.. Automatically generated reST file from Doconce source
+   (https://github.com/hplgit/doconce/)
+
+Quick Intro to Version Control Systems and Project Hosting Services
+===================================================================
+
+:Author: Hans Petter Langtangen
+:Date: Aug 21, 2013
+
+Introduction
+============
+
+Version control systems allow you to record the history of files
+and share files among several computers and collaborators in a
+professional way. Especially when working
+with software development or technical reports it is essential
+to have changes documented and to
+ensure that every computer and person involved in the project
+have the latest updates of the files.
+Greg Wilson's excellent `Script for Introduction to Version Control <http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/>`_ provides a more detailed motivation why you will benefit greatly
+from using version control systems.
+
+Projects that you want to share among several computers or project
+workers are today most conveniently stored at some web site "in the
+cloud" and updated through communication with that site. I strongly
+recommend you to use such sites for all serious programming and
+scientific writing work -- and all other important files.
+
+Why not Dropbox or Google Drive?
+--------------------------------
+
+The simplest services for hosting project files are `Dropbox <http://dropbox.com>`_ and `Google Drive <http://drive.google.com>`_.
+It is very easy to get started with these systems, and they allow you
+to share files among laptops and mobile units with as many users as
+you want. The systems offer a kind of version control in that the
+files are stored frequently (several times per minute), and you can go
+back to previous versions for the last 30 days. However, it is
+challenging  to find the right version from the past when there are
+so many of them and when different versions are not annotated with
+sensible comments.
+
+More seriously, when several people may edit files simultaneously, it
+can be difficult detect who did what when, roll back to previous
+versions, and to manually merge the edits when these are
+incompatible. Then one needs more sophisticated tools than Dropbox or
+Google Drive: project hosting services with true version control
+systems.  The following text aims at providing you with the minimum
+information to started with such systems. Numerous other tutorials
+contain more comprehensive material and in-depth explanations of the
+concepts and tools.
+
+
+.. admonition:: Essence
+
+   The essence with project hosting services is that you have the files
+   associated with a project in the cloud. Many people may share these
+   files.  Every time you want to work on the project you explicitly
+   update your version of the files, edit the files as you like, and
+   synchronize the files with the "master version" at the site where the
+   project is hosted.  If you at some point need to go back to a
+   version of the files at some particular point in the past,
+   this is an easy operation. You can also use tools to see
+   what various people have done with the files in the various versions.
+
+
+Project hosting services
+------------------------
+
+Four popular project hosting services are
+
+  * `Bitbucket <http://bigbucket.org>`_ at ``bitbucket.org``
+
+  * `GitHub <http://github.com>`_ at ``github.com``
+
+  * `Googlecode <http://code.google.com>`_ at ``code.google.com``
+
+  * `Launchpad <https://launchpad.net>`_ at ``launchpad.net``
+
+  * `Sourceforge <http://sourceforge.net/>`_ at ``sourceforge.net``
+
+All these services are very similar. Below we describe how you get
+started with Bitbucket, GitHub, and Googlecode. Launchpad works very
+similarly to the latter three. All the project hosting services have
+excellent introductions available at their web sites, but the recipes
+below are much shorter and aim at getting you started as quickly as
+possible by concentrating on the most important need-to-know steps.
+
+.. The Git tutorials we refer to later in this document contain more
+
+.. detailed information and constitute of course very valuable readings
+
+.. when you use version control systems every day. The point now is
+
+.. to get started.
+
+
+Repositories and local copies
+-----------------------------
+
+The mentioned services host all your files in a specific project in what
+is known as a *repository*, or *repo* for short.  When a copy of the
+files are wanted on a certain computer, one clones the repository on
+that computer.  This creates a local copy of the files. Now files can
+be edited, new ones can be added, and files can be deleted.  These
+changes are then brought back to the repository.  If users at
+different computers synchronize their files frequently with the
+repository, most modern version control systems will be able to merge
+changes in files that have been edited simultaneously on different
+computers. This is perhaps one of the most useful features of project
+hosting services. However, the merge functionality clearly works best
+for pure text files and less well for binary files, such as PDF files,
+MS Word or Excel documents, and OpenOffice documents.
+
+What to choose?
+---------------
+
+It might seem challenging to pick the project hosting service
+and the version control system that are right for you. Below
+is some very personal advice.
+
+ * I would recommend Git as the default choice of version control system.
+
+ * If you need private repos and you are not a student, choose
+   Bitbucket unless you are willing to pay for private repos at GitHub.
+
+ * If you want to make links to your programs in documentation,
+   stay away from Bitbucket as this site embeds the version of the
+   file into its URL (but you can get around this problem with a trick
+   described in the section :ref:`bitgit:bitbucket:URLs`).
+
+ * If you want to easily drop HTML files for documentation around in
+   your repo, Googlecode will display them as web pages right away,
+   while the procedure on GitHub is technically more complicated
+   (Bitbucket does not yet support web pages as part of a project).
+   Unfortunately, Googlecode does not allow MathJax for rendering
+   LaTeX mathematics in HTML files, but MathJax works well in
+   HTML files at GitHub.
+
+ * If a few collaborate on a project and everyone wants to be notified
+   in email about changes in project files, the procedure on
+   Bitbucket and Googlecode is easier to use than the one on GitHub.
+
+For the examples below, assume that you have some directory tree
+``my-project`` with files that you want to host at Bitbucket, GitHub, or
+Googlecode and bring under version control. The official name of the
+project is "My Project".
+
