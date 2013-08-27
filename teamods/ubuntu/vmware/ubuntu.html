@@ -1,8 +1,28 @@
 
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Installing Ubuntu on Windows and Mac Computers ',
+               1,
+               None,
+               '___sec0'),
+              (' Quick links for the impatient ', 2, None, '___sec1'),
+              (' Why Ubuntu? ', 2, None, '___sec2'),
+              (' How to run Ubuntu ', 2, None, '___sec3'),
+              (' Dual boot ', 2, None, '___sec4'),
+              (' Virtual machines ', 2, None, '___sec5'),
+              (' Installation instructions for VMWare Fusion ',
+               2,
+               None,
+               '___sec6')]}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
 <h2>Installing Ubuntu on Windows and Mac Computers  <a name="___sec0"></a></h2>
-<p>
 
 <h3>Quick links for the impatient  <a name="___sec1"></a></h3>
+
 <p>
 
 <ul>
@@ -11,9 +31,19 @@
  <li> <a href="setting_up_ubuntu.html">Customize Ubuntu and install packages</a></li>
 </ul>
 
-<h3>Why Ubuntu?  <a name="___sec2"></a></h3>
+Other resources:
+
 <p>
-<b>Unix, Linux, Debian, Ubuntu.</b> <a href="http://en.wikipedia.org/wiki/Unix">Unix</a>
+
+<ul>
+ <li> <a href="http://www.wikihow.com/Install-VMware-and-Use-VMware-to-Install-Ubuntu">How to install VMWare and use VMWare to install Ubuntu</a></li>
+</ul>
+
+<h3>Why Ubuntu?  <a name="___sec2"></a></h3>
+
+<p>
+<b>Unix, Linux, Debian, Ubuntu.</b>
+<a href="http://en.wikipedia.org/wiki/Unix">Unix</a>
 is an operating system originally developed in 1969. There
 have been many Unix implementations or "dialects" around, but during the
 last decade, the open source implementation called <em>Linux</em> emerged as the
@@ -26,19 +56,21 @@ therefore also Ubuntu, is that it comes with almost 30,000 packages
 containing all sorts of software.
 
 <p>
-<b>Easy installation of packages.</b> Ubuntu has recently become a very popular operating system
+<b>Easy installation of packages.</b>
+Ubuntu has recently become a very popular operating system
 for people working with numerical simulations, simply because
 the Debian repository of software is
 now by far the richest collection of mathematical software in
 ready-made compiled form for easy installation.
-Typically, a package <tt>X</tt>, and all the packages it depends on,
+Typically, a package <code>X</code>, and all the packages it depends on,
 can be installed
 by running a one-line command in a terminal window:
-<blockquote>    <!-- begin verbatim block  sys-->
-<pre>
-sudo apt-get install X
-</pre>
-</blockquote>   <! -- end verbatim block -->
+<p>
+
+<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install X
+</pre></div>
+<p>
 Mathematical software is often very complex and therefore potentially
 difficult to compile, link, and install. One package may also depend
 on a dozen of other packages. Getting all this to work is challenging.
@@ -50,19 +82,21 @@ none of these are as extensive and as regularly updated as
 Debian.
 
 <p>
-<b>Windows.</b> On Windows machines, software is usually installed by running an <tt>.exe</tt> file,
+<b>Windows.</b>
+On Windows machines, software is usually installed by running an <code>.exe</code> file,
 which is very easy. However, each package must be installed
 separately, and two packages may depend on different versions of
 another package. This may easily cause trouble and is a reason to
 adopt Ubuntu.
 
 <p>
-<b>Mac.</b> On Mac, packages are packed in <tt>.dmg</tt> files which can be run to
+<b>Mac.</b>
+On Mac, packages are packed in <code>.dmg</code> files which can be run to
 install the software and its dependencies. Unfortunately, when working
 with mathematical software, one often has to combine packages for which
-there are <tt>.dmg</tt> files with other packages which must be manually
+there are <code>.dmg</code> files with other packages which must be manually
 built and installed.  Compiling and linking software on Mac, and
-getting it to work properly with packages installed via <tt>.dmg</tt> files,
+getting it to work properly with packages installed via <code>.dmg</code> files,
 quickly requires extensive experience with build
 processes on Mac systems.
 Unless you have such competence and know very well what
@@ -70,7 +104,8 @@ you are doing, we recommend using Ubuntu instead. Software
 installation on Ubuntu is just an order of magnitude easier.
 
 <p>
-<b>The user gets more power with Ubuntu.</b> Ubuntu offers a graphical working environment much like those on
+<b>The user gets more power with Ubuntu.</b>
+Ubuntu offers a graphical working environment much like those on
 Windows and Mac systems.  However, the real power of Unix-based
 systems is the terminal window where the user can issue commands to
 run applications and work with files and folders. Basic commands can
@@ -80,9 +115,8 @@ efficiency of computer work dramatically. Many software developers,
 scientists, and engineers feel much more productive with Unix commands
 than in graphical environments with much tedious clicking.
 
-<p>
-
 <h3>How to run Ubuntu  <a name="___sec3"></a></h3>
+
 <p>
 Given a standard Windows or Mac computer, there are two ways of running
 Ubuntu:
@@ -101,9 +135,8 @@ parallel with your original operating system requires quite some
 memory and computing resources, but this is usually a minor issue on
 today's laptops.
 
-<p>
-
 <h3>Dual boot  <a name="___sec4"></a></h3>
+
 <p>
 Dual boot means that you have two operating systems on your computer, and
 you decide when you start the machine which system to use.
@@ -112,9 +145,8 @@ boot fashion using the tool <a href="https://help.ubuntu.com/community/Wubi">Wub
 On a Mac we recommend to run Ubuntu (and in addition perhaps Windows) in
 a virtual machine.
 
-<p>
-
 <h3>Virtual machines  <a name="___sec5"></a></h3>
+
 <p>
 A virtual machine runs another operating system (i.e., another "machine")
 in a separate window in your Mac OS X or Windows 7 operating system.
@@ -132,9 +164,8 @@ The cost of the latter is at the level of a textbook in science and is
 our product of choice since it is known to minimize hardware integration
 problems among the three mentioned products.
 
-<p>
-
 <h3>Installation instructions for VMWare Fusion  <a name="___sec6"></a></h3>
+
 <p>
 We have created step-by-step instructions for how to get VMWare Fusion
 and Ubuntu on your Windows or Mac computer:
@@ -148,4 +179,6 @@ and Ubuntu on your Windows or Mac computer:
 
 When Ubuntu is up and going it is time to <a href="setting_up_ubuntu.html">customize Ubuntu and install
 packages</a>.
+
+<!-- ------------------- end of main content --------------- -->
 

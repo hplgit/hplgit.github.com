@@ -1,20 +1,22 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="How To Install VMWare Fusion with Ubuntu on a Mac">
 
-<!--
-Color definitions:  http://www.december.com/html/spec/color0.html
-CSS examples:       http://www.w3schools.com/css/css_examples.asp
--->
+
 
 <style type="text/css">
+    /* blueish style */
+
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
     body {
       margin-top: 1.0em;
       background-color: #ffffff;
@@ -26,7 +28,7 @@ CSS examples:       http://www.w3schools.com/css/css_examples.asp
     h3 { color: #1e36ce; }
     a { color: #1e36ce; text-decoration:none; }
     tt { font-family: "Courier New", Courier; }
-    pre { background: #ededed; color: #000; padding: 15px;}
+    
     p { text-indent: 0px; }
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -34,33 +36,37 @@ CSS examples:       http://www.w3schools.com/css/css_examples.asp
 
 </style>
 
-<!-- Use MathJax to render mathematics -->
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {
-     equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
-  }
-});
-</script>
-<script type="text/javascript"
- src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 </head>
 
-<body>
-    
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Installation of VMWare Fusion ', 1, None, '___sec0'),
+              (' Installation of Ubuntu ', 1, None, '___sec1'),
+              (' High-performance computing ', 1, None, '___sec2'),
+              (' Configuring Ubuntu ', 1, None, '___sec3'),
+              (' The next step: install software and use Unix ',
+               1,
+               None,
+               '___sec4'),
+              (' Troubleshooting ', 1, None, '___sec5'),
+              (' Installing customized Ubuntu (no Easy Install) ',
+               1,
+               None,
+               '___sec6')]}
+end of tocinfo -->
 
-<!-- ------------------- main content ------------------------>
+<body>
+
+    
+<!-- ------------------- main content ---------------------- -->
+
 
 <title>How To Install VMWare Fusion with Ubuntu on a Mac</title>
 
-<center><h1>How To Install VMWare Fusion with Ubuntu on a Mac</h1></center>  <! -- document title -->
+<center><h1>How To Install VMWare Fusion with Ubuntu on a Mac</h1></center>  <!-- document title -->
 
-<! -- author(s) -->
+<p>
+<!-- author(s): Eirik Didriksen, and Hans Petter Langtangen -->
 
 <center>
 <b>Eirik Didriksen</b> [1]
@@ -76,22 +82,19 @@ MathJax.Hub.Config({
 
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo</b></center>
-
-
-<center><h4>Nov 24, 2012</h4></center> <!-- date -->
 <p>
+<center><h4>Aug 27, 2013</h4></center> <!-- date -->
 
 <h2>Installation of VMWare Fusion  <a name="___sec0"></a></h2>
+
 <p>
 Buy <a href="http://www.vmware.com/products/fusion/overview.html">VMWare Fusion</a>, download, and
 install (write the serial number during installation).  To get quickly
 started, you download a trial version for free and later buy it and
 register the serial number (easy).
 
-<p>
-
-
 <h2>Installation of Ubuntu  <a name="___sec1"></a></h2>
+
 <p>
 Go to
 <a href="http://www.ubuntu.com/desktop/get-ubuntu/download"><tt>http://www.ubuntu.com/desktop/get-ubuntu/download</tt></a>
@@ -99,67 +102,64 @@ and choose the latest 64-bit version. Save the downloaded Ubuntu
 file at some place you can recognize later.
 
 <p>
-Launch VMWare Fusion. You should get a window like this:
+Launch VMWare Fusion. You may get a window like this:
 
 <p>
-
-<center> <! -- figure -->
+<center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 1:  Choose <em>Install Windows or another operating system in a new virtual machine</em>. </p></center>
-<p><img src="figs/vmware.png" align="bottom" width=600></p>
+<p><img src="fig-vmware/vmware.png" align="bottom" width=600></p>
 </center>
 
 <p>
+If you do not see this window, try to find a <em>New</em> button and click on it.
 
-
-<center> <! -- figure -->
+<p>
+<center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 2:  Choose <em>Continue without disc</em>. </p></center>
-<p><img src="figs/newvirtual.png" align="bottom" width=600></p>
+<p><img src="fig-vmware/newvirtual.png" align="bottom" width=600></p>
 </center>
 
 <p>
+In newer versions of VMWare, double click on <em>Disc or disc image</em> instead.
 
-<center> <! -- figure -->
+<p>
+<center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 3:  Choose <em>Use operating system installation disc image file</em> and find the file you downloaded from the Ubuntu web page. </p></center>
-<p><img src="figs/ubuntu_from_file.png" align="bottom" width=600></p>
+<p><img src="fig-vmware/ubuntu_from_file.png" align="bottom" width=600></p>
 </center>
 
 <p>
-
-<center> <! -- figure -->
+<center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 4:  Choose <em>Linux</em> and <em>Ubuntu 64-bit</em> </p></center>
-<p><img src="figs/linux64.png" align="bottom" width=600></p>
+<p><img src="fig-vmware/linux64.png" align="bottom" width=600></p>
 </center>
 
 <p>
-
-<center> <! -- figure -->
+<center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 5:  The simplest installation procedure makes use of the <em>Easy Install</em> feature. Fill in your name, desired account name, and password. Also click on <em>Make your home folder accessible to the virtual machine</em> as this feature makes it possible for Ubuntu and Mac to share files. Choose <em>Read and Write</em> so that Ubuntu is allowed to modify Mac files. </p></center>
-<p><img src="figs/easy_install.png" align="bottom" width=600></p>
+<p><img src="fig-vmware/easy_install.png" align="bottom" width=600></p>
 </center>
 
 <p>
-
 The user now will be asked to download VMWare Tools for Linux. Press
 download (and remember to be connected to the Internet while doing this).
 Note that this question is asked only the first time you install
 a Linux VMWare virtual machine.
 
 <p>
-
-<center> <! -- figure -->
+<center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 6:  Press <em>Download</em> (make sure you are connected to the Internet). This question is asked only the first time you install a Linux VMWare virtual machine. </p></center>
-<p><img src="figs/tools_download1.png" align="bottom" width=600></p>
+<p><img src="fig-vmware/tools_download1.png" align="bottom" width=600></p>
 </center>
 
 <p>
-
-<center><p><img src="figs/tools_download2.png" align="bottom" width=600></p></center>
+<center><p><img src="fig-vmware/tools_download2.png" align="bottom" width=600></p></center>
 
 <p>
 Now the default configuration of Ubuntu is shown, with 20 Gb disk space.
@@ -169,43 +169,36 @@ set (choose 2 Gb or more), as well as the number
 of processors, and the amount of disk space.
 
 <p>
-
-<center><p><img src="figs/settings.png" align="bottom" width=600></p></center>
+<center><p><img src="fig-vmware/settings.png" align="bottom" width=600></p></center>
 
 <p>
-
-<center> <! -- figure -->
+<center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 7:  Choose where you want to store the Ubuntu iso file on the Mac hard disk, and click <em>Save</em>. The Ubuntu iso file is a single file containing all of Ubuntu. In the example configuration above, this file is 20 Gb. Backing up this file with, e.g., Time Machine backs up your whole Ubuntu installation, i.e.,all of Ubuntu and all of your files on Ubuntu. </p></center>
-<p><img src="figs/store_iso.png" align="bottom" width=600></p>
+<p><img src="fig-vmware/store_iso.png" align="bottom" width=600></p>
 </center>
 
 <p>
-
-<center> <! -- figure -->
+<center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 8:  Ubuntu now starts in VMWare Fusion. Just let it work. When this process is finished, Ubuntu is installed and you can log on with the user and password given earlier. </p></center>
-<p><img src="figs/start.png" align="bottom" width=600></p>
+<p><img src="fig-vmware/start.png" align="bottom" width=600></p>
 </center>
 
 <p>
-
-<center> <! -- figure -->
+<center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 9:  You can have the Ubuntu window filling the whole screen (full screen view), or you can have it as a standard window side by side with the other windows in Mac OS X. </p></center>
-<p><img src="figs/ubuntu.png" align="bottom" width=600></p>
+<p><img src="fig-vmware/ubuntu.png" align="bottom" width=600></p>
 </center>
 
 <p>
-
 Recall to run <em>Update Manager</em> in Ubuntu to update the operating system.
 You find the <em>Update Manager</em> under the menu
 <em>System - Administration - Update Manager</em>.
 
-<p>
-
-
 <h2>High-performance computing  <a name="___sec2"></a></h2>
+
 <p>
 Multi-processor computers will normally let Ubuntu run on just one
 processor. The memory accessible from Ubuntu may also be (much)
@@ -228,12 +221,11 @@ Ubuntu.
 Choosing too small memory (less than 1Gb) can make Ubuntu run slowly
 when you have a web browser with many windows for instance.
 
-<p>
-
-
 <h2>Configuring Ubuntu  <a name="___sec3"></a></h2>
+
 <p>
-<b>Keyboard.</b> If your keyboard is Norwegian, you probably want to
+<b>Keyboard.</b>
+If your keyboard is Norwegian, you probably want to
 change from the default English/US keyboard in Ubuntu
 to Norwegian: <em>System - Preferences - Keyboard - Layouts - Add ... - Norway</em>.
 However, many prefer to do programming with an English/US keyboard and switch
@@ -243,165 +235,162 @@ a certain key combination, e.g., Ctrl-L + Shift-R toggles between
 English/US and Norwegian keyboards (very handy!).
 
 <p>
-<b>File Sharing.</b> You can find the Mac home folder under <tt>/mnt/hgfs</tt>
+<b>File Sharing.</b>
+You can find the Mac home folder under <code>/mnt/hgfs</code>
 on Ubuntu. Usually, you want to make a link with a more memorable name,
 e.g.,
-<blockquote>    <!-- begin verbatim block -->
-<pre>
-Linux&gt; ln -s /mnt/hgfs $HOME/Mac-files
-</pre>
-</blockquote>   <! -- end verbatim block -->
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Linux&gt; ln -s /mnt/hgfs $HOME/Mac-files
+</pre></div>
+<p>
 If you like to use the <em>Places</em> dropdown menu in Ubuntu for finding files,
 you can choose <em>Computer</em>, then <em>File System</em>, click <em>mnt</em>, and finally
 drag <em>hgfs</em> to the list of places in the left part of the window.
 Then you have easy access to your Mac files from the <em>Places</em> menu.
 
 <p>
-<b>Copying text and files.</b> Files can be copied or moved between the Mac
+<b>Copying text and files.</b>
+Files can be copied or moved between the Mac
 and the Ubuntu machine. Text can also be copied. We refer to the
 <a href="http://pubs.vmware.com/fusion-4/index.jsp?topic=/com.vmware.fusion.help.doc/GUID-3C0EA5DA-98DD-4835-9C84-354472B25303.html&resultof=%22%63%6f%70%79%22%20%22%63%6f%70%69%22%20">VMWare documentation</a> for more information.
 
 <p>
-<b>Updating Ubuntu.</b> See
+<b>Updating Ubuntu.</b>
+See
 <a href="http://www.ivankristianto.com/os/ubuntu/things-you-want-to-do-after-install-ubuntu-10-04-desktop-part-2/1237/"><tt>http://www.ivankristianto.com/os/ubuntu/things-you-want-to-do-after-install-ubuntu-10-04-desktop-part-2/1237/</tt></a>
 
-<p>
+<h2>The next step: install software and use Unix  <a name="___sec4"></a></h2>
 
-<h2>Troubleshooting  <a name="___sec4"></a></h2>
 <p>
-<b>Internet Does not Work in Ubuntu.</b> Invoke the VMWare Fusion menu <em>Virtual Machine - Settings - Network</em>
+When Ubuntu is up and going it is time to <a href="setting_up_ubuntu.html">customize Ubuntu and install
+packages</a>.
+
+<h2>Troubleshooting  <a name="___sec5"></a></h2>
+
+<p>
+<b>Internet Does not Work in Ubuntu.</b>
+Invoke the VMWare Fusion menu <em>Virtual Machine - Settings - Network</em>
 and test <em>Share the Mac's network connection</em> versus <em>Connect directly to
 the physical network (Bridged)</em>.
 
+<h2>Installing customized Ubuntu (no Easy Install)  <a name="___sec6"></a></h2>
+
 <p>
-
-
-<h2>Installing customized Ubuntu (no Easy Install)  <a name="___sec5"></a></h2>
-<p>
-
-<center> <! -- figure -->
+<center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 10:  Choose <em>Install Windows or ...</em>. </p></center>
-<p><img src="figs/vmware2.png" align="bottom" width=600></p>
+<p><img src="fig-vmware/vmware2.png" align="bottom" width=600></p>
 </center>
 
 <p>
-
-<center> <! -- figure -->
+<center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 11:  Choose <em>Continue without disc</em>. </p></center>
-<p><img src="figs/newvirtual.png" align="bottom" width=600></p>
+<p><img src="fig-vmware/newvirtual.png" align="bottom" width=600></p>
 </center>
 
 <p>
-
-<center> <! -- figure -->
+<center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 12:  Choose <em>Create a custom virtual machine</em>. </p></center>
-<p><img src="figs/custom_vm2.png" align="bottom" width=600></p>
+<p><img src="fig-vmware/custom_vm2.png" align="bottom" width=600></p>
 </center>
 
 <p>
-
-<center> <! -- figure -->
+<center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 13:  Choose <em>Linux</em> and <em>Ubuntu 64-bit</em>. </p></center>
-<p><img src="figs/linux64.png" align="bottom" width=600></p>
+<p><img src="fig-vmware/linux64.png" align="bottom" width=600></p>
 </center>
 
 <p>
-
-<center> <! -- figure -->
+<center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 14:  Decide where to store the iso file (see above for explanation of what this file is). </p></center>
-<p><img src="figs/store_iso.png" align="bottom" width=600></p>
+<p><img src="fig-vmware/store_iso.png" align="bottom" width=600></p>
 </center>
 
 <p>
-
-<center> <! -- figure -->
+<center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 15:  Go to the <em>Settings</em> window (Command-E) and choose <em>Hard Disks</em> to specify the disc space in the virtual machine. </p></center>
-<p><img src="figs/rebuilding_virtual_disk.png" align="bottom" width=600></p>
+<p><img src="fig-vmware/rebuilding_virtual_disk.png" align="bottom" width=600></p>
 </center>
 
 <p>
-
-<center> <! -- figure -->
+<center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 16:  Choose the space you want. </p></center>
-<p><img src="figs/settings.png" align="bottom" width=600></p>
+<p><img src="fig-vmware/settings.png" align="bottom" width=600></p>
 </center>
 
 <p>
-
-<center> <! -- figure -->
+<center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 17:  Install Ubuntu from image file. </p></center>
-<p><img src="figs/settings_hard_disk.png" align="bottom" width=600></p>
+<p><img src="fig-vmware/settings_hard_disk.png" align="bottom" width=600></p>
 </center>
 
 <p>
-
-<center> <! -- figure -->
+<center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 18:  Start the virtual machine. </p></center>
-<p><img src="figs/settings_dvd.png" align="bottom" width=600></p>
+<p><img src="fig-vmware/settings_dvd.png" align="bottom" width=600></p>
 </center>
 
 <p>
-
-<center><p><img src="figs/ubuntu1.png" align="bottom" width=600></p></center>
-
-<p>
-<center><p><img src="figs/ubuntu2.png" align="bottom" width=600></p></center>
+<center><p><img src="fig-vmware/ubuntu1.png" align="bottom" width=600></p></center>
 
 <p>
-<center><p><img src="figs/ubuntu3.png" align="bottom" width=600></p></center>
+<center><p><img src="fig-vmware/ubuntu2.png" align="bottom" width=600></p></center>
 
 <p>
-<center><p><img src="figs/ubuntu4.png" align="bottom" width=600></p></center>
+<center><p><img src="fig-vmware/ubuntu3.png" align="bottom" width=600></p></center>
 
 <p>
-<center><p><img src="figs/ubuntu5.png" align="bottom" width=600></p></center>
+<center><p><img src="fig-vmware/ubuntu4.png" align="bottom" width=600></p></center>
 
 <p>
-<center><p><img src="figs/ubuntu6.png" align="bottom" width=600></p></center>
+<center><p><img src="fig-vmware/ubuntu5.png" align="bottom" width=600></p></center>
 
 <p>
-<center><p><img src="figs/ubuntu7.png" align="bottom" width=600></p></center>
+<center><p><img src="fig-vmware/ubuntu6.png" align="bottom" width=600></p></center>
 
 <p>
-<center><p><img src="figs/ubuntu8.png" align="bottom" width=600></p></center>
+<center><p><img src="fig-vmware/ubuntu7.png" align="bottom" width=600></p></center>
 
 <p>
-<center><p><img src="figs/ubuntu9.png" align="bottom" width=600></p></center>
+<center><p><img src="fig-vmware/ubuntu8.png" align="bottom" width=600></p></center>
 
 <p>
+<center><p><img src="fig-vmware/ubuntu9.png" align="bottom" width=600></p></center>
 
-<center> <! -- figure -->
+<p>
+<center> <!-- figure -->
 <hr class="figure">
 <center><p class="caption">Figure 19:  The user now will be asked to download VMWare Tools for Linux. Choose <em>Download</em> (and remember to be connected to the Internet while doing this). Note that this question is asked only the first time you install a Linux VMWare virtual machine. </p></center>
-<p><img src="figs/tools_download1.png" align="bottom" width=600></p>
+<p><img src="fig-vmware/tools_download1.png" align="bottom" width=600></p>
 </center>
 
 <p>
-
-<center> <! -- figure -->
+<center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 20:  Copy the tools directory to some place on the Ubuntu file system and run the Perl script <tt>vmware-install.pl</tt>. </p></center>
-<p><img src="figs/tools_download2.png" align="bottom" width=600></p>
+<center><p class="caption">Figure 20:  Copy the tools directory to some place on the Ubuntu file system and run the Perl script <code>vmware-install.pl</code>. </p></center>
+<p><img src="fig-vmware/tools_download2.png" align="bottom" width=600></p>
 </center>
 
 <p>
-
-<center><p><img src="figs/install_vmtools2.png" align="bottom" width=600></p></center>
+<center><p><img src="fig-vmware/install_vmtools2.png" align="bottom" width=600></p></center>
 
 <p>
 Go to Settings (Command-E) and turn off shared directories, then turn on (again)
 the desired shared directories.
 
-<!-- ------------------- end of main content ----------------->
+<!-- ------------------- end of main content --------------- -->
+
+
 </body>
 </html>
     
