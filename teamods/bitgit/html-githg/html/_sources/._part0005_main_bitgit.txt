@@ -68,14 +68,16 @@ You may want to do ``git fetch`` and ``git merge`` instead
 of ``git pull`` as explained in the section :ref:`bitgit:git:fetch`,
 especially if you work with branches.
 
-You can now edit files, add new files, delete files, or rename files.
-Typical commands are
+You can now edit files, make new files, and make new directories.
+New files and directories must be added with ``git add``.
+There are also Git commands for deleting, renaming, and moving
+files. Typical examples on these Git commands are
 
 .. code-block:: console
 
-        Terminal> git add file1 file2.* dir1 dir2
-        Terminal> git rm filename
-        Terminal> git rm -r dirname
+        Terminal> git add file2.* dir1 dir2  # add files and directories
+        Terminal> git rm file3
+        Terminal> git rm -r dir2
         Terminal> git mv oldname newname
         Terminal> git mv oldname ../newdir
 

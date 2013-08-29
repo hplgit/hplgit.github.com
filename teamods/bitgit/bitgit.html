@@ -143,7 +143,7 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory,</b></center>
 <center>[2] <b>Deptartment of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Aug 21, 2013</h4></center> <!-- date -->
+<center><h4>Aug 29, 2013</h4></center> <!-- date -->
 <p>
 <a name="bitgit:top"></a>
 
@@ -1110,14 +1110,16 @@ of <code>git pull</code> as explained in the section <a href="#bitgit:git:fetch"
 especially if you work with branches.
 
 <p>
-You can now edit files, add new files, delete files, or rename files.
-Typical commands are
+You can now edit files, make new files, and make new directories.
+New files and directories must be added with <code>git add</code>.
+There are also Git commands for deleting, renaming, and moving
+files. Typical examples on these Git commands are
 <p>
 
 <!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git add file1 file2.* dir1 dir2
-Terminal&gt; git rm filename
-Terminal&gt; git rm -r dirname
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git add file2.* dir1 dir2  <span style="color: #408080; font-style: italic"># add files and directories</span>
+Terminal&gt; git rm file3
+Terminal&gt; git rm -r dir2
 Terminal&gt; git mv oldname newname
 Terminal&gt; git mv oldname ../newdir
 </pre></div>

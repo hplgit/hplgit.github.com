@@ -66,7 +66,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 21, 2013</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 29, 2013</td>
 </tr>
 </tbody>
 </table>
@@ -903,11 +903,13 @@ and writing</p>
 <p>You may want to do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">fetch</span></tt> and <tt class="docutils literal"><span class="pre">git</span> <span class="pre">merge</span></tt> instead
 of <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> as explained in the section <a class="reference internal" href="#bitgit-git-fetch"><em>Replacing pull by fetch and merge</em></a>,
 especially if you work with branches.</p>
-<p>You can now edit files, add new files, delete files, or rename files.
-Typical commands are</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git add file1 file2.* dir1 dir2</span>
-<span class="go">Terminal&gt; git rm filename</span>
-<span class="go">Terminal&gt; git rm -r dirname</span>
+<p>You can now edit files, make new files, and make new directories.
+New files and directories must be added with <tt class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></tt>.
+There are also Git commands for deleting, renaming, and moving
+files. Typical examples on these Git commands are</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git add file2.* dir1 dir2  # add files and directories</span>
+<span class="go">Terminal&gt; git rm file3</span>
+<span class="go">Terminal&gt; git rm -r dir2</span>
 <span class="go">Terminal&gt; git mv oldname newname</span>
 <span class="go">Terminal&gt; git mv oldname ../newdir</span>
 </pre></div>
