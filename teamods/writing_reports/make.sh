@@ -1,6 +1,8 @@
 #!/bin/sh
-cp -r ~/vc/deqbook/doc/src/decay/src-decay/experiments/archived-reports/* .
+#source=~/vc/deqbook/doc/src/decay/src-decay/experiments/archived-reports/
+source=~/vc/deqbook/doc/src/archive/decay-reports
+cp -r $source/* .
 
 # update wiki with mediawiki
-cp -r ~/vc/deqbook/doc/src/decay/src-decay/experiments/archived-reports/_static/report.mwiki ~/vc/hplgit.github.com.wiki/Experiments-with-Schemes-for-Exponential-Decay.mediawiki
-cp -r ~/vc/deqbook/doc/src/decay/src-decay/experiments/archived-reports/_static/*.png ~/vc/hplgit.github.com.wiki/
+cp -r $source/_static/report.mwiki ~/vc/hplgit.github.com.wiki/Experiments-with-Schemes-for-Exponential-Decay.mediawiki
+cp -r $source/_static/*.png ~/vc/hplgit.github.com.wiki/
