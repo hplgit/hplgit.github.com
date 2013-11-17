@@ -115,7 +115,7 @@ using the Unix Shell Wildcard notation,
 the type of files that you do not need to have under version control,
 because they represent garbage or temporary information,
 or they can easily be regenerated from
-some other source files. A suggested <a class="reference external" href="http://hplgit.github.com/teamods/bitgit/_static-bitgit/.gitignore">.gitignore</a> file looks like</p>
+some other source files. A suggested <a class="reference external" href="http://hplgit.github.com/teamods/bitgit/src-bitgit/.gitignore">.gitignore</a> file looks like</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># compiled files:</span>
 <span class="o">*.</span><span class="n">o</span>
 <span class="o">*.</span><span class="n">so</span>
@@ -128,12 +128,19 @@ some other source files. A suggested <a class="reference external" href="http://
 <span class="o">*.</span><span class="n">old</span>
 <span class="n">tmp</span><span class="o">*</span>
 <span class="n">temp</span><span class="o">*</span>
+<span class="o">.</span><span class="c">#*</span>
+\<span class="c">#*</span>
 <span class="c"># tex files:</span>
 <span class="o">*.</span><span class="n">log</span>
 <span class="o">*.</span><span class="n">dvi</span>
 <span class="o">*.</span><span class="n">aux</span>
 <span class="o">*.</span><span class="n">blg</span>
 <span class="o">*.</span><span class="n">idx</span>
+<span class="o">*.</span><span class="n">nav</span>
+<span class="o">*.</span><span class="n">out</span>
+<span class="o">*.</span><span class="n">toc</span>
+<span class="o">*.</span><span class="n">snm</span>
+<span class="o">*.</span><span class="n">vrb</span>
 <span class="c"># eclipse files:</span>
 <span class="o">*.</span><span class="n">cproject</span>
 <span class="o">*.</span><span class="n">project</span>

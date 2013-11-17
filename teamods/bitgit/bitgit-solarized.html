@@ -115,6 +115,7 @@ Automatically generated HTML file from Doconce source
               (' The pull-change-push cycle ', 3, None, '___sec23'),
               (' Viewing the history of files ', 3, None, '___sec24'),
               (' Retrieving old files ', 3, None, '___sec25'),
+              (' Going back to the last commit ', 3, None, '___sec26'),
               (' Merging files with Git ',
                2,
                'bitgit:git:merge',
@@ -127,13 +128,13 @@ Automatically generated HTML file from Doconce source
                2,
                'bitgit:git:fetch',
                'bitgit:git:fetch'),
-              (' Configuring the `git diff` command ', 3, None, '___sec29'),
+              (' Configuring the `git diff` command ', 3, None, '___sec30'),
               (' Team work with forking and pull requests ',
                2,
                'bitgit:git:team',
                'bitgit:git:team'),
-              (' Git workflows ', 2, None, '___sec31'),
-              (' More documentation on Git ', 2, None, '___sec32'),
+              (' Git workflows ', 2, None, '___sec32'),
+              (' More documentation on Git ', 2, None, '___sec33'),
               (' Appendix: Working with multiple GitHub accounts ',
                1,
                'appendix:github:multiple:accounts',
@@ -164,7 +165,7 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory,</b></center>
 <center>[2] <b>Deptartment of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Aug 29, 2013</h4></center> <!-- date -->
+<center><h4>Nov 17, 2013</h4></center> <!-- date -->
 <p>
 <a name="bitgit:top"></a>
 
@@ -346,7 +347,7 @@ using the Unix Shell Wildcard notation,
 the type of files that you do not need to have under version control,
 because they represent garbage or temporary information,
 or they can easily be regenerated from
-some other source files. A suggested <a href="http://hplgit.github.com/teamods/bitgit/_static-bitgit/.gitignore"><tt>.gitignore</tt></a> file looks like
+some other source files. A suggested <a href="http://hplgit.github.com/teamods/bitgit/src-bitgit/.gitignore"><tt>.gitignore</tt></a> file looks like
 <p>
 
 <!-- code=text (from !bc dat) typeset with pygments style "perldoc" -->
@@ -362,12 +363,19 @@ some other source files. A suggested <a href="http://hplgit.github.com/teamods/b
 *.old
 tmp*
 temp*
+.#*
+\#*
 # tex files:
 *.log
 *.dvi
 *.aux
 *.blg
 *.idx
+*.nav
+*.out
+*.toc
+*.snm
+*.vrb
 # eclipse files:
 *.cproject
 *.project
@@ -1297,6 +1305,20 @@ it requires the full path from the root git directory:
           c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/f.py
 </pre></div>
 
+<h4>Going back to the last commit  <a name="___sec26"></a></h4>
+
+<p>
+Sometimes accidents with many files happen and you want to go back
+to the last commit. Find the hash of the last commit and do
+
+<p>
+
+<!-- code=bash (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git reset --hard c867c487763ec2
+</pre></div>
+<p>
+This command destroys <em>everything</em> you have done since the last commit.
+
 <h3>Merging files with Git <a name="bitgit:git:merge"></a></h3>
 
 <p>
@@ -1608,7 +1630,7 @@ of <code>origin</code> with the files in the current local branch, you say
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git merge origin/master
 </pre></div>
 
-<h4>Configuring the <code>git diff</code> command  <a name="___sec29"></a></h4>
+<h4>Configuring the <code>git diff</code> command  <a name="___sec30"></a></h4>
 
 <p>
 The <code>git diff</code> command launches by default the
@@ -1693,7 +1715,7 @@ However, the original
 repo is usually under development too, and you need to pull from that
 one to stay up to date. A <code>git pull origin master</code> pulls from
 <code>origin</code> which is your fork. To pull from the original repo, you
-create a name <code>upstream</code>,
+create a name <code>upstream</code>, either by
 
 <p>
 
@@ -1702,9 +1724,20 @@ create a name <code>upstream</code>,
               https://github.com/somebody/proj1.git
 </pre></div>
 <p>
-You can now do <code>git pull upstream</code> to get the most recent files in
+if you cloned with such an <code>https</code> address, or by
+
+<p>
+
+<!-- code=bash (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git remote add upstream <span style="color: #CD5555">\</span>
+              git@github.com:somebody/proj1.git
+</pre></div>
+<p>
+if you cloned with a <code>git@github.com</code> (SSH) address.
+Doing a <code>git pull upstream master</code> would seem to be the command for
+pulling the most recent files in
 the original repo. However,
-it is not recommended to do a pull this way
+it is not recommended to update the forked repo's files this way
 because heavy development of the <code>sombody/proj1</code> project may
 lead to serious merge problems.
 It is much better to replace the pull by a separate
@@ -1735,7 +1768,7 @@ Also in small teams where everyone has push access, the fork and pull
 request model is beneficial for reviewing files before the repo
 is actually updated with new contributions.
 
-<h3>Git workflows  <a name="___sec31"></a></h3>
+<h3>Git workflows  <a name="___sec32"></a></h3>
 
 <p>
 Although the purpose of these notes is just to get the reader started
@@ -1751,13 +1784,14 @@ for the software package PETSc. This is highly suggested reading.  The
 associated "quick summary" of Git commands for their workflow is also
 useful.
 
-<h3>More documentation on Git  <a name="___sec32"></a></h3>
+<h3>More documentation on Git  <a name="___sec33"></a></h3>
 
 <p>
 
 <ul>
  <li> <a href="http://try.github.com/">Web course on Git</a></li>
  <li> <a href="http://schacon.github.com/git/everyday.html">Everyday GIT With 20 Commands Or So</a></li>
+ <li> <a href="http://www.ndpsoftware.com/git-cheatsheet.html">Git cheat sheet</a></li>
  <li> <a href="http://sixrevisions.com/resources/git-tutorials-beginners/">Git top 10 tutorials</a></li>
  <li> <a href="http://www.vogella.com/articles/Git/article.html">Lars Vogel's Git Tutorial</a></li>
  <li> <a href="http://book.git-scm.com/">Git Community Book</a> (<em>explains</em> Git very well)</li>

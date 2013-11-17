@@ -89,7 +89,7 @@ and writing</p>
 </pre></div>
 </div>
 <p>You may want to do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">fetch</span></tt> and <tt class="docutils literal"><span class="pre">git</span> <span class="pre">merge</span></tt> instead
-of <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> as explained in the section <a class="reference internal" href="main_bitgit.html#bitgit-git-fetch"><em>Replacing pull by fetch and merge</em></a>,
+of <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> as explained in the section <a class="reference internal" href="#bitgit-git-fetch"><em>Replacing pull by fetch and merge</em></a>,
 especially if you work with branches.</p>
 <p>You can now edit files, make new files, and make new directories.
 New files and directories must be added with <tt class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></tt>.
@@ -122,7 +122,7 @@ you push your changes to the global repository:</p>
 clones of the repo (i.e., there are many users or you work with the
 repo on different
 computers). Infrequent push and pull easily leads to merge problems
-(see the section <a class="reference internal" href="main_bitgit.html#bitgit-git-merge"><em>Merging files with Git</em></a>). Also remember that others
+(see the section <a class="reference internal" href="#bitgit-git-merge"><em>Merging files with Git</em></a>). Also remember that others
 cannot get your changes before they are pushed.</p>
 <p id="index-8">To see the status of files, run</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git status -s</span>
@@ -186,7 +186,7 @@ present version to, copy the commit hash (string like
 </div>
 <p>where the long string is the relevant commit hash. You can now view the
 differences between the most recent version and the one in
-the commit you picked (see the section <a class="reference internal" href="main_bitgit.html#bitgit-git-fetch"><em>Replacing pull by fetch and merge</em></a> for how to
+the commit you picked (see the section <a class="reference internal" href="#bitgit-git-fetch"><em>Replacing pull by fetch and merge</em></a> for how to
 configure the tools used by the <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> command). If you want to restore the old file, write</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git checkout c7673487763ec2bb374758fb8e7efefa12f16dea f.py</span>
 </pre></div>
@@ -205,6 +205,15 @@ it requires the full path from the root git directory:</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="going-back-to-the-last-commit">
+<h3>Going back to the last commit<a class="headerlink" href="#going-back-to-the-last-commit" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes accidents with many files happen and you want to go back
+to the last commit. Find the hash of the last commit and do</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git reset --hard c867c487763ec2</span>
+</pre></div>
+</div>
+<p>This command destroys <em>everything</em> you have done since the last commit.</p>
+</div>
 </div>
 <div class="section" id="merging-files-with-git">
 <span id="bitgit-git-merge"></span><h2>Merging files with Git<a class="headerlink" href="#merging-files-with-git" title="Permalink to this headline">¶</a></h2>
@@ -212,7 +221,7 @@ it requires the full path from the root git directory:</p>
 tries to perform an automatic merge if there are conflicts between
 the local files and the files in the repository. Alternatively,
 you may run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">fetch</span></tt> and <tt class="docutils literal"><span class="pre">git</span> <span class="pre">merge</span></tt> to do the same
-thing as described in the section <a class="reference internal" href="main_bitgit.html#bitgit-git-fetch"><em>Replacing pull by fetch and merge</em></a>.
+thing as described in the section <a class="reference internal" href="#bitgit-git-fetch"><em>Replacing pull by fetch and merge</em></a>.
 We shall now address what do to if the merge goes wrong, which
 occasionally happens.</p>
 <p>Git will write a message in the terminal window
@@ -493,7 +502,7 @@ name of the files to be compared in the diff. A typical script may
 therefore look like</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
 
-diff <span class="s2">&quot;$2&quot;</span> <span class="s2">&quot;$5&quot;</span> | less
+diff <span class="s2">&quot;$2&quot;</span> <span class="s2">&quot;$5&quot;</span> <span class="p">|</span> less
 </pre></div>
 </div>
 <p>Here we use the standard (and quite primitive) Unix <tt class="docutils literal"><span class="pre">diff</span></tt> program,
@@ -537,14 +546,21 @@ However, the original
 repo is usually under development too, and you need to pull from that
 one to stay up to date. A <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">master</span></tt> pulls from
 <tt class="docutils literal"><span class="pre">origin</span></tt> which is your fork. To pull from the original repo, you
-create a name <tt class="docutils literal"><span class="pre">upstream</span></tt>,</p>
+create a name <tt class="docutils literal"><span class="pre">upstream</span></tt>, either by</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git remote add upstream \</span>
 <span class="go">              https://github.com/somebody/proj1.git</span>
 </pre></div>
 </div>
-<p>You can now do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">upstream</span></tt> to get the most recent files in
+<p>if you cloned with such an <tt class="docutils literal"><span class="pre">https</span></tt> address, or by</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git remote add upstream \</span>
+<span class="go">              git@github.com:somebody/proj1.git</span>
+</pre></div>
+</div>
+<p>if you cloned with a <tt class="docutils literal"><span class="pre">git&#64;github.com</span></tt> (SSH) address.
+Doing a <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">upstream</span> <span class="pre">master</span></tt> would seem to be the command for
+pulling the most recent files in
 the original repo. However,
-it is not recommended to do a pull this way
+it is not recommended to update the forked repo&#8217;s files this way
 because heavy development of the <tt class="docutils literal"><span class="pre">sombody/proj1</span></tt> project may
 lead to serious merge problems.
 It is much better to replace the pull by a separate
@@ -590,6 +606,7 @@ useful.</p>
 <div><ul class="simple">
 <li><a class="reference external" href="http://try.github.com/">Web course on Git</a></li>
 <li><a class="reference external" href="http://schacon.github.com/git/everyday.html">Everyday GIT With 20 Commands Or So</a></li>
+<li><a class="reference external" href="http://www.ndpsoftware.com/git-cheatsheet.html">Git cheat sheet</a></li>
 <li><a class="reference external" href="http://sixrevisions.com/resources/git-tutorials-beginners/">Git top 10 tutorials</a></li>
 <li><a class="reference external" href="http://www.vogella.com/articles/Git/article.html">Lars Vogel&#8217;s Git Tutorial</a></li>
 <li><a class="reference external" href="http://book.git-scm.com/">Git Community Book</a> (<em>explains</em> Git very well)</li>
@@ -621,6 +638,7 @@ useful.</p>
 <li><a class="reference internal" href="#the-pull-change-push-cycle">The pull-change-push cycle</a></li>
 <li><a class="reference internal" href="#viewing-the-history-of-files">Viewing the history of files</a></li>
 <li><a class="reference internal" href="#retrieving-old-files">Retrieving old files</a></li>
+<li><a class="reference internal" href="#going-back-to-the-last-commit">Going back to the last commit</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#merging-files-with-git">Merging files with Git</a></li>

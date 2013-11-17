@@ -5,7 +5,7 @@ Quick Intro to Version Control Systems and Project Hosting Services
 ===================================================================
 
 :Author: Hans Petter Langtangen
-:Date: Aug 29, 2013
+:Date: Nov 17, 2013
 
 Introduction
 ============
@@ -195,7 +195,7 @@ using the Unix Shell Wildcard notation,
 the type of files that you do not need to have under version control,
 because they represent garbage or temporary information,
 or they can easily be regenerated from
-some other source files. A suggested `.gitignore <http://hplgit.github.com/teamods/bitgit/_static-bitgit/.gitignore>`_ file looks like
+some other source files. A suggested `.gitignore <http://hplgit.github.com/teamods/bitgit/src-bitgit/.gitignore>`_ file looks like
 
 .. code-block:: python
 
@@ -211,12 +211,19 @@ some other source files. A suggested `.gitignore <http://hplgit.github.com/teamo
         *.old
         tmp*
         temp*
+        .#*
+        \#*
         # tex files:
         *.log
         *.dvi
         *.aux
         *.blg
         *.idx
+        *.nav
+        *.out
+        *.toc
+        *.snm
+        *.vrb
         # eclipse files:
         *.cproject
         *.project

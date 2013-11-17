@@ -234,6 +234,18 @@ it requires the full path from the root git directory:
                   c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/f.py
 
 
+Going back to the last commit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sometimes accidents with many files happen and you want to go back
+to the last commit. Find the hash of the last commit and do
+
+
+.. code-block:: console
+
+        Terminal> git reset --hard c867c487763ec2
+
+This command destroys *everything* you have done since the last commit.
 
 .. _bitgit:git:merge:
 
@@ -643,7 +655,7 @@ However, the original
 repo is usually under development too, and you need to pull from that
 one to stay up to date. A ``git pull origin master`` pulls from
 ``origin`` which is your fork. To pull from the original repo, you
-create a name ``upstream``,
+create a name ``upstream``, either by
 
 
 .. code-block:: console
@@ -651,9 +663,19 @@ create a name ``upstream``,
         Terminal> git remote add upstream \
                       https://github.com/somebody/proj1.git
 
-You can now do ``git pull upstream`` to get the most recent files in
+if you cloned with such an ``https`` address, or by
+
+
+.. code-block:: console
+
+        Terminal> git remote add upstream \
+                      git@github.com:somebody/proj1.git
+
+if you cloned with a ``git@github.com`` (SSH) address.
+Doing a ``git pull upstream master`` would seem to be the command for
+pulling the most recent files in
 the original repo. However,
-it is not recommended to do a pull this way
+it is not recommended to update the forked repo's files this way
 because heavy development of the ``sombody/proj1`` project may
 lead to serious merge problems.
 It is much better to replace the pull by a separate
@@ -706,6 +728,8 @@ More documentation on Git
  * `Web course on Git <http://try.github.com/>`_
 
  * `Everyday GIT With 20 Commands Or So <http://schacon.github.com/git/everyday.html>`_
+
+ * `Git cheat sheet <http://www.ndpsoftware.com/git-cheatsheet.html>`_
 
  * `Git top 10 tutorials <http://sixrevisions.com/resources/git-tutorials-beginners/>`_
 
