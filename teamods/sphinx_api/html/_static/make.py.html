@@ -4,7 +4,7 @@
 <html>
 <head>
   <title></title>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=latin1">
   <style type="text/css">
 td.linenos { background-color: #f0f0f0; padding-right: 10px; }
 span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
@@ -24,11 +24,11 @@ body .ge { font-style: italic } /* Generic.Emph */
 body .gr { color: #FF0000 } /* Generic.Error */
 body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
 body .gi { color: #00A000 } /* Generic.Inserted */
-body .go { color: #808080 } /* Generic.Output */
+body .go { color: #888888 } /* Generic.Output */
 body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
 body .gs { font-weight: bold } /* Generic.Strong */
 body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
-body .gt { color: #0040D0 } /* Generic.Traceback */
+body .gt { color: #0044DD } /* Generic.Traceback */
 body .kc { color: #AA22FF; font-weight: bold } /* Keyword.Constant */
 body .kd { color: #AA22FF; font-weight: bold } /* Keyword.Declaration */
 body .kn { color: #AA22FF; font-weight: bold } /* Keyword.Namespace */
@@ -78,16 +78,18 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <h2></h2>
 
 <div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
-<span class="c"># Make API documentation of Python modules using Sphinx.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This &#39;make.py&#39; script automates generation of API documentation</span>
+<span class="sd">of Python modules, using the tool Sphinx.</span>
 
+<span class="sd">The dictionary &#39;packages&#39;, to be defined below, holds the name of all</span>
+<span class="sd">Python modules and packages that are to be included in the</span>
+<span class="sd">documentation.  Keywords are package names (use . to separate names,</span>
+<span class="sd">as in the import statement), while the values are the list of modules</span>
+<span class="sd">in the (sub)package. An empty keyword means that there is no package,</span>
+<span class="sd">just a set of modules.</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">glob</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">shutil</span><span class="o">,</span> <span class="nn">commands</span>
-
-<span class="c"># The dict packages holds the name of all Python modules</span>
-<span class="c"># and packages that are to be included in the documentation.</span>
-<span class="c"># Keywords are package names (use . to separate names, as in</span>
-<span class="c"># the import statement), while the values are the list of</span>
-<span class="c"># modules in the (sub)package. An empty keyword means that</span>
-<span class="c"># there is no package, just a set of modules.</span>
 
 <span class="n">source_file_dirs</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">]</span>  <span class="c"># abs path or relative path</span>
 <span class="c"># Here we take all modules in source_file_dirs</span>

@@ -1,70 +1,140 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="How To Generate API Documentation with Sphinx">
+
+
+
+<style type="text/css">
+    /* blueish style */
+
+    /* Color definitions:  http://www.december.com/html/spec/color0.html
+       CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+    body {
+      margin-top: 1.0em;
+      background-color: #ffffff;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    h1 { font-size: 1.8em; color: #1e36ce; }
+    h2 { font-size: 1.6em; color: #1e36ce; }
+    h3 { font-size: 1.4em; color: #1e36ce; }
+    a { color: #1e36ce; text-decoration:none; }
+    tt { font-family: "Courier New", Courier; }
+    
+    p { text-indent: 0px; }
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-style: normal; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+</style>
+
 </head>
 
-<body bgcolor="white">
-    <title>How To Generate API Documentation with Sphinx</title>
-<center><h1>How To Generate API Documentation with Sphinx</h1></center>
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [(' Simple Formatting Rules ', 2, None, '___sec0'),
+              (' Mathematics ', 3, None, '___sec1'),
+              (' Code Snippets ', 3, None, '___sec2'),
+              (' How to Format Doc Strings ', 3, None, '___sec3'),
+              (' Running Sphinx ', 2, None, '___sec4'),
+              (' Make Sphinx Module Files ', 3, None, '___sec5'),
+              (' Create Sphinx Directory Tree ', 3, None, '___sec6'),
+              (' Make Index File ', 3, None, '___sec7'),
+              (' Edit the Configuration File ', 3, None, '___sec8'),
+              (' Compile the Sphinx Document ', 3, None, '___sec9'),
+              (' Doconce Doc String Format ', 2, None, '___sec10')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>How To Generate API Documentation with Sphinx</title>
+
+<center><h1>How To Generate API Documentation with Sphinx</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
 <center>
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
+
 <p>
-<center>[1] <b>Simula Research Laboratory</b></center>
-<center>[2] <b>University of Oslo</b></center>
+<!-- institution(s) -->
 
-
-<center><h3>May 2, 2012</h3></center>
-<P>
-
-<P>
-
-<P>
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<p>
+<center><h4>Nov 21, 2013</h4></center> <!-- date -->
+<p>
 The current standard tool for documenting Python software is
 Sphinx. This tool was created to support hand-written documentation
 files in the reStructuredText (reST) format, but Sphinx also supports
 automatic generation of module or package documentation based on
 parsing function headers and extracting doc strings. We refer to such
 documentation as <em>API documentation</em>. For an example, see the
-documentation of the <tt>numpy.polyfit</tt> function
+documentation of the <code>numpy.polyfit</code> function
 <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.polyfit.html"><tt>http://docs.scipy.org/doc/numpy/reference/generated/numpy.polyfit.html</tt></a>.
 
-<P>
+<p>
 There are two principal steps in making API documentation. First, write
 doc strings in all key classes, methods, and functions using the
 formatting described below. Second, copy the script
 <a href="src-sphinx_api/make.py">make.py</a> (<a href="_static/make.py.html">view</a>)
 to the directory where you have the source code, adapt the script by
 changing a few lines in the top of it, and run the code
-to generate the documentation (in the <tt>API</tt>
+to generate the documentation (in the <code>API</code>
 subdirectory).  The script automates the various steps in running
 Sphinx and preparing Sphinx files as described later.
 
-<P>
+<p>
 We shall now briefly describe the reST format and show step by step
 how to create API documentation of Python modules.
 We follow the documentation <a href="https://github.com/numpy/numpy/blob/master/doc/example.py">rules</a> of the
-<tt>numpy</tt> package. Sphinx version 1.1 or higher is then required.  In
-addition, the <tt>numpydoc</tt> Sphinx extension must be installed.  Download
-the <tt>numpy</tt> source tree, go to the top directory and perform
-<blockquote>    <!-- begin verbatim block  -->
-<pre>
-cd doc/sphinxext
-sudo python setup.py install
-</pre>
-</blockquote>   <! -- end verbatim block -->
+<code>numpy</code> package. Sphinx version 1.1 or higher is then required.  In
+addition, the <code>numpydoc</code> Sphinx extension must be installed.  Download
+the <code>numpy</code> source tree, go to the top directory and perform
+<p>
 
-<P>
-<h3>Simple Formatting Rules</h3>
-<P>
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">cd doc/sphinxext
+sudo python setup.py install
+</pre></div>
+
+<h3>Simple Formatting Rules  <a name="___sec0"></a></h3>
+
+<p>
 The reST format used by Sphinx and other popular tools in the Python
 community is a lightly tagged markup language, much less tagged than
 LaTeX and HTML. There is a
@@ -73,27 +143,29 @@ for reST that gives a much broader overview than the brief
 description below. The
 Sphinx <a href="http://docutils.sourceforge.net/docs/user/rst/quickref.html">Quick Reference</a> is also handy.
 
-<P>
+<p>
 Paragraphs are separated by blank lines. Words in running
 text can be <em>emphasized</em>.  Furthermore, text in double backquotes
-is typeset as code: <tt>s = sin(r)</tt>.  Bullet lists start with
+is typeset as code: <code>s = sin(r)</code>.  Bullet lists start with
 a dash (-) and are indented, with a blank line before and after:
-<blockquote>    <!-- begin verbatim block   rst-->
-<pre>
-  * a is the first parameter.
+<p>
 
-  * b is the second parameter. An item can
+<!-- code=rst (from !bc rst) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  <span style="color: #666666">*</span> a is the first parameter.
+
+  <span style="color: #666666">*</span> b is the second parameter. An item can
     occupy multiple lines.
 
-  * c is the third parameter.
-</pre>
-</blockquote>   <! -- end verbatim block -->
+  <span style="color: #666666">*</span> c is the third parameter.
+</pre></div>
+<p>
 In description lists, where each item starts with a keyword, an item
 starts with the keyword, followed by a colon, and the text appears
 indented on the next line:
-<blockquote>    <!-- begin verbatim block   rst-->
-<pre>
-  a:
+<p>
+
+<!-- code=rst (from !bc rst) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  a:
     the first parameter
 
   b:
@@ -103,102 +175,101 @@ indented on the next line:
 
   c:
     the third parameter.
-</pre>
-</blockquote>   <! -- end verbatim block -->
-
-<P>
+</pre></div>
+<p>
 To make a section heading, just write the heading and use equal signs, on
 the line below the heading, for sections, and simple dashes for
 subsections (other choices of characters are also possible).
 
-<P>
+<h4>Mathematics  <a name="___sec1"></a></h4>
 
-<P>
-<h4>Mathematics</h4>
-<P>
+<p>
 Mathematical formulas are typeset in LaTeX style inline. For example,
-ax^2 + bx + c is written like
-<blockquote>    <!-- begin verbatim block   rst-->
-<pre>
-:math:`ax^2 + bx + c`
-</pre>
-</blockquote>   <! -- end verbatim block -->
+\( ax^2 + bx + c \) is written like
+<p>
+
+<!-- code=rst (from !bc rst) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #7D9029">:math:</span><span style="color: #19177C">`ax^2 + bx + c`</span>
+</pre></div>
+<p>
 Two write an equation on a separate line,
 write
-<blockquote>    <!-- begin verbatim block   rst-->
-<pre>
-`.. math:: ax^2 + bx + c = 0
-</pre>
-</blockquote>   <! -- end verbatim block -->
+<p>
+
+<!-- code=rst (from !bc rst) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">`.. math:: ax^2 + bx + c = 0
+</pre></div>
+<p>
 or
-<blockquote>    <!-- begin verbatim block   rst-->
-<pre>
-.. math::
+<p>
+
+<!-- code=rst (from !bc rst) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">.. <span style="color: #AA22FF; font-weight: bold">math</span>::
 
    ax^2 + bx + c = 0
-
-</pre>
-</blockquote>   <! -- end verbatim block -->
+</pre></div>
+<p>
 Remember to end the equation block with a blank line.
-Several equations can be aligned below each other by using <tt>&</tt>
+Several equations can be aligned below each other by using <code>&</code>
 as alignment character:
-<blockquote>    <!-- begin verbatim block   rst-->
-<pre>
-.. math::
+<p>
 
-   ax^2 + bx + c &= 0,\\
-   dx + e &= 0.
+<!-- code=rst (from !bc rst) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">.. <span style="color: #AA22FF; font-weight: bold">math</span>::
 
-</pre>
-</blockquote>   <! -- end verbatim block -->
+   ax^2 + bx + c &amp;= 0,\\
+   dx + e &amp;= 0.
+</pre></div>
 
-<P>
-<h4>Code Snippets</h4>
-<P>
+<h4>Code Snippets  <a name="___sec2"></a></h4>
+
+<p>
 To include a piece of code like
-<blockquote>    <!-- begin verbatim block   pycod-->
-<pre>
-def roots(a, b, c):
-    q = b**2 - 4*a*c
-    root1 = (-b + sqrt(q))/float(2*a)
-    root2 = (-b - sqrt(q))/float(2*a)
-    return root1, root2
-</pre>
-</blockquote>   <! -- end verbatim block -->
-you can write it as
-<blockquote>    <!-- begin verbatim block   rst-->
-<pre>
-Here is an example::
+<p>
 
-        def roots(a, b, c):
-            q = b**2 - 4*a*c
-            root1 = -b + sqrt(q)/float(2*a)
-            root2 = -b - sqrt(q)/float(2*a)
-            return root1, root2
-</pre>
-</blockquote>   <! -- end verbatim block -->
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">roots</span>(a, b, c):
+    q <span style="color: #666666">=</span> b<span style="color: #666666">**2</span> <span style="color: #666666">-</span> <span style="color: #666666">4*</span>a<span style="color: #666666">*</span>c
+    root1 <span style="color: #666666">=</span> (<span style="color: #666666">-</span>b <span style="color: #666666">+</span> sqrt(q))<span style="color: #666666">/</span><span style="color: #008000">float</span>(<span style="color: #666666">2*</span>a)
+    root2 <span style="color: #666666">=</span> (<span style="color: #666666">-</span>b <span style="color: #666666">-</span> sqrt(q))<span style="color: #666666">/</span><span style="color: #008000">float</span>(<span style="color: #666666">2*</span>a)
+    <span style="color: #008000; font-weight: bold">return</span> root1, root2
+</pre></div>
+<p>
+you can write it as
+<p>
+
+<!-- code=rst (from !bc rst) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Here is an example<span style="color: #BB6622; font-weight: bold">::</span>
+
+<span style="color: #BA2121">        def roots(a, b, c):</span>
+<span style="color: #BA2121">            q = b**2 - 4*a*c</span>
+<span style="color: #BA2121">            root1 = -b + sqrt(q)/float(2*a)</span>
+<span style="color: #BA2121">            root2 = -b - sqrt(q)/float(2*a)</span>
+<span style="color: #BA2121">            return root1, root2</span>
+</pre></div>
+<p>
 The code block must be intented, and the preceding line must end with
 a double colon. To specify the type of programming language and
 associated formatting (via the Pygments package), write
-<blockquote>    <!-- begin verbatim block   rst-->
-<pre>
-.. code-block:: python
+<p>
+
+<!-- code=rst (from !bc rst) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">.. <span style="color: #AA22FF; font-weight: bold">code-block</span>:: python
 
         def roots(a, b, c):
-            q = b**2 - 4*a*c
+            q = b<span style="font-style: italic">**2 - 4*</span>a*c
             root1 = -b + sqrt(q)/float(2*a)
             root2 = -b - sqrt(q)/float(2*a)
             return root1, root2
-</pre>
-</blockquote>   <! -- end verbatim block -->
-
-<P>
+</pre></div>
+<p>
 Interactive sessions and doctests can be inserted without
 colon and indentation of the code, but a blank line is
 needed before and after the interactive block.
-<blockquote>    <!-- begin verbatim block   rst-->
-<pre>
-Here is an example in an interactive Python shell.
+<p>
+
+<!-- code=rst (from !bc rst) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Here is an example in an interactive Python shell.
 
 &gt;&gt;&gt; a = 1
 &gt;&gt;&gt; b = 2
@@ -206,20 +277,20 @@ Here is an example in an interactive Python shell.
 3
 
 Note: the result is correct.
-</pre>
-</blockquote>   <! -- end verbatim block -->
+</pre></div>
 
-<P>
-<h4>How to Format Doc Strings</h4>
-<P>
-Here is a function with a typical doc string formatted in <tt>numpy</tt> style.
-<blockquote>    <!-- begin verbatim block  -->
-<pre>
-# This is Python code
+<h4>How to Format Doc Strings  <a name="___sec3"></a></h4>
+
+<p>
+Here is a function with a typical doc string formatted in <code>numpy</code> style.
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># This is Python code
 from numpy.lib.scimath import sqrt  # handles real and complex args
 
 def roots(a, b, c, verbose=False):
-    """
+    &quot;&quot;&quot;
     Return the two roots in the quadratic equation::
 
       a*x**2 + b*x + c = 0
@@ -291,38 +362,40 @@ def roots(a, b, c, verbose=False):
     r1, r2       float/complex   return: the two roots of
                                  the quadratic polynomial
     ==========   =============   ================================
-    """
+    &quot;&quot;&quot;
     if abs(a) &lt; 1E-14:
-        raise ValueError('a=%g is too close to zero' % a)
+        raise ValueError(&#39;a=%g is too close to zero&#39; % a)
 
     q = b**2 - 4*a*c
     if verbose:
-        print 'q=%g: %s roots' % (q, 'real' if q&gt;0 else 'complex')
+        print &#39;q=%g: %s roots&#39; % (q, &#39;real&#39; if q&gt;0 else &#39;complex&#39;)
 
     root1 = (-b + sqrt(q))/float(2*a)
     root2 = (-b - sqrt(q))/float(2*a)
     return root1, root2
-</pre>
-</blockquote>   <! -- end verbatim block -->
+</pre></div>
+<p>
 Note the following:
 
-<P>
+<p>
 
 <ol>
 <li> Arguments to the functions and other variables are typeset in
-   single back-ticks (normally translated to an italic font by Sphinx).
-<li> The headings <tt>Parameters</tt> (for function arguments), <tt>Returns</tt>, etc.,
+   single back-ticks (normally translated to an italic font by Sphinx).</li>
+<li> The headings <code>Parameters</code> (for function arguments), <code>Returns</code>, etc.,
    are standard names and lead to a certain formatting of the doc
    string in HTML. The text following these headings are description
    lists. Sometimes a simpler formatting is convenient,
    e.g., a table or just running text explaining what the arguments and
-   return values are.
+   return values are.</li>
 <li> One can make links to the documentation of other classes and functions
    as demonstrated under "See Also" (a tilde strips off the
-   module prefix in the output).
+   module prefix in the output).</li>
 </ol>
-<h3>Running Sphinx</h3>
-<P>
+
+<h3>Running Sphinx  <a name="___sec4"></a></h3>
+
+<p>
 We have made a complete example on
 making API documentation with Sphinx.
 The module files <a href="src-sphinx_api/quadratic.py">quadratic.py</a>
@@ -336,235 +409,241 @@ The file <a href="src-sphinx_api/make.py">make.py</a>
 <a href="_static/api-example/index.html">HTML documentation</a>
 of the two modules.
 
-<P>
-<h4>Make Sphinx Module Files</h4>
-<P>
-For each module file <tt>module.py</tt> you want include in the documentation,
-prepare a file <tt>module.txt</tt> containing
-<blockquote>    <!-- begin verbatim block   rst-->
-<pre>
-  :mod:`module`
+<h4>Make Sphinx Module Files  <a name="___sec5"></a></h4>
+
+<p>
+For each module file <code>module.py</code> you want include in the documentation,
+prepare a file <code>module.txt</code> containing
+<p>
+
+<!-- code=rst (from !bc rst) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  <span style="color: #7D9029">:mod:</span><span style="color: #19177C">`module`</span>
   =============
 
-  .. automodule:: module
+  .. <span style="color: #AA22FF; font-weight: bold">automodule</span>:: module
      :members:
-     :undoc-members:
-     :special-members:
-     :inherited-members:
-     :show-inheritance:
-</pre>
-</blockquote>   <! -- end verbatim block -->
+     <span style="color: #0000FF; font-weight: bold">:undoc-members:</span>
+     <span style="color: #0000FF; font-weight: bold">:special-members:</span>
+     <span style="color: #0000FF; font-weight: bold">:inherited-members:</span>
+     <span style="color: #0000FF; font-weight: bold">:show-inheritance:</span>
+</pre></div>
+<p>
 This specifications imply that the documentation will contain
 all member functions (not starting with an underscore) with doc strings
-(<tt>:members:</tt>), and those without
-doc strings (<tt>:undoc-members:</tt>), as well as all special methods
-(<tt>:special-members:</tt>), and all methods inherited from super classes
-(<tt>:inherited-members:</tt>).
+(<code>:members:</code>), and those without
+doc strings (<code>:undoc-members:</code>), as well as all special methods
+(<code>:special-members:</code>), and all methods inherited from super classes
+(<code>:inherited-members:</code>).
 For the worked example we need to make the module files
 <a href="src-sphinx_api/api/quadratic.txt"><tt>src-sphinx_api/api/quadratic.txt</tt></a> (<a href="_static/quadratic.txt.html">view</a>)
 and <a href="src-sphinx_api/api/linear.txt"><tt>src-sphinx_api/api/linear.txt</tt></a> (<a href="_static/linear.txt.html">view</a>).
 
-<P>
+<p>
 The name of modules in a subpackages must be listed with the full package path.
-For example, module <tt>mod</tt> in subpackage <tt>s2</tt> of subpackage <tt>s1</tt> is listed as
-<blockquote>    <!-- begin verbatim block   rst-->
-<pre>
-:mod:`s1.s2.mod`
-================
+For example, module <code>mod</code> in subpackage <code>s2</code> of subpackage <code>s1</code> is listed as
+<p>
 
-.. automodule:: s1.s2.mod
-</pre>
-</blockquote>   <! -- end verbatim block -->
-in the file <tt>mod.txt</tt>. The <tt>index.txt</tt> file has a corresponding line
-with <tt>mod</tt> (which actually is the basename of the file <tt>mod.txt</tt>
-where the module <tt>s1.s2.mod</tt> is defined).
-For each of the <tt>__init__.py</tt> files in the packages one will normally
-make a <tt>.txt</tt> file with the package name, say <tt>s2.txt</tt>, where the first
+<!-- code=rst (from !bc rst) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">:mod:`s1.s2.mod`</span>
+<span style="color: #000080; font-weight: bold">================</span>
+
+.. <span style="color: #AA22FF; font-weight: bold">automodule</span>:: s1.s2.mod
+</pre></div>
+<p>
+in the file <code>mod.txt</code>. The <code>index.txt</code> file has a corresponding line
+with <code>mod</code> (which actually is the basename of the file <code>mod.txt</code>
+where the module <code>s1.s2.mod</code> is defined).
+For each of the <code>__init__.py</code> files in the packages one will normally
+make a <code>.txt</code> file with the package name, say <code>s2.txt</code>, where the first
 lines are:
-<blockquote>    <!-- begin verbatim block   rst-->
-<pre>
-:mod:`s1.s2`
-============
+<p>
 
-.. automodule:: s1.s2
-</pre>
-</blockquote>   <! -- end verbatim block -->
+<!-- code=rst (from !bc rst) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">:mod:`s1.s2`</span>
+<span style="color: #000080; font-weight: bold">============</span>
 
-<P>
+.. <span style="color: #AA22FF; font-weight: bold">automodule</span>:: s1.s2
+</pre></div>
 
-<P>
+<h4>Create Sphinx Directory Tree  <a name="___sec6"></a></h4>
 
-<P>
-<h4>Create Sphinx Directory Tree</h4>
-<P>
+<p>
 Sphinx needs a series of files that can be automatically
 generated by running
-<blockquote>    <!-- begin verbatim block   sys-->
-<pre>
-sphinx-quickstart
-</pre>
-</blockquote>   <! -- end verbatim block -->
+<p>
+
+<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sphinx-quickstart
+</pre></div>
+<p>
 and answering the questions. Specify a directory name as
-"rooth path for the documentation", say <tt>api</tt>, give the
+"rooth path for the documentation", say <code>api</code>, give the
 documentation a title, author, and version number.
 Make sure the extension of sphinx files is
-<tt>.txt</tt> and not <tt>.rst</tt>. If you make a fresh version of the
-documentation, remember to first delete the <tt>api</tt> directory.
-Move all the <tt>module.txt</tt> files to the <tt>api</tt> directory.
+<code>.txt</code> and not <code>.rst</code>. If you make a fresh version of the
+documentation, remember to first delete the <code>api</code> directory.
+Move all the <code>module.txt</code> files to the <code>api</code> directory.
 
-<P>
-<h4>Make Index File</h4>
-<P>
-In the recently generated <tt>api</tt> directory,
-you must make an index file <tt>index.txt</tt> that lists the modules for
-which there exist <tt>.txt</tt> files . The <tt>index.txt</tt> file is automatically
-generated by <tt>sphinx-quickstart</tt>, but no modules are listed.
-Here is the typical look when it contains two modules <tt>quadratic</tt>
-and <tt>linear</tt>:
-<blockquote>    <!-- begin verbatim block   rst-->
-<pre>
-.. Docex Example documentation master file, created by
-   sphinx-quickstart on Thu Feb 16 10:50:28 2022.
-   ...
+<h4>Make Index File  <a name="___sec7"></a></h4>
 
-Welcome to Sphinx API Example's documentation!
-==============================================
+<p>
+In the recently generated <code>api</code> directory,
+you must make an index file <code>index.txt</code> that lists the modules for
+which there exist <code>.txt</code> files . The <code>index.txt</code> file is automatically
+generated by <code>sphinx-quickstart</code>, but no modules are listed.
+Here is the typical look when it contains two modules <code>quadratic</code>
+and <code>linear</code>:
+<p>
+
+<!-- code=rst (from !bc rst) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">.. Docex Example documentation master file, created by</span>
+<span style="color: #BC7A00">   sphinx-quickstart on Thu Feb 16 10:50:28 2022.</span>
+<span style="color: #BC7A00">   ...</span>
+
+<span style="color: #000080; font-weight: bold">Welcome to Sphinx API Example&#39;s documentation!</span>
+<span style="color: #000080; font-weight: bold">==============================================</span>
 
 Contents:
 
-.. toctree::
-   :maxdepth: 2
+.. <span style="color: #AA22FF; font-weight: bold">toctree</span>::
+   <span style="color: #0000FF; font-weight: bold">:maxdepth:</span> <span style="color: #0000FF">2</span>
 
    quadratic
    linear
 
-Indices and tables
-==================
+<span style="color: #000080; font-weight: bold">Indices and tables</span>
+<span style="color: #000080; font-weight: bold">==================</span>
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-</pre>
-</blockquote>   <! -- end verbatim block -->
+<span style="color: #666666">*</span> <span style="color: #7D9029">:ref:</span><span style="color: #19177C">`genindex`</span>
+<span style="color: #666666">*</span> <span style="color: #7D9029">:ref:</span><span style="color: #19177C">`modindex`</span>
+<span style="color: #666666">*</span> <span style="color: #7D9029">:ref:</span><span style="color: #19177C">`search`</span>
+</pre></div>
+<p>
 Recall that each module listed in this file
-must have a corresponding <tt>.txt</tt> file as
+must have a corresponding <code>.txt</code> file as
 described above.
 
-<P>
-<h4>Edit the Configuration File</h4>
-<P>
-The <tt>api</tt> directory contains a file <tt>conf.py</tt> which allows you
+<h4>Edit the Configuration File  <a name="___sec8"></a></h4>
+
+<p>
+The <code>api</code> directory contains a file <code>conf.py</code> which allows you
 to configure a lot of features. You need to find the
 line with
-<blockquote>    <!-- begin verbatim block   pycod-->
-<pre>
-#sys.path.insert(0, os.path.abspath('.'))
-</pre>
-</blockquote>   <! -- end verbatim block -->
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#sys.path.insert(0, os.path.abspath(&#39;.&#39;))</span>
+</pre></div>
+<p>
 Uncomment this line and insert the directory where the modules reside,
 in this case the parent directory
-<blockquote>    <!-- begin verbatim block   pycod-->
-<pre>
-sys.path.append(os.path.join(os.path.abspath(os.pardir)))
-</pre>
-</blockquote>   <! -- end verbatim block -->
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sys<span style="color: #666666">.</span>path<span style="color: #666666">.</span>append(os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>join(os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>abspath(os<span style="color: #666666">.</span>pardir)))
+</pre></div>
+<p>
 We also recommend to make use of more Sphinx extension modules.
-Find the line with <tt>extensions =</tt> and edit it to
-<blockquote>    <!-- begin verbatim block   cod-->
-<pre>
-extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.mathjax',
-    'sphinx.ext.viewcode',
-    'numpydoc',
-    'sphinx.ext.autosummary',
-    'sphinx.ext.doctest',
-    'sphinx.ext.inheritance_diagram']
-</pre>
-</blockquote>   <! -- end verbatim block -->
-If not the <tt>numpydoc</tt> Sphinx extension is enabled, headings like
-<tt>Parameters</tt>, <tt>Returns</tt>, etc., are ignored and give rise to
+Find the line with <code>extensions =</code> and edit it to
+<p>
+
+<!-- code=text (from !bc cod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">extensions = [
+    &#39;sphinx.ext.autodoc&#39;,
+    &#39;sphinx.ext.mathjax&#39;,
+    &#39;sphinx.ext.viewcode&#39;,
+    &#39;numpydoc&#39;,
+    &#39;sphinx.ext.autosummary&#39;,
+    &#39;sphinx.ext.doctest&#39;,
+    &#39;sphinx.ext.inheritance_diagram&#39;]
+</pre></div>
+<p>
+If not the <code>numpydoc</code> Sphinx extension is enabled, headings like
+<code>Parameters</code>, <code>Returns</code>, etc., are ignored and give rise to
 error messages ("Unexpected section title").
 
-<P>
+<p>
 You may also want to add
-<blockquote>    <!-- begin verbatim block   cod-->
-<pre>
-extensions += [
-    'matplotlib.sphinxext.only_directives',
-    'matplotlib.sphinxext.plot_directive',
-    'matplotlib.sphinxext.ipython_directive',
-    'matplotlib.sphinxext.ipython_console_highlighting']
-</pre>
-</blockquote>   <! -- end verbatim block -->
-if <tt>matplotlib</tt> is installed.
+<p>
 
-<P>
+<!-- code=text (from !bc cod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">extensions += [
+    &#39;matplotlib.sphinxext.only_directives&#39;,
+    &#39;matplotlib.sphinxext.plot_directive&#39;,
+    &#39;matplotlib.sphinxext.ipython_directive&#39;,
+    &#39;matplotlib.sphinxext.ipython_console_highlighting&#39;]
+</pre></div>
+<p>
+if <code>matplotlib</code> is installed.
 
-<P>
-<h4>Compile the Sphinx Document</h4>
-<P>
+<h4>Compile the Sphinx Document  <a name="___sec9"></a></h4>
+
+<p>
 You are now ready to compile an HTML version of the Sphinx documentation:
-<blockquote>    <!-- begin verbatim block   sys-->
-<pre>
-make html
-</pre>
-</blockquote>   <! -- end verbatim block -->
-This command results in a directory <tt>_build/html</tt> with a
-file <tt>index.html</tt> that can be loaded into a web browser for inspection.
+<p>
 
-<P>
+<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">make html
+</pre></div>
+<p>
+This command results in a directory <code>_build/html</code> with a
+file <code>index.html</code> that can be loaded into a web browser for inspection.
+
+<p>
 The Python script
 <a href="src-sphinx_api/make.py">make.py</a> (<a href="_static/make.py.html">view</a>)
-automatically generates <tt>.txt</tt> index files for each <tt>.py</tt> file,
-runs <tt>sphinx-quickstart</tt>, copies index files to the new generated directory,
-edits <tt>conf.py</tt>, and runs <tt>make html</tt> to create the API documentation
-in HTML format. Examining the <tt>make.py</tt> script provides a complete
+automatically generates <code>.txt</code> index files for each <code>.py</code> file,
+runs <code>sphinx-quickstart</code>, copies index files to the new generated directory,
+edits <code>conf.py</code>, and runs <code>make html</code> to create the API documentation
+in HTML format. Examining the <code>make.py</code> script provides a complete
 recipe for getting started with Sphinx for automatically generating
 module and package documentation. The script can easily be applied
 to your own projects (it works without modifications if you want to
-document all <tt>.py</tt> files in a directory).
+document all <code>.py</code> files in a directory).
 in a directory)
 
-<P>
+<p>
 To see the result of the generated documentation,
 invoke <a href="_static/api-example/index.html"><tt>api/_build/html/index.html</tt></a>.
 Click around to see the various features, like the index, for instance.
 The layout and colors can be customized through different
-Sphinx <em>themes</em>, see the <tt>api/conf.py</tt> file. Several examples
+Sphinx <em>themes</em>, see the <code>api/conf.py</code> file. Several examples
 are provided in
 the <a href="_static/examples/index.html">examples directory</a>.
 
-<P>
-Our example with the <tt>quadratic</tt> and <tt>linear</tt> modules is minimalistic.
+<p>
+Our example with the <code>quadratic</code> and <code>linear</code> modules is minimalistic.
 An excellent large-scale example on documenting a packing using Sphinx
-is found in the Matplotlib source (subdirectory <tt>doc</tt>).  SciTools also
+is found in the Matplotlib source (subdirectory <code>doc</code>).  SciTools also
 applies Sphinx for documentation, and the file
-<tt>doc/api/sphinx-src/00README</tt> in the SciTools source tree explains the
+<code>doc/api/sphinx-src/00README</code> in the SciTools source tree explains the
 necessary steps in detail. Before diving into the documentation
 details of Matplotlib or SciTools, it will be advantageous to have
 digested some of the official Sphinx documentation, reached from
 <a href="http://sphinx.pocoo.org/"><tt>http://sphinx.pocoo.org/</tt></a>.
 
-<P>
-
-<P>
-<center><hr>
-<caption><i>Snapshot of HTML documentation automatically generated by Sphinx. <a name="sphinx_api:fig:html"></A></i></caption>
-<p><img src="figs-sphinx_api/sphinx.png" align="bottom" width=600></p>
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  Snapshot of HTML documentation automatically generated by Sphinx. <a name="sphinx_api:fig:html"></a> </p></center>
+<p><img src="fig-sphinx_api/sphinx.png" align="bottom" width=600></p>
 </center>
 
-<P>
-<h3>Doconce Doc String Format</h3>
-<P>
+<h3>Doconce Doc String Format  <a name="___sec10"></a></h3>
+
+<p>
 A disadvantage with the Sphinx format in doc strings is that it has
 quite some tagging that can be annoying when reading the doc strings
-directly, as done when invoking <tt>pydoc</tt> on the command line or
-<tt>help(...)</tt> or <tt>object.__doc__</tt> in interactive Python sessions.
-By writing the doc strings in <a href="http://code.google.com/p/doconce">Doconce</a>
+directly, as done when invoking <code>pydoc</code> on the command line or
+<code>help(...)</code> or <code>object.__doc__</code> in interactive Python sessions.
+By writing the doc strings in <a href="https://github.com/hplgit/doconce">Doconce</a>
 format, one can transform the text both to Sphinx and to plain ASCII.
-That is, the doc strings looks nice in <tt>pydoc</tt> and in HTML.
+That is, the doc strings looks nice in <code>pydoc</code> and in HTML.
+
+<!-- ------------------- end of main content --------------- -->
+
 
 </body>
 </html>
     
+

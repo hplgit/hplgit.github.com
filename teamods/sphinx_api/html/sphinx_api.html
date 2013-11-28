@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Simple Formatting Rules &mdash; How To Generate API Documentation with Sphinx 1.0 documentation</title>
+    <title>Simple Formatting Rules</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -26,9 +26,17 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="How To Generate API Documentation with Sphinx 1.0 documentation" href="index.html" />
+    <link rel="top" title="How To Generate API Documentation with Sphinx" href="index.html" />
     <link rel="prev" title="How To Generate API Documentation with Sphinx" href="index.html" /> 
+  
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
   </head>
+
   <body>
     <div class="related">
       <h3>Navigation</h3>
@@ -39,7 +47,7 @@
         <li class="right" >
           <a href="index.html" title="How To Generate API Documentation with Sphinx"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">How To Generate API Documentation with Sphinx 1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">How To Generate API Documentation with Sphinx</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -59,7 +67,7 @@ documentation of the <tt class="docutils literal"><span class="pre">numpy.polyfi
 <p>There are two principal steps in making API documentation. First, write
 doc strings in all key classes, methods, and functions using the
 formatting described below. Second, copy the script
-<a class="reference external" href="_static/make.py">make.py</a> (<a class="reference external" href="_static/make.py.html">view</a>)
+<a class="reference external" href="src-sphinx_api/make.py">make.py</a> (<a class="reference external" href="_static/make.py.html">view</a>)
 to the directory where you have the source code, adapt the script by
 changing a few lines in the top of it, and run the code
 to generate the documentation (in the <tt class="docutils literal"><span class="pre">API</span></tt>
@@ -71,8 +79,9 @@ We follow the documentation <a class="reference external" href="https://github.c
 <tt class="docutils literal"><span class="pre">numpy</span></tt> package. Sphinx version 1.1 or higher is then required.  In
 addition, the <tt class="docutils literal"><span class="pre">numpydoc</span></tt> Sphinx extension must be installed.  Download
 the <tt class="docutils literal"><span class="pre">numpy</span></tt> source tree, go to the top directory and perform</p>
-<div class="highlight-py"><pre>cd doc/sphinxext
-sudo python setup.py install</pre>
+<div class="highlight-text"><div class="highlight"><pre>cd doc/sphinxext
+sudo python setup.py install
+</pre></div>
 </div>
 <div class="section" id="simple-formatting-rules">
 <h1>Simple Formatting Rules<a class="headerlink" href="#simple-formatting-rules" title="Permalink to this headline">¶</a></h1>
@@ -198,93 +207,93 @@ Note: the result is correct.
 <div class="section" id="how-to-format-doc-strings">
 <h2>How to Format Doc Strings<a class="headerlink" href="#how-to-format-doc-strings" title="Permalink to this headline">¶</a></h2>
 <p>Here is a function with a typical doc string formatted in <tt class="docutils literal"><span class="pre">numpy</span></tt> style.</p>
-<div class="highlight-py"><div class="highlight"><pre><span class="c"># This is Python code</span>
-<span class="kn">from</span> <span class="nn">numpy.lib.scimath</span> <span class="kn">import</span> <span class="n">sqrt</span>  <span class="c"># handles real and complex args</span>
+<div class="highlight-text"><div class="highlight"><pre># This is Python code
+from numpy.lib.scimath import sqrt  # handles real and complex args
 
-<span class="k">def</span> <span class="nf">roots</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return the two roots in the quadratic equation::</span>
+def roots(a, b, c, verbose=False):
+    &quot;&quot;&quot;
+    Return the two roots in the quadratic equation::
 
-<span class="sd">      a*x**2 + b*x + c = 0</span>
+      a*x**2 + b*x + c = 0
 
-<span class="sd">    or written with math typesetting</span>
+    or written with math typesetting
 
-<span class="sd">    .. math:: ax^2 + bx + c = 0</span>
+    .. math:: ax^2 + bx + c = 0
 
-<span class="sd">    The returned roots are real or complex numbers,</span>
-<span class="sd">    depending on the values of the arguments `a`, `b`,</span>
-<span class="sd">    and `c`.</span>
+    The returned roots are real or complex numbers,
+    depending on the values of the arguments `a`, `b`,
+    and `c`.
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    a: int, real, complex</span>
-<span class="sd">       coefficient of the quadratic term</span>
-<span class="sd">    b: int, real, complex</span>
-<span class="sd">       coefficient of the linear term</span>
-<span class="sd">    c: int, real, complex</span>
-<span class="sd">       coefficient of the constant term</span>
-<span class="sd">    verbose: bool, optional</span>
-<span class="sd">       prints the quantity ``b**2 - 4*a*c`` and if the</span>
-<span class="sd">       roots are real or complex</span>
+    Parameters
+    ----------
+    a: int, real, complex
+       coefficient of the quadratic term
+    b: int, real, complex
+       coefficient of the linear term
+    c: int, real, complex
+       coefficient of the constant term
+    verbose: bool, optional
+       prints the quantity ``b**2 - 4*a*c`` and if the
+       roots are real or complex
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    root1, root2: real, complex</span>
-<span class="sd">        the roots of the quadratic polynomial.</span>
+    Returns
+    -------
+    root1, root2: real, complex
+        the roots of the quadratic polynomial.
 
-<span class="sd">    Raises</span>
-<span class="sd">    ------</span>
-<span class="sd">    ValueError:</span>
-<span class="sd">        when `a` is zero</span>
+    Raises
+    ------
+    ValueError:
+        when `a` is zero
 
-<span class="sd">    See Also</span>
-<span class="sd">    --------</span>
-<span class="sd">    :class:`Quadratic`: which is a class for quadratic polynomials</span>
-<span class="sd">        that also has a :func:`Quadratic.roots` method for computing</span>
-<span class="sd">        the roots of a quadratic polynomial. There is also a class</span>
-<span class="sd">        :class:`~linear.Linear` in the module :mod:`linear`</span>
-<span class="sd">        (i.e., :class:`linear.Linear`).</span>
+    See Also
+    --------
+    :class:`Quadratic`: which is a class for quadratic polynomials
+        that also has a :func:`Quadratic.roots` method for computing
+        the roots of a quadratic polynomial. There is also a class
+        :class:`~linear.Linear` in the module :mod:`linear`
+        (i.e., :class:`linear.Linear`).
 
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    The algorithm is a straightforward implementation of</span>
-<span class="sd">    a very well known formula [1]_.</span>
+    Notes
+    -----
+    The algorithm is a straightforward implementation of
+    a very well known formula [1]_.
 
-<span class="sd">    References</span>
-<span class="sd">    ----------</span>
-<span class="sd">    .. [1] Any textbook on mathematics or</span>
-<span class="sd">           `Wikipedia &lt;http://en.wikipedia.org/wiki/Quadratic_equation&gt;`_.</span>
+    References
+    ----------
+    .. [1] Any textbook on mathematics or
+           `Wikipedia &lt;http://en.wikipedia.org/wiki/Quadratic_equation&gt;`_.
 
-<span class="sd">    Examples</span>
-<span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; roots(-1, 2, 10)</span>
-<span class="sd">    (-5.3166247903553998, 1.3166247903553998)</span>
-<span class="sd">    &gt;&gt;&gt; roots(-1, 2, -10)</span>
-<span class="sd">    ((-2-3j), (-2+3j))</span>
+    Examples
+    --------
+    &gt;&gt;&gt; roots(-1, 2, 10)
+    (-5.3166247903553998, 1.3166247903553998)
+    &gt;&gt;&gt; roots(-1, 2, -10)
+    ((-2-3j), (-2+3j))
 
-<span class="sd">    Alternatively, we can in a doc string list the arguments and</span>
-<span class="sd">    return values in a table</span>
+    Alternatively, we can in a doc string list the arguments and
+    return values in a table
 
-<span class="sd">    ==========   =============   ================================</span>
-<span class="sd">    Parameter    Type            Description</span>
-<span class="sd">    ==========   =============   ================================</span>
-<span class="sd">    a            float/complex   coefficient for quadratic term</span>
-<span class="sd">    b            float/complex   coefficient for linear term</span>
-<span class="sd">    c            float/complex   coefficient for constant term</span>
-<span class="sd">    r1, r2       float/complex   return: the two roots of</span>
-<span class="sd">                                 the quadratic polynomial</span>
-<span class="sd">    ==========   =============   ================================</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1E-14</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;a=</span><span class="si">%g</span><span class="s"> is too close to zero&#39;</span> <span class="o">%</span> <span class="n">a</span><span class="p">)</span>
+    ==========   =============   ================================
+    Parameter    Type            Description
+    ==========   =============   ================================
+    a            float/complex   coefficient for quadratic term
+    b            float/complex   coefficient for linear term
+    c            float/complex   coefficient for constant term
+    r1, r2       float/complex   return: the two roots of
+                                 the quadratic polynomial
+    ==========   =============   ================================
+    &quot;&quot;&quot;
+    if abs(a) &lt; 1E-14:
+        raise ValueError(&#39;a=%g is too close to zero&#39; % a)
 
-    <span class="n">q</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
-    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&#39;q=</span><span class="si">%g</span><span class="s">: </span><span class="si">%s</span><span class="s"> roots&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="s">&#39;real&#39;</span> <span class="k">if</span> <span class="n">q</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">else</span> <span class="s">&#39;complex&#39;</span><span class="p">)</span>
+    q = b**2 - 4*a*c
+    if verbose:
+        print &#39;q=%g: %s roots&#39; % (q, &#39;real&#39; if q&gt;0 else &#39;complex&#39;)
 
-    <span class="n">root1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">q</span><span class="p">))</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
-    <span class="n">root2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">q</span><span class="p">))</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">root1</span><span class="p">,</span> <span class="n">root2</span>
+    root1 = (-b + sqrt(q))/float(2*a)
+    root2 = (-b - sqrt(q))/float(2*a)
+    return root1, root2
 </pre></div>
 </div>
 <p>Note the following:</p>
@@ -307,12 +316,12 @@ module prefix in the output).</li>
 <h1>Running Sphinx<a class="headerlink" href="#running-sphinx" title="Permalink to this headline">¶</a></h1>
 <p>We have made a complete example on
 making API documentation with Sphinx.
-The module files <a class="reference external" href="_static/quadratic.py">quadratic.py</a>
+The module files <a class="reference external" href="src-sphinx_api/quadratic.py">quadratic.py</a>
 (<a class="reference external" href="_static/quadratic.py.html">view</a>) and
-<a class="reference external" href="_static/linear.py">linear.py</a> (<a class="reference external" href="_static/linear.py.html">view</a>)
+<a class="reference external" href="src-sphinx_api/linear.py">linear.py</a> (<a class="reference external" href="_static/linear.py.html">view</a>)
 contain examples of classes and a stand-alone functions with
 doc strings formatted as described above.
-The file <a class="reference external" href="_static/make.py">make.py</a>
+The file <a class="reference external" href="src-sphinx_api/make.py">make.py</a>
 (<a class="reference external" href="_static/make.py.html">view</a>) runs
 (automatically) all the steps described below and creates
 <a class="reference external" href="_static/api-example/index.html">HTML documentation</a>
@@ -339,8 +348,8 @@ doc strings (<tt class="docutils literal"><span class="pre">:undoc-members:</spa
 (<tt class="docutils literal"><span class="pre">:special-members:</span></tt>), and all methods inherited from super classes
 (<tt class="docutils literal"><span class="pre">:inherited-members:</span></tt>).
 For the worked example we need to make the module files
-<a class="reference external" href="_static/quadratic.txt">_static/quadratic.txt</a> (<a class="reference external" href="_static/quadratic.txt.html">view</a>)
-and <a class="reference external" href="_static/linear.txt">_static/linear.txt</a> (<a class="reference external" href="_static/linear.txt.html">view</a>).</p>
+<a class="reference external" href="src-sphinx_api/api/quadratic.txt">src-sphinx_api/api/quadratic.txt</a> (<a class="reference external" href="_static/quadratic.txt.html">view</a>)
+and <a class="reference external" href="src-sphinx_api/api/linear.txt">src-sphinx_api/api/linear.txt</a> (<a class="reference external" href="_static/linear.txt.html">view</a>).</p>
 <p>The name of modules in a subpackages must be listed with the full package path.
 For example, module <tt class="docutils literal"><span class="pre">mod</span></tt> in subpackage <tt class="docutils literal"><span class="pre">s2</span></tt> of subpackage <tt class="docutils literal"><span class="pre">s1</span></tt> is listed as</p>
 <div class="highlight-rst"><div class="highlight"><pre><span class="gh">:mod:`s1.s2.mod`</span>
@@ -459,7 +468,7 @@ error messages (&#8220;Unexpected section title&#8221;).</p>
 <p>This command results in a directory <tt class="docutils literal"><span class="pre">_build/html</span></tt> with a
 file <tt class="docutils literal"><span class="pre">index.html</span></tt> that can be loaded into a web browser for inspection.</p>
 <p>The Python script
-<a class="reference external" href="_static/make.py">make.py</a> (<a class="reference external" href="_static/make.py.html">view</a>)
+<a class="reference external" href="src-sphinx_api/make.py">make.py</a> (<a class="reference external" href="_static/make.py.html">view</a>)
 automatically generates <tt class="docutils literal"><span class="pre">.txt</span></tt> index files for each <tt class="docutils literal"><span class="pre">.py</span></tt> file,
 runs <tt class="docutils literal"><span class="pre">sphinx-quickstart</span></tt>, copies index files to the new generated directory,
 edits <tt class="docutils literal"><span class="pre">conf.py</span></tt>, and runs <tt class="docutils literal"><span class="pre">make</span> <span class="pre">html</span></tt> to create the API documentation
@@ -497,7 +506,7 @@ digested some of the official Sphinx documentation, reached from
 quite some tagging that can be annoying when reading the doc strings
 directly, as done when invoking <tt class="docutils literal"><span class="pre">pydoc</span></tt> on the command line or
 <tt class="docutils literal"><span class="pre">help(...)</span></tt> or <tt class="docutils literal"><span class="pre">object.__doc__</span></tt> in interactive Python sessions.
-By writing the doc strings in <a class="reference external" href="http://code.google.com/p/doconce">Doconce</a>
+By writing the doc strings in <a class="reference external" href="https://github.com/hplgit/doconce">Doconce</a>
 format, one can transform the text both to Sphinx and to plain ASCII.
 That is, the doc strings looks nice in <tt class="docutils literal"><span class="pre">pydoc</span></tt> and in HTML.</p>
 </div>
@@ -561,12 +570,12 @@ That is, the doc strings looks nice in <tt class="docutils literal"><span class=
         <li class="right" >
           <a href="index.html" title="How To Generate API Documentation with Sphinx"
              >previous</a> |</li>
-        <li><a href="index.html">How To Generate API Documentation with Sphinx 1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">How To Generate API Documentation with Sphinx</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2012, 1.0.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+        &copy; Copyright 2013, H. P. Langtangen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

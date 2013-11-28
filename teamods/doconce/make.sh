@@ -1,4 +1,4 @@
 #!/bin/sh
-# Copy from doconce/doc/demos/slides
-cp -r ~/vc/doconce/doc/demos/slides/* ~/vc/doconce/doc/demos/slides/._part* .
+# Copy from doconce/doc/pub/slides
+cp -r ~/vc/doconce/doc/pub/slides/* ~/vc/doconce/doc/pub/slides/._part* .
 git add .
