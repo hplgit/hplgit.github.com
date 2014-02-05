@@ -1,0 +1,363 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Quick Intro to Version Control Systems and Project Hosting Services</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Quick Intro to Version Control Systems and Project Hosting Services" href="index.html" />
+    <link rel="next" title="Bitbucket" href="._main_bitgit001.html" />
+    <link rel="prev" title="Quick Intro to Version Control Systems and Project Hosting Services" href="index.html" /> 
+  
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="._main_bitgit001.html" title="Bitbucket"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Quick Intro to Version Control Systems and Project Hosting Services"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Quick Intro to Version Control Systems and Project Hosting Services</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="quick-intro-to-version-control-systems-and-project-hosting-services">
+<h1>Quick Intro to Version Control Systems and Project Hosting Services<a class="headerlink" href="#quick-intro-to-version-control-systems-and-project-hosting-services" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 5, 2014</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>Version control systems allow you to record the history of files
+and share files among several computers and collaborators in a
+professional way. Especially when working
+with software development or technical reports it is essential
+to have changes documented and to
+ensure that every computer and person involved in the project
+have the latest updates of the files.
+Greg Wilson&#8217;s excellent <a class="reference external" href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly
+from using version control systems.</p>
+<p>Projects that you want to share among several computers or project
+workers are today most conveniently stored at some web site &#8220;in the
+cloud&#8221;, but with a local copy for efficient access on your
+computers. I strongly recommend you to use such sites for <em>all</em>
+serious programming and scientific writing work - and all other
+important files.</p>
+<div class="section" id="why-not-dropbox-or-google-drive">
+<h2>Why not Dropbox or Google Drive?<a class="headerlink" href="#why-not-dropbox-or-google-drive" title="Permalink to this headline">¶</a></h2>
+<p>The simplest services for hosting project files are <a class="reference external" href="http://dropbox.com">Dropbox</a> and <a class="reference external" href="http://drive.google.com">Google Drive</a>.
+It is very easy to get started with these systems, and they allow you
+to share files among laptops and mobile units with as many users as
+you want. The systems offer a kind of version control in that the
+files are stored frequently (several times per minute), and you can go
+back to previous versions for the last 30 days. However, it is
+challenging  to find the right version from the past when there are
+so many of them and when the different versions are not annotated with
+sensible comments. Another deficiency of Dropbox and Google Drive is
+that they sync all your files in a folder, a feature one does not
+want if there are many large files (simulation data, visualizations,
+movies, temporary scratch files, automatically generated copies)
+that can easily be regenerated.</p>
+<p>However, the most serious problem with Dropbox and Google Drive
+arises when several people edit files simultaneously: it
+can be difficult detect who did what when, roll back to previous
+versions, and to manually merge the edits when these are
+incompatible. Then one needs more sophisticated tools, which
+means a true version control
+system.  The following text aims at providing you with the minimum
+information to started with Git, the leading version control system,
+and project hosting services for file storage.</p>
+<div class="admonition-essence admonition">
+<p class="first admonition-title">Essence</p>
+<p class="last">The essence with project hosting services is that you have the files
+associated with a project in the cloud. Many people may share these
+files.  Every time you want to work on the project you explicitly
+update your version of the files, edit the files as you like, and
+synchronize the files with the &#8220;master version&#8221; in the cloud.
+It is a trivial operation to go back to a previous
+version of a file, corresponding to a certain point of time or
+labeled with a comment,
+You can also use tools to see
+what various people have done with the files in the various versions.</p>
+</div>
+</div>
+<div class="section" id="project-hosting-services">
+<h2>Project hosting services<a class="headerlink" href="#project-hosting-services" title="Permalink to this headline">¶</a></h2>
+<p>Four popular project hosting services are</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://bigbucket.org">Bitbucket</a> at <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt></li>
+<li><a class="reference external" href="http://github.com">GitHub</a> at <tt class="docutils literal"><span class="pre">github.com</span></tt></li>
+<li><a class="reference external" href="http://code.google.com">Googlecode</a> at <tt class="docutils literal"><span class="pre">code.google.com</span></tt></li>
+<li><a class="reference external" href="https://launchpad.net">Launchpad</a> at <tt class="docutils literal"><span class="pre">launchpad.net</span></tt></li>
+<li><a class="reference external" href="http://sourceforge.net/">Sourceforge</a> at <tt class="docutils literal"><span class="pre">sourceforge.net</span></tt></li>
+</ul>
+</div></blockquote>
+<p>All these services are very similar. Below we describe how you get
+started with Bitbucket, GitHub, and Googlecode. Launchpad works very
+similarly to the latter three, but the development of it seems to
+have stalled.
+All the project hosting services have
+excellent introductions available at their web sites, but the recipes
+below are much shorter and aim at getting you started as quickly as
+possible by concentrating on the most important need-to-know steps.</p>
+<p>After the recipes on how to be up and going with project hosting
+services, there is an introduction to Git. One can find
+a lot of Git tutorials on the web so you might ask why
+yet another one. Traditionally, Git introductions have been quite
+technical, aimed at professional programmers.
+The material on Git in this document grew out my need to provide
+students in course with <em>minimal</em> information on how they can
+archive and hand in all their computer-based course work in Git.
+The coming text therefore gets you up and going very fast.
+More advanced features of Git (branching, stashing, forking, merging),
+which enhances the reliability of your work,
+are introduced subsequently, but are not required for beginners.
+Thereafter, your Git background should be firm enough to
+easily access the many references I provide to material on the web.</p>
+</div>
+<div class="section" id="repositories-and-local-copies">
+<h2>Repositories and local copies<a class="headerlink" href="#repositories-and-local-copies" title="Permalink to this headline">¶</a></h2>
+<p>The mentioned services host all your files in a specific project in what
+is known as a <em>repository</em>, or <em>repo</em> for short.  When a copy of the
+files are wanted on a certain computer, one clones the repository on
+that computer.  This creates a local copy of the files. Now files can
+be edited, new ones can be added, and files can be deleted.  These
+changes are then brought back to the repository.  If users at
+different computers synchronize their files frequently with the
+repository, most modern version control systems will be able to merge
+changes in files that have been edited simultaneously on different
+computers. This is perhaps one of the most useful features of project
+hosting services. However, the merge functionality clearly works best
+for pure text files and less well for binary files, such as PDF files,
+MS Word or Excel documents, and OpenOffice documents.</p>
+</div>
+<div class="section" id="what-to-choose">
+<h2>What to choose?<a class="headerlink" href="#what-to-choose" title="Permalink to this headline">¶</a></h2>
+<p>It might seem challenging to pick the project hosting service
+and the version control system that are right for you. Below
+is some very personal advice.</p>
+<blockquote>
+<div><ul class="simple">
+<li>I would recommend Git as the default choice of version control system.
+It is simply superior in many aspects, but for a beginner the superior
+merge functionality is most useful.</li>
+<li>If you need private repos and you are not a student, choose
+Bitbucket unless you are willing to pay for private repos at GitHub.</li>
+<li>If you want to make links to your programs in documentation,
+stay away from Bitbucket as this site embeds the version of the
+file into its URL (but you can get around this problem with a trick
+described in the section <a class="reference internal" href="._main_bitgit001.html#bitgit-bitbucket-urls"><em>Linking to Bitbucket files</em></a>).</li>
+<li>If you want to easily drop HTML files for documentation around in
+your repo, Googlecode will display them as web pages right away,
+while the procedure on GitHub is technically more complicated
+(Bitbucket does not yet support web pages as part of a project).
+Unfortunately, Googlecode does not allow MathJax for rendering
+LaTeX mathematics in HTML files, but MathJax works well in
+HTML files at GitHub.</li>
+<li>If a few collaborate on a project and everyone wants to be notified
+in email about changes in project files, the procedure on
+Bitbucket and Googlecode is easier to use than the one on GitHub.</li>
+</ul>
+</div></blockquote>
+<p>For the examples below, assume that you have some directory tree
+<tt class="docutils literal"><span class="pre">my-project</span></tt> with files that you want to host at Bitbucket, GitHub, or
+Googlecode and bring under version control. The official name of the
+project is &#8220;My Project&#8221;.</p>
+</div>
+<div class="section" id="installing-git">
+<h2>Installing Git<a class="headerlink" href="#installing-git" title="Permalink to this headline">¶</a></h2>
+<p id="index-0">The installation of Git on various systems is described
+on the <a class="reference external" href="http://git-scm.com/">Git website</a> under the <em>Download</em> section.
+Git involves compiled code so it is most convenient to download a
+precompiled binary version of the software on Windows, Mac and other
+Linux computers.
+On Ubuntu or any Debian-based system the relevant installation command is</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; sudo apt-get install git gitk git-doc</span>
+</pre></div>
+</div>
+<p>This tutorial explains Git interaction through command-line applications
+in a terminal window. There are numerous <a class="reference external" href="https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools#Graphical_Interfaces">graphical user interfaces to
+Git</a>. Three examples are
+<a class="reference external" href="http://git-cola.github.com/downloads.html">git-cola</a>,
+<a class="reference external" href="https://code.google.com/p/tortoisegit/">TortoiseGit</a>, and
+<a class="reference external" href="http://sourcetreeapp.com/">SourceTree</a>.</p>
+<p>Make a file <tt class="docutils literal"><span class="pre">.gitconfig</span></tt> in your home directory with information on
+your full name, email address, your favorite text editor, and
+the name of an &#8220;excludes file&#8221; which defines the file types that Git
+should omit when bringing new directories under version control.
+Here is a simplified version of the author&#8217;s <tt class="docutils literal"><span class="pre">.gitconfig</span></tt> file:</p>
+<div class="highlight-text"><div class="highlight"><pre>[user]
+name = Hans Petter Langtangen
+email = hpl@simula.no
+editor = emacs
+
+[core]
+excludesfile = ~/.gitignore
+</pre></div>
+</div>
+<p>The &#8220;excludes file&#8221; is called <tt class="docutils literal"><span class="pre">.gitignore</span></tt> and must list,
+using the Unix Shell Wildcard notation,
+the type of files that you do not need to have under version control,
+because they represent garbage or temporary information,
+or they can easily be regenerated from
+some other source files. A suggested <a class="reference external" href="http://hplgit.github.com/teamods/bitgit/src-bitgit/.gitignore">.gitignore</a> file looks like</p>
+<div class="highlight-text"><div class="highlight"><pre># compiled files:
+*.o
+*.so
+*.a
+# temporary files:
+*.bak
+*.swp
+*~
+.*~
+*.old
+tmp*
+temp*
+.#*
+\#*
+# tex files:
+*.log
+*.dvi
+*.aux
+*.blg
+*.idx
+*.nav
+*.out
+*.toc
+*.snm
+*.vrb
+# eclipse files:
+*.cproject
+*.project
+# misc:
+.DS_Store
+</pre></div>
+</div>
+<p>Be critical to what kind of files you really need a full history of.
+For example, you do not want to populate the repository with
+big graphics files of the type that can easily be regenerated by
+some program.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Quick Intro to Version Control Systems and Project Hosting Services</a></li>
+<li><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li><a class="reference internal" href="#why-not-dropbox-or-google-drive">Why not Dropbox or Google Drive?</a></li>
+<li><a class="reference internal" href="#project-hosting-services">Project hosting services</a></li>
+<li><a class="reference internal" href="#repositories-and-local-copies">Repositories and local copies</a></li>
+<li><a class="reference internal" href="#what-to-choose">What to choose?</a></li>
+<li><a class="reference internal" href="#installing-git">Installing Git</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Quick Intro to Version Control Systems and Project Hosting Services</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="._main_bitgit001.html"
+                        title="next chapter">Bitbucket</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/._main_bitgit000.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="._main_bitgit001.html" title="Bitbucket"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Quick Intro to Version Control Systems and Project Hosting Services"
+             >previous</a> |</li>
+        <li><a href="index.html">Quick Intro to Version Control Systems and Project Hosting Services</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+  <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
+  </div>
+</div>
+
+  </body>
+</html>
