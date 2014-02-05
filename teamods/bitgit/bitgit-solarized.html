@@ -176,7 +176,7 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Deptartment of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Jan 20, 2014</h4></center> <!-- date -->
+<center><h4>Feb 5, 2014</h4></center> <!-- date -->
 <p>
 <a name="bitgit:top"></a>
 
@@ -212,18 +212,22 @@ files are stored frequently (several times per minute), and you can go
 back to previous versions for the last 30 days. However, it is
 challenging  to find the right version from the past when there are
 so many of them and when the different versions are not annotated with
-sensible comments.
+sensible comments. Another deficiency of Dropbox and Google Drive is
+that they sync all your files in a folder, a feature one does not
+want if there are many large files (simulation data, visualizations,
+movies, temporary scratch files, automatically generated copies)
+that can easily be regenerated.
 
 <p>
-More seriously, when several people may edit files simultaneously, it
+However, the most serious problem with Dropbox and Google Drive
+arises when several people edit files simultaneously: it
 can be difficult detect who did what when, roll back to previous
 versions, and to manually merge the edits when these are
-incompatible. Then one needs more sophisticated tools than Dropbox or
-Google Drive: project hosting services with true version control
-systems.  The following text aims at providing you with the minimum
-information to started with such systems. Numerous other tutorials
-contain more comprehensive material and in-depth explanations of the
-concepts and tools.
+incompatible. Then one needs more sophisticated tools, which
+means a true version control
+system.  The following text aims at providing you with the minimum
+information to started with Git, the leading version control system,
+and project hosting services for file storage.
 
 <p>
 <div class="alert alert-block alert-notice alert-text-normal"><b>Essence.</b>
@@ -231,10 +235,11 @@ The essence with project hosting services is that you have the files
 associated with a project in the cloud. Many people may share these
 files.  Every time you want to work on the project you explicitly
 update your version of the files, edit the files as you like, and
-synchronize the files with the "master version" at the site where the
-project is hosted.  If you at some point need to go back to a
-version of the files at some particular point in the past,
-this is an easy operation. You can also use tools to see
+synchronize the files with the "master version" in the cloud.
+It is a trivial operation to go back to a previous
+version of a file, corresponding to a certain point of time or
+labeled with a comment,
+You can also use tools to see
 what various people have done with the files in the various versions.
 </div>
 
@@ -1018,6 +1023,7 @@ make sure to update the gh-pages branch by
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git commit -am &#39;Ensure commit of master branch&#39;</span>
 <span style="color: #888888">Terminal&gt; git push origin master</span>
 <span style="color: #888888">Terminal&gt; git checkout gh-pages</span>
+<span style="color: #888888">Terminal&gt; git pull origin gh-pages</span>
 <span style="color: #888888">Terminal&gt; git merge master</span>
 <span style="color: #888888">Terminal&gt; git push origin gh-pages</span>
 <span style="color: #888888">Terminal&gt; git checkout master</span>
