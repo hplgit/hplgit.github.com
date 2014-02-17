@@ -79,7 +79,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 
 <div class="highlight"><pre><span class="c">%%</span>
 <span class="c">%% Automatically generated file from Doconce source</span>
-<span class="c">%% (http://code.google.com/p/doconce/)</span>
+<span class="c">%% (https://github.com/hplgit/doconce/)</span>
 <span class="c">%%</span>
 <span class="c">% #ifdef PTEX2TEX_EXPLANATION</span>
 <span class="c">%%</span>
@@ -95,55 +95,32 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="c">%% (The ptex2tex program: http://code.google.com/p/ptex2tex)</span>
 <span class="c">%% Many preprocess options can be added to ptex2tex or doconce ptex2tex</span>
 <span class="c">%%</span>
-<span class="c">%%      ptex2tex -DMINTED -DPALATINO -DA6PAPER -DLATEX_HEADING=traditional myfile</span>
-<span class="c">%%      doconce ptex2tex myfile -DMINTED -DLATEX_HEADING=titlepage</span>
+<span class="c">%%      ptex2tex -DMINTED myfile</span>
+<span class="c">%%      doconce ptex2tex myfile envir=minted</span>
 <span class="c">%%</span>
 <span class="c">%% ptex2tex will typeset code environments according to a global or local</span>
 <span class="c">%% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code</span>
 <span class="c">%% according to options on the command line (just type doconce ptex2tex to</span>
-<span class="c">%% see examples).</span>
+<span class="c">%% see examples). If doconce ptex2tex has envir=minted, it enables the</span>
+<span class="c">%% minted style without needing -DMINTED.</span>
 <span class="c">% #endif</span>
 
-<span class="c">% #ifndef LATEX_HEADING</span>
-<span class="c">% #define LATEX_HEADING &quot;doconce_heading&quot;</span>
-<span class="c">% #endif</span>
-
-<span class="c">% #ifndef PREAMBLE</span>
-<span class="c">% #if LATEX_HEADING == &quot;Springer_collection&quot;</span>
-<span class="c">% #undef PREAMBLE</span>
-<span class="c">% #else</span>
 <span class="c">% #define PREAMBLE</span>
-<span class="c">% #endif</span>
-<span class="c">% #endif</span>
-
 
 <span class="c">% #ifdef PREAMBLE</span>
 <span class="c">%-------------------- begin preamble ----------------------</span>
 
 <span class="k">\documentclass</span>[<span class="c">%</span>
-oneside,                 <span class="c">% oneside: electronic viewing, twoside: printing</span>
-final,                   <span class="c">% or draft (marks overfull hboxes)</span>
+twoside,                 <span class="c">% oneside: electronic viewing, twoside: printing</span>
+final,                   <span class="c">% or draft (marks overfull hboxes, figures with paths)</span>
 10pt]<span class="nb">{</span>article<span class="nb">}</span>
 
 <span class="k">\listfiles</span>               <span class="c">% print all files needed to compile this document</span>
 
-<span class="c">% #ifdef A4PAPER</span>
-<span class="k">\usepackage</span><span class="na">[a4paper]</span><span class="nb">{</span>geometry<span class="nb">}</span>
-<span class="c">% #endif</span>
-<span class="c">% #ifdef A6PAPER</span>
-<span class="c">% a6paper is suitable for mobile devices</span>
-<span class="k">\usepackage</span>[<span class="c">%</span>
-  a6paper,
-  text=<span class="nb">{</span>90mm,130mm<span class="nb">}</span>,
-  inner=<span class="nb">{</span>5mm<span class="nb">}</span>,           <span class="c">% inner margin (two sided documents)</span>
-  top=5mm,
-  headsep=4mm
-  ]<span class="nb">{</span>geometry<span class="nb">}</span>
-<span class="c">% #endif</span>
-
 <span class="k">\usepackage</span><span class="nb">{</span>relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts<span class="nb">}</span>
 <span class="k">\usepackage</span><span class="na">[table]</span><span class="nb">{</span>xcolor<span class="nb">}</span>
 <span class="k">\usepackage</span><span class="nb">{</span>bm,microtype<span class="nb">}</span>
+
 <span class="k">\usepackage</span><span class="nb">{</span>ptex2tex<span class="nb">}</span>
 
 <span class="c">% #ifdef MINTED</span>
@@ -161,25 +138,23 @@ final,                   <span class="c">% or draft (marks overfull hboxes)</spa
 <span class="c">% Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),</span>
 <span class="c">% Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum</span>
 <span class="c">% #else</span>
+<span class="k">\usepackage</span><span class="na">[T1]</span><span class="nb">{</span>fontenc<span class="nb">}</span>
 <span class="c">%\usepackage[latin1]{inputenc}</span>
 <span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
-<span class="c">% #ifdef HELVETICA</span>
-<span class="c">% Set helvetica as the default font family:</span>
-<span class="k">\RequirePackage</span><span class="nb">{</span>helvet<span class="nb">}</span>
-<span class="k">\renewcommand\familydefault</span><span class="nb">{</span>phv<span class="nb">}</span>
-<span class="c">% #endif</span>
-<span class="c">% #ifdef PALATINO</span>
+
 <span class="c">% Set palatino as the default font family:</span>
 <span class="k">\usepackage</span><span class="na">[sc]</span><span class="nb">{</span>mathpazo<span class="nb">}</span>    <span class="c">% Palatino fonts</span>
 <span class="k">\linespread</span><span class="nb">{</span>1.05<span class="nb">}</span>            <span class="c">% Palatino needs extra line spread to look nice</span>
+
 <span class="c">% #endif</span>
-<span class="c">% #endif</span>
+<span class="k">\usepackage</span><span class="nb">{</span>lmodern<span class="nb">}</span>         <span class="c">% Latin Modern fonts derived from Computer Modern</span>
 
 <span class="c">% Hyperlinks in PDF:</span>
+<span class="k">\definecolor</span><span class="nb">{</span>linkcolor<span class="nb">}{</span>rgb<span class="nb">}{</span>0,0,0.4<span class="nb">}</span>
 <span class="k">\usepackage</span>[<span class="c">%</span>
     colorlinks=true,
-    linkcolor=blue,
-    urlcolor=blue,
+    linkcolor=seccolor,
+    urlcolor=seccolor,
     citecolor=black,
     filecolor=black,
     <span class="c">%filecolor=blue,</span>
@@ -205,67 +180,170 @@ final,                   <span class="c">% or draft (marks overfull hboxes)</spa
 <span class="c">% 3. enable begin{figure}[H] (often leads to ugly pagebreaks)</span>
 <span class="c">%\usepackage{float}\restylefloat{figure}</span>
 
-<span class="k">\usepackage</span><span class="na">[framemethod=TikZ]</span><span class="nb">{</span>mdframed<span class="nb">}</span>
+<span class="c">% --- fancyhdr package for fancy headers ---</span>
+<span class="k">\usepackage</span><span class="nb">{</span>fancyhdr<span class="nb">}</span>
+<span class="k">\fancyhf</span><span class="nb">{}</span>
+<span class="c">% section name to the left (L) and page number to the right (R)</span>
+<span class="c">% on even (E) pages, the other way around on odd pages</span>
+<span class="k">\fancyhead</span><span class="na">[LE,RO]</span><span class="nb">{</span><span class="k">\rightmark</span><span class="nb">}</span> <span class="c">%section</span>
+<span class="k">\fancyhead</span><span class="na">[RE,LO]</span><span class="nb">{</span><span class="k">\thepage</span><span class="nb">}</span>
+<span class="k">\pagestyle</span><span class="nb">{</span>fancy<span class="nb">}</span>
 
-<span class="c">% Admonition is an oval gray box</span>
-<span class="k">\newmdenv</span>[
-  backgroundcolor=gray!10,  <span class="c">%% white with 10%% gray</span>
-  skipabove=<span class="k">\topsep</span>,
-  skipbelow=<span class="k">\topsep</span>,
-  outerlinewidth=0.5,
-  leftmargin=0,
-  rightmargin=0,
-  roundcorner=5,
-]<span class="nb">{</span>graybox1mdframed<span class="nb">}</span>
 
-<span class="k">\newenvironment</span><span class="nb">{</span>graybox1admon<span class="nb">}</span>[1][]<span class="nb">{</span>
-<span class="k">\begin</span><span class="nb">{</span>graybox1mdframed<span class="nb">}</span>[frametitle=#1]
+<span class="k">\usepackage</span><span class="nb">{</span>framed,wrapfig<span class="nb">}</span>
+
+<span class="c">% --- begin definitions of admonition environments ---</span>
+
+<span class="c">% Admonition style &quot;yellowbox&quot; has colored background, yellow icons, and no farme</span>
+<span class="c">% Admon &quot;notice&quot;</span>
+<span class="k">\colorlet</span><span class="nb">{</span>yellowbox<span class="nb">_</span>notice<span class="nb">_</span>background<span class="nb">}{</span>yellow!5<span class="nb">}</span>
+<span class="c">% \fboxsep sets the space between the text and the box</span>
+<span class="k">\newenvironment</span><span class="nb">{</span>noticeshaded<span class="nb">}</span>
+<span class="nb">{</span><span class="k">\def\FrameCommand</span><span class="nb">{</span><span class="k">\fboxsep</span>=3mm<span class="k">\colorbox</span><span class="nb">{</span>yellowbox<span class="nb">_</span>notice<span class="nb">_</span>background<span class="nb">}}</span>
+ <span class="k">\MakeFramed</span> <span class="nb">{</span><span class="k">\advance\hsize</span>-<span class="k">\width</span> <span class="k">\FrameRestore</span><span class="nb">}}{</span><span class="k">\endMakeFramed</span><span class="nb">}</span>
+
+<span class="k">\newenvironment</span><span class="nb">{</span>notice<span class="nb">_</span>yellowboxadmon<span class="nb">}</span>[1][Notice]<span class="nb">{</span>
+<span class="k">\begin</span><span class="nb">{</span>noticeshaded<span class="nb">}</span>
+<span class="k">\noindent</span>
+<span class="k">\begin</span><span class="nb">{</span>wrapfigure<span class="nb">}{</span>l<span class="nb">}{</span>0.07<span class="k">\textwidth</span><span class="nb">}</span>
+<span class="k">\vspace</span><span class="nb">{</span>-13pt<span class="nb">}</span>
+<span class="k">\includegraphics</span><span class="na">[width=0.07\textwidth]</span><span class="nb">{</span>latex<span class="nb">_</span>figs/small<span class="nb">_</span>yellow<span class="nb">_</span>notice<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>wrapfigure<span class="nb">}</span> <span class="k">\textbf</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\par</span>
+<span class="k">\nobreak\noindent\ignorespaces</span>
 <span class="nb">}</span>
 <span class="nb">{</span>
-<span class="k">\end</span><span class="nb">{</span>graybox1mdframed<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>noticeshaded<span class="nb">}</span>
 <span class="nb">}</span>
 
-<span class="c">% #ifdef COLORED_TABLE_ROWS</span>
-<span class="c">% color every two table rows</span>
-<span class="k">\let\oldtabular\tabular</span>
-<span class="k">\let\endoldtabular\endtabular</span>
-<span class="c">% #if COLORED_TABLE_ROWS not in (&quot;gray&quot;, &quot;blue&quot;)</span>
-<span class="c">% #define COLORED_TABLE_ROWS gray</span>
-<span class="c">% #endif</span>
-<span class="c">% #else</span>
-<span class="c">% #define COLORED_TABLE_ROWS no</span>
-<span class="c">% #endif</span>
-<span class="c">% #if COLORED_TABLE_ROWS == &quot;gray&quot;</span>
-<span class="k">\definecolor</span><span class="nb">{</span>rowgray<span class="nb">}{</span>gray<span class="nb">}{</span>0.9<span class="nb">}</span>
-<span class="k">\renewenvironment</span><span class="nb">{</span>tabular<span class="nb">}{</span><span class="k">\rowcolors</span><span class="nb">{</span>2<span class="nb">}{</span>white<span class="nb">}{</span>rowgray<span class="nb">}</span><span class="c">%</span>
-<span class="k">\oldtabular</span><span class="nb">}{</span><span class="k">\endoldtabular</span><span class="nb">}</span>
-<span class="c">% #elif COLORED_TABLE_ROWS == &quot;blue&quot;</span>
-<span class="k">\definecolor</span><span class="nb">{</span>appleblue<span class="nb">}{</span>rgb<span class="nb">}{</span>0.93,0.95,1.0<span class="nb">}</span>  <span class="c">% Apple blue</span>
-<span class="k">\renewenvironment</span><span class="nb">{</span>tabular<span class="nb">}{</span><span class="k">\rowcolors</span><span class="nb">{</span>2<span class="nb">}{</span>white<span class="nb">}{</span>appleblue<span class="nb">}</span><span class="c">%</span>
-<span class="k">\oldtabular</span><span class="nb">}{</span><span class="k">\endoldtabular</span><span class="nb">}</span>
-<span class="c">% #endif</span>
+<span class="c">% Admonition style &quot;yellowbox&quot; has colored background, yellow icons, and no farme</span>
+<span class="c">% Admon &quot;summary&quot;</span>
+<span class="k">\colorlet</span><span class="nb">{</span>yellowbox<span class="nb">_</span>summary<span class="nb">_</span>background<span class="nb">}{</span>yellow!5<span class="nb">}</span>
+<span class="c">% \fboxsep sets the space between the text and the box</span>
+<span class="k">\newenvironment</span><span class="nb">{</span>summaryshaded<span class="nb">}</span>
+<span class="nb">{</span><span class="k">\def\FrameCommand</span><span class="nb">{</span><span class="k">\fboxsep</span>=3mm<span class="k">\colorbox</span><span class="nb">{</span>yellowbox<span class="nb">_</span>summary<span class="nb">_</span>background<span class="nb">}}</span>
+ <span class="k">\MakeFramed</span> <span class="nb">{</span><span class="k">\advance\hsize</span>-<span class="k">\width</span> <span class="k">\FrameRestore</span><span class="nb">}}{</span><span class="k">\endMakeFramed</span><span class="nb">}</span>
+
+<span class="k">\newenvironment</span><span class="nb">{</span>summary<span class="nb">_</span>yellowboxadmon<span class="nb">}</span>[1][Summary]<span class="nb">{</span>
+<span class="k">\begin</span><span class="nb">{</span>summaryshaded<span class="nb">}</span>
+<span class="k">\noindent</span>
+<span class="k">\begin</span><span class="nb">{</span>wrapfigure<span class="nb">}{</span>l<span class="nb">}{</span>0.07<span class="k">\textwidth</span><span class="nb">}</span>
+<span class="k">\vspace</span><span class="nb">{</span>-13pt<span class="nb">}</span>
+<span class="k">\includegraphics</span><span class="na">[width=0.07\textwidth]</span><span class="nb">{</span>latex<span class="nb">_</span>figs/small<span class="nb">_</span>yellow<span class="nb">_</span>summary<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>wrapfigure<span class="nb">}</span> <span class="k">\textbf</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\par</span>
+<span class="k">\nobreak\noindent\ignorespaces</span>
+<span class="nb">}</span>
+<span class="nb">{</span>
+<span class="k">\end</span><span class="nb">{</span>summaryshaded<span class="nb">}</span>
+<span class="nb">}</span>
+
+<span class="c">% Admonition style &quot;yellowbox&quot; has colored background, yellow icons, and no farme</span>
+<span class="c">% Admon &quot;warning&quot;</span>
+<span class="k">\colorlet</span><span class="nb">{</span>yellowbox<span class="nb">_</span>warning<span class="nb">_</span>background<span class="nb">}{</span>yellow!5<span class="nb">}</span>
+<span class="c">% \fboxsep sets the space between the text and the box</span>
+<span class="k">\newenvironment</span><span class="nb">{</span>warningshaded<span class="nb">}</span>
+<span class="nb">{</span><span class="k">\def\FrameCommand</span><span class="nb">{</span><span class="k">\fboxsep</span>=3mm<span class="k">\colorbox</span><span class="nb">{</span>yellowbox<span class="nb">_</span>warning<span class="nb">_</span>background<span class="nb">}}</span>
+ <span class="k">\MakeFramed</span> <span class="nb">{</span><span class="k">\advance\hsize</span>-<span class="k">\width</span> <span class="k">\FrameRestore</span><span class="nb">}}{</span><span class="k">\endMakeFramed</span><span class="nb">}</span>
+
+<span class="k">\newenvironment</span><span class="nb">{</span>warning<span class="nb">_</span>yellowboxadmon<span class="nb">}</span>[1][Warning]<span class="nb">{</span>
+<span class="k">\begin</span><span class="nb">{</span>warningshaded<span class="nb">}</span>
+<span class="k">\noindent</span>
+<span class="k">\begin</span><span class="nb">{</span>wrapfigure<span class="nb">}{</span>l<span class="nb">}{</span>0.07<span class="k">\textwidth</span><span class="nb">}</span>
+<span class="k">\vspace</span><span class="nb">{</span>-13pt<span class="nb">}</span>
+<span class="k">\includegraphics</span><span class="na">[width=0.07\textwidth]</span><span class="nb">{</span>latex<span class="nb">_</span>figs/small<span class="nb">_</span>yellow<span class="nb">_</span>warning<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>wrapfigure<span class="nb">}</span> <span class="k">\textbf</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\par</span>
+<span class="k">\nobreak\noindent\ignorespaces</span>
+<span class="nb">}</span>
+<span class="nb">{</span>
+<span class="k">\end</span><span class="nb">{</span>warningshaded<span class="nb">}</span>
+<span class="nb">}</span>
+
+<span class="c">% Admonition style &quot;yellowbox&quot; has colored background, yellow icons, and no farme</span>
+<span class="c">% Admon &quot;question&quot;</span>
+<span class="k">\colorlet</span><span class="nb">{</span>yellowbox<span class="nb">_</span>question<span class="nb">_</span>background<span class="nb">}{</span>yellow!5<span class="nb">}</span>
+<span class="c">% \fboxsep sets the space between the text and the box</span>
+<span class="k">\newenvironment</span><span class="nb">{</span>questionshaded<span class="nb">}</span>
+<span class="nb">{</span><span class="k">\def\FrameCommand</span><span class="nb">{</span><span class="k">\fboxsep</span>=3mm<span class="k">\colorbox</span><span class="nb">{</span>yellowbox<span class="nb">_</span>question<span class="nb">_</span>background<span class="nb">}}</span>
+ <span class="k">\MakeFramed</span> <span class="nb">{</span><span class="k">\advance\hsize</span>-<span class="k">\width</span> <span class="k">\FrameRestore</span><span class="nb">}}{</span><span class="k">\endMakeFramed</span><span class="nb">}</span>
+
+<span class="k">\newenvironment</span><span class="nb">{</span>question<span class="nb">_</span>yellowboxadmon<span class="nb">}</span>[1][Question]<span class="nb">{</span>
+<span class="k">\begin</span><span class="nb">{</span>questionshaded<span class="nb">}</span>
+<span class="k">\noindent</span>
+<span class="k">\begin</span><span class="nb">{</span>wrapfigure<span class="nb">}{</span>l<span class="nb">}{</span>0.07<span class="k">\textwidth</span><span class="nb">}</span>
+<span class="k">\vspace</span><span class="nb">{</span>-13pt<span class="nb">}</span>
+<span class="k">\includegraphics</span><span class="na">[width=0.07\textwidth]</span><span class="nb">{</span>latex<span class="nb">_</span>figs/small<span class="nb">_</span>yellow<span class="nb">_</span>question<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>wrapfigure<span class="nb">}</span> <span class="k">\textbf</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\par</span>
+<span class="k">\nobreak\noindent\ignorespaces</span>
+<span class="nb">}</span>
+<span class="nb">{</span>
+<span class="k">\end</span><span class="nb">{</span>questionshaded<span class="nb">}</span>
+<span class="nb">}</span>
+
+<span class="c">% Admonition style &quot;yellowbox&quot; has colored background, yellow icons, and no farme</span>
+<span class="c">% Admon &quot;block&quot;</span>
+<span class="k">\colorlet</span><span class="nb">{</span>yellowbox<span class="nb">_</span>block<span class="nb">_</span>background<span class="nb">}{</span>yellow!5<span class="nb">}</span>
+<span class="c">% \fboxsep sets the space between the text and the box</span>
+<span class="k">\newenvironment</span><span class="nb">{</span>blockshaded<span class="nb">}</span>
+<span class="nb">{</span><span class="k">\def\FrameCommand</span><span class="nb">{</span><span class="k">\fboxsep</span>=3mm<span class="k">\colorbox</span><span class="nb">{</span>yellowbox<span class="nb">_</span>block<span class="nb">_</span>background<span class="nb">}}</span>
+ <span class="k">\MakeFramed</span> <span class="nb">{</span><span class="k">\advance\hsize</span>-<span class="k">\width</span> <span class="k">\FrameRestore</span><span class="nb">}}{</span><span class="k">\endMakeFramed</span><span class="nb">}</span>
+
+<span class="k">\newenvironment</span><span class="nb">{</span>block<span class="nb">_</span>yellowboxadmon<span class="nb">}</span>[1][Block]<span class="nb">{</span>
+<span class="k">\begin</span><span class="nb">{</span>blockshaded<span class="nb">}</span>
+<span class="k">\noindent</span>
+ <span class="k">\textbf</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\par</span>
+<span class="k">\nobreak\noindent\ignorespaces</span>
+<span class="nb">}</span>
+<span class="nb">{</span>
+<span class="k">\end</span><span class="nb">{</span>blockshaded<span class="nb">}</span>
+<span class="nb">}</span>
+
+<span class="c">% --- end of definitions of admonition environments ---</span>
 
 <span class="c">% prevent orhpans and widows</span>
 <span class="k">\clubpenalty</span> = 10000
 <span class="k">\widowpenalty</span> = 10000
 
 <span class="c">% http://www.ctex.org/documents/packages/layout/titlesec.pdf</span>
-<span class="k">\usepackage</span><span class="na">[compact]</span><span class="nb">{</span>titlesec<span class="nb">}</span>  <span class="c">% narrower section headings</span>
-<span class="c">% #ifdef BLUE_SECTION_HEADINGS</span>
-<span class="k">\definecolor</span><span class="nb">{</span>seccolor<span class="nb">}{</span>rgb<span class="nb">}{</span>0.2,0.2,0.8<span class="nb">}</span>
-<span class="k">\titleformat</span><span class="nb">{</span><span class="k">\section</span><span class="nb">}</span>
+<span class="k">\usepackage</span><span class="na">[compact]</span><span class="nb">{</span>titlesec<span class="nb">}</span>  <span class="c">% reduce the spacing above/below the heading</span>
+
+<span class="c">% --- section/subsection headings with blue color ---</span>
+<span class="k">\definecolor</span><span class="nb">{</span>seccolor<span class="nb">}{</span>cmyk<span class="nb">}{</span>.9,.5,0,.35<span class="nb">}</span>  <span class="c">% siamltexmm.sty section color</span>
+<span class="k">\titleformat</span><span class="nb">{</span>name=<span class="k">\section</span><span class="nb">}</span>
 <span class="nb">{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span><span class="k">\normalfont\Large\bfseries</span><span class="nb">}</span>
 <span class="nb">{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span><span class="k">\thesection</span><span class="nb">}{</span>1em<span class="nb">}{}</span>
-<span class="k">\titleformat</span><span class="nb">{</span><span class="k">\subsection</span><span class="nb">}</span>
+<span class="k">\titleformat</span><span class="nb">{</span>name=<span class="k">\subsection</span><span class="nb">}</span>
 <span class="nb">{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span><span class="k">\normalfont\large\bfseries</span><span class="nb">}</span>
 <span class="nb">{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span><span class="k">\thesubsection</span><span class="nb">}{</span>1em<span class="nb">}{}</span>
-<span class="c">% #endif</span>
+<span class="k">\titleformat</span><span class="nb">{</span>name=<span class="k">\paragraph</span><span class="nb">}</span>[runin]
+<span class="nb">{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span><span class="k">\normalfont\normalsize\bfseries</span><span class="nb">}</span>
+<span class="nb">{}{}{</span><span class="k">\indent</span><span class="nb">}</span>
+
+<span class="c">% let the header have a thick gray hrule with section and page in blue above</span>
+<span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\headrulewidth</span><span class="nb">}{</span>0.4pt<span class="nb">}</span>
+<span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\headrule</span><span class="nb">}{{</span><span class="k">\color</span><span class="nb">{</span>gray!50<span class="nb">}</span><span class="c">%</span>
+<span class="k">\hrule</span> width<span class="k">\headwidth</span> height<span class="k">\headrulewidth</span> <span class="k">\vskip</span>-<span class="k">\headrulewidth</span><span class="nb">}}</span>
+<span class="k">\fancyhead</span><span class="na">[LE,RO]</span><span class="nb">{{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span><span class="k">\rightmark</span><span class="nb">}}</span> <span class="c">%section</span>
+<span class="k">\fancyhead</span><span class="na">[RE,LO]</span><span class="nb">{{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span><span class="k">\thepage</span><span class="nb">}}</span>
+
+
+<span class="c">% --- color every two table rows ---</span>
+<span class="k">\let\oldtabular\tabular</span>
+<span class="k">\let\endoldtabular\endtabular</span>
+<span class="k">\definecolor</span><span class="nb">{</span>appleblue<span class="nb">}{</span>rgb<span class="nb">}{</span>0.93,0.95,1.0<span class="nb">}</span>  <span class="c">% Apple blue</span>
+<span class="k">\renewenvironment</span><span class="nb">{</span>tabular<span class="nb">}{</span><span class="k">\rowcolors</span><span class="nb">{</span>2<span class="nb">}{</span>white<span class="nb">}{</span>appleblue<span class="nb">}</span><span class="c">%</span>
+<span class="k">\oldtabular</span><span class="nb">}{</span><span class="k">\endoldtabular</span><span class="nb">}</span>
+
+
+<span class="c">% Make sure blank even-numbered pages before new chapters are</span>
+<span class="c">% totally blank with no header</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\clearemptydoublepage</span><span class="nb">}{</span><span class="k">\clearpage</span><span class="nb">{</span><span class="k">\pagestyle</span><span class="nb">{</span>empty<span class="nb">}</span><span class="k">\cleardoublepage</span><span class="nb">}}</span>
+<span class="c">%\let\cleardoublepage\clearemptydoublepage % caused error in the toc</span>
 
 <span class="c">% --- end of standard preamble for documents ---</span>
 
 
 <span class="c">% insert custom LaTeX commands...</span>
 
+<span class="k">\raggedbottom</span>
 <span class="k">\makeindex</span>
 
 <span class="c">%-------------------- end preamble ----------------------</span>
@@ -281,127 +359,45 @@ final,                   <span class="c">% or draft (marks overfull hboxes)</spa
 
 
 <span class="c">% ----------------- title -------------------------</span>
-<span class="c">% #if LATEX_HEADING == &quot;traditional&quot;</span>
-<span class="k">\title</span><span class="nb">{</span>Experiments with Schemes for Exponential Decay<span class="nb">}</span>
-
-<span class="c">% #elif LATEX_HEADING == &quot;titlepage&quot;</span>
 
 <span class="k">\thispagestyle</span><span class="nb">{</span>empty<span class="nb">}</span>
-<span class="k">\hbox</span><span class="nb">{</span><span class="k">\ \ </span><span class="nb">}</span>
-<span class="k">\vfill</span>
-<span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
-<span class="nb">{</span><span class="k">\huge</span><span class="nb">{</span><span class="k">\bfseries</span><span class="nb">{</span>
-<span class="k">\begin</span><span class="nb">{</span>spacing<span class="nb">}{</span>1.25<span class="nb">}</span>
-Experiments with Schemes for Exponential Decay
-<span class="k">\end</span><span class="nb">{</span>spacing<span class="nb">}</span>
-<span class="nb">}}}</span>
 
-<span class="c">% #elif LATEX_HEADING == &quot;Springer_collection&quot;</span>
-<span class="k">\title*</span><span class="nb">{</span>Experiments with Schemes for Exponential Decay<span class="nb">}</span>
-<span class="c">% Short version of title:</span>
-<span class="c">%\titlerunning{...}</span>
-
-<span class="c">% #elif LATEX_HEADING == &quot;beamer&quot;</span>
-<span class="k">\title</span><span class="nb">{</span>Experiments with Schemes for Exponential Decay<span class="nb">}</span>
-<span class="c">% #else</span>
 <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
 <span class="nb">{</span><span class="k">\LARGE\bf</span>
 <span class="k">\begin</span><span class="nb">{</span>spacing<span class="nb">}{</span>1.25<span class="nb">}</span>
-Experiments with Schemes for Exponential Decay
+<span class="nb">{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span> Experiments with Schemes for Exponential Decay<span class="nb">}</span>
 <span class="k">\end</span><span class="nb">{</span>spacing<span class="nb">}</span>
 <span class="nb">}</span>
 <span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
-<span class="c">% #endif</span>
 
 <span class="c">% ----------------- author(s) -------------------------</span>
-<span class="c">% #if LATEX_HEADING == &quot;traditional&quot;</span>
-<span class="k">\author</span><span class="nb">{</span>Hans Petter Langtangen<span class="k">\footnote</span><span class="nb">{</span>Email: <span class="k">\texttt</span><span class="nb">{</span>hpl@simula.no<span class="nb">}</span>. Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo.<span class="nb">}}</span>
-
-<span class="c">% #elif LATEX_HEADING == &quot;titlepage&quot;</span>
-<span class="k">\vspace</span><span class="nb">{</span>1.3cm<span class="nb">}</span>
-
-    <span class="nb">{</span><span class="k">\Large\textsf</span><span class="nb">{</span>Hans Petter Langtangen<span class="s">$</span><span class="nb">{}^{</span><span class="m">1</span><span class="nb">, </span><span class="m">2</span><span class="nb">}</span><span class="s">$</span> (<span class="k">\texttt</span><span class="nb">{</span>hpl@simula.no<span class="nb">}</span>)<span class="nb">}}</span><span class="k">\\</span> [3mm]
-    
-<span class="k">\ \\</span> [2mm]
-
-<span class="nb">{</span><span class="k">\large\textsf</span><span class="nb">{</span><span class="s">$</span><span class="nb">{}^</span><span class="m">1</span><span class="s">$</span>Center for Biomedical Computing, Simula Research Laboratory<span class="nb">}</span> <span class="k">\\</span> [1.5mm]<span class="nb">}</span>
-<span class="nb">{</span><span class="k">\large\textsf</span><span class="nb">{</span><span class="s">$</span><span class="nb">{}^</span><span class="m">2</span><span class="s">$</span>Department of Informatics, University of Oslo.<span class="nb">}</span> <span class="k">\\</span> [1.5mm]<span class="nb">}</span>
-<span class="c">% #elif LATEX_HEADING == &quot;Springer_collection&quot;</span>
-
-<span class="k">\author</span><span class="nb">{</span>Hans Petter Langtangen<span class="nb">}</span>
-<span class="c">% Short version of authors:</span>
-<span class="c">%\authorrunning{...}</span>
-<span class="k">\institute</span><span class="nb">{</span>Hans Petter Langtangen<span class="k">\at</span> Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo.<span class="k">\email</span><span class="nb">{</span>hpl@simula.no<span class="nb">}}</span>
-
-<span class="c">% #elif LATEX_HEADING == &quot;beamer&quot;</span>
-<span class="k">\author</span><span class="nb">{</span>Hans Petter Langtangen<span class="k">\inst</span><span class="nb">{</span>1,2<span class="nb">}}</span>
-<span class="k">\institute</span><span class="nb">{</span>Center for Biomedical Computing, Simula Research Laboratory<span class="k">\inst</span><span class="nb">{</span>1<span class="nb">}</span>
-<span class="k">\and</span>
-Department of Informatics, University of Oslo.<span class="k">\inst</span><span class="nb">{</span>2<span class="nb">}}</span>
-<span class="c">% #else</span>
 
 <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
 <span class="nb">{</span><span class="k">\bf</span> Hans Petter Langtangen<span class="s">$</span><span class="nb">{}^{</span><span class="m">1</span><span class="nb">, </span><span class="m">2</span><span class="nb">}</span><span class="s">$</span> (<span class="k">\texttt</span><span class="nb">{</span>hpl@simula.no<span class="nb">}</span>)<span class="nb">}</span> <span class="k">\\</span> [0mm]
 <span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
 
-<span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
+    <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
 <span class="c">% List of all institutions:</span>
 <span class="k">\centerline</span><span class="nb">{{</span><span class="k">\small</span> <span class="s">$</span><span class="nb">{}^</span><span class="m">1</span><span class="s">$</span>Center for Biomedical Computing, Simula Research Laboratory<span class="nb">}}</span>
 <span class="k">\centerline</span><span class="nb">{{</span><span class="k">\small</span> <span class="s">$</span><span class="nb">{}^</span><span class="m">2</span><span class="s">$</span>Department of Informatics, University of Oslo.<span class="nb">}}</span>
 <span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
-<span class="c">% #endif</span>
+
 <span class="c">% ----------------- end author(s) -------------------------</span>
 
-
-<span class="c">% #if LATEX_HEADING == &quot;traditional&quot;</span>
-<span class="k">\date</span><span class="nb">{</span>Jun 18, 2013<span class="nb">}</span>
-<span class="k">\maketitle</span>
-<span class="c">% #elif LATEX_HEADING == &quot;beamer&quot;</span>
-<span class="k">\date</span><span class="nb">{</span>Jun 18, 2013
-<span class="c">% &lt;titlepage figure&gt;</span>
-<span class="nb">}</span>
-<span class="c">% #elif LATEX_HEADING == &quot;titlepage&quot;</span>
-
-<span class="k">\ \\</span> [10mm]
-<span class="nb">{</span><span class="k">\large\textsf</span><span class="nb">{</span>Jun 18, 2013<span class="nb">}}</span>
-
-<span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
-<span class="k">\vfill</span>
-<span class="k">\clearpage</span>
-
-<span class="c">% #else</span>
 <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
-Jun 18, 2013
+Feb 17, 2014
 <span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
 
 <span class="k">\vspace</span><span class="nb">{</span>1cm<span class="nb">}</span>
 
-<span class="c">% #endif</span>
-
-
-<span class="c">% #if LATEX_HEADING == &quot;Springer_collection&quot;</span>
-<span class="k">\abstract</span><span class="nb">{</span>
-<span class="c">% #else</span>
 <span class="k">\begin</span><span class="nb">{</span>abstract<span class="nb">}</span>
-<span class="c">% #endif</span>
-This report investigates the accuracy of three finite difference
-schemes for the ordinary differential equation <span class="s">$</span><span class="nb">u&#39;</span><span class="o">=-</span><span class="nb">au</span><span class="s">$</span> with the
-aid of numerical experiments. Numerical artifacts are in particular
-demonstrated.
 
-
-
-
-<span class="c">% #if LATEX_HEADING == &quot;Springer_collection&quot;</span>
-<span class="nb">}</span>
-<span class="c">% #else</span>
 <span class="k">\end</span><span class="nb">{</span>abstract<span class="nb">}</span>
-<span class="c">% #endif</span>
 
 <span class="k">\tableofcontents</span>
 
-<span class="k">\vspace</span><span class="nb">{</span>1cm<span class="nb">}</span> <span class="c">% after toc</span>
 
+<span class="k">\vspace</span><span class="nb">{</span>1cm<span class="nb">}</span> <span class="c">% after toc</span>
 
 
 
@@ -542,19 +538,40 @@ is shown below.
 
 
 
-<span class="k">\begin</span><span class="nb">{</span>graybox1admon<span class="nb">}</span>[Observe:]
+<span class="k">\begin</span><span class="nb">{</span>warning<span class="nb">_</span>yellowboxadmon<span class="nb">}</span>[Observe:]
 The data points for the three largest <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> values in the
 Forward Euler method are not relevant as the solution behaves
 non-physically.
-<span class="k">\end</span><span class="nb">{</span>graybox1admon<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>warning<span class="nb">_</span>yellowboxadmon<span class="nb">}</span>
+
+
+
+
+
 <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>  <span class="c">% inline figure</span>
   <span class="k">\centerline</span><span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[width=0.9\linewidth]</span><span class="nb">{</span>error.pdf<span class="nb">}}</span>
 <span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
 
 
 
+The numbers corresponding to the figure above are given in the table below.
 
-<span class="k">\begin</span><span class="nb">{</span>graybox1admon<span class="nb">}</span>[Summary.]
+
+<span class="k">\begin</span><span class="nb">{</span>quote<span class="nb">}</span><span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>rrrr<span class="nb">}</span>
+<span class="k">\hline</span>
+<span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>c<span class="nb">}{</span> <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> <span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>c<span class="nb">}{</span> <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">0</span><span class="s">$</span> <span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>c<span class="nb">}{</span> <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="s">$</span> <span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>c<span class="nb">}{</span> <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">1</span><span class="s">$</span> <span class="nb">}</span> <span class="k">\\</span>
+<span class="k">\hline</span>
+1.25         <span class="nb">&amp;</span> 7.4630       <span class="nb">&amp;</span> 0.2161       <span class="nb">&amp;</span> 0.2440       <span class="k">\\</span>
+0.75         <span class="nb">&amp;</span> 0.6632       <span class="nb">&amp;</span> 0.0744       <span class="nb">&amp;</span> 0.1875       <span class="k">\\</span>
+0.50         <span class="nb">&amp;</span> 0.2797       <span class="nb">&amp;</span> 0.0315       <span class="nb">&amp;</span> 0.1397       <span class="k">\\</span>
+0.10         <span class="nb">&amp;</span> 0.0377       <span class="nb">&amp;</span> 0.0012       <span class="nb">&amp;</span> 0.0335       <span class="k">\\</span>
+<span class="k">\hline</span>
+<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span><span class="k">\end</span><span class="nb">{</span>quote<span class="nb">}</span>
+
+<span class="k">\noindent</span>
+
+
+<span class="k">\begin</span><span class="nb">{</span>summary<span class="nb">_</span>yellowboxadmon<span class="nb">}</span>[Summary]
 <span class="k">\begin</span><span class="nb">{</span>enumerate<span class="nb">}</span>
 <span class="k">\item</span> <span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="m">1</span><span class="s">$</span>: <span class="s">$</span><span class="nb">E</span><span class="nv">\sim</span><span class="nb"> </span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> (first-order convergence).
 
@@ -571,9 +588,16 @@ non-physically.
 <span class="k">\end</span><span class="nb">{</span>enumerate<span class="nb">}</span>
 
 <span class="k">\noindent</span>
-<span class="k">\end</span><span class="nb">{</span>graybox1admon<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>summary<span class="nb">_</span>yellowboxadmon<span class="nb">}</span>
+
+
+
+
+
+
 <span class="k">\bibliographystyle</span><span class="nb">{</span>plain<span class="nb">}</span>
-<span class="k">\bibliography</span><span class="nb">{</span>.publish<span class="nb">_</span>references.bib<span class="nb">}</span>
+<span class="k">\bibliography</span><span class="nb">{</span>.publish<span class="nb">_</span>references<span class="nb">}</span>
+
 
 <span class="c">% ------------------- end of main content ---------------</span>
 

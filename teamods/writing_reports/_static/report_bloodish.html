@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Experiments with Schemes for Exponential Decay">
 <meta name="keywords" content="keyword,model problem,exponential decay,mesh in time,$\theta$-rule,numerical scheme,finite difference scheme,numerical experiments,BE,CN,FE,error vs time step">
 
 
 
 <style type="text/css">
+    /* bloodish style */
+
     body {
       font-family: Helvetica, Verdana, Arial, Sans-serif;
       color: #404040;
       background: #ffffff;
     }
     h1 { font-size: 1.8em;  color: #8A0808; }
-    h2 { font-size: 1.5em;  color: #8A0808; }
-    h3, h4 { color: #8A0808; }
+    h2 { font-size: 1.6em;  color: #8A0808; }
+    h3 { font-size: 1.4em;  color: #8A0808; }
+    h4 { color: #8A0808; }
     a { color: #8A0808; text-decoration:none; }
     tt { font-family: "Courier New", Courier; }
     
@@ -35,10 +38,11 @@ Automatically generated HTML file from Doconce source
              padding:8px 35px 8px 14px; margin-bottom:18px;
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:1px solid #bababa;
-             -webkit-border-radius: 4px; -moz-border-radius: 4px;
-             border-radius: 4px
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
              color: #555;
-             background-color: whiteSmoke;
+             background-color: #f8f8f8;
              background-position: 10px 5px;
              background-repeat: no-repeat;
              background-size: 38px;
@@ -46,13 +50,13 @@ Automatically generated HTML file from Doconce source
              width: 75%;
      }
      .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
-     .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_summary.png); }
-     .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_warning.png); }
-     .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_question.png); }
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 </style>
 
@@ -118,7 +122,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo.</b></center>
 <p>
-<center><h4>Jun 18, 2013</h4></center> <!-- date -->
+<center><h4>Feb 17, 2014</h4></center> <!-- date -->
 <p>
 <b>Summary.</b> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation \( u'=-au \) with the
@@ -179,11 +183,11 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
 <p>
 
 <ul>
-  <li> The <a href="http://en.wikipedia.org/wiki/Forward_Euler_method">Forward Euler</a>
+  <li> The <a href="http://en.wikipedia.org/wiki/Forward_Euler_method" target="_self">Forward Euler</a>
     scheme when \( \theta=0 \)</li>
-  <li> The <a href="http://en.wikipedia.org/wiki/Backward_Euler_method">Backward Euler</a>
+  <li> The <a href="http://en.wikipedia.org/wiki/Backward_Euler_method" target="_self">Backward Euler</a>
     scheme when \( \theta=1 \)</li>
-  <li> The <a href="http://en.wikipedia.org/wiki/Crank-Nicolson">Crank-Nicolson</a>
+  <li> The <a href="http://en.wikipedia.org/wiki/Crank-Nicolson" target="_self">Crank-Nicolson</a>
     scheme when \( \theta=1/2 \)</li>
 </ul>
 
@@ -191,7 +195,7 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
 
 <p>
 The numerical method is implemented in a Python function
-<a href="#Langtangen_2012">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py"><tt>decay_mod</tt></a> module):
+<a href="#Langtangen_2012">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>decay_mod</tt></a> module):
 
 <p>
 
@@ -244,9 +248,22 @@ The data points for the three largest \( \Delta t \) values in the
 Forward Euler method are not relevant as the solution behaves
 non-physically.
 </div>
+
+
 <p>
 <center><p><img src="error.png" align="bottom" width=400></p></center>
 
+<p>
+The numbers corresponding to the figure above are given in the table below.
+
+<p>
+<table border="1">
+<tr><td align="center"><b>  \( \Delta t \)  </b></td> <td align="center"><b>  \( \theta=0 \)  </b></td> <td align="center"><b> \( \theta=0.5 \) </b></td> <td align="center"><b>  \( \theta=1 \)  </b></td> </tr>
+<tr><td align="right">   1.25                </td> <td align="right">   7.4630              </td> <td align="right">   0.2161              </td> <td align="right">   0.2440              </td> </tr>
+<tr><td align="right">   0.75                </td> <td align="right">   0.6632              </td> <td align="right">   0.0744              </td> <td align="right">   0.1875              </td> </tr>
+<tr><td align="right">   0.50                </td> <td align="right">   0.2797              </td> <td align="right">   0.0315              </td> <td align="right">   0.1397              </td> </tr>
+<tr><td align="right">   0.10                </td> <td align="right">   0.0377              </td> <td align="right">   0.0012              </td> <td align="right">   0.0335              </td> </tr>
+</table>
 <p>
 <div class="alert alert-block alert-summary alert-text-normal"><b>Summary.</b>
 
@@ -261,9 +278,10 @@ non-physically.
    solutions that disappear if \( \Delta t \) is sufficiently small.</li>
 </ol>
 </div>
-<h2>Bibliography</h2>
+
 
 <p>
+<!-- begin bibliography -->
 
 <ol>
  <li> <a name="Iserles_2009"></a> <b>A. Iserles</b>. 
@@ -276,6 +294,7 @@ non-physically.
     2012.</li>
 </ol>
 
+<!-- end bibliography -->
 
 <!-- ------------------- end of main content --------------- -->
 
