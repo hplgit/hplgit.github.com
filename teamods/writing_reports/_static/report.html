@@ -44,6 +44,7 @@ Table of contents: Run pandoc with --toc option -->
 
 
 
+<!-- !split -->
 <h2 id="mathematical-problem">Mathematical problem</h2>
 <p>We address the initial-value problem</p>
 <p>\[
@@ -101,15 +102,49 @@ u(0)  = I,                         \label{initial:value}
 <div class="figure">
 <img src="error.png" /><p class="caption"></p>
 </div>
+<p>The numbers corresponding to the figure above are given in the table below.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">\(\Delta t\)</th>
+<th align="center">\(\theta=0\)</th>
+<th align="left">\(\theta=0.5\)</th>
+<th align="center">\(\theta=1\)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1.25</td>
+<td align="center">7.4630</td>
+<td align="left">0.2161</td>
+<td align="center">0.2440</td>
+</tr>
+<tr class="even">
+<td align="center">0.75</td>
+<td align="center">0.6632</td>
+<td align="left">0.0744</td>
+<td align="center">0.1875</td>
+</tr>
+<tr class="odd">
+<td align="center">0.50</td>
+<td align="center">0.2797</td>
+<td align="left">0.0315</td>
+<td align="center">0.1397</td>
+</tr>
+<tr class="even">
+<td align="center">0.10</td>
+<td align="center">0.0377</td>
+<td align="left">0.0012</td>
+<td align="center">0.0335</td>
+</tr>
+</tbody>
+</table>
 <p><em>Summary.</em> 1. \(\theta =1\): \(E\sim \Delta t\) (first-order convergence).</p>
 <ol start="2" style="list-style-type: decimal">
 <li><p>\(\theta =0.5\): \(E\sim \Delta t^2\) (second-order convergence).</p></li>
 <li><p>\(\theta =1\) is always stable and gives qualitatively corrects results.</p></li>
 <li><p>\(\theta =0.5\) never blows up, but may give oscillating solutions if \(\Delta t\) is not sufficiently small.</p></li>
 <li><p>\(\theta =0\) suffers from fast-growing solution if \(\Delta t\) is not small enough, but even below this limit one can have oscillating solutions that disappear if \(\Delta t\) is sufficiently small.</p></li>
-</ol>
-<h2 id="bibliography">Bibliography</h2>
-<ol style="list-style-type: decimal">
 <li><p> <em>A. Iserles</em>. <em>A First Course in the Numerical Analysis of Differential Equations</em>, Cambridge University Press, 2009.</p></li>
 <li><p> <em>H. P. Langtangen</em>. <em>A Primer on Scientific Programming With Python</em>, Springer, 2012.</p></li>
 </ol>

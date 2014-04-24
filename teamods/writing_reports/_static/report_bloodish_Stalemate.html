@@ -1,12 +1,11 @@
-<!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
-(http://code.google.com/p/doconce/)
+(https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Experiments with Schemes for Exponential Decay">
 <meta name="keywords" content="keyword,model problem,exponential decay,mesh in time,$\theta$-rule,numerical scheme,finite difference scheme,numerical experiments,BE,CN,FE,error vs time step">
 
@@ -15,14 +14,17 @@ Automatically generated HTML file from Doconce source
 <style type="text/css">
     @import url(http://fonts.googleapis.com/css?family=Stalemate);
     @import url(http://fonts.googleapis.com/css?family=Stalemate);
+    /* bloodish style */
+
     body {
       font-family: 'Stalemate';
       color: #404040;
       background: #ffffff;
     }
     h1 { font-size: 1.8em;  color: #8A0808; }
-    h2 { font-size: 1.5em;  color: #8A0808; }
-    h3, h4 { color: #8A0808; }
+    h2 { font-size: 1.6em;  color: #8A0808; }
+    h3 { font-size: 1.4em;  color: #8A0808; }
+    h4 { color: #8A0808; }
     a { color: #8A0808; text-decoration:none; }
     tt { font-family: 'Stalemate'; }
     
@@ -39,10 +41,11 @@ Automatically generated HTML file from Doconce source
              padding:8px 35px 8px 14px; margin-bottom:18px;
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:1px solid #bababa;
-             -webkit-border-radius: 4px; -moz-border-radius: 4px;
-             border-radius: 4px
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
              color: #555;
-             background-color: whiteSmoke;
+             background-color: #f8f8f8;
              background-position: 10px 5px;
              background-repeat: no-repeat;
              background-size: 38px;
@@ -50,13 +53,13 @@ Automatically generated HTML file from Doconce source
              width: 75%;
      }
      .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
-     .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_summary.png); }
-     .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_warning.png); }
-     .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_question.png); }
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 </style>
 
@@ -102,8 +105,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<p>
-
 <title>Experiments with Schemes for Exponential Decay</title>
 
 <center><h1>Experiments with Schemes for Exponential Decay</h1></center>  <!-- document title -->
@@ -122,7 +123,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo.</b></center>
 <p>
-<center><h4>Jun 18, 2013</h4></center> <!-- date -->
+<center><h4>Apr 23, 2014</h4></center> <!-- date -->
 <p>
 <b>Summary.</b> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation \( u'=-au \) with the
@@ -132,7 +133,6 @@ demonstrated.
 <h2>
 Table of contents</h2>
 
-<p>
 <a href="#math:problem"> Mathematical problem </a><br>
 <a href="#numerical:problem"> Numerical solution method </a><br>
 <a href="#___sec2"> Implementation </a><br>
@@ -142,12 +142,10 @@ Table of contents</h2>
 &nbsp; &nbsp; &nbsp; <a href="#___sec6"> The Forward Euler method </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec7"> Error vs \( \Delta t \) </a><br>
 
-<h2>Mathematical problem <a name="math:problem"></a></h2>
+<h1>Mathematical problem <a name="math:problem"></a></h1>
 
-<p>
 We address the initial-value problem
 
-<p>
 $$
 \begin{align}
 u'(t) &= -au(t), \quad t \in (0,T], \label{ode}\\
@@ -161,9 +159,8 @@ is relevant for physical phenomena featuring exponential decay
 in time, e.g., vertical pressure variation in the atmosphere,
 cooling of an object, and radioactive decay.
 
-<h2>Numerical solution method <a name="numerical:problem"></a></h2>
+<h1>Numerical solution method <a name="numerical:problem"></a></h1>
 
-<p>
 We introduce a mesh in time with points \( 0= t_0< t_1 \cdots < t_{N_t}=T \).
 For simplicity, we assume constant spacing \( \Delta t \) between the
 mesh points: \( \Delta t = t_{n}-t_{n-1} \), \( n=1,\ldots,N_t \). Let
@@ -173,29 +170,25 @@ mesh points: \( \Delta t = t_{n}-t_{n-1} \), \( n=1,\ldots,N_t \). Let
 The \( \theta \)-rule <a href="#Iserles_2009">[1]</a>
 is used to solve \eqref{ode} numerically:
 
-<p>
 $$
 u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
 $$
 
 for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
 
-<p>
-
 <ul>
-  <li> The <a href="http://en.wikipedia.org/wiki/Forward_Euler_method">Forward Euler</a>
+  <li> The <a href="http://en.wikipedia.org/wiki/Forward_Euler_method" target="_self">Forward Euler</a>
     scheme when \( \theta=0 \)</li>
-  <li> The <a href="http://en.wikipedia.org/wiki/Backward_Euler_method">Backward Euler</a>
+  <li> The <a href="http://en.wikipedia.org/wiki/Backward_Euler_method" target="_self">Backward Euler</a>
     scheme when \( \theta=1 \)</li>
-  <li> The <a href="http://en.wikipedia.org/wiki/Crank-Nicolson">Crank-Nicolson</a>
+  <li> The <a href="http://en.wikipedia.org/wiki/Crank-Nicolson" target="_self">Crank-Nicolson</a>
     scheme when \( \theta=1/2 \)</li>
 </ul>
 
-<h2>Implementation  <a name="___sec2"></a></h2>
+<h1>Implementation  <a name="___sec2"></a></h1>
 
-<p>
 The numerical method is implemented in a Python function
-<a href="#Langtangen_2012">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py"><tt>decay_mod</tt></a> module):
+<a href="#Langtangen_2012">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>decay_mod</tt></a> module):
 
 <p>
 
@@ -214,31 +207,26 @@ The numerical method is implemented in a Python function
     <span style="color: #008000; font-weight: bold">return</span> u, t
 </pre></div>
 
-<h2>Numerical experiments  <a name="___sec3"></a></h2>
+<h1>Numerical experiments  <a name="___sec3"></a></h1>
 
-<p>
 We define a set of numerical experiments where \( I \), \( a \), and \( T \) are
 fixed, while \( \Delta t \) and \( \theta \) are varied.
 In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 
-<h3>The Backward Euler method  <a name="___sec4"></a></h3>
+<h2>The Backward Euler method  <a name="___sec4"></a></h2>
 
-<p>
 <center><p><img src="BE.png" align="bottom" width=800></p></center>
 
-<h3>The Crank-Nicolson method  <a name="___sec5"></a></h3>
+<h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
 
-<p>
 <center><p><img src="CN.png" align="bottom" width=800></p></center>
 
-<h3>The Forward Euler method  <a name="___sec6"></a></h3>
+<h2>The Forward Euler method  <a name="___sec6"></a></h2>
 
-<p>
 <center><p><img src="FE.png" align="bottom" width=800></p></center>
 
-<h3>Error vs \( \Delta t \)  <a name="___sec7"></a></h3>
+<h2>Error vs \( \Delta t \)  <a name="___sec7"></a></h2>
 
-<p>
 How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
 is shown below.
 
@@ -248,9 +236,26 @@ The data points for the three largest \( \Delta t \) values in the
 Forward Euler method are not relevant as the solution behaves
 non-physically.
 </div>
+
+
 <p>
 <center><p><img src="error.png" align="bottom" width=400></p></center>
 
+<p>
+The numbers corresponding to the figure above are given in the table below.
+
+<p>
+<table border="1">
+<thead>
+<tr><td align="center"> \( \Delta t \) </td> <td align="center"> \( \theta=0 \) </td> <td align="center">\( \theta=0.5 \)</td> <td align="center"> \( \theta=1 \) </td> </tr>
+</thead>
+<tbody>
+<tr><td align="right">   1.25                </td> <td align="right">   7.4630              </td> <td align="right">   0.2161              </td> <td align="right">   0.2440              </td> </tr>
+<tr><td align="right">   0.75                </td> <td align="right">   0.6632              </td> <td align="right">   0.0744              </td> <td align="right">   0.1875              </td> </tr>
+<tr><td align="right">   0.50                </td> <td align="right">   0.2797              </td> <td align="right">   0.0315              </td> <td align="right">   0.1397              </td> </tr>
+<tr><td align="right">   0.10                </td> <td align="right">   0.0377              </td> <td align="right">   0.0012              </td> <td align="right">   0.0335              </td> </tr>
+</tbody>
+</table>
 <p>
 <div class="alert alert-block alert-summary alert-text-normal"><b>Summary.</b>
 
@@ -265,9 +270,10 @@ non-physically.
    solutions that disappear if \( \Delta t \) is sufficiently small.</li>
 </ol>
 </div>
-<h2>Bibliography</h2>
+
 
 <p>
+<!-- begin bibliography -->
 
 <ol>
  <li> <a name="Iserles_2009"></a> <b>A. Iserles</b>. 
@@ -280,6 +286,7 @@ non-physically.
     2012.</li>
 </ol>
 
+<!-- end bibliography -->
 
 <!-- ------------------- end of main content --------------- -->
 

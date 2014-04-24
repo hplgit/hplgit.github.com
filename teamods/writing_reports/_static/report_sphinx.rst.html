@@ -78,14 +78,14 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <h2></h2>
 
 <div class="highlight"><pre><span class="cp">.. Automatically generated reST file from Doconce source</span>
-<span class="cp">   (http://code.google.com/p/doconce/)</span>
+<span class="cp">   (https://github.com/hplgit/doconce/)</span>
 
 
 <span class="gh">Experiments with Schemes for Exponential Decay</span>
 <span class="gh">==============================================</span>
 
 <span class="nc">:Author:</span> <span class="nf">Hans Petter Langtangen (hpl at simula.no)</span>
-<span class="nc">:Date:</span> <span class="nf">Jun 18, 2013</span>
+<span class="nc">:Date:</span> <span class="nf">Apr 23, 2014</span>
 
 <span class="ge">*Summary.*</span> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation <span class="na">:math:</span><span class="nv">`u&#39;=-au`</span> with the
@@ -98,6 +98,8 @@ demonstrated.
 
 
 
+
+<span class="cp">.. !split</span>
 
 <span class="p">..</span> <span class="nt">_math:</span>problem:
 
@@ -287,10 +289,26 @@ is shown below.
    non-physically.
 
 
+
+
+
+
 <span class="p">..</span> <span class="ow">figure</span><span class="p">::</span> error.png
    :width: 400
 
 
+
+
+The numbers corresponding to the figure above are given in the table below.
+
+==================  ==================  ==================  ==================  
+ <span class="na">:math:</span><span class="nv">`\Delta t`</span>    <span class="na">:math:</span><span class="nv">`\theta=0`</span>   <span class="na">:math:</span><span class="nv">`\theta=0.5`</span>   <span class="na">:math:</span><span class="nv">`\theta=1`</span>   
+==================  ==================  ==================  ==================  
+              1.25              7.4630              0.2161              0.2440  
+              0.75              0.6632              0.0744              0.1875  
+              0.50              0.2797              0.0315              0.1397  
+              0.10              0.0377              0.0012              0.0335  
+==================  ==================  ==================  ==================  
 
 
 
@@ -310,8 +328,8 @@ is shown below.
       solutions that disappear if <span class="na">:math:</span><span class="nv">`\Delta t`</span> is sufficiently small.
 
 
-<span class="gh">Bibliography</span>
-<span class="gh">============</span>
+
+
 
 <span class="p">..</span> <span class="nt">[Ref1]</span>
    <span class="gs">**A. Iserles**</span>. <span class="ge">*A First Course in the Numerical Analysis of Differential Equations*</span>,

@@ -2,7 +2,7 @@
 #TITLE (actually governed by the filename): Experiments with Schemes for Exponential Decay
 
 By '''Hans Petter Langtangen''' (hpl at simula.no)
-==== Jun 18, 2013 ====
+==== Apr 23, 2014 ====
 
 ''Summary.'' This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation <math>u'=-au</math> with the
@@ -16,6 +16,7 @@ __TOC__
 
 
 
+<!-- !split -->
 == Mathematical problem ==
 
 
@@ -132,9 +133,27 @@ Forward Euler method are not relevant as the solution behaves
 non-physically.
 }}
 
-[[File:Error.png|frame|400px|alt=Error.png|<span title=""></span>]] <!-- user: Avatar, filename: error.png, timestamp: 2005-11-29T09:58:44Z -->
 
 
+
+
+    [[File:Error.png|frame|400px|alt=Error.png|<span title=""></span>]] <!-- user: Avatar, filename: error.png, timestamp: 2005-11-29T09:58:44Z -->
+
+
+
+The numbers corresponding to the figure above are given in the table below.
+
+<table border="1">
+<thead>
+<tr><th align="center"> <math>\Delta t</math> </th> <th align="center"> <math>\theta=0</math> </th> <th align="center"><math>\theta=0.5</math></th> <th align="center"> <math>\theta=1</math> </th> </tr>
+</thead>
+<tbody>
+<tr><td align="right">   1.25                       </td> <td align="right">   7.4630                     </td> <td align="right">   0.2161                     </td> <td align="right">   0.2440                     </td> </tr>
+<tr><td align="right">   0.75                       </td> <td align="right">   0.6632                     </td> <td align="right">   0.0744                     </td> <td align="right">   0.1875                     </td> </tr>
+<tr><td align="right">   0.50                       </td> <td align="right">   0.2797                     </td> <td align="right">   0.0315                     </td> <td align="right">   0.1397                     </td> </tr>
+<tr><td align="right">   0.10                       </td> <td align="right">   0.0377                     </td> <td align="right">   0.0012                     </td> <td align="right">   0.0335                     </td> </tr>
+</tbody>
+</table>
 
 
 {{mbox
@@ -153,7 +172,8 @@ non-physically.
 </ol>
 }}
 
-== Bibliography ==
+
+
 
 
 <ol>

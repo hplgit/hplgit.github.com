@@ -1,12 +1,12 @@
 .. Automatically generated reST file from Doconce source
-   (http://code.google.com/p/doconce/)
+   (https://github.com/hplgit/doconce/)
 
 
 Experiments with Schemes for Exponential Decay
 ==============================================
 
 :Author: Hans Petter Langtangen (hpl at simula.no)
-:Date: Jun 18, 2013
+:Date: Apr 23, 2014
 
 *Summary.* This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation :math:`u'=-au` with the
@@ -19,6 +19,8 @@ demonstrated.
 
 
 
+
+.. !split
 
 .. _math:problem:
 
@@ -208,10 +210,26 @@ is shown below.
    non-physically.
 
 
+
+
+
+
 .. figure:: error.png
    :width: 400
 
 
+
+
+The numbers corresponding to the figure above are given in the table below.
+
+==================  ==================  ==================  ==================  
+ :math:`\Delta t`    :math:`\theta=0`   :math:`\theta=0.5`   :math:`\theta=1`   
+==================  ==================  ==================  ==================  
+              1.25              7.4630              0.2161              0.2440  
+              0.75              0.6632              0.0744              0.1875  
+              0.50              0.2797              0.0315              0.1397  
+              0.10              0.0377              0.0012              0.0335  
+==================  ==================  ==================  ==================  
 
 
 
@@ -231,8 +249,8 @@ is shown below.
       solutions that disappear if :math:`\Delta t` is sufficiently small.
 
 
-Bibliography
-============
+
+
 
 .. [Ref1]
    **A. Iserles**. *A First Course in the Numerical Analysis of Differential Equations*,

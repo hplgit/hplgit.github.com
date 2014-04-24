@@ -10,7 +10,7 @@ do = open('tmp_report.do.txt', 'w')
 title = 'Experiments with Schemes for Exponential Decay'
 author1 = 'Hans Petter Langtangen Email:hpl@simula.no at '\
           'Center for Biomedical Computing, '\
-          'Simula Research Laboratory and '\
+          'Simula Research Laboratory & '\
           'Department of Informatics, University of Oslo.'
 date = 'today'
 
@@ -178,6 +178,19 @@ non-physically.
 ## Here is a figure without caption (becomes inline)
 
 FIGURE: [error, width=400]
+
+## A corresponding table
+
+The numbers corresponding to the figure above are given in the table below.
+
+|------c--------------c--------------c--------------c-------|
+| $\Delta t$   | $\theta=0$   | $\theta=0.5$ | $\theta=1$   |
+|------r--------------r--------------r--------------r-------|
+| 1.25         | 7.4630       | 0.2161       | 0.2440       |
+| 0.75         | 0.6632       | 0.0744       | 0.1875       |
+| 0.50         | 0.2797       | 0.0315       | 0.1397       |
+| 0.10         | 0.0377       | 0.0012       | 0.0335       |
+|-----------------------------------------------------------|
 
 ## Here is an admonition box for summaries
 

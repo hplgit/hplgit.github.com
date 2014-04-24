@@ -80,7 +80,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <div class="highlight"><pre>#TITLE (actually governed by the filename): Experiments with Schemes for Exponential Decay
 
 By &#39;&#39;&#39;Hans Petter Langtangen&#39;&#39;&#39; (hpl at simula.no)
-==== Jun 18, 2013 ====
+==== Apr 23, 2014 ====
 
 &#39;&#39;Summary.&#39;&#39; This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation &lt;math&gt;u&#39;=-au&lt;/math&gt; with the
@@ -94,6 +94,7 @@ __TOC__
 
 
 
+&lt;!-- !split --&gt;
 == Mathematical problem ==
 
 
@@ -210,9 +211,27 @@ Forward Euler method are not relevant as the solution behaves
 non-physically.
 }}
 
-[[File:Error.png|frame|400px|alt=Error.png|&lt;span title=&quot;&quot;&gt;&lt;/span&gt;]] &lt;!-- user: Avatar, filename: error.png, timestamp: 2005-11-29T09:58:44Z --&gt;
 
 
+
+
+    [[File:Error.png|frame|400px|alt=Error.png|&lt;span title=&quot;&quot;&gt;&lt;/span&gt;]] &lt;!-- user: Avatar, filename: error.png, timestamp: 2005-11-29T09:58:44Z --&gt;
+
+
+
+The numbers corresponding to the figure above are given in the table below.
+
+&lt;table border=&quot;1&quot;&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;th align=&quot;center&quot;&gt; &lt;math&gt;\Delta t&lt;/math&gt; &lt;/th&gt; &lt;th align=&quot;center&quot;&gt; &lt;math&gt;\theta=0&lt;/math&gt; &lt;/th&gt; &lt;th align=&quot;center&quot;&gt;&lt;math&gt;\theta=0.5&lt;/math&gt;&lt;/th&gt; &lt;th align=&quot;center&quot;&gt; &lt;math&gt;\theta=1&lt;/math&gt; &lt;/th&gt; &lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;&lt;td align=&quot;right&quot;&gt;   1.25                       &lt;/td&gt; &lt;td align=&quot;right&quot;&gt;   7.4630                     &lt;/td&gt; &lt;td align=&quot;right&quot;&gt;   0.2161                     &lt;/td&gt; &lt;td align=&quot;right&quot;&gt;   0.2440                     &lt;/td&gt; &lt;/tr&gt;
+&lt;tr&gt;&lt;td align=&quot;right&quot;&gt;   0.75                       &lt;/td&gt; &lt;td align=&quot;right&quot;&gt;   0.6632                     &lt;/td&gt; &lt;td align=&quot;right&quot;&gt;   0.0744                     &lt;/td&gt; &lt;td align=&quot;right&quot;&gt;   0.1875                     &lt;/td&gt; &lt;/tr&gt;
+&lt;tr&gt;&lt;td align=&quot;right&quot;&gt;   0.50                       &lt;/td&gt; &lt;td align=&quot;right&quot;&gt;   0.2797                     &lt;/td&gt; &lt;td align=&quot;right&quot;&gt;   0.0315                     &lt;/td&gt; &lt;td align=&quot;right&quot;&gt;   0.1397                     &lt;/td&gt; &lt;/tr&gt;
+&lt;tr&gt;&lt;td align=&quot;right&quot;&gt;   0.10                       &lt;/td&gt; &lt;td align=&quot;right&quot;&gt;   0.0377                     &lt;/td&gt; &lt;td align=&quot;right&quot;&gt;   0.0012                     &lt;/td&gt; &lt;td align=&quot;right&quot;&gt;   0.0335                     &lt;/td&gt; &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 
 {{mbox
@@ -231,7 +250,8 @@ non-physically.
 &lt;/ol&gt;
 }}
 
-== Bibliography ==
+
+
 
 
 &lt;ol&gt;

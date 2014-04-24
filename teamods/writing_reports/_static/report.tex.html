@@ -79,39 +79,53 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 
 <div class="highlight"><pre><span class="c">%%</span>
 <span class="c">%% Automatically generated file from Doconce source</span>
-<span class="c">%% (http://code.google.com/p/doconce/)</span>
+<span class="c">%% (https://github.com/hplgit/doconce/)</span>
 <span class="c">%%</span>
 
 
 
 
-
-
 <span class="k">\documentclass</span>[<span class="c">%</span>
-oneside,                 <span class="c">% oneside: electronic viewing, twoside: printing</span>
-final,                   <span class="c">% or draft (marks overfull hboxes)</span>
+twoside,                 <span class="c">% oneside: electronic viewing, twoside: printing</span>
+final,                   <span class="c">% or draft (marks overfull hboxes, figures with paths)</span>
 10pt]<span class="nb">{</span>article<span class="nb">}</span>
 
 <span class="k">\listfiles</span>               <span class="c">% print all files needed to compile this document</span>
 
+<span class="c">% a6paper is suitable for mobile devices</span>
+<span class="k">\usepackage</span>[<span class="c">%</span>
+  a6paper,
+  text=<span class="nb">{</span>90mm,130mm<span class="nb">}</span>,
+  inner=<span class="nb">{</span>5mm<span class="nb">}</span>,           <span class="c">% inner margin (two sided documents)</span>
+  top=5mm,
+  headsep=4mm
+  ]<span class="nb">{</span>geometry<span class="nb">}</span>
 
 <span class="k">\usepackage</span><span class="nb">{</span>relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts<span class="nb">}</span>
 <span class="k">\usepackage</span><span class="na">[table]</span><span class="nb">{</span>xcolor<span class="nb">}</span>
 <span class="k">\usepackage</span><span class="nb">{</span>bm,microtype<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="nb">{</span>minted,fancyvrb<span class="nb">}</span> <span class="c">% packages needed for verbatim environments</span>
 
+<span class="k">\usepackage</span><span class="nb">{</span>fancyvrb<span class="nb">}</span> <span class="c">% packages needed for verbatim environments</span>
 
+<span class="k">\usepackage</span><span class="nb">{</span>minted<span class="nb">}</span>
+<span class="k">\usemintedstyle</span><span class="nb">{</span>default<span class="nb">}</span>
+
+<span class="k">\usepackage</span><span class="na">[T1]</span><span class="nb">{</span>fontenc<span class="nb">}</span>
 <span class="c">%\usepackage[latin1]{inputenc}</span>
 <span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
+
 <span class="c">% Set palatino as the default font family:</span>
 <span class="k">\usepackage</span><span class="na">[sc]</span><span class="nb">{</span>mathpazo<span class="nb">}</span>    <span class="c">% Palatino fonts</span>
 <span class="k">\linespread</span><span class="nb">{</span>1.05<span class="nb">}</span>            <span class="c">% Palatino needs extra line spread to look nice</span>
 
+<span class="k">\usepackage</span><span class="nb">{</span>lmodern<span class="nb">}</span>         <span class="c">% Latin Modern fonts derived from Computer Modern</span>
+
 <span class="c">% Hyperlinks in PDF:</span>
+<span class="k">\definecolor</span><span class="nb">{</span>linkcolor<span class="nb">}{</span>rgb<span class="nb">}{</span>0,0,0.4<span class="nb">}</span>
 <span class="k">\usepackage</span>[<span class="c">%</span>
     colorlinks=true,
-    linkcolor=blue,
-    urlcolor=blue,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
     citecolor=black,
     filecolor=black,
     <span class="c">%filecolor=blue,</span>
@@ -139,37 +153,160 @@ final,                   <span class="c">% or draft (marks overfull hboxes)</spa
 
 <span class="k">\usepackage</span><span class="na">[framemethod=TikZ]</span><span class="nb">{</span>mdframed<span class="nb">}</span>
 
-<span class="c">% Admonition is an oval gray box</span>
+<span class="c">% --- begin definitions of admonition environments ---</span>
+
+<span class="c">% Admonition style &quot;mdfbox&quot; is an oval colored box based on mdframed</span>
+<span class="c">% &quot;notice&quot; admon</span>
+<span class="k">\colorlet</span><span class="nb">{</span>mdfbox<span class="nb">_</span>notice<span class="nb">_</span>background<span class="nb">}{</span>gray!5<span class="nb">}</span>
 <span class="k">\newmdenv</span>[
-  backgroundcolor=gray!10,  <span class="c">%% white with 10%% gray</span>
-  skipabove=<span class="k">\topsep</span>,
-  skipbelow=<span class="k">\topsep</span>,
-  outerlinewidth=0.5,
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox<span class="nb">_</span>notice<span class="nb">_</span>background,
+  linecolor=black,
+  linewidth=2pt,       <span class="c">% frame thickness</span>
+  frametitlebackgroundcolor=mdfbox<span class="nb">_</span>notice<span class="nb">_</span>background,
+  frametitlerule=true,
+  frametitlefont=<span class="k">\normalfont\bfseries</span>,
+  shadow=false,        <span class="c">% frame shadow?</span>
+  shadowsize=11pt,
   leftmargin=0,
   rightmargin=0,
   roundcorner=5,
-]<span class="nb">{</span>graybox1mdframed<span class="nb">}</span>
+  needspace=0pt,
+]<span class="nb">{</span>notice<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
 
-<span class="k">\newenvironment</span><span class="nb">{</span>graybox1admon<span class="nb">}</span>[1][]<span class="nb">{</span>
-<span class="k">\begin</span><span class="nb">{</span>graybox1mdframed<span class="nb">}</span>[frametitle=#1]
+<span class="k">\newenvironment</span><span class="nb">{</span>notice<span class="nb">_</span>mdfboxadmon<span class="nb">}</span>[1][]<span class="nb">{</span>
+<span class="k">\begin</span><span class="nb">{</span>notice<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>[frametitle=#1]
 <span class="nb">}</span>
 <span class="nb">{</span>
-<span class="k">\end</span><span class="nb">{</span>graybox1mdframed<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>notice<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
 <span class="nb">}</span>
 
+<span class="c">% Admonition style &quot;mdfbox&quot; is an oval colored box based on mdframed</span>
+<span class="c">% &quot;summary&quot; admon</span>
+<span class="k">\colorlet</span><span class="nb">{</span>mdfbox<span class="nb">_</span>summary<span class="nb">_</span>background<span class="nb">}{</span>gray!5<span class="nb">}</span>
+<span class="k">\newmdenv</span>[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox<span class="nb">_</span>summary<span class="nb">_</span>background,
+  linecolor=black,
+  linewidth=2pt,       <span class="c">% frame thickness</span>
+  frametitlebackgroundcolor=mdfbox<span class="nb">_</span>summary<span class="nb">_</span>background,
+  frametitlerule=true,
+  frametitlefont=<span class="k">\normalfont\bfseries</span>,
+  shadow=false,        <span class="c">% frame shadow?</span>
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]<span class="nb">{</span>summary<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
+
+<span class="k">\newenvironment</span><span class="nb">{</span>summary<span class="nb">_</span>mdfboxadmon<span class="nb">}</span>[1][]<span class="nb">{</span>
+<span class="k">\begin</span><span class="nb">{</span>summary<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>[frametitle=#1]
+<span class="nb">}</span>
+<span class="nb">{</span>
+<span class="k">\end</span><span class="nb">{</span>summary<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
+<span class="nb">}</span>
+
+<span class="c">% Admonition style &quot;mdfbox&quot; is an oval colored box based on mdframed</span>
+<span class="c">% &quot;warning&quot; admon</span>
+<span class="k">\colorlet</span><span class="nb">{</span>mdfbox<span class="nb">_</span>warning<span class="nb">_</span>background<span class="nb">}{</span>gray!5<span class="nb">}</span>
+<span class="k">\newmdenv</span>[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox<span class="nb">_</span>warning<span class="nb">_</span>background,
+  linecolor=black,
+  linewidth=2pt,       <span class="c">% frame thickness</span>
+  frametitlebackgroundcolor=mdfbox<span class="nb">_</span>warning<span class="nb">_</span>background,
+  frametitlerule=true,
+  frametitlefont=<span class="k">\normalfont\bfseries</span>,
+  shadow=false,        <span class="c">% frame shadow?</span>
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]<span class="nb">{</span>warning<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
+
+<span class="k">\newenvironment</span><span class="nb">{</span>warning<span class="nb">_</span>mdfboxadmon<span class="nb">}</span>[1][]<span class="nb">{</span>
+<span class="k">\begin</span><span class="nb">{</span>warning<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>[frametitle=#1]
+<span class="nb">}</span>
+<span class="nb">{</span>
+<span class="k">\end</span><span class="nb">{</span>warning<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
+<span class="nb">}</span>
+
+<span class="c">% Admonition style &quot;mdfbox&quot; is an oval colored box based on mdframed</span>
+<span class="c">% &quot;question&quot; admon</span>
+<span class="k">\colorlet</span><span class="nb">{</span>mdfbox<span class="nb">_</span>question<span class="nb">_</span>background<span class="nb">}{</span>gray!5<span class="nb">}</span>
+<span class="k">\newmdenv</span>[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox<span class="nb">_</span>question<span class="nb">_</span>background,
+  linecolor=black,
+  linewidth=2pt,       <span class="c">% frame thickness</span>
+  frametitlebackgroundcolor=mdfbox<span class="nb">_</span>question<span class="nb">_</span>background,
+  frametitlerule=true,
+  frametitlefont=<span class="k">\normalfont\bfseries</span>,
+  shadow=false,        <span class="c">% frame shadow?</span>
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]<span class="nb">{</span>question<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
+
+<span class="k">\newenvironment</span><span class="nb">{</span>question<span class="nb">_</span>mdfboxadmon<span class="nb">}</span>[1][]<span class="nb">{</span>
+<span class="k">\begin</span><span class="nb">{</span>question<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>[frametitle=#1]
+<span class="nb">}</span>
+<span class="nb">{</span>
+<span class="k">\end</span><span class="nb">{</span>question<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
+<span class="nb">}</span>
+
+<span class="c">% Admonition style &quot;mdfbox&quot; is an oval colored box based on mdframed</span>
+<span class="c">% &quot;block&quot; admon</span>
+<span class="k">\colorlet</span><span class="nb">{</span>mdfbox<span class="nb">_</span>block<span class="nb">_</span>background<span class="nb">}{</span>gray!5<span class="nb">}</span>
+<span class="k">\newmdenv</span>[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox<span class="nb">_</span>block<span class="nb">_</span>background,
+  linecolor=black,
+  linewidth=2pt,       <span class="c">% frame thickness</span>
+  frametitlebackgroundcolor=mdfbox<span class="nb">_</span>block<span class="nb">_</span>background,
+  frametitlerule=true,
+  frametitlefont=<span class="k">\normalfont\bfseries</span>,
+  shadow=false,        <span class="c">% frame shadow?</span>
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]<span class="nb">{</span>block<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
+
+<span class="k">\newenvironment</span><span class="nb">{</span>block<span class="nb">_</span>mdfboxadmon<span class="nb">}</span>[1][]<span class="nb">{</span>
+<span class="k">\begin</span><span class="nb">{</span>block<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>[frametitle=#1]
+<span class="nb">}</span>
+<span class="nb">{</span>
+<span class="k">\end</span><span class="nb">{</span>block<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
+<span class="nb">}</span>
+
+<span class="c">% --- end of definitions of admonition environments ---</span>
 
 <span class="c">% prevent orhpans and widows</span>
 <span class="k">\clubpenalty</span> = 10000
 <span class="k">\widowpenalty</span> = 10000
-
-<span class="c">% http://www.ctex.org/documents/packages/layout/titlesec.pdf</span>
-<span class="k">\usepackage</span><span class="na">[compact]</span><span class="nb">{</span>titlesec<span class="nb">}</span>  <span class="c">% narrower section headings</span>
 
 <span class="c">% --- end of standard preamble for documents ---</span>
 
 
 <span class="c">% insert custom LaTeX commands...</span>
 
+<span class="k">\raggedbottom</span>
 <span class="k">\makeindex</span>
 
 
@@ -184,6 +321,9 @@ final,                   <span class="c">% or draft (marks overfull hboxes)</spa
 
 
 <span class="c">% ----------------- title -------------------------</span>
+
+<span class="k">\thispagestyle</span><span class="nb">{</span>empty<span class="nb">}</span>
+
 <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
 <span class="nb">{</span><span class="k">\LARGE\bf</span>
 <span class="k">\begin</span><span class="nb">{</span>spacing<span class="nb">}{</span>1.25<span class="nb">}</span>
@@ -198,30 +338,34 @@ Experiments with Schemes for Exponential Decay
 <span class="nb">{</span><span class="k">\bf</span> Hans Petter Langtangen<span class="s">$</span><span class="nb">{}^{</span><span class="m">1</span><span class="nb">, </span><span class="m">2</span><span class="nb">}</span><span class="s">$</span> (<span class="k">\texttt</span><span class="nb">{</span>hpl@simula.no<span class="nb">}</span>)<span class="nb">}</span> <span class="k">\\</span> [0mm]
 <span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
 
-<span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
+    <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
 <span class="c">% List of all institutions:</span>
 <span class="k">\centerline</span><span class="nb">{{</span><span class="k">\small</span> <span class="s">$</span><span class="nb">{}^</span><span class="m">1</span><span class="s">$</span>Center for Biomedical Computing, Simula Research Laboratory<span class="nb">}}</span>
 <span class="k">\centerline</span><span class="nb">{{</span><span class="k">\small</span> <span class="s">$</span><span class="nb">{}^</span><span class="m">2</span><span class="s">$</span>Department of Informatics, University of Oslo.<span class="nb">}}</span>
 <span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
+
 <span class="c">% ----------------- end author(s) -------------------------</span>
 
-
 <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
-Jun 18, 2013
+Apr 23, 2014
 <span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
 
 <span class="k">\vspace</span><span class="nb">{</span>1cm<span class="nb">}</span>
 
-
-
-<span class="k">\begin</span><span class="nb">{</span>abstract<span class="nb">}</span>
+<span class="k">\begin</span><span class="nb">{</span>quote<span class="nb">}</span><span class="k">\small</span>
 This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation <span class="s">$</span><span class="nb">u&#39;</span><span class="o">=-</span><span class="nb">au</span><span class="s">$</span> with the
 aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
-<span class="k">\end</span><span class="nb">{</span>abstract<span class="nb">}</span>
+
+
+
+
+
+<span class="k">\end</span><span class="nb">{</span>quote<span class="nb">}</span><span class="k">\small</span>
 
 <span class="k">\tableofcontents</span>
+
 
 <span class="k">\vspace</span><span class="nb">{</span>1cm<span class="nb">}</span> <span class="c">% after toc</span>
 
@@ -229,7 +373,7 @@ demonstrated.
 
 
 
-
+<span class="c">% !split</span>
 <span class="k">\section</span><span class="nb">{</span>Mathematical problem<span class="nb">}</span>
 <span class="k">\label</span><span class="nb">{</span>math:problem<span class="nb">}</span>
 
@@ -365,19 +509,42 @@ is shown below.
 
 
 
-<span class="k">\begin</span><span class="nb">{</span>graybox1admon<span class="nb">}</span>[Observe:]
+<span class="k">\begin</span><span class="nb">{</span>warning<span class="nb">_</span>mdfboxadmon<span class="nb">}</span>[Observe:]
 The data points for the three largest <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> values in the
 Forward Euler method are not relevant as the solution behaves
 non-physically.
-<span class="k">\end</span><span class="nb">{</span>graybox1admon<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>warning<span class="nb">_</span>mdfboxadmon<span class="nb">}</span>
+
+
+
+
+
 <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>  <span class="c">% inline figure</span>
   <span class="k">\centerline</span><span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[width=0.9\linewidth]</span><span class="nb">{</span>error.pdf<span class="nb">}}</span>
 <span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
 
 
 
+The numbers corresponding to the figure above are given in the table below.
 
-<span class="k">\begin</span><span class="nb">{</span>graybox1admon<span class="nb">}</span>[Summary.]
+
+<span class="k">\begin</span><span class="nb">{</span>quote<span class="nb">}</span>
+<span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>rrrr<span class="nb">}</span>
+<span class="k">\hline</span>
+<span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>c<span class="nb">}{</span> <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> <span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>c<span class="nb">}{</span> <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">0</span><span class="s">$</span> <span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>c<span class="nb">}{</span> <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="s">$</span> <span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>c<span class="nb">}{</span> <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">1</span><span class="s">$</span> <span class="nb">}</span> <span class="k">\\</span>
+<span class="k">\hline</span>
+1.25         <span class="nb">&amp;</span> 7.4630       <span class="nb">&amp;</span> 0.2161       <span class="nb">&amp;</span> 0.2440       <span class="k">\\</span>
+0.75         <span class="nb">&amp;</span> 0.6632       <span class="nb">&amp;</span> 0.0744       <span class="nb">&amp;</span> 0.1875       <span class="k">\\</span>
+0.50         <span class="nb">&amp;</span> 0.2797       <span class="nb">&amp;</span> 0.0315       <span class="nb">&amp;</span> 0.1397       <span class="k">\\</span>
+0.10         <span class="nb">&amp;</span> 0.0377       <span class="nb">&amp;</span> 0.0012       <span class="nb">&amp;</span> 0.0335       <span class="k">\\</span>
+<span class="k">\hline</span>
+<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>quote<span class="nb">}</span>
+
+
+
+
+<span class="k">\begin</span><span class="nb">{</span>summary<span class="nb">_</span>mdfboxadmon<span class="nb">}</span>[Summary.]
 <span class="k">\begin</span><span class="nb">{</span>enumerate<span class="nb">}</span>
 <span class="k">\item</span> <span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="m">1</span><span class="s">$</span>: <span class="s">$</span><span class="nb">E</span><span class="nv">\sim</span><span class="nb"> </span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> (first-order convergence).
 
@@ -394,9 +561,16 @@ non-physically.
 <span class="k">\end</span><span class="nb">{</span>enumerate<span class="nb">}</span>
 
 
-<span class="k">\end</span><span class="nb">{</span>graybox1admon<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>summary<span class="nb">_</span>mdfboxadmon<span class="nb">}</span>
+
+
+
+
+
+
 <span class="k">\bibliographystyle</span><span class="nb">{</span>plain<span class="nb">}</span>
-<span class="k">\bibliography</span><span class="nb">{</span>.publish<span class="nb">_</span>references.bib<span class="nb">}</span>
+<span class="k">\bibliography</span><span class="nb">{</span>.publish<span class="nb">_</span>references<span class="nb">}</span>
+
 
 
 
