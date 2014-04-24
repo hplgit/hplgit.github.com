@@ -1,0 +1,148 @@
+.. !split
+
+.. _bitgit:googlecode:
+
+Googlecode
+==========
+
+
+.. index:: Googlecode
+
+
+To use Googlecode you need a general account on Google, which allows
+you to use Gmail, Google Docs, and other Google services.
+Googlecode offers free file hosting, but all the files are public and
+open to the world.
+
+
+Creating a new project  (2)
+---------------------------
+
+Go to `<http://code.google.com/hosting>`_ and click on
+*Creating a new project*. Fill out *all* the fields. For now
+the project name is ``my-project``.
+You can
+choose between Git, Mercurial, or Subversion as version control
+system for your project, and this choice is difficult to change later.
+If you choose Git, you must create a file ``.netrc`` in your
+home directory containing the line
+
+.. code-block:: text
+
+        machine code.google.com login uname password pw
+
+Here, ``uname`` is your username for the Google account and
+``pw`` is the Googlecode password which is generated for you on
+`<https://code.google.com/hosting/settings>`_ when you
+are logged in.
+The ``.netrc`` file avoids typing or pasting in
+your long and complicated password every time you push changes to
+the repository on ``code.google.com``.
+
+The next step is to clone the empty repository on your local machine
+so that you can add files:
+
+.. code-block:: console
+
+        Terminal> git clone https://code.google.com/p/my-project/
+
+Now you can go to the ``my-project`` directory and add files.
+Perform
+
+.. code-block:: console
+
+        Terminal> git add .
+        Terminal> git commit -am 'First import of files.'
+        Terminal> git push origin master
+
+Click on *Source* and
+*Browse* on the project's web page, and observe that the added
+files are visible on the project page.
+
+If you use Mercurial as version control system on Googlecode and
+you want to avoid typing your password when you push changes to
+the repository, you should add the following section to your
+``.hgrc`` file:
+
+.. code-block:: text
+
+        [auth]
+        my-project.prefix = https://my-project.googlecode.com/hg/
+        my-project.username = uname
+        my-project.password = pw
+
+where ``uname`` and ``pw`` must be replaced by your account name and
+the special Googlecode password. Other projects on Googlecode
+using Mercurial will need similar lines.
+
+A very strong and useful feature with Googlecode, in my opinion, is
+that one can place documentation of the project anywhere in
+the repository, and HTML and PDF will be correctly shown in
+web browsers. (All other project hosting sites
+demands either wiki pages or special web areas for locating documentation.)
+The URL to your files is
+
+.. code-block:: text
+
+        https://my-project.googlecode.com/git/
+
+For other version control systems just replace ``git`` by
+``hg`` or ``svn``.
+For example, if we have HTML documentation of our project in
+the directory ``doc/html``, we can point users to
+
+.. code-block:: text
+
+        https://my-project.googlecode.com/git/doc/html/index.html
+
+The HTML will be rendered correctly as opposed to when you load
+the similar file into the web browser from the repository,
+
+.. code-block:: text
+
+        http://code.google.com/p/my-project/source/browse/doc/html/index.html
+
+Now you can only see the HTML source code of this file, as is usual
+on other project hosting sites. We remark that MathJax
+mathematics within the HTML code is *not* rendered correctly. At the
+time of this writing, GitHub is the only service that offers full
+MathJax support when you need web pages with mathematics.
+
+You can click on *Project Home* and then on *Administer* to edit the
+main page of the project. This is a wiki, using Google's wiki syntax,
+but it is quite easy to add links to your documentation, e.g.,
+
+.. code-block:: text
+
+        Browse the
+        [https://my-project.googlecode.com/git/doc/API/html/index.html
+        API documentation].
+
+
+It is easy to allow others to push their changes to the
+repository: click on *Sharing* and then on *Administer*.
+The Google account names of people you allow push (write) access can be
+listed under each other in the *Project committers* field.
+
+Wiki pages  (1)
+---------------
+
+Wiki pages can intuitively be made directly in the browser. However,
+it is often more convenient to have them locally on your computer.
+Click on *Source* and choose *wiki* on the *Repository* pull down menu.
+The proper clone command to get a copy of the wiki repository then
+appears.
+
+Googlecode applies their own Google wiki format. My preference is
+to write documentation in the neutral `Doconce <https://github.com/hplgit/doconce>`_ format and transform the document to LaTeX, HTML, Sphinx, and Google wiki.
+The wiki can then be copied from the project directories to the
+wiki directory and then pushed to the repository. This ensures
+that there is only one source of the documentation (despite the need
+for many formats) and that the wiki pages are frequently updated.
+
+.. `<https://odespy.googlecode.com/git/doc/API/index.html>`_
+
+.. `<https://odespy.googlecode.com/git/doc/tutorial/html/wrap_odesolvers.html>`_
+
+
+

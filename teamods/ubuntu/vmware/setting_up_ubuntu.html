@@ -2,7 +2,7 @@
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Setting up Ubuntu ', 1, None, '___sec0'),
-              (' Customizing the Launcher ', 2, None, '___sec1'),
+              (' Customizing the launcher ', 2, None, '___sec1'),
               (' Removing icons ', 3, None, '___sec2'),
               (' Adding a terminal application ', 3, None, '___sec3'),
               (' Customizing the keyboard ', 2, None, '___sec4'),
@@ -11,14 +11,10 @@
               (' Text editor ', 3, None, '___sec7'),
               (' Web browser ', 3, None, '___sec8'),
               (' Useful software ', 3, None, '___sec9'),
-              (' A Python eco system for scientific computing ',
-               3,
-               None,
-               '___sec10'),
               (' Ultra-quick intro to Unix (sufficient for programming) ',
                2,
                None,
-               '___sec11')]}
+               '___sec10')]}
 end of tocinfo -->
 
 
@@ -26,7 +22,7 @@ end of tocinfo -->
 
 <h2>Setting up Ubuntu  <a name="___sec0"></a></h2>
 
-<h3>Customizing the Launcher  <a name="___sec1"></a></h3>
+<h3>Customizing the launcher  <a name="___sec1"></a></h3>
 
 <h4>Removing icons  <a name="___sec2"></a></h4>
 
@@ -72,7 +68,9 @@ the panel at the top of the Ubuntu window.
 
 <p>
 The Control key is heavily used in Unix systems, and many prefer to
-have the Control key on the Caps Lock key.  Click on the <em>System
+have the Control key on the Caps Lock key.  You can do this in
+the host system. Alternatively, you can set this in Ubuntu:
+click on the <em>System
 Settings</em> icon in the Launcher, click <em>Keyboard Layout</em>, then
 <em>Options...</em>, click <em>Ctrl key position</em>, click <em>Caps Lock as Ctrl</em>.
 
@@ -103,9 +101,9 @@ Install an excellent text editor, either <code>emacs</code> or <code>vim</code> 
 with standard Ubuntu):
 <p>
 
-<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; apt-get install emacs
-Terminal&gt; apt-get install vim
+<!-- code=console (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; apt-get install emacs</span>
+<span style="color: #888888">Terminal&gt; apt-get install vim</span>
 </pre></div>
 
 <h4>Web browser  <a name="___sec8"></a></h4>
@@ -116,8 +114,8 @@ not launch correctly. An alternative is Gnome's Epiphany browser:
 
 <p>
 
-<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; apt-get install epiphany-browser
+<!-- code=console (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; apt-get install epiphany-browser</span>
 </pre></div>
 <p>
 If you prefer the Chrome browser, launch
@@ -127,27 +125,37 @@ Then run
 
 <p>
 
-<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; <span style="color: #008000">cd </span>Downloads
-Terminal&gt; sudo apt-get install libgconf2-4 libnss3-1d
-Terminal&gt; sudo dpkg -i google-chrome-stable_current_amd64.deb
+<!-- code=console (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; cd Downloads</span>
+<span style="color: #888888">Terminal&gt; sudo apt-get install libgconf2-4 libnss3-1d</span>
+<span style="color: #888888">Terminal&gt; sudo dpkg -i google-chrome-stable_current_amd64.deb</span>
 </pre></div>
 
 <h4>Useful software  <a name="___sec9"></a></h4>
 
 <p>
-Run the following commands:
+Some installation scripts (actually used to build <a href="http://hplgit.github.io/vagrantbox/doc/pub/vagrant_box.html" target="_self">Vagrant virtual machines</a>) can be used to
+conveniently install basic packages for a scientific computing environment
+in a Linux machine:
 
 <p>
 
-<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; <span style="color: #19177C">packages</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;mercurial git subversion bzr mercurial-git imagemagick konsole g++ gfortran autoconf automake autotools-dev wdiff kdiff3 meld latexdiff diffpdf antiword vlc mencoder texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-math-extra texlive-bibtex-extra texlive-xetex texlive-pictures latex-xcolor latex-xft-fonts latex-beamer libreoffice unoconv libreoffice-dmaths a2ps pandoc gv pdftk pdfjam gconf-editor ispell&quot;</span>
-Terminal&gt; <span style="color: #008000; font-weight: bold">for </span>p in <span style="color: #19177C">$packages</span>; <span style="color: #008000; font-weight: bold">do </span><span style="color: #008000">echo </span>sudo apt-get -y install <span style="color: #19177C">$p</span>; <span style="color: #008000; font-weight: bold">done</span> &gt; install.sh
-Terminal&gt; sh -x install.sh
+<ul>
+ <li> <a href="https://raw.github.com/hplgit/vagrantbox/master/doc/src/vagrant/src-vagrant/install_minimal.sh" target="_self">A minimal installation</a></li>
+ <li> <a href="https://github.com/hplgit/vagrantbox/blob/master/doc/src/vagrant/src-vagrant/install.sh" target="_self">A more comprehensive installation</a></li>
+ <li> <a href="https://raw.github.com/hplgit/vagrantbox/master/doc/src/vagrant/src-vagrant/install_rich.sh" target="_self">A rich installation</a></li>
+</ul>
+
+For example,
+
+<p>
+
+<!-- code=console (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; bash install_rich.sh</span>
 </pre></div>
 <p>
 Here is a brief explanation of some of the most important packages
-listed above:
+in a Linux installation.
 
 <p>
 <table border="1">
@@ -181,17 +189,7 @@ listed above:
 <tr><td align="center">   <code>ispell</code>                               </td> <td align="center">   spell checker                                     </td> </tr>
 </table>
 
-<h4>A Python eco system for scientific computing  <a name="___sec10"></a></h4>
-
-<p>
-
-<!-- code=bash (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; <span style="color: #19177C">packages</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;python-pip python-mode python-numpy ipython python-scipy cython python-nose python-dev python-pdftools python-profiler python-pmw python-opengl pype pydb python-sympy python-qt4 python-qt4-dev idle python-traits python-traitsgui python-enthought-traits python-enthought-traits-ui python-enthoughtbase python-sphinx python-scitools blt grace dx dx-doc mayavi2  gnuplot gnuplot-doc gnuplot-x11 libatlas-base-dev&quot;</span>
-Terminal&gt; <span style="color: #008000; font-weight: bold">for </span>p in <span style="color: #19177C">$packages</span>; <span style="color: #008000; font-weight: bold">do </span><span style="color: #008000">echo </span>sudo apt-get install <span style="color: #19177C">$p</span>; <span style="color: #008000; font-weight: bold">done</span> &gt; install.sh
-Terminal&gt; sh -x install.sh  <span style="color: #408080; font-style: italic"># type Return for each question</span>
-</pre></div>
-
-<h3>Ultra-quick intro to Unix (sufficient for programming)  <a name="___sec11"></a></h3>
+<h3>Ultra-quick intro to Unix (sufficient for programming)  <a name="___sec10"></a></h3>
 
 <p>
 <table border="1">
