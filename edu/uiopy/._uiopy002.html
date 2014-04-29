@@ -1,0 +1,218 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Experience with Using Python for Teaching Scientific Computing">
+
+
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [(' We started with a course on Python scripting ',
+               2,
+               None,
+               '___sec0'),
+              (' We chose Python for learning computer programming ',
+               2,
+               None,
+               '___sec1'),
+              (' There is impact of teaching Python ', 2, None, '___sec2'),
+              (' We let the students play with advanced problems ',
+               2,
+               None,
+               '___sec3'),
+              (' We use Ubuntu to minimize installation problems ',
+               2,
+               None,
+               '___sec4'),
+              (' Resources ', 2, None, '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="uiopy.html">Experience with Using Python for Teaching Scientific Computing</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: " We started with a course on Python scripting " --> <li>  <a href="._uiopy001.html#___sec0"> We started with a course on Python scripting </a></li>
+     <!-- navigation toc: " We chose Python for learning computer programming " --> <li>  <a href="._uiopy002.html#___sec1"> We chose Python for learning computer programming </a></li>
+     <!-- navigation toc: " There is impact of teaching Python " --> <li>  <a href="._uiopy003.html#___sec2"> There is impact of teaching Python </a></li>
+     <!-- navigation toc: " We let the students play with advanced problems " --> <li>  <a href="._uiopy004.html#___sec3"> We let the students play with advanced problems </a></li>
+     <!-- navigation toc: " We use Ubuntu to minimize installation problems " --> <li>  <a href="._uiopy005.html#___sec4"> We use Ubuntu to minimize installation problems </a></li>
+     <!-- navigation toc: " Resources " --> <li>  <a href="._uiopy005.html#___sec5"> Resources </a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0002"></a>
+<!-- !split -->
+
+<h2>We chose Python for learning computer programming  <a name="___sec1"></a></h2>
+
+Most universities buy an introductory programming course from their
+computer science department.  Very often the offer is a standard Java
+course.  Exceptionally the choice is C, C++, or perhaps something more
+exotic like Scheme. Beyond the very basics of programming, the content
+is usually typical computer science algorithms rather than numerical
+algorithms. The result is often that students for all practical
+purposes must relearn to program when they meet programming in science
+courses, and then the language is usually MATLAB, Fortran, C, or C++.
+
+<p>
+At the University of Oslo, the introductory Java course was free of
+any mathematics and not synchronized with the needs in later science
+courses. The mentioned relearning of programming consumed much time
+when they met a totally different language and totally different
+applications of programming at the end of the bachelor studies.  We
+therefore decided around 2006 to develop an introductory programming
+course that could lay a firm foundation for continued programming in
+all later courses that could benefit from integrating numerical
+simulations. We would therefore teach programming in the context of
+relevant algorithms like numerical integration, differentiation,
+solution of differential equations, and Monte Carlo simulation.
+
+<p>
+The introductory programming course was scheduled for the very first
+semester, meaning that the students would learn to program and use the
+computer to solve mathematical problems from day one.  But what should
+be the language of choice? MATLAB or C++ were obvious candidates
+because of their popularity. These two languages are, however, very
+different in nature, and it is not natural to integrate them in a course.
+Python, on the other hand, can be used for MATLAB-style
+programming and object-oriented or generative C++-style programming. In this
+way Python provides a natural glue between different programming
+styles.  We also knew that Python was much easier to use and teach
+than C++.  The most convincing argument was, nevertheless, that Python
+may act as a MATLAB replacement for students and professors, doing the
+same things as MATLAB, and for free, but with a much more powerful
+programming language at disposal.
+<!-- (Since I am on an 80% leave from -->
+<!-- the University, I am not qualified for MathWorks' academic discount, -->
+<!-- and my MATLAB license hence costs twice as much as my laptop.) -->
+
+<p>
+Again I wrote a <a href="http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642183654/ref=sr_1_1?ie=UTF8&qid=1340530481&sr=8-1&keywords=langtangen" target="_self">book</a>
+for the introductory programming course, this time addressing
+newcomers to programming and concentrating the examples on numerical
+computing. Needless to say, there were many skeptics: Python was of
+marginal interest to scientific computing, Python was a bad first
+language (because of its dynamic typing), mixing programming and
+mathematics is inferior to first mastering calculus and Java
+separately, etc. etc.
+
+<p>
+<!-- People have constantly reminded me about the possibly marginal interest -->
+<!-- Python will obtain in science, and that going for the established, popular -->
+<!-- tools (MATLAB or C++) would be more relevant for the studentsa and also -->
+<!-- sell more books. -->
+
+<p>
+The <a href="http://www.uio.no/studier/emner/matnat/ifi/INF1100/index-eng.xml" target="_self">course</a> is
+now a huge success, and the book is a best-seller in its
+category. Since 2007, more than 1500 students have passed the exam and
+used the programming technology to solve mathematical problems in
+about 20 other courses in the Bachelor programs at the University of
+Oslo. The introduction of programming and numerical simulation in all
+these other courses was a huge undertaking known as the <a href="http://www.mn.uio.no/english/about/collaboration/cse/" target="_self">Computing in
+Science Education project</a>. This project
+has attracted worldwide attention as it represents a long-awaited
+reform of the science education.  The idea is trivial: let programming
+and computer simulations change the curriculum! However, the
+implementation among professors is extremely demanding most
+places. The fortunate situation in Oslo is that professors across
+disciplines have managed to collaborate on how programming and
+simulation can be integrated in classical courses and used to replace
+the classical strong attention on complicated and specialized
+mathematical techniques for very simplified physical problems.
+Recently, the Computing in Science Education project has been
+acknowledged by the University and the government in Norway through
+prestigious <a href="http://simula.no/news/computing-in-science-education-receives-learning-environment-award" target="_self">awards</a>
+and generous funding.  The ideas are being implemented at other
+Norwegian colleges and universities as well as at several institutions
+abroad.
+
+<p>
+<!-- "awards": -->
+<!-- "http://www.uio.no/studier/aktuelt/laringsmiljoprisen.html" -->
+
+<p>
+<p>
+<ul class="pager">
+  <li class="previous">
+    <a href="._uiopy001.html">&larr; Prev</a>
+  </li>
+
+  <li class="next">
+    <a href="._uiopy003.html">Next &rarr;</a>
+  </li>
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

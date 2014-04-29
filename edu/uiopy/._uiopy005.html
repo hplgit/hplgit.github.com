@@ -1,0 +1,201 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Experience with Using Python for Teaching Scientific Computing">
+
+
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [(' We started with a course on Python scripting ',
+               2,
+               None,
+               '___sec0'),
+              (' We chose Python for learning computer programming ',
+               2,
+               None,
+               '___sec1'),
+              (' There is impact of teaching Python ', 2, None, '___sec2'),
+              (' We let the students play with advanced problems ',
+               2,
+               None,
+               '___sec3'),
+              (' We use Ubuntu to minimize installation problems ',
+               2,
+               None,
+               '___sec4'),
+              (' Resources ', 2, None, '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="uiopy.html">Experience with Using Python for Teaching Scientific Computing</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: " We started with a course on Python scripting " --> <li>  <a href="._uiopy001.html#___sec0"> We started with a course on Python scripting </a></li>
+     <!-- navigation toc: " We chose Python for learning computer programming " --> <li>  <a href="._uiopy002.html#___sec1"> We chose Python for learning computer programming </a></li>
+     <!-- navigation toc: " There is impact of teaching Python " --> <li>  <a href="._uiopy003.html#___sec2"> There is impact of teaching Python </a></li>
+     <!-- navigation toc: " We let the students play with advanced problems " --> <li>  <a href="._uiopy004.html#___sec3"> We let the students play with advanced problems </a></li>
+     <!-- navigation toc: " We use Ubuntu to minimize installation problems " --> <li>  <a href="._uiopy005.html#___sec4"> We use Ubuntu to minimize installation problems </a></li>
+     <!-- navigation toc: " Resources " --> <li>  <a href="._uiopy005.html#___sec5"> Resources </a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0005"></a>
+<!-- !split -->
+
+<h2>We use Ubuntu to minimize installation problems  <a name="___sec4"></a></h2>
+
+Many fear to introduce programming and simulation in courses because
+there are so many technical details. For example, how shall students
+install Python and 30 software packages on their personal
+laptops? This question quickly scares teachers.
+We have found a solution that has proven to be successful over the last
+four years: <em>force all students to use Ubuntu</em>, and provide support for
+Ubuntu only!
+
+<p>
+Mac users typically run Ubuntu in a virtual machine (<a href="http://www.virtualbox.org/" target="_self">VirtualBox</a>, or preferably, <a href="http://www.vmware.com/products/player" target="_self">VMWare Player</a> or <a href="http://www.vmware.com/products/fusion/overview.html/" target="_self">VMWare Fusion</a>), while Windows
+users can run a virtual machine or have a dual boot.  The <a href="http://wubi-installer.org" target="_self">Wubi</a> software makes installing the dual boot
+solution very easy.  On Ubuntu we have one package (<code>python-scitools</code>)
+that installs everything the students need in one command. Later courses can
+just provide a one-line command with their needs for additional packages.
+
+<p>
+There are several reasons why we dare to force the use of only one
+operating system:
+
+<ol>
+<li> Installation of programming tools and mathematical software on Windows and Mac OS X requires comprehensive competence that very few students have and want to gain.</li>
+<li> On Debian Linux systems, including Ubuntu, installation of complex mathematical software is done by a one-line command.</li>
+<li> Debian Linux has the largest collection of mathematical software today.</li>
+<li> When the students need to compile and link their own software, this seems to be easier on Linux systems than on Mac OS X and Windows. Although Mac OS X is basically Unix, there are many technical peculiarities that quickly calls for competence beyond what students and the average teacher have.</li>
+<li> Ubuntu's graphical interface is very similar to Windows or Mac OS X so students pick up Ubuntu without any noise.</li>
+<li> Students struggle much more with the logic of programming than with
+   Emacs and Unix commands.</li>
+</ol>
+
+I should add that <a href="http://www.floss4science.com/fedora-scientific-amit-saha/" target="_self">Fedora Scientific</a> may provide a viable alternative to Ubuntu, especially on sites where Fedora is already the supported Linux system. Fedora Scientific
+now offers a lot of very useful <a href="http://spins.fedoraproject.org/scientific-kde/" target="_self">mathematics software</a>
+
+<p>
+In future cloud supercomputing I imagine one can just upload the Linux
+image (running in a virtual machine) to the cloud service and avoid
+tedious installation processes. By archiving the image along with
+scientific results, one can at any time rerun simulations - the
+complete operating system, all the needed software, and all data
+reside in the image. This is key to reproducible science.
+
+<p>
+So far, I have not heard one single negative comment that we support
+only one operating system.  When we tried to support Unix, Linux,
+Windows, and Mac, there were a lot of complaints from students that
+they did not have access to the right software and that technical
+problems with computers stole too much attention. These complaints
+have simply disappeared with the standardization on Ubuntu. So we have
+learned that giving people more choices does not necessarily make them
+happier.
+
+<p>
+<b>A final comment.</b>
+The use of Ubuntu is mainly motivated by the total need of mathematical
+packages and programming tools during a student's
+entire stay at the university. If the need is basically an environment for doing
+Python programming, the <a href="http://www.enthought.com/products/epd.php" target="_self">Enthought Python Distribution</a> or the <a href="http://code.google.com/p/pythonxy/" target="_self">Python(x,y)</a> package provide user-friendly environments on any standard Windows computer.
+
+<p>
+<center><p><img src="figs/python6.jpeg" align="bottom" width=100></p></center>
+
+<h2>Resources  <a name="___sec5"></a></h2>
+
+<ul>
+ <li> Published formats of this essay: <a href="http://hplgit.github.com/teamods/edu/uiopy/uiopy.pdf" target="_self">PDF</a>, <a href="http://hplgit.github.com/teamods/edu/uiopy/uiopy.html" target="_self">HTML</a></li>
+ <li> The book <a href="http://goo.gl/q8tM7D" target="_self">Python Scripting for Computational Science</a></li>
+ <li> The book <a href="http://goo.gl/SWEQlz" target="_self">A Primer on Scientific Computing with Python</a></li>
+ <li> <a href="http://www.uio.no/studier/emner/matnat/ifi/INF1100/index-eng.xml" target="_self">Student information</a> on our introductory programming course where Python is used</li>
+ <li> The <a href="http://www.mn.uio.no/english/about/collaboration/cse/" target="_self">Computing in Science Education</a> reform of science courses at the University of Oslo</li>
+ <li> <a href="http://hplgit.github.com/teamods/ubuntu/vmware/index.html" target="_self">How to install Ubuntu</a> on any computer using VMWare Fusion
+<!-- <a href="http://hplgit.github.com/teamods/uiopy/uiopy.do.txt" target="_self">Doconce source of this document</a> --></li>
+</ul>
+
+
+<p>
+<ul class="pager">
+  <li class="previous">
+    <a href="._uiopy004.html">&larr; Prev</a>
+  </li>
+
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+
