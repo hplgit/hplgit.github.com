@@ -106,8 +106,15 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;generator&quot;</span> <span class="na">content=</span><span class="s">&quot;Doconce: http://code.google.com/p/doconce/&quot;</span> <span class="nt">/&gt;</span>
 
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;css/twitter_bootstrap.css&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;css/vagrant.css&quot;</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- If you copy the css subdirectory (and, e.g., make optional edits):</span>
+<span class="c">&lt;link rel=&quot;stylesheet&quot; href=&quot;css/twitter_bootstrap.css&quot;&gt;</span>
+<span class="c">&lt;link rel=&quot;stylesheet&quot; href=&quot;css/vagrant.css&quot;&gt;</span>
+<span class="c">Otherwise, rely on the URLs below (vagrant.css adapted to Doconce layout)</span>
+<span class="c">--&gt;</span>
+
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_vagrant/css/twitter_bootstrap.css&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_vagrant/css/vagrant.css&quot;</span><span class="nt">&gt;</span>
+
 <span class="c">&lt;!-- Define color of headings here (last definition counts) --&gt;</span>
 <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span>
 <span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">h4</span><span class="o">,</span> <span class="nt">h5</span><span class="o">,</span> <span class="nt">h6</span> <span class="p">{</span>
@@ -119,7 +126,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
 
-<span class="nt">&lt;title&gt;</span> Error vs $\Delta t$ <span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;title&gt;</span>Experiments with Schemes for Exponential Decay<span class="nt">&lt;/title&gt;</span>
 
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row Header with-border&quot;</span><span class="nt">&gt;</span>
@@ -153,14 +160,14 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="c">     &lt;li&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;a href=&quot;...&quot;&gt;Section 2b&lt;/a&gt;&lt;/li&gt;</span>
 <span class="c">     --&gt;</span>
      <span class="c">&lt;!-- Doconce automatically fills in the table of contents --&gt;</span>
-          <span class="c">&lt;!-- vagrant nav toc: &quot; Mathematical problem &quot; --&gt;</span> <span class="nt">&lt;li&gt;</span>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#math:problem&quot;</span><span class="nt">&gt;</span> Mathematical problem <span class="nt">&lt;/a&gt;</span>
-     <span class="c">&lt;!-- vagrant nav toc: &quot; Numerical solution method &quot; --&gt;</span> <span class="nt">&lt;li&gt;</span>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#numerical:problem&quot;</span><span class="nt">&gt;</span> Numerical solution method <span class="nt">&lt;/a&gt;</span>
-     <span class="c">&lt;!-- vagrant nav toc: &quot; Implementation &quot; --&gt;</span> <span class="nt">&lt;li&gt;</span>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec2&quot;</span><span class="nt">&gt;</span> Implementation <span class="nt">&lt;/a&gt;</span>
-     <span class="c">&lt;!-- vagrant nav toc: &quot; Numerical experiments &quot; --&gt;</span> <span class="nt">&lt;li&gt;</span>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec3&quot;</span><span class="nt">&gt;</span> Numerical experiments <span class="nt">&lt;/a&gt;</span>
-     <span class="c">&lt;!-- vagrant nav toc: &quot; The Backward Euler method &quot; --&gt;</span> <span class="nt">&lt;li&gt;</span> <span class="ni">&amp;nbsp;</span>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec4&quot;</span><span class="nt">&gt;</span> The Backward Euler method <span class="nt">&lt;/a&gt;</span>
-     <span class="c">&lt;!-- vagrant nav toc: &quot; The Crank-Nicolson method &quot; --&gt;</span> <span class="nt">&lt;li&gt;</span> <span class="ni">&amp;nbsp;</span>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec5&quot;</span><span class="nt">&gt;</span> The Crank-Nicolson method <span class="nt">&lt;/a&gt;</span>
-     <span class="c">&lt;!-- vagrant nav toc: &quot; The Forward Euler method &quot; --&gt;</span> <span class="nt">&lt;li&gt;</span> <span class="ni">&amp;nbsp;</span>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec6&quot;</span><span class="nt">&gt;</span> The Forward Euler method <span class="nt">&lt;/a&gt;</span>
-     <span class="c">&lt;!-- vagrant nav toc: &quot; Error vs \( \Delta t \) &quot; --&gt;</span> <span class="nt">&lt;li&gt;</span> <span class="ni">&amp;nbsp;</span>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec7&quot;</span><span class="nt">&gt;</span> Error vs \( \Delta t \) <span class="nt">&lt;/a&gt;</span>
+          <span class="c">&lt;!-- navigation toc: &quot; Mathematical problem &quot; --&gt;</span> <span class="nt">&lt;li&gt;</span>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#math:problem&quot;</span><span class="nt">&gt;</span> Mathematical problem <span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+     <span class="c">&lt;!-- navigation toc: &quot; Numerical solution method &quot; --&gt;</span> <span class="nt">&lt;li&gt;</span>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#numerical:problem&quot;</span><span class="nt">&gt;</span> Numerical solution method <span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+     <span class="c">&lt;!-- navigation toc: &quot; Implementation &quot; --&gt;</span> <span class="nt">&lt;li&gt;</span>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec2&quot;</span><span class="nt">&gt;</span> Implementation <span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+     <span class="c">&lt;!-- navigation toc: &quot; Numerical experiments &quot; --&gt;</span> <span class="nt">&lt;li&gt;</span>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec3&quot;</span><span class="nt">&gt;</span> Numerical experiments <span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+     <span class="c">&lt;!-- navigation toc: &quot; The Backward Euler method &quot; --&gt;</span> <span class="nt">&lt;li&gt;</span> <span class="ni">&amp;nbsp;</span>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec4&quot;</span><span class="nt">&gt;</span> The Backward Euler method <span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+     <span class="c">&lt;!-- navigation toc: &quot; The Crank-Nicolson method &quot; --&gt;</span> <span class="nt">&lt;li&gt;</span> <span class="ni">&amp;nbsp;</span>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec5&quot;</span><span class="nt">&gt;</span> The Crank-Nicolson method <span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+     <span class="c">&lt;!-- navigation toc: &quot; The Forward Euler method &quot; --&gt;</span> <span class="nt">&lt;li&gt;</span> <span class="ni">&amp;nbsp;</span>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec6&quot;</span><span class="nt">&gt;</span> The Forward Euler method <span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+     <span class="c">&lt;!-- navigation toc: &quot; Error vs \( \Delta t \) &quot; --&gt;</span> <span class="nt">&lt;li&gt;</span> <span class="ni">&amp;nbsp;</span>  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec7&quot;</span><span class="nt">&gt;</span> Error vs \( \Delta t \) <span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
 
     <span class="nt">&lt;/ul&gt;</span>
    <span class="nt">&lt;/div&gt;</span>
@@ -220,12 +227,13 @@ demonstrated.
 <span class="c">&lt;!-- </span>
 <span class="c">TOC: on --&gt;</span>
 
-<span class="nt">&lt;h2&gt;</span>Mathematical problem <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;math:problem&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
-
 <span class="nt">&lt;p&gt;</span>
+<span class="c">&lt;!-- !split --&gt;</span>
+
+<span class="nt">&lt;h1&gt;</span>Mathematical problem <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;math:problem&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h1&gt;</span>
+
 We address the initial-value problem
 
-<span class="nt">&lt;p&gt;</span>
 $$
 \begin{align}
 u&#39;(t) <span class="err">&amp;</span>= -au(t), \quad t \in (0,T], \label{ode}\\
@@ -239,9 +247,8 @@ is relevant for physical phenomena featuring exponential decay
 in time, e.g., vertical pressure variation in the atmosphere,
 cooling of an object, and radioactive decay.
 
-<span class="nt">&lt;h2&gt;</span>Numerical solution method <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;numerical:problem&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
+<span class="nt">&lt;h1&gt;</span>Numerical solution method <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;numerical:problem&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h1&gt;</span>
 
-<span class="nt">&lt;p&gt;</span>
 We introduce a mesh in time with points \( 0= t_0<span class="nt">&lt; t_1</span> <span class="err">\</span><span class="na">cdots</span> <span class="err">&lt;</span> <span class="na">t_</span><span class="err">{</span><span class="na">N_t</span><span class="err">}=</span><span class="na">T</span> <span class="err">\).</span>
 <span class="na">For</span> <span class="na">simplicity</span><span class="err">,</span> <span class="na">we</span> <span class="na">assume</span> <span class="na">constant</span> <span class="na">spacing</span> <span class="err">\(</span> <span class="err">\</span><span class="na">Delta</span> <span class="na">t</span> <span class="err">\)</span> <span class="na">between</span> <span class="na">the</span>
 <span class="na">mesh</span> <span class="na">points:</span> <span class="err">\(</span> <span class="err">\</span><span class="na">Delta</span> <span class="na">t =</span><span class="err"> </span><span class="s">t_{n}-t_{n-1}</span> <span class="err">\),</span> <span class="err">\(</span> <span class="na">n=</span><span class="s">1,\ldots,N_t</span> <span class="err">\).</span> <span class="na">Let</span>
@@ -251,14 +258,11 @@ We introduce a mesh in time with points \( 0= t_0<span class="nt">&lt; t_1</span
 The \( \theta \)-rule <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#Iserles_2009&quot;</span><span class="nt">&gt;</span>[1]<span class="nt">&lt;/a&gt;</span>
 is used to solve \eqref{ode} numerically:
 
-<span class="nt">&lt;p&gt;</span>
 $$
 u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
 $$
 
 for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
-
-<span class="nt">&lt;p&gt;</span>
 
 <span class="nt">&lt;ul&gt;</span>
   <span class="nt">&lt;li&gt;</span> The <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://en.wikipedia.org/wiki/Forward_Euler_method&quot;</span> <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;</span>Forward Euler<span class="nt">&lt;/a&gt;</span>
@@ -269,9 +273,8 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
     scheme when \( \theta=1/2 \)<span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 
-<span class="nt">&lt;h2&gt;</span>Implementation  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec2&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
+<span class="nt">&lt;h1&gt;</span>Implementation  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec2&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h1&gt;</span>
 
-<span class="nt">&lt;p&gt;</span>
 The numerical method is implemented in a Python function
 <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#Langtangen_2012&quot;</span><span class="nt">&gt;</span>[2]<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;code&gt;</span>solver<span class="nt">&lt;/code&gt;</span> (found in the <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py&quot;</span> <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;&lt;tt&gt;</span>decay_mod<span class="nt">&lt;/tt&gt;&lt;/a&gt;</span> module):
 
@@ -292,36 +295,31 @@ The numerical method is implemented in a Python function
     <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>return<span class="nt">&lt;/span&gt;</span> u, t
 <span class="nt">&lt;/pre&gt;&lt;/div&gt;</span>
 
-<span class="nt">&lt;h2&gt;</span>Numerical experiments  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec3&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
+<span class="nt">&lt;h1&gt;</span>Numerical experiments  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec3&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h1&gt;</span>
 
-<span class="nt">&lt;p&gt;</span>
 We define a set of numerical experiments where \( I \), \( a \), and \( T \) are
 fixed, while \( \Delta t \) and \( \theta \) are varied.
 In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 
-<span class="nt">&lt;h3&gt;</span>The Backward Euler method  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec4&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h3&gt;</span>
+<span class="nt">&lt;h2&gt;</span>The Backward Euler method  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec4&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
 
-<span class="nt">&lt;p&gt;</span>
 <span class="nt">&lt;center&gt;&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;BE.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">800</span><span class="nt">&gt;&lt;/p&gt;&lt;/center&gt;</span>
 
-<span class="nt">&lt;h3&gt;</span>The Crank-Nicolson method  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec5&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h3&gt;</span>
+<span class="nt">&lt;h2&gt;</span>The Crank-Nicolson method  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec5&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
 
-<span class="nt">&lt;p&gt;</span>
 <span class="nt">&lt;center&gt;&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;CN.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">800</span><span class="nt">&gt;&lt;/p&gt;&lt;/center&gt;</span>
 
-<span class="nt">&lt;h3&gt;</span>The Forward Euler method  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec6&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h3&gt;</span>
+<span class="nt">&lt;h2&gt;</span>The Forward Euler method  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec6&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
 
-<span class="nt">&lt;p&gt;</span>
 <span class="nt">&lt;center&gt;&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;FE.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">800</span><span class="nt">&gt;&lt;/p&gt;&lt;/center&gt;</span>
 
-<span class="nt">&lt;h3&gt;</span>Error vs \( \Delta t \)  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec7&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h3&gt;</span>
+<span class="nt">&lt;h2&gt;</span>Error vs \( \Delta t \)  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec7&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
 
-<span class="nt">&lt;p&gt;</span>
 How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
 is shown below.
 
 <span class="nt">&lt;p&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-block alert-warning alert-text-normal&quot;</span><span class="nt">&gt;&lt;b&gt;</span>Observe:<span class="nt">&lt;/b&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-block alert-danger alert-text-normal&quot;</span><span class="nt">&gt;&lt;b&gt;</span>Observe:<span class="nt">&lt;/b&gt;</span>
 The data points for the three largest \( \Delta t \) values in the
 Forward Euler method are not relevant as the solution behaves
 non-physically.
@@ -336,14 +334,18 @@ The numbers corresponding to the figure above are given in the table below.
 
 <span class="nt">&lt;p&gt;</span>
 <span class="nt">&lt;table</span> <span class="na">border=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;tr&gt;&lt;td</span> <span class="na">align=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;&lt;b&gt;</span>  \( \Delta t \)  <span class="nt">&lt;/b&gt;&lt;/td&gt;</span> <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;&lt;b&gt;</span>  \( \theta=0 \)  <span class="nt">&lt;/b&gt;&lt;/td&gt;</span> <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;&lt;b&gt;</span> \( \theta=0.5 \) <span class="nt">&lt;/b&gt;&lt;/td&gt;</span> <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;&lt;b&gt;</span>  \( \theta=1 \)  <span class="nt">&lt;/b&gt;&lt;/td&gt;</span> <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;thead&gt;</span>
+<span class="nt">&lt;tr&gt;&lt;td</span> <span class="na">align=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span> \( \Delta t \) <span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span> \( \theta=0 \) <span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span>\( \theta=0.5 \)<span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span> \( \theta=1 \) <span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/thead&gt;</span>
+<span class="nt">&lt;tbody&gt;</span>
 <span class="nt">&lt;tr&gt;&lt;td</span> <span class="na">align=</span><span class="s">&quot;right&quot;</span><span class="nt">&gt;</span>   1.25                <span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">&quot;right&quot;</span><span class="nt">&gt;</span>   7.4630              <span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">&quot;right&quot;</span><span class="nt">&gt;</span>   0.2161              <span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">&quot;right&quot;</span><span class="nt">&gt;</span>   0.2440              <span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;/tr&gt;</span>
 <span class="nt">&lt;tr&gt;&lt;td</span> <span class="na">align=</span><span class="s">&quot;right&quot;</span><span class="nt">&gt;</span>   0.75                <span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">&quot;right&quot;</span><span class="nt">&gt;</span>   0.6632              <span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">&quot;right&quot;</span><span class="nt">&gt;</span>   0.0744              <span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">&quot;right&quot;</span><span class="nt">&gt;</span>   0.1875              <span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;/tr&gt;</span>
 <span class="nt">&lt;tr&gt;&lt;td</span> <span class="na">align=</span><span class="s">&quot;right&quot;</span><span class="nt">&gt;</span>   0.50                <span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">&quot;right&quot;</span><span class="nt">&gt;</span>   0.2797              <span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">&quot;right&quot;</span><span class="nt">&gt;</span>   0.0315              <span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">&quot;right&quot;</span><span class="nt">&gt;</span>   0.1397              <span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;/tr&gt;</span>
 <span class="nt">&lt;tr&gt;&lt;td</span> <span class="na">align=</span><span class="s">&quot;right&quot;</span><span class="nt">&gt;</span>   0.10                <span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">&quot;right&quot;</span><span class="nt">&gt;</span>   0.0377              <span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">&quot;right&quot;</span><span class="nt">&gt;</span>   0.0012              <span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;td</span> <span class="na">align=</span><span class="s">&quot;right&quot;</span><span class="nt">&gt;</span>   0.0335              <span class="nt">&lt;/td&gt;</span> <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/tbody&gt;</span>
 <span class="nt">&lt;/table&gt;</span>
 <span class="nt">&lt;p&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-block alert-summary alert-text-normal&quot;</span><span class="nt">&gt;&lt;b&gt;</span>Summary.<span class="nt">&lt;/b&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-block alert-warning alert-text-normal&quot;</span><span class="nt">&gt;&lt;b&gt;</span>Summary.<span class="nt">&lt;/b&gt;</span>
 
 <span class="nt">&lt;ol&gt;</span>
 <span class="nt">&lt;li&gt;</span> \( \theta =1 \): \( E\sim \Delta t \) (first-order convergence).<span class="nt">&lt;/li&gt;</span>
@@ -382,7 +384,7 @@ The numbers corresponding to the figure above are given in the table below.
 
 <span class="c">&lt;div class=&#39;alert alert-block alert-notice&#39;&gt;</span>
 <span class="c">  &lt;h3&gt;What about PHP? Python? Java?&lt;/h3&gt;</span>
-<span class="c">&lt;p&gt;</span>
+
 <span class="c">bla-bla.</span>
 <span class="c">&lt;/div&gt;</span>
 
