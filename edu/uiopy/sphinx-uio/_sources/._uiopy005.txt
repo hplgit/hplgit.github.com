@@ -1,0 +1,82 @@
+.. !split
+
+We use Ubuntu to minimize installation problems
+-----------------------------------------------
+
+Many fear to introduce programming and simulation in courses because
+there are so many technical details. For example, how shall students
+install Python and 30 software packages on their personal
+laptops? This question quickly scares teachers.
+We have found a solution that has proven to be successful over the last
+four years: *force all students to use Ubuntu*, and provide support for
+Ubuntu only!
+
+Mac users typically run Ubuntu in a virtual machine (`VirtualBox <http://www.virtualbox.org/>`_, or preferably, `VMWare Player <http://www.vmware.com/products/player>`_ or `VMWare Fusion <http://www.vmware.com/products/fusion/overview.html/>`_), while Windows
+users can run a virtual machine or have a dual boot.  The `Wubi <http://wubi-installer.org>`_ software makes installing the dual boot
+solution very easy.  On Ubuntu we have one package (``python-scitools``)
+that installs everything the students need in one command. Later courses can
+just provide a one-line command with their needs for additional packages.
+
+There are several reasons why we dare to force the use of only one
+operating system:
+
+1. Installation of programming tools and mathematical software on Windows and Mac OS X requires comprehensive competence that very few students have and want to gain.
+
+2. On Debian Linux systems, including Ubuntu, installation of complex mathematical software is done by a one-line command.
+
+3. Debian Linux has the largest collection of mathematical software today.
+
+4. When the students need to compile and link their own software, this seems to be easier on Linux systems than on Mac OS X and Windows. Although Mac OS X is basically Unix, there are many technical peculiarities that quickly calls for competence beyond what students and the average teacher have.
+
+5. Ubuntu's graphical interface is very similar to Windows or Mac OS X so students pick up Ubuntu without any noise.
+
+6. Students struggle much more with the logic of programming than with
+   Emacs and Unix commands.
+
+I should add that `Fedora Scientific <http://www.floss4science.com/fedora-scientific-amit-saha/>`_ may provide a viable alternative to Ubuntu, especially on sites where Fedora is already the supported Linux system. Fedora Scientific
+now offers a lot of very useful `mathematics software <http://spins.fedoraproject.org/scientific-kde/>`_
+
+In future cloud supercomputing I imagine one can just upload the Linux
+image (running in a virtual machine) to the cloud service and avoid
+tedious installation processes. By archiving the image along with
+scientific results, one can at any time rerun simulations - the
+complete operating system, all the needed software, and all data
+reside in the image. This is key to reproducible science.
+
+So far, I have not heard one single negative comment that we support
+only one operating system.  When we tried to support Unix, Linux,
+Windows, and Mac, there were a lot of complaints from students that
+they did not have access to the right software and that technical
+problems with computers stole too much attention. These complaints
+have simply disappeared with the standardization on Ubuntu. So we have
+learned that giving people more choices does not necessarily make them
+happier.
+
+**A final comment.**
+The use of Ubuntu is mainly motivated by the total need of mathematical
+packages and programming tools during a student's
+entire stay at the university. If the need is basically an environment for doing
+Python programming, the `Enthought Python Distribution <http://www.enthought.com/products/epd.php>`_ or the `Python(x,y) <http://code.google.com/p/pythonxy/>`_ package provide user-friendly environments on any standard Windows computer.
+
+
+.. figure:: python6.jpeg
+   :width: 100
+
+
+
+Resources
+---------
+
+ * Published formats of this essay: `PDF <http://hplgit.github.com/teamods/edu/uiopy/uiopy.pdf>`_, `HTML <http://hplgit.github.com/teamods/edu/uiopy/uiopy.html>`_, `Sphinx <http://hplgit.github.com/teamods/edu/uiopy/html/uiopy.html>`_
+
+ * The book `Python Scripting for Computational Science <http://goo.gl/q8tM7D>`_
+
+ * The book `A Primer on Scientific Computing with Python <http://goo.gl/SWEQlz>`_
+
+ * `Student information <http://www.uio.no/studier/emner/matnat/ifi/INF1100/index-eng.xml>`_ on our introductory programming course where Python is used
+
+ * The `Computing in Science Education <http://www.mn.uio.no/english/about/collaboration/cse/>`_ reform of science courses at the University of Oslo
+
+ * `How to install Ubuntu <http://hplgit.github.com/teamods/ubuntu/vmware/index.html>`_ on any computer using VMWare Fusion
+.. `Doconce source of this document <http://hplgit.github.com/teamods/uiopy/uiopy.do.txt>`_
+
