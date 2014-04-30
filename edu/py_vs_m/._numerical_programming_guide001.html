@@ -1,0 +1,529 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Guidelines for Numerical Codes">
+
+
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [('  Motivation ', 2, None, '___sec0'),
+              (' Exercise ', 2, None, '___sec1'),
+              (' Solution 1: Minimalistic Matlab ', 2, None, '___sec2'),
+              (' Solution 2: Matlab with functions ', 2, None, '___sec3'),
+              (' Solution 3: Standard Python ', 2, None, '___sec4'),
+              (' Discussion ', 2, None, '___sec5'),
+              (' Extended Exercise ', 2, None, '___sec6'),
+              (' Discussion ', 2, None, '___sec7'),
+              (' Solution 4: A Java OO Program ', 2, None, '___sec8'),
+              (' Conclusions and Recommendations ', 2, None, '___sec9')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="numerical_programming_guide.html">Guidelines for Numerical Codes</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: "  Motivation " --> <li>  <a href="._numerical_programming_guide001.html#___sec0">  Motivation </a></li>
+     <!-- navigation toc: " Exercise " --> <li>  <a href="._numerical_programming_guide001.html#___sec1"> Exercise </a></li>
+     <!-- navigation toc: " Solution 1: Minimalistic Matlab " --> <li>  <a href="._numerical_programming_guide001.html#___sec2"> Solution 1: Minimalistic Matlab </a></li>
+     <!-- navigation toc: " Solution 2: Matlab with functions " --> <li>  <a href="._numerical_programming_guide001.html#___sec3"> Solution 2: Matlab with functions </a></li>
+     <!-- navigation toc: " Solution 3: Standard Python " --> <li>  <a href="._numerical_programming_guide001.html#___sec4"> Solution 3: Standard Python </a></li>
+     <!-- navigation toc: " Discussion " --> <li>  <a href="._numerical_programming_guide001.html#___sec5"> Discussion </a></li>
+     <!-- navigation toc: " Extended Exercise " --> <li>  <a href="._numerical_programming_guide001.html#___sec6"> Extended Exercise </a></li>
+     <!-- navigation toc: " Discussion " --> <li>  <a href="._numerical_programming_guide001.html#___sec7"> Discussion </a></li>
+     <!-- navigation toc: " Solution 4: A Java OO Program " --> <li>  <a href="._numerical_programming_guide001.html#___sec8"> Solution 4: A Java OO Program </a></li>
+     <!-- navigation toc: " Conclusions and Recommendations " --> <li>  <a href="._numerical_programming_guide001.html#___sec9"> Conclusions and Recommendations </a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0001"></a>
+<!-- !split -->
+
+<h2>Motivation  <a name="___sec0"></a></h2>
+
+Many science courses now have examples and exercises involving
+implementation and application of numerical methods. How to structure
+such numerical programs has, unfortunately, received little
+attention. Students and teachers occasionally write programs that
+are too tailored to the problem at hand instead of being a good
+starting point for future extensions. A key issue is to split the
+program into functions and to implement general mathematics in general
+functions applicable to many problems. We shall illustrate this point
+through a case study and briefly discuss the merits of different types of
+programming styles.
+
+<h2>Exercise  <a name="___sec1"></a></h2>
+
+Integrate the function \( g(t)=\exp{(-t^4)} \) from
+-2 to 2 using the Trapezoidal rule, defined by
+$$
+\begin{equation}
+\int_a^b f(x)dx \approx h\left( {1\over2}(f(a) + f(b)) +
+\sum_{i=1}^{n-1} f(a+ih)\right), \quad h = (b-a)/n
+\tag{1}
+\end{equation}
+$$
+
+<h2>Solution 1: Minimalistic Matlab  <a name="___sec2"></a></h2>
+
+The simplest possible program may look as follows in Matlab:
+
+<p>
+
+<!-- code=matlab (from !bc mpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = <span style="color: #666666">-2</span>; b = <span style="color: #666666">2</span>;
+n = <span style="color: #666666">1000</span>;
+h = (b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span>n;
+s = <span style="color: #666666">0.5*</span>(<span style="color: #008000">exp</span>(<span style="color: #666666">-</span>a^<span style="color: #666666">4</span>) <span style="color: #666666">+</span> <span style="color: #008000">exp</span>(<span style="color: #666666">-</span>b^<span style="color: #666666">4</span>));
+<span style="color: #008000; font-weight: bold">for</span> <span style="color: #008000">i</span> = <span style="color: #666666">1</span>:n<span style="color: #666666">-1</span>
+    s = s <span style="color: #666666">+</span> <span style="color: #008000">exp</span>(<span style="color: #666666">-</span>(a<span style="color: #666666">+</span><span style="color: #008000">i</span><span style="color: #666666">*</span>h)^<span style="color: #666666">4</span>);
+<span style="color: #008000; font-weight: bold">end</span>
+r = h<span style="color: #666666">*</span>s;
+r
+</pre></div>
+<p>
+The solution is minimalistic and correct. Nevertheless, this solution
+has a pedagogical and software engineering flaw: a special function
+\( \exp(-t^4) \) is merged into a general algorithm
+<a href="#mjx-eqn-1">(1)</a> for integrating an arbitrary function \( f(x) \).
+
+<h2>Solution 2: Matlab with functions  <a name="___sec3"></a></h2>
+
+A successful software engineering practice is to use functions for
+splitting a program into natural pieces, and if possible, make these
+functions sufficiently general to be reused in other problems.  In the
+present problem we should strive for the following principles:
+
+<ul>
+  <li> The Trapezoidal rule is implemented in a separate Python function
+    taking a general mathematical function \( f(x) \) as argument,
+    together with the input data for the problem: the integration
+    limits \( a \) and \( b \) and the numerical resolution parameter \( n \).</li>
+  <li> The special \( g(t) \) formula is implemented in a separate Python
+    function.</li>
+  <li> A main program solves the specific problem in question by calling
+    the general algorithm (the Trapezoidal integration function)
+    with the special data of the given problem (\( g(t) \), \( a=-2 \), \( b=2 \),
+    \( n=1000 \)).</li>
+</ul>
+
+Let us apply these desirable principles in a Matlab context.
+User-defined Matlab functions must be placed in separate files. This
+is sometimes found annoying, and therefore many programmers tend to
+avoid functions. In the present case, we should implement the
+Trapezoidal method in a file <code>Trapezoidal.m</code> containing
+
+<p>
+
+<!-- code=matlab (from !bc mpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">function</span><span style="color: #bbbbbb"> </span>r =<span style="color: #bbbbbb"> </span><span style="color: #0000FF">Trapezoidal</span>(f, a, b, n)<span style="color: #bbbbbb"></span>
+<span style="color: #408080; font-style: italic">% TRAPEZOIDAL Numerical integration from a to b</span>
+<span style="color: #408080; font-style: italic">% with n intervals by the Trapezoidal rule</span>
+f = fcnchk(f);
+h = (b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span>n;
+s = <span style="color: #666666">0.5*</span>(f(a) <span style="color: #666666">+</span> f(b));
+<span style="color: #008000; font-weight: bold">for</span> <span style="color: #008000">i</span> = <span style="color: #666666">1</span>:n<span style="color: #666666">-1</span>
+    s = s <span style="color: #666666">+</span> f(a<span style="color: #666666">+</span><span style="color: #008000">i</span><span style="color: #666666">*</span>h);
+<span style="color: #008000; font-weight: bold">end</span>
+r = h<span style="color: #666666">*</span>s;
+</pre></div>
+<p>
+The special \( g(t) \) function is implemented in a separate file <code>g.m</code>:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">function v = g(t)
+v = exp(-t^4)
+end
+</pre></div>
+<p>
+Finally, we create a main program <code>main.m</code>:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = -2; b = 2;
+n = 1000;
+result = Trapezoidal(@g, a, b, n);
+disp(result);
+exit
+</pre></div>
+
+<h2>Solution 3: Standard Python  <a name="___sec4"></a></h2>
+
+Both Solution 1 and Solution 2 are readily implemented in Python.
+However, functions in Python do <em>not</em> need to be located in separate
+files to be reusable, and therefore there is no psychological barrier
+to put a piece of code inside a function. The consequence is that a
+Python programmer is more likely to go for Solution 2.  The relevant
+code can be placed in a single file, say <code>main.py</code>, looking as
+follows:
+
+<p>
+
+<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Trapezoidal</span>(f, a, b, n):
+    h <span style="color: #666666">=</span> (b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span><span style="color: #008000">float</span>(n)
+    s <span style="color: #666666">=</span> <span style="color: #666666">0.5*</span>(f(a) <span style="color: #666666">+</span> f(b))
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>,n,<span style="color: #666666">1</span>):
+        s <span style="color: #666666">=</span> s <span style="color: #666666">+</span> f(a <span style="color: #666666">+</span> i<span style="color: #666666">*</span>h)
+    <span style="color: #008000; font-weight: bold">return</span> h<span style="color: #666666">*</span>s
+
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp  <span style="color: #408080; font-style: italic"># or from math import *</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(t):
+    <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>t<span style="color: #666666">**4</span>)
+
+a <span style="color: #666666">=</span> <span style="color: #666666">-2</span>;  b <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+n <span style="color: #666666">=</span> <span style="color: #666666">1000</span>
+result <span style="color: #666666">=</span> Trapezoidal(g, a, b, n)
+<span style="color: #008000; font-weight: bold">print</span> result
+</pre></div>
+
+<h2>Discussion  <a name="___sec5"></a></h2>
+
+Looking at the simple exercise isolated, all three solutions produce
+the same correct mathematical result and are hence equivalent
+mathematically. However, the nature of this exercise is that we want
+to solve a special problem by a general mathematical method.  This is
+often the case when mathematics is applied to practical problems.  The
+software should reflect this division between the general part and the
+special part of the given problem of two reasons.
+
+<p>
+First, the division is important for the understanding the general
+nature of mathematical methods and how general methods can be used to
+solve a special problems.  Second, the implementation of the general
+part, here the Trapezoidal rule, can be reused in many other
+problems.
+
+<p>
+We may say that the the first reason is comes from the philosophy of
+mathematics and science, while the second reason is motivated by the
+practical aspect of reducing future coding efforts by relying on a
+resuable, general, and working function.  This aspect is the basis of
+a fundamental software engineering practice: <em>programs should consist
+of general pieces (functions) that can be reused without
+modifications to solve other problems</em>.  The importance of this
+philosopy becomes obvious when we extend the problem as described
+below.
+
+<p>
+Another point worth mentioning is the way we can transfer
+functions to functions as an argument. The argument <code>f</code> in the Python
+function <code>Trapezoidal</code> is treated as a standard variable, and <code>f</code> is
+called by simply writing <code>f(x)</code>.  In Matlab and other languages,
+functions that are argument to other functions require special,
+often somewhat &quot;ugly&quot;, syntax. This aspect, together with the ease
+of writing functions, make the Python solution slightly preferable
+in the present case.
+
+<p>
+We also emphasize that the \( g(t) \) formula is implemented in a separate
+Python function such that the formula can be reused in other
+occations, for instance, when integrating \( g(t) \) by an alternative
+numerical integration rule. In many problems, the formula is much more
+complicated than the one used here, and it is important to have a
+single, well-tested implementation of the formula.
+
+<p>
+Readers may also realize that the nature of programming (combined with
+sound programming habits) helps to increase the understanding of
+mathematics through the clear distinction between general methods and
+and a specialized problem. Understanding the generality of methods also
+requires an understanding of abstractions in mathematics.
+Programming exercises therefore enforce a stronger focus on abstractions
+in general. All these arguments boil down to Kristen Nygaard's famous
+three words: "Programming is understanding"!
+
+<h2>Extended Exercise  <a name="___sec6"></a></h2>
+
+Compute the following integrals with the Midpoint rule, the
+Trapezoidal rule, and Simpson's rule:
+$$
+\begin{eqnarray*}
+\int_{0}^{\pi}\sin x\, dx &=& 2,\\
+\int_{-\infty}^{\infty} {1\over\sqrt{2\pi}} e^{-x^2}dx &=& 1,\\
+\int_{0}^1 3x^2dx &=& 1,\\
+\int_0^{\ln 11} e^xdx &=& 10,\\
+\int_0^1 {3\over 2}\sqrt{x}dx &=& 1.
+\end{eqnarray*}
+$$
+
+For each integral, write out a table of the numerical error for the
+three methods using a \( n \) function evaluations, where \( n \) varies as
+\( n=2^k+1 \), \( k=1,2, ..., 12 \).
+
+<h2>Discussion  <a name="___sec7"></a></h2>
+
+In the extended problem, Solution 1 is obviously inferior because
+we need to apply, e.g., the Trapezoidal rule to five
+different integrand functions for 12 different \( n \) values.
+Then it makes sense to implement the rule in
+a separate function that can be called 60 times.
+
+<p>
+Similarly, a mathematical function to be integrated is needed in
+three different rules, so it makes sense to isolate the mathematical
+formula for the integrand in a function in the language we are using.
+
+<p>
+We can briefly sketch a compact and smart Python code, in a single
+file, that solves the extended problem:
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f1</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(x)
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f2</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">1/</span>sqrt(<span style="color: #666666">2</span>)<span style="color: #666666">*</span>exp(<span style="color: #666666">-</span>x<span style="color: #666666">**2</span>)
+
+<span style="color: #666666">...</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f5</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">3/2.0*</span>sqrt(x)
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Midpoint</span>(f, a, b, n):
+    <span style="color: #666666">...</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Trapezoidal</span>(f, a, b, n):
+    <span style="color: #666666">...</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Simpson</span>(f, a, b, n):
+    <span style="color: #666666">...</span>
+
+problems <span style="color: #666666">=</span> [(f1, <span style="color: #666666">0</span>, pi),  <span style="color: #408080; font-style: italic"># list of (function, a, b)</span>
+            (f2, <span style="color: #666666">-5</span>, <span style="color: #666666">5</span>),
+            <span style="color: #666666">...</span>
+            (f3, <span style="color: #666666">0</span>, <span style="color: #666666">1</span>)]
+
+methods <span style="color: #666666">=</span> (Midpoint, Trapezoidal, Simpson)
+result <span style="color: #666666">=</span> []
+<span style="color: #008000; font-weight: bold">for</span> method <span style="color: #AA22FF; font-weight: bold">in</span> methods:
+    <span style="color: #008000; font-weight: bold">for</span> func, a, b <span style="color: #AA22FF; font-weight: bold">in</span> problems:
+        <span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>,<span style="color: #666666">13</span>):
+            n <span style="color: #666666">=</span> <span style="color: #666666">2**</span>k <span style="color: #666666">+</span> <span style="color: #666666">1</span>
+            I <span style="color: #666666">=</span> method(func, a, b, n)
+            result<span style="color: #666666">.</span>append((I, method<span style="color: #666666">.</span>__name__, func<span style="color: #666666">.</span>__name__, n))
+
+<span style="color: #408080; font-style: italic"># write out results, nicely formatted:</span>
+<span style="color: #008000; font-weight: bold">for</span> I, method, integrand, n <span style="color: #AA22FF; font-weight: bold">in</span> result:
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%-20s</span><span style="color: #BA2121">, </span><span style="color: #BB6688; font-weight: bold">%-3s</span><span style="color: #BA2121">, n=</span><span style="color: #BB6688; font-weight: bold">%5d</span><span style="color: #BA2121">, I=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (I, method, integrand, n)
+</pre></div>
+<p>
+Note that since everything in Python is an object that can be referred
+to by a variable, it is easy to make a list <code>methods</code> (list of Python
+functions), and a list <code>problems</code> where each element is a list of a
+function and its two integration limits.  A nice feature is that the
+name of a function can be extracted as a string in the function object
+(<code>name</code> with double leading and trailing underscores).
+
+<p>
+To summarize, Solution 2 or 3 can readily be used to solve the
+extended problem, while Solution 1 is not worth much.  In courses with
+many very simple exercises, solutions of type 1 will appear
+naturally. However, published solutions should employ approach 2 or 3
+of the mentioned reasons, just to train students to think that <em>this
+is a general mathematical method that I should make reusable through a
+function</em>.
+
+<h2>Solution 4: A Java OO Program  <a name="___sec8"></a></h2>
+
+Introductory courses in computer programming usually employ the Java
+language and emphasize object-oriented programming. Many computer
+scientists argue that it is better to start with Java than Python
+or (especially) Matlab. But how well is Java suited for introductory
+numerical programming?
+
+<p>
+Let us look at our first integration example, now to be solved in
+Java. Solution 1 is implemented as a simple <code>main</code> method in a class,
+with a code that follows closely the displayed Matlab code. However,
+students are in a Java course trained in splitting the code between
+classes and methods.  Therefore, Solution 2 should be an obvious
+choice for a Java programmer. However, it is not possible to have
+stand-alone functions in Java, functions must be methods belonging to
+a class.  This implies that one cannot transfer a function to another
+function as an argument. Instead one must apply the principles of
+object-oriented programming and implement the function argument as a
+reference to a superclass. To call the "function argument", one calls
+a method via the superclass reference. The code below provides the
+details of the implementation:
+
+<p>
+
+<!-- code=java (from !bc javapro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">java.lang.*</span><span style="color: #666666">;</span>
+
+<span style="color: #008000; font-weight: bold">interface</span> <span style="color: #0000FF; font-weight: bold">Func</span> <span style="color: #666666">{</span>  <span style="color: #408080; font-style: italic">// superclass for functions f(x)</span>
+    <span style="color: #008000; font-weight: bold">public</span> <span style="color: #B00040">double</span> f <span style="color: #666666">(</span><span style="color: #B00040">double</span> x<span style="color: #666666">);</span>  <span style="color: #408080; font-style: italic">// default empty implementation</span>
+<span style="color: #666666">}</span>
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">f1</span> <span style="color: #008000; font-weight: bold">implements</span> Func <span style="color: #666666">{</span>
+    <span style="color: #008000; font-weight: bold">public</span> <span style="color: #B00040">double</span> f <span style="color: #666666">(</span><span style="color: #B00040">double</span> t<span style="color: #666666">)</span>
+    <span style="color: #666666">{</span> <span style="color: #008000; font-weight: bold">return</span> Math<span style="color: #666666">.</span><span style="color: #7D9029">exp</span><span style="color: #666666">(-</span>Math<span style="color: #666666">.</span><span style="color: #7D9029">pow</span><span style="color: #666666">(</span>t<span style="color: #666666">,</span> <span style="color: #666666">4));</span> <span style="color: #666666">}</span>
+<span style="color: #666666">}</span>
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Trapezoidal</span> <span style="color: #666666">{</span>
+    <span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">static</span> <span style="color: #B00040">double</span> integrate
+           <span style="color: #666666">(</span>Func f<span style="color: #666666">,</span> <span style="color: #B00040">double</span> a<span style="color: #666666">,</span> <span style="color: #B00040">double</span> b<span style="color: #666666">,</span> <span style="color: #B00040">int</span> n<span style="color: #666666">)</span>
+    <span style="color: #666666">{</span>
+        <span style="color: #B00040">double</span> h <span style="color: #666666">=</span> <span style="color: #666666">(</span>b<span style="color: #666666">-</span>a<span style="color: #666666">)/((</span><span style="color: #B00040">double</span><span style="color: #666666">)</span>n<span style="color: #666666">);</span>
+        <span style="color: #B00040">double</span> s <span style="color: #666666">=</span> <span style="color: #666666">0.5*(</span>f<span style="color: #666666">.</span><span style="color: #7D9029">f</span><span style="color: #666666">(</span>a<span style="color: #666666">)</span> <span style="color: #666666">+</span> f<span style="color: #666666">.</span><span style="color: #7D9029">f</span><span style="color: #666666">(</span>b<span style="color: #666666">));</span>
+        <span style="color: #B00040">int</span> i<span style="color: #666666">;</span>
+        <span style="color: #008000; font-weight: bold">for</span> <span style="color: #666666">(</span>i <span style="color: #666666">=</span> <span style="color: #666666">1;</span> i <span style="color: #666666">&lt;=</span> n<span style="color: #666666">-1;</span> i<span style="color: #666666">++)</span> <span style="color: #666666">{</span>
+            s <span style="color: #666666">=</span> s <span style="color: #666666">+</span> f<span style="color: #666666">.</span><span style="color: #7D9029">f</span><span style="color: #666666">(</span>a<span style="color: #666666">+</span>i<span style="color: #666666">*</span>h<span style="color: #666666">);</span>
+        <span style="color: #666666">}</span>
+        <span style="color: #008000; font-weight: bold">return</span> h<span style="color: #666666">*</span>s<span style="color: #666666">;</span>
+    <span style="color: #666666">}</span>
+<span style="color: #666666">}</span>
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">MainProgram</span> <span style="color: #666666">{</span>
+    <span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">static</span> <span style="color: #B00040">void</span> main <span style="color: #666666">(</span>String argv<span style="color: #666666">[])</span>
+    <span style="color: #666666">{</span>
+        <span style="color: #B00040">double</span> a <span style="color: #666666">=</span> <span style="color: #666666">-2;</span>
+        <span style="color: #B00040">double</span> b <span style="color: #666666">=</span> <span style="color: #666666">2;</span>
+        <span style="color: #B00040">int</span> n <span style="color: #666666">=</span> <span style="color: #666666">1000;</span>
+        <span style="color: #B00040">double</span> result <span style="color: #666666">=</span> Trapezoidal<span style="color: #666666">.</span><span style="color: #7D9029">integrate</span><span style="color: #666666">(</span>f<span style="color: #666666">,</span> a<span style="color: #666666">,</span> b<span style="color: #666666">,</span> n<span style="color: #666666">);</span>
+        System<span style="color: #666666">.</span><span style="color: #7D9029">out</span><span style="color: #666666">.</span><span style="color: #7D9029">println</span><span style="color: #666666">(</span>result<span style="color: #666666">);</span>
+    <span style="color: #666666">}</span>
+<span style="color: #666666">}</span>
+</pre></div>
+<p>
+From a computer science point of view, this is a quite advanced
+solution since it relies on inheritance and true object-oriented
+programming.  From a mathematical point of view, at least when
+compared to the Matlab and Python versions, the code looks
+unnecessarily complicated.  Many introductory Java courses do not
+cover inheritance and true object-oriented programming, and without
+mastering these concepts, the students end up with Solution 1. On this
+background, one may argue that Java is not very suitable for
+implementing this type of numerical algorithms.
+
+<p>
+<!-- ===== Solution 5: A C++ Program ===== -->
+<!--  -->
+<!-- ===== Solution 6: A Fortran Program ===== -->
+<!--  -->
+<!-- ===== Transferring Functions with Parameters ====== -->
+<!--  -->
+<!-- f(x; p1, p2, ...) -->
+
+<h2>Conclusions and Recommendations  <a name="___sec9"></a></h2>
+
+Simple exercises have pedagogical advantages, but some
+disadvantages with respect to programming, because the programs
+easily become too specialized. In such cases, the exercise may
+explicitly ask the student to divide the program into
+functions. This requirement can be motivated by an extended
+exercise where a piece of code are needed many times, typically
+that several methods are applied to several problems.
+
+<p>
+Especially when using Matlab, students may be too lazy to
+use functions when this is not explicitly required.
+
+<p>
+Although Java is very well suited for making large programs systems,
+Java code for simpler numerical problems, where one wants to transfer
+functions to other functions, looks as an overkill compared with
+Matlab, Python, C++, and Fortran implementations.
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Recommendations.</b>
+
+<ol>
+<li> Identify general and special parts of the mathematical problem to be
+   solved.</li>
+<li> Implement the general parts in functions
+   that can be reused to solve similar problems. Consider
+   carefully the argument lists of the functions.</li>
+<li> Isolate the special features of the problem in a separate "main"
+   function or a main program. The best solution is to isolate the
+   special features in a file separate from the general functions.</li>
+</ol>
+</div>
+
+
+<p>
+<ul class="pager">
+  <li class="previous">
+    <a href="._numerical_programming_guide000.html">&larr; Prev</a>
+  </li>
+
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+
