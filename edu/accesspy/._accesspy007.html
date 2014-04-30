@@ -1,0 +1,278 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="How to access Python for doing scientific computing">
+<meta name="keywords" content="Idle,Emacs,Vim,Gedit,TextWrangler,Notepad++">
+
+
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [(' Required software ',
+               1,
+               'sec:accesspy:softwarelist',
+               'sec:accesspy:softwarelist'),
+              (' Installing software on your laptop: Mac OS X and Windows ',
+               1,
+               'sec:accesspy:MacWin',
+               'sec:accesspy:MacWin'),
+              (' Anaconda and Spyder ', 1, None, '___sec2'),
+              (' Spyder on Mac ', 2, None, '___sec3'),
+              (' Installation of additional packages ', 2, None, '___sec4'),
+              (' VMWare Fusion virtual machine ',
+               1,
+               'sec:accesspy:vmware',
+               'sec:accesspy:vmware'),
+              (' Installing Ubuntu ', 2, None, '___sec6'),
+              (' Installing software on Ubuntu ', 2, None, '___sec7'),
+              (' File sharing ', 2, None, '___sec8'),
+              (' Wubi for dual boot on Windows ', 1, None, '___sec9'),
+              (' Vagrant virtual machine ',
+               1,
+               'sec:accesspy:vagrant',
+               'sec:accesspy:vagrant'),
+              (' How to write and run a Python program ',
+               1,
+               'sec:accesspy:writerun',
+               'sec:accesspy:writerun'),
+              (' The need for a text editor ', 2, None, '___sec12'),
+              (' Spyder ', 2, None, '___sec13'),
+              (' Text editors ', 2, None, '___sec14'),
+              (' Terminal windows ', 2, None, '___sec15'),
+              (' Using a plain text editor and a terminal window ',
+               2,
+               None,
+               '___sec16'),
+              (' The SageMathCloud and Wakari web services ',
+               1,
+               'sec:accesspy:sagemath:wakari',
+               'sec:accesspy:sagemath:wakari'),
+              (' Basic intro to SageMathCloud ', 2, None, '___sec18'),
+              (' Basic intro to Wakari ', 2, None, '___sec19'),
+              (' Installing your own Python packages ', 2, None, '___sec20'),
+              (' Writing IPython notebooks ',
+               1,
+               'sec:accesspy:ipynb',
+               'sec:accesspy:ipynb'),
+              (' A simple program in the notebook ', 2, None, '___sec22'),
+              (' Mixing text, mathematics, code, and graphics ',
+               2,
+               None,
+               '___sec23'),
+              (' References ', 0, None, '___sec24')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="accesspy.html">How to access Python for doing scientific computing</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: " Required software " --> <li> &nbsp;  <a href="._accesspy001.html#sec:accesspy:softwarelist"> Required software </a></li>
+     <!-- navigation toc: " Installing software on your laptop: Mac OS X and Windows " --> <li> &nbsp;  <a href="._accesspy002.html#sec:accesspy:MacWin"> Installing software on your laptop: Mac OS X and Windows </a></li>
+     <!-- navigation toc: " Anaconda and Spyder " --> <li> &nbsp;  <a href="._accesspy003.html#___sec2"> Anaconda and Spyder </a></li>
+     <!-- navigation toc: " Spyder on Mac " --> <li> &nbsp; &nbsp;  <a href="._accesspy003.html#___sec3"> Spyder on Mac </a></li>
+     <!-- navigation toc: " Installation of additional packages " --> <li> &nbsp; &nbsp;  <a href="._accesspy003.html#___sec4"> Installation of additional packages </a></li>
+     <!-- navigation toc: " VMWare Fusion virtual machine " --> <li> &nbsp;  <a href="._accesspy004.html#sec:accesspy:vmware"> VMWare Fusion virtual machine </a></li>
+     <!-- navigation toc: " Installing Ubuntu " --> <li> &nbsp; &nbsp;  <a href="._accesspy004.html#___sec6"> Installing Ubuntu </a></li>
+     <!-- navigation toc: " Installing software on Ubuntu " --> <li> &nbsp; &nbsp;  <a href="._accesspy004.html#___sec7"> Installing software on Ubuntu </a></li>
+     <!-- navigation toc: " File sharing " --> <li> &nbsp; &nbsp;  <a href="._accesspy004.html#___sec8"> File sharing </a></li>
+     <!-- navigation toc: " Wubi for dual boot on Windows " --> <li> &nbsp;  <a href="._accesspy005.html#___sec9"> Wubi for dual boot on Windows </a></li>
+     <!-- navigation toc: " Vagrant virtual machine " --> <li> &nbsp;  <a href="._accesspy005.html#sec:accesspy:vagrant"> Vagrant virtual machine </a></li>
+     <!-- navigation toc: " How to write and run a Python program " --> <li> &nbsp;  <a href="._accesspy006.html#sec:accesspy:writerun"> How to write and run a Python program </a></li>
+     <!-- navigation toc: " The need for a text editor " --> <li> &nbsp; &nbsp;  <a href="._accesspy006.html#___sec12"> The need for a text editor </a></li>
+     <!-- navigation toc: " Spyder " --> <li> &nbsp; &nbsp;  <a href="._accesspy006.html#___sec13"> Spyder </a></li>
+     <!-- navigation toc: " Text editors " --> <li> &nbsp; &nbsp;  <a href="._accesspy006.html#___sec14"> Text editors </a></li>
+     <!-- navigation toc: " Terminal windows " --> <li> &nbsp; &nbsp;  <a href="._accesspy006.html#___sec15"> Terminal windows </a></li>
+     <!-- navigation toc: " Using a plain text editor and a terminal window " --> <li> &nbsp; &nbsp;  <a href="._accesspy006.html#___sec16"> Using a plain text editor and a terminal window </a></li>
+     <!-- navigation toc: " The SageMathCloud and Wakari web services " --> <li> &nbsp;  <a href="._accesspy007.html#sec:accesspy:sagemath:wakari"> The SageMathCloud and Wakari web services </a></li>
+     <!-- navigation toc: " Basic intro to SageMathCloud " --> <li> &nbsp; &nbsp;  <a href="._accesspy007.html#___sec18"> Basic intro to SageMathCloud </a></li>
+     <!-- navigation toc: " Basic intro to Wakari " --> <li> &nbsp; &nbsp;  <a href="._accesspy007.html#___sec19"> Basic intro to Wakari </a></li>
+     <!-- navigation toc: " Installing your own Python packages " --> <li> &nbsp; &nbsp;  <a href="._accesspy007.html#___sec20"> Installing your own Python packages </a></li>
+     <!-- navigation toc: " Writing IPython notebooks " --> <li> &nbsp;  <a href="._accesspy008.html#sec:accesspy:ipynb"> Writing IPython notebooks </a></li>
+     <!-- navigation toc: " A simple program in the notebook " --> <li> &nbsp; &nbsp;  <a href="._accesspy008.html#___sec22"> A simple program in the notebook </a></li>
+     <!-- navigation toc: " Mixing text, mathematics, code, and graphics " --> <li> &nbsp; &nbsp;  <a href="._accesspy008.html#___sec23"> Mixing text, mathematics, code, and graphics </a></li>
+     <!-- navigation toc: " References " --> <li>  <a href="._accesspy008.html#___sec24"> References </a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0007"></a>
+<!-- !split -->
+
+<h1>The SageMathCloud and Wakari web services <a name="sec:accesspy:sagemath:wakari"></a></h1>
+
+An excellent platform for doing computational science is the
+<a href="http://ipython.org/notebook.html" target="_self">IPython notebook</a>.
+The notebook is accessed through a web browser and provides
+support for mathematical text, Python code, and graphics - all
+you need to document scientific work.
+There are two excellent web services with notebooks: <em>SageMathCloud</em> at
+<a href="https://cloud.sagemath.com/" target="_self"><tt>https://cloud.sagemath.com/</tt></a> and <em>Wakari</em> at <a href="https://www.wakari.io/wakari" target="_self"><tt>https://www.wakari.io/wakari</tt></a>. At both sites you must create an
+account before you can write notebooks in the web browser and download
+them to your own computer.
+
+<h2>Basic intro to SageMathCloud  <a name="___sec18"></a></h2>
+
+Sign in, click on <em>New Project</em>, give a title to your project and
+decide whether it should be private or public, click on the project
+when it appears in the browser, and click on <em>Create or Import a File,
+Worksheet, Terminal or Directory...</em>. If your Python program needs
+graphics, you need to choose <em>IPython Notebook</em>, otherwise you can
+choose <em>File</em>. Write the name of the file above the row of
+buttons. Assuming we do not need any graphics, we create a plain Python
+file, say with name
+<code>py1.py</code>. By clicking <em>File</em> you are brought to a browser window with
+a text editor where you can write Python code. Write some code and
+click <em>Save</em>. To run the program, click on the plus icon (<em>New</em>),
+choose <em>Terminal</em>, and you have a plain Unix terminal window where you
+can write <code>python py1.py</code> to run the program. Tabs over the terminal
+(or editor) window make it easy to jump between the editor and the
+terminal.  To download the file, click on <em>Files</em>, point on the
+relevant line with the file, and a download icon appears to the very
+right. The IPython notebook option works much in the same way, see
+The section <a href="._accesspy008.html#sec:accesspy:ipynb">Writing IPython notebooks</a>.
+
+<h2>Basic intro to Wakari  <a name="___sec19"></a></h2>
+
+After having logged in at the <code>wakari.io</code> site, you automatically
+enter an IPython notebook with a short introduction to how the
+notebook can be used. Click on the <em>New Notebook</em> button to start a
+new notebook. Wakari enables creating and editing plain Python files too:
+click on the <em>Add file</em> icon in pane to the left, fill in the program
+name, and you enter an editor where you can write a program. Pressing
+<em>Execute</em> launches an IPython session in a terminal window, where you
+can run the program by <code>run prog.py</code> if <code>prog.py</code> is the name of the
+program.  To download the file, select <code>test2.py</code> in the left pane and
+click on the <em>Download file</em> icon.
+
+<p>
+There is a pull-down menu where you can choose what type of terminal
+window you want: a plain Unix shell, an IPython shell, or an IPython
+shell with Matplotlib for plotting.  Using the latter, you can run
+plain Python programs or commands with graphics.  Just choose the type
+of terminal and click on <em>+Tab</em> to make a new terminal window of the
+chosen type.
+
+<h2>Installing your own Python packages  <a name="___sec20"></a></h2>
+
+Both SageMathCloud and Wakari let you install your own Python
+packages.
+To install any package <code>packagename</code>
+available at <a href="https://pypi.python.org/pypi" target="_self">PyPi</a>, run
+
+<p>
+
+<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install --user packagename
+</pre></div>
+<p>
+To install the SciTools package,
+create a Terminal (with a Unix shell) and run the command
+
+<p>
+
+<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install --user -e \ 
+    hg+https://code.google.com/p/scitools#egg=scitools
+</pre></div>
+<p>
+<p>
+<ul class="pager">
+  <li class="previous">
+    <a href="._accesspy006.html">&larr; Prev</a>
+  </li>
+
+  <li class="next">
+    <a href="._accesspy008.html">Next &rarr;</a>
+  </li>
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+
