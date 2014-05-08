@@ -1,0 +1,417 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Debugging in Python">
+<meta name="keywords" content="using a debugger,debugger demo,debugging,exceptions,Midpoint rule for integration,verification,PEP8,PyLint,Flake8">
+
+
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [(' Using a debugger ', 0, 'sec:debug:run', 'sec:debug:run'),
+              (' Step 1 ', 2, None, '___sec1'),
+              (' Step 2 ', 2, None, '___sec2'),
+              (' Step 3 ', 2, None, '___sec3'),
+              (' Step 4 ', 2, None, '___sec4'),
+              (' Step 5 ', 2, None, '___sec5'),
+              (' Step 6 ', 2, None, '___sec6'),
+              (' Step 7 ', 2, None, '___sec7'),
+              (' Step 8 ', 2, None, '___sec8'),
+              (' Step 9 ', 2, None, '___sec9'),
+              (' Step 10 ', 2, None, '___sec10'),
+              (' How to debug ', 0, 'sec:debug:howto', 'sec:debug:howto'),
+              (' A recipe for program writing and debugging ',
+               1,
+               None,
+               '___sec12'),
+              (' Application of the recipe ', 1, None, '___sec13'),
+              (' Refining the user interface ', 2, None, '___sec14'),
+              (' Writing a test function ', 2, None, '___sec15'),
+              (' Getting help from a code analyzer ',
+               1,
+               'sec:debug:pylint',
+               'sec:debug:pylint'),
+              (' References ', 0, None, '___sec17')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="debug.html">Debugging in Python</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: " Using a debugger " --> <li>  <a href="._debug001.html#sec:debug:run"> Using a debugger </a></li>
+     <!-- navigation toc: " Step 1 " --> <li> &nbsp; &nbsp;  <a href="._debug001.html#___sec1"> Step 1 </a></li>
+     <!-- navigation toc: " Step 2 " --> <li> &nbsp; &nbsp;  <a href="._debug001.html#___sec2"> Step 2 </a></li>
+     <!-- navigation toc: " Step 3 " --> <li> &nbsp; &nbsp;  <a href="._debug001.html#___sec3"> Step 3 </a></li>
+     <!-- navigation toc: " Step 4 " --> <li> &nbsp; &nbsp;  <a href="._debug001.html#___sec4"> Step 4 </a></li>
+     <!-- navigation toc: " Step 5 " --> <li> &nbsp; &nbsp;  <a href="._debug001.html#___sec5"> Step 5 </a></li>
+     <!-- navigation toc: " Step 6 " --> <li> &nbsp; &nbsp;  <a href="._debug001.html#___sec6"> Step 6 </a></li>
+     <!-- navigation toc: " Step 7 " --> <li> &nbsp; &nbsp;  <a href="._debug001.html#___sec7"> Step 7 </a></li>
+     <!-- navigation toc: " Step 8 " --> <li> &nbsp; &nbsp;  <a href="._debug001.html#___sec8"> Step 8 </a></li>
+     <!-- navigation toc: " Step 9 " --> <li> &nbsp; &nbsp;  <a href="._debug001.html#___sec9"> Step 9 </a></li>
+     <!-- navigation toc: " Step 10 " --> <li> &nbsp; &nbsp;  <a href="._debug001.html#___sec10"> Step 10 </a></li>
+     <!-- navigation toc: " How to debug " --> <li>  <a href="._debug002.html#sec:debug:howto"> How to debug </a></li>
+     <!-- navigation toc: " A recipe for program writing and debugging " --> <li> &nbsp;  <a href="._debug003.html#___sec12"> A recipe for program writing and debugging </a></li>
+     <!-- navigation toc: " Application of the recipe " --> <li> &nbsp;  <a href="._debug004.html#___sec13"> Application of the recipe </a></li>
+     <!-- navigation toc: " Refining the user interface " --> <li> &nbsp; &nbsp;  <a href="._debug004.html#___sec14"> Refining the user interface </a></li>
+     <!-- navigation toc: " Writing a test function " --> <li> &nbsp; &nbsp;  <a href="._debug004.html#___sec15"> Writing a test function </a></li>
+     <!-- navigation toc: " Getting help from a code analyzer " --> <li> &nbsp;  <a href="._debug005.html#sec:debug:pylint"> Getting help from a code analyzer </a></li>
+     <!-- navigation toc: " References " --> <li>  <a href="._debug005.html#___sec17"> References </a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0001"></a>
+<!-- !split -->
+
+
+<div class="page-header">
+  <h1>Using a debugger <a name="sec:debug:run"></a></h1>
+</div>
+
+
+<p>
+A debugger is a program that can help you to find out what is going on
+in a computer program. You can stop the execution at any prescribed
+line number, print
+out variables, continue execution, stop again,
+execute statements one by one, and repeat such actions until you
+have tracked down abnormal behavior and found bugs.
+
+<p>
+Here we shall use the debugger to demonstrate the program flow
+of the code <a href="http://tinyurl.com/pwyasaa/funcif/Simpson.py" target="_self"><tt>Simpson.py</tt></a>
+(which can integrate functions of
+one variable with the famous Simpson's rule).
+You are strongly encouraged to carry out the steps below on your computer
+to get a glimpse of what a debugger can do.
+
+<h2>Step 1  <a name="___sec1"></a></h2>
+
+Go to the folder <a href="http://tinyurl.com/pwyasaa/funcif" target="_self"><tt>src/funcif</tt></a> where the program <code>Simpson.py</code> resides.
+
+<h2>Step 2  <a name="___sec2"></a></h2>
+
+If you use the Spyder Integrated Development Environment, choose
+<em>Debug</em> on the <em>Run</em> pull-down menu. If you run your programs in
+a plain terminal window, start IPython:
+
+<p>
+
+<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; ipython
+</pre></div>
+<p>
+Run the program <code>Simpson.py</code> with the
+debugger on (<code>-d</code>):
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: run <span style="color: #666666">-</span>d Simpson<span style="color: #666666">.</span>py
+</pre></div>
+<p>
+We now enter the debugger and
+get a prompt
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span>
+</pre></div>
+<p>
+After this prompt we can issue various debugger commands. The most important ones will
+be described as we go along.
+
+<h2>Step 3  <a name="___sec3"></a></h2>
+
+Type <code>continue</code> or just <code>c</code> to go to the first line
+in the file. Now you can see a printout of where we are in the
+program:
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">1---&gt;</span> <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Simpson</span>(f, a, b, n<span style="color: #666666">=500</span>):
+      <span style="color: #666666">2</span>     <span style="color: #BA2121">&quot;&quot;&quot;</span>
+<span style="color: #BA2121">      3     Return the approximation of the integral of f</span>
+</pre></div>
+<p>
+Each program line is numbered and the arrow points to the next line to
+be executed. This is called the <em>current line</em>.
+
+<h2>Step 4  <a name="___sec4"></a></h2>
+
+You can set a <em>break point</em> where you want the program to stop
+so that you can examine variables and perhaps follow the execution
+closely. We start by setting a break point in the <code>application</code>
+function:
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> <span style="color: #008000; font-weight: bold">break</span> application
+Breakpoint <span style="color: #666666">2</span> at <span style="color: #666666">/</span>home<span style="color: #666666">/.../</span>src<span style="color: #666666">/</span>funcif<span style="color: #666666">/</span>Simpson<span style="color: #666666">.</span>py:<span style="color: #666666">30</span>
+</pre></div>
+<p>
+You can also say <code>break X</code>, where <code>X</code> is a line number in the
+file.
+
+<h2>Step 5  <a name="___sec5"></a></h2>
+
+Continue execution until the break point by writing <code>continue</code> or
+<code>c</code>. Now the program stops at line 31 in the <code>application</code>
+function:
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> c
+<span style="color: #666666">&gt;</span> <span style="color: #666666">/</span>home<span style="color: #666666">/.../</span>src<span style="color: #666666">/</span>funcif<span style="color: #666666">/</span>Simpson<span style="color: #666666">.</span>py(<span style="color: #666666">31</span>)application()
+<span style="color: #666666">2</span>    <span style="color: #666666">30</span> <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">application</span>():
+<span style="color: #666666">---&gt;</span> <span style="color: #666666">31</span>     <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, pi
+     <span style="color: #666666">32</span>     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Integral of 1.5*sin^3 from 0 to pi:&#39;</span>
+</pre></div>
+
+<h2>Step 6  <a name="___sec6"></a></h2>
+
+Typing <code>step</code> or just <code>s</code> executes one statement at a time:
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> s
+<span style="color: #666666">&gt;</span> <span style="color: #666666">/</span>home<span style="color: #666666">/.../</span>src<span style="color: #666666">/</span>funcif<span style="color: #666666">/</span>Simpson<span style="color: #666666">.</span>py(<span style="color: #666666">32</span>)application()
+     <span style="color: #666666">31</span>     <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, pi
+<span style="color: #666666">---&gt;</span> <span style="color: #666666">32</span>     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Integral of 1.5*sin^3 from 0 to pi:&#39;</span>
+     <span style="color: #666666">33</span>     <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">2</span>, <span style="color: #666666">6</span>, <span style="color: #666666">12</span>, <span style="color: #666666">100</span>, <span style="color: #666666">500</span>:
+
+ipdb<span style="color: #666666">&gt;</span> s
+Integral of <span style="color: #666666">1.5*</span>sin<span style="color: #666666">^3</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #666666">0</span> to pi:
+<span style="color: #666666">&gt;</span> <span style="color: #666666">/</span>home<span style="color: #666666">/.../</span>src<span style="color: #666666">/</span>funcif<span style="color: #666666">/</span>Simpson<span style="color: #666666">.</span>py(<span style="color: #666666">33</span>)application()
+     <span style="color: #666666">32</span>     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Integral of 1.5*sin^3 from 0 to pi:&#39;</span>
+<span style="color: #666666">---&gt;</span> <span style="color: #666666">33</span>     <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">2</span>, <span style="color: #666666">6</span>, <span style="color: #666666">12</span>, <span style="color: #666666">100</span>, <span style="color: #666666">500</span>:
+     <span style="color: #666666">34</span>         approx <span style="color: #666666">=</span> Simpson(h, <span style="color: #666666">0</span>, pi, n)
+</pre></div>
+<p>
+Typing another <code>s</code> reaches the call to <code>Simpson</code>, and a new
+<code>s</code> steps <em>into</em> the function <code>Simpson</code>:
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> s
+<span style="color: #666666">--</span>Call<span style="color: #666666">--</span>
+<span style="color: #666666">&gt;</span> <span style="color: #666666">/</span>home<span style="color: #666666">/.../</span>src<span style="color: #666666">/</span>funcif<span style="color: #666666">/</span>Simpson<span style="color: #666666">.</span>py(<span style="color: #666666">1</span>)Simpson()
+<span style="color: #666666">1---&gt;</span> <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Simpson</span>(f, a, b, n<span style="color: #666666">=500</span>):
+      <span style="color: #666666">2</span>     <span style="color: #BA2121">&quot;&quot;&quot;</span>
+<span style="color: #BA2121">      3     Return the approximation of the integral of f</span>
+</pre></div>
+<p>
+Type a few more <code>s</code> to step ahead of the <code>if</code> tests.
+
+<h2>Step 7  <a name="___sec7"></a></h2>
+
+Examining the contents of variables is easy with the <code>print</code>
+(or <code>p</code>) command:
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> <span style="color: #008000; font-weight: bold">print</span> f, a, b, n
+<span style="color: #666666">&lt;</span>function h at <span style="color: #666666">0x898ef44&gt;</span> <span style="color: #666666">0</span> <span style="color: #666666">3.14159265359</span> <span style="color: #666666">2</span>
+</pre></div>
+<p>
+We can also check the type of the objects:
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> whatis f
+Function h
+ipdb<span style="color: #666666">&gt;</span> whatis a
+<span style="color: #666666">&lt;</span><span style="color: #008000">type</span> <span style="color: #BA2121">&#39;int&#39;</span><span style="color: #666666">&gt;</span>
+ipdb<span style="color: #666666">&gt;</span> whatis b
+<span style="color: #666666">&lt;</span><span style="color: #008000">type</span> <span style="color: #BA2121">&#39;float&#39;</span><span style="color: #666666">&gt;</span>
+ipdb<span style="color: #666666">&gt;</span> whatis n
+<span style="color: #666666">&lt;</span><span style="color: #008000">type</span> <span style="color: #BA2121">&#39;int&#39;</span><span style="color: #666666">&gt;</span>
+</pre></div>
+
+<h2>Step 8  <a name="___sec8"></a></h2>
+
+Set a new break point in the <code>application</code> function so that we
+can jump directly there without having to go manually through all the
+statements in the <code>Simpson</code> function. To see line numbers and
+corresponding statements around some line with number <code>X</code>, type
+<code>list X</code>. For example,
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> <span style="color: #008000">list</span> <span style="color: #666666">32</span>
+     <span style="color: #666666">27</span> <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">h</span>(x):
+     <span style="color: #666666">28</span>     <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">3./2</span>)<span style="color: #666666">*</span>sin(x)<span style="color: #666666">**3</span>
+     <span style="color: #666666">29</span>
+     <span style="color: #666666">30</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, pi
+     <span style="color: #666666">31</span>
+<span style="color: #666666">2</span>    <span style="color: #666666">32</span> <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">application</span>():
+     <span style="color: #666666">33</span>     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Integral of 1.5*sin^3 from 0 to pi:&#39;</span>
+     <span style="color: #666666">34</span>     <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">2</span>, <span style="color: #666666">6</span>, <span style="color: #666666">12</span>, <span style="color: #666666">100</span>, <span style="color: #666666">500</span>:
+     <span style="color: #666666">35</span>         approx <span style="color: #666666">=</span> Simpson(h, <span style="color: #666666">0</span>, pi, n)
+     <span style="color: #666666">36</span>         <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;n=</span><span style="color: #BB6688; font-weight: bold">%3d</span><span style="color: #BA2121">, approx=</span><span style="color: #BB6688; font-weight: bold">%18.15f</span><span style="color: #BA2121">, error=</span><span style="color: #BB6688; font-weight: bold">%9.2E</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> \ 
+     <span style="color: #666666">37</span>               (n, approx, <span style="color: #666666">2-</span>approx)
+</pre></div>
+<p>
+We set a line break at line 35:
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> <span style="color: #008000; font-weight: bold">break</span> <span style="color: #666666">35</span>
+Breakpoint <span style="color: #666666">3</span> at <span style="color: #666666">/</span>home<span style="color: #666666">/.../</span>src<span style="color: #666666">/</span>funcif<span style="color: #666666">/</span>Simpson<span style="color: #666666">.</span>py:<span style="color: #666666">35</span>
+</pre></div>
+<p>
+Typing <code>c</code> continues execution up to the next break point, line 35.
+
+<h2>Step 9  <a name="___sec9"></a></h2>
+
+The command <code>next</code> or <code>n</code> is like <code>step</code> or <code>s</code>
+in that the current line is executed, but the execution does not
+step into functions, instead the function calls are just performed
+and the program stops at the next line:
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> n
+<span style="color: #666666">&gt;</span> <span style="color: #666666">/</span>home<span style="color: #666666">/.../</span>src<span style="color: #666666">/</span>funcif<span style="color: #666666">/</span>Simpson<span style="color: #666666">.</span>py(<span style="color: #666666">36</span>)application()
+<span style="color: #666666">3</span>    <span style="color: #666666">35</span>         approx <span style="color: #666666">=</span> Simpson(h, <span style="color: #666666">0</span>, pi, n)
+<span style="color: #666666">---&gt;</span> <span style="color: #666666">36</span>         <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;n=</span><span style="color: #BB6688; font-weight: bold">%3d</span><span style="color: #BA2121">, approx=</span><span style="color: #BB6688; font-weight: bold">%18.15f</span><span style="color: #BA2121">, error=</span><span style="color: #BB6688; font-weight: bold">%9.2E</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> \ 
+     <span style="color: #666666">37</span>               (n, approx, <span style="color: #666666">2-</span>approx)
+ipdb<span style="color: #666666">&gt;</span> <span style="color: #008000; font-weight: bold">print</span> approx, n
+<span style="color: #666666">1.9891717005835792</span> <span style="color: #666666">6</span>
+</pre></div>
+
+<h2>Step 10  <a name="___sec10"></a></h2>
+
+The command <code>disable X Y Z</code> disables break points with numbers
+<code>X</code>, <code>Y</code>, and <code>Z</code>, and so on.
+To remove our three break points and continue
+execution until the program naturally stops, we write
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> disable <span style="color: #666666">1</span> <span style="color: #666666">2</span> <span style="color: #666666">3</span>
+ipdb<span style="color: #666666">&gt;</span> c
+n<span style="color: #666666">=100</span>, approx<span style="color: #666666">=</span> <span style="color: #666666">1.999999902476350</span>, error<span style="color: #666666">=</span> <span style="color: #666666">9.75E-08</span>
+n<span style="color: #666666">=500</span>, approx<span style="color: #666666">=</span> <span style="color: #666666">1.999999999844138</span>, error<span style="color: #666666">=</span> <span style="color: #666666">1.56E-10</span>
+
+In [<span style="color: #666666">2</span>]:
+</pre></div>
+<p>
+At this point, I hope you realize that
+a debugger is a very handy tool for monitoring the program flow, checking
+variables, and thereby understanding why errors occur.
+
+<p>
+<p>
+<ul class="pager">
+  <li class="previous">
+    <a href="._debug000.html">&larr; Prev</a>
+  </li>
+
+  <li class="next">
+    <a href="._debug002.html">Next &rarr;</a>
+  </li>
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+
