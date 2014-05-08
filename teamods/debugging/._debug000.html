@@ -1,0 +1,1782 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Debugging in Python">
+<meta name="keywords" content="using a debugger,debugger demo,debugging,exceptions,Midpoint rule for integration,verification,PEP8,PyLint,Flake8">
+
+
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [(' Using a debugger ', 0, 'sec:debug:run', 'sec:debug:run'),
+              (' Step 1 ', 2, None, '___sec1'),
+              (' Step 2 ', 2, None, '___sec2'),
+              (' Step 3 ', 2, None, '___sec3'),
+              (' Step 4 ', 2, None, '___sec4'),
+              (' Step 5 ', 2, None, '___sec5'),
+              (' Step 6 ', 2, None, '___sec6'),
+              (' Step 7 ', 2, None, '___sec7'),
+              (' Step 8 ', 2, None, '___sec8'),
+              (' Step 9 ', 2, None, '___sec9'),
+              (' Step 10 ', 2, None, '___sec10'),
+              (' How to debug ', 0, 'sec:debug:howto', 'sec:debug:howto'),
+              (' A recipe for program writing and debugging ',
+               1,
+               None,
+               '___sec12'),
+              (' Application of the recipe ', 1, None, '___sec13'),
+              (' Refining the user interface ', 2, None, '___sec14'),
+              (' Writing a test function ', 2, None, '___sec15'),
+              (' Getting help from a code analyzer ',
+               1,
+               'sec:debug:pylint',
+               'sec:debug:pylint'),
+              (' References ', 0, None, '___sec17')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="debug.html">Debugging in Python</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: " Using a debugger " --> <li>  <a href="._debug000.html#sec:debug:run"> Using a debugger </a></li>
+     <!-- navigation toc: " Step 1 " --> <li> &nbsp; &nbsp;  <a href="._debug000.html#___sec1"> Step 1 </a></li>
+     <!-- navigation toc: " Step 2 " --> <li> &nbsp; &nbsp;  <a href="._debug000.html#___sec2"> Step 2 </a></li>
+     <!-- navigation toc: " Step 3 " --> <li> &nbsp; &nbsp;  <a href="._debug000.html#___sec3"> Step 3 </a></li>
+     <!-- navigation toc: " Step 4 " --> <li> &nbsp; &nbsp;  <a href="._debug000.html#___sec4"> Step 4 </a></li>
+     <!-- navigation toc: " Step 5 " --> <li> &nbsp; &nbsp;  <a href="._debug000.html#___sec5"> Step 5 </a></li>
+     <!-- navigation toc: " Step 6 " --> <li> &nbsp; &nbsp;  <a href="._debug000.html#___sec6"> Step 6 </a></li>
+     <!-- navigation toc: " Step 7 " --> <li> &nbsp; &nbsp;  <a href="._debug000.html#___sec7"> Step 7 </a></li>
+     <!-- navigation toc: " Step 8 " --> <li> &nbsp; &nbsp;  <a href="._debug000.html#___sec8"> Step 8 </a></li>
+     <!-- navigation toc: " Step 9 " --> <li> &nbsp; &nbsp;  <a href="._debug000.html#___sec9"> Step 9 </a></li>
+     <!-- navigation toc: " Step 10 " --> <li> &nbsp; &nbsp;  <a href="._debug000.html#___sec10"> Step 10 </a></li>
+     <!-- navigation toc: " How to debug " --> <li>  <a href="._debug000.html#sec:debug:howto"> How to debug </a></li>
+     <!-- navigation toc: " A recipe for program writing and debugging " --> <li> &nbsp;  <a href="._debug000.html#___sec12"> A recipe for program writing and debugging </a></li>
+     <!-- navigation toc: " Application of the recipe " --> <li> &nbsp;  <a href="._debug000.html#___sec13"> Application of the recipe </a></li>
+     <!-- navigation toc: " Refining the user interface " --> <li> &nbsp; &nbsp;  <a href="._debug000.html#___sec14"> Refining the user interface </a></li>
+     <!-- navigation toc: " Writing a test function " --> <li> &nbsp; &nbsp;  <a href="._debug000.html#___sec15"> Writing a test function </a></li>
+     <!-- navigation toc: " Getting help from a code analyzer " --> <li> &nbsp;  <a href="._debug000.html#sec:debug:pylint"> Getting help from a code analyzer </a></li>
+     <!-- navigation toc: " References " --> <li>  <a href="._debug000.html#___sec17"> References </a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0000"></a>
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Debugging in Python</title>
+
+<div class="jumbotron">
+<center><h1>Debugging in Python</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<p>
+<center><h4>May 8, 2014</h4></center> <!-- date -->
+
+<h2>Table of contents</h2>
+
+<a href="#sec:debug:run"> Using a debugger </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec1"> Step 1 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Step 2 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Step 3 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Step 4 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Step 5 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec6"> Step 6 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec7"> Step 7 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec8"> Step 8 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec9"> Step 9 </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec10"> Step 10 </a><br>
+<a href="#sec:debug:howto"> How to debug </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec12"> A recipe for program writing and debugging </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec13"> Application of the recipe </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec14"> Refining the user interface </a><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec15"> Writing a test function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#sec:debug:pylint"> Getting help from a code analyzer </a><br>
+<a href="#___sec17"> References </a><br>
+</p>
+<p>
+<!-- Externaldocuments: ../formulas/main_formulas, ../looplist/main_looplist, ../funcif/main_funcif, ../input/main_input, ../plot/main_plot, ../files/main_files, ../class/main_class, ../random/main_random, ../oo/main_oo, ../diffeq/main_diffeq, ../discalc/main_discalc, ../ode1/main_ode1, ../boxspring/main_boxspring, ../ode2/main_ode2, ../cython/main_cython, ../tech/main_timing, ../tech/main_varargs, ../tech/main_runpy, ../tech/main_ostasks, ../tech/main_accesspy, ../tech/main_nose -->
+
+<p>
+<a name="ch:debug"></a>
+
+<p>
+Testing a program to find errors usually takes much more time than to
+write the code.  This appendix is devoted to tools and good habits
+for effective debugging.  The section <a href="#sec:debug:run">Using a debugger</a> describes the
+Python debugger, a key tool for examining the internal workings of a
+code, while the section <a href="#sec:debug:howto">How to debug</a> explains how solve problems
+and write software to simplify the debugging process.
+
+<p>
+
+
+
+</div> <!-- end jumbotron -->
+
+<div class="page-header">
+  <h1>Using a debugger <a name="sec:debug:run"></a></h1>
+</div>
+
+
+<p>
+A debugger is a program that can help you to find out what is going on
+in a computer program. You can stop the execution at any prescribed
+line number, print
+out variables, continue execution, stop again,
+execute statements one by one, and repeat such actions until you
+have tracked down abnormal behavior and found bugs.
+
+<p>
+Here we shall use the debugger to demonstrate the program flow
+of the code <a href="http://tinyurl.com/pwyasaa/funcif/Simpson.py" target="_self"><tt>Simpson.py</tt></a>
+(which can integrate functions of
+one variable with the famous Simpson's rule).
+You are strongly encouraged to carry out the steps below on your computer
+to get a glimpse of what a debugger can do.
+
+<h2>Step 1  <a name="___sec1"></a></h2>
+
+Go to the folder <a href="http://tinyurl.com/pwyasaa/funcif" target="_self"><tt>src/funcif</tt></a> where the program <code>Simpson.py</code> resides.
+
+<h2>Step 2  <a name="___sec2"></a></h2>
+
+If you use the Spyder Integrated Development Environment, choose
+<em>Debug</em> on the <em>Run</em> pull-down menu. If you run your programs in
+a plain terminal window, start IPython:
+
+<p>
+
+<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; ipython
+</pre></div>
+<p>
+Run the program <code>Simpson.py</code> with the
+debugger on (<code>-d</code>):
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: run <span style="color: #666666">-</span>d Simpson<span style="color: #666666">.</span>py
+</pre></div>
+<p>
+We now enter the debugger and
+get a prompt
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span>
+</pre></div>
+<p>
+After this prompt we can issue various debugger commands. The most important ones will
+be described as we go along.
+
+<h2>Step 3  <a name="___sec3"></a></h2>
+
+Type <code>continue</code> or just <code>c</code> to go to the first line
+in the file. Now you can see a printout of where we are in the
+program:
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">1---&gt;</span> <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Simpson</span>(f, a, b, n<span style="color: #666666">=500</span>):
+      <span style="color: #666666">2</span>     <span style="color: #BA2121">&quot;&quot;&quot;</span>
+<span style="color: #BA2121">      3     Return the approximation of the integral of f</span>
+</pre></div>
+<p>
+Each program line is numbered and the arrow points to the next line to
+be executed. This is called the <em>current line</em>.
+
+<h2>Step 4  <a name="___sec4"></a></h2>
+
+You can set a <em>break point</em> where you want the program to stop
+so that you can examine variables and perhaps follow the execution
+closely. We start by setting a break point in the <code>application</code>
+function:
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> <span style="color: #008000; font-weight: bold">break</span> application
+Breakpoint <span style="color: #666666">2</span> at <span style="color: #666666">/</span>home<span style="color: #666666">/.../</span>src<span style="color: #666666">/</span>funcif<span style="color: #666666">/</span>Simpson<span style="color: #666666">.</span>py:<span style="color: #666666">30</span>
+</pre></div>
+<p>
+You can also say <code>break X</code>, where <code>X</code> is a line number in the
+file.
+
+<h2>Step 5  <a name="___sec5"></a></h2>
+
+Continue execution until the break point by writing <code>continue</code> or
+<code>c</code>. Now the program stops at line 31 in the <code>application</code>
+function:
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> c
+<span style="color: #666666">&gt;</span> <span style="color: #666666">/</span>home<span style="color: #666666">/.../</span>src<span style="color: #666666">/</span>funcif<span style="color: #666666">/</span>Simpson<span style="color: #666666">.</span>py(<span style="color: #666666">31</span>)application()
+<span style="color: #666666">2</span>    <span style="color: #666666">30</span> <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">application</span>():
+<span style="color: #666666">---&gt;</span> <span style="color: #666666">31</span>     <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, pi
+     <span style="color: #666666">32</span>     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Integral of 1.5*sin^3 from 0 to pi:&#39;</span>
+</pre></div>
+
+<h2>Step 6  <a name="___sec6"></a></h2>
+
+Typing <code>step</code> or just <code>s</code> executes one statement at a time:
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> s
+<span style="color: #666666">&gt;</span> <span style="color: #666666">/</span>home<span style="color: #666666">/.../</span>src<span style="color: #666666">/</span>funcif<span style="color: #666666">/</span>Simpson<span style="color: #666666">.</span>py(<span style="color: #666666">32</span>)application()
+     <span style="color: #666666">31</span>     <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, pi
+<span style="color: #666666">---&gt;</span> <span style="color: #666666">32</span>     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Integral of 1.5*sin^3 from 0 to pi:&#39;</span>
+     <span style="color: #666666">33</span>     <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">2</span>, <span style="color: #666666">6</span>, <span style="color: #666666">12</span>, <span style="color: #666666">100</span>, <span style="color: #666666">500</span>:
+
+ipdb<span style="color: #666666">&gt;</span> s
+Integral of <span style="color: #666666">1.5*</span>sin<span style="color: #666666">^3</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #666666">0</span> to pi:
+<span style="color: #666666">&gt;</span> <span style="color: #666666">/</span>home<span style="color: #666666">/.../</span>src<span style="color: #666666">/</span>funcif<span style="color: #666666">/</span>Simpson<span style="color: #666666">.</span>py(<span style="color: #666666">33</span>)application()
+     <span style="color: #666666">32</span>     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Integral of 1.5*sin^3 from 0 to pi:&#39;</span>
+<span style="color: #666666">---&gt;</span> <span style="color: #666666">33</span>     <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">2</span>, <span style="color: #666666">6</span>, <span style="color: #666666">12</span>, <span style="color: #666666">100</span>, <span style="color: #666666">500</span>:
+     <span style="color: #666666">34</span>         approx <span style="color: #666666">=</span> Simpson(h, <span style="color: #666666">0</span>, pi, n)
+</pre></div>
+<p>
+Typing another <code>s</code> reaches the call to <code>Simpson</code>, and a new
+<code>s</code> steps <em>into</em> the function <code>Simpson</code>:
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> s
+<span style="color: #666666">--</span>Call<span style="color: #666666">--</span>
+<span style="color: #666666">&gt;</span> <span style="color: #666666">/</span>home<span style="color: #666666">/.../</span>src<span style="color: #666666">/</span>funcif<span style="color: #666666">/</span>Simpson<span style="color: #666666">.</span>py(<span style="color: #666666">1</span>)Simpson()
+<span style="color: #666666">1---&gt;</span> <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Simpson</span>(f, a, b, n<span style="color: #666666">=500</span>):
+      <span style="color: #666666">2</span>     <span style="color: #BA2121">&quot;&quot;&quot;</span>
+<span style="color: #BA2121">      3     Return the approximation of the integral of f</span>
+</pre></div>
+<p>
+Type a few more <code>s</code> to step ahead of the <code>if</code> tests.
+
+<h2>Step 7  <a name="___sec7"></a></h2>
+
+Examining the contents of variables is easy with the <code>print</code>
+(or <code>p</code>) command:
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> <span style="color: #008000; font-weight: bold">print</span> f, a, b, n
+<span style="color: #666666">&lt;</span>function h at <span style="color: #666666">0x898ef44&gt;</span> <span style="color: #666666">0</span> <span style="color: #666666">3.14159265359</span> <span style="color: #666666">2</span>
+</pre></div>
+<p>
+We can also check the type of the objects:
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> whatis f
+Function h
+ipdb<span style="color: #666666">&gt;</span> whatis a
+<span style="color: #666666">&lt;</span><span style="color: #008000">type</span> <span style="color: #BA2121">&#39;int&#39;</span><span style="color: #666666">&gt;</span>
+ipdb<span style="color: #666666">&gt;</span> whatis b
+<span style="color: #666666">&lt;</span><span style="color: #008000">type</span> <span style="color: #BA2121">&#39;float&#39;</span><span style="color: #666666">&gt;</span>
+ipdb<span style="color: #666666">&gt;</span> whatis n
+<span style="color: #666666">&lt;</span><span style="color: #008000">type</span> <span style="color: #BA2121">&#39;int&#39;</span><span style="color: #666666">&gt;</span>
+</pre></div>
+
+<h2>Step 8  <a name="___sec8"></a></h2>
+
+Set a new break point in the <code>application</code> function so that we
+can jump directly there without having to go manually through all the
+statements in the <code>Simpson</code> function. To see line numbers and
+corresponding statements around some line with number <code>X</code>, type
+<code>list X</code>. For example,
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> <span style="color: #008000">list</span> <span style="color: #666666">32</span>
+     <span style="color: #666666">27</span> <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">h</span>(x):
+     <span style="color: #666666">28</span>     <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">3./2</span>)<span style="color: #666666">*</span>sin(x)<span style="color: #666666">**3</span>
+     <span style="color: #666666">29</span>
+     <span style="color: #666666">30</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, pi
+     <span style="color: #666666">31</span>
+<span style="color: #666666">2</span>    <span style="color: #666666">32</span> <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">application</span>():
+     <span style="color: #666666">33</span>     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Integral of 1.5*sin^3 from 0 to pi:&#39;</span>
+     <span style="color: #666666">34</span>     <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">2</span>, <span style="color: #666666">6</span>, <span style="color: #666666">12</span>, <span style="color: #666666">100</span>, <span style="color: #666666">500</span>:
+     <span style="color: #666666">35</span>         approx <span style="color: #666666">=</span> Simpson(h, <span style="color: #666666">0</span>, pi, n)
+     <span style="color: #666666">36</span>         <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;n=</span><span style="color: #BB6688; font-weight: bold">%3d</span><span style="color: #BA2121">, approx=</span><span style="color: #BB6688; font-weight: bold">%18.15f</span><span style="color: #BA2121">, error=</span><span style="color: #BB6688; font-weight: bold">%9.2E</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> \ 
+     <span style="color: #666666">37</span>               (n, approx, <span style="color: #666666">2-</span>approx)
+</pre></div>
+<p>
+We set a line break at line 35:
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> <span style="color: #008000; font-weight: bold">break</span> <span style="color: #666666">35</span>
+Breakpoint <span style="color: #666666">3</span> at <span style="color: #666666">/</span>home<span style="color: #666666">/.../</span>src<span style="color: #666666">/</span>funcif<span style="color: #666666">/</span>Simpson<span style="color: #666666">.</span>py:<span style="color: #666666">35</span>
+</pre></div>
+<p>
+Typing <code>c</code> continues execution up to the next break point, line 35.
+
+<h2>Step 9  <a name="___sec9"></a></h2>
+
+The command <code>next</code> or <code>n</code> is like <code>step</code> or <code>s</code>
+in that the current line is executed, but the execution does not
+step into functions, instead the function calls are just performed
+and the program stops at the next line:
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> n
+<span style="color: #666666">&gt;</span> <span style="color: #666666">/</span>home<span style="color: #666666">/.../</span>src<span style="color: #666666">/</span>funcif<span style="color: #666666">/</span>Simpson<span style="color: #666666">.</span>py(<span style="color: #666666">36</span>)application()
+<span style="color: #666666">3</span>    <span style="color: #666666">35</span>         approx <span style="color: #666666">=</span> Simpson(h, <span style="color: #666666">0</span>, pi, n)
+<span style="color: #666666">---&gt;</span> <span style="color: #666666">36</span>         <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;n=</span><span style="color: #BB6688; font-weight: bold">%3d</span><span style="color: #BA2121">, approx=</span><span style="color: #BB6688; font-weight: bold">%18.15f</span><span style="color: #BA2121">, error=</span><span style="color: #BB6688; font-weight: bold">%9.2E</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> \ 
+     <span style="color: #666666">37</span>               (n, approx, <span style="color: #666666">2-</span>approx)
+ipdb<span style="color: #666666">&gt;</span> <span style="color: #008000; font-weight: bold">print</span> approx, n
+<span style="color: #666666">1.9891717005835792</span> <span style="color: #666666">6</span>
+</pre></div>
+
+<h2>Step 10  <a name="___sec10"></a></h2>
+
+The command <code>disable X Y Z</code> disables break points with numbers
+<code>X</code>, <code>Y</code>, and <code>Z</code>, and so on.
+To remove our three break points and continue
+execution until the program naturally stops, we write
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">ipdb<span style="color: #666666">&gt;</span> disable <span style="color: #666666">1</span> <span style="color: #666666">2</span> <span style="color: #666666">3</span>
+ipdb<span style="color: #666666">&gt;</span> c
+n<span style="color: #666666">=100</span>, approx<span style="color: #666666">=</span> <span style="color: #666666">1.999999902476350</span>, error<span style="color: #666666">=</span> <span style="color: #666666">9.75E-08</span>
+n<span style="color: #666666">=500</span>, approx<span style="color: #666666">=</span> <span style="color: #666666">1.999999999844138</span>, error<span style="color: #666666">=</span> <span style="color: #666666">1.56E-10</span>
+
+In [<span style="color: #666666">2</span>]:
+</pre></div>
+<p>
+At this point, I hope you realize that
+a debugger is a very handy tool for monitoring the program flow, checking
+variables, and thereby understanding why errors occur.
+
+<p>
+
+
+<div class="page-header">
+  <h1>How to debug <a name="sec:debug:howto"></a></h1>
+</div>
+
+
+<p>
+Most programmers will claim that writing code consumes a small portion
+of the time it takes to develop a program: the major portion of the
+work concerns testing the program and finding errors.
+
+<p>
+<blockquote>
+    <em>Debugging is twice as hard as writing the code in the first place.
+    Therefore, if you write the code as cleverly as possible, you are, by
+    definition, not smart enough to debug it.</em>
+    Brian W. Kernighan, computer scientist, 1942-.
+</blockquote>
+
+Newcomers to programming often panic when their program runs for the
+first time and aborts with a seemingly cryptic error message. How do
+you approach the art of debugging? This appendix summarizes some
+important working habits in this respect. Some of the tips are useful
+for problem solving in general, not only when writing and testing
+Python programs.
+
+<h1>A recipe for program writing and debugging  <a name="___sec12"></a></h1>
+
+<b>1. Understand the problem.</b>
+Make sure that you really understand the task the program is supposed
+to solve.  We can make a general claim: if you do not understand the
+problem and the solution method, you will never be able to make a
+correct program. It may be argued that this claim is not entirely
+true: sometimes students with limited understanding of the problem are
+able to grab a similar program and guess at a few modifications, and
+actually get a program that works. But this technique is based on luck
+and not on understanding. The famous Norwegian computer scientist
+Kristen Nygaard (1926-2002) phrased it precisely: <em>Programming is
+understanding</em>.  It may be necessary to read a problem description or
+exercise many times and study relevant background material before
+starting on the programming part of the problem solving process.
+
+<p>
+<b>2. Work out examples.</b>
+Start with sketching one or more examples on input and output
+of the program.
+Such examples are important for controlling the understanding of
+the purpose of the program, and for verifying the implementation.
+
+<p>
+<b>3. Decide on a user interface.</b>
+Find out how you want to get data into the program. You may want to
+grab data from the command-line, a file, or a dialog with questions
+and answers.
+
+<p>
+<b>4. Make algorithms.</b>
+Identify the key tasks to be done in the program and sketch rough
+algorithms for these.  Some programmers prefer to do this on a piece
+of paper, others prefer to start directly in Python and write
+Python-like code with comments to sketch the program (this is easily
+developed into real Python code later).
+
+<p>
+<b>5. Look up information.</b>
+Few programmers can write the whole program without consulting
+manuals, books, and the Internet. You need to know and understand
+the basic constructs in a language and some fundamental problem solving
+techniques, but technical details can be looked up.
+
+<p>
+The more program examples you have
+studied,
+the easier it is to adapt ideas from an existing example to solve a new
+problem.
+
+<p>
+<b>6. Write the program.</b>
+Be extremely careful with what you write. In particular,
+compare all mathematical statements  and algorithms with
+the original mathematical expressions.
+
+<p>
+In longer programs, do not wait until the program is complete before
+you start testing it, test parts while you write.
+
+<p>
+<b>7. Run the program.</b>
+If the program aborts with an error message from Python, these
+messages are fortunately quite precise and helpful.  First, locate the
+line number where the error occurs and read the statement, then
+carefully read the error message. The most common errors (exceptions)
+are listed below.
+
+<p>
+<code>SyntaxError</code>: Illegal Python code.
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  File &quot;somefile.py&quot;, line 5
+    x = . 5
+        ^
+SyntaxError: invalid syntax
+</pre></div>
+</blockquote><p>
+Often the error is precisely indicated, as above, but sometimes
+you have to search for the error on the previous line.
+
+<p>
+<code>NameError</code>: A name (variable, function, module)
+is not defined.
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  File &quot;somefile.py&quot;, line 20, in &lt;module&gt;
+    table(10)
+  File &quot;somefile.py&quot;, line 16, in table
+    value, next, error = L(x, n)
+  File &quot;somefile.py&quot;, line 8, in L
+    exact_error = log(1+x) - value_of_sum
+NameError: global name &#39;value_of_sum&#39; is not defined
+</pre></div>
+</blockquote><p>
+Look at the last of the lines starting with <code>File</code> to see where in the
+program the error occurs. The most common reasons for a <code>NameError</code> are
+
+<ul>
+  <li> a misspelled name,</li>
+  <li> a variable that is not initialized,</li>
+  <li> a function that you have forgotten to define,</li>
+  <li> a module that is not imported.</li>
+</ul>
+
+<code>TypeError</code>: An object of wrong type is used in an operation.
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  File &quot;somefile.py&quot;, line 17, in table
+    value, next, error = L(x, n)
+  File &quot;somefile.py&quot;, line 7, in L
+    first_neglected_term = (1.0/(n+1))*(x/(1.0+x))**(n+1)
+TypeError: unsupported operand type(s) for +: &#39;float&#39; and &#39;str&#39;
+</pre></div>
+</blockquote><p>
+Print out objects and their types (here: <code>print x, type(x), n, type(n)</code>),
+and you will most likely get a surprise. The reason for a <code>TypeError</code>
+is often far away from the line where the
+<code>TypeError</code> occurs.
+
+<p>
+<code>ValueError</code>: An object has an illegal value.
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  File &quot;somefile.py&quot;, line 8, in L
+    y = sqrt(x)
+ValueError: math domain error
+</pre></div>
+</blockquote><p>
+Print out the value of objects
+that can be involved in the error (here: <code>print x</code>).
+
+<p>
+<code>IndexError</code>: An index in a list, tuple, string, or array is
+too large.
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  File &quot;somefile.py&quot;, line 21
+    n = sys.argv[i+1]
+IndexError: list index out of range
+</pre></div>
+</blockquote><p>
+Print out the length of the list, and the index if it involves a variable
+(here: <code>print len(sys.argv), i</code>).
+
+<p>
+<b>8. Verify the results.</b>
+Assume now that we have a program that runs without error messages
+from Python. Before judging the results of the program, set precisely
+up a test case where you know the exact solution.  This is in general
+quite difficult. In complicated mathematical problems it is an art to
+construct good test problems and procedures for providing evidence
+that the program works.
+
+<p>
+If your program produces wrong answers, start to <em>examine intermediate
+results</em>.  Never forget that your own hand calculations that you use
+to test the program may be wrong!
+
+<p>
+<b>9. Use a debugger.</b>
+If you end up inserting a lot of <code>print</code> statements in the program for
+checking intermediate results, you might benefit from using a debugger
+as explained in the section <a href="#sec:debug:run">Using a debugger</a>.
+
+<p>
+Some may think that this list of nine points is very comprehensive.
+However, the recipe just contains the steps that you should always
+carry out when developing programs.  Never forget that computer
+programming is a difficult task.
+
+<p>
+<blockquote>
+    <em>Program writing is substantially more demanding than book
+    writing. Why is it so? I think the main reason is that a larger
+    attention span is needed when working on a large computer program
+    than when doing other intellectual tasks.</em>
+    Donald Knuth <a href="#Knuth85">[1]</a> (p. 18), computer scientist, 1938-.
+</blockquote>
+
+
+<h1>Application of the recipe  <a name="___sec13"></a></h1>
+
+Let us illustrate the points above in a specific programming problem:
+implementation of the Midpoint rule for numerical integration.
+The Midpoint rule for approximating an integral \( \int_a^b f(x)dx \) reads
+
+$$
+\begin{equation}
+I = h\sum_{i=1}^{n} f(a + (i-\frac{1}{2})h), \quad h = {b-a\over n}\tp
+\tag{1}
+\end{equation}
+$$
+
+We just follow the individual steps in the recipe to develop the code.
+
+<p>
+<b>1. Understand the problem.</b>
+In this problem we must understand how to program the formula
+<a href="#mjx-eqn-1">(1)</a>. Observe that we do not need to
+understand how the formula is derived, because we do not apply the
+derivation in the program.  What is important, is to notice that the
+formula is an <em>approximation</em> of an integral. Comparing the result of
+the program with the exact value of the integral will in general show
+a discrepancy. Whether we have an approximation error or a programming
+error is always difficult to judge. We will meet this difficulty
+below.
+
+<p>
+<b>2. Work out examples.</b>
+As a test case we choose to integrate
+
+$$
+\begin{equation}
+f(x) = \sin^{-1}(x)\tp
+\tag{2}
+\end{equation}
+$$
+
+between 0 and \( \pi \).
+From a table of integrals we find that this integral equals
+
+$$
+\begin{equation}
+\left\lbrack x\sin^{-1}(x) + \sqrt{1-x^2}\,\,\right\rbrack_{0}^{\pi}\tp
+\tag{3}
+\end{equation}
+$$
+
+The formula <a href="#mjx-eqn-1">(1)</a> gives an approximation
+to this integral, so the program will (most likely) print out a result
+different from <a href="#mjx-eqn-3">(3)</a>.  It would therefore be
+very helpful to construct a calculation where there are no
+approximation errors.  Numerical integration rules usually integrate
+some polynomial of low order exactly. For the Midpoint rule it is
+obvious, if you understand the derivation of this rule, that a
+constant function will be integrated exactly. We therefore also
+introduce a test problem where we integrate \( g(x)=1 \) from 0 to 10. The
+answer should be exactly 10.
+
+<p>
+<em>Input and output</em>:
+The input to the calculations is the function to integrate, the integration
+limits \( a \) and \( b \), and the \( n \) parameter (number of intervals) in
+the formula <a href="#mjx-eqn-1">(1)</a>.
+The output from the calculations is the approximation to the integral.
+
+<p>
+<b>3. Decide on a user interface.</b>
+We find it easiest at this beginning stage to program the two
+functions \( f(x) \) and \( g(x) \) directly in the program. We also specify
+the corresponding integration limits \( a \) and \( b \) in the program, but
+we read a common \( n \) for both integrals from the command line. Note
+that this is not a flexible user interface, but it suffices as a start
+for creating a working program. A much better user interface is to
+read \( f \), \( a \), \( b \), and \( n \) from the command line, which will be done
+later in a more complete solution to the present problem.
+
+<p>
+<b>4. Make algorithms.</b>
+Like most mathematical programming problems, also this one has a
+generic part and an application part. The generic part is the formula
+<a href="#mjx-eqn-1">(1)</a>, which is applicable to an
+arbitrary function \( f(x) \). The implementation should reflect that we
+can specify any Python function <code>f(x)</code> and get it integrated.  This
+principle calls for calculating <a href="#mjx-eqn-1">(1)</a> in
+a Python function where the input to the computation (\( f \), \( a \), \( b \),
+\( n \)) are arguments. The function heading can look as <code>integrate(f, a,
+b, n)</code>, and the value of <a href="#mjx-eqn-1">(1)</a> is
+returned.
+
+<p>
+The test part of the program consists of defining the test functions
+\( f(x) \) and \( g(x) \) and writing out the calculated approximations to the
+corresponding integrals.
+
+<p>
+A first rough sketch of the program can then be
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">integrate</span>(f, a, b, n):
+    <span style="color: #408080; font-style: italic"># compute integral, store in I</span>
+    <span style="color: #008000; font-weight: bold">return</span> I
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+<span style="color: #666666">...</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(x):
+<span style="color: #666666">...</span>
+
+<span style="color: #408080; font-style: italic"># test/application part:</span>
+n <span style="color: #666666">=</span> sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>]
+I <span style="color: #666666">=</span> integrate(g, <span style="color: #666666">0</span>, <span style="color: #666666">10</span>,  n)
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Integral of g equals </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&quot;</span> <span style="color: #666666">%</span> I
+I <span style="color: #666666">=</span> integrate(f, <span style="color: #666666">0</span>, pi,  n)
+<span style="color: #408080; font-style: italic"># calculate and print out the exact integral of f</span>
+</pre></div>
+<p>
+The next step is to make a detailed implementation of the <code>integrate</code>
+function. Inside this function we need to compute the sum
+<a href="#mjx-eqn-1">(1)</a>. In general, sums are computed by
+a <code>for</code> loop over the summation index, and inside the loop we
+calculate a term in the sum and add it to an accumulation variable.
+Here is the algorithm in Python code:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">s <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, n<span style="color: #666666">+1</span>):
+    s <span style="color: #666666">=</span> s <span style="color: #666666">+</span> f(a <span style="color: #666666">+</span> (i<span style="color: #666666">-0.5</span>)<span style="color: #666666">*</span>h)
+I <span style="color: #666666">=</span> s<span style="color: #666666">*</span>h
+</pre></div>
+<p>
+<b>5. Look up information.</b>
+Our test function \( f(x)=\sin^{-1}(x) \) must be evaluated in the
+program.  How can we do this? We know that many common mathematical
+functions are offered by the <code>math</code> module. It is therefore natural to
+check if this module has an inverse sine function. The best place to
+look for Python modules is the <a href="http://docs.python.org/2/library/" target="_self">Python Standard Library</a> <a href="#Python:Library:Reference">[2]</a>
+documentation, which has a search facility.
+Typing <em>math</em> brings up a link to the
+<code>math</code> module, there we find <code>math.asin</code> as the function we need.
+Alternatively, one can use the command line utility <code>pydoc</code> and write
+<code>pydoc math</code> to look up all the functions in the module.
+
+<p>
+In this simple problem, we use very basic programming constructs and
+there is hardly any need for looking at similar examples to get
+started with the problem solving process.  We need to know how to
+program a sum, though, via a <code>for</code> loop and an accumulation variable
+for the sum.
+
+<p>
+<b>6. Write the program.</b>
+Here is our first attempt to write the program. You can find the
+whole code in the file <a href="http://tinyurl.com/pwyasaa/debug/integrate_v1.py" target="_self"><tt>integrate_v1.py</tt></a>.
+
+<p>
+
+<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">integrate</span>(f, a, b, n):
+    s <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, n):
+        s <span style="color: #666666">+=</span> f(a <span style="color: #666666">+</span> i<span style="color: #666666">*</span>h)
+    <span style="color: #008000; font-weight: bold">return</span> s
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+<span style="color: #008000; font-weight: bold">return</span> asin(x)
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(x):
+<span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">1</span>
+
+<span style="color: #408080; font-style: italic"># Test/application part</span>
+n <span style="color: #666666">=</span> sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>]
+I <span style="color: #666666">=</span> integrate(g, <span style="color: #666666">0</span>, <span style="color: #666666">10</span>,  n)
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Integral of g equals </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&quot;</span> <span style="color: #666666">%</span> I
+I <span style="color: #666666">=</span> integrate(f, <span style="color: #666666">0</span>, pi,  n)
+I_exact <span style="color: #666666">=</span> pi<span style="color: #666666">*</span>asin(pi) <span style="color: #666666">-</span> sqrt(<span style="color: #666666">1</span> <span style="color: #666666">-</span> pi<span style="color: #666666">**2</span>) <span style="color: #666666">-</span> <span style="color: #666666">1</span>
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Integral of f equals </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121"> (exact value is </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">)&#39; % </span><span style="color: #BB6622; font-weight: bold">\</span>
+<span style="color: #BA2121">  (I, I_exact)</span>
+</pre></div>
+<p>
+<b>7. Run the program.</b>
+We try a first execution from IPython
+
+<p>
+
+<!-- code=python (from !bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">1</span>]: run integrate_v1<span style="color: #666666">.</span>py
+</pre></div>
+<p>
+Unfortunately, the program aborts with an error:
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  File &quot;integrate_v1.py&quot;, line 8
+    return asin(x)
+         ^
+IndentationError: expected an indented block
+</pre></div>
+</blockquote><p>
+We go to line 8 and look at that line and the surrounding code:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+<span style="color: #008000; font-weight: bold">return</span> asin(x)
+</pre></div>
+<p>
+Python expects that the return line is indented, because
+the function body must always be indented.
+By the way, we realize that there is a similar error in the <code>g(x)</code>
+function as well.
+We correct these errors:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> asin(x)
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">1</span>
+</pre></div>
+<p>
+Running the program again makes Python respond with
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  File &quot;integrate_v1.py&quot;, line 24
+    (I, I_exact)
+               ^
+SyntaxError: EOL while scanning single-quoted string
+</pre></div>
+</blockquote><p>
+There is nothing wrong with line 24, but line 24 is a part of the
+statement starting on line 23:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Integral of f equals </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121"> (exact value is </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">)&#39; % \ </span>
+      (I, I_exact)
+</pre></div>
+<p>
+A <code>SyntaxError</code> implies that we have written illegal Python
+code. Inspecting line 23 reveals that the string to be printed
+starts with a double quote, but ends with a single quote.
+We must be consistent and use the same enclosing quotes in a string.
+Correcting the statement,
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Integral of f equals </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121"> (exact value is </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">)&quot;</span> <span style="color: #666666">%</span> \ 
+      (I, I_exact)
+</pre></div>
+<p>
+and rerunning the program yields the output
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 18, in &lt;module&gt;
+    n = sys.argv[1]
+NameError: name &#39;sys&#39; is not defined
+</pre></div>
+</blockquote><p>
+Obviously, we need to import <code>sys</code> before using it.
+We add <code>import sys</code> and run again:
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 19, in &lt;module&gt;
+    n = sys.argv[1]
+IndexError: list index out of range
+</pre></div>
+</blockquote><p>
+This is a very common error: we index the list <code>sys.argv</code> out of range
+because we have not provided enough command-line arguments.
+Let us use \( n=10 \) in the test and provide that number on the command line:
+
+<p>
+
+<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">5</span>]: run integrate_v1<span style="color: #666666">.</span>py <span style="color: #666666">10</span>
+</pre></div>
+<p>
+We still have problems:
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 20, in &lt;module&gt;
+    I = integrate(g, 0, 10,  n)
+  File &quot;integrate_v1.py&quot;, line 7, in integrate
+    for i in range(1, n):
+TypeError: range() integer end argument expected, got str.
+</pre></div>
+</blockquote><p>
+It is the final <code>File</code> line that counts (the previous ones
+describe the nested functions calls up to the point where
+the error occurred).
+The error message for line 7
+is very precise: the end argument to <code>range</code>,
+<code>n</code>, should be an integer, but it is a string.
+We need to convert the string <code>sys.argv[1]</code> to <code>int</code> before
+sending it to the <code>integrate</code> function:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">n <span style="color: #666666">=</span> <span style="color: #008000">int</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>])
+</pre></div>
+<p>
+After a new edit-and-run cycle we have other error messages waiting:
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 20, in &lt;module&gt;
+    I = integrate(g, 0, 10,  n)
+  File &quot;integrate_v1.py&quot;, line 8, in integrate
+    s += f(a + i*h)
+NameError: global name &#39;h&#39; is not defined
+</pre></div>
+</blockquote><p>
+The <code>h</code> variable is used without being assigned a value.
+From the formula <a href="#mjx-eqn-1">(1)</a> we
+see that \( h=(b-a)/n \), so we insert this assignment at the top of
+the <code>integrate</code>
+function:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">integrate</span>(f, a, b, n):
+    h <span style="color: #666666">=</span> (b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span>n
+    <span style="color: #666666">...</span>
+</pre></div>
+<p>
+A new run results in a new error:
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Integral of g equals 9
+Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 23, in &lt;module&gt;
+    I = integrate(f, 0, pi,  n)
+NameError: name &#39;pi&#39; is not defined
+</pre></div>
+</blockquote><p>
+Looking carefully at all output, we see that the program managed to
+call the <code>integrate</code> function with <code>g</code> as input and write
+out the integral. However, in the call to <code>integrate</code> with <code>f</code>
+as argument, we get a <code>NameError</code>, saying that <code>pi</code> is undefined.
+When we wrote the program we took it for granted that <code>pi</code> was
+\( \pi \), but we need to import <code>pi</code> from <code>math</code> to get this
+variable defined, before we call <code>integrate</code>:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
+I <span style="color: #666666">=</span> integrate(f, <span style="color: #666666">0</span>, pi,  n)
+</pre></div>
+<p>
+The output of a new run is now
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Integral of g equals 9
+Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 24, in &lt;module&gt;
+    I = integrate(f, 0, pi,  n)
+  File &quot;integrate_v1.py&quot;, line 9, in integrate
+    s += f(a + i*h)
+  File &quot;integrate_v1.py&quot;, line 13, in f
+    return asin(x)
+NameError: global name &#39;asin&#39; is not defined
+</pre></div>
+</blockquote><p>
+A similar error occurred: <code>asin</code> is not defined as a function,
+and we need to import it from <code>math</code>. We can either do a
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi, asin
+</pre></div>
+<p>
+or just do the rough
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+</pre></div>
+<p>
+to avoid any further errors with undefined names from the <code>math</code>
+module (we will get one for the <code>sqrt</code> function later, so we simply
+use the last &quot;import all&quot; kind of statement).
+
+<p>
+There are still more errors:
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Integral of g equals 9
+Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 24, in &lt;module&gt;
+    I = integrate(f, 0, pi,  n)
+  File &quot;integrate_v1.py&quot;, line 9, in integrate
+    s += f(a + i*h)
+  File &quot;integrate_v1.py&quot;, line 13, in f
+    return asin(x)
+ValueError: math domain error
+</pre></div>
+</blockquote><p>
+Now the error concerns a wrong <code>x</code> value in the <code>f</code> function.
+Let us print out <code>x</code>:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">print</span> x
+    <span style="color: #008000; font-weight: bold">return</span> asin(x)
+</pre></div>
+<p>
+The output becomes
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Integral of g equals 9
+0.314159265359
+0.628318530718
+0.942477796077
+1.25663706144
+Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 25, in &lt;module&gt;
+    I = integrate(f, 0, pi,  n)
+  File &quot;integrate_v1.py&quot;, line 9, in integrate
+    s += f(a + i*h)
+  File &quot;integrate_v1.py&quot;, line 14, in f
+    return asin(x)
+ValueError: math domain error
+</pre></div>
+</blockquote><p>
+We see that all the <code>asin(x)</code> computations are successful up to and
+including \( x=0.942477796077 \), but for \( x=1.25663706144 \) we get an
+error.  A <code>math domain error</code> may point to a wrong \( x \) value for
+\( \sin^{-1}(x) \) (recall that the domain of a function specifies the
+legal \( x \) values for that function).
+
+<p>
+To proceed, we need to think about the mathematics of our problem:
+Since \( \sin (x) \) is always between \( -1 \) and \( 1 \), the inverse sine
+function cannot take \( x \) values outside the interval \( [-1,1] \). The
+problem is that we try to integrate \( \sin^{-1}(x) \) from 0 to \( \pi \),
+but only integration limits within \( [-1,1] \) make sense (unless we
+allow for complex-valued trigonometric functions). Our test problem is
+hence wrong from a mathematical point of view. We need to adjust the
+limits, say 0 to 1 instead of 0 to \( \pi \). The corresponding program
+modification reads
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">I <span style="color: #666666">=</span> integrate(f, <span style="color: #666666">0</span>, <span style="color: #666666">1</span>,  n)
+</pre></div>
+<p>
+We run again and get
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Integral of g equals 9
+0
+0
+0
+0
+0
+0
+0
+0
+0
+Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 26, in &lt;module&gt;
+    I_exact = pi*asin(pi) - sqrt(1 - pi**2) - 1
+ValueError: math domain error
+</pre></div>
+</blockquote><p>
+It is easy to go directly to the <code>ValueError</code> now, but one should
+always examine the output from top to bottom. If there is strange
+output before Python reports an error, there may be an error indicated
+by our <code>print</code> statements.
+This is not the case in the present example, but it is a good
+habit to start at the top of the output anyway. We see that all our
+<code>print x</code> statements inside the <code>f</code> function say that <code>x</code> is zero.
+This must be wrong - the idea of the integration rule is to pick \( n \)
+different points in the integration interval \( [0,1] \).
+
+<p>
+Our <code>f(x)</code> function is called from the <code>integrate</code> function.
+The argument to <code>f</code>, <code>a + i*h</code>, is seemingly always 0. Why? We print out
+the argument and the values of the variables that make up the argument:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">integrate</span>(f, a, b, n):
+    h <span style="color: #666666">=</span> (b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span>n
+    s <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, n):
+        <span style="color: #008000; font-weight: bold">print</span> a, i, h, a<span style="color: #666666">+</span>i<span style="color: #666666">*</span>h
+        s <span style="color: #666666">+=</span> f(a <span style="color: #666666">+</span> i<span style="color: #666666">*</span>h)
+    <span style="color: #008000; font-weight: bold">return</span> s
+</pre></div>
+<p>
+Running the program shows that <code>h</code> is zero and therefore
+<code>a+i*h</code> is zero.
+
+<p>
+Why is <code>h</code> zero? We need a new <code>print</code> statement in the computation
+of <code>h</code>:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">integrate</span>(f, a, b, n):
+    h <span style="color: #666666">=</span> (b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span>n
+    <span style="color: #008000; font-weight: bold">print</span> b, a, n, h
+    <span style="color: #666666">...</span>
+</pre></div>
+<p>
+The output shows that <code>a</code>, <code>b</code>, and <code>n</code> are correct.
+Now we have encountered a very common error in Python version 2
+and C-like programming languages:
+integer
+division.
+The formula \( (1-0)/10=1/10 \) is zero according to integer division.
+The reason is that <code>a</code> and <code>b</code> are specified as <code>0</code>
+and <code>1</code> in the call to <code>integrate</code>, and <code>0</code>
+and <code>1</code> imply <code>int</code> objects. Then <code>b-a</code> becomes
+an <code>int</code>, and <code>n</code> is an <code>int</code>, causing an <code>int/int</code>
+division. We must ensure that <code>b-a</code> is <code>float</code> to get the
+right mathematical division in the computation of <code>h</code>:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">integrate</span>(f, a, b, n):
+    h <span style="color: #666666">=</span> <span style="color: #008000">float</span>(b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span>n
+    <span style="color: #666666">...</span>
+</pre></div>
+<p>
+Thinking that the problem with wrong \( x \) values in the inverse sine
+function is resolved, we may remove all the <code>print</code> statements in the
+program, and run again.
+
+<p>
+The output now reads
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Integral of g equals 9
+Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 25, in &lt;module&gt;
+    I_exact = pi*asin(pi) - sqrt(1 - pi**2) - 1
+ValueError: math domain error
+</pre></div>
+</blockquote><p>
+That is, we are back to the <code>ValueError</code> we have seen before.
+The reason is that <code>asin(pi)</code> does not make sense, and
+the argument to <code>sqrt</code> is negative. The error is simply that we
+forgot to adjust the upper integration limit in the computation
+of the exact result. This is another very common error.
+The correct line is
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">I_exact <span style="color: #666666">=</span> <span style="color: #666666">1*</span>asin(<span style="color: #666666">1</span>) <span style="color: #666666">-</span> sqrt(<span style="color: #666666">1</span> <span style="color: #666666">-</span> <span style="color: #666666">1**2</span>) <span style="color: #666666">-</span> <span style="color: #666666">1</span>
+</pre></div>
+<p>
+We could have avoided the error by introducing variables for the
+integration limits, and a function for \( \int f(x)dx \) would make the
+code cleaner:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">0</span>; b <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">int_f_exact</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> x<span style="color: #666666">*</span>asin(x) <span style="color: #666666">-</span> sqrt(<span style="color: #666666">1</span> <span style="color: #666666">-</span> x<span style="color: #666666">**2</span>)
+I_exact <span style="color: #666666">=</span> int_f_exact(b) <span style="color: #666666">-</span> int_f_exact(a)
+</pre></div>
+<p>
+Although this is more work than what we initially aimed at, it usually
+saves time in the debugging phase to do things this proper way.
+
+<p>
+Eventually, the program seems to work! The output is just
+the result of our two <code>print</code> statements:
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Integral of g equals 9
+Integral of f equals 5.0073 (exact value is 0.570796)
+</pre></div>
+</blockquote><p>
+<b>8. Verify the results.</b>
+Now it is time to check if the numerical results are correct.  We
+start with the simple integral of 1 from 0 to 10: the answer should be
+10, not 9.  Recall that for this particular choice of integration
+function, there is no approximation error involved (but there could be
+a small round-off error). Hence, there must be a programming error.
+
+<p>
+To proceed, we need to calculate some intermediate mathematical
+results by hand and compare these with the corresponding statements in
+the program. We choose a very simple test problem with \( n=2 \) and
+\( h=(10-0)/2=5 \).  The formula <a href="#mjx-eqn-1">(1)</a>
+becomes
+
+$$
+\begin{equation*} I = 5\cdot\left( 1 + 1\right) = 10\tp\end{equation*}
+$$
+
+Running the program with \( n=2 \) gives
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Integral of g equals 1
+</pre></div>
+</blockquote><p>
+We insert some <code>print</code> statements inside the <code>integrate</code> function:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">integrate</span>(f, a, b, n):
+    h <span style="color: #666666">=</span> <span style="color: #008000">float</span>(b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span>n
+    s <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, n):
+        <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;i=</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">, a+i*h=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (i, a<span style="color: #666666">+</span>i<span style="color: #666666">*</span>h)
+        s <span style="color: #666666">+=</span> f(a <span style="color: #666666">+</span> i<span style="color: #666666">*</span>h)
+    <span style="color: #008000; font-weight: bold">return</span> s
+</pre></div>
+<p>
+Here is the output:
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">i=1, a+i*h=5
+Integral of g equals 1
+i=1, a+i*h=0.5
+Integral of f equals 0.523599 (exact value is 0.570796)
+</pre></div>
+</blockquote><p>
+There was only one pass in the <code>i</code> loop in <code>integrate</code>.  According to
+the formula, there should be \( n \) passes, i.e., two in this test
+case. The limits of <code>i</code> must be wrong.  The limits are produced by the
+call <code>range(1,n)</code>. We recall that such a call results in integers
+going from 1 up to <code>n</code>, but <em>not</em> including <code>n</code>.  We need to include
+<code>n</code> as value of <code>i</code>, so the right call to <code>range</code> is <code>range(1,n+1)</code>.
+
+<p>
+We make this correction and rerun the program. The output is now
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">i=1, a+i*h=5
+i=2, a+i*h=10
+Integral of g equals 2
+i=1, a+i*h=0.5
+i=2, a+i*h=1
+Integral of f equals 2.0944 (exact value is 0.570796)
+</pre></div>
+</blockquote><p>
+The integral of 1 is still not correct. We need more intermediate
+results!
+
+<p>
+In our quick hand calculation we knew that \( g(x)=1 \) so all
+the \( f(a+(i-\frac{1}{2})h) \) evaluations were rapidly replaced by ones.
+Let us now compute all the \( x \) coordinates \( a+(i-\frac{1}{2})h \) that
+are used in the formula:
+
+$$
+\begin{equation*} i=1:\ a+(i-\frac{1}{2})h=2.5,\quad i=2:\ a+(i-\frac{1}{2})h=7.5\tp \end{equation*}
+$$
+
+Looking at the output from the program, we see that the argument to
+<code>g</code> has a different value - and fortunately we realize that the
+formula we have coded is wrong.  It should be <code>a+(i-0.5)*h</code>.
+
+<p>
+We correct this error and run the program:
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">i=1, a+(i-0.5)*h=2.5
+i=2, a+(i-0.5)*h=7.5
+Integral of g equals 2
+...
+</pre></div>
+</blockquote><p>
+Still the integral is wrong. At this point you may give up
+programming, but the more skills you pick up in debugging, the more
+fun it is to hunt for errors! Debugging is like reading an exciting
+criminal novel: the detective follows different ideas and tracks, but
+never gives up before the culprit is caught.
+
+<p>
+Now we read the code more carefully and compare expressions with those
+in the mathematical formula. We should, of course, have done this
+already when writing the program, but it is easy to get excited when
+writing code and hurry for the end. This ongoing story of debugging
+probably shows that reading the code carefully can save much debugging
+time.  (Actually, being extremely careful with what you write, and
+comparing all formulas with the mathematics, may be the best way to
+get more spare time when taking a programming course!)
+
+<p>
+We clearly add up all the \( f \) evaluations correctly, but then this sum
+must be multiplied by \( h \), and we forgot that in the code.  The
+<code>return</code> statement in <code>integrate</code> must therefore be modified to
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">    <span style="color: #008000; font-weight: bold">return</span> s<span style="color: #666666">*</span>h
+</pre></div>
+<p>
+Eventually, the output is
+
+<p>
+
+<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Integral of g equals 10
+Integral of f equals 0.568484 (exact value is 0.570796)
+</pre></div>
+</blockquote><p>
+and we have managed to integrate a constant function in our program!
+Even the second integral looks promising!
+
+<p>
+To judge the result of integrating the inverse sine function, we need
+to run several increasing \( n \) values and see that the approximation
+gets better.  For \( n=2,10,100,1000 \) we get 0.550371, 0.568484,
+0.570714, 0.570794, to be compared to the exact value 0.570796.  (This
+is not the mathematically exact value, because it involves
+computations of \( \sin^{-1}(x) \), which is only approximately calculated
+by the <code>asin</code> function in the <code>math</code> module. However, the
+approximation error is very small (\( \sim 10^{-16} \)).)  The decreasing
+error provides evidence for a correct program, but it is not a strong
+proof. We should try out more functions.  In particular, linear
+functions are integrated exactly by the Midpoint rule.  We can also
+measure the speed of the decrease of the error and check that the
+speed is consistent with the properties of the Midpoint rule, but this
+is a mathematically more advanced topic.
+
+<p>
+The very important lesson learned from these debugging sessions is
+that you should start with a simple test problem where all formulas
+can be computed by hand. If you start out with \( n=100 \) and try to
+integrate the inverse sine function, you will have a much harder job
+with tracking down all the errors.
+
+<p>
+<b>9. Use a debugger.</b>
+Another lesson learned from these sessions is that we needed many
+<code>print</code> statements to see intermediate results. It is an open question
+if it would be more efficient to run a debugger and stop the code at
+relevant lines. In an edit-and-run cycle of the type we met here, we
+frequently need to examine many numerical results, correct something,
+and look at all the intermediate results again. Plain <code>print</code>
+statements are often better suited for this massive output than the
+pure manual operation of a debugger, unless one writes a program to
+automate the interaction with the debugger.
+
+<p>
+The correct code for the implementation of the Midpoint rule is found
+in <a href="http://tinyurl.com/pwyasaa/debug/integrate_v2.py" target="_self"><tt>integrate_v2.py</tt></a>.
+Some readers might be frightened by all the
+energy it took to debug this code, but this is just the nature of
+programming.  The experience of developing programs that finally work
+is very awarding.
+
+<p>
+<blockquote>
+    <em>People only become computer programmers if they're
+    obsessive about details, crave power over machines, and can bear
+    to be told day after day exactly how
+    stupid they are.</em>
+    Gregory J. E. Rawlins <a href="#Rawlins_1998">[3]</a>, computer scientist.
+</blockquote>
+
+
+<h2>Refining the user interface  <a name="___sec14"></a></h2>
+
+We briefly mentioned that the chosen user interface, where the user
+can only specify \( n \), is not particularly user friendly. We should
+allow \( f \), \( a \), \( b \), and \( n \) to be specified on the command line.
+Since \( f \) is a function and the command line can only provide strings
+to the program, we may use the <code>StringFunction</code> object from
+<code>scitools.std</code> to convert a string expression for the function to be
+integrated to an ordinary Python
+function.
+The other parameters should be easy to retrieve from the
+command line
+by looking up the <code>sys.argv</code> list. We
+enclose
+the input statements in a <code>try-except</code> block, here with
+a specific exception type <code>IndexError</code> (because an index
+in <code>sys.argv</code> out of bounds is the only type of error we expect
+to handle):
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">try</span>:
+    f_formula <span style="color: #666666">=</span> sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>]
+    a <span style="color: #666666">=</span> <span style="color: #008000">eval</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">2</span>])
+    b <span style="color: #666666">=</span> <span style="color: #008000">eval</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">3</span>])
+    n <span style="color: #666666">=</span> <span style="color: #008000">int</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">4</span>])
+<span style="color: #008000; font-weight: bold">except</span> <span style="color: #D2413A; font-weight: bold">IndexError</span>:
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Usage: </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121"> f-formula a b n&#39;</span> <span style="color: #666666">%</span> sys<span style="color: #666666">.</span>argv[<span style="color: #666666">0</span>]
+    sys<span style="color: #666666">.</span>exit(<span style="color: #666666">1</span>)
+</pre></div>
+<p>
+Note that the use of <code>eval</code> allows us to specify <code>a</code> and <code>b</code>
+as <code>pi</code> or <code>exp(5)</code> or another mathematical expression.
+
+<p>
+With the input above we can perform the general task of the program:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scitools.std</span> <span style="color: #008000; font-weight: bold">import</span> StringFunction
+f <span style="color: #666666">=</span> StringFunction(f_formula)
+I <span style="color: #666666">=</span> integrate(f, a, b, n)
+<span style="color: #008000; font-weight: bold">print</span> I
+</pre></div>
+
+<h2>Writing a test function  <a name="___sec15"></a></h2>
+
+Instead of having these test statements as a main program we
+follow the good habits
+and make a module with
+
+<ul>
+ <li> the <code>integrate</code> function,</li>
+ <li> a <code>test_integrate</code> function for testing the <code>integrate</code> function's
+   ability to exactly integrate linear functions,</li>
+ <li> a <code>main</code> function for reading data from the command line and
+   calling <code>integrate</code> for the user's problem at hand.</li>
+</ul>
+
+Any module should also have a test block, as well as doc strings for the module
+itself and all functions.
+
+<p>
+The <code>test_integrate</code> function can perform a loop over some specified <code>n</code> values
+and check that the Midpoint rule integrates a linear function exactly.
+As always, we must be prepared for round-off errors, so &quot;exactly&quot; means
+errors less than (say) \( 10^{-14} \). The relevant code becomes
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_integrate</span>():
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Check that linear functions are integrated exactly.&quot;&quot;&quot;</span>
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(x):
+        <span style="color: #008000; font-weight: bold">return</span> p<span style="color: #666666">*</span>x <span style="color: #666666">+</span> q   <span style="color: #408080; font-style: italic"># general linear function</span>
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">int_g_exact</span>(x):  <span style="color: #408080; font-style: italic"># integral of g(x)</span>
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0.5*</span>p<span style="color: #666666">*</span>x<span style="color: #666666">**2</span> <span style="color: #666666">+</span> q<span style="color: #666666">*</span>x
+
+    a <span style="color: #666666">=</span> <span style="color: #666666">-1.2</span>; b <span style="color: #666666">=</span> <span style="color: #666666">2.8</span>    <span style="color: #408080; font-style: italic"># &quot;arbitrary&quot; integration limits</span>
+    p <span style="color: #666666">=</span> <span style="color: #666666">-2</span>;   q <span style="color: #666666">=</span> <span style="color: #666666">10</span>
+    success <span style="color: #666666">=</span> <span style="color: #008000">True</span>        <span style="color: #408080; font-style: italic"># True if all tests below are passed</span>
+    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">1</span>, <span style="color: #666666">10</span>, <span style="color: #666666">100</span>:
+        I <span style="color: #666666">=</span> integrate(g, a, b, n)
+        I_exact <span style="color: #666666">=</span> int_g_exact(b) <span style="color: #666666">-</span> int_g_exact(a)
+        error <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(I_exact <span style="color: #666666">-</span> I)
+        <span style="color: #008000; font-weight: bold">if</span> error <span style="color: #666666">&gt;</span> <span style="color: #666666">1E-14</span>:
+            success <span style="color: #666666">=</span> <span style="color: #008000">False</span>
+    <span style="color: #008000; font-weight: bold">assert</span> success
+</pre></div>
+<p>
+We have followed the programming standard that will make this
+test function automatically work with the nose test framework:
+
+<ol>
+<li> the name of the function starts with <code>test_</code>,</li>
+<li> the function has no arguments,</li>
+<li> checks of whether a test is passed or not are done with <code>assert</code>.</li>
+</ol>
+
+The <code>assert success</code> statement raises an <code>AssertionError</code> exception
+if <code>success</code> is false, otherwise nothing happens. The nose testing
+framework searches for functions whose name start with <code>test_</code>,
+execute each function, and record if an <code>AssertionError</code> is raised.
+It is overkill to use nose for small programs, but in larger projects
+with many functions in many files, nose can run all tests with
+a short command and write back a notification that all tests passed.
+
+<p>
+The <code>main</code> function is simply a wrapping of the main program given
+above. The test block may call or <code>test_integrate</code> function or <code>main</code>,
+depending on whether the user will test the module or use it:
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">if</span> __name__ <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;__main__&#39;</span>:
+    <span style="color: #008000; font-weight: bold">if</span> sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>] <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;verify&#39;</span>:
+        verify()
+    <span style="color: #008000; font-weight: bold">else</span>:
+        <span style="color: #408080; font-style: italic"># Compute the integral specified on the command line</span>
+        main()
+</pre></div>
+<p>
+Here is a short demo computing \( \int_0^{2\pi}(\cos (x) + \sin(x))dx \)
+with the aid of the <a href="http://tinyurl.com/pwyasaa/debug/integrate.py" target="_self"><tt>integrate.py</tt></a>
+file:
+
+<p>
+
+<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">integrate.py &#39;cos(x)+sin(x)&#39; 0 2*pi 10
+-3.48786849801e-16
+</pre></div>
+
+<h1>Getting help from a code analyzer <a name="sec:debug:pylint"></a></h1>
+
+The tools <a href="http://www.pylint.org/" target="_self">PyLint</a> and
+<a href="https://flake8.readthedocs.org/en/2.0/" target="_self">Flake8</a> can analyze
+your code and point out errors and undesired coding styles.
+Before point 7 in the lists above, <em>Run the program</em>, it can be wise
+to run PyLint or Flake8 to be informed about problems with the code.
+
+<p>
+Consider the first version of the <code>integrate</code> code,
+<a href="http://tinyurl.com/pwyasaa/debug/integrate_v1.py" target="_self"><tt>integrate_v1.py</tt></a>. Running Flake8 gives
+
+<p>
+
+<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; flake8 integrate_v1.py
+integrate_v1.py:7:1: E302 expected 2 blank lines, found 1
+integrate_v1.py:8:1: E112 expected an indented block
+integrate_v1.py:8:7: E901 IndentationError: expected an indented block
+integrate_v1.py:10:1: E302 expected 2 blank lines, found 1
+integrate_v1.py:11:1: E112 expected an indented block
+</pre></div>
+<p>
+Flake8 checks if the program obeys the official
+<a href="http://www.python.org/dev/peps/pep-0008/" target="_self">Style Guide for Python Code</a>
+(known as <em>PEP8</em>). One of the rules in this guide is to have two
+blank lines before functions and classes (a habit that is often dropped
+in this book to reduce the length of code snippets), and our
+program breaks the rule before the <code>f</code> and <code>g</code> functions.
+More serious and useful is the <code>expected an indented block</code> at lines 8 and 11.
+This error is quickly found anyway by running the programming.
+
+<p>
+PyLint does not a complete job before the program is free of syntax
+errors. We must therefore apply it to the
+<a href="http://tinyurl.com/pwyasaa/debug/integrate_v2.py" target="_self"><tt>integrate_v2.py</tt></a> code:
+
+<p>
+
+<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; pylint integrate_v2.py
+C: 20, 0: Exactly one space required after comma
+I = integrate(f, 0, 1,  n)
+                     ^ (bad-whitespace)
+W: 19, 0: Redefining built-in &#39;pow&#39; (redefined-builtin)
+C:  1, 0: Missing module docstring (missing-docstring)
+W:  1,14: Redefining name &#39;f&#39; from outer scope (line 8)
+W:  1,23: Redefining name &#39;n&#39; from outer scope (line 16)
+C:  1, 0: Invalid argument name &quot;f&quot; (invalid-name)
+C:  1, 0: Invalid argument name &quot;a&quot; (invalid-name)
+</pre></div>
+<p>
+There is much more output, but let us summarize what
+PyLint does not like about the code:
+
+<ol>
+<li> Extra whitespace (after comma in a call to <code>integrate</code>)</li>
+<li> Missing doc string at the beginning of the file</li>
+<li> Missing doc strings in the functions</li>
+<li> Same name <code>f</code> used as local variable in <code>integrate</code> and
+   global function name in the <code>f(x)</code> function</li>
+<li> Too short variable names: <code>a</code>, <code>b</code>, <code>n</code>, etc.</li>
+<li> &quot;Star import&quot; of the form <code>from math import *</code></li>
+</ol>
+
+In short programs where the one-to-one mapping between mathematical
+notation and the variable names is very important to make the code
+self-explanatory, this author thinks that only points 1-3 qualify for
+attention. Nevertheless, for larger non-mathematical programs all the
+style violations pointed out are serious and lead to code that
+is easier to read, debug, maintain, and use.
+
+<p>
+Running Flak8 on <code>integrate_v2.py</code> leads to only three problems:
+missing two blank lines before functions (not reported by PyLint)
+and doing <code>from math import *</code>. Flake8 complains in general
+a lot less than PyLint, but both are very useful during
+program development to readability of the code and remove errors.
+
+<p>
+<!-- I can in general recommend running Flake8 or PyLint on your programs -->
+
+
+<div class="page-header">
+  <h1>References  <a name="___sec17"></a></h1>
+</div>
+
+
+<p>
+<!-- begin bibliography -->
+
+<ol>
+ <li> <a name="Knuth85"></a> <b>D. E. Knuth</b>. 
+    Theory and Practice,
+    <em>EATCS Bull.</em>,
+    27,
+    pp. 14-21,
+    1985.</li>
+ <li> <a name="Python:Library:Reference"></a> <b>P. S. Foundation</b>. 
+    The Python Standard Library,
+    <a href="http://docs.python.org/2/library/" target="_self"><tt>http://docs.python.org/2/library/</tt></a>.</li>
+ <li> <a name="Rawlins_1998"></a> <b>G. J. E. Rawlins</b>. 
+    <em>Slaves of the Machine: The Quickening of Computer Technology</em>,
+    MIT Press,
+    1998.</li>
+</ol>
+
+<!-- end bibliography -->
+
+<p>
+<ul class="pager">
+
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

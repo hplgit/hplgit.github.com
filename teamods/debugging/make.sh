@@ -9,7 +9,7 @@ rm -rf html *.html *.pdf
 #cp -r $repo/sphinx-rootdir-extended/_build/html html-githg
 cp $repo/$wrap.pdf $name.pdf
 #cp $repo/${wrap}_4print.pdf ${name}_4print.pdf
-cp $repo/${wrap}.html $repo/._${wrap}*.html .
+cp $repo/${name}.html $repo/._${name}*.html .
 #cp $repo/${wrap}-solarized.html ${name}-solarized.html
 git add .
 git commit -am 'New updates (copies)'
