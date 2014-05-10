@@ -10,6 +10,7 @@ cp -r $repo/sphinx-rootdir-extended/_build/html html-githg
 cp $repo/${wrap}*.pdf .
 cp $repo/${wrap}*.html $repo/._${wrap}*.html .
 scitools rename $wrap Langtangen_$name *.pdf *.html .*.html
-rm -f *~
+scitools replace $wrap Langtangen_$name *.html .*.html
+rm -f *~ .*~
 git add .
 git commit -am 'New updates (copies)'
