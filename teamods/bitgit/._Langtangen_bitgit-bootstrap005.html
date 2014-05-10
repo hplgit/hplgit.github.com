@@ -1,0 +1,233 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Need-to-Know Intro to Version Control Systems and Project Hosting Services">
+<meta name="keywords" content="Bitbucket,Googlecode,GitHub,gh-pages on GitHub,merging files,forking (a repo),pull request">
+
+
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Introduction ', 1, None, '___sec0'),
+              (' Why not Dropbox or Google Drive? ', 2, None, '___sec1'),
+              (' Project hosting services ', 2, None, '___sec2'),
+              (' Repositories and local copies ', 2, None, '___sec3'),
+              (' What to choose? ', 2, None, '___sec4'),
+              (' Installing Git ', 2, None, '___sec5'),
+              (' Bitbucket ', 1, 'bitgit:bitbucket', 'bitgit:bitbucket'),
+              (' Creating a new project ', 2, None, '___sec7'),
+              (' Collaborating ', 3, None, '___sec8'),
+              (' User web pages ',
+               2,
+               'bitgit:bitbucket:web',
+               'bitgit:bitbucket:web'),
+              (' Linking to Bitbucket files ',
+               2,
+               'bitgit:bitbucket:URLs',
+               'bitgit:bitbucket:URLs'),
+              (' Googlecode ', 1, 'bitgit:googlecode', 'bitgit:googlecode'),
+              (' Creating a new project ', 2, None, '___sec12'),
+              (' Wiki pages ', 2, None, '___sec13'),
+              (' GitHub ', 1, 'bitgit:github', 'bitgit:github'),
+              (' Creating a new project ', 2, None, '___sec15'),
+              (' Collaborating ', 3, None, '___sec16'),
+              (' Wiki pages ', 2, None, '___sec17'),
+              (' Project web pages ', 2, None, '___sec18'),
+              (' User web pages ', 2, None, '___sec19'),
+              (' Using Git ', 1, 'bitgit:git', 'bitgit:git'),
+              (' Basic Git commands ', 2, None, '___sec21'),
+              (' Cloning ', 3, None, '___sec22'),
+              (' The pull-change-push cycle ', 3, None, '___sec23'),
+              (' Viewing the history of files ', 3, None, '___sec24'),
+              (' Retrieving old files ', 3, None, '___sec25'),
+              (' Reset the entire repo to an old version ',
+               3,
+               None,
+               '___sec26'),
+              (' Going back to the last commit ', 3, None, '___sec27'),
+              (' Merging files with Git ',
+               2,
+               'bitgit:git:merge',
+               'bitgit:git:merge'),
+              (' Git working style with branching and stashing ',
+               2,
+               'bitgit:git:branch:stash',
+               'bitgit:git:branch:stash'),
+              (' Branching ', 3, None, '___sec30'),
+              (' Stashing ', 3, None, '___sec31'),
+              (' Replacing pull by fetch and merge ',
+               2,
+               'bitgit:git:fetch',
+               'bitgit:git:fetch'),
+              (' Configuring the `git diff` command ', 3, None, '___sec33'),
+              (' Team work with forking and pull requests ',
+               2,
+               'bitgit:git:team',
+               'bitgit:git:team'),
+              (' Cloning a repo with multiple branches ',
+               2,
+               'bitgit:git:clone:branches',
+               'bitgit:git:clone:branches'),
+              (' Git workflows ', 2, None, '___sec36'),
+              (' Git tips ', 2, None, '___sec37'),
+              (' How can I see which files are tracked by Git? ',
+               3,
+               None,
+               '___sec38'),
+              (' More documentation on Git ', 2, None, '___sec39'),
+              (' Appendix: Working with multiple GitHub accounts ',
+               1,
+               'appendix:github:multiple:accounts',
+               'appendix:github:multiple:accounts')]}
+end of tocinfo -->
+
+<body>
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="main_bitgit-bootstrap.html">Need-to-Know Intro to Version Control Systems and Project Hosting Services</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
+     <!-- navigation toc: "Why not Dropbox or Google Drive?" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Why not Dropbox or Google Drive?</a></li>
+     <!-- navigation toc: "Project hosting services" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project hosting services</a></li>
+     <!-- navigation toc: "Repositories and local copies" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Repositories and local copies</a></li>
+     <!-- navigation toc: "What to choose?" --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;What to choose?</a></li>
+     <!-- navigation toc: "Installing Git" --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing Git</a></li>
+     <!-- navigation toc: "Bitbucket" --> <li><a href="#bitgit:bitbucket" style="font-size: 80%;">Bitbucket</a></li>
+     <!-- navigation toc: "Creating a new project" --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Creating a new project</a></li>
+     <!-- navigation toc: "User web pages" --> <li><a href="#bitgit:bitbucket:web" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;User web pages</a></li>
+     <!-- navigation toc: "Linking to Bitbucket files" --> <li><a href="#bitgit:bitbucket:URLs" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Linking to Bitbucket files</a></li>
+     <!-- navigation toc: "Googlecode" --> <li><a href="#bitgit:googlecode" style="font-size: 80%;">Googlecode</a></li>
+     <!-- navigation toc: "Creating a new project" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Creating a new project</a></li>
+     <!-- navigation toc: "Wiki pages" --> <li><a href="#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Wiki pages</a></li>
+     <!-- navigation toc: "GitHub" --> <li><a href="#bitgit:github" style="font-size: 80%;">GitHub</a></li>
+     <!-- navigation toc: "Creating a new project" --> <li><a href="#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Creating a new project</a></li>
+     <!-- navigation toc: "Wiki pages" --> <li><a href="#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Wiki pages</a></li>
+     <!-- navigation toc: "Project web pages" --> <li><a href="#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project web pages</a></li>
+     <!-- navigation toc: "User web pages" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;User web pages</a></li>
+     <!-- navigation toc: "Using Git" --> <li><a href="#bitgit:git" style="font-size: 80%;">Using Git</a></li>
+     <!-- navigation toc: "Basic Git commands" --> <li><a href="#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Basic Git commands</a></li>
+     <!-- navigation toc: "Merging files with Git" --> <li><a href="#bitgit:git:merge" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Merging files with Git</a></li>
+     <!-- navigation toc: "Git working style with branching and stashing" --> <li><a href="#bitgit:git:branch:stash" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Git working style with branching and stashing</a></li>
+     <!-- navigation toc: "Replacing pull by fetch and merge" --> <li><a href="#bitgit:git:fetch" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Replacing pull by fetch and merge</a></li>
+     <!-- navigation toc: "Team work with forking and pull requests" --> <li><a href="#bitgit:git:team" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Team work with forking and pull requests</a></li>
+     <!-- navigation toc: "Cloning a repo with multiple branches" --> <li><a href="#bitgit:git:clone:branches" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Cloning a repo with multiple branches</a></li>
+     <!-- navigation toc: "Git workflows" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Git workflows</a></li>
+     <!-- navigation toc: "Git tips" --> <li><a href="#___sec37" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Git tips</a></li>
+     <!-- navigation toc: "More documentation on Git" --> <li><a href="#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;More documentation on Git</a></li>
+     <!-- navigation toc: "Appendix: Working with multiple GitHub accounts" --> <li><a href="#appendix:github:multiple:accounts" style="font-size: 80%;">Appendix: Working with multiple GitHub accounts</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0005"></a>
+<!-- !split -->
+
+<h1>Appendix: Working with multiple GitHub accounts <a name="appendix:github:multiple:accounts"></a></h1>
+
+Working against different GitHub accounts is easy if each project you work
+with on each account adds you as a collaborator. The term "you" here means your
+primary username on GitHub. My strong recommendation is to always check
+out a project
+using your primary GitHub username.
+
+<p>
+Occasionally you want to create a new GitHub account, say for a project <code>XYZ</code>.
+For such a non-personal account, do <em>not</em> provide an SSH key of any
+particular user. The reason is that this user will then get two
+GitHub identities, and switching between these identities will require
+some special tweakings. Just forget about the SSH key for a project
+account and add
+collaborators to repos using each collaborators personal GitHub username.
+
+<p>
+If you really need to operate the <code>XYZ</code> account as a
+personal account, you must provide an SSH key that is different from
+any other key at any other GitHub account (you will get an error message
+if you try to register an already registered SSH key, but it is possible to
+get around the error message by providing
+an <code>id_rsa.pub</code> key on one account and an <code>id_dsa.pub</code> on another - that
+will cause trouble). Jeffrey Way has written a recipe for <a href="http://net.tutsplus.com/tutorials/tools-and-tips/how-to-work-with-github-and-multiple-accounts/" target="_self">how to operate multiple GitHub accounts
+using multiple identities</a>.
+
+<p>
+To debug which identity that is used when you pull and push to
+GitHub accounts, you can first run
+<p>
+
+<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; ssh -Tv git@github.com
+</pre></div>
+<p>
+to see your current identity and which SSH key that was used to identify you.
+Typing
+<p>
+
+<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; ssh-add -l
+</pre></div>
+<p>
+lists all your SSH keys. The shown strings can be compared with the
+string in the SSH key field of any GitHub account.
+
+<p>
+
+<p>
+<ul class="pager">
+  <li class="previous">
+    <a href="._main_bitgit-bootstrap004.html">&larr; Prev</a>
+  </li>
+
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

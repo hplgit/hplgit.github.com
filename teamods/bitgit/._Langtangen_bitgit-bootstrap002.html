@@ -1,0 +1,316 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Need-to-Know Intro to Version Control Systems and Project Hosting Services">
+<meta name="keywords" content="Bitbucket,Googlecode,GitHub,gh-pages on GitHub,merging files,forking (a repo),pull request">
+
+
+
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Introduction ', 1, None, '___sec0'),
+              (' Why not Dropbox or Google Drive? ', 2, None, '___sec1'),
+              (' Project hosting services ', 2, None, '___sec2'),
+              (' Repositories and local copies ', 2, None, '___sec3'),
+              (' What to choose? ', 2, None, '___sec4'),
+              (' Installing Git ', 2, None, '___sec5'),
+              (' Bitbucket ', 1, 'bitgit:bitbucket', 'bitgit:bitbucket'),
+              (' Creating a new project ', 2, None, '___sec7'),
+              (' Collaborating ', 3, None, '___sec8'),
+              (' User web pages ',
+               2,
+               'bitgit:bitbucket:web',
+               'bitgit:bitbucket:web'),
+              (' Linking to Bitbucket files ',
+               2,
+               'bitgit:bitbucket:URLs',
+               'bitgit:bitbucket:URLs'),
+              (' Googlecode ', 1, 'bitgit:googlecode', 'bitgit:googlecode'),
+              (' Creating a new project ', 2, None, '___sec12'),
+              (' Wiki pages ', 2, None, '___sec13'),
+              (' GitHub ', 1, 'bitgit:github', 'bitgit:github'),
+              (' Creating a new project ', 2, None, '___sec15'),
+              (' Collaborating ', 3, None, '___sec16'),
+              (' Wiki pages ', 2, None, '___sec17'),
+              (' Project web pages ', 2, None, '___sec18'),
+              (' User web pages ', 2, None, '___sec19'),
+              (' Using Git ', 1, 'bitgit:git', 'bitgit:git'),
+              (' Basic Git commands ', 2, None, '___sec21'),
+              (' Cloning ', 3, None, '___sec22'),
+              (' The pull-change-push cycle ', 3, None, '___sec23'),
+              (' Viewing the history of files ', 3, None, '___sec24'),
+              (' Retrieving old files ', 3, None, '___sec25'),
+              (' Reset the entire repo to an old version ',
+               3,
+               None,
+               '___sec26'),
+              (' Going back to the last commit ', 3, None, '___sec27'),
+              (' Merging files with Git ',
+               2,
+               'bitgit:git:merge',
+               'bitgit:git:merge'),
+              (' Git working style with branching and stashing ',
+               2,
+               'bitgit:git:branch:stash',
+               'bitgit:git:branch:stash'),
+              (' Branching ', 3, None, '___sec30'),
+              (' Stashing ', 3, None, '___sec31'),
+              (' Replacing pull by fetch and merge ',
+               2,
+               'bitgit:git:fetch',
+               'bitgit:git:fetch'),
+              (' Configuring the `git diff` command ', 3, None, '___sec33'),
+              (' Team work with forking and pull requests ',
+               2,
+               'bitgit:git:team',
+               'bitgit:git:team'),
+              (' Cloning a repo with multiple branches ',
+               2,
+               'bitgit:git:clone:branches',
+               'bitgit:git:clone:branches'),
+              (' Git workflows ', 2, None, '___sec36'),
+              (' Git tips ', 2, None, '___sec37'),
+              (' How can I see which files are tracked by Git? ',
+               3,
+               None,
+               '___sec38'),
+              (' More documentation on Git ', 2, None, '___sec39'),
+              (' Appendix: Working with multiple GitHub accounts ',
+               1,
+               'appendix:github:multiple:accounts',
+               'appendix:github:multiple:accounts')]}
+end of tocinfo -->
+
+<body>
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="main_bitgit-bootstrap.html">Need-to-Know Intro to Version Control Systems and Project Hosting Services</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: "Introduction" --> <li><a href="#___sec0" style="font-size: 80%;">Introduction</a></li>
+     <!-- navigation toc: "Why not Dropbox or Google Drive?" --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Why not Dropbox or Google Drive?</a></li>
+     <!-- navigation toc: "Project hosting services" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project hosting services</a></li>
+     <!-- navigation toc: "Repositories and local copies" --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Repositories and local copies</a></li>
+     <!-- navigation toc: "What to choose?" --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;What to choose?</a></li>
+     <!-- navigation toc: "Installing Git" --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing Git</a></li>
+     <!-- navigation toc: "Bitbucket" --> <li><a href="#bitgit:bitbucket" style="font-size: 80%;">Bitbucket</a></li>
+     <!-- navigation toc: "Creating a new project" --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Creating a new project</a></li>
+     <!-- navigation toc: "User web pages" --> <li><a href="#bitgit:bitbucket:web" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;User web pages</a></li>
+     <!-- navigation toc: "Linking to Bitbucket files" --> <li><a href="#bitgit:bitbucket:URLs" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Linking to Bitbucket files</a></li>
+     <!-- navigation toc: "Googlecode" --> <li><a href="#bitgit:googlecode" style="font-size: 80%;">Googlecode</a></li>
+     <!-- navigation toc: "Creating a new project" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Creating a new project</a></li>
+     <!-- navigation toc: "Wiki pages" --> <li><a href="#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Wiki pages</a></li>
+     <!-- navigation toc: "GitHub" --> <li><a href="#bitgit:github" style="font-size: 80%;">GitHub</a></li>
+     <!-- navigation toc: "Creating a new project" --> <li><a href="#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Creating a new project</a></li>
+     <!-- navigation toc: "Wiki pages" --> <li><a href="#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Wiki pages</a></li>
+     <!-- navigation toc: "Project web pages" --> <li><a href="#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project web pages</a></li>
+     <!-- navigation toc: "User web pages" --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;User web pages</a></li>
+     <!-- navigation toc: "Using Git" --> <li><a href="#bitgit:git" style="font-size: 80%;">Using Git</a></li>
+     <!-- navigation toc: "Basic Git commands" --> <li><a href="#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Basic Git commands</a></li>
+     <!-- navigation toc: "Merging files with Git" --> <li><a href="#bitgit:git:merge" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Merging files with Git</a></li>
+     <!-- navigation toc: "Git working style with branching and stashing" --> <li><a href="#bitgit:git:branch:stash" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Git working style with branching and stashing</a></li>
+     <!-- navigation toc: "Replacing pull by fetch and merge" --> <li><a href="#bitgit:git:fetch" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Replacing pull by fetch and merge</a></li>
+     <!-- navigation toc: "Team work with forking and pull requests" --> <li><a href="#bitgit:git:team" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Team work with forking and pull requests</a></li>
+     <!-- navigation toc: "Cloning a repo with multiple branches" --> <li><a href="#bitgit:git:clone:branches" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Cloning a repo with multiple branches</a></li>
+     <!-- navigation toc: "Git workflows" --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Git workflows</a></li>
+     <!-- navigation toc: "Git tips" --> <li><a href="#___sec37" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Git tips</a></li>
+     <!-- navigation toc: "More documentation on Git" --> <li><a href="#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;More documentation on Git</a></li>
+     <!-- navigation toc: "Appendix: Working with multiple GitHub accounts" --> <li><a href="#appendix:github:multiple:accounts" style="font-size: 80%;">Appendix: Working with multiple GitHub accounts</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0002"></a>
+<!-- !split -->
+
+<h1>Googlecode <a name="bitgit:googlecode"></a></h1>
+
+To use Googlecode you need a general account on Google, which allows
+you to use Gmail, Google Docs, and other Google services.
+Googlecode offers free file hosting, but all the files are public and
+open to the world.
+
+<h2>Creating a new project  <a name="___sec12"></a></h2>
+
+Go to <a href="http://code.google.com/hosting" target="_self"><tt>http://code.google.com/hosting</tt></a> and click on
+<em>Creating a new project</em>. Fill out <em>all</em> the fields. For now
+the project name is <code>my-project</code>.
+You can
+choose between Git, Mercurial, or Subversion as version control
+system for your project, and this choice is difficult to change later.
+If you choose Git, you must create a file <code>.netrc</code> in your
+home directory containing the line
+<p>
+
+<!-- code=text (from !bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">machine code.google.com login uname password pw
+</pre></div>
+<p>
+Here, <code>uname</code> is your username for the Google account and
+<code>pw</code> is the Googlecode password which is generated for you on
+<a href="https://code.google.com/hosting/settings" target="_self"><tt>https://code.google.com/hosting/settings</tt></a> when you
+are logged in.
+The <code>.netrc</code> file avoids typing or pasting in
+your long and complicated password every time you push changes to
+the repository on <code>code.google.com</code>.
+
+<p>
+The next step is to clone the empty repository on your local machine
+so that you can add files:
+<p>
+
+<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone https://code.google.com/p/my-project/
+</pre></div>
+<p>
+Now you can go to the <code>my-project</code> directory and add files.
+Perform
+<p>
+
+<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git add .
+Terminal&gt; git commit -am &#39;First import of files.&#39;
+Terminal&gt; git push origin master
+</pre></div>
+<p>
+Click on <em>Source</em> and
+<em>Browse</em> on the project's web page, and observe that the added
+files are visible on the project page.
+
+<p>
+A very strong and useful feature with Googlecode, in my opinion, is
+that one can place documentation of the project anywhere in
+the repository, and HTML and PDF will be correctly shown in
+web browsers. (All other project hosting sites
+demands either wiki pages or special web areas for locating documentation.)
+The URL to your files is
+<p>
+
+<!-- code=text (from !bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://my-project.googlecode.com/git/
+</pre></div>
+<p>
+For other version control systems just replace <code>git</code> by
+<code>hg</code> or <code>svn</code>.
+For example, if we have HTML documentation of our project in
+the directory <code>doc/html</code>, we can point users to
+<p>
+
+<!-- code=text (from !bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://my-project.googlecode.com/git/doc/html/index.html
+</pre></div>
+<p>
+The HTML will be rendered correctly as opposed to when you load
+the similar file into the web browser from the repository,
+<p>
+
+<!-- code=text (from !bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://code.google.com/p/my-project/source/browse/doc/html/index.html
+</pre></div>
+<p>
+Now you can only see the HTML source code of this file, as is usual
+on other project hosting sites. We remark that MathJax
+mathematics within the HTML code is <em>not</em> rendered correctly. At the
+time of this writing, GitHub is the only service that offers full
+MathJax support when you need web pages with mathematics.
+
+<p>
+You can click on <em>Project Home</em> and then on <em>Administer</em> to edit the
+main page of the project. This is a wiki, using Google's wiki syntax,
+but it is quite easy to add links to your documentation, e.g.,
+<p>
+
+<!-- code=text (from !bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Browse the
+[https://my-project.googlecode.com/git/doc/API/html/index.html
+API documentation].
+</pre></div>
+<p>
+It is easy to allow others to push their changes to the
+repository: click on <em>Sharing</em> and then on <em>Administer</em>.
+The Google account names of people you allow push (write) access can be
+listed under each other in the <em>Project committers</em> field.
+
+<h2>Wiki pages  <a name="___sec13"></a></h2>
+
+Wiki pages can intuitively be made directly in the browser. However,
+it is often more convenient to have them locally on your computer.
+Click on <em>Source</em> and choose <em>wiki</em> on the <em>Repository</em> pull down menu.
+The proper clone command to get a copy of the wiki repository then
+appears.
+
+<p>
+Googlecode applies their own Google wiki format. My preference is
+to write documentation in the neutral <a href="https://github.com/hplgit/doconce" target="_self">Doconce</a> format and transform the document to LaTeX, HTML, Sphinx, and Google wiki.
+The wiki can then be copied from the project directories to the
+wiki directory and then pushed to the repository. This ensures
+that there is only one source of the documentation (despite the need
+for many formats) and that the wiki pages are frequently updated.
+
+<p>
+<!-- <a href="https://odespy.googlecode.com/git/doc/API/index.html" target="_self"><tt>https://odespy.googlecode.com/git/doc/API/index.html</tt></a> -->
+<!-- <a href="https://odespy.googlecode.com/git/doc/tutorial/html/wrap_odesolvers.html" target="_self"><tt>https://odespy.googlecode.com/git/doc/tutorial/html/wrap_odesolvers.html</tt></a> -->
+
+<p>
+<p>
+<ul class="pager">
+  <li class="previous">
+    <a href="._main_bitgit-bootstrap001.html">&larr; Prev</a>
+  </li>
+
+  <li class="next">
+    <a href="._main_bitgit-bootstrap003.html">Next &rarr;</a>
+  </li>
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+
