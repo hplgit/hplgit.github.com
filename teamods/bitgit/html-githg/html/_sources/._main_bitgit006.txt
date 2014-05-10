@@ -1,342 +1,383 @@
 .. !split
 
-.. _bitgit:hg:
+.. _bitgit:git:
 
-Using Mercurial
-===============
-
-
-.. index:: Mercurial
-
-.. index:: hg
+Using Git
+=========
 
 
-Mac and Linux users will normally work with Mercurial through commands in
-a terminal window, which is the emphasized interface described here.
-Windows users will prefer to use TortoiseHG. This graphical interface is
-mostly self-explanatory, but a brief description appears below.
-
-Basic use of TortoiseHG on a Windows machine
---------------------------------------------
-
-When you have an account on Bitbucket and have downloaded and installed
-TortoiseHG, you are ready to work with Mercurial repositories the
-following way.
-
- * Start  *Hg workbench*
-
- * Register your username as your email address: choose *File - Settings*
-   and then *Commit*.
-
- * Clone a repository: choose *File - clone repository*. Paste the
-   URL of the Bitbucket repo as *Source* and set
-   *Destination* as some preferred directory on your machine.
-   You will be prompted for a password which is the password for your
-   Bitbucket account.
-
- * When a file is changed and you want to commit the changes,
-   right-click in the Explorer window showing the Mercurial directory
-   and choose *Commit*. Write a comment in the text field to the right
-   to document the changes.
-
- * To synchronize your local files with the repository (i.e., to do a
-   ``push`` command), right-click in the Explorer window, choose
-   *TortoiseHG - Synchronize*. You need to provide the password for the
-   Bitbucket account.
-
-Many prefer to work in Visual Studio with their program files on Windows.
-This is easy also when you adopt Bitbucket as repo. Just start VisualStudio,
-make a solution and a project, create the desired files, then one can
-just right-click with the mouse on the solution, the project, or the
-file one wants to commit and choose *Commit*.
-
-Basic Mercurial commands
-------------------------
+.. index:: git
 
 
-.. index:: hg clone
+Most Mac and Linux users prefer to work with Git via commands in a
+terminal window. Windows users may prefer a graphical user interface (GUI),
+and there are many `options <http://git-scm.com/downloads/guis>`_ in
+this respect. There are also GUIs for Mac users.
+Here we concentrate on the efficient command-line interface to Git.
+
+Basic Git commands
+------------------
 
 
-Cloning  (2)
+.. index:: git clone
+
+
+Cloning  (1)
 ~~~~~~~~~~~~
 
-You get started with your project on a new machine or another user
-can get started with the project by the command
+You get started with your project on a new machine, or another user
+can get started with the project,
+by running
 
 .. code-block:: text
 
-        Terminal> hg clone ssh://hg@bitbucket.org/user/my-project
+        Terminal> git clone git@github.com:user/My-Project.git
+        Terminal> cd My-Project
+        ls
+
+Recall to replace ``user`` by your real username and ``My-Project`` by the
+actual project name.
 
 
+.. index:: git pull
 
-.. index:: hg pull
+.. index:: git add
 
-.. index:: hg add
+.. index:: git rm
 
-.. index:: hg remove
+.. index:: git mv
 
-.. index:: hg move
-
-.. index:: hg commit
-
-
-.. index:: hg push
+.. index:: git commit
 
 
-The pull-change-push cycle  (2)
+.. index:: git push
+
+
+The pull-change-push cycle  (1)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Your typical working style with the ``my-project`` project goes as follows.
-First you go to the desired directory where this project is stored on
-your local computer and make sure
-you have the latest versions of the files:
+The typical work flow with the "My Project" project starts with
+updating the local repository by going to the ``My-Project`` directory
+and writing
 
 .. code-block:: text
 
-        Terminal> hg pull
-        Terminal> hg update
+        Terminal> git pull origin master
 
-These commands download the latest versions of the files from
-your ``bitbucket.org`` repository and make them ready for changes on
-your computer. The ``pull`` command requires a functioning Internet
-connection.
+You may want to do ``git fetch`` and ``git merge`` instead
+of ``git pull`` as explained in the section :ref:`bitgit:git:fetch`,
+especially if you work with branches.
 
-You can now edit some files. Maybe you also add, remove, and move some files:
-
-.. code-block:: text
-
-        Terminal> hg add filename
-        Terminal> hg remove filename
-        Terminal> hg rename oldfilename ../somedir/newfilename
-
-The removal of a file is physically performed when you do a
-``hg commit``. The file is never removed from the repository, only
-hidden, so it is easy to get the file and its entire history
-back at a later stage.
-
-After some changes, you have to commit and push the files to the
-repository at ``bitbucket.org``:
+You can now edit files, make new files, and make new directories.
+New files and directories must be added with ``git add``.
+There are also Git commands for deleting, renaming, and moving
+files. Typical examples on these Git commands are
 
 .. code-block:: text
 
-        Terminal> hg commit -m 'Description of changes.'
-        Terminal> hg push
+        Terminal> git add file2.* dir1 dir2  # add files and directories
+        Terminal> git rm file3
+        Terminal> git rm -r dir2
+        Terminal> git mv oldname newname
+        Terminal> git mv oldname ../newdir
 
-Note that you cannot easily redo the description so be careful with
-the wording. You can run ``hg diff`` to get a listing of all
-the changes you have made since the last commit or pull command.
-
-
-.. index:: hg stat
-
-
-The command
+When your chunk of work is ready,
+it is time to commit your changes (note the ``-am`` option):
 
 .. code-block:: text
 
-        Terminal> hg stat
+        Terminal> git commit -am 'Description of changes.'
 
-shows the status of the individual files (``M`` for modified, ``A`` for
-added, ``R`` for removed), and you should pay attention to files with a
-question mark because these are not tracked in the repository. It is
-very easy to forget adding new files so ``hg stat`` is a useful command
-to ensure that all files you want to track have been added to the
-repository.
+If typos or errors enter the message, the ``git commit --amend`` command
+can be used to reformulate the message.  Running ``git diff`` prior to
+``git commit`` makes it
+easier to formulate descriptive commit messages since this command
+gives a listing of all the changes you have made to the files since
+the last commit or pull command.
+
+You may perform many commits, to keep track of small changes, before
+you push your changes to the global repository:
+
+.. code-block:: text
+
+        Terminal> git push origin master
+
+It is recommended to push and pull frequently if the work takes place in several
+clones of the repo (i.e., there are many users or you work with the
+repo on different
+computers). Infrequent push and pull easily leads to merge problems
+(see the section :ref:`bitgit:git:merge`). Also remember that others
+cannot get your changes before they are pushed.
 
 
-.. index:: hg annotate
 
-.. index:: hg log
+.. admonition:: Do commit and pull often
+
+   If the central repo undergoes changes (by you on other computers or by
+   others), it is essential to often commit your local work and perform
+   a pull. This will keep your local files in sync with the repo.
+   Failing to frequently commit and pull (and hence merge your files with
+   the repo) will most likely lead to substantial merge problems at a
+   later stage (because the files have become too different for an automatic
+   merge algorithm to succeed).
 
 
-Viewing the history of files  (2)
+
+
+
+.. index:: git status
+
+
+
+.. admonition:: Do not forget to add important files
+
+   You should run ``git status -s`` frequently to see the status of
+   files: ``A`` for added, ``M`` for modified, ``R`` for renamed,
+   and ``??`` for not being registered in the repo. Pay particular attention
+   to the ``??`` files and examine if all of them are redundant or easily
+   regenerated from other files - of not, run ``git add``.
+
+
+
+
+
+Viewing the history of files  (1)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can easily see
-who did what with the various files. For example,
-
-
-.. code-block:: text
-
-        Terminal> hg annotate -aun filename
-
-lists the various lines in the file ``filname`` annotated with the revision
-number of the latest change of the line and the name of the user who
-performed the change.
-
-Another command,
+A nice graphical tool allows you to view all changes, or just
+the latest ones:
 
 .. code-block:: text
 
-        Terminal> hg log -p filename | less
+        Terminal> gitk --all
+        Terminal> gitk --since="2 weeks ago"
 
-lists the history of ``filename`` in more detail so that you can track
-the evolution of this file. Adding the ``--follow`` option will list the
-history also when ``filename`` had other names.  The history of all
-files in a directory is listed by specifying the directory name(s).
-No name specification gives the history of the whole repo.
 
-More compact output from ``hg log``, without line differences, is triggered by
-the ``--stat`` option:
+
+.. index:: git log
+
+.. index:: git blame
+
+
+You can also view changes to all files, some selected ones, or
+a subdirectory:
 
 .. code-block:: text
 
-        Terminal> hg log --stat filename | less   # changes to one file
-        Terminal> hg log --stat | less            # changes to all files
+        Terminal> git log -p                 # all changes to all files
+        Terminal> git log -p filename        # changes to a specific file
+        Terminal> git log --stat --summary   # compact summary
+        Terminal> git log --stat --summary subdir
 
-The combination ``-p --stat`` equips the line differences with an overview
-of which files that were changed in each revision.
+Adding ``--follow`` will print the history of file versions before the
+file got its present name.
 
-If you wonder what has recently happened to a file after updating your
-local repository, just run ``hg log -p --stat``: the last changes appear
-in the beginning of the output.
+To show the author who is responsible for the last modification of each
+line in the file, use ``git blame``:
+
+.. code-block:: text
+
+        Terminal> git blame filename
+        Terminal> git blame --since="1 week" filename
+
+A useful command to see the history of who did what, where individual
+edits of words are highlighted (``--word-diff``), is
+
+.. code-block:: text
+
+        git log -p --stat --word-diff filename
+
+Removed words appear in brackets and added words in curly braces.
+
+Looking for when a particular piece of text entered or left the file,
+say the text ``def myfunc``, one can run
+
+.. code-block:: text
+
+        Terminal> git log -p --word-diff --stat -S'def myfunc' filename
+
+This is useful to track down particular changes in the files to see when
+they occurred and who introduced them. One can also search for regular
+expressions instead of exact text: just replace ``-S`` by ``-G``.
 
 
-.. index:: hg revert
+.. index:: git diff
 
-.. index:: hg cat
+.. index:: git checkout
 
 
-Retrieving old files  (2)
+Retrieving old files  (1)
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To restore an old version of a file with name ``filename``,
-check the file history with
-``hg log -p filename`` and find the revision number corresponding to the
-version of the file you want. Say this revision number is 152.
-The command
+Occasionally you need to go back to an earlier version of a file,
+say its name is ``f.py``. Start with viewing the history:
 
 .. code-block:: text
 
-        Terminal> hg revert -r 152 filename
+        Terminal> git log f.py
 
-replaces the current version of the file by the old one from revision 152.
-Sometimes it is better to store the old version in a separate file:
-
-.. code-block:: text
-
-        Terminal> hg cat -r 152 filename > somefile
-
-The entire local repo can also be set back:
+Find a commit candidate from the list that you will compare the
+present version to, copy the commit hash (string like
+``c7673487...``), and run
 
 .. code-block:: text
 
-        Terminal> hg update -r 152
-        Terminal> hg update            # go back to the latest version again
+        Terminal> git diff c7673487763ec2bb374758fb8e7efefa12f16dea f.py
+
+where the long string is the relevant commit hash. You can now view the
+differences between the most recent version and the one in
+the commit you picked (see the section :ref:`bitgit:git:fetch` for how to
+configure the tools used by the ``git diff`` command). If you want to restore the old file, write
+
+.. code-block:: text
+
+        Terminal> git checkout c7673487763ec2bb374758fb8e7efefa12f16dea f.py
+
+To go back to another version (the most recent one, for instance),
+find the commit hash with ``git log f.py``, and do ``get checkout
+<commit hash> f.py``.
+
+If ``f.py`` changed name from ``e.py`` at some point and you want
+``e.py`` back, run ``git log --follow f.py`` to find the commit
+when ``e.py`` existed, and do a ``git checkout <commit hash> e.py``.
+
+In case ``f.py`` no longer exists, run ``git log -- f.py`` to
+see its history before deletion. The last commit shown does
+not contain the file, so you need to check out the next last
+to retrieve the latest version of a deleted file.
+
+Often you just need to *view* the old file, not replace the current
+one by the old one, and then ``git show`` is handy. Unfortunately,
+it requires the full path from the root git directory:
+
+.. code-block:: text
+
+        Terminal> git show \
+                  c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/f.py
 
 
+Reset the entire repo to an old version
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Comments on two-level repositories
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Run ``git log`` on some file and find the commit hash of the date
+or message when want to go back to. Run ``git checkout <commit hash>``
+to change all files to this state.
+The problem of going back to the most recent state is that ``git log``
+has no newer commits than the one you checked out. The trick is to say
+``git checkout master`` to set all files to most recent version again.
 
-Mercurial has a two-level type of repository: there is global
-repository for all users of the ``my-project`` tree at ``bitbucket.org``,
-but each user also has a local repository (automatically made). To
-update files, one must first pull new files from the global repository
-(``pull``) and then update the local repository (``update``), before any
-file can be edited. The ``hg commit`` command saves files in the local
-repository. One may run many ``hg commit`` commands to make a sequence
-of corresponding versions of files in the local repository. Finally,
-when the local versions are ready to be pushed to the global
-repository, one runs the ``hg push`` command.
+If you want to reset all files to an old version and commit this state
+as the valid present state, you do
 
-Older version control systems, including Subversion and CVS, have only
-a global repository and no local ones.  The advantage of the two-level
-repository is that you can change your files locally and keep track of
-the changes (by doing ``hg commit``) without affecting other users of
-the files.  This feature allows you to commit changes to the global
-repository only when you feel comfortable with the state of the files.
-Nevertheless, if others work actively on the same files as you, it is
-generally recommended to push often in order to exchange the latest
-version of the files. This strategy may avoid problems with future
-merging of files.
 
-.. _bitgit:hg:merge:
+.. code-block:: text
 
-Merging files with Mercurial
-----------------------------
+        Terminal> git checkout c7673487763ec2bb374758fb8e7efefa12f16dea .
+        Terminal> git commit -am 'Resetting to ...'
+
+Note the period at the end of the first command (without it, you only
+get the possibility to look at old files, but the next commit is not
+affected).
+
+Going back to the last commit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sometimes accidents with many files happen and you want to go back
+to the last commit. Find the hash of the last commit and do
+
+
+.. code-block:: text
+
+        Terminal> git reset --hard c867c487763ec2
+
+This command destroys *everything* you have done since the last commit.
+
+.. _bitgit:git:merge:
+
+Merging files with Git
+----------------------
 
 
 .. index:: merging files
 
 
-It might have happened that others and you have edited the same files
-at the same time. How should the edits then be combined?  Often the
-``hg update`` command is clever enough to merge the changes made by
-different users automatically. If not, you have to run an explicit ``hg
-merge`` command.  This command tries to use some merge
-program on your computer system to automatically merge files. If this
-fails, ``hg merge`` invokes some graphical tool to help you resolve the
-conflict between files.  Example on popular merge programs for this
-purpose are ``meld``, ``xxdiff``, ``kdiff3``, and ``diffuse``.  You can
-specify the merge program, say ``xxdiff``, by ``hg merge --tool xxdiff``.
-How you now proceed is dependent on the particular program. Usually,
-for each change you must choose either your new local version of the
-text, or your old local version of the text, or the version of the
-text pulled from the global repository.  After using the merge program
-successfully you must save the merged file and perform an ``hg commit``
-command on it, and perhaps do an ``hg push`` to also update the global
-repository with the merged file(s).
+The ``git pull`` command fetches new files from the repository and
+tries to perform an automatic merge if there are conflicts between
+the local files and the files in the repository. Alternatively,
+you may run ``git fetch`` and ``git merge`` to do the same
+thing as described in the section :ref:`bitgit:git:fetch`.
+We shall now address what do to if the merge goes wrong, which
+occasionally happens.
 
-Suppose you do not manage to merge using the merge tool. Then you have
-to invoke the file, say ``myfile`` in an editor and do the merge
-manually. There will often be lines starting with ``<<<<``, ``=====``,
-and ``>>>>`` to mark conflicting texts (*merge markers*). After removing
-these lines and editing the text manually, you must register the conflict
-as resolved:
+Git will write a message in the terminal window
+if the merge is unsuccessful for one or
+more files. These files will have to be edited manually.
+Merge markers of the type ``>>>>>``, ``======``, and ``<<<<<`` have been
+inserted by Git to mark sections of a file where the version in the
+repository differ from the local version. You must decide which
+lines that are to appear in the final, merged version. When done,
+perform ``git commit`` and the conflicts are resolved.
 
-.. code-block:: text
+Graphical merge tools may ease the process of merging text files.  You
+can run ``git mergetool --tool=meld`` to open the merge tool ``meld`` for
+every file that needs to be merged (or specify the name of a
+particular file). Other popular merge tools supported by Git are
+``araxis``, ``bc3``, ``diffuse``, ``ecmerge``, ``emerge``, ``gvimdiff``, ``kdiff3``,
+``opendiff``, ``p4merge``, ``tkdiff``, ``tortoisemerge``, ``vimdiff``, and
+``xxdiff``.
 
-        Terminal> hg resolve -m merge myfile
-        Terminal> hg commit -m merge myfile
-
-
-You can read more about merging files in the `hgbook <http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html>`_.
-We shall now illustrate the merge problems through an example.
-Suppose we have a global repository ``tmp_repo``, and two (cloned)
-directories ``tmp1`` and ``tmp2``, corresponding to two users, each with
-their copy of the global repository.  There is only one file ``myfile``
-in the repository. We then simulate the two users and perform edits in
-parallel. The shell script below simulates the two users and
-illustrates the importance of pulling before editing and the need of
-merge.
+Below is a Unix shell script illustrating how to make a global
+repository in Git, and how two users clone this repository and
+perform edits in parallel. There is one file ``myfile`` in the
+repository.
 
 
 .. code-block:: bash
 
         #!/bin/sh
-        # Demo script for exemplifying hg merge
+        # Demo script for exemplifying git and merge
         
         rm -rf tmp1 tmp2 tmp_repo   # Clean up previous runs
         
         mkdir tmp_repo   # Global repository for testing
         cd tmp_repo
+        git --bare init --shared
+        cd ..
+        
+        # Make a repo that can be pushed to tmp_repo
+        mkdir _tmp
+        cd _tmp
         cat > myfile <<EOF
         This is a little
         test file for
         exemplifying merge
         of files in different
-        hg directories.
+        git directories.
         EOF
-        hg init   # Make hg global repository out of this directory
-        hg add    # Add all files not mentioned in ~/.hgignore
-        hg commit -m 'first commit'
+        git init
+        git add .   # Add all files not mentioned in ~/.gitignore
+        git commit -am 'first commit'
+        git push ../tmp_repo master
         cd ..
+        rm -rf _tmp
         
         # Make a new hg repositories tmp1 and tmp2 (two users)
-        hg clone tmp_repo tmp1
-        hg clone tmp_repo tmp2
-        
+        git clone tmp_repo tmp1
+        git clone tmp_repo tmp2
         # Change myfile in the directory tmp1
         cd tmp1
         # Edit myfile: insert a new second line
         perl -pi -e 's/a little\n/a little\ntmp1-add1\n/g' myfile
         # Register change in local repository
-        hg commit -m 'Inserted a new second line in myfile.'
+        git commit -am 'Inserted a new second line in myfile.'
         # Look at changes in this clone
-        hg log -p
+        git log -p
+        # or a more compact summary
+        git log --stat --summary
+        # or graphically
+        #gitk
         # Register change in global repository tmp_repo
-        hg push
+        git push origin master
         cd ..
         
         # Change myfile in the directory tmp2 "in parallel"
@@ -346,26 +387,27 @@ merge.
         tmp2-add1
         EOF
         # Register change locally
-        hg commit -m 'Added a new line at the end'
+        git commit -am 'Added a new line at the end'
         # Register change globally
-        hg push
+        git push origin master
         # Error message: global repository has changed,
         # we need to pull those changes to local repository first
         # and see if all files are compatible before we can update
         # our own changes to the global repository.
-        # hg writes
-        # abort: push creates new remote head d0a2f8e6b9d9!
-        # (you should pull and merge or use push -f to force)
+        # git writes
+        #To /home/hpl/vc/scripting/manu/py/bitgit/src-bitgit/tmp_repo
+        # ! [rejected]        master -> master (non-fast-forward)
+        #error: failed to push some refs to ...
         
-        hg pull
-        # hg writes:
-        # added 1 changesets with 1 changes to 1 files (+1 heads)
-        # (run 'hg heads' to see heads, 'hg merge' to merge)
-        hg merge
-        # Successful merge!
-        cat myfile
-        hg commit -m merge
-        hg push
+        git pull origin master
+        # git writes:
+        #Auto-merging myfile
+        #Merge made by recursive.
+        # myfile |    1 +
+        # 1 files changed, 1 insertions(+), 0 deletions(-)
+        cat myfile  # successful merge!
+        git commit -am merge
+        git push origin master
         cd ..
         
         # Perform new changes in parallel in tmp1 and tmp2,
@@ -374,14 +416,13 @@ merge.
         # Change myfile in the directory tmp1
         cd tmp1
         # Do it all right by pulling and updating first
-        hg pull
-        hg update
+        git pull origin master
         # Edit myfile: insert "just" in first line.
         perl -pi -e 's/a little/tmp1-add2 a little/g' myfile
         # Register change in local repository
-        hg commit -m 'Inserted "just" in first line.'
+        git commit -am 'Inserted "just" in first line.'
         # Register change in global repository tmp_repo
-        hg push
+        git push origin master
         cd ..
         
         # Change myfile in the directory tmp2 "in parallel"
@@ -389,43 +430,552 @@ merge.
         # Edit myfile: replace little by modest
         perl -pi -e 's/a little/a tmp2-replace1\ntmp2-add2\n/g' myfile
         # Register change locally
-        hg commit -m 'Replaced "little" by "modest"'
+        git commit -am 'Replaced "little" by "modest"'
         # Register change globally
-        hg push
+        git push origin master
         # Not possible: need to pull changes in the global repository
-        hg pull
-        hg update
-        # hg update aborts: we have to run hg merge
-        diff myfile ../tmp_repo/myfile
-        echo 'Now you must do hg merge manually'
+        git pull origin master
+        # git writes
+        #CONFLICT (content): Merge conflict in myfile
+        #Automatic merge failed; fix conflicts and then commit the result.
+        # we have to do a manual merge
+        cat myfile
+        echo 'Now you must edit myfile manually'
 
 
-Try to run this `file <http://hplgit.github.com/teamods/bitgit/_static-bitgit/hg_merge.sh>`_ named
-``hg_merge.sh`` by ``sh -x hg_merge.sh``.
-To resolve the resulting merge conflict you need to go to the ``tmp2``
-directory, run ``hg merge --tool meld`` and use the ``meld`` tool to
-select which text snippets that should make up the final, merged
-version. Save and quit ``meld`` and perform ``hg commit -m merge``.  You
-can now do ``hg push`` successfully to update the global repository.
+You may run this file `git_merge.sh <http://hplgit.github.com/teamods/bitgit/_static-bitgit/git_merge.sh>`_ named
+by ``sh -x git_merge.sh``.
+At the end, the versions of ``myfile`` in the
+repository and the ``tmp2`` directory are in conflict. Git tried
+to merge the two versions, but failed. Merge markers are left in
+``tmp2/myfile``:
 
-Stashing with Mercurial
------------------------
+.. code-block:: text
 
-A recent `extension module <http://mercurial.selenic.com/wiki/ShelveExtension>`_ for Mercurial allows stashing for that version control system as well:
-``hg shelve --all`` is similar for ``git stash``, and ``hg unshelve``
-is similar to ``git stash apply``.
+        <<<<<<< HEAD
+        This is a tmp2-replace1
+        tmp2-add2
+        
+        =======
+        This is tmp1-add2 a little
+        >>>>>>> ad9b9f631c4cc586ea951390d9415ac83bcc9c01
+        tmp1-add1
+        test file for
+        exemplifying merge
+        of files in different
+        git directories.
+        tmp2-add1
+
+Launch a text editor and edit the file, or use ``git mergetool``,
+so that the file becomes correct.
+Then run ``git commit -am merge`` to finalize the merge.
+
+.. _bitgit:git:branch:stash:
+
+Git working style with branching and stashing
+---------------------------------------------
+
+.. git clone is without branches, say something about that in clone
 
 
-More documentation on Mercurial
--------------------------------
+Branching and stashing are nice features of Git that allow you to try
+out new things without affecting the stable version of your files.
+Usually, you extend and modify files quite often and perform a ``git
+commit`` every time you want to record the changes in your local
+repository. Imagine that you want to correct a set of errors in some
+files and push these corrections immediately.  The problem is that
+such a push will also include the latest, yet unfinished files that you
+have committed.
 
- * `Mercurial Quick Start <http://mercurial.selenic.com/wiki/QuickStart>`_ (for the impatient)
+Branching
+~~~~~~~~~
 
- * `A Tour of Mercurial - The Basics <http://hgbook.red-bean.com/read/a-tour-of-mercurial-the-basics.html>`_
+A better organization of your work would
+be to keep the latest, ongoing
+developments separate from the more official and stable version
+of the files. This is easily achieved by creating a separate branch
+where new developments takes place:
 
- * `Mercurial FAQ <http://mercurial.selenic.com/wiki/FAQ>`_
 
- * `Mercurial Tutorial <http://mercurial.selenic.com/wiki/Tutorial>`_
+.. code-block:: text
 
- * `Mercurial: The Definitive Guide <http://hgbook.red-bean.com/>`_ (online or printed book)
+        Terminal> git branch newstuff      # create and switch to new branch
+        Terminal> # extend and modify files...
+        Terminal> git commit -am 'Modified ... Added a file on ...'
+        Terminal> git checkout master      # swith back to master
+        Terminal> # correct errors
+        Terminal> git push origin master
+        Terminal> git checkout newstuff    # switch to other branch
+        Terminal> git merge master         # keep branch up-to-date w/master
+        Terminal> # continue development work...
+        Terminal> git commit -am 'More modifications of ...'
+
+At some point, your developments in ``newstuff``
+are mature enough to be incorporated
+in the master branch:
+
+
+.. code-block:: text
+
+        Terminal> git checkout newstuff
+        Terminal> git merge master        # synchronize newstuff w/master
+        Terminal> git checkout master
+        Terminal> git merge newstuff      # synchronize master w/newstuff
+
+You no longer need the ``newstuff`` branch and can delete it:
+
+
+.. code-block:: text
+
+        Terminal> git branch -d newstuff
+
+This command deletes the branch locally. To also delete the branch
+in the remote repo, run
+
+
+.. code-block:: text
+
+        Terminal> git push origin --delete newstuff
+
+
+Stashing
+~~~~~~~~
+
+It is not possible to switch branches unless you have committed the
+files in the current branch. If your work on some files is in a mess
+and you want to change to another branch or fix other files in the
+current branch, a "global" commit affecting all files might be
+immature.  Then the `git stash <http://git-scm.com/book/en/Git-Tools-Stashing>`_ command is handy. It
+records the state of your files and sets you back to the state of the
+last commit in the current branch. With ``git stash apply`` you will update the
+files in this branch to the state when you did the last ``git
+stash``.
+
+Let us explain a typical case.  Suppose you have performed some
+extensive edits in some files and then you are suddenly
+interrupted. You need to fix some typos in some other files, commit
+the changes, and push. The problem is that many files are in an
+unfinished state - in hindsight you realize that those files should
+have been modified in a separate branch.  It is not too late to create
+that branch! First run ``git stash`` to get the files back to the state
+they were at the last commit. Then run ``git stash branch newstuff`` to
+create a new branch ``newstuff`` containing the state of the files when
+you did the (last) ``git stash`` command.  Stashing used this way is a
+convenient technique to move some immature edits after the last commit
+out in a new branch for further experimental work.
+
+
+.. warning::
+    You can get the stashed files back by ``git stash apply``. It is
+    possible to multiple ``git stash`` and ``git stash apply``
+    commands. However, it is easy to run into trouble with multiple
+    stashes, especially if they occur in multiple branches, as it becomes
+    difficult to recognize which stashes that belong to which branch.  A
+    good advice is therefore to do ``git stash`` *only once* to get back to
+    a clean state and then move the unfinished messy files to a separate
+    branch with ``git stash branch newstuff``.
+
+
+
+
+
+
+.. _bitgit:git:fetch:
+
+Replacing pull by fetch and merge
+---------------------------------
+
+The ``git pull`` command actually performs two steps that are sometimes
+advantageous to run separately. First, a ``get fetch`` is run to fetch
+new files from the repository, and thereafter a ``git merge`` command is
+run to merge the new files with your local version of the files.
+While ``git pull`` tries to do a lot and be smart in the merge, very
+often with success, the merge step may occasionally lead to
+trouble. That is why it is recommended to run a ``git merge``
+separately, especially if you work with branches.
+
+To fetch files from your repository at GitHub, which usually has
+the nickname ``origin``, you write
+
+
+.. code-block:: text
+
+        Terminal> git fetch origin
+
+You now have the possibility to check out in detail what the differences
+are between the new files and local ones:
+
+
+.. code-block:: text
+
+        Terminal> git diff origin/master
+
+This command produces comparisons of the files in the current local branch
+and the ``master`` branch at ``origin`` (the GitHub repo).
+In this way you can exactly see the differences between branches.
+It also gives you an overview of what others have done with
+the files.
+When you are ready to merge in the new files from the ``master`` branch
+of ``origin`` with the files in the current local branch, you say
+
+
+.. code-block:: text
+
+        Terminal> git merge origin/master
+
+
+Especially when you work with multiple branches, as outlined in
+the section :ref:`bitgit:git:branch:stash`, it is wise to first do a
+``get fetch origin`` and then update each branch separately. The
+``git fetch origin`` command will list the branches, e.g.,
+
+
+.. code-block:: text
+
+        * master
+          gh-pages
+          next
+
+After updating ``master`` as described, you can continue with another branch:
+
+
+.. code-block:: text
+
+        Terminal> git checkout next
+        Terminal> git diff origin/next
+        Terminal> git merge origin/next
+        Terminal> git checkout master
+
+
+Configuring the ``git diff`` command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``git diff`` command launches by default the
+Unix ``diff`` tool in the terminal window.
+Many users prefer to use other diff tools, and the desired one
+can be specified in
+your ``~/.gitconfig`` file. However, a much recommended approach is to
+wrap a shell script around the call to the diff program, because
+``git diff`` actually calls the diff program with a series of
+command-line arguments that will confuse diff programs that take
+the names of the two files to be compared as arguments.
+In ``~/.gitconfig`` you specify a script to do the diff:
+
+
+.. code-block:: text
+
+
+        [diff]
+        external = ~/bin/git-diff-wrapper.sh
+
+It remains to write the ``git-diff-wrapper.sh`` script.
+The  2nd and 5th command-line arguments passed to this script are the
+name of the files to be compared in the diff. A typical script may
+therefore look like
+
+
+.. code-block:: bash
+
+        #!/bin/sh
+        
+        diff "$2" "$5" | less
+
+Here we use the standard (and quite primitive) Unix ``diff`` program,
+but we can replace ``diff`` by, e.g., ``diffuse``, ``kdiff3``, ``xxdiff``, ``meld``, ``pdiff``, or others. With a Python script you can easily check
+for the extensions of the files and use different diff tools for
+different types of files, e.g., ``latexdiff`` for LaTeX files
+and ``pdiff`` for pure text files.
+
+
+.. admonition:: Replacing all your files with those in the repo
+
+   Occasionally it becomes desirable to replace *all* files in
+   the local repo with those at the file hosting service.
+   One possibility is removing your repo and cloning again, or
+   use the Git commands
+   
+   
+   .. code-block:: text
+   
+           Terminal> git fetch --all
+           Terminal> git reset --hard origin/master
+
+
+
+
+.. _bitgit:git:team:
+
+Team work with forking and pull requests
+----------------------------------------
+
+
+.. index:: forking (a repo)
+
+
+.. index:: pull request
+
+
+.. index:: git fetch
+
+
+.. index:: git merge
+
+
+In small collaboration teams it is natural that everyone has push access
+to the repo. On GitHub this is known as the *Shared Repository Model*.
+As teams grow larger, there will usually be a few
+people in charge who should approve changes to the files. Ordinary team members
+will in this case not clone a repo and push changes, but instead
+*fork* the repo and send *pull requests*, which constitutes the
+*Fork and Pull Model*.
+
+Say you want to fork the repo ``https://github.com/somebody/proj1.git``.
+The first step is to press the *Fork* button on the project page for
+the ``somebody/proj1`` project on GitHub.
+This action creates a new repo ``proj1``, known as the forked repo,
+on your GitHub account.
+Clone the fork as you clone any repo:
+
+
+.. code-block:: text
+
+        Terminal> git clone https://github.com/user/proj1.git
+
+When you do ``git push origin master``, you update your fork.
+However, the original
+repo is usually under development too, and you need to pull from that
+one to stay up to date. A ``git pull origin master`` pulls from
+``origin`` which is your fork. To pull from the original repo, you
+create a name ``upstream``, either by
+
+
+.. code-block:: text
+
+        Terminal> git remote add upstream \
+                      https://github.com/somebody/proj1.git
+
+if you cloned with such an ``https`` address, or by
+
+
+.. code-block:: text
+
+        Terminal> git remote add upstream \
+                      git@github.com:somebody/proj1.git
+
+if you cloned with a ``git@github.com`` (SSH) address.
+Doing a ``git pull upstream master`` would seem to be the command for
+pulling the most recent files in
+the original repo. However,
+it is not recommended to update the forked repo's files this way
+because heavy development of the ``sombody/proj1`` project may
+lead to serious merge problems.
+It is much better to replace the pull by a separate
+*fetch* and *merge*.
+The typical workflow is
+
+
+.. code-block:: text
+
+        Terminal> git fetch upstream           # get new version of files
+        Terminal> git merge upstream/master    # merge with yours
+        Terminal> # Your files are up to date - ready for editing
+        Terminal> git commit -am 'Description...'
+        Terminal> git push origin master       # store changes in your fork
+
+
+At some point you would like to push your changes back to the original
+repo ``somebody/proj1``. This is done by a `pull request <https://help.github.com/articles/using-pull-requests>`_. Make sure you
+have selected the right branch on the project page of your forked
+project. Press the *Pull Request* button and fill out the form that
+pops up.  Trusted people in the ``somebody/proj1`` project will now
+review your changes and if they are approved, your files are merged
+into the original repo. If not, there are tools for keeping a dialog
+about how to proceed.
+
+Also in small teams where everyone has push access, the fork and pull
+request model is beneficial for reviewing files before the repo
+is actually updated with new contributions.
+
+.. _bitgit:git:clone:branches:
+
+Cloning a repo with multiple branches
+-------------------------------------
+
+An annoying feature of Git for beginners is the fact that if you
+clone a repo, you only get the ``master`` branch. There are seemingly
+no other branches:
+
+
+.. code-block:: text
+
+        Terminal> git branch
+        * master
+
+To see which branches that exist in the repo, type
+
+
+.. code-block:: text
+
+        Terminal> git branch -a
+        * master
+          remotes/origin/HEAD -> origin/master
+          remotes/origin/gh-pages
+          remotes/origin/master
+          remotes/origin/next
+
+If there is only one remote repo that
+you pull/push from/to, you can simply switch branch with ``git checkout``
+the usual way:
+
+
+.. code-block:: text
+
+        Terminal> git checkout gh-pages
+        Terminal> git branch
+        * gh-pages
+          master
+        Terminal> git checkout next
+        Terminal> git branch
+          gh-pages
+          master
+        * next
+
+You might need to do ``git fetch origin`` to see new branches made
+on other machines.
+
+When you have more than one remote, which is usually the case if you have
+forked a repo, see the section :ref:`bitgit:git:team`, you must use do a
+checkout with specifying the remote branch you want:
+
+
+.. code-block:: text
+
+        Terminal> git checkout -b gh-pages --track remote/gh-pages
+        Terminal> git checkout -b next --track upstream/next
+
+Files can be edited, added, or removed as soon as you have done
+the local checkout.
+
+It is possible to write a little script that takes the output of
+``git branch -a`` after a ``git clone`` command and automatically check
+out all branches via ``git checkout``.
+
+Git workflows
+-------------
+
+Although the purpose of these notes is just to get the reader started
+with Git, it must be mentioned that there are advanced features of Git
+that have led to very powerful workflows with files and people,
+especially for software development.  There is an official `Git
+workflow model <https://www.kernel.org/pub/software/scm/git/docs/gitworkflows.html>`_
+that outlines the basic principles, but it can be quite advanced for
+those with modest Git knowledge.  A more detailed explanation of a
+recommended workflow for beginners is given in the `developer
+instructions <https://bitbucket.org/petsc/petsc/wiki/developer-instructions-git>`_
+for the software package PETSc. This is highly suggested reading.  The
+associated "quick summary" of Git commands for their workflow is also
+useful.
+
+.. Make a case with computer code and a latex document
+
+.. get fetch origin, git diff to see what, git blame and so on
+
+.. Have a scripted flow of changes, do a rewrite in a new branch,
+
+.. another do software developments in a new branch, merge back,
+
+.. use dolfin workflow as model, but in a real-life case.
+
+.. Can make movie by having two users, one in Mac, one in Ubuntu,
+
+.. and switch back and forth to explain what is done. Write the
+
+.. script with such a video in mind. This is something I can play
+
+.. live too (for biocomp seminars also: Git workflows beyond
+
+.. heavy software development, could also be a blog, suggestions
+
+.. for student work, thesis work, cinpla, etc.). Could think of
+
+.. doconce source and then the collaborator edits the .tex file,
+
+.. it is overwritten, what do to. Or that could be a later chapter
+
+.. of the whole theater. Divide things into chapters: setting
+
+.. up the repo, John and Paul work, make short initial files.
+
+.. Or maybe markdown instead of doconce? Filter to latex...
+
+.. Software: random walk which writes all steps to file and
+
+.. generates a lot of data we won't have in the repo. Or wave1D,
+
+.. then it's easier to write the report...and all solutions can
+
+.. be written to file :-) at some stage the report should be
+
+.. be large (just copy a ready-made larger report in the script).
+
+.. The script can checkout two directories and just switch between
+
+.. these as two users, don't need to be different machines...
+
+
+Git tips
+--------
+
+How can I see which files are tracked by Git?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``git ls-files`` is the command:
+
+
+.. code-block:: text
+
+        Terminal> git ls-files            # list all tracked files
+        Terminal> git ls-files -o         # list non-tracked files
+        Terminal> git ls-files myfile     # prints myfile if it's tracked
+        Terminal> git ls-files myfile --error-unmatch
+
+The latter command prints an error message if ``myfile`` is not tracked.
+See ``man git-ls-files`` for the many options this utility has.
+
+More documentation on Git
+-------------------------
+
+ * `Git - the simple guide <http://rogerdudler.github.io/git-guide/>`_
+
+ * `Web course on Git <http://try.github.com/>`_
+
+ * `Everyday GIT With 20 Commands Or So <http://schacon.github.com/git/everyday.html>`_
+
+ * `Git cheat sheet <http://www.ndpsoftware.com/git-cheatsheet.html>`_
+
+ * `Git top 10 tutorials <http://sixrevisions.com/resources/git-tutorials-beginners/>`_
+
+ * `Lars Vogel's Git Tutorial <http://www.vogella.com/articles/Git/article.html>`_
+
+ * `Git Community Book <http://book.git-scm.com/>`_ (*explains* Git very well)
+
+ * `Git for Designers <http://hoth.entp.com/output/git_for_designers.html>`_ (aimed a people with no previous knowledge of version control systems)
+
+ * `Git Magic: Basic Tricks <http://www-cs-students.stanford.edu/~blynn/gitmagic/ch02.html>`_
+
+ * The official `Git Tutorial <http://schacon.github.com/git/gittutorial.html>`_
+
+ * `Git Tutorial Video <http://www.youtube.com/watch?v=TPY8UwlTIc0&feature=related>`_ on YouTube
+
+ * `Git Questions <http://wiki.sourcemage.org/Git_Guide>`_
+
+ * `Git Reference <http://gitref.org>`_ (can also be used as a tutorial on Git)
+
+ * `Git User Manual <http://schacon.github.com/git/user-manual.html>`_
+
+ * `Git home page <http://git-scm.com/>`_
+
+ * `Git and Mercurial command equivalence table <http://mercurial.selenic.com/wiki/GitConcepts#Command_equivalence_table>`_
+
+ * `Git/GitHub GUIs on Windows and Mac <http://git-scm.com/downloads/guis>`_
 

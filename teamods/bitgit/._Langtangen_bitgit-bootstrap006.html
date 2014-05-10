@@ -153,194 +153,64 @@ end of tocinfo -->
 
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
 
-<a name="part0002"></a>
+<a name="part0006"></a>
 <!-- !split -->
 
-<h1>Bitbucket <a name="bitgit:bitbucket"></a></h1>
+<h1>Appendix: Working with multiple GitHub accounts <a name="appendix:github:multiple:accounts"></a></h1>
 
-To start using Bitbucket, go to <code>bitbucket.org</code> and create an account.
-The communication channel with Bitbucket repositories is either
-through SSH or HTTPS.  To use SSH, you must upload your SSH key,
-typically the contents of the file <code>id_rsa.pub</code> or <code>id_dsa.pub</code> in the
-<code>.ssh</code> subdirectory of your home directory. Go to the page for your
-account, choose <em>SSH keys</em>, and upload one of these files.
-The essence of the SSH keys is that they allow you to communicate with
-Bitbucket without using a password, which is very convenient.
+Working against different GitHub accounts is easy if each project you work
+with on each account adds you as a collaborator. The term "you" here means your
+primary username on GitHub. My strong recommendation is to always check
+out a project
+using your primary GitHub username.
 
 <p>
-There are links to extensive help pages if you do not have such keys
-or if you are unfamiliar with SSH. Follow these steps on Mac or Linux
-machines to generate keys: 1) check that you have <code>ssh</code> installed; 2)
-create a <code>.ssh</code> directory in your home directory; and 3) run
-<code>ssh-keygen</code> in the <code>.ssh</code> directory (you are prompted for a
-passphrase - just write something). On Windows one applies the PuTTY
-and the TortoiseHG programs to generate and register keys, see the
-help pages on Bitbucket. Once the keys are generated, you can continue
-using them on any computer.
-
-<h2>Creating a new project  <a name="___sec7"></a></h2>
-
-Click at <em>Repositories</em> and at <em>Create repository</em>.
-You can now
-
-<ul>
- <li> fill in the name of the project, here <code>my-project</code>,</li>
- <li> decide whether the project is private or public (the number of
-   private repos is unlimited for yourself, but you have to pay to
-   invite more than five users in total to share your private repos
-   unless you are <a href="http://blog.bitbucket.org/2012/08/20/bitbucket-academic/" target="_self">certified to be a student or work at an academic
-   institution</a>),</li>
- <li> choose between the Git or Mercurial version control system
-   (here we assume you run Git),</li>
- <li> click whether you want issue tracking for reporting errors,
-   suggesting improvements, etc.,</li>
- <li> click whether you want a wiki page associated with the project,</li>
- <li> fill in a brief description,</li>
- <li> click on <em>Create repository</em>.</li>
-</ul>
-
-While doing this you may also want to have the <a href="http://confluence.atlassian.com/display/BITBUCKET/Bitbucket+101" target="_self">Bitbucket 101 guide</a>
-available.
+Occasionally you want to create a new GitHub account, say for a project <code>XYZ</code>.
+For such a non-personal account, do <em>not</em> provide an SSH key of any
+particular user. The reason is that this user will then get two
+GitHub identities, and switching between these identities will require
+some special tweakings. Just forget about the SSH key for a project
+account and add
+collaborators to repos using each collaborators personal GitHub username.
 
 <p>
-It is now time to <em>clone</em> (copy) the project to your laptop.
-Go to the project page
-(you are automatically
-brought to the project page when creating a new project).
-Find the <em>Clone</em> button, click on it, choose
-<em>SSH</em>, copy the <em>clone</em> line and run this command in a terminal:
+If you really need to operate the <code>XYZ</code> account as a
+personal account, you must provide an SSH key that is different from
+any other key at any other GitHub account (you will get an error message
+if you try to register an already registered SSH key, but it is possible to
+get around the error message by providing
+an <code>id_rsa.pub</code> key on one account and an <code>id_dsa.pub</code> on another - that
+will cause trouble). Jeffrey Way has written a recipe for <a href="http://net.tutsplus.com/tutorials/tools-and-tips/how-to-work-with-github-and-multiple-accounts/" target="_self">how to operate multiple GitHub accounts
+using multiple identities</a>.
+
+<p>
+To debug which identity that is used when you pull and push to
+GitHub accounts, you can first run
 <p>
 
 <!-- code=text (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone git@bitbucket.org:user/my-project.git
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; ssh -Tv git@github.com
 </pre></div>
 <p>
-You must replace <code>user</code> with your own username at Bitbucket and
-<code>my-project</code> by the real project name.
-
-<p>
-The first time you do the clone command you may be prompted by cryptic
-Unix output ending with "Are you sure you want to continue connecting
-(yes/no)?".  Just answer yes.
-
-<p>
-The next step is to collect files and directories that should make up
-the project and put them in the <code>my-project</code> directory.
-Standing in the <code>my-project</code> directory, the following Git command is used
-to add all files in the current
-directory <em>tree</em>, except those having file types listed in <code>.gitignore</code>:
+to see your current identity and which SSH key that was used to identify you.
+Typing
 <p>
 
 <!-- code=text (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git add .
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; ssh-add -l
 </pre></div>
 <p>
-Thereafter, the changes to the repository (here adding of files) must
-<em>committed</em> (registered):
-<p>
-
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git commit -am &#39;Initial import of files.&#39;
-</pre></div>
-<p>
-The text following the <code>-am</code> option is a required description of the
-changes that have taken place. This description does not matter much
-for this initial import of files into the repository, but is of
-importance for future commit commands so that you can easily track the
-history of your project files and inform others (and yourself) what you have
-done with the files.
-
-<p>
-The final step is to push the local changes to the master repo at
-Bitbucket:
-<p>
-
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git push -u origin master
-</pre></div>
-<p>
-You must be connected to the Internet for the <code>push</code> command to work since
-it sends file information to the <code>bitbucket.org</code> site.
-
-<p>
-Further work with the files must always follow the pull, edit, commit, and
-push steps explained in
-The section <a href="._main_bitgit-bootstrap005.html#bitgit:git">Using Git</a> for Git.
-
-<h3>Collaborating  <a name="___sec8"></a></h3>
-
-There is a button <em>Send invitation</em> on the project home page where you
-can invite other Bitbucket users to have push (write) access to your
-repo. Many prefer to be notified in email when changes are pushed to
-the repo: click the settings wheel to the right, choose <em>Services</em>,
-then <em>Email</em>, and fill in the email addresses that are to receive
-notifications on updates. Under <em>Access management</em> you can fill in
-the Bitbucket names of users who are have pull (read)
-or push (write) access to the repo.
-
-<h2>User web pages <a name="bitgit:bitbucket:web"></a></h2>
-
-Bitbucket can host web pages associated with a Bitbucket account,
-but does not yet offer web pages as part of a project. Say
-your account/username is <code>user</code>.  Make a new repository on
-Bitbucket called <code>user.bitbucket.org</code>.  Clone it, fill it with a
-file, and push back, e.g.,
+lists all your SSH keys. The shown strings can be compared with the
+string in the SSH key field of any GitHub account.
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone git@bitbucket.org:user/user.bitbucket.org.git
-Terminal&gt; cd user.bitbucket.org
-Terminal&gt; echo &quot;Welcome to my web pages!&quot; &gt; test.html
-Terminal&gt; git add test.html
-Terminal&gt; git commit -am &#39;First web page&#39;
-Terminal&gt; git push origin master
-</pre></div>
-<p>
-You can now load the URL <code>http://user.bitbucket.org/test.html</code> into
-a web browser and view the page. By creating various subdirectories
-you can host web pages for a series of projects in this repo.
-
-<h2>Linking to Bitbucket files <a name="bitgit:bitbucket:URLs"></a></h2>
-
-Unfortunately, the default URL shown in your browser to a file in
-a Bitbucket repo contains information about the version of the file.
-For example, a file <code>v1.c</code> under Git might appear with the URL
-
-<p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://bitbucket.org/user/proj/src/5fb228107044/dir/v1.c?at=master
-</pre></div>
-<p>
-The string <code>5fb228107044</code>, called commit hash,
-is connected to the version of this file
-and will change when the file is updated. Such varying URLs are
-useless when you to link to
-the file in documents. To make a stable link to the
-latest version of a file (in a public repo),
-replace the commit hash by <code>master</code> and remove
-the final <code>?at=master</code>:
-
-<p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://bitbucket.org/user/proj/src/master/dir/v1.c
-</pre></div>
-<p>
-Other endings of the URL with commit hash, e.g., <code>?at=default</code>,
-requires the hash to be replaced by <code>default</code>.
-
-<p>
 <p>
 <ul class="pager">
   <li class="previous">
-    <a href="._main_bitgit-bootstrap001.html">&larr; Prev</a>
+    <a href="._main_bitgit-bootstrap005.html">&larr; Prev</a>
   </li>
 
-  <li class="next">
-    <a href="._main_bitgit-bootstrap003.html">Next &rarr;</a>
-  </li>
 
 </ul>
 <!-- ------------------- end of main content --------------- -->

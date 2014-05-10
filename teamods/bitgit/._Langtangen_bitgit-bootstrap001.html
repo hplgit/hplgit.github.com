@@ -156,180 +156,223 @@ end of tocinfo -->
 <a name="part0001"></a>
 <!-- !split -->
 
-<h1>Bitbucket <a name="bitgit:bitbucket"></a></h1>
+<h1>Introduction  <a name="___sec0"></a></h1>
 
-To start using Bitbucket, go to <code>bitbucket.org</code> and create an account.
-The communication channel with Bitbucket repositories is either
-through SSH or HTTPS.  To use SSH, you must upload your SSH key,
-typically the contents of the file <code>id_rsa.pub</code> or <code>id_dsa.pub</code> in the
-<code>.ssh</code> subdirectory of your home directory. Go to the page for your
-account, choose <em>SSH keys</em>, and upload one of these files.
-The essence of the SSH keys is that they allow you to communicate with
-Bitbucket without using a password, which is very convenient.
+Greg Wilson's excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/" target="_self">Script for Introduction to Version Control</a> provides a detailed motivation why you will benefit greatly
+from using version control systems. Here follows a shorter motivation
+and a quick overview of the basic concepts.
+
+<h2>Why not Dropbox or Google Drive?  <a name="___sec1"></a></h2>
+
+The simplest services for hosting project files are <a href="http://dropbox.com" target="_self">Dropbox</a> and <a href="http://drive.google.com" target="_self">Google Drive</a>.
+It is very easy to get started with these systems, and they allow you
+to share files among laptops and mobile units with as many users as
+you want. The systems offer a kind of version control in that the
+files are stored frequently (several times per minute), and you can go
+back to previous versions for the last 30 days. However, it is
+challenging  to find the right version from the past when there are
+so many of them and when the different versions are not annotated with
+sensible comments. Another deficiency of Dropbox and Google Drive is
+that they sync all your files in a folder, a feature one does not
+want if there are many large files (simulation data, visualizations,
+movies, temporary scratch files, automatically generated copies)
+that can easily be regenerated.
 
 <p>
-There are links to extensive help pages if you do not have such keys
-or if you are unfamiliar with SSH. Follow these steps on Mac or Linux
-machines to generate keys: 1) check that you have <code>ssh</code> installed; 2)
-create a <code>.ssh</code> directory in your home directory; and 3) run
-<code>ssh-keygen</code> in the <code>.ssh</code> directory (you are prompted for a
-passphrase - just write something). On Windows one applies the PuTTY
-and the TortoiseHG programs to generate and register keys, see the
-help pages on Bitbucket. Once the keys are generated, you can continue
-using them on any computer.
+However, the most serious problem with Dropbox and Google Drive arises
+when several people edit files simultaneously: it can be difficult
+detect who did what when, roll back to previous versions, and to
+manually merge the edits when these are incompatible. Then one needs
+more sophisticated tools, which means a true version control system.
+The following text aims at providing you with the minimum information
+to started with Git, the leading version control system, combined
+with project hosting services for file storage.
 
-<h2>Creating a new project  <a name="___sec7"></a></h2>
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Essence.</b>
+The essence with project hosting services is that you have the files
+associated with a project in the cloud. Many people may share these
+files.  Every time you want to work on the project you explicitly
+update your version of the files, edit the files as you like, and
+synchronize the files with the "master version" in the cloud.
+It is a trivial operation to go back to a previous
+version of a file, corresponding to a certain point of time or
+labeled with a comment.
+You can also use tools to see
+what various people have done with the files in the various versions.
+</div>
 
-Click at <em>Repositories</em> and at <em>Create repository</em>.
-You can now
+
+<h2>Project hosting services  <a name="___sec2"></a></h2>
+
+Four popular project hosting services are
 
 <ul>
- <li> fill in the name of the project, here <code>my-project</code>,</li>
- <li> decide whether the project is private or public (the number of
-   private repos is unlimited for yourself, but you have to pay to
-   invite more than five users in total to share your private repos
-   unless you are <a href="http://blog.bitbucket.org/2012/08/20/bitbucket-academic/" target="_self">certified to be a student or work at an academic
-   institution</a>),</li>
- <li> choose between the Git or Mercurial version control system
-   (here we assume you run Git),</li>
- <li> click whether you want issue tracking for reporting errors,
-   suggesting improvements, etc.,</li>
- <li> click whether you want a wiki page associated with the project,</li>
- <li> fill in a brief description,</li>
- <li> click on <em>Create repository</em>.</li>
+  <li> <a href="http://bigbucket.org" target="_self">Bitbucket</a> at <code>bitbucket.org</code></li>
+  <li> <a href="http://github.com" target="_self">GitHub</a> at <code>github.com</code></li>
+  <li> <a href="http://code.google.com" target="_self">Googlecode</a> at <code>code.google.com</code></li>
+  <li> <a href="https://launchpad.net" target="_self">Launchpad</a> at <code>launchpad.net</code></li>
+  <li> <a href="http://sourceforge.net/" target="_self">Sourceforge</a> at <code>sourceforge.net</code></li>
 </ul>
 
-While doing this you may also want to have the <a href="http://confluence.atlassian.com/display/BITBUCKET/Bitbucket+101" target="_self">Bitbucket 101 guide</a>
-available.
+All these services are very similar. Below we describe how you get
+started with Bitbucket, GitHub, and Googlecode. Launchpad works very
+similarly to the latter three, but the development of it seems to
+have stalled.
+All the project hosting services have
+excellent introductions available at their web sites, but the recipes
+below are much shorter and aim at getting you started as quickly as
+possible by concentrating on the most important need-to-know steps.
 
 <p>
-It is now time to <em>clone</em> (copy) the project to your laptop.
-Go to the project page
-(you are automatically
-brought to the project page when creating a new project).
-Find the <em>Clone</em> button, click on it, choose
-<em>SSH</em>, copy the <em>clone</em> line and run this command in a terminal:
-<p>
+After the recipes on how to be up and going with project hosting
+services, there is an introduction to Git. One can find
+a lot of Git tutorials on the web so you might ask why
+yet another one. Traditionally, Git introductions have been quite
+technical, aimed at professional programmers.
+The material on Git in this document grew out my need to provide
+students in course with <em>minimal</em> information on how they can
+archive and hand in all their computer-based course work in Git.
+The coming text therefore gets you up and going very fast.
+More advanced features of Git (branching, stashing, forking, merging),
+which enhances the reliability of your work,
+are introduced subsequently, but are not required for beginners.
+Thereafter, your Git background should be firm enough to
+easily access the many references I provide to material on the web.
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone git@bitbucket.org:user/my-project.git
-</pre></div>
-<p>
-You must replace <code>user</code> with your own username at Bitbucket and
-<code>my-project</code> by the real project name.
+<h2>Repositories and local copies  <a name="___sec3"></a></h2>
 
-<p>
-The first time you do the clone command you may be prompted by cryptic
-Unix output ending with "Are you sure you want to continue connecting
-(yes/no)?".  Just answer yes.
+The mentioned services host all your files in a specific project in what
+is known as a <em>repository</em>, or <em>repo</em> for short.  When a copy of the
+files are wanted on a certain computer, one clones the repository on
+that computer.  This creates a local copy of the files. Now files can
+be edited, new ones can be added, and files can be deleted.  These
+changes are then brought back to the repository.  If users at
+different computers synchronize their files frequently with the
+repository, most modern version control systems will be able to merge
+changes in files that have been edited simultaneously on different
+computers. This is perhaps one of the most useful features of project
+hosting services. However, the merge functionality clearly works best
+for pure text files and less well for binary files, such as PDF files,
+MS Word or Excel documents, and OpenOffice documents.
 
-<p>
-The next step is to collect files and directories that should make up
-the project and put them in the <code>my-project</code> directory.
-Standing in the <code>my-project</code> directory, the following Git command is used
-to add all files in the current
-directory <em>tree</em>, except those having file types listed in <code>.gitignore</code>:
-<p>
+<h2>What to choose?  <a name="___sec4"></a></h2>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git add .
-</pre></div>
-<p>
-Thereafter, the changes to the repository (here adding of files) must
-<em>committed</em> (registered):
-<p>
+It might seem challenging to pick the project hosting service
+and the version control system that are right for you. Below
+is some very personal advice.
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git commit -am &#39;Initial import of files.&#39;
-</pre></div>
-<p>
-The text following the <code>-am</code> option is a required description of the
-changes that have taken place. This description does not matter much
-for this initial import of files into the repository, but is of
-importance for future commit commands so that you can easily track the
-history of your project files and inform others (and yourself) what you have
-done with the files.
+<ul>
+ <li> I would recommend Git as the default choice of version control system.
+   It is simply superior in many aspects, but for a beginner the superior
+   merge functionality is most useful.</li>
+ <li> If you need private repos and you are not a student, choose
+   Bitbucket unless you are willing to pay for private repos at GitHub.</li>
+ <li> If you want to make links to your programs in documentation,
+   stay away from Bitbucket as this site embeds the version of the
+   file into its URL (but you can get around this problem with a trick
+   described in the section <a href="._main_bitgit-bootstrap002.html#bitgit:bitbucket:URLs">Linking to Bitbucket files</a>).</li>
+ <li> If you want to easily drop HTML files for documentation around in
+   your repo, Googlecode will display them as web pages right away,
+   while the procedure on GitHub is technically more complicated
+   (Bitbucket does not yet support web pages as part of a project).
+   Unfortunately, Googlecode does not allow MathJax for rendering
+   LaTeX mathematics in HTML files, but MathJax works well in
+   HTML files at GitHub.</li>
+ <li> If a few collaborate on a project and everyone wants to be notified
+   in email about changes in project files, the procedure on
+   Bitbucket and Googlecode is easier to use than the one on GitHub.</li>
+</ul>
 
-<p>
-The final step is to push the local changes to the master repo at
-Bitbucket:
-<p>
+For the examples below, assume that you have some directory tree
+<code>my-project</code> with files that you want to host at Bitbucket, GitHub, or
+Googlecode and bring under version control. The official name of the
+project is "My Project".
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git push -u origin master
-</pre></div>
-<p>
-You must be connected to the Internet for the <code>push</code> command to work since
-it sends file information to the <code>bitbucket.org</code> site.
+<h2>Installing Git  <a name="___sec5"></a></h2>
 
-<p>
-Further work with the files must always follow the pull, edit, commit, and
-push steps explained in
-The section <a href="._main_bitgit-bootstrap004.html#bitgit:git">Using Git</a> for Git.
-
-<h3>Collaborating  <a name="___sec8"></a></h3>
-
-There is a button <em>Send invitation</em> on the project home page where you
-can invite other Bitbucket users to have push (write) access to your
-repo. Many prefer to be notified in email when changes are pushed to
-the repo: click the settings wheel to the right, choose <em>Services</em>,
-then <em>Email</em>, and fill in the email addresses that are to receive
-notifications on updates. Under <em>Access management</em> you can fill in
-the Bitbucket names of users who are have pull (read)
-or push (write) access to the repo.
-
-<h2>User web pages <a name="bitgit:bitbucket:web"></a></h2>
-
-Bitbucket can host web pages associated with a Bitbucket account,
-but does not yet offer web pages as part of a project. Say
-your account/username is <code>user</code>.  Make a new repository on
-Bitbucket called <code>user.bitbucket.org</code>.  Clone it, fill it with a
-file, and push back, e.g.,
-
+The installation of Git on various systems is described
+on the <a href="http://git-scm.com/" target="_self">Git website</a> under the <em>Download</em> section.
+Git involves compiled code so it is most convenient to download a
+precompiled binary version of the software on Windows, Mac and other
+Linux computers.
+On Ubuntu or any Debian-based system the relevant installation command is
 <p>
 
 <!-- code=text (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone git@bitbucket.org:user/user.bitbucket.org.git
-Terminal&gt; cd user.bitbucket.org
-Terminal&gt; echo &quot;Welcome to my web pages!&quot; &gt; test.html
-Terminal&gt; git add test.html
-Terminal&gt; git commit -am &#39;First web page&#39;
-Terminal&gt; git push origin master
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; sudo apt-get install git gitk git-doc
 </pre></div>
 <p>
-You can now load the URL <code>http://user.bitbucket.org/test.html</code> into
-a web browser and view the page. By creating various subdirectories
-you can host web pages for a series of projects in this repo.
-
-<h2>Linking to Bitbucket files <a name="bitgit:bitbucket:URLs"></a></h2>
-
-Unfortunately, the default URL shown in your browser to a file in
-a Bitbucket repo contains information about the version of the file.
-For example, a file <code>v1.c</code> under Git might appear with the URL
+This tutorial explains Git interaction through command-line applications
+in a terminal window. There are numerous <a href="https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools#Graphical_Interfaces" target="_self">graphical user interfaces to
+Git</a>. Three examples are
+<a href="http://git-cola.github.com/downloads.html" target="_self">git-cola</a>,
+<a href="https://code.google.com/p/tortoisegit/" target="_self">TortoiseGit</a>, and
+<a href="http://sourcetreeapp.com/" target="_self">SourceTree</a>.
 
 <p>
+Make a file <code>.gitconfig</code> in your home directory with information on
+your full name, email address, your favorite text editor, and
+the name of an "excludes file" which defines the file types that Git
+should omit when bringing new directories under version control.
+Here is a simplified version of the author's <code>.gitconfig</code> file:
+<p>
 
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://bitbucket.org/user/proj/src/5fb228107044/dir/v1.c?at=master
+<!-- code=text (from !bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[user]
+name = Hans Petter Langtangen
+email = hpl@simula.no
+editor = emacs
+
+[core]
+excludesfile = ~/.gitignore
 </pre></div>
 <p>
-The string <code>5fb228107044</code>, called commit hash,
-is connected to the version of this file
-and will change when the file is updated. Such varying URLs are
-useless when you to link to
-the file in documents. To make a stable link to the
-latest version of a file (in a public repo),
-replace the commit hash by <code>master</code> and remove
-the final <code>?at=master</code>:
-
+The "excludes file" is called <code>.gitignore</code> and must list,
+using the Unix Shell Wildcard notation,
+the type of files that you do not need to have under version control,
+because they represent garbage or temporary information,
+or they can easily be regenerated from
+some other source files. A suggested <a href="http://hplgit.github.com/teamods/bitgit/src-bitgit/.gitignore" target="_self"><tt>.gitignore</tt></a> file looks like
 <p>
 
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://bitbucket.org/user/proj/src/master/dir/v1.c
+<!-- code=text (from !bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># compiled files:
+*.o
+*.so
+*.a
+# temporary files:
+*.bak
+*.swp
+*~
+.*~
+*.old
+tmp*
+temp*
+.#*
+\#*
+# tex files:
+*.log
+*.dvi
+*.aux
+*.blg
+*.idx
+*.nav
+*.out
+*.toc
+*.snm
+*.vrb
+# eclipse files:
+*.cproject
+*.project
+# misc:
+.DS_Store
 </pre></div>
 <p>
-Other endings of the URL with commit hash, e.g., <code>?at=default</code>,
-requires the hash to be replaced by <code>default</code>.
+Be critical to what kind of files you really need a full history of.
+For example, you do not want to populate the repository with
+big graphics files of the type that can easily be regenerated by
+some program.
 
 <p>
 <p>

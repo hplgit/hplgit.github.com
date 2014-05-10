@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installing version control systems</title>
+    <title>Introduction</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
     <link rel="top" title="Quick Intro to Version Control Systems (Git and Mercurial) and Project Hosting Services" href="index.html" />
-    <link rel="next" title="Bitbucket" href="._main_bitgit002.html" />
+    <link rel="next" title="Installing version control systems" href="._main_bitgit002.html" />
     <link rel="prev" title="Need-to-Know Intro to Version Control Systems and Project Hosting Services" href="._main_bitgit000.html" /> 
   
    <style type=text/css>
@@ -47,7 +47,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="._main_bitgit002.html" title="Bitbucket"
+          <a href="._main_bitgit002.html" title="Installing version control systems"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="._main_bitgit000.html" title="Need-to-Know Intro to Version Control Systems and Project Hosting Services"
@@ -61,171 +61,131 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="installing-version-control-systems">
-<h1>Installing version control systems<a class="headerlink" href="#installing-version-control-systems" title="Permalink to this headline">¶</a></h1>
-<p>The various project hosting sites work with different version
-control systems:</p>
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>Greg Wilson&#8217;s excellent <a class="reference external" href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/">Script for Introduction to Version Control</a> provides a detailed motivation why you will benefit greatly
+from using version control systems. Here follows a shorter motivation
+and a quick overview of the basic concepts.</p>
+<div class="section" id="why-not-dropbox-or-google-drive">
+<h2>Why not Dropbox or Google Drive?<a class="headerlink" href="#why-not-dropbox-or-google-drive" title="Permalink to this headline">¶</a></h2>
+<p>The simplest services for hosting project files are <a class="reference external" href="http://dropbox.com">Dropbox</a> and <a class="reference external" href="http://drive.google.com">Google Drive</a>.
+It is very easy to get started with these systems, and they allow you
+to share files among laptops and mobile units with as many users as
+you want. The systems offer a kind of version control in that the
+files are stored frequently (several times per minute), and you can go
+back to previous versions for the last 30 days. However, it is
+challenging  to find the right version from the past when there are
+so many of them and when the different versions are not annotated with
+sensible comments. Another deficiency of Dropbox and Google Drive is
+that they sync all your files in a folder, a feature one does not
+want if there are many large files (simulation data, visualizations,
+movies, temporary scratch files, automatically generated copies)
+that can easily be regenerated.</p>
+<p>However, the most serious problem with Dropbox and Google Drive arises
+when several people edit files simultaneously: it can be difficult
+detect who did what when, roll back to previous versions, and to
+manually merge the edits when these are incompatible. Then one needs
+more sophisticated tools, which means a true version control system.
+The following text aims at providing you with the minimum information
+to started with Git, the leading version control system, combined
+with project hosting services for file storage.</p>
+<div class="admonition-essence admonition">
+<p class="first admonition-title">Essence</p>
+<p class="last">The essence with project hosting services is that you have the files
+associated with a project in the cloud. Many people may share these
+files.  Every time you want to work on the project you explicitly
+update your version of the files, edit the files as you like, and
+synchronize the files with the &#8220;master version&#8221; in the cloud.
+It is a trivial operation to go back to a previous
+version of a file, corresponding to a certain point of time or
+labeled with a comment.
+You can also use tools to see
+what various people have done with the files in the various versions.</p>
+</div>
+</div>
+<div class="section" id="project-hosting-services">
+<h2>Project hosting services<a class="headerlink" href="#project-hosting-services" title="Permalink to this headline">¶</a></h2>
+<p>Four popular project hosting services are</p>
 <blockquote>
 <div><ul class="simple">
-<li><tt class="docutils literal"><span class="pre">bitbucket.org</span></tt> offers Git (<tt class="docutils literal"><span class="pre">git</span></tt>) or Mercurial (<tt class="docutils literal"><span class="pre">hg</span></tt>),</li>
-<li><tt class="docutils literal"><span class="pre">github.com</span></tt> offers Git (<tt class="docutils literal"><span class="pre">git</span></tt>),</li>
-<li><tt class="docutils literal"><span class="pre">code.google.com</span></tt> offers Git (<tt class="docutils literal"><span class="pre">git</span></tt>), Mercurial (<tt class="docutils literal"><span class="pre">hg</span></tt>), or Subversion (<tt class="docutils literal"><span class="pre">svn</span></tt>),</li>
-<li><tt class="docutils literal"><span class="pre">launchpad.net</span></tt> offers Bazaar (<tt class="docutils literal"><span class="pre">bzr</span></tt>),</li>
-<li><tt class="docutils literal"><span class="pre">sourceforge.net</span></tt> offers CVS (<tt class="docutils literal"><span class="pre">cvs</span></tt>), Subversion (<tt class="docutils literal"><span class="pre">svn</span></tt>), Mercurial (<tt class="docutils literal"><span class="pre">hg</span></tt>),
-Bazaar (<tt class="docutils literal"><span class="pre">bzr</span></tt>), and Git (<tt class="docutils literal"><span class="pre">git</span></tt>).</li>
+<li><a class="reference external" href="http://bigbucket.org">Bitbucket</a> at <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt></li>
+<li><a class="reference external" href="http://github.com">GitHub</a> at <tt class="docutils literal"><span class="pre">github.com</span></tt></li>
+<li><a class="reference external" href="http://code.google.com">Googlecode</a> at <tt class="docutils literal"><span class="pre">code.google.com</span></tt></li>
+<li><a class="reference external" href="https://launchpad.net">Launchpad</a> at <tt class="docutils literal"><span class="pre">launchpad.net</span></tt></li>
+<li><a class="reference external" href="http://sourceforge.net/">Sourceforge</a> at <tt class="docutils literal"><span class="pre">sourceforge.net</span></tt></li>
 </ul>
 </div></blockquote>
-<p>All the version control systems are quite similar in the way users
-operate them, but Subversion is technically different from Git,
-Mercurial, and Bazaar. The latter three work much in the same way
-for a beginner, but their more advanced commands and their
-nomenclature differ significantly.  Which system to choose is mainly a
-matter of personal preference and experience.
-Git is the version control system of most increasing popularity.</p>
-<div class="section" id="installing-git">
-<h2>Installing Git<a class="headerlink" href="#installing-git" title="Permalink to this headline">¶</a></h2>
-<p id="index-0">The installation of Git on various systems is described
-on the <a class="reference external" href="http://git-scm.com/">Git website</a> under the <em>Download</em> section.
-Git involves compiled code so it is most convenient to download a
-precompiled binary version of the software on Windows, Mac and other
-Linux computers.
-On Ubuntu or any Debian-based system the relevant installation command is</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; sudo apt-get install git gitk git-doc
-</pre></div>
+<p>All these services are very similar. Below we describe how you get
+started with Bitbucket, GitHub, and Googlecode. Launchpad works very
+similarly to the latter three, but the development of it seems to
+have stalled.
+All the project hosting services have
+excellent introductions available at their web sites, but the recipes
+below are much shorter and aim at getting you started as quickly as
+possible by concentrating on the most important need-to-know steps.</p>
+<p>After the recipes on how to be up and going with project hosting
+services, there is an introduction to Git. One can find
+a lot of Git tutorials on the web so you might ask why
+yet another one. Traditionally, Git introductions have been quite
+technical, aimed at professional programmers.
+The material on Git in this document grew out my need to provide
+students in course with <em>minimal</em> information on how they can
+archive and hand in all their computer-based course work in Git.
+The coming text therefore gets you up and going very fast.
+More advanced features of Git (branching, stashing, forking, merging),
+which enhances the reliability of your work,
+are introduced subsequently, but are not required for beginners.
+Thereafter, your Git background should be firm enough to
+easily access the many references I provide to material on the web.</p>
 </div>
-<p>This tutorial explains Git interaction through command-line applications
-in a terminal window. There are numerous <a class="reference external" href="https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools#Graphical_Interfaces">graphical user interfaces to
-Git</a>. Three examples are
-<a class="reference external" href="http://git-cola.github.com/downloads.html">git-cola</a>,
-<a class="reference external" href="https://code.google.com/p/tortoisegit/">TortoiseGit</a>, and
-<a class="reference external" href="http://sourcetreeapp.com/">SourceTree</a>.</p>
-<p>Make a file <tt class="docutils literal"><span class="pre">.gitconfig</span></tt> in your home directory with information on
-your full name, email address, your favorite text editor, and
-the name of an &#8220;excludes file&#8221; which defines the file types that Git
-should omit when bringing new directories under version control.
-Here is a simplified version of the author&#8217;s <tt class="docutils literal"><span class="pre">.gitconfig</span></tt> file:</p>
-<div class="highlight-text"><div class="highlight"><pre>[user]
-name = Hans Petter Langtangen
-email = hpl@simula.no
-editor = emacs
-
-[core]
-excludesfile = ~/.gitignore
-</pre></div>
+<div class="section" id="repositories-and-local-copies">
+<h2>Repositories and local copies<a class="headerlink" href="#repositories-and-local-copies" title="Permalink to this headline">¶</a></h2>
+<p>The mentioned services host all your files in a specific project in what
+is known as a <em>repository</em>, or <em>repo</em> for short.  When a copy of the
+files are wanted on a certain computer, one clones the repository on
+that computer.  This creates a local copy of the files. Now files can
+be edited, new ones can be added, and files can be deleted.  These
+changes are then brought back to the repository.  If users at
+different computers synchronize their files frequently with the
+repository, most modern version control systems will be able to merge
+changes in files that have been edited simultaneously on different
+computers. This is perhaps one of the most useful features of project
+hosting services. However, the merge functionality clearly works best
+for pure text files and less well for binary files, such as PDF files,
+MS Word or Excel documents, and OpenOffice documents.</p>
 </div>
-<p>The &#8220;excludes file&#8221; is called <tt class="docutils literal"><span class="pre">.gitignore</span></tt> and must list,
-using the Unix Shell Wildcard notation,
-the type of files that you do not need to have under version control,
-because they represent garbage or temporary information,
-or they can easily be regenerated from
-some other source files. A suggested <a class="reference external" href="http://hplgit.github.com/teamods/bitgit/src-bitgit/.gitignore">.gitignore</a> file looks like</p>
-<div class="highlight-text"><div class="highlight"><pre># compiled files:
-*.o
-*.so
-*.a
-# temporary files:
-*.bak
-*.swp
-*~
-.*~
-*.old
-tmp*
-temp*
-.#*
-\#*
-# tex files:
-*.log
-*.dvi
-*.aux
-*.blg
-*.idx
-*.nav
-*.out
-*.toc
-*.snm
-*.vrb
-# eclipse files:
-*.cproject
-*.project
-# misc:
-.DS_Store
-</pre></div>
-</div>
-<p>Be critical to what kind of files you really need a full history of.
-For example, you do not want to populate the repository with
-big graphics files of the type that can easily be regenerated by
-some program.</p>
-</div>
-<div class="section" id="installing-mercurial">
-<h2>Installing Mercurial<a class="headerlink" href="#installing-mercurial" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-1"></span><p id="index-2">The <a class="reference external" href="http://mercurial.selenic.com/">Mercurial website</a> has information
-on downloading Mercurial on different platforms.
-Mercurial is pure Python code so it is trivial on any system with Python
-installed to download the Mercurial source code and perform
-the standard <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> command.</p>
-<p>On Ubuntu and Debian-based Linux systems, you can just perform</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; sudo apt-get install mercurial
-</pre></div>
-</div>
-<p>Alternatively, launch the Ubuntu Software Center application
-and choose the Mercurial package in the graphical interface.</p>
-<p>This tutorial emphasizes the command-line interface to Mercurial, but there
-is also a graphical interface called <a class="reference external" href="http://tortoisehg.bitbucket.org/">TortoiseHG</a>, which for many Windows and Mac users will be the natural application to
-interact with Mercurial. TortoiseHG works on Linux too, and is readily
-available by <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">tortoisehg</span></tt> on Ubuntu.
-A newer graphical application for Git and Mercurial is
-<a class="reference external" href="http://sourcetreeapp.com/">SourceTree</a>, which is available on Windows
-and Mac platforms.</p>
-<p>We recommend that you create two files in your home directory: <tt class="docutils literal"><span class="pre">.hgrc</span></tt> for
-specifying the behavior of <tt class="docutils literal"><span class="pre">hg</span></tt> (Mercurial) and <tt class="docutils literal"><span class="pre">.hgignore</span></tt> for
-listing the type of files you in general do not want to have under version
-control. A simple <tt class="docutils literal"><span class="pre">.hgrc</span></tt> file can look like this:</p>
-<div class="highlight-text"><div class="highlight"><pre>[ui]
-username = &quot;Hans Petter Langtangen &lt;hpl@simula.no&gt;&quot;
-ignore=~/.hgignore
-</pre></div>
-</div>
-<p>The <tt class="docutils literal"><span class="pre">.hgignore</span></tt> file lists the types of files that will be skipped
-when bringing new directories under Mercurial version control.
-Typically, the list contains file types that represent temporary
-information, or files that are easily regenerated,
-such as object files (<tt class="docutils literal"><span class="pre">*.o</span></tt>) and
-libraries (<tt class="docutils literal"><span class="pre">*.so</span></tt>).
-The file types are normally specified using the Unix Shell Wildcard notation,
-also referred to as <tt class="docutils literal"><span class="pre">glob</span></tt> syntax (e.g., <tt class="docutils literal"><span class="pre">*.o</span></tt>, where <tt class="docutils literal"><span class="pre">*</span></tt> means any
-sequence of characters).
-An example of a <a class="reference external" href="http://hplgit.github.com/teamods/bitgit/_static-bitgit/.hgignore">.hgignore</a> file may be</p>
-<div class="highlight-text"><div class="highlight"><pre>syntax: glob
-# compiled files:
-*.o
-*.so
-*.a
-# temporary files:
-*.bak
-*.swp
-*~
-.*~
-*.old
-tmp*
-temp*
-# tex files:
-*.log
-*.dvi
-*.aux
-*.blg
-*.idx
-# eclipse files:
-*.cproject
-*.project
-# misc:
-.DS_Store
-</pre></div>
-</div>
-<p>In addition to having an <tt class="docutils literal"><span class="pre">.hgignore</span></tt> file, you should always be careful with
-what kind of files you really need to add to your
-repo. Many computer tools produce a lot of big files that can
-easily be regenerated and that do not need to fill up repos with full
-information on previous versions.</p>
+<div class="section" id="what-to-choose">
+<h2>What to choose?<a class="headerlink" href="#what-to-choose" title="Permalink to this headline">¶</a></h2>
+<p>It might seem challenging to pick the project hosting service
+and the version control system that are right for you. Below
+is some very personal advice.</p>
+<blockquote>
+<div><ul class="simple">
+<li>I would recommend Git as the default choice of version control system.
+It is simply superior in many aspects, but for a beginner the superior
+merge functionality is most useful.</li>
+<li>If you need private repos and you are not a student, choose
+Bitbucket unless you are willing to pay for private repos at GitHub.</li>
+<li>If you want to make links to your programs in documentation,
+stay away from Bitbucket as this site embeds the version of the
+file into its URL (but you can get around this problem with a trick
+described in the section <a class="reference internal" href="._main_bitgit003.html#bitgit-bitbucket-urls"><em>Linking to Bitbucket files</em></a>).</li>
+<li>If you want to easily drop HTML files for documentation around in
+your repo, Googlecode will display them as web pages right away,
+while the procedure on GitHub is technically more complicated
+(Bitbucket does not yet support web pages as part of a project).
+Unfortunately, Googlecode does not allow MathJax for rendering
+LaTeX mathematics in HTML files, but MathJax works well in
+HTML files at GitHub.</li>
+<li>If a few collaborate on a project and everyone wants to be notified
+in email about changes in project files, the procedure on
+Bitbucket and Googlecode is easier to use than the one on GitHub.</li>
+</ul>
+</div></blockquote>
+<p>For the examples below, assume that you have some directory tree
+<tt class="docutils literal"><span class="pre">my-project</span></tt> with files that you want to host at Bitbucket, GitHub, or
+Googlecode and bring under version control. The official name of the
+project is &#8220;My Project&#8221;.</p>
 </div>
 </div>
 
@@ -242,9 +202,11 @@ information on previous versions.</p>
             </center>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Installing version control systems</a><ul>
-<li><a class="reference internal" href="#installing-git">Installing Git</a></li>
-<li><a class="reference internal" href="#installing-mercurial">Installing Mercurial</a></li>
+<li><a class="reference internal" href="#">Introduction</a><ul>
+<li><a class="reference internal" href="#why-not-dropbox-or-google-drive">Why not Dropbox or Google Drive?</a></li>
+<li><a class="reference internal" href="#project-hosting-services">Project hosting services</a></li>
+<li><a class="reference internal" href="#repositories-and-local-copies">Repositories and local copies</a></li>
+<li><a class="reference internal" href="#what-to-choose">What to choose?</a></li>
 </ul>
 </li>
 </ul>
@@ -254,7 +216,7 @@ information on previous versions.</p>
                         title="previous chapter">Need-to-Know Intro to Version Control Systems and Project Hosting Services</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="._main_bitgit002.html"
-                        title="next chapter">Bitbucket</a></p>
+                        title="next chapter">Installing version control systems</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/._main_bitgit001.txt"
@@ -284,7 +246,7 @@ information on previous versions.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="._main_bitgit002.html" title="Bitbucket"
+          <a href="._main_bitgit002.html" title="Installing version control systems"
              >next</a> |</li>
         <li class="right" >
           <a href="._main_bitgit000.html" title="Need-to-Know Intro to Version Control Systems and Project Hosting Services"

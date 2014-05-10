@@ -1,413 +1,133 @@
 .. !split
 
-.. _bitgit:github:
+.. _bitgit:googlecode:
 
-GitHub
-======
-
-
-.. index:: GitHub
+Googlecode
+==========
 
 
-
-Go to ``github.com`` and create an account. Then go to your account
-settings (icon in the upper left corner of the page),
-choose *SSH Keys*, and provide your SSH key
-unless you have already registered this key with another GitHub
-account (see Appendix :ref:`appendix:github:multiple:accounts`).
-Often, it is just a
-matter of pasting the contents of ``id_rsa.pub`` or ``id_dsa.pub`` files,
-located in the
-``.ssh`` subdirectory of your home directory, into the *Key* box in the
-web page. Make sure to just cut and paste the text from, e.g., ``id_rsa.pub``
-without any extra whitespaces or other text. How to generate these
-files is described in the link *generating SSH keys* above the SSH Keys
-box (or see the introduction to Bitbucket above).
-
-If the account is a project account and not a personal account,
-I do not recommend to provide an SSH key although it can be
-done (see Appendix :ref:`appendix:github:multiple:accounts`). It is easier
-to log in and add collaborators using their personal GitHub usernames.
+.. index:: Googlecode
 
 
-Creating a new project  (3)
+To use Googlecode you need a general account on Google, which allows
+you to use Gmail, Google Docs, and other Google services.
+Googlecode offers free file hosting, but all the files are public and
+open to the world.
+
+
+Creating a new project  (2)
 ---------------------------
 
-Click on *New repository* on the main page and fill out a project
-name, here *My Project*, click the check button *Initialize this
-repository with a README*, and click on *Create repository*.
-Unless you pay, all repos are public, but students and teachers
-can request `free, private repos <https://github.com/edu>`_.
-
-The next step is to clone the project on your personal computer. Click
-on the *SSH* button to see the address of the project, and
-paste this address into a terminal window, after ``git clone``:
+Go to `<http://code.google.com/hosting>`_ and click on
+*Creating a new project*. Fill out *all* the fields. For now
+the project name is ``my-project``.
+You can
+choose between Git, Mercurial, or Subversion as version control
+system for your project, and this choice is difficult to change later.
+If you choose Git, you must create a file ``.netrc`` in your
+home directory containing the line
 
 .. code-block:: text
 
-        Terminal> git clone git://github.com:user/My-Project.git
+        machine code.google.com login uname password pw
 
-Make sure you substitute ``user`` by your own username on GitHub.
+Here, ``uname`` is your username for the Google account and
+``pw`` is the Googlecode password which is generated for you on
+`<https://code.google.com/hosting/settings>`_ when you
+are logged in.
+The ``.netrc`` file avoids typing or pasting in
+your long and complicated password every time you push changes to
+the repository on ``code.google.com``.
 
-The result of the ``git clone`` command is a new directory ``My-Project``.
-It contains the file ``.git``, which shows that it is a Git repository.
-It also contains a default ``README.md`` file with the project name and
-description. The extension ``.md`` signifies a file written in the
-`Markdown <http://daringfireball.net/projects/markdown/>`_ format.
-You may use the `reStructuredText <http://docutils.sourceforge.net/rst.html>`_ format as an alternative
-(``README.rst``), or simply write a plain text file (``README``),
-but the ``git mv`` command must be used to change the filename.
+The next step is to clone the empty repository on your local machine
+so that you can add files:
 
-You can now add files and directories into the ``My-Project`` directory.
-When your initial file collection has the desired form, you must
-run
+.. code-block:: text
+
+        Terminal> git clone https://code.google.com/p/my-project/
+
+Now you can go to the ``my-project`` directory and add files.
+Perform
 
 .. code-block:: text
 
         Terminal> git add .
-        Terminal> git commit -am 'First set of files.'
-        Terminal> git push -u origin master
+        Terminal> git commit -am 'First import of files.'
+        Terminal> git push origin master
 
-The daily file operations are explained in the section :ref:`bitgit:git`.
-
-Collaborating  (2)
-~~~~~~~~~~~~~~~~~~
-
-To give others permissions to push their edits of files to the
-repository, you click on the *Settings* link in the right sidebar,
-then click on *Collaborators* on the left, and fill in the name
-of a collaborator (her or his username on GitHub).
-Many find it convenient to be notified in email when others have
-pushed a new version of the files to the repo. Click on *Service Hooks*
-in the project's *Settings* menu, choose *Email*, fill in
-at most two whitespace-separated email addresses, mark the
-*Send from Author* and *Active* boxes, and click on *Update Settings*.
-More addresses must be dealt with through a `mailing list <http://stackoverflow.com/questions/7015300/receiving-emails-on-git-push>`_
-and filling in the name of that list.
-
-Anyone who participates in a project (has write access) or watches a
-project (having clicked the *watch* button) can monitor the
-development of the activity on their GitHub main page. Go to *Account Settings*
-and choose *Notification Center*.  There you see two sections,
-*Participating* and *Watching*, for those participating in the project
-(granted write access) and those watching the project (having clicked
-the *watch* button), respectively.
-
-.. No, this doesn't work: Clicking the *Email* button turns
-
-.. on email notifications to those participating and/or watching.
+Click on *Source* and
+*Browse* on the project's web page, and observe that the added
+files are visible on the project page.
 
 
+A very strong and useful feature with Googlecode, in my opinion, is
+that one can place documentation of the project anywhere in
+the repository, and HTML and PDF will be correctly shown in
+web browsers. (All other project hosting sites
+demands either wiki pages or special web areas for locating documentation.)
+The URL to your files is
+
+.. code-block:: text
+
+        https://my-project.googlecode.com/git/
+
+For other version control systems just replace ``git`` by
+``hg`` or ``svn``.
+For example, if we have HTML documentation of our project in
+the directory ``doc/html``, we can point users to
+
+.. code-block:: text
+
+        https://my-project.googlecode.com/git/doc/html/index.html
+
+The HTML will be rendered correctly as opposed to when you load
+the similar file into the web browser from the repository,
+
+.. code-block:: text
+
+        http://code.google.com/p/my-project/source/browse/doc/html/index.html
+
+Now you can only see the HTML source code of this file, as is usual
+on other project hosting sites. We remark that MathJax
+mathematics within the HTML code is *not* rendered correctly. At the
+time of this writing, GitHub is the only service that offers full
+MathJax support when you need web pages with mathematics.
+
+You can click on *Project Home* and then on *Administer* to edit the
+main page of the project. This is a wiki, using Google's wiki syntax,
+but it is quite easy to add links to your documentation, e.g.,
+
+.. code-block:: text
+
+        Browse the
+        [https://my-project.googlecode.com/git/doc/API/html/index.html
+        API documentation].
 
 
-Wiki pages  (2)
+It is easy to allow others to push their changes to the
+repository: click on *Sharing* and then on *Administer*.
+The Google account names of people you allow push (write) access can be
+listed under each other in the *Project committers* field.
+
+Wiki pages  (1)
 ---------------
 
-With every GitHub project there is an option to create wiki pages.
-Click on the *Wiki* button in the right sidebar on the main page of
-the project. Click on *New Page* to create a new page. The wiki pages
-can be written in different markup languages. Markdown is the default
-choice, but you can alternatively use MediaWiki and
-reStructuredText. Unfortunately, *GitHub wiki pages do not allow LaTeX
-mathematics through MathJax*, even though MediaWiki has support for
-LaTeX (the reason is `security issues <http://stackoverflow.com/questions/16889421/how-to-insert-javascript-to-enable-mathjax-on-github-wiki-pages>`_).
-
-The wiki pages can be written and maintained through the web browser
-interface, but it is usually more convenient to clone them on
-your computer as this makes it easy to add figures and other documents
-you may want to link to. It also makes it straightforward to edit
-the wiki text in your favorite text editor. The wiki pages are
-stored in a separate repo and can be cloned by
-
-.. code-block:: text
-
-        Terminal> git clone git://github.com/user/My-Project.wiki.git
-
-This command makes a local copy of the pages in the directory
-``My-Project.wiki``, which you may prefer to have at the same level
-as the project directory itself in your directory tree.
-
-Each wiki page has its own file, where the extension reflects
-the markup language used, e.g., ``.md`` for Markdown, ``.rest`` for
-reStructuredText, ``.mediawiki`` for MediaWiki,
-and ``.creole`` for Creole wiki. The wiki files are handled as other files in a
-GitHub project, i.e., you need to pull before editing and then
-perform commit and push. After the push you can reload the page
-in the web browser to monitor the effect.
-
-You may consider having the original text in ``doconce`` format and
-generate the wiki in the reStructuredText or MediaWiki format.
-
-Do changes, commit the usual way, and push by
-
-.. code-block:: text
-
-        Terminal> git push git@github.com:user/My-project.wiki.git
-
-The address can be stored as ``url`` in ``.git/config`` in the
-root directory of the wiki project so that just a
-``git push`` works.
-
-
-Project web pages
------------------
-
-HTML pages stored in your repo cannot be linked to and properly
-rendered as web pages.
-Links to HTML files at GitHub will be either rendered as nicely typeset
-HTML code or as plain text.
-
-
-.. index:: git checkout
-
-.. index:: gh-pages on GitHub
-
-
-Quite often you want to create a set of HTML pages to document your
-project. This can be done as part of your repo, but you must apply
-a special technique consisting in creating a separate *gh-pages*
-branch in Git and making the HTML files in this particular branch.
-The recipe is described in detail below.
-
-1. Go to the  project page on ``github.com`` and click *Settings*.
-
-2. Click on *Automatic Page Generator* under the *GitHub Pages*.
-
-3. Proceed clicking *Continue to Layouts*, choose
-   a design of the ``index.html`` page that GitHub will
-   create for you, and click *Publish*.
-
-4. Go to the root directory of the project, ``My-Project``
-   and run ``git fetch origin``.
-
-5. Run ``git checkout gh-pages``.
-
-You have now a *new branch* called gh-pages of your project
-containing an ``index.html`` file and directories for JavaScript
-programs and CSS style sheets in the root directory. The gh-pages
-branch will also all files *not* contained in the *master branch*,
-typically redundant files you have generated and which should not be
-stored in the version control system (remove these manually with ``git
-rm``).  You can populate the root directory and subdirectories of your
-gh-pages branch with HTML and other files as you like. The key issue
-is that the people out there will only see the web pages that
-correspond to your HTML files in the gh-pages branch!
-
-The ``index.html`` page is invoked by the web address
-
-
-.. code-block:: text
-
-
-        http://user.github.io/My-Project/index.html
-
-where ``user`` is the GitHub
-username and ``My-Project`` is the project name.
-
-.. Update this info when I have maintained gh-pages for a while!
-
-.. Could also have a special section on branching in git (above,
-
-.. then the info here is simple... YES!).
-
-
-The web pages and project files are now in two different branches.
-To see the branches, type ``git branch`` and the one you are in will
-be marked with ``*`` in the output. Switching to the master branch
-is done by ``git checkout master``. Similarly, ``git checkout gh-pages``
-switches to the gh-pages branch.
-
-My personal preference is to have the master and gh-pages
-synchronized, at least in projects where I want to link to various
-source code files or other files from the web documentation.
-Sometimes I also update files in the gh-pages branch without
-remembering to switch to the master branch.  To this end, one needs
-to *merge* the branches, i.e., automatically edit files
-in the current branch such that they are up-to-date and
-identical to files in another branch.
-
-
-
-.. index:: git merge
-
-.. index:: git pull
-
-.. index:: git commit
-
-.. index:: git push
-
-
-To merge the current branch with some branch named ``otherbranch``, run
-
-.. code-block:: text
-
-        Terminal> git merge otherbranch
-
-Git applies smart algorithms that very often manage to merge the
-files without human interaction. However, occasionally these algorithms
-are not able to resolve conflicts between two files.
-A message about the failure of the merge is seen in the terminal
-window, and the corresponding files have markers in them showing
-which sections that needs manual editing to resolve the conflicts.
-Run
-``git diff`` to show the problems (you can tailor this command to your
-needs as explained in the section :ref:`bitgit:git:fetch`). After a manual
-edit, do ``git commit -a``. More details on merging appears
-in the section :ref:`bitgit:git:merge`.
-
-If you want to keep the master branch and the gh-pages branch
-synchronized,
-start with merging the gh-pages branch with the master
-branch and push the complete file collection to the gh-pages branch.
-Then switch to the master
-branch and merge with gh-pages so you get the autogenerated
-``index.html`` file and associated files and directories for web pages
-in the root directory of the master branch as well:
-
-
-.. code-block:: text
-
-        Terminal> git merge master
-        Terminal> touch .nojekyll
-        Terminal> git push origin gh-pages
-        Terminal> git checkout master
-        Terminal> git merge gh-pages
-
-You *must* add an empty file ``.nojekyll`` in the top
-directory of the project pages if you want to use Sphinx-generated
-HTML pages (or other pages using javascripts, style sheets, and images
-in subdirectories whose names start with an underscore).
-
-You can now add the documentation to the project files and
-maintain them in the master branch.
-Before publishing documents online,
-make sure to update the gh-pages branch by
-
-
-.. code-block:: text
-
-        Terminal> git commit -am 'Ensure commit of master branch'
-        Terminal> git push origin master
-        Terminal> git checkout gh-pages
-        Terminal> git pull origin gh-pages
-        Terminal> git merge master
-        Terminal> git push origin gh-pages
-        Terminal> git checkout master
-
-
-Personally, I like to move the generated ``index.html`` file and all
-associated scripts, stylesheets, and images from the root directory to
-some more isolated place, say ``doc/web``:
-
-
-.. code-block:: text
-
-        Terminal> git mv index.html params.json stylesheets/ images/ \
-                         javascripts/ doc/web/
-
-The URL of the ``index.html`` file is
-
-.. code-block:: text
-
-
-        http://user.github.io/My-Project/doc/web/index.html
-
-
-.. See `<https://github.com/daler/sphinxdoc-test>`_
-
-.. for ideas on how to do sphinx documentation without full
-
-.. mirroring as I do.
-
-.. See also `<http://lucasbardella.com/report/hosting-your-sphinx-docs-in-github/>`_
-
-.. Sphinx extension for github: `<https://github.com/michaeljones/sphinx-to-github>`_
-
-
-.. The problem can also be circumvented by
-
-.. installing special Sphinx extensions ("sphinx-to-github":
-
-.. "https://github.com/michaeljones/sphinx-to-github" or "github-tools":
-
-.. "http://pydoc.net/github-tools/0.1.3/").
-
-
-
-Linking to source code files or other files in the project is easy:
-just find the file in GitHub's web interface, choose which version of
-the file you want to link to (nicely HTML formatted version or the raw
-file), right-click on the link, choose *Copy Link*, and paste the
-link into the document you want. You can test that the link works by
-the Unix command ``curl -O <link>``. Note that the link to a file
-is different from the source file's intuitive path in the repository.
-Typically, a source file ``dir/f.py`` in project ``prj`` is reached
-through
-
-.. code-block:: text
-
-
-        https://github.com/user/prj/blob/master/dir/f.py?raw=true
-
-
-Sometimes you want to link to another HTML file, PDF file, movie file,
-or a file that is to be interpreted as a web resource by the browser.
-Do not use the path to the file in the repo as explained above as it will
-just bring the reader to the repo page. Instead, make sure the file is in
-the gh-pages branch and use a local link, like ``../doc.pdf``, or the
-complete gh-pages URL to the file, say
-
-.. code-block:: text
-
-
-        http://user.github.com/My-Project/doc/misc/doc.pdf
-
-
-
-.. admonition:: Tip
-
-   The ordinary GitHub URL of image files can be used
-   in web pages to insert images from your repo, provided the image files
-   are in the *raw* format - click the *Raw* button when viewing a file at
-   ``github.com`` and use the corresponding URL in the ``img`` tag in
-   the HTML code.
-
-
-
-
-User web pages  (2)
--------------------
-
-
-GitHub also allows you to create user pages and organization pages not
-tied to any specific project.
-Your personal site has address
-``http://user.github.com``.
-Go to your home page on ``github.com`` and click *New repository*,
-and give it the project name ``user.github.com``.
-Then follow the instructions that come up:
-
-.. code-block:: text
-
-        Terminal> mkdir user.github.com
-        Terminal> cd user.github.com
-        Terminal> git init
-        Terminal> # make an index.html file with some test text
-        Terminal> git add index.html
-        Terminal> git commit -m 'First commit'
-        Terminal> git remote add origin \
-                  git@github.com:user/user.github.com.git
-        Terminal> git push -u origin master
-
-Go to ``http://user.github.com`` and see how the ``index.html`` is
-rendered. You can now add various contents as in any ordinary
-Git repository.
-If you want to use Sphinx generated HTML pages, recall to add an empty file
-``.nojekyll``.
-
-
-
-.. Use gh-pages in a subdirectory of the master branch: `<https://gist.github.com/825950>`_
+Wiki pages can intuitively be made directly in the browser. However,
+it is often more convenient to have them locally on your computer.
+Click on *Source* and choose *wiki* on the *Repository* pull down menu.
+The proper clone command to get a copy of the wiki repository then
+appears.
+
+Googlecode applies their own Google wiki format. My preference is
+to write documentation in the neutral `Doconce <https://github.com/hplgit/doconce>`_ format and transform the document to LaTeX, HTML, Sphinx, and Google wiki.
+The wiki can then be copied from the project directories to the
+wiki directory and then pushed to the repository. This ensures
+that there is only one source of the documentation (despite the need
+for many formats) and that the wiki pages are frequently updated.
+
+.. `<https://odespy.googlecode.com/git/doc/API/index.html>`_
+
+.. `<https://odespy.googlecode.com/git/doc/tutorial/html/wrap_odesolvers.html>`_
 
 
 
