@@ -26,6 +26,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
     <link rel="top" title="Quick Intro to Version Control Systems and Project Hosting Services" href="index.html" />
     <link rel="next" title="Appendix: Working with multiple GitHub accounts" href="._main_bitgit005.html" />
     <link rel="prev" title="GitHub" href="._main_bitgit003.html" /> 
@@ -74,9 +75,9 @@ Here we concentrate on the efficient command-line interface to Git.</p>
 <p>You get started with your project on a new machine, or another user
 can get started with the project,
 by running</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git clone git@github.com:user/My-Project.git</span>
-<span class="go">Terminal&gt; cd My-Project</span>
-<span class="go">ls</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git clone git@github.com:user/My-Project.git
+Terminal&gt; cd My-Project
+ls
 </pre></div>
 </div>
 <p>Recall to replace <tt class="docutils literal"><span class="pre">user</span></tt> by your real username and <tt class="docutils literal"><span class="pre">My-Project</span></tt> by the
@@ -87,7 +88,7 @@ actual project name.</p>
 <p>The typical work flow with the &#8220;My Project&#8221; project starts with
 updating the local repository by going to the <tt class="docutils literal"><span class="pre">My-Project</span></tt> directory
 and writing</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git pull origin master</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git pull origin master
 </pre></div>
 </div>
 <p>You may want to do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">fetch</span></tt> and <tt class="docutils literal"><span class="pre">git</span> <span class="pre">merge</span></tt> instead
@@ -97,16 +98,16 @@ especially if you work with branches.</p>
 New files and directories must be added with <tt class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></tt>.
 There are also Git commands for deleting, renaming, and moving
 files. Typical examples on these Git commands are</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git add file2.* dir1 dir2  # add files and directories</span>
-<span class="go">Terminal&gt; git rm file3</span>
-<span class="go">Terminal&gt; git rm -r dir2</span>
-<span class="go">Terminal&gt; git mv oldname newname</span>
-<span class="go">Terminal&gt; git mv oldname ../newdir</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git add file2.* dir1 dir2  # add files and directories
+Terminal&gt; git rm file3
+Terminal&gt; git rm -r dir2
+Terminal&gt; git mv oldname newname
+Terminal&gt; git mv oldname ../newdir
 </pre></div>
 </div>
 <p>When your chunk of work is ready,
 it is time to commit your changes (note the <tt class="docutils literal"><span class="pre">-am</span></tt> option):</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git commit -am &#39;Description of changes.&#39;</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git commit -am &#39;Description of changes.&#39;
 </pre></div>
 </div>
 <p>If typos or errors enter the message, the <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">--amend</span></tt> command
@@ -117,7 +118,7 @@ gives a listing of all the changes you have made to the files since
 the last commit or pull command.</p>
 <p>You may perform many commits, to keep track of small changes, before
 you push your changes to the global repository:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git push origin master</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git push origin master
 </pre></div>
 </div>
 <p>It is recommended to push and pull frequently if the work takes place in several
@@ -126,47 +127,58 @@ repo on different
 computers). Infrequent push and pull easily leads to merge problems
 (see the section <a class="reference internal" href="#bitgit-git-merge"><em>Merging files with Git</em></a>). Also remember that others
 cannot get your changes before they are pushed.</p>
-<p id="index-8">To see the status of files, run</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git status -s</span>
-</pre></div>
+<div class="admonition-do-commit-and-pull-often admonition">
+<p class="first admonition-title">Do commit and pull often</p>
+<p class="last">If the central repo undergoes changes (by you on other computers or by
+others), it is essential to often commit your local work and perform
+a pull. This will keep your local files in sync with the repo.
+Failing to frequently commit and pull (and hence merge your files with
+the repo) will most likely lead to substantial merge problems at a
+later stage (because the files have become too different for an automatic
+merge algorithm to succeed).</p>
 </div>
-<p>Files are marked with different symbols, e.g.,
-<tt class="docutils literal"><span class="pre">A</span></tt> for added, <tt class="docutils literal"><span class="pre">M</span></tt> for modified, <tt class="docutils literal"><span class="pre">R</span></tt> for renamed,
-and <tt class="docutils literal"><span class="pre">??</span></tt> for not being registered in the repo.</p>
+<div class="admonition-do-not-forget-to-add-important-files admonition" id="index-8">
+<p class="first admonition-title">Do not forget to add important files</p>
+<p class="last">You should run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">status</span> <span class="pre">-s</span></tt> frequently to see the status of
+files: <tt class="docutils literal"><span class="pre">A</span></tt> for added, <tt class="docutils literal"><span class="pre">M</span></tt> for modified, <tt class="docutils literal"><span class="pre">R</span></tt> for renamed,
+and <tt class="docutils literal"><span class="pre">??</span></tt> for not being registered in the repo. Pay particular attention
+to the <tt class="docutils literal"><span class="pre">??</span></tt> files and examine if all of them are redundant or easily
+regenerated from other files - of not, run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></tt>.</p>
+</div>
 </div>
 <div class="section" id="viewing-the-history-of-files">
 <h3>Viewing the history of files<a class="headerlink" href="#viewing-the-history-of-files" title="Permalink to this headline">¶</a></h3>
 <p>A nice graphical tool allows you to view all changes, or just
 the latest ones:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; gitk --all</span>
-<span class="go">Terminal&gt; gitk --since=&quot;2 weeks ago&quot;</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; gitk --all
+Terminal&gt; gitk --since=&quot;2 weeks ago&quot;
 </pre></div>
 </div>
 <span class="target" id="index-9"></span><p id="index-10">You can also view changes to all files, some selected ones, or
 a subdirectory:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git log -p                 # all changes to all files</span>
-<span class="go">Terminal&gt; git log -p filename        # changes to a specific file</span>
-<span class="go">Terminal&gt; git log --stat --summary   # compact summary</span>
-<span class="go">Terminal&gt; git log --stat --summary subdir</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git log -p                 # all changes to all files
+Terminal&gt; git log -p filename        # changes to a specific file
+Terminal&gt; git log --stat --summary   # compact summary
+Terminal&gt; git log --stat --summary subdir
 </pre></div>
 </div>
 <p>Adding <tt class="docutils literal"><span class="pre">--follow</span></tt> will print the history of file versions before the
 file got its present name.</p>
 <p>To show the author who is responsible for the last modification of each
 line in the file, use <tt class="docutils literal"><span class="pre">git</span> <span class="pre">blame</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git blame filename</span>
-<span class="go">Terminal&gt; git blame --since=&quot;1 week&quot; filename</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git blame filename
+Terminal&gt; git blame --since=&quot;1 week&quot; filename
 </pre></div>
 </div>
 <p>A useful command to see the history of who did what, where individual
 edits of words are highlighted (<tt class="docutils literal"><span class="pre">--word-diff</span></tt>), is</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">git log -p --stat --word-diff filename</span>
+<div class="highlight-text"><div class="highlight"><pre>git log -p --stat --word-diff filename
 </pre></div>
 </div>
 <p>Removed words appear in brackets and added words in curly braces.</p>
 <p>Looking for when a particular piece of text entered or left the file,
 say the text <tt class="docutils literal"><span class="pre">def</span> <span class="pre">myfunc</span></tt>, one can run</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git log -p --word-diff --stat -S&#39;def myfunc&#39; filename</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git log -p --word-diff --stat -S&#39;def myfunc&#39; filename
 </pre></div>
 </div>
 <p>This is useful to track down particular changes in the files to see when
@@ -177,20 +189,20 @@ expressions instead of exact text: just replace <tt class="docutils literal"><sp
 <span id="index-12"></span><h3>Retrieving old files<a class="headerlink" href="#retrieving-old-files" title="Permalink to this headline">¶</a></h3>
 <p>Occasionally you need to go back to an earlier version of a file,
 say its name is <tt class="docutils literal"><span class="pre">f.py</span></tt>. Start with viewing the history:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git log f.py</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git log f.py
 </pre></div>
 </div>
 <p>Find a commit candidate from the list that you will compare the
 present version to, copy the commit hash (string like
 <tt class="docutils literal"><span class="pre">c7673487...</span></tt>), and run</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git diff c7673487763ec2bb374758fb8e7efefa12f16dea f.py</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git diff c7673487763ec2bb374758fb8e7efefa12f16dea f.py
 </pre></div>
 </div>
 <p>where the long string is the relevant commit hash. You can now view the
 differences between the most recent version and the one in
 the commit you picked (see the section <a class="reference internal" href="#bitgit-git-fetch"><em>Replacing pull by fetch and merge</em></a> for how to
 configure the tools used by the <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> command). If you want to restore the old file, write</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git checkout c7673487763ec2bb374758fb8e7efefa12f16dea f.py</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git checkout c7673487763ec2bb374758fb8e7efefa12f16dea f.py
 </pre></div>
 </div>
 <p>To go back to another version (the most recent one, for instance),
@@ -199,11 +211,15 @@ find the commit hash with <tt class="docutils literal"><span class="pre">git</sp
 <p>If <tt class="docutils literal"><span class="pre">f.py</span></tt> changed name from <tt class="docutils literal"><span class="pre">e.py</span></tt> at some point and you want
 <tt class="docutils literal"><span class="pre">e.py</span></tt> back, run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">--follow</span> <span class="pre">f.py</span></tt> to find the commit
 when <tt class="docutils literal"><span class="pre">e.py</span></tt> existed, and do a <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;commit</span> <span class="pre">hash&gt;</span> <span class="pre">e.py</span></tt>.</p>
+<p>In case <tt class="docutils literal"><span class="pre">f.py</span></tt> no longer exists, run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">--</span> <span class="pre">f.py</span></tt> to
+see its history before deletion. The last commit shown does
+not contain the file, so you need to check out the next last
+to retrieve the latest version of a deleted file.</p>
 <p>Often you just need to <em>view</em> the old file, not replace the current
 one by the old one, and then <tt class="docutils literal"><span class="pre">git</span> <span class="pre">show</span></tt> is handy. Unfortunately,
 it requires the full path from the root git directory:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git show \</span>
-<span class="go">          c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/f.py</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git show \
+          c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/f.py
 </pre></div>
 </div>
 </div>
@@ -215,12 +231,21 @@ to change all files to this state.
 The problem of going back to the most recent state is that <tt class="docutils literal"><span class="pre">git</span> <span class="pre">log</span></tt>
 has no newer commits than the one you checked out. The trick is to say
 <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">master</span></tt> to set all files to most recent version again.</p>
+<p>If you want to reset all files to an old version and commit this state
+as the valid present state, you do</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git checkout c7673487763ec2bb374758fb8e7efefa12f16dea .
+Terminal&gt; git commit -am &#39;Resetting to ...&#39;
+</pre></div>
+</div>
+<p>Note the period at the end of the first command (without it, you only
+get the possibility to look at old files, but the next commit is not
+affected).</p>
 </div>
 <div class="section" id="going-back-to-the-last-commit">
 <h3>Going back to the last commit<a class="headerlink" href="#going-back-to-the-last-commit" title="Permalink to this headline">¶</a></h3>
 <p>Sometimes accidents with many files happen and you want to go back
 to the last commit. Find the hash of the last commit and do</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git reset --hard c867c487763ec2</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git reset --hard c867c487763ec2
 </pre></div>
 </div>
 <p>This command destroys <em>everything</em> you have done since the last commit.</p>
@@ -405,34 +430,34 @@ be to keep the latest, ongoing
 developments separate from the more official and stable version
 of the files. This is easily achieved by creating a separate branch
 where new developments takes place:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git branch newstuff      # create and switch to new branch</span>
-<span class="go">Terminal&gt; # extend and modify files...</span>
-<span class="go">Terminal&gt; git commit -am &#39;Modified ... Added a file on ...&#39;</span>
-<span class="go">Terminal&gt; git checkout master      # swith back to master</span>
-<span class="go">Terminal&gt; # correct errors</span>
-<span class="go">Terminal&gt; git push origin master</span>
-<span class="go">Terminal&gt; git checkout newstuff    # switch to other branch</span>
-<span class="go">Terminal&gt; git merge master         # keep branch up-to-date w/master</span>
-<span class="go">Terminal&gt; # continue development work...</span>
-<span class="go">Terminal&gt; git commit -am &#39;More modifications of ...&#39;</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git branch newstuff      # create and switch to new branch
+Terminal&gt; # extend and modify files...
+Terminal&gt; git commit -am &#39;Modified ... Added a file on ...&#39;
+Terminal&gt; git checkout master      # swith back to master
+Terminal&gt; # correct errors
+Terminal&gt; git push origin master
+Terminal&gt; git checkout newstuff    # switch to other branch
+Terminal&gt; git merge master         # keep branch up-to-date w/master
+Terminal&gt; # continue development work...
+Terminal&gt; git commit -am &#39;More modifications of ...&#39;
 </pre></div>
 </div>
 <p>At some point, your developments in <tt class="docutils literal"><span class="pre">newstuff</span></tt>
 are mature enough to be incorporated
 in the master branch:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git checkout newstuff</span>
-<span class="go">Terminal&gt; git merge master        # synchronize newstuff w/master</span>
-<span class="go">Terminal&gt; git checkout master</span>
-<span class="go">Terminal&gt; git merge newstuff      # synchronize master w/newstuff</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git checkout newstuff
+Terminal&gt; git merge master        # synchronize newstuff w/master
+Terminal&gt; git checkout master
+Terminal&gt; git merge newstuff      # synchronize master w/newstuff
 </pre></div>
 </div>
 <p>You no longer need the <tt class="docutils literal"><span class="pre">newstuff</span></tt> branch and can delete it:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git branch -d newstuff</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git branch -d newstuff
 </pre></div>
 </div>
 <p>This command deletes the branch locally. To also delete the branch
 in the remote repo, run</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git push origin --delete newstuff</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git push origin --delete newstuff
 </pre></div>
 </div>
 </div>
@@ -441,11 +466,11 @@ in the remote repo, run</p>
 <p>It is not possible to switch branches unless you have committed the
 files in the current branch. If your work on some files is in a mess
 and you want to change to another branch or fix other files in the
-current branch, a
-&#8220;global&#8221; commit affecting all files might be immature.  Then the <a class="reference external" href="http://git-scm.com/book/en/Git-Tools-Stashing">git stash</a> command is handy. It
+current branch, a &#8220;global&#8221; commit affecting all files might be
+immature.  Then the <a class="reference external" href="http://git-scm.com/book/en/Git-Tools-Stashing">git stash</a> command is handy. It
 records the state of your files and sets you back to the state of the
-last commit in the current branch. With <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">apply</span></tt> you get the
-files in this branch back to the state when you did the last <tt class="docutils literal"><span class="pre">git</span>
+last commit in the current branch. With <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">apply</span></tt> you will update the
+files in this branch to the state when you did the last <tt class="docutils literal"><span class="pre">git</span>
 <span class="pre">stash</span></tt>.</p>
 <p>Let us explain a typical case.  Suppose you have performed some
 extensive edits in some files and then you are suddenly
@@ -484,12 +509,12 @@ trouble. That is why it is recommended to run a <tt class="docutils literal"><sp
 separately, especially if you work with branches.</p>
 <p>To fetch files from your repository at GitHub, which usually has
 the nickname <tt class="docutils literal"><span class="pre">origin</span></tt>, you write</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git fetch origin</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git fetch origin
 </pre></div>
 </div>
 <p>You now have the possibility to check out in detail what the differences
 are between the new files and local ones:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git diff origin/master</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git diff origin/master
 </pre></div>
 </div>
 <p>This command produces comparisons of the files in the current local branch
@@ -498,24 +523,24 @@ In this way you can exactly see the differences between branches.
 It also gives you an overview of what others have done with
 the files.
 When you are ready to merge in the new files from the <tt class="docutils literal"><span class="pre">master</span></tt> branch
-of <tt class="docutils literal"><span class="pre">origin</span></tt> with the files in the local <tt class="docutils literal"><span class="pre">master</span></tt> branch, you say</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git merge origin/master</span>
+of <tt class="docutils literal"><span class="pre">origin</span></tt> with the files in the current local branch, you say</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git merge origin/master
 </pre></div>
 </div>
 <p>Especially when you work with multiple branches, as outlined in
 the section <a class="reference internal" href="#bitgit-git-branch-stash"><em>Git working style with branching and stashing</em></a>, it is wise to first do a
 <tt class="docutils literal"><span class="pre">get</span> <span class="pre">fetch</span> <span class="pre">origin</span></tt> and then update each branch separately. The
 <tt class="docutils literal"><span class="pre">git</span> <span class="pre">fetch</span> <span class="pre">origin</span></tt> command will list the branches, e.g.,</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">* master</span>
-<span class="go">  gh-pages</span>
-<span class="go">  next</span>
+<div class="highlight-text"><div class="highlight"><pre>* master
+  gh-pages
+  next
 </pre></div>
 </div>
 <p>After updating <tt class="docutils literal"><span class="pre">master</span></tt> as described, you can continue with another branch:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git checkout next</span>
-<span class="go">Terminal&gt; git diff origin/next</span>
-<span class="go">Terminal&gt; git merge origin/next</span>
-<span class="go">Terminal&gt; git checkout master</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git checkout next
+Terminal&gt; git diff origin/next
+Terminal&gt; git merge origin/next
+Terminal&gt; git checkout master
 </pre></div>
 </div>
 <div class="section" id="configuring-the-git-diff-command">
@@ -554,8 +579,8 @@ and <tt class="docutils literal"><span class="pre">pdiff</span></tt> for pure te
 the local repo with those at the file hosting service.
 One possibility is removing your repo and cloning again, or
 use the Git commands</p>
-<div class="last highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git fetch --all</span>
-<span class="go">Terminal&gt; git reset --hard origin/master</span>
+<div class="last highlight-text"><div class="highlight"><pre>Terminal&gt; git fetch --all
+Terminal&gt; git reset --hard origin/master
 </pre></div>
 </div>
 </div>
@@ -576,7 +601,7 @@ the <tt class="docutils literal"><span class="pre">somebody/proj1</span></tt> pr
 This action creates a new repo <tt class="docutils literal"><span class="pre">proj1</span></tt>, known as the forked repo,
 on your GitHub account.
 Clone the fork as you clone any repo:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git clone https://github.com/user/proj1.git</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git clone https://github.com/user/proj1.git
 </pre></div>
 </div>
 <p>When you do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">origin</span> <span class="pre">master</span></tt>, you update your fork.
@@ -585,13 +610,13 @@ repo is usually under development too, and you need to pull from that
 one to stay up to date. A <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">master</span></tt> pulls from
 <tt class="docutils literal"><span class="pre">origin</span></tt> which is your fork. To pull from the original repo, you
 create a name <tt class="docutils literal"><span class="pre">upstream</span></tt>, either by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git remote add upstream \</span>
-<span class="go">              https://github.com/somebody/proj1.git</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git remote add upstream \
+              https://github.com/somebody/proj1.git
 </pre></div>
 </div>
 <p>if you cloned with such an <tt class="docutils literal"><span class="pre">https</span></tt> address, or by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git remote add upstream \</span>
-<span class="go">              git@github.com:somebody/proj1.git</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git remote add upstream \
+              git@github.com:somebody/proj1.git
 </pre></div>
 </div>
 <p>if you cloned with a <tt class="docutils literal"><span class="pre">git&#64;github.com</span></tt> (SSH) address.
@@ -604,11 +629,11 @@ lead to serious merge problems.
 It is much better to replace the pull by a separate
 <em>fetch</em> and <em>merge</em>.
 The typical workflow is</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git fetch upstream           # get new version of files</span>
-<span class="go">Terminal&gt; git merge upstream/master    # merge with yours</span>
-<span class="go">Terminal&gt; # Your files are up to date - ready for editing</span>
-<span class="go">Terminal&gt; git commit -am &#39;Description...&#39;</span>
-<span class="go">Terminal&gt; git push origin master       # store changes in your fork</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git fetch upstream           # get new version of files
+Terminal&gt; git merge upstream/master    # merge with yours
+Terminal&gt; # Your files are up to date - ready for editing
+Terminal&gt; git commit -am &#39;Description...&#39;
+Terminal&gt; git push origin master       # store changes in your fork
 </pre></div>
 </div>
 <p>At some point you would like to push your changes back to the original
@@ -628,38 +653,40 @@ is actually updated with new contributions.</p>
 <p>An annoying feature of Git for beginners is the fact that if you
 clone a repo, you only get the <tt class="docutils literal"><span class="pre">master</span></tt> branch. There are seemingly
 no other branches:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git branch</span>
-<span class="go">* master</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git branch
+* master
 </pre></div>
 </div>
 <p>To see which branches that exist in the repo, type</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git branch -a</span>
-<span class="go">* master</span>
-<span class="go">  remotes/origin/HEAD -&gt; origin/master</span>
-<span class="go">  remotes/origin/gh-pages</span>
-<span class="go">  remotes/origin/master</span>
-<span class="go">  remotes/origin/next</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git branch -a
+* master
+  remotes/origin/HEAD -&gt; origin/master
+  remotes/origin/gh-pages
+  remotes/origin/master
+  remotes/origin/next
 </pre></div>
 </div>
 <p>If there is only one remote repo that
 you pull/push from/to, you can simply switch branch with <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span></tt>
 the usual way:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git checkout gh-pages</span>
-<span class="go">Terminal&gt; git branch</span>
-<span class="go">* gh-pages</span>
-<span class="go">  master</span>
-<span class="go">Terminal&gt; git checkout next</span>
-<span class="go">Terminal&gt; git branch</span>
-<span class="go">  gh-pages</span>
-<span class="go">  master</span>
-<span class="go">* next</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git checkout gh-pages
+Terminal&gt; git branch
+* gh-pages
+  master
+Terminal&gt; git checkout next
+Terminal&gt; git branch
+  gh-pages
+  master
+* next
 </pre></div>
 </div>
+<p>You might need to do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">fetch</span> <span class="pre">origin</span></tt> to see new branches made
+on other machines.</p>
 <p>When you have more than one remote, which is usually the case if you have
 forked a repo, see the section <a class="reference internal" href="#bitgit-git-team"><em>Team work with forking and pull requests</em></a>, you must use do a
 checkout with specifying the remote branch you want:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git checkout -b gh-pages --track remote/gh-pages</span>
-<span class="go">Terminal&gt; git checkout -b next --track upstream/next</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git checkout -b gh-pages --track remote/gh-pages
+Terminal&gt; git checkout -b next --track upstream/next
 </pre></div>
 </div>
 <p>Files can be edited, added, or removed as soon as you have done
@@ -683,10 +710,26 @@ for the software package PETSc. This is highly suggested reading.  The
 associated &#8220;quick summary&#8221; of Git commands for their workflow is also
 useful.</p>
 </div>
+<div class="section" id="git-tips">
+<h2>Git tips<a class="headerlink" href="#git-tips" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-can-i-see-which-files-are-tracked-by-git">
+<h3>How can I see which files are tracked by Git?<a class="headerlink" href="#how-can-i-see-which-files-are-tracked-by-git" title="Permalink to this headline">¶</a></h3>
+<p><tt class="docutils literal"><span class="pre">git</span> <span class="pre">ls-files</span></tt> is the command:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git ls-files            # list all tracked files
+Terminal&gt; git ls-files -o         # list non-tracked files
+Terminal&gt; git ls-files myfile     # prints myfile if it&#39;s tracked
+Terminal&gt; git ls-files myfile --error-unmatch
+</pre></div>
+</div>
+<p>The latter command prints an error message if <tt class="docutils literal"><span class="pre">myfile</span></tt> is not tracked.
+See <tt class="docutils literal"><span class="pre">man</span> <span class="pre">git-ls-files</span></tt> for the many options this utility has.</p>
+</div>
+</div>
 <div class="section" id="more-documentation-on-git">
 <h2>More documentation on Git<a class="headerlink" href="#more-documentation-on-git" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
+<li><a class="reference external" href="http://rogerdudler.github.io/git-guide/">Git - the simple guide</a></li>
 <li><a class="reference external" href="http://try.github.com/">Web course on Git</a></li>
 <li><a class="reference external" href="http://schacon.github.com/git/everyday.html">Everyday GIT With 20 Commands Or So</a></li>
 <li><a class="reference external" href="http://www.ndpsoftware.com/git-cheatsheet.html">Git cheat sheet</a></li>
@@ -713,9 +756,11 @@ useful.</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="index.html">
+            <center>
+            <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
               <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
             </a></p>
+            </center>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Using Git</a><ul>
@@ -741,6 +786,10 @@ useful.</p>
 <li><a class="reference internal" href="#team-work-with-forking-and-pull-requests">Team work with forking and pull requests</a></li>
 <li><a class="reference internal" href="#cloning-a-repo-with-multiple-branches">Cloning a repo with multiple branches</a></li>
 <li><a class="reference internal" href="#git-workflows">Git workflows</a></li>
+<li><a class="reference internal" href="#git-tips">Git tips</a><ul>
+<li><a class="reference internal" href="#how-can-i-see-which-files-are-tracked-by-git">How can I see which files are tracked by Git?</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#more-documentation-on-git">More documentation on Git</a></li>
 </ul>
 </li>

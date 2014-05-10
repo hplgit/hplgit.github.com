@@ -29,7 +29,7 @@ You get started with your project on a new machine, or another user
 can get started with the project,
 by running
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git clone git@github.com:user/My-Project.git
         Terminal> cd My-Project
@@ -60,7 +60,7 @@ The typical work flow with the "My Project" project starts with
 updating the local repository by going to the ``My-Project`` directory
 and writing
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git pull origin master
 
@@ -73,7 +73,7 @@ New files and directories must be added with ``git add``.
 There are also Git commands for deleting, renaming, and moving
 files. Typical examples on these Git commands are
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git add file2.* dir1 dir2  # add files and directories
         Terminal> git rm file3
@@ -84,7 +84,7 @@ files. Typical examples on these Git commands are
 When your chunk of work is ready,
 it is time to commit your changes (note the ``-am`` option):
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git commit -am 'Description of changes.'
 
@@ -98,7 +98,7 @@ the last commit or pull command.
 You may perform many commits, to keep track of small changes, before
 you push your changes to the global repository:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git push origin master
 
@@ -110,18 +110,35 @@ computers). Infrequent push and pull easily leads to merge problems
 cannot get your changes before they are pushed.
 
 
+
+.. admonition:: Do commit and pull often
+
+   If the central repo undergoes changes (by you on other computers or by
+   others), it is essential to often commit your local work and perform
+   a pull. This will keep your local files in sync with the repo.
+   Failing to frequently commit and pull (and hence merge your files with
+   the repo) will most likely lead to substantial merge problems at a
+   later stage (because the files have become too different for an automatic
+   merge algorithm to succeed).
+
+
+
+
+
 .. index:: git status
 
 
-To see the status of files, run
 
-.. code-block:: console
+.. admonition:: Do not forget to add important files
 
-        Terminal> git status -s
+   You should run ``git status -s`` frequently to see the status of
+   files: ``A`` for added, ``M`` for modified, ``R`` for renamed,
+   and ``??`` for not being registered in the repo. Pay particular attention
+   to the ``??`` files and examine if all of them are redundant or easily
+   regenerated from other files - of not, run ``git add``.
 
-Files are marked with different symbols, e.g.,
-``A`` for added, ``M`` for modified, ``R`` for renamed,
-and ``??`` for not being registered in the repo.
+
+
 
 
 Viewing the history of files
@@ -130,7 +147,7 @@ Viewing the history of files
 A nice graphical tool allows you to view all changes, or just
 the latest ones:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> gitk --all
         Terminal> gitk --since="2 weeks ago"
@@ -145,7 +162,7 @@ the latest ones:
 You can also view changes to all files, some selected ones, or
 a subdirectory:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git log -p                 # all changes to all files
         Terminal> git log -p filename        # changes to a specific file
@@ -158,7 +175,7 @@ file got its present name.
 To show the author who is responsible for the last modification of each
 line in the file, use ``git blame``:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git blame filename
         Terminal> git blame --since="1 week" filename
@@ -166,7 +183,7 @@ line in the file, use ``git blame``:
 A useful command to see the history of who did what, where individual
 edits of words are highlighted (``--word-diff``), is
 
-.. code-block:: console
+.. code-block:: text
 
         git log -p --stat --word-diff filename
 
@@ -175,7 +192,7 @@ Removed words appear in brackets and added words in curly braces.
 Looking for when a particular piece of text entered or left the file,
 say the text ``def myfunc``, one can run
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git log -p --word-diff --stat -S'def myfunc' filename
 
@@ -195,7 +212,7 @@ Retrieving old files
 Occasionally you need to go back to an earlier version of a file,
 say its name is ``f.py``. Start with viewing the history:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git log f.py
 
@@ -203,7 +220,7 @@ Find a commit candidate from the list that you will compare the
 present version to, copy the commit hash (string like
 ``c7673487...``), and run
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git diff c7673487763ec2bb374758fb8e7efefa12f16dea f.py
 
@@ -212,7 +229,7 @@ differences between the most recent version and the one in
 the commit you picked (see the section :ref:`bitgit:git:fetch` for how to
 configure the tools used by the ``git diff`` command). If you want to restore the old file, write
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git checkout c7673487763ec2bb374758fb8e7efefa12f16dea f.py
 
@@ -224,11 +241,16 @@ If ``f.py`` changed name from ``e.py`` at some point and you want
 ``e.py`` back, run ``git log --follow f.py`` to find the commit
 when ``e.py`` existed, and do a ``git checkout <commit hash> e.py``.
 
+In case ``f.py`` no longer exists, run ``git log -- f.py`` to
+see its history before deletion. The last commit shown does
+not contain the file, so you need to check out the next last
+to retrieve the latest version of a deleted file.
+
 Often you just need to *view* the old file, not replace the current
 one by the old one, and then ``git show`` is handy. Unfortunately,
 it requires the full path from the root git directory:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git show \
                   c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/f.py
@@ -244,6 +266,19 @@ The problem of going back to the most recent state is that ``git log``
 has no newer commits than the one you checked out. The trick is to say
 ``git checkout master`` to set all files to most recent version again.
 
+If you want to reset all files to an old version and commit this state
+as the valid present state, you do
+
+
+.. code-block:: text
+
+        Terminal> git checkout c7673487763ec2bb374758fb8e7efefa12f16dea .
+        Terminal> git commit -am 'Resetting to ...'
+
+Note the period at the end of the first command (without it, you only
+get the possibility to look at old files, but the next commit is not
+affected).
+
 Going back to the last commit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -251,7 +286,7 @@ Sometimes accidents with many files happen and you want to go back
 to the last commit. Find the hash of the last commit and do
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git reset --hard c867c487763ec2
 
@@ -462,7 +497,7 @@ of the files. This is easily achieved by creating a separate branch
 where new developments takes place:
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git branch newstuff      # create and switch to new branch
         Terminal> # extend and modify files...
@@ -480,7 +515,7 @@ are mature enough to be incorporated
 in the master branch:
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git checkout newstuff
         Terminal> git merge master        # synchronize newstuff w/master
@@ -490,7 +525,7 @@ in the master branch:
 You no longer need the ``newstuff`` branch and can delete it:
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git branch -d newstuff
 
@@ -498,7 +533,7 @@ This command deletes the branch locally. To also delete the branch
 in the remote repo, run
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git push origin --delete newstuff
 
@@ -509,11 +544,11 @@ Stashing
 It is not possible to switch branches unless you have committed the
 files in the current branch. If your work on some files is in a mess
 and you want to change to another branch or fix other files in the
-current branch, a
-"global" commit affecting all files might be immature.  Then the `git stash <http://git-scm.com/book/en/Git-Tools-Stashing>`_ command is handy. It
+current branch, a "global" commit affecting all files might be
+immature.  Then the `git stash <http://git-scm.com/book/en/Git-Tools-Stashing>`_ command is handy. It
 records the state of your files and sets you back to the state of the
-last commit in the current branch. With ``git stash apply`` you get the
-files in this branch back to the state when you did the last ``git
+last commit in the current branch. With ``git stash apply`` you will update the
+files in this branch to the state when you did the last ``git
 stash``.
 
 Let us explain a typical case.  Suppose you have performed some
@@ -563,7 +598,7 @@ To fetch files from your repository at GitHub, which usually has
 the nickname ``origin``, you write
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git fetch origin
 
@@ -571,7 +606,7 @@ You now have the possibility to check out in detail what the differences
 are between the new files and local ones:
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git diff origin/master
 
@@ -581,10 +616,10 @@ In this way you can exactly see the differences between branches.
 It also gives you an overview of what others have done with
 the files.
 When you are ready to merge in the new files from the ``master`` branch
-of ``origin`` with the files in the local ``master`` branch, you say
+of ``origin`` with the files in the current local branch, you say
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git merge origin/master
 
@@ -595,7 +630,7 @@ the section :ref:`bitgit:git:branch:stash`, it is wise to first do a
 ``git fetch origin`` command will list the branches, e.g.,
 
 
-.. code-block:: console
+.. code-block:: text
 
         * master
           gh-pages
@@ -604,7 +639,7 @@ the section :ref:`bitgit:git:branch:stash`, it is wise to first do a
 After updating ``master`` as described, you can continue with another branch:
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git checkout next
         Terminal> git diff origin/next
@@ -660,7 +695,7 @@ and ``pdiff`` for pure text files.
    use the Git commands
    
    
-   .. code-block:: console
+   .. code-block:: text
    
            Terminal> git fetch --all
            Terminal> git reset --hard origin/master
@@ -702,7 +737,7 @@ on your GitHub account.
 Clone the fork as you clone any repo:
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git clone https://github.com/user/proj1.git
 
@@ -714,7 +749,7 @@ one to stay up to date. A ``git pull origin master`` pulls from
 create a name ``upstream``, either by
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git remote add upstream \
                       https://github.com/somebody/proj1.git
@@ -722,7 +757,7 @@ create a name ``upstream``, either by
 if you cloned with such an ``https`` address, or by
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git remote add upstream \
                       git@github.com:somebody/proj1.git
@@ -739,7 +774,7 @@ It is much better to replace the pull by a separate
 The typical workflow is
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git fetch upstream           # get new version of files
         Terminal> git merge upstream/master    # merge with yours
@@ -771,7 +806,7 @@ clone a repo, you only get the ``master`` branch. There are seemingly
 no other branches:
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git branch
         * master
@@ -779,7 +814,7 @@ no other branches:
 To see which branches that exist in the repo, type
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git branch -a
         * master
@@ -793,7 +828,7 @@ you pull/push from/to, you can simply switch branch with ``git checkout``
 the usual way:
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git checkout gh-pages
         Terminal> git branch
@@ -805,12 +840,15 @@ the usual way:
           master
         * next
 
+You might need to do ``git fetch origin`` to see new branches made
+on other machines.
+
 When you have more than one remote, which is usually the case if you have
 forked a repo, see the section :ref:`bitgit:git:team`, you must use do a
 checkout with specifying the remote branch you want:
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> git checkout -b gh-pages --track remote/gh-pages
         Terminal> git checkout -b next --track upstream/next
@@ -838,9 +876,76 @@ for the software package PETSc. This is highly suggested reading.  The
 associated "quick summary" of Git commands for their workflow is also
 useful.
 
+.. Make a case with computer code and a latex document
+
+.. get fetch origin, git diff to see what, git blame and so on
+
+.. Have a scripted flow of changes, do a rewrite in a new branch,
+
+.. another do software developments in a new branch, merge back,
+
+.. use dolfin workflow as model, but in a real-life case.
+
+.. Can make movie by having two users, one in Mac, one in Ubuntu,
+
+.. and switch back and forth to explain what is done. Write the
+
+.. script with such a video in mind. This is something I can play
+
+.. live too (for biocomp seminars also: Git workflows beyond
+
+.. heavy software development, could also be a blog, suggestions
+
+.. for student work, thesis work, cinpla, etc.). Could think of
+
+.. doconce source and then the collaborator edits the .tex file,
+
+.. it is overwritten, what do to. Or that could be a later chapter
+
+.. of the whole theater. Divide things into chapters: setting
+
+.. up the repo, John and Paul work, make short initial files.
+
+.. Or maybe markdown instead of doconce? Filter to latex...
+
+.. Software: random walk which writes all steps to file and
+
+.. generates a lot of data we won't have in the repo. Or wave1D,
+
+.. then it's easier to write the report...and all solutions can
+
+.. be written to file :-) at some stage the report should be
+
+.. be large (just copy a ready-made larger report in the script).
+
+.. The script can checkout two directories and just switch between
+
+.. these as two users, don't need to be different machines...
+
+
+Git tips
+--------
+
+How can I see which files are tracked by Git?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``git ls-files`` is the command:
+
+
+.. code-block:: text
+
+        Terminal> git ls-files            # list all tracked files
+        Terminal> git ls-files -o         # list non-tracked files
+        Terminal> git ls-files myfile     # prints myfile if it's tracked
+        Terminal> git ls-files myfile --error-unmatch
+
+The latter command prints an error message if ``myfile`` is not tracked.
+See ``man git-ls-files`` for the many options this utility has.
 
 More documentation on Git
 -------------------------
+
+ * `Git - the simple guide <http://rogerdudler.github.io/git-guide/>`_
 
  * `Web course on Git <http://try.github.com/>`_
 

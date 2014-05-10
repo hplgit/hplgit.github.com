@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <!--
 Automatically generated HTML file from Doconce source
 (https://github.com/hplgit/doconce/)
@@ -7,28 +6,48 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Quick Intro to Version Control Systems and Project Hosting Services">
+<meta name="description" content="Need-to-Know Intro to Version Control Systems and Project Hosting Services">
 <meta name="keywords" content="Bitbucket,Googlecode,GitHub,gh-pages on GitHub,merging files,forking (a repo),pull request">
 
 
 
 <style type="text/css">
-    /* bloodish style */
-
+    /* solarized style */
     body {
-      font-family: Helvetica, Verdana, Arial, Sans-serif;
-      color: #404040;
-      background: #ffffff;
+      margin:5;
+      padding:0;
+      border:0;	/* Remove the border around the viewport in old versions of IE */
+      width:100%;
+      background: #fdf6e3;
+      min-width:600px;	/* Minimum width of layout - remove if not required */
+      font-family: Verdana, Helvetica, Arial, sans-serif;
+      font-size: 1.0em;
+      line-height: 1.3em;
+      color: #657b83;
     }
-    h1 { font-size: 1.8em;  color: #8A0808; }
-    h2 { font-size: 1.6em;  color: #8A0808; }
-    h3 { font-size: 1.4em;  color: #8A0808; }
-    h4 { color: #8A0808; }
-    a { color: #8A0808; text-decoration:none; }
-    tt { font-family: "Courier New", Courier; }
-    
-    p { text-indent: 0px; }
+    a { color: #657b83; text-decoration:none; }
+    a:hover { color: #b58900; background: #eee8d5; text-decoration:none; }
+    h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
+    h2 { font-variant: small-caps; }
+    pre {
+      background: #fdf6e3;
+      -webkit-box-shadow: inset 0 0 2px #000000;
+      -moz-box-shadow: inset 0 0 2px #000000;
+      box-shadow: inset 0 0 2px #000000;
+      color: #586e75;
+      margin-left: 0px;
+      font-family: 'Droid Sans Mono', monospace;
+      padding: 2px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      -moz-background-clip: padding;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+    }
+    tt, code { font-family: "Courier New", Courier; }
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p { text-indent: 0px; }
     p.caption { width: 80%; font-style: normal; text-align: left; }
     hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .alert-text-small   { font-size: 80%;  }
@@ -37,12 +56,12 @@ Automatically generated HTML file from Doconce source
     .alert {
              padding:8px 35px 8px 14px; margin-bottom:18px;
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #bababa;
+             border:1px solid #FFBF00;
              border-radius: 4px;
              -webkit-border-radius: 4px;
              -moz-border-radius: 4px;
              color: #555;
-             background-color: #f8f8f8;
+             background-color: #fbeed5;
              background-position: 10px 5px;
              background-repeat: no-repeat;
              background-size: 38px;
@@ -53,10 +72,10 @@ Automatically generated HTML file from Doconce source
      .alert-block > p, .alert-block > ul {margin-bottom:1em}
      .alert li {margin-top: 1em}
      .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 </style>
 
@@ -125,7 +144,12 @@ Automatically generated HTML file from Doconce source
                'bitgit:git:clone:branches',
                'bitgit:git:clone:branches'),
               (' Git workflows ', 2, None, '___sec36'),
-              (' More documentation on Git ', 2, None, '___sec37'),
+              (' Git tips ', 2, None, '___sec37'),
+              (' How can I see which files are tracked by Git? ',
+               3,
+               None,
+               '___sec38'),
+              (' More documentation on Git ', 2, None, '___sec39'),
               (' Appendix: Working with multiple GitHub accounts ',
                1,
                'appendix:github:multiple:accounts',
@@ -138,9 +162,9 @@ end of tocinfo -->
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Quick Intro to Version Control Systems and Project Hosting Services</title>
+<title>Need-to-Know Intro to Version Control Systems and Project Hosting Services</title>
 
-<center><h1>Quick Intro to Version Control Systems and Project Hosting Services</h1></center>  <!-- document title -->
+<center><h1>Need-to-Know Intro to Version Control Systems and Project Hosting Services</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -156,13 +180,12 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Deptartment of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Feb 5, 2014</h4></center> <!-- date -->
+<center><h4>May 10, 2014</h4></center> <!-- date -->
 <p>
 <a name="bitgit:top"></a>
 
-<h2>Introduction  <a name="___sec0"></a></h2>
+<h1>Introduction  <a name="___sec0"></a></h1>
 
-<p>
 Version control systems allow you to record the history of files
 and share files among several computers and collaborators in a
 professional way. Especially when working
@@ -181,9 +204,8 @@ computers. I strongly recommend you to use such sites for <em>all</em>
 serious programming and scientific writing work - and all other
 important files.
 
-<h3>Why not Dropbox or Google Drive?  <a name="___sec1"></a></h3>
+<h2>Why not Dropbox or Google Drive?  <a name="___sec1"></a></h2>
 
-<p>
 The simplest services for hosting project files are <a href="http://dropbox.com" target="_self">Dropbox</a> and <a href="http://drive.google.com" target="_self">Google Drive</a>.
 It is very easy to get started with these systems, and they allow you
 to share files among laptops and mobile units with as many users as
@@ -199,15 +221,14 @@ movies, temporary scratch files, automatically generated copies)
 that can easily be regenerated.
 
 <p>
-However, the most serious problem with Dropbox and Google Drive
-arises when several people edit files simultaneously: it
-can be difficult detect who did what when, roll back to previous
-versions, and to manually merge the edits when these are
-incompatible. Then one needs more sophisticated tools, which
-means a true version control
-system.  The following text aims at providing you with the minimum
-information to started with Git, the leading version control system,
-and project hosting services for file storage.
+However, the most serious problem with Dropbox and Google Drive arises
+when several people edit files simultaneously: it can be difficult
+detect who did what when, roll back to previous versions, and to
+manually merge the edits when these are incompatible. Then one needs
+more sophisticated tools, which means a true version control system.
+The following text aims at providing you with the minimum information
+to started with Git, the leading version control system, combined
+with project hosting services for file storage.
 
 <p>
 <div class="alert alert-block alert-notice alert-text-normal"><b>Essence.</b>
@@ -218,18 +239,15 @@ update your version of the files, edit the files as you like, and
 synchronize the files with the "master version" in the cloud.
 It is a trivial operation to go back to a previous
 version of a file, corresponding to a certain point of time or
-labeled with a comment,
+labeled with a comment.
 You can also use tools to see
 what various people have done with the files in the various versions.
 </div>
 
 
-<h3>Project hosting services  <a name="___sec2"></a></h3>
+<h2>Project hosting services  <a name="___sec2"></a></h2>
 
-<p>
 Four popular project hosting services are
-
-<p>
 
 <ul>
   <li> <a href="http://bigbucket.org" target="_self">Bitbucket</a> at <code>bitbucket.org</code></li>
@@ -264,9 +282,8 @@ are introduced subsequently, but are not required for beginners.
 Thereafter, your Git background should be firm enough to
 easily access the many references I provide to material on the web.
 
-<h3>Repositories and local copies  <a name="___sec3"></a></h3>
+<h2>Repositories and local copies  <a name="___sec3"></a></h2>
 
-<p>
 The mentioned services host all your files in a specific project in what
 is known as a <em>repository</em>, or <em>repo</em> for short.  When a copy of the
 files are wanted on a certain computer, one clones the repository on
@@ -281,14 +298,11 @@ hosting services. However, the merge functionality clearly works best
 for pure text files and less well for binary files, such as PDF files,
 MS Word or Excel documents, and OpenOffice documents.
 
-<h3>What to choose?  <a name="___sec4"></a></h3>
+<h2>What to choose?  <a name="___sec4"></a></h2>
 
-<p>
 It might seem challenging to pick the project hosting service
 and the version control system that are right for you. Below
 is some very personal advice.
-
-<p>
 
 <ul>
  <li> I would recommend Git as the default choice of version control system.
@@ -317,9 +331,8 @@ For the examples below, assume that you have some directory tree
 Googlecode and bring under version control. The official name of the
 project is "My Project".
 
-<h3>Installing Git  <a name="___sec5"></a></h3>
+<h2>Installing Git  <a name="___sec5"></a></h2>
 
-<p>
 The installation of Git on various systems is described
 on the <a href="http://git-scm.com/" target="_self">Git website</a> under the <em>Download</em> section.
 Git involves compiled code so it is most convenient to download a
@@ -328,8 +341,8 @@ Linux computers.
 On Ubuntu or any Debian-based system the relevant installation command is
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; sudo apt-get install git gitk git-doc</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; sudo apt-get install git gitk git-doc
 </pre></div>
 <p>
 This tutorial explains Git interaction through command-line applications
@@ -347,8 +360,8 @@ should omit when bringing new directories under version control.
 Here is a simplified version of the author's <code>.gitconfig</code> file:
 <p>
 
-<!-- code=text (from !bc dat) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[user]
+<!-- code=text (from !bc dat) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">[user]
 name = Hans Petter Langtangen
 email = hpl@simula.no
 editor = emacs
@@ -365,8 +378,8 @@ or they can easily be regenerated from
 some other source files. A suggested <a href="http://hplgit.github.com/teamods/bitgit/src-bitgit/.gitignore" target="_self"><tt>.gitignore</tt></a> file looks like
 <p>
 
-<!-- code=text (from !bc dat) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># compiled files:
+<!-- code=text (from !bc dat) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"># compiled files:
 *.o
 *.so
 *.a
@@ -406,9 +419,8 @@ some program.
 <p>
 <!-- !split -->
 
-<h2>Bitbucket <a name="bitgit:bitbucket"></a></h2>
+<h1>Bitbucket <a name="bitgit:bitbucket"></a></h1>
 
-<p>
 To start using Bitbucket, go to <code>bitbucket.org</code> and create an account.
 The communication channel with Bitbucket repositories is either
 through SSH or HTTPS.  To use SSH, you must upload your SSH key,
@@ -429,13 +441,10 @@ and the TortoiseHG programs to generate and register keys, see the
 help pages on Bitbucket. Once the keys are generated, you can continue
 using them on any computer.
 
-<h3>Creating a new project  <a name="___sec7"></a></h3>
+<h2>Creating a new project  <a name="___sec7"></a></h2>
 
-<p>
 Click at <em>Repositories</em> and at <em>Create repository</em>.
 You can now
-
-<p>
 
 <ul>
  <li> fill in the name of the project, here <code>my-project</code>,</li>
@@ -465,8 +474,8 @@ Find the <em>Clone</em> button, click on it, choose
 <em>SSH</em>, copy the <em>clone</em> line and run this command in a terminal:
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git clone git@bitbucket.org:user/my-project.git</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git clone git@bitbucket.org:user/my-project.git
 </pre></div>
 <p>
 You must replace <code>user</code> with your own username at Bitbucket and
@@ -485,16 +494,16 @@ to add all files in the current
 directory <em>tree</em>, except those having file types listed in <code>.gitignore</code>:
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git add .</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git add .
 </pre></div>
 <p>
 Thereafter, the changes to the repository (here adding of files) must
 <em>committed</em> (registered):
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git commit -am &#39;Initial import of files.&#39;</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git commit -am &#39;Initial import of files.&#39;
 </pre></div>
 <p>
 The text following the <code>-am</code> option is a required description of the
@@ -509,8 +518,8 @@ The final step is to push the local changes to the master repo at
 Bitbucket:
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git push -u origin master</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git push -u origin master
 </pre></div>
 <p>
 You must be connected to the Internet for the <code>push</code> command to work since
@@ -519,11 +528,10 @@ it sends file information to the <code>bitbucket.org</code> site.
 <p>
 Further work with the files must always follow the pull, edit, commit, and
 push steps explained in
-the section <a href="#bitgit:git">Using Git</a> for Git.
+The section <a href="#bitgit:git">Using Git</a> for Git.
 
-<h4>Collaborating  <a name="___sec8"></a></h4>
+<h3>Collaborating  <a name="___sec8"></a></h3>
 
-<p>
 There is a button <em>Send invitation</em> on the project home page where you
 can invite other Bitbucket users to have push (write) access to your
 repo. Many prefer to be notified in email when changes are pushed to
@@ -533,9 +541,8 @@ notifications on updates. Under <em>Access management</em> you can fill in
 the Bitbucket names of users who are have pull (read)
 or push (write) access to the repo.
 
-<h3>User web pages <a name="bitgit:bitbucket:web"></a></h3>
+<h2>User web pages <a name="bitgit:bitbucket:web"></a></h2>
 
-<p>
 Bitbucket can host web pages associated with a Bitbucket account,
 but does not yet offer web pages as part of a project. Say
 your account/username is <code>user</code>.  Make a new repository on
@@ -544,30 +551,29 @@ file, and push back, e.g.,
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git clone git@bitbucket.org:user/user.bitbucket.org.git</span>
-<span style="color: #888888">Terminal&gt; cd user.bitbucket.org</span>
-<span style="color: #888888">Terminal&gt; echo &quot;Welcome to my web pages!&quot; &gt; test.html</span>
-<span style="color: #888888">Terminal&gt; git add test.html</span>
-<span style="color: #888888">Terminal&gt; git commit -am &#39;First web page&#39;</span>
-<span style="color: #888888">Terminal&gt; git push origin master</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git clone git@bitbucket.org:user/user.bitbucket.org.git
+Terminal&gt; cd user.bitbucket.org
+Terminal&gt; echo &quot;Welcome to my web pages!&quot; &gt; test.html
+Terminal&gt; git add test.html
+Terminal&gt; git commit -am &#39;First web page&#39;
+Terminal&gt; git push origin master
 </pre></div>
 <p>
 You can now load the URL <code>http://user.bitbucket.org/test.html</code> into
 a web browser and view the page. By creating various subdirectories
 you can host web pages for a series of projects in this repo.
 
-<h3>Linking to Bitbucket files <a name="bitgit:bitbucket:URLs"></a></h3>
+<h2>Linking to Bitbucket files <a name="bitgit:bitbucket:URLs"></a></h2>
 
-<p>
 Unfortunately, the default URL shown in your browser to a file in
 a Bitbucket repo contains information about the version of the file.
 For example, a file <code>v1.c</code> under Git might appear with the URL
 
 <p>
 
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://bitbucket.org/user/proj/src/5fb228107044/dir/v1.c?at=master
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">https://bitbucket.org/user/proj/src/5fb228107044/dir/v1.c?at=master
 </pre></div>
 <p>
 The string <code>5fb228107044</code>, called commit hash,
@@ -581,8 +587,8 @@ the final <code>?at=master</code>:
 
 <p>
 
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://bitbucket.org/user/proj/src/master/dir/v1.c
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">https://bitbucket.org/user/proj/src/master/dir/v1.c
 </pre></div>
 <p>
 Other endings of the URL with commit hash, e.g., <code>?at=default</code>,
@@ -591,17 +597,15 @@ requires the hash to be replaced by <code>default</code>.
 <p>
 <!-- !split -->
 
-<h2>Googlecode <a name="bitgit:googlecode"></a></h2>
+<h1>Googlecode <a name="bitgit:googlecode"></a></h1>
 
-<p>
 To use Googlecode you need a general account on Google, which allows
 you to use Gmail, Google Docs, and other Google services.
 Googlecode offers free file hosting, but all the files are public and
 open to the world.
 
-<h3>Creating a new project  <a name="___sec12"></a></h3>
+<h2>Creating a new project  <a name="___sec12"></a></h2>
 
-<p>
 Go to <a href="http://code.google.com/hosting" target="_self"><tt>http://code.google.com/hosting</tt></a> and click on
 <em>Creating a new project</em>. Fill out <em>all</em> the fields. For now
 the project name is <code>my-project</code>.
@@ -612,8 +616,8 @@ If you choose Git, you must create a file <code>.netrc</code> in your
 home directory containing the line
 <p>
 
-<!-- code=text (from !bc dat) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">machine code.google.com login uname password pw
+<!-- code=text (from !bc dat) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">machine code.google.com login uname password pw
 </pre></div>
 <p>
 Here, <code>uname</code> is your username for the Google account and
@@ -629,18 +633,18 @@ The next step is to clone the empty repository on your local machine
 so that you can add files:
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git clone https://code.google.com/p/my-project/</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git clone https://code.google.com/p/my-project/
 </pre></div>
 <p>
 Now you can go to the <code>my-project</code> directory and add files.
 Perform
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git add .</span>
-<span style="color: #888888">Terminal&gt; git commit -am &#39;First import of files.&#39;</span>
-<span style="color: #888888">Terminal&gt; git push origin master</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git add .
+Terminal&gt; git commit -am &#39;First import of files.&#39;
+Terminal&gt; git push origin master
 </pre></div>
 <p>
 Click on <em>Source</em> and
@@ -656,8 +660,8 @@ demands either wiki pages or special web areas for locating documentation.)
 The URL to your files is
 <p>
 
-<!-- code=text (from !bc dat) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://my-project.googlecode.com/git/
+<!-- code=text (from !bc dat) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">https://my-project.googlecode.com/git/
 </pre></div>
 <p>
 For other version control systems just replace <code>git</code> by
@@ -666,16 +670,16 @@ For example, if we have HTML documentation of our project in
 the directory <code>doc/html</code>, we can point users to
 <p>
 
-<!-- code=text (from !bc dat) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://my-project.googlecode.com/git/doc/html/index.html
+<!-- code=text (from !bc dat) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">https://my-project.googlecode.com/git/doc/html/index.html
 </pre></div>
 <p>
 The HTML will be rendered correctly as opposed to when you load
 the similar file into the web browser from the repository,
 <p>
 
-<!-- code=text (from !bc dat) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://code.google.com/p/my-project/source/browse/doc/html/index.html
+<!-- code=text (from !bc dat) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">http://code.google.com/p/my-project/source/browse/doc/html/index.html
 </pre></div>
 <p>
 Now you can only see the HTML source code of this file, as is usual
@@ -690,8 +694,8 @@ main page of the project. This is a wiki, using Google's wiki syntax,
 but it is quite easy to add links to your documentation, e.g.,
 <p>
 
-<!-- code=text (from !bc dat) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Browse the
+<!-- code=text (from !bc dat) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Browse the
 [https://my-project.googlecode.com/git/doc/API/html/index.html
 API documentation].
 </pre></div>
@@ -701,9 +705,8 @@ repository: click on <em>Sharing</em> and then on <em>Administer</em>.
 The Google account names of people you allow push (write) access can be
 listed under each other in the <em>Project committers</em> field.
 
-<h3>Wiki pages  <a name="___sec13"></a></h3>
+<h2>Wiki pages  <a name="___sec13"></a></h2>
 
-<p>
 Wiki pages can intuitively be made directly in the browser. However,
 it is often more convenient to have them locally on your computer.
 Click on <em>Source</em> and choose <em>wiki</em> on the <em>Repository</em> pull down menu.
@@ -725,14 +728,13 @@ for many formats) and that the wiki pages are frequently updated.
 <p>
 <!-- !split -->
 
-<h2>GitHub <a name="bitgit:github"></a></h2>
+<h1>GitHub <a name="bitgit:github"></a></h1>
 
-<p>
 Go to <code>github.com</code> and create an account. Then go to your account
 settings (icon in the upper left corner of the page),
 choose <em>SSH Keys</em>, and provide your SSH key
 unless you have already registered this key with another GitHub
-account (see Appendix <a href="#appendix:github:multiple:accounts">Appendix: Working with multiple GitHub accounts</a>).
+account (see the appendix <a href="#appendix:github:multiple:accounts">Appendix: Working with multiple GitHub accounts</a>).
 Often, it is just a
 matter of pasting the contents of <code>id_rsa.pub</code> or <code>id_dsa.pub</code> files,
 located in the
@@ -745,12 +747,11 @@ box (or see the introduction to Bitbucket above).
 <p>
 If the account is a project account and not a personal account,
 I do not recommend to provide an SSH key although it can be
-done (see Appendix <a href="#appendix:github:multiple:accounts">Appendix: Working with multiple GitHub accounts</a>). It is easier
+done (see the appendix <a href="#appendix:github:multiple:accounts">Appendix: Working with multiple GitHub accounts</a>). It is easier
 to log in and add collaborators using their personal GitHub usernames.
 
-<h3>Creating a new project  <a name="___sec15"></a></h3>
+<h2>Creating a new project  <a name="___sec15"></a></h2>
 
-<p>
 Click on <em>New repository</em> on the main page and fill out a project
 name, here <em>My Project</em>, click the check button <em>Initialize this
 repository with a README</em>, and click on <em>Create repository</em>.
@@ -763,8 +764,8 @@ on the <em>SSH</em> button to see the address of the project, and
 paste this address into a terminal window, after <code>git clone</code>:
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git clone git://github.com:user/My-Project.git</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git clone git://github.com:user/My-Project.git
 </pre></div>
 <p>
 Make sure you substitute <code>user</code> by your own username on GitHub.
@@ -785,17 +786,16 @@ When your initial file collection has the desired form, you must
 run
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git add .</span>
-<span style="color: #888888">Terminal&gt; git commit -am &#39;First set of files.&#39;</span>
-<span style="color: #888888">Terminal&gt; git push -u origin master</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git add .
+Terminal&gt; git commit -am &#39;First set of files.&#39;
+Terminal&gt; git push -u origin master
 </pre></div>
 <p>
 The daily file operations are explained in the section <a href="#bitgit:git">Using Git</a>.
 
-<h4>Collaborating  <a name="___sec16"></a></h4>
+<h3>Collaborating  <a name="___sec16"></a></h3>
 
-<p>
 To give others permissions to push their edits of files to the
 repository, you click on the <em>Settings</em> link in the right sidebar,
 then click on <em>Collaborators</em> on the left, and fill in the name
@@ -819,17 +819,16 @@ the <em>watch</em> button), respectively.
 <!-- No, this doesn't work: Clicking the <em>Email</em> button turns -->
 <!-- on email notifications to those participating and/or watching. -->
 
-<h3>Wiki pages  <a name="___sec17"></a></h3>
+<h2>Wiki pages  <a name="___sec17"></a></h2>
 
-<p>
 With every GitHub project there is an option to create wiki pages.
-Click on the <em>Wiki</em> button in the right sidebar on the main page
-of the project. Click on <em>New Page</em> to create
-a new page. The wiki pages can be written in different markup
-languages. Markdown is the default choice, but you can alternatively
-use MediaWiki (the LaTeX-supported markup used for
-Wikipedia) and reStructuredText (unfortunately not the Sphinx extension
-with nice LaTeX mathematics).
+Click on the <em>Wiki</em> button in the right sidebar on the main page of
+the project. Click on <em>New Page</em> to create a new page. The wiki pages
+can be written in different markup languages. Markdown is the default
+choice, but you can alternatively use MediaWiki and
+reStructuredText. Unfortunately, <em>GitHub wiki pages do not allow LaTeX
+mathematics through MathJax</em>, even though MediaWiki has support for
+LaTeX (the reason is <a href="http://stackoverflow.com/questions/16889421/how-to-insert-javascript-to-enable-mathjax-on-github-wiki-pages" target="_self">security issues</a>).
 
 <p>
 The wiki pages can be written and maintained through the web browser
@@ -840,8 +839,8 @@ the wiki text in your favorite text editor. The wiki pages are
 stored in a separate repo and can be cloned by
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git clone git://github.com/user/My-Project.wiki.git</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git clone git://github.com/user/My-Project.wiki.git
 </pre></div>
 <p>
 This command makes a local copy of the pages in the directory
@@ -865,17 +864,16 @@ generate the wiki in the reStructuredText or MediaWiki format.
 Do changes, commit the usual way, and push by
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git push git@github.com:user/My-project.wiki.git</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git push git@github.com:user/My-project.wiki.git
 </pre></div>
 <p>
 The address can be stored as <code>url</code> in <code>.git/config</code> in the
 root directory of the wiki project so that just a
 <code>git push</code> works.
 
-<h3>Project web pages  <a name="___sec18"></a></h3>
+<h2>Project web pages  <a name="___sec18"></a></h2>
 
-<p>
 HTML pages stored in your repo cannot be linked to and properly
 rendered as web pages.
 Links to HTML files at GitHub will be either rendered as nicely typeset
@@ -887,8 +885,6 @@ project. This can be done as part of your repo, but you must apply
 a special technique consisting in creating a separate <em>gh-pages</em>
 branch in Git and making the HTML files in this particular branch.
 The recipe is described in detail below.
-
-<p>
 
 <ol>
 <li> Go to the  project page on <code>github.com</code> and click <em>Settings</em>.</li>
@@ -917,8 +913,8 @@ The <code>index.html</code> page is invoked by the web address
 
 <p>
 
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://user.github.io/My-Project/index.html
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">http://user.github.io/My-Project/index.html
 </pre></div>
 <p>
 where <code>user</code> is the GitHub
@@ -950,8 +946,8 @@ identical to files in another branch.
 To merge the current branch with some branch named <code>otherbranch</code>, run
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git merge otherbranch</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git merge otherbranch
 </pre></div>
 <p>
 Git applies smart algorithms that very often manage to merge the
@@ -978,12 +974,12 @@ in the root directory of the master branch as well:
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git merge master</span>
-<span style="color: #888888">Terminal&gt; touch .nojekyll</span>
-<span style="color: #888888">Terminal&gt; git push origin gh-pages</span>
-<span style="color: #888888">Terminal&gt; git checkout master</span>
-<span style="color: #888888">Terminal&gt; git merge gh-pages</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git merge master
+Terminal&gt; touch .nojekyll
+Terminal&gt; git push origin gh-pages
+Terminal&gt; git checkout master
+Terminal&gt; git merge gh-pages
 </pre></div>
 <p>
 You <em>must</em> add an empty file <code>.nojekyll</code> in the top
@@ -999,14 +995,14 @@ make sure to update the gh-pages branch by
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git commit -am &#39;Ensure commit of master branch&#39;</span>
-<span style="color: #888888">Terminal&gt; git push origin master</span>
-<span style="color: #888888">Terminal&gt; git checkout gh-pages</span>
-<span style="color: #888888">Terminal&gt; git pull origin gh-pages</span>
-<span style="color: #888888">Terminal&gt; git merge master</span>
-<span style="color: #888888">Terminal&gt; git push origin gh-pages</span>
-<span style="color: #888888">Terminal&gt; git checkout master</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git commit -am &#39;Ensure commit of master branch&#39;
+Terminal&gt; git push origin master
+Terminal&gt; git checkout gh-pages
+Terminal&gt; git pull origin gh-pages
+Terminal&gt; git merge master
+Terminal&gt; git push origin gh-pages
+Terminal&gt; git checkout master
 </pre></div>
 <p>
 Personally, I like to move the generated <code>index.html</code> file and all
@@ -1015,16 +1011,16 @@ some more isolated place, say <code>doc/web</code>:
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git mv index.html params.json stylesheets/ images/ \</span>
-<span style="color: #888888">                 javascripts/ doc/web/</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git mv index.html params.json stylesheets/ images/ \
+                 javascripts/ doc/web/
 </pre></div>
 <p>
 The URL of the <code>index.html</code> file is
 <p>
 
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://user.github.io/My-Project/doc/web/index.html
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">http://user.github.io/My-Project/doc/web/index.html
 </pre></div>
 <p>
 <!-- See <a href="https://github.com/daler/sphinxdoc-test" target="_self"><tt>https://github.com/daler/sphinxdoc-test</tt></a> -->
@@ -1051,8 +1047,8 @@ Typically, a source file <code>dir/f.py</code> in project <code>prj</code> is re
 through
 <p>
 
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://github.com/user/prj/blob/master/dir/f.py?raw=true
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">https://github.com/user/prj/blob/master/dir/f.py?raw=true
 </pre></div>
 <p>
 Sometimes you want to link to another HTML file, PDF file, movie file,
@@ -1063,8 +1059,8 @@ the gh-pages branch and use a local link, like <code>../doc.pdf</code>, or the
 complete gh-pages URL to the file, say
 <p>
 
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://user.github.com/My-Project/doc/misc/doc.pdf
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">http://user.github.com/My-Project/doc/misc/doc.pdf
 </pre></div>
 <p>
 <div class="alert alert-block alert-notice alert-text-normal"><b>Tip.</b>
@@ -1076,9 +1072,8 @@ the HTML code.
 </div>
 
 
-<h3>User web pages  <a name="___sec19"></a></h3>
+<h2>User web pages  <a name="___sec19"></a></h2>
 
-<p>
 GitHub also allows you to create user pages and organization pages not
 tied to any specific project.
 Your personal site has address
@@ -1088,16 +1083,16 @@ and give it the project name <code>user.github.com</code>.
 Then follow the instructions that come up:
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; mkdir user.github.com</span>
-<span style="color: #888888">Terminal&gt; cd user.github.com</span>
-<span style="color: #888888">Terminal&gt; git init</span>
-<span style="color: #888888">Terminal&gt; # make an index.html file with some test text</span>
-<span style="color: #888888">Terminal&gt; git add index.html</span>
-<span style="color: #888888">Terminal&gt; git commit -m &#39;First commit&#39;</span>
-<span style="color: #888888">Terminal&gt; git remote add origin \</span>
-<span style="color: #888888">          git@github.com:user/user.github.com.git</span>
-<span style="color: #888888">Terminal&gt; git push -u origin master</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; mkdir user.github.com
+Terminal&gt; cd user.github.com
+Terminal&gt; git init
+Terminal&gt; # make an index.html file with some test text
+Terminal&gt; git add index.html
+Terminal&gt; git commit -m &#39;First commit&#39;
+Terminal&gt; git remote add origin \
+          git@github.com:user/user.github.com.git
+Terminal&gt; git push -u origin master
 </pre></div>
 <p>
 Go to <code>http://user.github.com</code> and see how the <code>index.html</code> is
@@ -1112,44 +1107,41 @@ If you want to use Sphinx generated HTML pages, recall to add an empty file
 <p>
 <!-- !split -->
 
-<h2>Using Git <a name="bitgit:git"></a></h2>
+<h1>Using Git <a name="bitgit:git"></a></h1>
 
-<p>
 Most Mac and Linux users prefer to work with Git via commands in a
 terminal window. Windows users may prefer a graphical user interface (GUI),
 and there are many <a href="http://git-scm.com/downloads/guis" target="_self">options</a> in
 this respect. There are also GUIs for Mac users.
 Here we concentrate on the efficient command-line interface to Git.
 
-<h3>Basic Git commands  <a name="___sec21"></a></h3>
+<h2>Basic Git commands  <a name="___sec21"></a></h2>
 
-<h4>Cloning  <a name="___sec22"></a></h4>
+<h3>Cloning  <a name="___sec22"></a></h3>
 
-<p>
 You get started with your project on a new machine, or another user
 can get started with the project,
 by running
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git clone git@github.com:user/My-Project.git</span>
-<span style="color: #888888">Terminal&gt; cd My-Project</span>
-<span style="color: #888888">ls</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git clone git@github.com:user/My-Project.git
+Terminal&gt; cd My-Project
+ls
 </pre></div>
 <p>
 Recall to replace <code>user</code> by your real username and <code>My-Project</code> by the
 actual project name.
 
-<h4>The pull-change-push cycle  <a name="___sec23"></a></h4>
+<h3>The pull-change-push cycle  <a name="___sec23"></a></h3>
 
-<p>
 The typical work flow with the "My Project" project starts with
 updating the local repository by going to the <code>My-Project</code> directory
 and writing
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git pull origin master</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git pull origin master
 </pre></div>
 <p>
 You may want to do <code>git fetch</code> and <code>git merge</code> instead
@@ -1163,20 +1155,20 @@ There are also Git commands for deleting, renaming, and moving
 files. Typical examples on these Git commands are
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git add file2.* dir1 dir2  # add files and directories</span>
-<span style="color: #888888">Terminal&gt; git rm file3</span>
-<span style="color: #888888">Terminal&gt; git rm -r dir2</span>
-<span style="color: #888888">Terminal&gt; git mv oldname newname</span>
-<span style="color: #888888">Terminal&gt; git mv oldname ../newdir</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git add file2.* dir1 dir2  # add files and directories
+Terminal&gt; git rm file3
+Terminal&gt; git rm -r dir2
+Terminal&gt; git mv oldname newname
+Terminal&gt; git mv oldname ../newdir
 </pre></div>
 <p>
 When your chunk of work is ready,
 it is time to commit your changes (note the <code>-am</code> option):
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git commit -am &#39;Description of changes.&#39;</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git commit -am &#39;Description of changes.&#39;
 </pre></div>
 <p>
 If typos or errors enter the message, the <code>git commit --amend</code> command
@@ -1191,8 +1183,8 @@ You may perform many commits, to keep track of small changes, before
 you push your changes to the global repository:
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git push origin master</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git push origin master
 </pre></div>
 <p>
 It is recommended to push and pull frequently if the work takes place in several
@@ -1203,38 +1195,47 @@ computers). Infrequent push and pull easily leads to merge problems
 cannot get your changes before they are pushed.
 
 <p>
-To see the status of files, run
-<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Do commit and pull often!</b>
+If the central repo undergoes changes (by you on other computers or by
+others), it is essential to often commit your local work and perform
+a pull. This will keep your local files in sync with the repo.
+Failing to frequently commit and pull (and hence merge your files with
+the repo) will most likely lead to substantial merge problems at a
+later stage (because the files have become too different for an automatic
+merge algorithm to succeed).
+</div>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git status -s</span>
-</pre></div>
-<p>
-Files are marked with different symbols, e.g.,
-<code>A</code> for added, <code>M</code> for modified, <code>R</code> for renamed,
-and <code>??</code> for not being registered in the repo.
-
-<h4>Viewing the history of files  <a name="___sec24"></a></h4>
 
 <p>
+<div class="alert alert-block alert-notice alert-text-normal"><b>Do not forget to add important files.</b>
+You should run <code>git status -s</code> frequently to see the status of
+files: <code>A</code> for added, <code>M</code> for modified, <code>R</code> for renamed,
+and <code>??</code> for not being registered in the repo. Pay particular attention
+to the <code>??</code> files and examine if all of them are redundant or easily
+regenerated from other files - of not, run <code>git add</code>.
+</div>
+
+
+<h3>Viewing the history of files  <a name="___sec24"></a></h3>
+
 A nice graphical tool allows you to view all changes, or just
 the latest ones:
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; gitk --all</span>
-<span style="color: #888888">Terminal&gt; gitk --since=&quot;2 weeks ago&quot;</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; gitk --all
+Terminal&gt; gitk --since=&quot;2 weeks ago&quot;
 </pre></div>
 <p>
 You can also view changes to all files, some selected ones, or
 a subdirectory:
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git log -p                 # all changes to all files</span>
-<span style="color: #888888">Terminal&gt; git log -p filename        # changes to a specific file</span>
-<span style="color: #888888">Terminal&gt; git log --stat --summary   # compact summary</span>
-<span style="color: #888888">Terminal&gt; git log --stat --summary subdir</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git log -p                 # all changes to all files
+Terminal&gt; git log -p filename        # changes to a specific file
+Terminal&gt; git log --stat --summary   # compact summary
+Terminal&gt; git log --stat --summary subdir
 </pre></div>
 <p>
 Adding <code>--follow</code> will print the history of file versions before the
@@ -1245,17 +1246,17 @@ To show the author who is responsible for the last modification of each
 line in the file, use <code>git blame</code>:
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git blame filename</span>
-<span style="color: #888888">Terminal&gt; git blame --since=&quot;1 week&quot; filename</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git blame filename
+Terminal&gt; git blame --since=&quot;1 week&quot; filename
 </pre></div>
 <p>
 A useful command to see the history of who did what, where individual
 edits of words are highlighted (<code>--word-diff</code>), is
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">git log -p --stat --word-diff filename</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">git log -p --stat --word-diff filename
 </pre></div>
 <p>
 Removed words appear in brackets and added words in curly braces.
@@ -1265,23 +1266,22 @@ Looking for when a particular piece of text entered or left the file,
 say the text <code>def myfunc</code>, one can run
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git log -p --word-diff --stat -S&#39;def myfunc&#39; filename</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git log -p --word-diff --stat -S&#39;def myfunc&#39; filename
 </pre></div>
 <p>
 This is useful to track down particular changes in the files to see when
 they occurred and who introduced them. One can also search for regular
 expressions instead of exact text: just replace <code>-S</code> by <code>-G</code>.
 
-<h4>Retrieving old files  <a name="___sec25"></a></h4>
+<h3>Retrieving old files  <a name="___sec25"></a></h3>
 
-<p>
 Occasionally you need to go back to an earlier version of a file,
 say its name is <code>f.py</code>. Start with viewing the history:
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git log f.py</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git log f.py
 </pre></div>
 <p>
 Find a commit candidate from the list that you will compare the
@@ -1289,8 +1289,8 @@ present version to, copy the commit hash (string like
 <code>c7673487...</code>), and run
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git diff c7673487763ec2bb374758fb8e7efefa12f16dea f.py</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git diff c7673487763ec2bb374758fb8e7efefa12f16dea f.py
 </pre></div>
 <p>
 where the long string is the relevant commit hash. You can now view the
@@ -1299,8 +1299,8 @@ the commit you picked (see the section <a href="#bitgit:git:fetch">Replacing pul
 configure the tools used by the <code>git diff</code> command). If you want to restore the old file, write
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git checkout c7673487763ec2bb374758fb8e7efefa12f16dea f.py</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git checkout c7673487763ec2bb374758fb8e7efefa12f16dea f.py
 </pre></div>
 <p>
 To go back to another version (the most recent one, for instance),
@@ -1313,19 +1313,24 @@ If <code>f.py</code> changed name from <code>e.py</code> at some point and you w
 when <code>e.py</code> existed, and do a <code>git checkout <commit hash> e.py</code>.
 
 <p>
+In case <code>f.py</code> no longer exists, run <code>git log -- f.py</code> to
+see its history before deletion. The last commit shown does
+not contain the file, so you need to check out the next last
+to retrieve the latest version of a deleted file.
+
+<p>
 Often you just need to <em>view</em> the old file, not replace the current
 one by the old one, and then <code>git show</code> is handy. Unfortunately,
 it requires the full path from the root git directory:
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git show \</span>
-<span style="color: #888888">          c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/f.py</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git show \
+          c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/f.py
 </pre></div>
 
-<h4>Reset the entire repo to an old version  <a name="___sec26"></a></h4>
+<h3>Reset the entire repo to an old version  <a name="___sec26"></a></h3>
 
-<p>
 Run <code>git log</code> on some file and find the commit hash of the date
 or message when want to go back to. Run <code>git checkout <commit hash></code>
 to change all files to this state.
@@ -1333,23 +1338,36 @@ The problem of going back to the most recent state is that <code>git log</code>
 has no newer commits than the one you checked out. The trick is to say
 <code>git checkout master</code> to set all files to most recent version again.
 
-<h4>Going back to the last commit  <a name="___sec27"></a></h4>
+<p>
+If you want to reset all files to an old version and commit this state
+as the valid present state, you do
 
 <p>
+
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git checkout c7673487763ec2bb374758fb8e7efefa12f16dea .
+Terminal&gt; git commit -am &#39;Resetting to ...&#39;
+</pre></div>
+<p>
+Note the period at the end of the first command (without it, you only
+get the possibility to look at old files, but the next commit is not
+affected).
+
+<h3>Going back to the last commit  <a name="___sec27"></a></h3>
+
 Sometimes accidents with many files happen and you want to go back
 to the last commit. Find the hash of the last commit and do
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git reset --hard c867c487763ec2</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git reset --hard c867c487763ec2
 </pre></div>
 <p>
 This command destroys <em>everything</em> you have done since the last commit.
 
-<h3>Merging files with Git <a name="bitgit:git:merge"></a></h3>
+<h2>Merging files with Git <a name="bitgit:git:merge"></a></h2>
 
-<p>
 The <code>git pull</code> command fetches new files from the repository and
 tries to perform an automatic merge if there are conflicts between
 the local files and the files in the repository. Alternatively,
@@ -1385,114 +1403,114 @@ repository.
 
 <p>
 
-<!-- code=bash (from !bc shpro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#!/bin/sh</span>
-<span style="color: #408080; font-style: italic"># Demo script for exemplifying git and merge</span>
+<!-- code=bash (from !bc shpro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #228B22">#!/bin/sh</span>
+<span style="color: #228B22"># Demo script for exemplifying git and merge</span>
 
-rm -rf tmp1 tmp2 tmp_repo   <span style="color: #408080; font-style: italic"># Clean up previous runs</span>
+rm -rf tmp1 tmp2 tmp_repo   <span style="color: #228B22"># Clean up previous runs</span>
 
-mkdir tmp_repo   <span style="color: #408080; font-style: italic"># Global repository for testing</span>
-<span style="color: #008000">cd </span>tmp_repo
+mkdir tmp_repo   <span style="color: #228B22"># Global repository for testing</span>
+<span style="color: #658b00">cd </span>tmp_repo
 git --bare init --shared
-<span style="color: #008000">cd</span> ..
+<span style="color: #658b00">cd</span> ..
 
-<span style="color: #408080; font-style: italic"># Make a repo that can be pushed to tmp_repo</span>
+<span style="color: #228B22"># Make a repo that can be pushed to tmp_repo</span>
 mkdir _tmp
-<span style="color: #008000">cd </span>_tmp
-cat &gt; myfile <span style="color: #BA2121">&lt;&lt;EOF</span>
-<span style="color: #BA2121">This is a little</span>
-<span style="color: #BA2121">test file for</span>
-<span style="color: #BA2121">exemplifying merge</span>
-<span style="color: #BA2121">of files in different</span>
-<span style="color: #BA2121">git directories.</span>
-<span style="color: #BA2121">EOF</span>
+<span style="color: #658b00">cd </span>_tmp
+cat &gt; myfile <span style="color: #CD5555">&lt;&lt;EOF</span>
+<span style="color: #CD5555">This is a little</span>
+<span style="color: #CD5555">test file for</span>
+<span style="color: #CD5555">exemplifying merge</span>
+<span style="color: #CD5555">of files in different</span>
+<span style="color: #CD5555">git directories.</span>
+<span style="color: #CD5555">EOF</span>
 git init
-git add .   <span style="color: #408080; font-style: italic"># Add all files not mentioned in ~/.gitignore</span>
-git commit -am <span style="color: #BA2121">&#39;first commit&#39;</span>
+git add .   <span style="color: #228B22"># Add all files not mentioned in ~/.gitignore</span>
+git commit -am <span style="color: #CD5555">&#39;first commit&#39;</span>
 git push ../tmp_repo master
-<span style="color: #008000">cd</span> ..
+<span style="color: #658b00">cd</span> ..
 rm -rf _tmp
 
-<span style="color: #408080; font-style: italic"># Make a new hg repositories tmp1 and tmp2 (two users)</span>
+<span style="color: #228B22"># Make a new hg repositories tmp1 and tmp2 (two users)</span>
 git clone tmp_repo tmp1
 git clone tmp_repo tmp2
-<span style="color: #408080; font-style: italic"># Change myfile in the directory tmp1</span>
-<span style="color: #008000">cd </span>tmp1
-<span style="color: #408080; font-style: italic"># Edit myfile: insert a new second line</span>
-perl -pi -e <span style="color: #BA2121">&#39;s/a little\n/a little\ntmp1-add1\n/g&#39;</span> myfile
-<span style="color: #408080; font-style: italic"># Register change in local repository</span>
-git commit -am <span style="color: #BA2121">&#39;Inserted a new second line in myfile.&#39;</span>
-<span style="color: #408080; font-style: italic"># Look at changes in this clone</span>
+<span style="color: #228B22"># Change myfile in the directory tmp1</span>
+<span style="color: #658b00">cd </span>tmp1
+<span style="color: #228B22"># Edit myfile: insert a new second line</span>
+perl -pi -e <span style="color: #CD5555">&#39;s/a little\n/a little\ntmp1-add1\n/g&#39;</span> myfile
+<span style="color: #228B22"># Register change in local repository</span>
+git commit -am <span style="color: #CD5555">&#39;Inserted a new second line in myfile.&#39;</span>
+<span style="color: #228B22"># Look at changes in this clone</span>
 git log -p
-<span style="color: #408080; font-style: italic"># or a more compact summary</span>
+<span style="color: #228B22"># or a more compact summary</span>
 git log --stat --summary
-<span style="color: #408080; font-style: italic"># or graphically</span>
-<span style="color: #408080; font-style: italic">#gitk</span>
-<span style="color: #408080; font-style: italic"># Register change in global repository tmp_repo</span>
+<span style="color: #228B22"># or graphically</span>
+<span style="color: #228B22">#gitk</span>
+<span style="color: #228B22"># Register change in global repository tmp_repo</span>
 git push origin master
-<span style="color: #008000">cd</span> ..
+<span style="color: #658b00">cd</span> ..
 
-<span style="color: #408080; font-style: italic"># Change myfile in the directory tmp2 &quot;in parallel&quot;</span>
-<span style="color: #008000">cd </span>tmp2
-<span style="color: #408080; font-style: italic"># Edit myfile: add a line at the end</span>
-cat &gt;&gt; myfile <span style="color: #BA2121">&lt;&lt;EOF</span>
-<span style="color: #BA2121">tmp2-add1</span>
-<span style="color: #BA2121">EOF</span>
-<span style="color: #408080; font-style: italic"># Register change locally</span>
-git commit -am <span style="color: #BA2121">&#39;Added a new line at the end&#39;</span>
-<span style="color: #408080; font-style: italic"># Register change globally</span>
+<span style="color: #228B22"># Change myfile in the directory tmp2 &quot;in parallel&quot;</span>
+<span style="color: #658b00">cd </span>tmp2
+<span style="color: #228B22"># Edit myfile: add a line at the end</span>
+cat &gt;&gt; myfile <span style="color: #CD5555">&lt;&lt;EOF</span>
+<span style="color: #CD5555">tmp2-add1</span>
+<span style="color: #CD5555">EOF</span>
+<span style="color: #228B22"># Register change locally</span>
+git commit -am <span style="color: #CD5555">&#39;Added a new line at the end&#39;</span>
+<span style="color: #228B22"># Register change globally</span>
 git push origin master
-<span style="color: #408080; font-style: italic"># Error message: global repository has changed,</span>
-<span style="color: #408080; font-style: italic"># we need to pull those changes to local repository first</span>
-<span style="color: #408080; font-style: italic"># and see if all files are compatible before we can update</span>
-<span style="color: #408080; font-style: italic"># our own changes to the global repository.</span>
-<span style="color: #408080; font-style: italic"># git writes</span>
-<span style="color: #408080; font-style: italic">#To /home/hpl/vc/scripting/manu/py/bitgit/src-bitgit/tmp_repo</span>
-<span style="color: #408080; font-style: italic"># ! [rejected]        master -&gt; master (non-fast-forward)</span>
-<span style="color: #408080; font-style: italic">#error: failed to push some refs to ...</span>
+<span style="color: #228B22"># Error message: global repository has changed,</span>
+<span style="color: #228B22"># we need to pull those changes to local repository first</span>
+<span style="color: #228B22"># and see if all files are compatible before we can update</span>
+<span style="color: #228B22"># our own changes to the global repository.</span>
+<span style="color: #228B22"># git writes</span>
+<span style="color: #228B22">#To /home/hpl/vc/scripting/manu/py/bitgit/src-bitgit/tmp_repo</span>
+<span style="color: #228B22"># ! [rejected]        master -&gt; master (non-fast-forward)</span>
+<span style="color: #228B22">#error: failed to push some refs to ...</span>
 
 git pull origin master
-<span style="color: #408080; font-style: italic"># git writes:</span>
-<span style="color: #408080; font-style: italic">#Auto-merging myfile</span>
-<span style="color: #408080; font-style: italic">#Merge made by recursive.</span>
-<span style="color: #408080; font-style: italic"># myfile |    1 +</span>
-<span style="color: #408080; font-style: italic"># 1 files changed, 1 insertions(+), 0 deletions(-)</span>
-cat myfile  <span style="color: #408080; font-style: italic"># successful merge!</span>
+<span style="color: #228B22"># git writes:</span>
+<span style="color: #228B22">#Auto-merging myfile</span>
+<span style="color: #228B22">#Merge made by recursive.</span>
+<span style="color: #228B22"># myfile |    1 +</span>
+<span style="color: #228B22"># 1 files changed, 1 insertions(+), 0 deletions(-)</span>
+cat myfile  <span style="color: #228B22"># successful merge!</span>
 git commit -am merge
 git push origin master
-<span style="color: #008000">cd</span> ..
+<span style="color: #658b00">cd</span> ..
 
-<span style="color: #408080; font-style: italic"># Perform new changes in parallel in tmp1 and tmp2,</span>
-<span style="color: #408080; font-style: italic"># this time causing hg merge to fail</span>
+<span style="color: #228B22"># Perform new changes in parallel in tmp1 and tmp2,</span>
+<span style="color: #228B22"># this time causing hg merge to fail</span>
 
-<span style="color: #408080; font-style: italic"># Change myfile in the directory tmp1</span>
-<span style="color: #008000">cd </span>tmp1
-<span style="color: #408080; font-style: italic"># Do it all right by pulling and updating first</span>
+<span style="color: #228B22"># Change myfile in the directory tmp1</span>
+<span style="color: #658b00">cd </span>tmp1
+<span style="color: #228B22"># Do it all right by pulling and updating first</span>
 git pull origin master
-<span style="color: #408080; font-style: italic"># Edit myfile: insert &quot;just&quot; in first line.</span>
-perl -pi -e <span style="color: #BA2121">&#39;s/a little/tmp1-add2 a little/g&#39;</span> myfile
-<span style="color: #408080; font-style: italic"># Register change in local repository</span>
-git commit -am <span style="color: #BA2121">&#39;Inserted &quot;just&quot; in first line.&#39;</span>
-<span style="color: #408080; font-style: italic"># Register change in global repository tmp_repo</span>
+<span style="color: #228B22"># Edit myfile: insert &quot;just&quot; in first line.</span>
+perl -pi -e <span style="color: #CD5555">&#39;s/a little/tmp1-add2 a little/g&#39;</span> myfile
+<span style="color: #228B22"># Register change in local repository</span>
+git commit -am <span style="color: #CD5555">&#39;Inserted &quot;just&quot; in first line.&#39;</span>
+<span style="color: #228B22"># Register change in global repository tmp_repo</span>
 git push origin master
-<span style="color: #008000">cd</span> ..
+<span style="color: #658b00">cd</span> ..
 
-<span style="color: #408080; font-style: italic"># Change myfile in the directory tmp2 &quot;in parallel&quot;</span>
-<span style="color: #008000">cd </span>tmp2
-<span style="color: #408080; font-style: italic"># Edit myfile: replace little by modest</span>
-perl -pi -e <span style="color: #BA2121">&#39;s/a little/a tmp2-replace1\ntmp2-add2\n/g&#39;</span> myfile
-<span style="color: #408080; font-style: italic"># Register change locally</span>
-git commit -am <span style="color: #BA2121">&#39;Replaced &quot;little&quot; by &quot;modest&quot;&#39;</span>
-<span style="color: #408080; font-style: italic"># Register change globally</span>
+<span style="color: #228B22"># Change myfile in the directory tmp2 &quot;in parallel&quot;</span>
+<span style="color: #658b00">cd </span>tmp2
+<span style="color: #228B22"># Edit myfile: replace little by modest</span>
+perl -pi -e <span style="color: #CD5555">&#39;s/a little/a tmp2-replace1\ntmp2-add2\n/g&#39;</span> myfile
+<span style="color: #228B22"># Register change locally</span>
+git commit -am <span style="color: #CD5555">&#39;Replaced &quot;little&quot; by &quot;modest&quot;&#39;</span>
+<span style="color: #228B22"># Register change globally</span>
 git push origin master
-<span style="color: #408080; font-style: italic"># Not possible: need to pull changes in the global repository</span>
+<span style="color: #228B22"># Not possible: need to pull changes in the global repository</span>
 git pull origin master
-<span style="color: #408080; font-style: italic"># git writes</span>
-<span style="color: #408080; font-style: italic">#CONFLICT (content): Merge conflict in myfile</span>
-<span style="color: #408080; font-style: italic">#Automatic merge failed; fix conflicts and then commit the result.</span>
-<span style="color: #408080; font-style: italic"># we have to do a manual merge</span>
+<span style="color: #228B22"># git writes</span>
+<span style="color: #228B22">#CONFLICT (content): Merge conflict in myfile</span>
+<span style="color: #228B22">#Automatic merge failed; fix conflicts and then commit the result.</span>
+<span style="color: #228B22"># we have to do a manual merge</span>
 cat myfile
-<span style="color: #008000">echo</span> <span style="color: #BA2121">&#39;Now you must edit myfile manually&#39;</span>
+<span style="color: #658b00">echo</span> <span style="color: #CD5555">&#39;Now you must edit myfile manually&#39;</span>
 </pre></div>
 <p>
 You may run this file <a href="http://hplgit.github.com/teamods/bitgit/_static-bitgit/git_merge.sh" target="_self"><tt>git_merge.sh</tt></a> named
@@ -1503,8 +1521,8 @@ to merge the two versions, but failed. Merge markers are left in
 <code>tmp2/myfile</code>:
 <p>
 
-<!-- code=text (from !bc dat) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<!-- code=text (from !bc dat) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 This is a tmp2-replace1
 tmp2-add2
 
@@ -1523,9 +1541,8 @@ Launch a text editor and edit the file, or use <code>git mergetool</code>,
 so that the file becomes correct.
 Then run <code>git commit -am merge</code> to finalize the merge.
 
-<h3>Git working style with branching and stashing <a name="bitgit:git:branch:stash"></a></h3>
+<h2>Git working style with branching and stashing <a name="bitgit:git:branch:stash"></a></h2>
 
-<p>
 <!-- git clone is without branches, say something about that in clone -->
 
 <p>
@@ -1538,9 +1555,8 @@ files and push these corrections immediately.  The problem is that
 such a push will also include the latest, yet unfinished files that you
 have committed.
 
-<h4>Branching  <a name="___sec30"></a></h4>
+<h3>Branching  <a name="___sec30"></a></h3>
 
-<p>
 A better organization of your work would
 be to keep the latest, ongoing
 developments separate from the more official and stable version
@@ -1549,17 +1565,17 @@ where new developments takes place:
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git branch newstuff      # create and switch to new branch</span>
-<span style="color: #888888">Terminal&gt; # extend and modify files...</span>
-<span style="color: #888888">Terminal&gt; git commit -am &#39;Modified ... Added a file on ...&#39;</span>
-<span style="color: #888888">Terminal&gt; git checkout master      # swith back to master</span>
-<span style="color: #888888">Terminal&gt; # correct errors</span>
-<span style="color: #888888">Terminal&gt; git push origin master</span>
-<span style="color: #888888">Terminal&gt; git checkout newstuff    # switch to other branch</span>
-<span style="color: #888888">Terminal&gt; git merge master         # keep branch up-to-date w/master</span>
-<span style="color: #888888">Terminal&gt; # continue development work...</span>
-<span style="color: #888888">Terminal&gt; git commit -am &#39;More modifications of ...&#39;</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git branch newstuff      # create and switch to new branch
+Terminal&gt; # extend and modify files...
+Terminal&gt; git commit -am &#39;Modified ... Added a file on ...&#39;
+Terminal&gt; git checkout master      # swith back to master
+Terminal&gt; # correct errors
+Terminal&gt; git push origin master
+Terminal&gt; git checkout newstuff    # switch to other branch
+Terminal&gt; git merge master         # keep branch up-to-date w/master
+Terminal&gt; # continue development work...
+Terminal&gt; git commit -am &#39;More modifications of ...&#39;
 </pre></div>
 <p>
 At some point, your developments in <code>newstuff</code>
@@ -1568,19 +1584,19 @@ in the master branch:
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git checkout newstuff</span>
-<span style="color: #888888">Terminal&gt; git merge master        # synchronize newstuff w/master</span>
-<span style="color: #888888">Terminal&gt; git checkout master</span>
-<span style="color: #888888">Terminal&gt; git merge newstuff      # synchronize master w/newstuff</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git checkout newstuff
+Terminal&gt; git merge master        # synchronize newstuff w/master
+Terminal&gt; git checkout master
+Terminal&gt; git merge newstuff      # synchronize master w/newstuff
 </pre></div>
 <p>
 You no longer need the <code>newstuff</code> branch and can delete it:
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git branch -d newstuff</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git branch -d newstuff
 </pre></div>
 <p>
 This command deletes the branch locally. To also delete the branch
@@ -1588,21 +1604,20 @@ in the remote repo, run
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git push origin --delete newstuff</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git push origin --delete newstuff
 </pre></div>
 
-<h4>Stashing  <a name="___sec31"></a></h4>
+<h3>Stashing  <a name="___sec31"></a></h3>
 
-<p>
 It is not possible to switch branches unless you have committed the
 files in the current branch. If your work on some files is in a mess
 and you want to change to another branch or fix other files in the
-current branch, a
-"global" commit affecting all files might be immature.  Then the <a href="http://git-scm.com/book/en/Git-Tools-Stashing" target="_self"><tt>git stash</tt></a> command is handy. It
+current branch, a &quot;global&quot; commit affecting all files might be
+immature.  Then the <a href="http://git-scm.com/book/en/Git-Tools-Stashing" target="_self"><tt>git stash</tt></a> command is handy. It
 records the state of your files and sets you back to the state of the
-last commit in the current branch. With <code>git stash apply</code> you get the
-files in this branch back to the state when you did the last <code>git
+last commit in the current branch. With <code>git stash apply</code> you will update the
+files in this branch to the state when you did the last <code>git
 stash</code>.
 
 <p>
@@ -1632,9 +1647,8 @@ branch with <code>git stash branch newstuff</code>.
 </div>
 
 
-<h3>Replacing pull by fetch and merge <a name="bitgit:git:fetch"></a></h3>
+<h2>Replacing pull by fetch and merge <a name="bitgit:git:fetch"></a></h2>
 
-<p>
 The <code>git pull</code> command actually performs two steps that are sometimes
 advantageous to run separately. First, a <code>get fetch</code> is run to fetch
 new files from the repository, and thereafter a <code>git merge</code> command is
@@ -1650,8 +1664,8 @@ the nickname <code>origin</code>, you write
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git fetch origin</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git fetch origin
 </pre></div>
 <p>
 You now have the possibility to check out in detail what the differences
@@ -1659,8 +1673,8 @@ are between the new files and local ones:
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git diff origin/master</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git diff origin/master
 </pre></div>
 <p>
 This command produces comparisons of the files in the current local branch
@@ -1669,41 +1683,40 @@ In this way you can exactly see the differences between branches.
 It also gives you an overview of what others have done with
 the files.
 When you are ready to merge in the new files from the <code>master</code> branch
-of <code>origin</code> with the files in the local <code>master</code> branch, you say
+of <code>origin</code> with the files in the current local branch, you say
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git merge origin/master</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git merge origin/master
 </pre></div>
 <p>
 Especially when you work with multiple branches, as outlined in
-the section <a href="#bitgit:git:branch:stash">Git working style with branching and stashing</a>, it is wise to first do a
+The section <a href="#bitgit:git:branch:stash">Git working style with branching and stashing</a>, it is wise to first do a
 <code>get fetch origin</code> and then update each branch separately. The
 <code>git fetch origin</code> command will list the branches, e.g.,
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">* master</span>
-<span style="color: #888888">  gh-pages</span>
-<span style="color: #888888">  next</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">* master
+  gh-pages
+  next
 </pre></div>
 <p>
 After updating <code>master</code> as described, you can continue with another branch:
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git checkout next</span>
-<span style="color: #888888">Terminal&gt; git diff origin/next</span>
-<span style="color: #888888">Terminal&gt; git merge origin/next</span>
-<span style="color: #888888">Terminal&gt; git checkout master</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git checkout next
+Terminal&gt; git diff origin/next
+Terminal&gt; git merge origin/next
+Terminal&gt; git checkout master
 </pre></div>
 
-<h4>Configuring the <code>git diff</code> command  <a name="___sec33"></a></h4>
+<h3>Configuring the <code>git diff</code> command  <a name="___sec33"></a></h3>
 
-<p>
 The <code>git diff</code> command launches by default the
 Unix <code>diff</code> tool in the terminal window.
 Many users prefer to use other diff tools, and the desired one
@@ -1717,8 +1730,8 @@ In <code>~/.gitconfig</code> you specify a script to do the diff:
 
 <p>
 
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[diff]
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">[diff]
 external = ~/bin/git-diff-wrapper.sh
 </pre></div>
 <p>
@@ -1729,10 +1742,10 @@ therefore look like
 
 <p>
 
-<!-- code=bash (from !bc shpro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#!/bin/sh</span>
+<!-- code=bash (from !bc shpro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #228B22">#!/bin/sh</span>
 
-diff <span style="color: #BA2121">&quot;$2&quot;</span> <span style="color: #BA2121">&quot;$5&quot;</span> | less
+diff <span style="color: #CD5555">&quot;$2&quot;</span> <span style="color: #CD5555">&quot;$5&quot;</span> | less
 </pre></div>
 <p>
 Here we use the standard (and quite primitive) Unix <code>diff</code> program,
@@ -1750,17 +1763,16 @@ use the Git commands
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git fetch --all</span>
-<span style="color: #888888">Terminal&gt; git reset --hard origin/master</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #fbeed5"><pre style="line-height: 125%">Terminal&gt; git fetch --all
+Terminal&gt; git reset --hard origin/master
 </pre></div>
 <p>
 </div>
 
 
-<h3>Team work with forking and pull requests <a name="bitgit:git:team"></a></h3>
+<h2>Team work with forking and pull requests <a name="bitgit:git:team"></a></h2>
 
-<p>
 In small collaboration teams it is natural that everyone has push access
 to the repo. On GitHub this is known as the <em>Shared Repository Model</em>.
 As teams grow larger, there will usually be a few
@@ -1779,8 +1791,8 @@ Clone the fork as you clone any repo:
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git clone https://github.com/user/proj1.git</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git clone https://github.com/user/proj1.git
 </pre></div>
 <p>
 When you do <code>git push origin master</code>, you update your fork.
@@ -1792,18 +1804,18 @@ create a name <code>upstream</code>, either by
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git remote add upstream \</span>
-<span style="color: #888888">              https://github.com/somebody/proj1.git</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git remote add upstream \
+              https://github.com/somebody/proj1.git
 </pre></div>
 <p>
 if you cloned with such an <code>https</code> address, or by
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git remote add upstream \</span>
-<span style="color: #888888">              git@github.com:somebody/proj1.git</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git remote add upstream \
+              git@github.com:somebody/proj1.git
 </pre></div>
 <p>
 if you cloned with a <code>git@github.com</code> (SSH) address.
@@ -1819,12 +1831,12 @@ The typical workflow is
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git fetch upstream           # get new version of files</span>
-<span style="color: #888888">Terminal&gt; git merge upstream/master    # merge with yours</span>
-<span style="color: #888888">Terminal&gt; # Your files are up to date - ready for editing</span>
-<span style="color: #888888">Terminal&gt; git commit -am &#39;Description...&#39;</span>
-<span style="color: #888888">Terminal&gt; git push origin master       # store changes in your fork</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git fetch upstream           # get new version of files
+Terminal&gt; git merge upstream/master    # merge with yours
+Terminal&gt; # Your files are up to date - ready for editing
+Terminal&gt; git commit -am &#39;Description...&#39;
+Terminal&gt; git push origin master       # store changes in your fork
 </pre></div>
 <p>
 At some point you would like to push your changes back to the original
@@ -1841,31 +1853,30 @@ Also in small teams where everyone has push access, the fork and pull
 request model is beneficial for reviewing files before the repo
 is actually updated with new contributions.
 
-<h3>Cloning a repo with multiple branches <a name="bitgit:git:clone:branches"></a></h3>
+<h2>Cloning a repo with multiple branches <a name="bitgit:git:clone:branches"></a></h2>
 
-<p>
 An annoying feature of Git for beginners is the fact that if you
 clone a repo, you only get the <code>master</code> branch. There are seemingly
 no other branches:
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git branch</span>
-<span style="color: #888888">* master</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git branch
+* master
 </pre></div>
 <p>
 To see which branches that exist in the repo, type
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git branch -a</span>
-<span style="color: #888888">* master</span>
-<span style="color: #888888">  remotes/origin/HEAD -&gt; origin/master</span>
-<span style="color: #888888">  remotes/origin/gh-pages</span>
-<span style="color: #888888">  remotes/origin/master</span>
-<span style="color: #888888">  remotes/origin/next</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git branch -a
+* master
+  remotes/origin/HEAD -&gt; origin/master
+  remotes/origin/gh-pages
+  remotes/origin/master
+  remotes/origin/next
 </pre></div>
 <p>
 If there is only one remote repo that
@@ -1874,17 +1885,21 @@ the usual way:
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git checkout gh-pages</span>
-<span style="color: #888888">Terminal&gt; git branch</span>
-<span style="color: #888888">* gh-pages</span>
-<span style="color: #888888">  master</span>
-<span style="color: #888888">Terminal&gt; git checkout next</span>
-<span style="color: #888888">Terminal&gt; git branch</span>
-<span style="color: #888888">  gh-pages</span>
-<span style="color: #888888">  master</span>
-<span style="color: #888888">* next</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git checkout gh-pages
+Terminal&gt; git branch
+* gh-pages
+  master
+Terminal&gt; git checkout next
+Terminal&gt; git branch
+  gh-pages
+  master
+* next
 </pre></div>
+<p>
+You might need to do <code>git fetch origin</code> to see new branches made
+on other machines.
+
 <p>
 When you have more than one remote, which is usually the case if you have
 forked a repo, see the section <a href="#bitgit:git:team">Team work with forking and pull requests</a>, you must use do a
@@ -1892,9 +1907,9 @@ checkout with specifying the remote branch you want:
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; git checkout -b gh-pages --track remote/gh-pages</span>
-<span style="color: #888888">Terminal&gt; git checkout -b next --track upstream/next</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git checkout -b gh-pages --track remote/gh-pages
+Terminal&gt; git checkout -b next --track upstream/next
 </pre></div>
 <p>
 Files can be edited, added, or removed as soon as you have done
@@ -1905,9 +1920,8 @@ It is possible to write a little script that takes the output of
 <code>git branch -a</code> after a <code>git clone</code> command and automatically check
 out all branches via <code>git checkout</code>.
 
-<h3>Git workflows  <a name="___sec36"></a></h3>
+<h2>Git workflows  <a name="___sec36"></a></h2>
 
-<p>
 Although the purpose of these notes is just to get the reader started
 with Git, it must be mentioned that there are advanced features of Git
 that have led to very powerful workflows with files and people,
@@ -1921,11 +1935,53 @@ for the software package PETSc. This is highly suggested reading.  The
 associated "quick summary" of Git commands for their workflow is also
 useful.
 
-<h3>More documentation on Git  <a name="___sec37"></a></h3>
+<p>
+<!-- Make a case with computer code and a latex document -->
+<!-- get fetch origin, git diff to see what, git blame and so on -->
+<!-- Have a scripted flow of changes, do a rewrite in a new branch, -->
+<!-- another do software developments in a new branch, merge back, -->
+<!-- use dolfin workflow as model, but in a real-life case. -->
+<!-- Can make movie by having two users, one in Mac, one in Ubuntu, -->
+<!-- and switch back and forth to explain what is done. Write the -->
+<!-- script with such a video in mind. This is something I can play -->
+<!-- live too (for biocomp seminars also: Git workflows beyond -->
+<!-- heavy software development, could also be a blog, suggestions -->
+<!-- for student work, thesis work, cinpla, etc.). Could think of -->
+<!-- doconce source and then the collaborator edits the .tex file, -->
+<!-- it is overwritten, what do to. Or that could be a later chapter -->
+<!-- of the whole theater. Divide things into chapters: setting -->
+<!-- up the repo, John and Paul work, make short initial files. -->
+<!-- Or maybe markdown instead of doconce? Filter to latex... -->
+<!-- Software: random walk which writes all steps to file and -->
+<!-- generates a lot of data we won't have in the repo. Or wave1D, -->
+<!-- then it's easier to write the report...and all solutions can -->
+<!-- be written to file :-) at some stage the report should be -->
+<!-- be large (just copy a ready-made larger report in the script). -->
+<!-- The script can checkout two directories and just switch between -->
+<!-- these as two users, don't need to be different machines... -->
+
+<h2>Git tips  <a name="___sec37"></a></h2>
+
+<h3>How can I see which files are tracked by Git?  <a name="___sec38"></a></h3>
+
+<code>git ls-files</code> is the command:
 
 <p>
 
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; git ls-files            # list all tracked files
+Terminal&gt; git ls-files -o         # list non-tracked files
+Terminal&gt; git ls-files myfile     # prints myfile if it&#39;s tracked
+Terminal&gt; git ls-files myfile --error-unmatch
+</pre></div>
+<p>
+The latter command prints an error message if <code>myfile</code> is not tracked.
+See <code>man git-ls-files</code> for the many options this utility has.
+
+<h2>More documentation on Git  <a name="___sec39"></a></h2>
+
 <ul>
+ <li> <a href="http://rogerdudler.github.io/git-guide/" target="_self">Git - the simple guide</a></li>
  <li> <a href="http://try.github.com/" target="_self">Web course on Git</a></li>
  <li> <a href="http://schacon.github.com/git/everyday.html" target="_self">Everyday GIT With 20 Commands Or So</a></li>
  <li> <a href="http://www.ndpsoftware.com/git-cheatsheet.html" target="_self">Git cheat sheet</a></li>
@@ -1945,9 +2001,8 @@ useful.
 
 <!-- !split -->
 
-<h2>Appendix: Working with multiple GitHub accounts <a name="appendix:github:multiple:accounts"></a></h2>
+<h1>Appendix: Working with multiple GitHub accounts <a name="appendix:github:multiple:accounts"></a></h1>
 
-<p>
 Working against different GitHub accounts is easy if each project you work
 with on each account adds you as a collaborator. The term "you" here means your
 primary username on GitHub. My strong recommendation is to always check
@@ -1978,16 +2033,16 @@ To debug which identity that is used when you pull and push to
 GitHub accounts, you can first run
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; ssh -Tv git@github.com</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; ssh -Tv git@github.com
 </pre></div>
 <p>
 to see your current identity and which SSH key that was used to identify you.
 Typing
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; ssh-add -l</span>
+<!-- code=text (from !bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; ssh-add -l
 </pre></div>
 <p>
 lists all your SSH keys. The shown strings can be compared with the

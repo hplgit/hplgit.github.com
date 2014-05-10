@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Quick Intro to Version Control Systems and Project Hosting Services</title>
+    <title>Need-to-Know Intro to Version Control Systems and Project Hosting Services</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -26,6 +26,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
     <link rel="top" title="Quick Intro to Version Control Systems and Project Hosting Services" href="index.html" />
     <link rel="next" title="Bitbucket" href="._main_bitgit001.html" />
     <link rel="prev" title="Quick Intro to Version Control Systems and Project Hosting Services" href="index.html" /> 
@@ -60,15 +61,15 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="quick-intro-to-version-control-systems-and-project-hosting-services">
-<h1>Quick Intro to Version Control Systems and Project Hosting Services<a class="headerlink" href="#quick-intro-to-version-control-systems-and-project-hosting-services" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="need-to-know-intro-to-version-control-systems-and-project-hosting-services">
+<h1>Need-to-Know Intro to Version Control Systems and Project Hosting Services<a class="headerlink" href="#need-to-know-intro-to-version-control-systems-and-project-hosting-services" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 5, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 10, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -105,15 +106,14 @@ that they sync all your files in a folder, a feature one does not
 want if there are many large files (simulation data, visualizations,
 movies, temporary scratch files, automatically generated copies)
 that can easily be regenerated.</p>
-<p>However, the most serious problem with Dropbox and Google Drive
-arises when several people edit files simultaneously: it
-can be difficult detect who did what when, roll back to previous
-versions, and to manually merge the edits when these are
-incompatible. Then one needs more sophisticated tools, which
-means a true version control
-system.  The following text aims at providing you with the minimum
-information to started with Git, the leading version control system,
-and project hosting services for file storage.</p>
+<p>However, the most serious problem with Dropbox and Google Drive arises
+when several people edit files simultaneously: it can be difficult
+detect who did what when, roll back to previous versions, and to
+manually merge the edits when these are incompatible. Then one needs
+more sophisticated tools, which means a true version control system.
+The following text aims at providing you with the minimum information
+to started with Git, the leading version control system, combined
+with project hosting services for file storage.</p>
 <div class="admonition-essence admonition">
 <p class="first admonition-title">Essence</p>
 <p class="last">The essence with project hosting services is that you have the files
@@ -123,7 +123,7 @@ update your version of the files, edit the files as you like, and
 synchronize the files with the &#8220;master version&#8221; in the cloud.
 It is a trivial operation to go back to a previous
 version of a file, corresponding to a certain point of time or
-labeled with a comment,
+labeled with a comment.
 You can also use tools to see
 what various people have done with the files in the various versions.</p>
 </div>
@@ -220,7 +220,7 @@ Git involves compiled code so it is most convenient to download a
 precompiled binary version of the software on Windows, Mac and other
 Linux computers.
 On Ubuntu or any Debian-based system the relevant installation command is</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; sudo apt-get install git gitk git-doc</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; sudo apt-get install git gitk git-doc
 </pre></div>
 </div>
 <p>This tutorial explains Git interaction through command-line applications
@@ -294,12 +294,14 @@ some program.</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="index.html">
+            <center>
+            <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
               <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
             </a></p>
+            </center>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Quick Intro to Version Control Systems and Project Hosting Services</a></li>
+<li><a class="reference internal" href="#">Need-to-Know Intro to Version Control Systems and Project Hosting Services</a></li>
 <li><a class="reference internal" href="#introduction">Introduction</a><ul>
 <li><a class="reference internal" href="#why-not-dropbox-or-google-drive">Why not Dropbox or Google Drive?</a></li>
 <li><a class="reference internal" href="#project-hosting-services">Project hosting services</a></li>

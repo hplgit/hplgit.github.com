@@ -63,7 +63,7 @@ Cloning  (2)
 You get started with your project on a new machine or another user
 can get started with the project by the command
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> hg clone ssh://hg@bitbucket.org/user/my-project
 
@@ -91,7 +91,7 @@ First you go to the desired directory where this project is stored on
 your local computer and make sure
 you have the latest versions of the files:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> hg pull
         Terminal> hg update
@@ -103,7 +103,7 @@ connection.
 
 You can now edit some files. Maybe you also add, remove, and move some files:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> hg add filename
         Terminal> hg remove filename
@@ -117,7 +117,7 @@ back at a later stage.
 After some changes, you have to commit and push the files to the
 repository at ``bitbucket.org``:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> hg commit -m 'Description of changes.'
         Terminal> hg push
@@ -132,7 +132,7 @@ the changes you have made since the last commit or pull command.
 
 The command
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> hg stat
 
@@ -156,7 +156,7 @@ You can easily see
 who did what with the various files. For example,
 
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> hg annotate -aun filename
 
@@ -166,7 +166,7 @@ performed the change.
 
 Another command,
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> hg log -p filename | less
 
@@ -179,7 +179,7 @@ No name specification gives the history of the whole repo.
 More compact output from ``hg log``, without line differences, is triggered by
 the ``--stat`` option:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> hg log --stat filename | less   # changes to one file
         Terminal> hg log --stat | less            # changes to all files
@@ -206,20 +206,20 @@ check the file history with
 version of the file you want. Say this revision number is 152.
 The command
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> hg revert -r 152 filename
 
 replaces the current version of the file by the old one from revision 152.
 Sometimes it is better to store the old version in a separate file:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> hg cat -r 152 filename > somefile
 
 The entire local repo can also be set back:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> hg update -r 152
         Terminal> hg update            # go back to the latest version again
@@ -285,7 +285,7 @@ and ``>>>>`` to mark conflicting texts (*merge markers*). After removing
 these lines and editing the text manually, you must register the conflict
 as resolved:
 
-.. code-block:: console
+.. code-block:: text
 
         Terminal> hg resolve -m merge myfile
         Terminal> hg commit -m merge myfile

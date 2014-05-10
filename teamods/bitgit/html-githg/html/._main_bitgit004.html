@@ -26,6 +26,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
     <link rel="top" title="Quick Intro to Version Control Systems (Git and Mercurial) and Project Hosting Services" href="index.html" />
     <link rel="next" title="Using Git" href="._main_bitgit005.html" />
     <link rel="prev" title="Googlecode" href="._main_bitgit003.html" /> 
@@ -89,7 +90,7 @@ can request <a class="reference external" href="https://github.com/edu">free, pr
 <p>The next step is to clone the project on your personal computer. Click
 on the <em>SSH</em> button to see the address of the project, and
 paste this address into a terminal window, after <tt class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git clone git://github.com:user/My-Project.git</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git clone git://github.com:user/My-Project.git
 </pre></div>
 </div>
 <p>Make sure you substitute <tt class="docutils literal"><span class="pre">user</span></tt> by your own username on GitHub.</p>
@@ -104,9 +105,9 @@ but the <tt class="docutils literal"><span class="pre">git</span> <span class="p
 <p>You can now add files and directories into the <tt class="docutils literal"><span class="pre">My-Project</span></tt> directory.
 When your initial file collection has the desired form, you must
 run</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git add .</span>
-<span class="go">Terminal&gt; git commit -am &#39;First set of files.&#39;</span>
-<span class="go">Terminal&gt; git push -u origin master</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git add .
+Terminal&gt; git commit -am &#39;First set of files.&#39;
+Terminal&gt; git push -u origin master
 </pre></div>
 </div>
 <p>The daily file operations are explained in the section <a class="reference internal" href="._main_bitgit005.html#bitgit-git"><em>Using Git</em></a>.</p>
@@ -135,20 +136,20 @@ the <em>watch</em> button), respectively.</p>
 <div class="section" id="wiki-pages-2">
 <h2>Wiki pages  (2)<a class="headerlink" href="#wiki-pages-2" title="Permalink to this headline">¶</a></h2>
 <p>With every GitHub project there is an option to create wiki pages.
-Click on the <em>Wiki</em> button in the right sidebar on the main page
-of the project. Click on <em>New Page</em> to create
-a new page. The wiki pages can be written in different markup
-languages. Markdown is the default choice, but you can alternatively
-use MediaWiki (the LaTeX-supported markup used for
-Wikipedia) and reStructuredText (unfortunately not the Sphinx extension
-with nice LaTeX mathematics).</p>
+Click on the <em>Wiki</em> button in the right sidebar on the main page of
+the project. Click on <em>New Page</em> to create a new page. The wiki pages
+can be written in different markup languages. Markdown is the default
+choice, but you can alternatively use MediaWiki and
+reStructuredText. Unfortunately, <em>GitHub wiki pages do not allow LaTeX
+mathematics through MathJax</em>, even though MediaWiki has support for
+LaTeX (the reason is <a class="reference external" href="http://stackoverflow.com/questions/16889421/how-to-insert-javascript-to-enable-mathjax-on-github-wiki-pages">security issues</a>).</p>
 <p>The wiki pages can be written and maintained through the web browser
 interface, but it is usually more convenient to clone them on
 your computer as this makes it easy to add figures and other documents
 you may want to link to. It also makes it straightforward to edit
 the wiki text in your favorite text editor. The wiki pages are
 stored in a separate repo and can be cloned by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git clone git://github.com/user/My-Project.wiki.git</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git clone git://github.com/user/My-Project.wiki.git
 </pre></div>
 </div>
 <p>This command makes a local copy of the pages in the directory
@@ -164,7 +165,7 @@ in the web browser to monitor the effect.</p>
 <p>You may consider having the original text in <tt class="docutils literal"><span class="pre">doconce</span></tt> format and
 generate the wiki in the reStructuredText or MediaWiki format.</p>
 <p>Do changes, commit the usual way, and push by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git push git@github.com:user/My-project.wiki.git</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git push git@github.com:user/My-project.wiki.git
 </pre></div>
 </div>
 <p>The address can be stored as <tt class="docutils literal"><span class="pre">url</span></tt> in <tt class="docutils literal"><span class="pre">.git/config</span></tt> in the
@@ -222,7 +223,7 @@ to <em>merge</em> the branches, i.e., automatically edit files
 in the current branch such that they are up-to-date and
 identical to files in another branch.</p>
 <span class="target" id="index-3"></span><span class="target" id="index-4"></span><span class="target" id="index-5"></span><p id="index-6">To merge the current branch with some branch named <tt class="docutils literal"><span class="pre">otherbranch</span></tt>, run</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git merge otherbranch</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git merge otherbranch
 </pre></div>
 </div>
 <p>Git applies smart algorithms that very often manage to merge the
@@ -244,11 +245,11 @@ Then switch to the master
 branch and merge with gh-pages so you get the autogenerated
 <tt class="docutils literal"><span class="pre">index.html</span></tt> file and associated files and directories for web pages
 in the root directory of the master branch as well:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git merge master</span>
-<span class="go">Terminal&gt; touch .nojekyll</span>
-<span class="go">Terminal&gt; git push origin gh-pages</span>
-<span class="go">Terminal&gt; git checkout master</span>
-<span class="go">Terminal&gt; git merge gh-pages</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git merge master
+Terminal&gt; touch .nojekyll
+Terminal&gt; git push origin gh-pages
+Terminal&gt; git checkout master
+Terminal&gt; git merge gh-pages
 </pre></div>
 </div>
 <p>You <em>must</em> add an empty file <tt class="docutils literal"><span class="pre">.nojekyll</span></tt> in the top
@@ -259,20 +260,20 @@ in subdirectories whose names start with an underscore).</p>
 maintain them in the master branch.
 Before publishing documents online,
 make sure to update the gh-pages branch by</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git commit -am &#39;Ensure commit of master branch&#39;</span>
-<span class="go">Terminal&gt; git push origin master</span>
-<span class="go">Terminal&gt; git checkout gh-pages</span>
-<span class="go">Terminal&gt; git pull origin gh-pages</span>
-<span class="go">Terminal&gt; git merge master</span>
-<span class="go">Terminal&gt; git push origin gh-pages</span>
-<span class="go">Terminal&gt; git checkout master</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git commit -am &#39;Ensure commit of master branch&#39;
+Terminal&gt; git push origin master
+Terminal&gt; git checkout gh-pages
+Terminal&gt; git pull origin gh-pages
+Terminal&gt; git merge master
+Terminal&gt; git push origin gh-pages
+Terminal&gt; git checkout master
 </pre></div>
 </div>
 <p>Personally, I like to move the generated <tt class="docutils literal"><span class="pre">index.html</span></tt> file and all
 associated scripts, stylesheets, and images from the root directory to
 some more isolated place, say <tt class="docutils literal"><span class="pre">doc/web</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git mv index.html params.json stylesheets/ images/ \</span>
-<span class="go">                 javascripts/ doc/web/</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git mv index.html params.json stylesheets/ images/ \
+                 javascripts/ doc/web/
 </pre></div>
 </div>
 <p>The URL of the <tt class="docutils literal"><span class="pre">index.html</span></tt> file is</p>
@@ -318,15 +319,15 @@ Your personal site has address
 Go to your home page on <tt class="docutils literal"><span class="pre">github.com</span></tt> and click <em>New repository</em>,
 and give it the project name <tt class="docutils literal"><span class="pre">user.github.com</span></tt>.
 Then follow the instructions that come up:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; mkdir user.github.com</span>
-<span class="go">Terminal&gt; cd user.github.com</span>
-<span class="go">Terminal&gt; git init</span>
-<span class="go">Terminal&gt; # make an index.html file with some test text</span>
-<span class="go">Terminal&gt; git add index.html</span>
-<span class="go">Terminal&gt; git commit -m &#39;First commit&#39;</span>
-<span class="go">Terminal&gt; git remote add origin \</span>
-<span class="go">          git@github.com:user/user.github.com.git</span>
-<span class="go">Terminal&gt; git push -u origin master</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; mkdir user.github.com
+Terminal&gt; cd user.github.com
+Terminal&gt; git init
+Terminal&gt; # make an index.html file with some test text
+Terminal&gt; git add index.html
+Terminal&gt; git commit -m &#39;First commit&#39;
+Terminal&gt; git remote add origin \
+          git@github.com:user/user.github.com.git
+Terminal&gt; git push -u origin master
 </pre></div>
 </div>
 <p>Go to <tt class="docutils literal"><span class="pre">http://user.github.com</span></tt> and see how the <tt class="docutils literal"><span class="pre">index.html</span></tt> is
@@ -343,9 +344,11 @@ If you want to use Sphinx generated HTML pages, recall to add an empty file
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="index.html">
+            <center>
+            <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
               <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
             </a></p>
+            </center>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">GitHub</a><ul>

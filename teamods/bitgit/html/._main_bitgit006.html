@@ -26,6 +26,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
     <link rel="top" title="Quick Intro to Version Control Systems and Project Hosting Services" href="index.html" />
     <link rel="next" title="Appendix: Working with multiple GitHub accounts" href="._main_bitgit007.html" />
     <link rel="prev" title="Appendix: Working with multiple GitHub accounts" href="._main_bitgit005.html" /> 
@@ -103,7 +104,7 @@ file one wants to commit and choose <em>Commit</em>.</p>
 <span id="index-2"></span><h3>Cloning  (2)<a class="headerlink" href="#cloning-2" title="Permalink to this headline">¶</a></h3>
 <p>You get started with your project on a new machine or another user
 can get started with the project by the command</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg clone ssh://hg@bitbucket.org/user/my-project</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; hg clone ssh://hg@bitbucket.org/user/my-project
 </pre></div>
 </div>
 <span class="target" id="index-3"></span><span class="target" id="index-4"></span><span class="target" id="index-5"></span><span class="target" id="index-6"></span><span class="target" id="index-7"></span></div>
@@ -113,8 +114,8 @@ can get started with the project by the command</p>
 First you go to the desired directory where this project is stored on
 your local computer and make sure
 you have the latest versions of the files:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg pull</span>
-<span class="go">Terminal&gt; hg update</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; hg pull
+Terminal&gt; hg update
 </pre></div>
 </div>
 <p>These commands download the latest versions of the files from
@@ -122,9 +123,9 @@ your <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt> re
 your computer. The <tt class="docutils literal"><span class="pre">pull</span></tt> command requires a functioning Internet
 connection.</p>
 <p>You can now edit some files. Maybe you also add, remove, and move some files:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg add filename</span>
-<span class="go">Terminal&gt; hg remove filename</span>
-<span class="go">Terminal&gt; hg rename oldfilename ../somedir/newfilename</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; hg add filename
+Terminal&gt; hg remove filename
+Terminal&gt; hg rename oldfilename ../somedir/newfilename
 </pre></div>
 </div>
 <p>The removal of a file is physically performed when you do a
@@ -133,15 +134,15 @@ hidden, so it is easy to get the file and its entire history
 back at a later stage.</p>
 <p>After some changes, you have to commit and push the files to the
 repository at <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg commit -m &#39;Description of changes.&#39;</span>
-<span class="go">Terminal&gt; hg push</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; hg commit -m &#39;Description of changes.&#39;
+Terminal&gt; hg push
 </pre></div>
 </div>
 <p>Note that you cannot easily redo the description so be careful with
 the wording. You can run <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">diff</span></tt> to get a listing of all
 the changes you have made since the last commit or pull command.</p>
 <p id="index-9">The command</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg stat</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; hg stat
 </pre></div>
 </div>
 <p>shows the status of the individual files (<tt class="docutils literal"><span class="pre">M</span></tt> for modified, <tt class="docutils literal"><span class="pre">A</span></tt> for
@@ -155,14 +156,14 @@ repository.</p>
 <span id="index-11"></span><h3>Viewing the history of files  (2)<a class="headerlink" href="#viewing-the-history-of-files-2" title="Permalink to this headline">¶</a></h3>
 <p>You can easily see
 who did what with the various files. For example,</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg annotate -aun filename</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; hg annotate -aun filename
 </pre></div>
 </div>
 <p>lists the various lines in the file <tt class="docutils literal"><span class="pre">filname</span></tt> annotated with the revision
 number of the latest change of the line and the name of the user who
 performed the change.</p>
 <p>Another command,</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg log -p filename | less</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; hg log -p filename | less
 </pre></div>
 </div>
 <p>lists the history of <tt class="docutils literal"><span class="pre">filename</span></tt> in more detail so that you can track
@@ -172,8 +173,8 @@ files in a directory is listed by specifying the directory name(s).
 No name specification gives the history of the whole repo.</p>
 <p>More compact output from <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">log</span></tt>, without line differences, is triggered by
 the <tt class="docutils literal"><span class="pre">--stat</span></tt> option:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg log --stat filename | less   # changes to one file</span>
-<span class="go">Terminal&gt; hg log --stat | less            # changes to all files</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; hg log --stat filename | less   # changes to one file
+Terminal&gt; hg log --stat | less            # changes to all files
 </pre></div>
 </div>
 <p>The combination <tt class="docutils literal"><span class="pre">-p</span> <span class="pre">--stat</span></tt> equips the line differences with an overview
@@ -189,17 +190,17 @@ check the file history with
 <tt class="docutils literal"><span class="pre">hg</span> <span class="pre">log</span> <span class="pre">-p</span> <span class="pre">filename</span></tt> and find the revision number corresponding to the
 version of the file you want. Say this revision number is 152.
 The command</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg revert -r 152 filename</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; hg revert -r 152 filename
 </pre></div>
 </div>
 <p>replaces the current version of the file by the old one from revision 152.
 Sometimes it is better to store the old version in a separate file:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg cat -r 152 filename &gt; somefile</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; hg cat -r 152 filename &gt; somefile
 </pre></div>
 </div>
 <p>The entire local repo can also be set back:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg update -r 152</span>
-<span class="go">Terminal&gt; hg update            # go back to the latest version again</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; hg update -r 152
+Terminal&gt; hg update            # go back to the latest version again
 </pre></div>
 </div>
 </div>
@@ -252,8 +253,8 @@ manually. There will often be lines starting with <tt class="docutils literal"><
 and <tt class="docutils literal"><span class="pre">&gt;&gt;&gt;&gt;</span></tt> to mark conflicting texts (<em>merge markers</em>). After removing
 these lines and editing the text manually, you must register the conflict
 as resolved:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; hg resolve -m merge myfile</span>
-<span class="go">Terminal&gt; hg commit -m merge myfile</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; hg resolve -m merge myfile
+Terminal&gt; hg commit -m merge myfile
 </pre></div>
 </div>
 <p>You can read more about merging files in the <a class="reference external" href="http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html">hgbook</a>.
@@ -395,9 +396,11 @@ is similar to <tt class="docutils literal"><span class="pre">git</span> <span cl
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="index.html">
+            <center>
+            <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
               <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
             </a></p>
+            </center>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Using Mercurial</a><ul>

@@ -26,9 +26,10 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
     <link rel="top" title="Quick Intro to Version Control Systems and Project Hosting Services" href="index.html" />
     <link rel="next" title="Googlecode" href="._main_bitgit002.html" />
-    <link rel="prev" title="Quick Intro to Version Control Systems and Project Hosting Services" href="._main_bitgit000.html" /> 
+    <link rel="prev" title="Need-to-Know Intro to Version Control Systems and Project Hosting Services" href="._main_bitgit000.html" /> 
   
    <style type=text/css>
      div.admonition {
@@ -49,7 +50,7 @@
           <a href="._main_bitgit002.html" title="Googlecode"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="._main_bitgit000.html" title="Quick Intro to Version Control Systems and Project Hosting Services"
+          <a href="._main_bitgit000.html" title="Need-to-Know Intro to Version Control Systems and Project Hosting Services"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Quick Intro to Version Control Systems and Project Hosting Services</a> &raquo;</li> 
       </ul>
@@ -108,7 +109,7 @@ Go to the project page
 brought to the project page when creating a new project).
 Find the <em>Clone</em> button, click on it, choose
 <em>SSH</em>, copy the <em>clone</em> line and run this command in a terminal:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git clone git@bitbucket.org:user/my-project.git</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git clone git@bitbucket.org:user/my-project.git
 </pre></div>
 </div>
 <p>You must replace <tt class="docutils literal"><span class="pre">user</span></tt> with your own username at Bitbucket and
@@ -121,12 +122,12 @@ the project and put them in the <tt class="docutils literal"><span class="pre">m
 Standing in the <tt class="docutils literal"><span class="pre">my-project</span></tt> directory, the following Git command is used
 to add all files in the current
 directory <em>tree</em>, except those having file types listed in <tt class="docutils literal"><span class="pre">.gitignore</span></tt>:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git add .</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git add .
 </pre></div>
 </div>
 <p>Thereafter, the changes to the repository (here adding of files) must
 <em>committed</em> (registered):</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git commit -am &#39;Initial import of files.&#39;</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git commit -am &#39;Initial import of files.&#39;
 </pre></div>
 </div>
 <p>The text following the <tt class="docutils literal"><span class="pre">-am</span></tt> option is a required description of the
@@ -137,7 +138,7 @@ history of your project files and inform others (and yourself) what you have
 done with the files.</p>
 <p>The final step is to push the local changes to the master repo at
 Bitbucket:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git push -u origin master</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git push -u origin master
 </pre></div>
 </div>
 <p>You must be connected to the Internet for the <tt class="docutils literal"><span class="pre">push</span></tt> command to work since
@@ -164,12 +165,12 @@ but does not yet offer web pages as part of a project. Say
 your account/username is <tt class="docutils literal"><span class="pre">user</span></tt>.  Make a new repository on
 Bitbucket called <tt class="docutils literal"><span class="pre">user.bitbucket.org</span></tt>.  Clone it, fill it with a
 file, and push back, e.g.,</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git clone git@bitbucket.org:user/user.bitbucket.org.git</span>
-<span class="go">Terminal&gt; cd user.bitbucket.org</span>
-<span class="go">Terminal&gt; echo &quot;Welcome to my web pages!&quot; &gt; test.html</span>
-<span class="go">Terminal&gt; git add test.html</span>
-<span class="go">Terminal&gt; git commit -am &#39;First web page&#39;</span>
-<span class="go">Terminal&gt; git push origin master</span>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git clone git@bitbucket.org:user/user.bitbucket.org.git
+Terminal&gt; cd user.bitbucket.org
+Terminal&gt; echo &quot;Welcome to my web pages!&quot; &gt; test.html
+Terminal&gt; git add test.html
+Terminal&gt; git commit -am &#39;First web page&#39;
+Terminal&gt; git push origin master
 </pre></div>
 </div>
 <p>You can now load the URL <tt class="docutils literal"><span class="pre">http://user.bitbucket.org/test.html</span></tt> into
@@ -206,9 +207,11 @@ requires the hash to be replaced by <tt class="docutils literal"><span class="pr
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="index.html">
+            <center>
+            <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
               <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
             </a></p>
+            </center>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Bitbucket</a><ul>
@@ -224,7 +227,7 @@ requires the hash to be replaced by <tt class="docutils literal"><span class="pr
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="._main_bitgit000.html"
-                        title="previous chapter">Quick Intro to Version Control Systems and Project Hosting Services</a></p>
+                        title="previous chapter">Need-to-Know Intro to Version Control Systems and Project Hosting Services</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="._main_bitgit002.html"
                         title="next chapter">Googlecode</a></p>
@@ -260,7 +263,7 @@ requires the hash to be replaced by <tt class="docutils literal"><span class="pr
           <a href="._main_bitgit002.html" title="Googlecode"
              >next</a> |</li>
         <li class="right" >
-          <a href="._main_bitgit000.html" title="Quick Intro to Version Control Systems and Project Hosting Services"
+          <a href="._main_bitgit000.html" title="Need-to-Know Intro to Version Control Systems and Project Hosting Services"
              >previous</a> |</li>
         <li><a href="index.html">Quick Intro to Version Control Systems and Project Hosting Services</a> &raquo;</li> 
       </ul>
