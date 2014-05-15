@@ -25,8 +25,9 @@ lessons:
     solving a wide class of nonlinear vibration problems (!).
   * Replacing classical mathematical solution techniques by
     programming and numerical simulation in science courses is
-    indeed challenging, but possible and natural. The experience is very
-    positive and such reforms are strongly encouraged.
+    indeed challenging, but possible and often natural. The experience is very
+    positive: the relevance of mathematics is much increased and programming
+    is a great pedagogical tool for learning abstract mathematical thinking.
   * Students come with all sorts of laptops. Force everyone to use
     Ubuntu as this minimizes the technical hassle with
     installing complicated mathematical software.
@@ -34,6 +35,8 @@ lessons:
 
 # #if FORMAT in ('html', 'sphinx')
 FIGURE: [figs/python5, width=100]
+
+"PDF version of this document (for printing)": "http://hplgit.github.io/edu/uiopy/uiopy.pdf"
 # #endif
 
 !split
@@ -52,8 +55,7 @@ the primary scripting language, because Python did the same as Perl,
 but with a more readable syntax and hence easier maintenance.
 Students picked up Python significantly faster than Perl, and we
 started realizing the pedagogical strengths of the Python language.  I
-wrote a "book":
-"http://www.amazon.com/Python-Scripting-Computational-Science-Engineering/dp/3642093159/ref=sr_1_2?ie=UTF8&qid=1340530481&sr=8-2&keywords=langtangen"
+wrote a "book": "http://goo.gl/q8tM7D"
 for the course, but the publisher was initially only modestly
 interested because the market was considered too small.
 Our gut feeling, however, told that scripting with Python with
@@ -77,11 +79,14 @@ computing environment as early as possible.
 Most universities buy an introductory programming course from their
 computer science department.  Very often the offer is a standard Java
 course.  Exceptionally the choice is C, C++, or perhaps something more
-exotic like Scheme. Beyond the very basics of programming, the content
-is usually typical computer science algorithms rather than numerical
-algorithms. The result is often that students for all practical
-purposes must relearn to program when they meet programming in science
-courses, and then the language is usually MATLAB, Fortran, C, or C++.
+exotic like Scheme. The primary examples
+are frequently math-free toy problems (``class Dog is a subclass of class
+Animal, and class Dog has four instances of class Leg'').
+Our experience is that the combination of programming and mathematical
+application is challenging and requires much training.
+Without such training, the students must usually
+relearn to program when they meet a need for programming in science
+courses with languages like MATLAB, Fortran, C, or C++.
 
 At the University of Oslo, the introductory Java course was free of
 any mathematics and not synchronized with the needs in later science
@@ -113,15 +118,15 @@ programming language at disposal.
 #the University, I am not qualified for MathWorks' academic discount,
 #and my MATLAB license hence costs twice as much as my laptop.)
 
-Again I wrote a "book":
-"http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642183654/ref=sr_1_1?ie=UTF8&qid=1340530481&sr=8-1&keywords=langtangen"
+Again I wrote a "book": "http://goo.gl/SWEQlz"
 for the introductory programming course, this time addressing
 newcomers to programming and concentrating the examples on numerical
 computing. Needless to say, there were many skeptics: Python was of
 marginal interest to scientific computing, Python was a bad first
-language (because of its dynamic typing), mixing programming and
+language because of its dynamic typing, mixing programming and
 mathematics is inferior to first mastering calculus and Java
-separately, etc. etc.
+separately - and the arguments went on and on to avoid radical changes.
+
 
 #People have constantly reminded me about the possibly marginal interest
 #Python will obtain in science, and that going for the established, popular
@@ -157,6 +162,35 @@ abroad.
 
 #"awards":
 #"http://www.uio.no/studier/aktuelt/laringsmiljoprisen.html"
+
+!split
+===== Programming is a splendid tool for teaching abstract mathematics =====
+
+For the skeptics, we have some additional scientific arguments in
+favor of the described approach.  We quickly experienced that
+programming numerical algorithms allows the students to solve hard or
+impossible math problems occurring in real applications. This power to
+conquer the mathematics is very motivating in itself. Also, the
+combination of programming and mathematics appear to be difficult and
+therefore needs to be trained systematically. The reason is that
+classical mathematical training concerns specific problems (such as
+multiplying two specific polynomials) while programming must addresses
+abstract mathematical quantities (like a general polynomial). The
+students therefore need to understand that a specific mathematical
+problem belongs to an abstract class of problems, pick a general
+solution method for that class of problems, implement this method, and
+then apply the general tool (a Python function) to solve the original,
+specific problem.  This is the power of mathematics in a nutshell and
+the reason why mathematics has been such a great success in our
+society. Programming is a natural tool to teach this way of using
+mathematics, while pen and paper techniques tend to decrease the
+abstract view on mathematical quantities. Obviously, teaching
+programming and mathematics separately in the classical way, and then
+expecting the students to master the combination, fails because few
+will then master the necessary abstract view of the mathematics on
+their own.
+
+
 
 !split
 ===== There is impact of teaching Python =====
@@ -302,4 +336,3 @@ FIGURE: [figs/python6, width=100]
 
 
 #"Doconce source of this document": "http://hplgit.github.com/teamods/uiopy/uiopy.do.txt"
-
