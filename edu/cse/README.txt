@@ -1,1 +1,1 @@
-The main dir for these files is talks/CSE.
+The main dir for these files is teamods/doc/src/cse.
