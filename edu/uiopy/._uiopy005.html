@@ -28,16 +28,20 @@ Automatically generated HTML file from Doconce source
                2,
                None,
                '___sec1'),
-              (' There is impact of teaching Python ', 2, None, '___sec2'),
+              (' Programming is a splendid tool for teaching abstract mathematics ',
+               2,
+               None,
+               '___sec2'),
+              (' There is impact of teaching Python ', 2, None, '___sec3'),
               (' We let the students play with advanced problems ',
                2,
                None,
-               '___sec3'),
+               '___sec4'),
               (' We use Ubuntu to minimize installation problems ',
                2,
                None,
-               '___sec4'),
-              (' Resources ', 2, None, '___sec5')]}
+               '___sec5'),
+              (' Resources ', 2, None, '___sec6')]}
 end of tocinfo -->
 
 <body>
@@ -77,19 +81,20 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: " We started with a course on Python scripting " --> <li>  <a href="._uiopy001.html#___sec0"> We started with a course on Python scripting </a></li>
-     <!-- navigation toc: " We chose Python for learning computer programming " --> <li>  <a href="._uiopy002.html#___sec1"> We chose Python for learning computer programming </a></li>
-     <!-- navigation toc: " There is impact of teaching Python " --> <li>  <a href="._uiopy003.html#___sec2"> There is impact of teaching Python </a></li>
-     <!-- navigation toc: " We let the students play with advanced problems " --> <li>  <a href="._uiopy004.html#___sec3"> We let the students play with advanced problems </a></li>
-     <!-- navigation toc: " We use Ubuntu to minimize installation problems " --> <li>  <a href="._uiopy005.html#___sec4"> We use Ubuntu to minimize installation problems </a></li>
-     <!-- navigation toc: " Resources " --> <li>  <a href="._uiopy005.html#___sec5"> Resources </a></li>
+     <!-- navigation toc: "We started with a course on Python scripting" --> <li><a href="#___sec0" style="font-size: 80%;">We started with a course on Python scripting</a></li>
+     <!-- navigation toc: "We chose Python for learning computer programming" --> <li><a href="#___sec1" style="font-size: 80%;">We chose Python for learning computer programming</a></li>
+     <!-- navigation toc: "Programming is a splendid tool for teaching abstract mathematics" --> <li><a href="#___sec2" style="font-size: 80%;">Programming is a splendid tool for teaching abstract mathematics</a></li>
+     <!-- navigation toc: "There is impact of teaching Python" --> <li><a href="#___sec3" style="font-size: 80%;">There is impact of teaching Python</a></li>
+     <!-- navigation toc: "We let the students play with advanced problems" --> <li><a href="#___sec4" style="font-size: 80%;">We let the students play with advanced problems</a></li>
+     <!-- navigation toc: "We use Ubuntu to minimize installation problems" --> <li><a href="#___sec5" style="font-size: 80%;">We use Ubuntu to minimize installation problems</a></li>
+     <!-- navigation toc: "Resources" --> <li><a href="#___sec6" style="font-size: 80%;">Resources</a></li>
 
         </ul>
       </li>
     </ul>
   </div>
 </div>
-</div>
+</div> <!-- end of navigation bar -->
 
 <div class="container">
 
@@ -98,87 +103,51 @@ MathJax.Hub.Config({
 <a name="part0005"></a>
 <!-- !split -->
 
-<h2>We use Ubuntu to minimize installation problems  <a name="___sec4"></a></h2>
+<h2>We let the students play with advanced problems  <a name="___sec4"></a></h2>
 
-Many fear to introduce programming and simulation in courses because
-there are so many technical details. For example, how shall students
-install Python and 30 software packages on their personal
-laptops? This question quickly scares teachers.
-We have found a solution that has proven to be successful over the last
-four years: <em>force all students to use Ubuntu</em>, and provide support for
-Ubuntu only!
+As mentioned, we start with numerics and programming when the 19-year
+old new students arrive at the University. About 300 students enter
+courses on classical calculus, numerical calculus, and programming of
+the latter. The programming course covers basic MATLAB-style
+procedural programming in the first half of the fall semester, while
+the second half is spent on statistical simulations, ordinary
+differential equations, and class programming (recall that classes and
+object-oriented programming were invented in Oslo so we have no other
+choice!). The final project is to create a flexible, object-oriented
+toolbox for studying nonlinear vibration problems described by the
+standard model
 
-<p>
-Mac users typically run Ubuntu in a virtual machine (<a href="http://www.virtualbox.org/" target="_self">VirtualBox</a>, or preferably, <a href="http://www.vmware.com/products/player" target="_self">VMWare Player</a> or <a href="http://www.vmware.com/products/fusion/overview.html/" target="_self">VMWare Fusion</a>), while Windows
-users can run a virtual machine or have a dual boot.  The <a href="http://wubi-installer.org" target="_self">Wubi</a> software makes installing the dual boot
-solution very easy.  On Ubuntu we have one package (<code>python-scitools</code>)
-that installs everything the students need in one command. Later courses can
-just provide a one-line command with their needs for additional packages.
+$$ m \ddot x + f(\dot x) + s(x) = F(t) $$
 
-<p>
-There are several reasons why we dare to force the use of only one
-operating system:
-
-<ol>
-<li> Installation of programming tools and mathematical software on Windows and Mac OS X requires comprehensive competence that very few students have and want to gain.</li>
-<li> On Debian Linux systems, including Ubuntu, installation of complex mathematical software is done by a one-line command.</li>
-<li> Debian Linux has the largest collection of mathematical software today.</li>
-<li> When the students need to compile and link their own software, this seems to be easier on Linux systems than on Mac OS X and Windows. Although Mac OS X is basically Unix, there are many technical peculiarities that quickly calls for competence beyond what students and the average teacher have.</li>
-<li> Ubuntu's graphical interface is very similar to Windows or Mac OS X so students pick up Ubuntu without any noise.</li>
-<li> Students struggle much more with the logic of programming than with
-   Emacs and Unix commands.</li>
-</ol>
-
-I should add that <a href="http://www.floss4science.com/fedora-scientific-amit-saha/" target="_self">Fedora Scientific</a> may provide a viable alternative to Ubuntu, especially on sites where Fedora is already the supported Linux system. Fedora Scientific
-now offers a lot of very useful <a href="http://spins.fedoraproject.org/scientific-kde/" target="_self">mathematics software</a>
+The development environment for programming consists of the well-proven
+terminal window and a text editor (<code>gedit</code>, <code>emacs</code>, or <code>vi</code>).
 
 <p>
-In future cloud supercomputing I imagine one can just upload the Linux
-image (running in a virtual machine) to the cloud service and avoid
-tedious installation processes. By archiving the image along with
-scientific results, one can at any time rerun simulations - the
-complete operating system, all the needed software, and all data
-reside in the image. This is key to reproducible science.
+Many reviews of the <a href="http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642183654/ref=sr_1_1?ie=UTF8&qid=1340530481&sr=8-1&keywords=langtangen" target="_self">course book</a>
+claim that the book is quite advanced and may fit the graduate
+level. However, most of the book is in fact covered the very first
+semester in Oslo. This works well and the course has received
+excellent student critiques.  Scientists usually think of Monte Carlo
+simulation and nonlinear differential equations as advanced topics,
+not belonging to first semester courses, but the methods and their
+applications can be exposed in very intuitive ways suitable for
+newbies.  At least the students can train their programming skills on
+such problems and be able to produce solutions to what many
+traditionally think of as advanced problems.  A deeper understanding
+of what they actually do needs to wait until they master a broader set
+of courses. My main message is that what is basic and what is advanced
+should be continuously up for discussion.
 
 <p>
-So far, I have not heard one single negative comment that we support
-only one operating system.  When we tried to support Unix, Linux,
-Windows, and Mac, there were a lot of complaints from students that
-they did not have access to the right software and that technical
-problems with computers stole too much attention. These complaints
-have simply disappeared with the standardization on Ubuntu. So we have
-learned that giving people more choices does not necessarily make them
-happier.
-
-<p>
-<b>A final comment.</b>
-The use of Ubuntu is mainly motivated by the total need of mathematical
-packages and programming tools during a student's
-entire stay at the university. If the need is basically an environment for doing
-Python programming, the <a href="http://www.enthought.com/products/epd.php" target="_self">Enthought Python Distribution</a> or the <a href="http://code.google.com/p/pythonxy/" target="_self">Python(x,y)</a> package provide user-friendly environments on any standard Windows computer.
-
-<p>
-<center><p><img src="figs/python6.jpeg" align="bottom" width=100></p></center>
-
-<h2>Resources  <a name="___sec5"></a></h2>
-
-<ul>
- <li> Published formats of this essay: <a href="http://hplgit.github.com/teamods/edu/uiopy/uiopy.pdf" target="_self">PDF</a>, <a href="http://hplgit.github.com/teamods/edu/uiopy/uiopy.html" target="_self">HTML</a>, <a href="http://hplgit.github.com/teamods/edu/uiopy/html/uiopy.html" target="_self">Sphinx</a></li>
- <li> The book <a href="http://goo.gl/q8tM7D" target="_self">Python Scripting for Computational Science</a></li>
- <li> The book <a href="http://goo.gl/SWEQlz" target="_self">A Primer on Scientific Computing with Python</a></li>
- <li> <a href="http://www.uio.no/studier/emner/matnat/ifi/INF1100/index-eng.xml" target="_self">Student information</a> on our introductory programming course where Python is used</li>
- <li> The <a href="http://www.mn.uio.no/english/about/collaboration/cse/" target="_self">Computing in Science Education</a> reform of science courses at the University of Oslo</li>
- <li> <a href="http://hplgit.github.com/teamods/ubuntu/vmware/index.html" target="_self">How to install Ubuntu</a> on any computer using VMWare Fusion
-<!-- <a href="http://hplgit.github.com/teamods/uiopy/uiopy.do.txt" target="_self">Doconce source of this document</a> --></li>
-</ul>
-
-
 <p>
 <ul class="pager">
   <li class="previous">
     <a href="._uiopy004.html">&larr; Prev</a>
   </li>
 
+  <li class="next">
+    <a href="._uiopy006.html">Next &rarr;</a>
+  </li>
 
 </ul>
 <!-- ------------------- end of main content --------------- -->

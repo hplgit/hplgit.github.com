@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Computing in Science Education (CSE)">
+
+
+
+
+
+
+
+<!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<!--
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/reveal.min.css">
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+-->
+
+<script>
+document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+</script>
+
+<style type="text/css">
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .reveal .alert-text-small   { font-size: 80%;  }
+    .reveal .alert-text-large   { font-size: 130%; }
+    .reveal .alert-text-normal  { font-size: 90%;  }
+    .reveal .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:5px solid #bababa;
+             -webkit-border-radius: 14px; -moz-border-radius: 14px;
+             border-radius:14px
+             background-position: 10px 10px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 30px; /* 55px; if icon */
+     }
+     .reveal .alert-block {padding-top:14px; padding-bottom:14px}
+     .reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     /*.reveal .alert li {margin-top: 1em}*/
+     .reveal .alert-block p+p {margin-top:5px}
+     /*.reveal .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
+     .reveal .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_summary.png); }
+     .reveal .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_warning.png); }
+     .reveal .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+<body>
+<div class="reveal">
+
+<!-- Any section element inside the <div class="slides"> container
+     is displayed as a slide -->
+
+<div class="slides">
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+
+
+
+
+<section>
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Computing in Science Education (CSE)</title>
+
+<center><h1>Computing in Science Education (CSE)</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen, Knut M&#248;rken, Morten Hjorth-Jensen, and Anders Malthe-S&#248;renssen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+<center>
+<b>Knut M&#248;rken</b> [3]
+</center>
+
+<center>
+<b>Morten Hjorth-Jensen</b> [4, 5]
+</center>
+
+<center>
+<b>Anders Malthe-S&#248;renssen</b> [4]
+</center>
+
+
+<p>&nbsp;<br>
+<!-- institution(s) -->
+
+<center>[1] <b>Simula</b></center>
+<center>[2] <b>Ifi, UiO</b></center>
+<center>[3] <b>Dept. of Mathematics, UiO</b></center>
+<center>[4] <b>Dept. of Physics, UiO</b></center>
+<center>[5] <b>Michigan State Univ.</b></center>
+<p>&nbsp;<br>
+<center><h4>Aug 22, 2013</h4></center> <!-- date -->
+<p>
+
+</section>
+
+
+<section>
+
+<h3>CSE is about deep integration of computing in the curriculum  <a name="___sec0"></a></h3>
+
+<p>
+
+<table border="0">
+<tr>
+<td class="padding">
+<div class="alert alert-block alert-block alert-text-normal"><b>Strong focus on IT in eduction, but...</b>
+
+<p>
+
+<ul>
+ <p><li> mostly for communication</li>
+ <p><li> minor impact on the <em>contents</em> of courses and textbooks</li>
+</ul>
+<p>
+</div>
+<p>
+<div class="alert alert-block alert-question alert-text-normal"><b>CSE: Why not...</b>
+
+
+<p>
+
+<ul>
+ <p><li class="fragment"> use numerics, programming and simulation from day 1?</li>
+ <p><li class="fragment"> create the future science courses?</li>
+</ul>
+<p>
+
+
+</div>
+</td>
+<td class="padding">
+<center><p><img src="fig-cse/teacher1.gif" align="bottom" width=150></p></center>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h3>The science curriculum does not reflect reality  <a name="___sec1"></a></h3>
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Teaching:</b>
+Simplified problems with pen and paper.
+</div>
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Research/industry:</b>
+Complex problems solved by computing.
+</div>
+<p>
+
+</section>
+
+
+<section>
+
+<h3>The computing reform is more central than ever  <a name="___sec2"></a></h3>
+
+<p>
+
+<table border="0">
+<tr>
+<td class="padding">
+<center><p><img src="fig-cse/ansys.png" align="bottom" width=200></p></center>
+</td>
+<td class="padding">
+<center><p><img src="fig-cse/student_with_laptop.jpg" align="bottom" width=200></p></center>
+</td>
+<td class="padding">
+<center><p><img src="fig-cse/BigData.jpg" align="bottom" width=200></p></center>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h3>Two paradigms: use software - or do programming?  <a name="___sec3"></a></h3>
+
+<p>
+<!-- Trick: want the whole block to pop up in beamer  - make an extra -->
+<!-- empty pop up block (no effect in HTML5) -->
+
+<div class="alert alert-block alert-notice alert-text-normal"><b>CSE: strong emphasis on programming.</b>
+
+<ol>
+<p><li class="fragment"> Great demand for candidates who master problem
+   solving via programming</li>
+<p><li class="fragment"> We believe "programming is understanding"</li>
+</ol>
+<p>
+</div>
+
+
+<p>
+
+<p class="fragment">
+
+
+</p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h3>"Programming is understanding" (K. Nygaard)  <a name="___sec4"></a></h3>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b>Make a new data type for polynomials:</b>
+
+<p>
+
+<!-- code=python (from !bc pycod) typeset with pygments style "monokai" -->
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">p1</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Polynomial({</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">:</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">})</span>         <span style="color: #75715e"># 1 - x</span>
+<span style="color: #f8f8f2">p2</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Polynomial({</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">:</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">6</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">:</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">})</span>  <span style="color: #75715e"># x - 6x^4 - x^5</span>
+<span style="color: #f8f8f2">p3</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">p1</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">p2</span>                           <span style="color: #75715e"># shown in detail</span>
+<span style="color: #f8f8f2">p4</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">p1</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">p2</span>                             <span style="color: #75715e"># exercise</span>
+<span style="color: #66d9ef">print</span> <span style="color: #f8f8f2">p4</span>      <span style="color: #75715e"># x - x^2 - 6x^4 + 5x^5 + x^6</span>
+</pre></div>
+<p>
+</div>
+<p>
+
+<p class="fragment">
+
+Everybody is drilled in polynomial multiplication,
+
+
+&nbsp;<br>&nbsp;<br>
+$$(1-x)(1 - 6x^4  -x^5) = ... $$
+&nbsp;<br>&nbsp;<br>
+
+
+
+but programming involves <em>general polynomials</em> (not specific ones!):
+
+
+&nbsp;<br>&nbsp;<br>
+$$\left( \sum_{i=0}^M c_i x^i\right)\left(\sum_{j=0}^N d_j x^j\right)
+= \sum_{i=0}^M \sum_{j=0}^N c_id_j x^{i+j} $$
+&nbsp;<br>&nbsp;<br>
+
+
+</p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h3>Alan Perlis, computer scientist, 1922-1990  <a name="___sec5"></a></h3>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+
+<p>
+
+<ul>
+ <p><li> "You think you know when you can learn,</li>
+ <p><li> are more sure when you can write,</li>
+ <p><li> even more when you can teach,</li>
+ <p><li> but certain when you can program."</li>
+</ul>
+<p>
+</div>
+<p>
+
+</section>
+
+
+<section>
+
+<h3>What we have learned about programming  <a name="___sec6"></a></h3>
+
+<p>
+
+
+<ul>
+ <p><li class="fragment"> Lectures and exams must involve programming</li>
+ <p><li class="fragment"> Programming must be a primary activity</li>
+ <p><li class="fragment"> Recall: <em>we learn what we do every day</em></li>
+</ul>
+<p>
+
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h3>Integration of mathematics, numerics, programming and simulation at the University of Oslo  <a name="___sec7"></a></h3>
+
+<p>
+
+<p class="fragment">
+
+
+
+<div class="fragment alert alert-block alert-notice alert-text-normal"><b>1st semester.</b>
+Classical calculus I, Numerical calculus, Scientific programming
+</div>
+
+<div class="fragment alert alert-block alert-notice alert-text-normal"><b>2nd semester.</b>
+Classical calculus II w/numerics, Physics w/numerics
+</div>
+
+<div class="fragment alert alert-block alert-notice alert-text-normal"><b>3rd semester and beyond.</b>
+Classical calculus III w/numerics,
+lots of science courses use programming and simulation
+</div>
+
+</p>
+
+
+<p>
+
+<p class="fragment">
+
+<font color="red">Challenge: make impact on chemistry, geology and biology</font>
+
+</p>
+
+
+<p>
+<!-- MAT1100, MAT-INF1100, INF1100, GEO1040, MEK1100, MEK2500, FYS-MEK1110, AST1100, FYS1120, FYS2130, MAT1120, GEF1100, GEF2200, GEF2210, FYS2150, FYS2160, FYS3150, FYS-MENA3110, MENA1000, incomplete... -->
+
+<p>
+
+</section>
+
+
+<section>
+
+<h3>Highlights of great results from the CSE project  <a name="___sec8"></a></h3>
+
+<p>
+
+<table border="0">
+<tr>
+<td class="padding">
+<div class="alert alert-block alert-block alert-text-normal"><b>From student projects:</b>
+
+<p>
+
+<ul>
+ <p><li> Journal publication (Vistnes)</li>
+ <p><li> Found error in recent paper (Malthe-S&#248;renssen)</li>
+</ul>
+<p>
+</div>
+</td>
+<td class="padding">
+<center><p><img src="fig-cse/students_collaborating.jpg" align="bottom" width=300></p></center>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+Students are a great resource and have contributed much to the
+development CSE!
+
+<p>
+
+</section>
+
+
+<section>
+
+<h3>Many rewards of a successful CSE implementation  <a name="___sec9"></a></h3>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b>The student:</b>
+
+<p>
+
+<ul>
+ <p><li> Better motivation and understanding</li>
+ <p><li> More realistic problems and workflow</li>
+ <p><li> More operational: computationally proficient professionals</li>
+</ul>
+<p>
+</div>
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b>The researcher:</b>
+
+<p>
+
+<ul>
+ <p><li> Inspiring, renewed teaching environment - based on research</li>
+ <p><li> More operational master and phd students</li>
+</ul>
+<p>
+</div>
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b>The institution:</b>
+
+<p>
+
+<ul>
+ <p><li> Development of textbooks and material gives visibility</li>
+ <p><li> Increased focus on teaching</li>
+ <p><li> Teaching collaborations foster research initiatives</li>
+</ul>
+<p>
+</div>
+<p>
+
+</section>
+
+
+<section>
+
+<h3>Computing provides generally applicable solution techniques  <a name="___sec10"></a></h3>
+
+<p>
+<center><p><img src="fig-cse/uncertainty2.jpg" align="bottom" width=300></p></center>
+
+<p>
+<p>&nbsp;<br>
+$$ P(A\cup B) = P(A) + P(B) - P(A\cap B)$$
+<p>&nbsp;<br>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h3>With computing we can do more realistic problems  <a name="___sec11"></a></h3>
+
+<p>
+<center><p><img src="fig-cse/projectile.png" align="bottom" width=700></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h3>Computing emphasizes forward vs inverse modeling  <a name="___sec12"></a></h3>
+
+<p>
+
+<table border="0">
+<tr>
+<td class="padding">
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<em>What is the interest rate if an investment doubles in five years?</em>
+
+<p>
+<p>&nbsp;<br>
+$$ \hbox{School: }\;\;\; A = A_0 \left(1+ \frac{p}{100}\right)^n $$
+<p>&nbsp;<br>
+
+
+<p>
+Fundamental model:
+
+<p>
+<p>&nbsp;<br>
+$$ A_{n+1} = A_n + A_n \frac{p_n}{100}, \quad A_0 \hbox{ given}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+
+<ul>
+ <p><li> Input: \( p \), \( A_0 \)</li>
+ <p><li> Output: \( A_1,\ldots,A_N \)</li>
+</ul>
+<p>
+</div>
+</td>
+<td class="padding">
+<center><p><img src="fig-cse/forward_model.png" align="bottom" width=400></p></center>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h3>Computing frees time for more focus on problem formulation and results  <a name="___sec13"></a></h3>
+
+<p>
+<center><p><img src="fig-cse/focus.png" align="bottom" width=800></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h3>With computing complex is often simpler  <a name="___sec14"></a></h3>
+
+<p>
+
+<table border="0">
+<tr>
+<td class="padding">
+<center><p><img src="fig-cse/pendulum1.png" align="bottom" width=200></p></center>
+</td>
+<td class="padding">
+<p>&nbsp;<br>
+$$ \ddot\theta (t) + \omega^2\sin(\theta(t)) = 0 $$
+<p>&nbsp;<br>
+
+
+<p>
+Original/fundamental model (DAE):
+
+<p>
+<p>&nbsp;<br>
+$$
+\begin{align*}
+m\,\ddot{\boldsymbol{r}} &= \boldsymbol{F} \\
+||\boldsymbol{r}|| &= \hbox{const}
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+Parts of \( \boldsymbol{F} \) unknown, parts of \( \boldsymbol{r} \) known.
+
+<p>
+Deformable rope gives a clean Newton's 2nd law:
+
+<p>
+<p>&nbsp;<br>
+$$ m\ddot{\boldsymbol{r}} = \boldsymbol{F}(\boldsymbol{r}, \dot{\boldsymbol{r}}) $$
+<p>&nbsp;<br>
+
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h3>How to get it all to work  <a name="___sec15"></a></h3>
+
+<p>
+
+
+<ul>
+ <p><li class="fragment"> Need a collaborating and acknowledging culture among the professors</li>
+ <p><li class="fragment"> Need enthusiasm at the top (deans) and bottom (teachers)</li>
+ <p><li class="fragment"> Need support from strategy plans</li>
+ <p><li class="fragment"> 50K award for reforming a course</li>
+</ul>
+<p>
+
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h3>Key people involved in running the CSE project  <a name="___sec16"></a></h3>
+
+<p>
+
+<ul>
+ <p><li> Knut M&#248;rken, Dept. of Mathematics</li>
+ <p><li> Hanne S&#248;lna, Faculty administration</li>
+ <p><li> Annik Myhre, former Dean of Education</li>
+ <p><li> Solveig Kristensen, Dean of Education</li>
+ <p><li> Morten Hjorth-Jensen, Dept. of Physics</li>
+ <p><li> Anders Malthe-S&#248;renssen, Dept. of Physics</li>
+ <p><li> &#216;yvind Ryan, Dept. of Mathematics</li>
+ <p><li> Hans Petter Langtangen, Dept. of Informatics and Simula lab.</li>
+ <p><li> + lots of professors and students</li>
+</ul>
+<p>
+
+
+
+</section>
+
+
+
+</div> <!-- class="slides" -->
+</div> <!-- class="reveal" -->
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.min.js"></script>
+
+<script>
+
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+controls: true,
+progress: true,
+history: true,
+center: true,
+heme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+{ src: 'reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+{ src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+// { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+]
+});
+</script>
+
+
+</body>
+</html>
