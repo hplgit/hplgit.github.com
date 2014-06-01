@@ -1,0 +1,341 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="How to access Python for doing scientific computing">
+<meta name="keywords" content="Idle,Emacs,Vim,Gedit,TextWrangler,Notepad++">
+
+
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [(' Required software ',
+               1,
+               'sec:accesspy:softwarelist',
+               'sec:accesspy:softwarelist'),
+              (' Installing software on your laptop: Mac OS X and Windows ',
+               1,
+               'sec:accesspy:MacWin',
+               'sec:accesspy:MacWin'),
+              (' Anaconda and Spyder ', 1, None, '___sec2'),
+              (' Spyder on Mac ', 2, None, '___sec3'),
+              (' Installation of additional packages ', 2, None, '___sec4'),
+              (' Installing SciTools on Mac ', 2, None, '___sec5'),
+              (' Installing SciTools on Windows ', 2, None, '___sec6'),
+              (' VMWare Fusion virtual machine ',
+               1,
+               'sec:accesspy:vmware',
+               'sec:accesspy:vmware'),
+              (' Installing Ubuntu ', 2, None, '___sec8'),
+              (' Installing software on Ubuntu ', 2, None, '___sec9'),
+              (' File sharing ', 2, None, '___sec10'),
+              (' Dual boot on Windows ', 1, None, '___sec11'),
+              (' Vagrant virtual machine ',
+               1,
+               'sec:accesspy:vagrant',
+               'sec:accesspy:vagrant'),
+              (' How to write and run a Python program ',
+               1,
+               'sec:accesspy:writerun',
+               'sec:accesspy:writerun'),
+              (' The need for a text editor ', 2, None, '___sec14'),
+              (' Spyder ', 2, None, '___sec15'),
+              (' Text editors ', 2, None, '___sec16'),
+              (' Terminal windows ', 2, None, '___sec17'),
+              (' Using a plain text editor and a terminal window ',
+               2,
+               None,
+               '___sec18'),
+              (' The SageMathCloud and Wakari web services ',
+               1,
+               'sec:accesspy:sagemath:wakari',
+               'sec:accesspy:sagemath:wakari'),
+              (' Basic intro to SageMathCloud ', 2, None, '___sec20'),
+              (' Basic intro to Wakari ', 2, None, '___sec21'),
+              (' Installing your own Python packages ', 2, None, '___sec22'),
+              (' Writing IPython notebooks ',
+               1,
+               'sec:accesspy:ipynb',
+               'sec:accesspy:ipynb'),
+              (' A simple program in the notebook ', 2, None, '___sec24'),
+              (' Mixing text, mathematics, code, and graphics ',
+               2,
+               None,
+               '___sec25'),
+              (' References ', 0, None, '___sec26')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="accesspy_primer4.html">How to access Python for doing scientific computing</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: "Required software" --> <li><a href="#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
+     <!-- navigation toc: "Installing software on your laptop: Mac OS X and Windows" --> <li><a href="#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
+     <!-- navigation toc: "Anaconda and Spyder" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
+     <!-- navigation toc: "VMWare Fusion virtual machine" --> <li><a href="#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
+     <!-- navigation toc: "Dual boot on Windows" --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
+     <!-- navigation toc: "Vagrant virtual machine" --> <li><a href="#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
+     <!-- navigation toc: "How to write and run a Python program" --> <li><a href="#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
+     <!-- navigation toc: "The SageMathCloud and Wakari web services" --> <li><a href="#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
+     <!-- navigation toc: "Writing IPython notebooks" --> <li><a href="#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
+     <!-- navigation toc: "References" --> <li><a href="#___sec26" style="font-size: 80%;"><b>References</b></a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0004"></a>
+<!-- !split -->
+
+<h1>VMWare Fusion virtual machine <a name="sec:accesspy:vmware"></a></h1>
+
+A virtual machine allows you to run another complete computer system in a
+separate window.  For Mac users, I recommend VMWare Fusion over
+VirtualBox for running a Linux (or Windows) virtual
+machine.  (VMWare Fusion's hardware integration seems superior to
+that of VirtualBox.) VMWare Fusion is commercial software, but
+there is a free trial version you can start with.
+
+<h2>Installing Ubuntu  <a name="___sec8"></a></h2>
+
+The following recipe will install a Ubuntu virtual machine under VMWare
+Fusion.
+
+<ol>
+<li> <a href="http://www.ubuntu.com/desktop/get-ubuntu/download" target="_self">Download Ubuntu</a>.
+   Choose a version that is compatible with your computer, usually
+   a 64-bit version nowadays.</li>
+<li> Launch VMWare fusion.</li>
+<li> Click on <em>File - New</em> and choose to <em>install Windows or another
+   operating system in a new virtual machine</em>.</li>
+<li> Double-click on <em>Use operating system installation disc or image</em>.</li>
+<li> Choose <em>Linux</em> and <em>Ubuntu 64 bit</em>. You will be asked to give provide
+   the name of the Ubuntu file you downloaded.</li>
+<li> Choose <em>Customize Settings</em> and make the following
+   settings (these settings can be changed later, if desired):</li>
+
+<ul>
+     <li> <em>Processors and Memory</em>: Set a minimum of 2 Gb memory, but
+       not more than half of your computer's total memory.
+       The virtual machine can use all processors.</li>
+     <li> <em>Hard Disk</em>: Choose how much disk space you want to use inside
+       the virtual machine (20 Gb is considered a minimum).</li>
+</ul>
+
+<li> Choose where you want to store the Ubuntu iso file on the hard disk.
+   The Ubuntu iso file is a single file containing all of Ubuntu. Backing
+   up this file means backing up your whole Ubuntu installation, something
+   you should frequently do!</li>
+<li> When the start-up of Ubuntu is finished, click on the Ubuntu window
+   to launch the Install application. Click <em>Install</em>. On the next
+   page, fill in <em>Download updates while installing</em> and <em>Install third-party
+   software</em>. Then click <em>Continue</em>.
+   On the next page, choose <em>Erase disk and install Ubuntu</em>, then provide
+   your location, choose a keyboard layout (English is recommended for
+   programmers, but you can easily set up Ubuntu to switch between different
+   keyboards by means of a short-key). Fill in name, etc.
+   Ubuntu will then eventually install the operating system.</li>
+<li> You will most likely need to define a higher resolution of the display.
+   Find the <em>System settings</em> icon on the left, go to <em>Display</em>,
+   choose some display (you can try several, click <em>Keep this configuration</em>
+   when you are satisfied).</li>
+<li> You can have multiple keyboards on Ubuntu.
+   Launch <em>System settings</em>, go to <em>Keyboard</em>, click <em>Layout Settings</em>,
+   choose additional keyboard(s), and define some shortcut keys,
+   say <code>Ctrl+space</code> to switch between the keyboards in different languages.</li>
+</ol>
+
+<h2>Installing software on Ubuntu  <a name="___sec9"></a></h2>
+
+You now have a full Ubuntu machine, but there is not much software
+on a it. Installation is performed through the Ubuntu Software Center (a
+graphical application) or through Unix commands, typically
+
+<p>
+
+<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; sudo apt-get install packagename
+</pre></div>
+<p>
+To look up the right package name, run <code>apt-cache search</code> followed by
+typical words of that package. The strength of the <code>apt-get</code> way
+of installing software is that the package <em>and all packages it depends on</em>
+are automatically installed through the <code>apt-get install</code> command.
+This is in a nutshell why Ubuntu (or Debian-based Linux systems)
+are so user-friendly for installing sophisticated mathematical software.
+
+<p>
+To install a lot of useful packages for scientific work, go to
+<a href="http://goo.gl/RVHixr" target="_self"><tt>http://goo.gl/RVHixr</tt></a> and click on <em>one</em> of the following
+files, which will install a collection of software for scientific work
+using <code>apt-get</code>:
+
+<ul>
+ <li> <code>install_minimal.sh</code>: install a minimal collection (recommended)</li>
+ <li> <code>install_rich.sh</code>: install a rich collection (takes time to run)</li>
+</ul>
+
+Then click the <em>Raw</em> button. The file comes up in the browser window,
+right-click and choose <em>Save As...</em> to save the file on your computer.
+The next step is to find the file and run it:
+
+<p>
+
+<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; cd ~/Downloads
+Terminal&gt; bash install_minimal.sh
+</pre></div>
+<p>
+The program will run for quite some time, hopefully without problems.
+If it stops, set a comment sign <code>#</code> in front of the line where it stopped
+and rerun.
+
+<h2>File sharing  <a name="___sec10"></a></h2>
+
+The Ubuntu machine can see the files on your host system if you
+download <em>VMWare Tools</em>. Go to the <em>Virtual Machine</em> pull-down menu in
+VMWare Fusion and choose <em>Install VMWare Tools</em>. A tarfile is
+downloaded. Click on it and it will open a folder <code>vmware-tools-distrib</code>,
+normally in your home folder. Move to the new folder and
+run <code>sudo perl vmware-install.pl</code>.
+You can go with the default answers to all the questions.
+
+<p>
+On a Mac, you must open <em>Virtual Machine - Settings...</em> and choose
+<em>Sharing</em> to bring up a dialog where you can add the folders you want
+to be visible in Ubuntu. Just choose your home folder. Then turn on
+the file sharing button (or turn off and on again). Go to Ubuntu and
+check if you can see all your host system's files in <code>/mnt/hgfs/</code>.
+
+<p>
+If you later detect that <code>/mnt/hgfs/</code> folder has become empty,
+VMWare Tools must be reinstalled by first turning shared folders
+off, and then running
+
+<p>
+
+<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; sudo /usr/bin/vmware-config-tools.pl
+</pre></div>
+<p>
+Occasionally it is necessary to do a full reinstall by
+<code>sudo perl vmware-install.pl</code> as above.
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Backup of a VMWare virtual machine on a Mac.</b>
+The entire Ubuntu machine is a folder on the host computer,
+typically with a name like <code>Documents/Virtual Machines/Ubuntu 64-bit</code>.
+Backing up the Ubuntu machine means backing up this folder.
+However, if you use tools like Time Machine and work in Ubuntu during
+backup, the copy of the state of the Ubuntu machine is likely to
+be corrupt. You are therefore strongly recommended to shut down the
+virtual machine prior to running Time Machine or simply copying the
+folder with the virtual machine to some backup disk.
+
+<p>
+If something happens to your virtual machine, it is usually a straightforward
+task to make a new machine and import data and software automatically
+from the previous machine.
+</div>
+
+
+<p>
+<p>
+<ul class="pager">
+  <li class="previous">
+    <a href="._accesspy_primer4003.html">&larr; Prev</a>
+  </li>
+
+  <li class="next">
+    <a href="._accesspy_primer4005.html">Next &rarr;</a>
+  </li>
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

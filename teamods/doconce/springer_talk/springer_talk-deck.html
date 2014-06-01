@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Demands to and Wishes for Future Scientific Publishing">
+
+
+
+
+
+
+
+<!-- deck.js: https://github.com/imakewebthings/deck.js -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=1024, user-scalable=no">
+
+<!-- Required stylesheet -->
+<link rel="stylesheet" href="deck.js/core/deck.core.css">
+
+<!-- Extension CSS files go here. Remove or add as needed.
+deck.goto: Adds a shortcut key to jump to any slide number.
+Hit g, type in the slide number, and hit enter.
+
+deck.hash: Enables internal linking within slides, deep
+linking to individual slides, and updates the address bar and
+a permalink anchor with each slide change.
+
+deck.menu: Adds a menu view, letting you see all slides in a grid.
+Hit m to toggle to menu view, continue navigating your deck,
+and hit m to return to normal view. Touch devices can double-tap
+the deck to switch between views.
+
+deck.navigation: Adds clickable left and right buttons for the
+less keyboard inclined.
+
+deck.status: Adds a page number indicator. (current/total).
+
+deck.scale: Scales each slide to fit within the deck container
+using CSS Transforms for those browsers that support them.
+
+deck.pointer: Turn mouse into laser pointer (toggle with p).
+(Requires https://github.com/mikeharris100/deck.pointer.js)
+-->
+
+<link rel="stylesheet" href="deck.js/extensions/menu/deck.menu.css">
+<link rel="stylesheet" href="deck.js/extensions/navigation/deck.navigation.css">
+<link rel="stylesheet" href="deck.js/extensions/scale/deck.scale.css">
+<link rel="stylesheet" href="deck.js/extensions/pointer/deck.pointer.css">
+<link rel="stylesheet" href="deck.js/extensions/notes/deck.notes.css">
+<!--
+<link rel="stylesheet" href="deck.js/extensions/goto/deck.goto.css">
+<link rel="stylesheet" href="deck.js/extensions/hash/deck.hash.css">
+<link rel="stylesheet" href="deck.js/extensions/status/deck.status.css">
+-->
+
+<!-- Style theme. More available in themes/style/ or create your own. -->
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.default.css">
+
+<!--
+<link rel="stylesheet" href="deck.js/themes/style/neon.css">
+<link rel="stylesheet" href="deck.js/themes/style/swiss.css">
+<link rel="stylesheet" href="deck.js/themes/style/web-2.0.css">
+
+git clone git://github.com/duijf/mnml.git
+<link rel="stylesheet" href="deck.js/themes/style/mnml.css">
+
+git://github.com/groovecoder/deckjs-theme-mozilla.git
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.aurora.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.dark.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.default.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.firefox.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.light.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.mdn.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.nightly.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.cbc.css">
+
+git://github.com/barraq/deck.ext.js.git
+<link rel="stylesheet" href="deck.js/themes/style/beamer.css">
+-->
+
+<!-- Transition theme. More available in /themes/transition/ or create your own. -->
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
+<!--
+<link rel="stylesheet" href="deck.js/themes/transition/fade.css">
+<link rel="stylesheet" href="deck.js/themes/transition/vertical-slide.css">
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
+-->
+
+<!-- Required Modernizr file -->
+<script src="deck.js/modernizr.custom.js"></script>
+
+<style type="text/css">
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .slide .alert-text-small   { font-size: 80%;  }
+    .slide .alert-text-large   { font-size: 130%; }
+    .slide .alert-text-normal  { font-size: 90%;  }
+    .slide .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:5px solid #bababa;
+               -webkit-border-radius:14px; -moz-border-radius:14px;
+             border-radius:14px
+             background-position: 10px 10px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 30px; /* 55px; if icon */
+     }
+     .slide .alert-block {padding-top:14px; padding-bottom:14px}
+     .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
+     /*.slide .alert li {margin-top: 1em}*/
+     .deck .alert-block p+p {margin-top:5px}
+     /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
+     .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
+     .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
+     .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+<body class="deck-container">
+
+<header>
+<!-- Here goes a potential header -->
+</header>
+
+<!-- do not use the article tag - it gives strange sizings -->
+
+
+
+    
+
+
+
+<section class="slide">
+<!-- ------------------- main content ---------------------- -->
+
+<!-- 2DO: fenics book repo agreement -->
+<!-- when I google and find something interesting coming from a book - I often want to buy the book, but where is it? -->
+
+<title>Demands to and Wishes for Future Scientific Publishing</title>
+
+<center><h1>Demands to and Wishes for Future Scientific Publishing</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b style="font-weight: bold">Hans Petter Langtangen</b> 
+</center>
+
+
+<p>
+<!-- institution -->
+
+<center><b style="font-weight: bold">Simula Research Laboratory</b></center>
+<p>
+<center><h4>Jun 1, 2014</h4></center> <!-- date -->
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>The book will survive  <a name="___sec0"></a></h2>
+
+<center><p><img src="fig/oldbooks.jpg" align="bottom" width=700></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>...but new media calls for new publishing technology and policies  <a name="___sec1"></a></h2>
+
+
+<table border="0">
+<tr>
+<td class="padding">
+<center><p><img src="fig/ipad.png" align="bottom" width=400></p></center>
+
+<p>
+<center><p><img src="fig/iphones.jpg" align="bottom" width=100></p></center>
+
+<p>
+<!-- FIGURE: [fig/mbair, width=400] -->
+
+<p>
+</td>
+<td class="padding">
+<center><p><img src="fig/imac.png" align="bottom" width=350></p></center>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Modern publishing has many venues  <a name="___sec2"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b style="font-weight: bold">Classical publishing venues:</b>
+books, journals, conference proceedings, local compendia
+</div>
+
+
+<p>
+
+<div class="alert alert-block alert-block alert-text-normal"><b style="font-weight: bold">Modern publishing venues:</b>
+
+<ul>
+ <p><li class="slide"> books, journals, proceedings (need publisher)</li>
+ <p><li class="slide"> blog posts</li>
+ <p><li class="slide"> project websites at <a href="http://github.com" target="_blank">GitHub</a>, <a href="https://bitbucket.org/" target="_blank">Bitbucket</a>, <a href="http://figshare.com/" target="_blank">Figshare</a>, <a href="http://zenodo.org/" target="_blank">Zenodo</a> (w/DOI), ...</li>
+ <p><li class="slide"> (document sharing sites at <a href="http://docs.latexlab.org/docs" target="_blank">latex-lab</a>, <a href="http://en.wikipedia.org/wiki/Google_Docsl" target="_blank">Google docs</a>, <a href="https://draftin.com/" target="_blank">Draft</a>, <a href="https://stackedit.io/" target="_blank">stackedit.io</a>, ...)</li>
+ <p><li class="slide"> (Dropbox, Google Drive)</li>
+ <p><li class="slide"> promotion through Twitter, Google+, Facebook, ...</li>
+</ul>
+<p>
+</div>
+
+
+
+<p>
+<!-- How can publishers get more influence in the new venues? -->
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>New venues also offer new publishing formats  <a name="___sec3"></a></h2>
+
+<ol>
+<p><li> <b style="font-weight: bold">PDF</b> (via LaTeX)</li>
+<p><li> <b style="font-weight: bold">HTML</b> (via plain text, Sphinx, Markdown, Doconce, ...)</li>
+<p><li> Special e-book formats: <b style="font-weight: bold">epub</b>, <b style="font-weight: bold">mobi</b>, ... (PDF via <a href="http://calibre-ebook.com/" target="_blank">Calibre</a>)</li>
+<p><li> Interactive <b style="font-weight: bold">notebooks</b> (via IPython notebook, Sage, Mathematica, ...)</li>
+<p><li> <b style="font-weight: bold">iBooks</b> (via Apple's app)</li>
+</ol>
+<p>
+
+<div class="alert alert-block alert-warning alert-text-normal"><b style="font-weight: bold">Our special requirement:</b>
+<em>Strong support for mathematics and computer code!</em>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>PDF is for paper, HTML for screen  <a name="___sec4"></a></h2>
+
+
+<table border="0">
+<tr>
+<td class="padding">
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b style="font-weight: bold">My assertion:</b>
+PDF works on screens, but HTML is more appealing
+and has much more functionality for science.
+</div>
+
+</td>
+<td class="padding">
+<center><p><img src="fig/ipad.png" align="bottom" width=400></p></center>
+
+<p>
+<center><p><img src="fig/iphones.jpg" align="bottom" width=150></p></center>
+
+<p>
+<!-- FIGURE: [fig/mbair, width=400] -->
+
+<p>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>My conclusion: use generalized formats to write scientific material  <a name="___sec5"></a></h2>
+
+
+
+<ul>
+ <p><li class="slide"> LaTeX has been the de facto standard format</li>
+ <p><li class="slide"> Conversion tools from LaTeX to HTML do not work well</li>
+ <p><li class="slide"> Solution: write in a more <em>primitive format</em> that easily <em>converts</em> to LaTeX, HTML, and whatever</li>
+
+<ul>
+   <p><li class="slide"> <a href="http://hplgit.github.io/doconce/doc/web/index.html" target="_blank">Doconce</a>, <a href="http://daringfireball.net/projects/markdown/" target="_blank">Markdown</a>, <a href="http://sphinx-doc.org/" target="_blank">Sphinx</a>, <a href="http://ipython.org/notebook.html" target="_blank">IPython notebooks</a>, (Google Docs)</li>
+</ul>
+<p>
+
+</ul>
+<p>
+
+
+
+<p>
+
+<p class="slide">
+
+<div class="slide alert alert-block alert-warning alert-text-normal"><b style="font-weight: bold">Note.</b>
+LaTeX (paper) and HTML (screen) apply different typography. Writing in a
+simpler common format is different from classical LaTeX writing.
+</div>
+
+
+</p>
+
+
+<p>
+<!-- Example: Floating elements: only figures can be floating, -->
+<!-- algorithms, tables, etc. must be inlineed at fixed locations -->
+<!-- in the running text. -->
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>My scientific writings are converted to several formats  <a name="___sec6"></a></h2>
+
+<ul>
+ <p><li> <a href="../wavebc/pub/wavebc.do.txt.html" target="_blank">Doconce source code</a></li>
+ <p><li> <a href="../wavebc/pub/wavebc_4print.pdf" target="_blank">PDF for printing</a></li>
+ <p><li> <a href="../wavebc/pub/wavebc.pdf" target="_blank">PDF for screen</a></li>
+ <p><li> <a href="../wavebc/pub/sphinx-cbc/_build/html/._wavebc001.html" target="_blank">HTML Sphinx CBC</a></li>
+ <p><li> <a href="../wavebc/pub/sphinx-fenics_minimal/_built/html/._wavebc001.html" target="_blank">HTML Sphinx FEniCS</a></li>
+ <p><li> <a href="../wavebc/pub/._wavebc_solarized002.html#sec:math:pde" target="_blank">HTML solarized</a></li>
+ <p><li> <a href="../wavebc/pub/wavebc_journal.html" target="_blank">HTML Bootstrap 1</a></li>
+ <p><li> <a href="../wavebc/pub/wavebc_cyborg.html" target="_blank">HTML Bootstrap 2</a></li>
+ <p><li> Upcoming (?): IPython notebook, Google blog posts</li>
+</ul>
+<p>
+
+<div class="alert alert-block alert-notice alert-text-normal"><b style="font-weight: bold">Note.</b>
+HTML versions often have additional functionality (movies, embedded services,
+multiple-choice tests).
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Wishlist (part 1)  <a name="___sec7"></a></h2>
+
+<ul>
+ <p><li> Alternative formats of a book can be published
+   (at Springer, GitHub, Zenodo, Figshare, ...)</li>
+ <p><li> Springer stamps on all derived material with a link to the official book</li>
+ <p><li> During production: share files with authors professionally
+   (GitHub/Bitbucket)</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<h2>Trend: from linear monograph to graph of smaller, more independent units  <a name="___sec8"></a></h2>
+
+
+<table border="0">
+<tr>
+<td class="padding">
+<ul>
+ <p><li> Kahn Academy success: many small teaching units (videos)</li>
+ <p><li> Units are connected in a graph</li>
+ <p><li> Learning is about following paths in the graph</li>
+ <p><li> Tools can find personalized paths</li>
+ <p><li> Units are videos, notebooks, online material,
+   book chapters, papers, ...</li>
+ <p><li> This idea is accelerated by MOOCs</li>
+</ul>
+<p>
+
+</td>
+<td class="padding">
+<p>
+<center><p><img src="fig/graph_viz.png" align="bottom" width=300></p></center>
+
+<p>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Next generation video: <a href="http://studix.com" target="_blank">studix.com</a>  <a name="___sec9"></a></h2>
+
+<ul>
+ <p><li> Classical video: series of frames of pixels</li>
+ <p><li> studix.com video is a tree of objects rendered as a film in the browser</li>
+ <p><li> Objects can be handwriting, graphs, videos, notebooks, slides, sound, links to other videos, books, ...</li>
+ <p><li> Very enhanced video editing!</li>
+ <p><li> Browser movies are tightly integrated with books and organized as a graph</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<h2>More independent teaching units support more reuse  <a name="___sec10"></a></h2>
+
+Add to wishlist:
+
+<ul>
+ <p><li> Publish (modified) parts of a unit (from a book) online</li>
+ <p><li> Always stamp derived material with link to the parent publication!</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<h2>Fact today: publishers have no control of their copyright material  <a name="___sec11"></a></h2>
+
+<!-- Googling brings you to the material below, NOT to the book! -->
+
+<ul>
+ <p><li> Book chapters are easily found on the net as</li>
+
+<ul>
+   <p><li> LaTeX PDF</li>
+   <p><li> blog posts</li>
+   <p><li> notebooks</li>
+   <p><li> source files (on GitHub, Bitbucket, ...)</li>
+</ul>
+<p>
+
+ <p><li> No mentioning of the (final) book in these resources - I want to buy it!
+<!-- !bblock Recall: -->
+<!-- Papers are found as preprints in arXiv.org, ResearchGate, Mendeley, Figshare, Zenodo, ... -->
+<!-- !eblock --></li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<h2>Trend: visibility is key  <a name="___sec12"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b style="font-weight: bold"></b>
+Authors are researchers who need visibility, a big network, citations, and
+a significant volume of material.
+</div>
+
+
+<p>
+Young researchers
+
+<ul>
+ <p><li> use top journals and publishers to bring credibility</li>
+ <p><li> use GitHub, Zenodo, Figshare, ... to display research</li>
+ <p><li> use arXiv.org, ResearchGate, Mendeley, ... to exhibit papers</li>
+ <p><li> use Twitter, Google+, Facebook, ... to announce new material</li>
+ <p><li> use amazon.com (<a href="https://www.createspace.com/" target="_blank">CreateSpace</a>) independent publishing</li>
+</ul>
+<p>
+
+<div class="notes">
+<!-- press "n" to activate -->
+
+The publishing industry must
+
+<ul>
+  <p><li> realize what is happening with copyright material</li>
+  <p><li> realize what the future demands are</li>
+  <p><li> approve reuse of copyright material, with a watermark</li>
+  <p><li> realize that visibility is the important thing for authors</li>
+</ul>
+<p>
+
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Summary and wishlist  <a name="___sec13"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b style="font-weight: bold">Assertions.</b>
+
+<ul>
+ <p><li> Books must be available in more formats (PDF, HTML, epub, notebooks)</li>
+ <p><li> The linear monograph will be a path in a graph of more independent units</li>
+</ul>
+<p>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b style="font-weight: bold">Wishlist.</b>
+
+<ul>
+ <p><li> Alternative formats of a book can be published
+   (at Springer, GitHub, Zenodo, Figshare, ...)</li>
+ <p><li> Publish (modified) parts of a unit (from a book) online</li>
+ <p><li> Springer stamps on all derived material with a link to the official book</li>
+ <p><li> During production: share files with authors professionally
+   (GitHub/Bitbucket)</li>
+</ul>
+<p>
+</div>
+
+
+
+</section>
+
+
+
+
+<footer>
+<!-- Here goes a footer -->
+</footer>
+
+<!-- Begin extension snippets. Add or remove as needed. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+-->
+
+<!-- deck.goto snippet
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+-->
+
+<!-- deck.hash snippet
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+-->
+
+<!-- End extension snippets. -->
+
+
+<!-- Required JS files. -->
+<script src="deck.js/jquery.min.js"></script>
+<script src="deck.js/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="deck.js/core/deck.core.js"></script>
+<script src="deck.js/extensions/hash/deck.hash.js"></script>
+<script src="deck.js/extensions/menu/deck.menu.js"></script>
+<script src="deck.js/extensions/goto/deck.goto.js"></script>
+<script src="deck.js/extensions/status/deck.status.js"></script>
+<script src="deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src="deck.js/extensions/scale/deck.scale.js"></script>
+<script src="deck.js/extensions/notes/deck.notes.js"></script>
+
+<!-- From https://github.com/mikeharris100/deck.pointer.js -->
+<script src="deck.js/extensions/pointer/deck.pointer.js"></script>
+
+<!-- From https://github.com/stvnwrgs/presenterview
+<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script> -->
+
+<!-- From https://github.com/nemec/deck.annotate.js
+<script type="text/javascript" src="deck.js/extensions/deck.annotate.js/deck.annotate.js"></script>
+-->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+
+
+</body>
+</html>

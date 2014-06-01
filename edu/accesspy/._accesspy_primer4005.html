@@ -1,0 +1,216 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="How to access Python for doing scientific computing">
+<meta name="keywords" content="Idle,Emacs,Vim,Gedit,TextWrangler,Notepad++">
+
+
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [(' Required software ',
+               1,
+               'sec:accesspy:softwarelist',
+               'sec:accesspy:softwarelist'),
+              (' Installing software on your laptop: Mac OS X and Windows ',
+               1,
+               'sec:accesspy:MacWin',
+               'sec:accesspy:MacWin'),
+              (' Anaconda and Spyder ', 1, None, '___sec2'),
+              (' Spyder on Mac ', 2, None, '___sec3'),
+              (' Installation of additional packages ', 2, None, '___sec4'),
+              (' Installing SciTools on Mac ', 2, None, '___sec5'),
+              (' Installing SciTools on Windows ', 2, None, '___sec6'),
+              (' VMWare Fusion virtual machine ',
+               1,
+               'sec:accesspy:vmware',
+               'sec:accesspy:vmware'),
+              (' Installing Ubuntu ', 2, None, '___sec8'),
+              (' Installing software on Ubuntu ', 2, None, '___sec9'),
+              (' File sharing ', 2, None, '___sec10'),
+              (' Dual boot on Windows ', 1, None, '___sec11'),
+              (' Vagrant virtual machine ',
+               1,
+               'sec:accesspy:vagrant',
+               'sec:accesspy:vagrant'),
+              (' How to write and run a Python program ',
+               1,
+               'sec:accesspy:writerun',
+               'sec:accesspy:writerun'),
+              (' The need for a text editor ', 2, None, '___sec14'),
+              (' Spyder ', 2, None, '___sec15'),
+              (' Text editors ', 2, None, '___sec16'),
+              (' Terminal windows ', 2, None, '___sec17'),
+              (' Using a plain text editor and a terminal window ',
+               2,
+               None,
+               '___sec18'),
+              (' The SageMathCloud and Wakari web services ',
+               1,
+               'sec:accesspy:sagemath:wakari',
+               'sec:accesspy:sagemath:wakari'),
+              (' Basic intro to SageMathCloud ', 2, None, '___sec20'),
+              (' Basic intro to Wakari ', 2, None, '___sec21'),
+              (' Installing your own Python packages ', 2, None, '___sec22'),
+              (' Writing IPython notebooks ',
+               1,
+               'sec:accesspy:ipynb',
+               'sec:accesspy:ipynb'),
+              (' A simple program in the notebook ', 2, None, '___sec24'),
+              (' Mixing text, mathematics, code, and graphics ',
+               2,
+               None,
+               '___sec25'),
+              (' References ', 0, None, '___sec26')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="accesspy_primer4.html">How to access Python for doing scientific computing</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: "Required software" --> <li><a href="#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
+     <!-- navigation toc: "Installing software on your laptop: Mac OS X and Windows" --> <li><a href="#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
+     <!-- navigation toc: "Anaconda and Spyder" --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
+     <!-- navigation toc: "VMWare Fusion virtual machine" --> <li><a href="#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
+     <!-- navigation toc: "Dual boot on Windows" --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
+     <!-- navigation toc: "Vagrant virtual machine" --> <li><a href="#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
+     <!-- navigation toc: "How to write and run a Python program" --> <li><a href="#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
+     <!-- navigation toc: "The SageMathCloud and Wakari web services" --> <li><a href="#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
+     <!-- navigation toc: "Writing IPython notebooks" --> <li><a href="#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
+     <!-- navigation toc: "References" --> <li><a href="#___sec26" style="font-size: 80%;"><b>References</b></a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0005"></a>
+<!-- !split -->
+
+<h1>Dual boot on Windows  <a name="___sec11"></a></h1>
+
+Instead of running Ubuntu in a virtual machine, Windows users also have
+the option of deciding on the operating system when turning on the
+machine (so-called dual boot). The <a href="http://wubi-installer.org" target="_self">Wubi</a>
+tool makes it very easy to get Ubuntu on a Windows machine this way.
+However, with the powerful computers we now have, a virtual machine
+is more flexible since you can switch between Windows and Ubuntu as
+easily as going from one window to another.
+
+<h1>Vagrant virtual machine <a name="sec:accesspy:vagrant"></a></h1>
+
+A vagrant machine is different from a standard virtual machine in that
+it is run in a terminal window on a Mac or Windows computer. You will
+write programs in Mac/Windows, but run them inside a Vagrant Ubuntu machine
+that can work with your files and folders on Mac/Windows.
+This is a bit simpler technology
+than a full VMWare Fusion virtual machine, as described above,
+and allows you to work in
+your original operating system. There is need to install VirtualBox
+and Vagrant, and on Windows also Cygwin. Then you can download
+a Vagrant machine with Ubuntu
+and either fill it with software as explained
+above, or you can download a ready-made machine.
+A <a href="http://goo.gl/jlnryZ" target="_self">special machine</a> has been made for this document.
+<!-- the goo.gl address points to <a href="http://heim.ifi.uio.no/~inf1100/vagrant_inf1100.html" target="_self"><tt>http://heim.ifi.uio.no/~inf1100/vagrant_inf1100.html</tt></a> -->
+
+<p>
+<p>
+<ul class="pager">
+  <li class="previous">
+    <a href="._accesspy_primer4004.html">&larr; Prev</a>
+  </li>
+
+  <li class="next">
+    <a href="._accesspy_primer4006.html">Next &rarr;</a>
+  </li>
+
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+
