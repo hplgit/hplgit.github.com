@@ -31,7 +31,7 @@
     <link rel="next" title="Appendix: Working with multiple GitHub accounts" href="._main_bitgit006.html" />
     <link rel="prev" title="GitHub" href="._main_bitgit004.html" /> 
   
-   <style type=text/css>
+   <style type="text/css">
      div.admonition {
        background-color: whiteSmoke;
        border: 1px solid #bababa;
@@ -724,6 +724,32 @@ Terminal&gt; git ls-files myfile --error-unmatch
 <p>The latter command prints an error message if <tt class="docutils literal"><span class="pre">myfile</span></tt> is not tracked.
 See <tt class="docutils literal"><span class="pre">man</span> <span class="pre">git-ls-files</span></tt> for the many options this utility has.</p>
 </div>
+<div class="section" id="how-can-i-reduce-the-size-of-a-repo">
+<h3>How can I reduce the size of a repo?<a class="headerlink" href="#how-can-i-reduce-the-size-of-a-repo" title="Permalink to this headline">¶</a></h3>
+<p>The command <tt class="docutils literal"><span class="pre">git</span> <span class="pre">gc</span></tt> can compress a git repository and should be
+run regularly on large repositories. Greater effect
+is achieved by <tt class="docutils literal"><span class="pre">git</span> <span class="pre">gc</span> <span class="pre">--aggressive</span></tt>. You can measure the
+size of a repo before and after compression by <tt class="docutils literal"><span class="pre">git</span> <span class="pre">gc</span></tt> using
+<tt class="docutils literal"><span class="pre">du</span> <span class="pre">-s</span> <span class="pre">repodir</span></tt>.</p>
+<p>Occasionally big or sensitive files are removed from the repo and you want to
+permanently remove these files from the revision history. This is
+achieved using <a class="reference external" href="https://help.github.com/articles/remove-sensitive-data">git filter-branch</a>. To remove a file or directory with path <tt class="docutils literal"><span class="pre">doc/src/mydoc</span></tt> from the root directory of the repo, go to this root directory, make sure all branches are checkout on your computer, and run</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git filter-branch --index-filter \
+         &#39;git rm -r --cached --ignore-unmatch doc/src/mydoc&#39; \
+         --prune-empty -- --all
+Terminal&gt; rm -rf .git/refs/original/
+Terminal&gt; git reflog expire --expire=now --all
+Terminal&gt; git gc --aggressive --prune=now
+Terminal&gt; git push origin master --force  # do this for each branch
+Terminal&gt; git checkout somebranch
+Terminal&gt; git push origin somebranch --force
+</pre></div>
+</div>
+<p>You must repeat the <tt class="docutils literal"><span class="pre">push</span></tt> command for each branch as indicated.
+If other users have created their own branches in this repo, they
+need to <a class="reference external" href="http://git-scm.com/book/en/Git-Branching-Rebasing">rebase</a>,
+not <tt class="docutils literal"><span class="pre">merge</span></tt>, when updating the branches!</p>
+</div>
 </div>
 <div class="section" id="more-documentation-on-git">
 <h2>More documentation on Git<a class="headerlink" href="#more-documentation-on-git" title="Permalink to this headline">¶</a></h2>
@@ -744,7 +770,9 @@ See <tt class="docutils literal"><span class="pre">man</span> <span class="pre">
 <li><a class="reference external" href="http://gitref.org">Git Reference</a> (can also be used as a tutorial on Git)</li>
 <li><a class="reference external" href="http://schacon.github.com/git/user-manual.html">Git User Manual</a></li>
 <li><a class="reference external" href="http://git-scm.com/">Git home page</a></li>
+<li><a class="reference external" href="http://www.classes.cs.uchicago.edu/archive/2013/spring/12300-1/labs/lab1/">Quick intro to Git and GitHub</a> (somewhat like the present guide)</li>
 <li><a class="reference external" href="http://git-scm.com/downloads/guis">Git/GitHub GUIs on Windows and Mac</a></li>
+<li><a class="reference external" href="http://steveko.wordpress.com/2012/02/24/10-things-i-hate-about-git/">10 Things I hate about Git</a></li>
 </ul>
 </div></blockquote>
 </div>
@@ -788,6 +816,7 @@ See <tt class="docutils literal"><span class="pre">man</span> <span class="pre">
 <li><a class="reference internal" href="#git-workflows">Git workflows</a></li>
 <li><a class="reference internal" href="#git-tips">Git tips</a><ul>
 <li><a class="reference internal" href="#how-can-i-see-which-files-are-tracked-by-git">How can I see which files are tracked by Git?</a></li>
+<li><a class="reference internal" href="#how-can-i-reduce-the-size-of-a-repo">How can I reduce the size of a repo?</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#more-documentation-on-git">More documentation on Git</a></li>

@@ -57,6 +57,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -129,7 +130,8 @@ Automatically generated HTML file from Doconce source
                3,
                None,
                '___sec38'),
-              (' More documentation on Git ', 2, None, '___sec39'),
+              (' How can I reduce the size of a repo? ', 3, None, '___sec39'),
+              (' More documentation on Git ', 2, None, '___sec40'),
               (' Appendix: Working with multiple GitHub accounts ',
                1,
                'appendix:github:multiple:accounts',
@@ -141,9 +143,9 @@ end of tocinfo -->
     
 <a name="part0004"></a>
 <!-- begin top navigation -->
-<a href="._Langtangen_bitgit003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._Langtangen_bitgit003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a>
 
-<a href="._Langtangen_bitgit005.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._Langtangen_bitgit005.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a>
 <!-- end top navigation -->
 
 <p>
@@ -155,7 +157,7 @@ Go to <code>github.com</code> and create an account. Then go to your account
 settings (icon in the upper left corner of the page),
 choose <em>SSH Keys</em>, and provide your SSH key
 unless you have already registered this key with another GitHub
-account (see the appendix <a href="._Langtangen_bitgit006.html#appendix:github:multiple:accounts">Appendix: Working with multiple GitHub accounts</a>).
+account (see  <a href="._Langtangen_bitgit006.html#appendix:github:multiple:accounts">Appendix: Working with multiple GitHub accounts</a>).
 Often, it is just a
 matter of pasting the contents of <code>id_rsa.pub</code> or <code>id_dsa.pub</code> files,
 located in the
@@ -168,7 +170,7 @@ box (or see the introduction to Bitbucket above).
 <p>
 If the account is a project account and not a personal account,
 I do not recommend to provide an SSH key although it can be
-done (see the appendix <a href="._Langtangen_bitgit006.html#appendix:github:multiple:accounts">Appendix: Working with multiple GitHub accounts</a>). It is easier
+done (see  <a href="._Langtangen_bitgit006.html#appendix:github:multiple:accounts">Appendix: Working with multiple GitHub accounts</a>). It is easier
 to log in and add collaborators using their personal GitHub usernames.
 
 <h2>Creating a new project  <a name="___sec15"></a></h2>
@@ -185,7 +187,7 @@ on the <em>SSH</em> button to see the address of the project, and
 paste this address into a terminal window, after <code>git clone</code>:
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone git://github.com:user/My-Project.git
 </pre></div>
 <p>
@@ -207,7 +209,7 @@ When your initial file collection has the desired form, you must
 run
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git add .
 Terminal&gt; git commit -am &#39;First set of files.&#39;
 Terminal&gt; git push -u origin master
@@ -260,7 +262,7 @@ the wiki text in your favorite text editor. The wiki pages are
 stored in a separate repo and can be cloned by
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone git://github.com/user/My-Project.wiki.git
 </pre></div>
 <p>
@@ -285,7 +287,7 @@ generate the wiki in the reStructuredText or MediaWiki format.
 Do changes, commit the usual way, and push by
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git push git@github.com:user/My-project.wiki.git
 </pre></div>
 <p>
@@ -367,7 +369,7 @@ identical to files in another branch.
 To merge the current branch with some branch named <code>otherbranch</code>, run
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git merge otherbranch
 </pre></div>
 <p>
@@ -395,7 +397,7 @@ in the root directory of the master branch as well:
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git merge master
 Terminal&gt; touch .nojekyll
 Terminal&gt; git push origin gh-pages
@@ -416,7 +418,7 @@ make sure to update the gh-pages branch by
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git commit -am &#39;Ensure commit of master branch&#39;
 Terminal&gt; git push origin master
 Terminal&gt; git checkout gh-pages
@@ -432,7 +434,7 @@ some more isolated place, say <code>doc/web</code>:
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git mv index.html params.json stylesheets/ images/ \
                  javascripts/ doc/web/
 </pre></div>
@@ -504,7 +506,7 @@ and give it the project name <code>user.github.com</code>.
 Then follow the instructions that come up:
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; mkdir user.github.com
 Terminal&gt; cd user.github.com
 Terminal&gt; git init
@@ -528,9 +530,9 @@ If you want to use Sphinx generated HTML pages, recall to add an empty file
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._Langtangen_bitgit003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._Langtangen_bitgit003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a>
 
-<a href="._Langtangen_bitgit005.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._Langtangen_bitgit005.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->

@@ -57,6 +57,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -129,7 +130,8 @@ Automatically generated HTML file from Doconce source
                3,
                None,
                '___sec38'),
-              (' More documentation on Git ', 2, None, '___sec39'),
+              (' How can I reduce the size of a repo? ', 3, None, '___sec39'),
+              (' More documentation on Git ', 2, None, '___sec40'),
               (' Appendix: Working with multiple GitHub accounts ',
                1,
                'appendix:github:multiple:accounts',
@@ -141,9 +143,9 @@ end of tocinfo -->
     
 <a name="part0005"></a>
 <!-- begin top navigation -->
-<a href="._Langtangen_bitgit004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._Langtangen_bitgit004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a>
 
-<a href="._Langtangen_bitgit006.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._Langtangen_bitgit006.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a>
 <!-- end top navigation -->
 
 <p>
@@ -166,7 +168,7 @@ can get started with the project,
 by running
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone git@github.com:user/My-Project.git
 Terminal&gt; cd My-Project
 ls
@@ -182,7 +184,7 @@ updating the local repository by going to the <code>My-Project</code> directory
 and writing
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git pull origin master
 </pre></div>
 <p>
@@ -197,7 +199,7 @@ There are also Git commands for deleting, renaming, and moving
 files. Typical examples on these Git commands are
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git add file2.* dir1 dir2  # add files and directories
 Terminal&gt; git rm file3
 Terminal&gt; git rm -r dir2
@@ -209,7 +211,7 @@ When your chunk of work is ready,
 it is time to commit your changes (note the <code>-am</code> option):
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git commit -am &#39;Description of changes.&#39;
 </pre></div>
 <p>
@@ -225,7 +227,7 @@ You may perform many commits, to keep track of small changes, before
 you push your changes to the global repository:
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git push origin master
 </pre></div>
 <p>
@@ -264,7 +266,7 @@ A nice graphical tool allows you to view all changes, or just
 the latest ones:
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; gitk --all
 Terminal&gt; gitk --since=&quot;2 weeks ago&quot;
 </pre></div>
@@ -273,7 +275,7 @@ You can also view changes to all files, some selected ones, or
 a subdirectory:
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git log -p                 # all changes to all files
 Terminal&gt; git log -p filename        # changes to a specific file
 Terminal&gt; git log --stat --summary   # compact summary
@@ -288,7 +290,7 @@ To show the author who is responsible for the last modification of each
 line in the file, use <code>git blame</code>:
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git blame filename
 Terminal&gt; git blame --since=&quot;1 week&quot; filename
 </pre></div>
@@ -297,7 +299,7 @@ A useful command to see the history of who did what, where individual
 edits of words are highlighted (<code>--word-diff</code>), is
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">git log -p --stat --word-diff filename
 </pre></div>
 <p>
@@ -308,7 +310,7 @@ Looking for when a particular piece of text entered or left the file,
 say the text <code>def myfunc</code>, one can run
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git log -p --word-diff --stat -S&#39;def myfunc&#39; filename
 </pre></div>
 <p>
@@ -322,7 +324,7 @@ Occasionally you need to go back to an earlier version of a file,
 say its name is <code>f.py</code>. Start with viewing the history:
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git log f.py
 </pre></div>
 <p>
@@ -331,7 +333,7 @@ present version to, copy the commit hash (string like
 <code>c7673487...</code>), and run
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git diff c7673487763ec2bb374758fb8e7efefa12f16dea f.py
 </pre></div>
 <p>
@@ -341,7 +343,7 @@ the commit you picked (see the section <a href="#bitgit:git:fetch">Replacing pul
 configure the tools used by the <code>git diff</code> command). If you want to restore the old file, write
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git checkout c7673487763ec2bb374758fb8e7efefa12f16dea f.py
 </pre></div>
 <p>
@@ -366,7 +368,7 @@ one by the old one, and then <code>git show</code> is handy. Unfortunately,
 it requires the full path from the root git directory:
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git show \
           c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/f.py
 </pre></div>
@@ -386,7 +388,7 @@ as the valid present state, you do
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git checkout c7673487763ec2bb374758fb8e7efefa12f16dea .
 Terminal&gt; git commit -am &#39;Resetting to ...&#39;
 </pre></div>
@@ -402,7 +404,7 @@ to the last commit. Find the hash of the last commit and do
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git reset --hard c867c487763ec2
 </pre></div>
 <p>
@@ -445,7 +447,7 @@ repository.
 
 <p>
 
-<!-- code=bash (from !bc shpro) typeset with pygments style "default" -->
+<!-- code=bash (!bc shpro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#!/bin/sh</span>
 <span style="color: #408080; font-style: italic"># Demo script for exemplifying git and merge</span>
 
@@ -563,7 +565,7 @@ to merge the two versions, but failed. Merge markers are left in
 <code>tmp2/myfile</code>:
 <p>
 
-<!-- code=text (from !bc dat) typeset with pygments style "default" -->
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 This is a tmp2-replace1
 tmp2-add2
@@ -607,7 +609,7 @@ where new developments takes place:
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git branch newstuff      # create and switch to new branch
 Terminal&gt; # extend and modify files...
 Terminal&gt; git commit -am &#39;Modified ... Added a file on ...&#39;
@@ -626,7 +628,7 @@ in the master branch:
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git checkout newstuff
 Terminal&gt; git merge master        # synchronize newstuff w/master
 Terminal&gt; git checkout master
@@ -637,7 +639,7 @@ You no longer need the <code>newstuff</code> branch and can delete it:
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git branch -d newstuff
 </pre></div>
 <p>
@@ -646,7 +648,7 @@ in the remote repo, run
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git push origin --delete newstuff
 </pre></div>
 
@@ -706,7 +708,7 @@ the nickname <code>origin</code>, you write
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git fetch origin
 </pre></div>
 <p>
@@ -715,7 +717,7 @@ are between the new files and local ones:
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git diff origin/master
 </pre></div>
 <p>
@@ -729,18 +731,18 @@ of <code>origin</code> with the files in the current local branch, you say
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git merge origin/master
 </pre></div>
 <p>
 Especially when you work with multiple branches, as outlined in
-The section <a href="#bitgit:git:branch:stash">Git working style with branching and stashing</a>, it is wise to first do a
+the section <a href="#bitgit:git:branch:stash">Git working style with branching and stashing</a>, it is wise to first do a
 <code>get fetch origin</code> and then update each branch separately. The
 <code>git fetch origin</code> command will list the branches, e.g.,
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">* master
   gh-pages
   next
@@ -750,7 +752,7 @@ After updating <code>master</code> as described, you can continue with another b
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git checkout next
 Terminal&gt; git diff origin/next
 Terminal&gt; git merge origin/next
@@ -784,7 +786,7 @@ therefore look like
 
 <p>
 
-<!-- code=bash (from !bc shpro) typeset with pygments style "default" -->
+<!-- code=bash (!bc shpro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#!/bin/sh</span>
 
 diff <span style="color: #BA2121">&quot;$2&quot;</span> <span style="color: #BA2121">&quot;$5&quot;</span> | less
@@ -805,7 +807,7 @@ use the Git commands
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git fetch --all
 Terminal&gt; git reset --hard origin/master
 </pre></div>
@@ -833,7 +835,7 @@ Clone the fork as you clone any repo:
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone https://github.com/user/proj1.git
 </pre></div>
 <p>
@@ -846,7 +848,7 @@ create a name <code>upstream</code>, either by
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git remote add upstream \
               https://github.com/somebody/proj1.git
 </pre></div>
@@ -855,7 +857,7 @@ if you cloned with such an <code>https</code> address, or by
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git remote add upstream \
               git@github.com:somebody/proj1.git
 </pre></div>
@@ -873,7 +875,7 @@ The typical workflow is
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git fetch upstream           # get new version of files
 Terminal&gt; git merge upstream/master    # merge with yours
 Terminal&gt; # Your files are up to date - ready for editing
@@ -903,7 +905,7 @@ no other branches:
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git branch
 * master
 </pre></div>
@@ -912,7 +914,7 @@ To see which branches that exist in the repo, type
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git branch -a
 * master
   remotes/origin/HEAD -&gt; origin/master
@@ -927,7 +929,7 @@ the usual way:
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git checkout gh-pages
 Terminal&gt; git branch
 * gh-pages
@@ -949,7 +951,7 @@ checkout with specifying the remote branch you want:
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git checkout -b gh-pages --track remote/gh-pages
 Terminal&gt; git checkout -b next --track upstream/next
 </pre></div>
@@ -1010,7 +1012,7 @@ useful.
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git ls-files            # list all tracked files
 Terminal&gt; git ls-files -o         # list non-tracked files
 Terminal&gt; git ls-files myfile     # prints myfile if it&#39;s tracked
@@ -1020,7 +1022,39 @@ Terminal&gt; git ls-files myfile --error-unmatch
 The latter command prints an error message if <code>myfile</code> is not tracked.
 See <code>man git-ls-files</code> for the many options this utility has.
 
-<h2>More documentation on Git  <a name="___sec39"></a></h2>
+<h3>How can I reduce the size of a repo?  <a name="___sec39"></a></h3>
+
+The command <code>git gc</code> can compress a git repository and should be
+run regularly on large repositories. Greater effect
+is achieved by <code>git gc --aggressive</code>. You can measure the
+size of a repo before and after compression by <code>git gc</code> using
+<code>du -s repodir</code>.
+
+<p>
+Occasionally big or sensitive files are removed from the repo and you want to
+permanently remove these files from the revision history. This is
+achieved using <a href="https://help.github.com/articles/remove-sensitive-data" target="_self"><tt>git filter-branch</tt></a>. To remove a file or directory with path <code>doc/src/mydoc</code> from the root directory of the repo, go to this root directory, make sure all branches are checkout on your computer, and run
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git filter-branch --index-filter \
+         &#39;git rm -r --cached --ignore-unmatch doc/src/mydoc&#39; \
+         --prune-empty -- --all
+Terminal&gt; rm -rf .git/refs/original/
+Terminal&gt; git reflog expire --expire=now --all
+Terminal&gt; git gc --aggressive --prune=now
+Terminal&gt; git push origin master --force  # do this for each branch
+Terminal&gt; git checkout somebranch
+Terminal&gt; git push origin somebranch --force
+</pre></div>
+<p>
+You must repeat the <code>push</code> command for each branch as indicated.
+If other users have created their own branches in this repo, they
+need to <a href="http://git-scm.com/book/en/Git-Branching-Rebasing" target="_self"><tt>rebase</tt></a>,
+not <code>merge</code>, when updating the branches!
+
+<h2>More documentation on Git  <a name="___sec40"></a></h2>
 
 <ul>
  <li> <a href="http://rogerdudler.github.io/git-guide/" target="_self">Git - the simple guide</a></li>
@@ -1038,14 +1072,16 @@ See <code>man git-ls-files</code> for the many options this utility has.
  <li> <a href="http://gitref.org" target="_self">Git Reference</a> (can also be used as a tutorial on Git)</li>
  <li> <a href="http://schacon.github.com/git/user-manual.html" target="_self">Git User Manual</a></li>
  <li> <a href="http://git-scm.com/" target="_self">Git home page</a></li>
+ <li> <a href="http://www.classes.cs.uchicago.edu/archive/2013/spring/12300-1/labs/lab1/" target="_self">Quick intro to Git and GitHub</a> (somewhat like the present guide)</li>
  <li> <a href="http://git-scm.com/downloads/guis" target="_self">Git/GitHub GUIs on Windows and Mac</a></li>
+ <li> <a href="http://steveko.wordpress.com/2012/02/24/10-things-i-hate-about-git/" target="_self">10 Things I hate about Git</a></li>
 </ul>
 
 <p>
 <!-- begin bottom navigation -->
-<a href="._Langtangen_bitgit004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._Langtangen_bitgit004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a>
 
-<a href="._Langtangen_bitgit006.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._Langtangen_bitgit006.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->

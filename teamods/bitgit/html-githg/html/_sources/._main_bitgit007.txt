@@ -5,11 +5,9 @@
 Using Mercurial
 ===============
 
-
 .. index:: Mercurial
 
 .. index:: hg
-
 
 Mac and Linux users will normally work with Mercurial through commands in
 a terminal window, which is the emphasized interface described here.
@@ -53,9 +51,7 @@ file one wants to commit and choose *Commit*.
 Basic Mercurial commands
 ------------------------
 
-
 .. index:: hg clone
-
 
 Cloning  (2)
 ~~~~~~~~~~~~
@@ -67,8 +63,6 @@ can get started with the project by the command
 
         Terminal> hg clone ssh://hg@bitbucket.org/user/my-project
 
-
-
 .. index:: hg pull
 
 .. index:: hg add
@@ -79,9 +73,7 @@ can get started with the project by the command
 
 .. index:: hg commit
 
-
 .. index:: hg push
-
 
 The pull-change-push cycle  (2)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -126,9 +118,7 @@ Note that you cannot easily redo the description so be careful with
 the wording. You can run ``hg diff`` to get a listing of all
 the changes you have made since the last commit or pull command.
 
-
 .. index:: hg stat
-
 
 The command
 
@@ -143,18 +133,15 @@ very easy to forget adding new files so ``hg stat`` is a useful command
 to ensure that all files you want to track have been added to the
 repository.
 
-
 .. index:: hg annotate
 
 .. index:: hg log
-
 
 Viewing the history of files  (2)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can easily see
 who did what with the various files. For example,
-
 
 .. code-block:: text
 
@@ -191,11 +178,9 @@ If you wonder what has recently happened to a file after updating your
 local repository, just run ``hg log -p --stat``: the last changes appear
 in the beginning of the output.
 
-
 .. index:: hg revert
 
 .. index:: hg cat
-
 
 Retrieving old files  (2)
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -223,8 +208,6 @@ The entire local repo can also be set back:
 
         Terminal> hg update -r 152
         Terminal> hg update            # go back to the latest version again
-
-
 
 Comments on two-level repositories
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -256,9 +239,7 @@ merging of files.
 Merging files with Mercurial
 ----------------------------
 
-
 .. index:: merging files
-
 
 It might have happened that others and you have edited the same files
 at the same time. How should the edits then be combined?  Often the
@@ -290,7 +271,6 @@ as resolved:
         Terminal> hg resolve -m merge myfile
         Terminal> hg commit -m merge myfile
 
-
 You can read more about merging files in the `hgbook <http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html>`_.
 We shall now illustrate the merge problems through an example.
 Suppose we have a global repository ``tmp_repo``, and two (cloned)
@@ -300,7 +280,6 @@ in the repository. We then simulate the two users and perform edits in
 parallel. The shell script below simulates the two users and
 illustrates the importance of pulling before editing and the need of
 merge.
-
 
 .. code-block:: bash
 
@@ -399,7 +378,6 @@ merge.
         diff myfile ../tmp_repo/myfile
         echo 'Now you must do hg merge manually'
 
-
 Try to run this `file <http://hplgit.github.com/teamods/bitgit/_static-bitgit/hg_merge.sh>`_ named
 ``hg_merge.sh`` by ``sh -x hg_merge.sh``.
 To resolve the resulting merge conflict you need to go to the ``tmp2``
@@ -414,7 +392,6 @@ Stashing with Mercurial
 A recent `extension module <http://mercurial.selenic.com/wiki/ShelveExtension>`_ for Mercurial allows stashing for that version control system as well:
 ``hg shelve --all`` is similar for ``git stash``, and ``hg unshelve``
 is similar to ``git stash apply``.
-
 
 More documentation on Mercurial
 -------------------------------

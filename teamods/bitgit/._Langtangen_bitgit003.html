@@ -57,6 +57,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -129,7 +130,8 @@ Automatically generated HTML file from Doconce source
                3,
                None,
                '___sec38'),
-              (' More documentation on Git ', 2, None, '___sec39'),
+              (' How can I reduce the size of a repo? ', 3, None, '___sec39'),
+              (' More documentation on Git ', 2, None, '___sec40'),
               (' Appendix: Working with multiple GitHub accounts ',
                1,
                'appendix:github:multiple:accounts',
@@ -141,9 +143,9 @@ end of tocinfo -->
     
 <a name="part0003"></a>
 <!-- begin top navigation -->
-<a href="._Langtangen_bitgit002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._Langtangen_bitgit002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a>
 
-<a href="._Langtangen_bitgit004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._Langtangen_bitgit004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a>
 <!-- end top navigation -->
 
 <p>
@@ -168,7 +170,7 @@ If you choose Git, you must create a file <code>.netrc</code> in your
 home directory containing the line
 <p>
 
-<!-- code=text (from !bc dat) typeset with pygments style "default" -->
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">machine code.google.com login uname password pw
 </pre></div>
 <p>
@@ -185,7 +187,7 @@ The next step is to clone the empty repository on your local machine
 so that you can add files:
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone https://code.google.com/p/my-project/
 </pre></div>
 <p>
@@ -193,7 +195,7 @@ Now you can go to the <code>my-project</code> directory and add files.
 Perform
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git add .
 Terminal&gt; git commit -am &#39;First import of files.&#39;
 Terminal&gt; git push origin master
@@ -212,7 +214,7 @@ demands either wiki pages or special web areas for locating documentation.)
 The URL to your files is
 <p>
 
-<!-- code=text (from !bc dat) typeset with pygments style "default" -->
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://my-project.googlecode.com/git/
 </pre></div>
 <p>
@@ -222,7 +224,7 @@ For example, if we have HTML documentation of our project in
 the directory <code>doc/html</code>, we can point users to
 <p>
 
-<!-- code=text (from !bc dat) typeset with pygments style "default" -->
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://my-project.googlecode.com/git/doc/html/index.html
 </pre></div>
 <p>
@@ -230,7 +232,7 @@ The HTML will be rendered correctly as opposed to when you load
 the similar file into the web browser from the repository,
 <p>
 
-<!-- code=text (from !bc dat) typeset with pygments style "default" -->
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://code.google.com/p/my-project/source/browse/doc/html/index.html
 </pre></div>
 <p>
@@ -246,7 +248,7 @@ main page of the project. This is a wiki, using Google's wiki syntax,
 but it is quite easy to add links to your documentation, e.g.,
 <p>
 
-<!-- code=text (from !bc dat) typeset with pygments style "default" -->
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Browse the
 [https://my-project.googlecode.com/git/doc/API/html/index.html
 API documentation].
@@ -267,7 +269,7 @@ appears.
 
 <p>
 Googlecode applies their own Google wiki format. My preference is
-to write documentation in the neutral <a href="https://github.com/hplgit/doconce" target="_self">Doconce</a> format and transform the document to LaTeX, HTML, Sphinx, and Google wiki.
+to write documentation in the neutral <a href="https://github.com/hplgit/doconce" target="_self">DocOnce</a> format and transform the document to LaTeX, HTML, Sphinx, and Google wiki.
 The wiki can then be copied from the project directories to the
 wiki directory and then pushed to the repository. This ensures
 that there is only one source of the documentation (despite the need
@@ -280,9 +282,9 @@ for many formats) and that the wiki pages are frequently updated.
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._Langtangen_bitgit002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._Langtangen_bitgit002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a>
 
-<a href="._Langtangen_bitgit004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._Langtangen_bitgit004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->

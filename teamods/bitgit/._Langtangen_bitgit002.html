@@ -57,6 +57,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -129,7 +130,8 @@ Automatically generated HTML file from Doconce source
                3,
                None,
                '___sec38'),
-              (' More documentation on Git ', 2, None, '___sec39'),
+              (' How can I reduce the size of a repo? ', 3, None, '___sec39'),
+              (' More documentation on Git ', 2, None, '___sec40'),
               (' Appendix: Working with multiple GitHub accounts ',
                1,
                'appendix:github:multiple:accounts',
@@ -141,9 +143,9 @@ end of tocinfo -->
     
 <a name="part0002"></a>
 <!-- begin top navigation -->
-<a href="._Langtangen_bitgit001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._Langtangen_bitgit001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a>
 
-<a href="._Langtangen_bitgit003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._Langtangen_bitgit003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a>
 <!-- end top navigation -->
 
 <p>
@@ -204,7 +206,7 @@ Find the <em>Clone</em> button, click on it, choose
 <em>SSH</em>, copy the <em>clone</em> line and run this command in a terminal:
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone git@bitbucket.org:user/my-project.git
 </pre></div>
 <p>
@@ -224,7 +226,7 @@ to add all files in the current
 directory <em>tree</em>, except those having file types listed in <code>.gitignore</code>:
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git add .
 </pre></div>
 <p>
@@ -232,7 +234,7 @@ Thereafter, the changes to the repository (here adding of files) must
 <em>committed</em> (registered):
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git commit -am &#39;Initial import of files.&#39;
 </pre></div>
 <p>
@@ -248,7 +250,7 @@ The final step is to push the local changes to the master repo at
 Bitbucket:
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git push -u origin master
 </pre></div>
 <p>
@@ -258,7 +260,7 @@ it sends file information to the <code>bitbucket.org</code> site.
 <p>
 Further work with the files must always follow the pull, edit, commit, and
 push steps explained in
-The section <a href="._Langtangen_bitgit005.html#bitgit:git">Using Git</a> for Git.
+the section <a href="._Langtangen_bitgit005.html#bitgit:git">Using Git</a> for Git.
 
 <h3>Collaborating  <a name="___sec8"></a></h3>
 
@@ -281,7 +283,7 @@ file, and push back, e.g.,
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone git@bitbucket.org:user/user.bitbucket.org.git
 Terminal&gt; cd user.bitbucket.org
 Terminal&gt; echo &quot;Welcome to my web pages!&quot; &gt; test.html
@@ -327,9 +329,9 @@ requires the hash to be replaced by <code>default</code>.
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._Langtangen_bitgit001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._Langtangen_bitgit001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a>
 
-<a href="._Langtangen_bitgit003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._Langtangen_bitgit003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->

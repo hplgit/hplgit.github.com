@@ -5,9 +5,7 @@
 Bitbucket
 =========
 
-
 .. index:: Bitbucket
-
 
 To start using Bitbucket, go to ``bitbucket.org`` and create an account.
 The communication channel with Bitbucket repositories is either
@@ -27,7 +25,6 @@ passphrase - just write something). On Windows one applies the PuTTY
 and the TortoiseHG programs to generate and register keys, see the
 help pages on Bitbucket. Once the keys are generated, you can continue
 using them on any computer.
-
 
 Creating a new project  (1)
 ---------------------------
@@ -86,7 +83,6 @@ directory *tree*, except those having file types listed in ``.gitignore``:
 
         Terminal> git add .
 
-
 Thereafter, the changes to the repository (here adding of files) must
 *committed* (registered):
 
@@ -138,7 +134,6 @@ your account/username is ``user``.  Make a new repository on
 Bitbucket called ``user.bitbucket.org``.  Clone it, fill it with a
 file, and push back, e.g.,
 
-
 .. code-block:: text
 
         Terminal> git clone git@bitbucket.org:user/user.bitbucket.org.git
@@ -152,7 +147,6 @@ You can now load the URL ``http://user.bitbucket.org/test.html`` into
 a web browser and view the page. By creating various subdirectories
 you can host web pages for a series of projects in this repo.
 
-
 .. _bitgit:bitbucket:URLs:
 
 Linking to Bitbucket files
@@ -162,9 +156,7 @@ Unfortunately, the default URL shown in your browser to a file in
 a Bitbucket repo contains information about the version of the file.
 For example, a file ``v1.c`` under Git might appear with the URL
 
-
 .. code-block:: text
-
 
         https://bitbucket.org/user/proj/src/5fb228107044/dir/v1.c?at=master
 
@@ -177,9 +169,7 @@ latest version of a file (in a public repo),
 replace the commit hash by ``master`` and remove
 the final ``?at=master``:
 
-
 .. code-block:: text
-
 
         https://bitbucket.org/user/proj/src/master/dir/v1.c
 

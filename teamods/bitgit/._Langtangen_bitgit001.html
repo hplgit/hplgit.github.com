@@ -57,6 +57,7 @@ Automatically generated HTML file from Doconce source
      .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
      .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
+div { text-align: justify; text-justify: inter-word; }
 </style>
 
 </head>
@@ -129,7 +130,8 @@ Automatically generated HTML file from Doconce source
                3,
                None,
                '___sec38'),
-              (' More documentation on Git ', 2, None, '___sec39'),
+              (' How can I reduce the size of a repo? ', 3, None, '___sec39'),
+              (' More documentation on Git ', 2, None, '___sec40'),
               (' Appendix: Working with multiple GitHub accounts ',
                1,
                'appendix:github:multiple:accounts',
@@ -141,9 +143,9 @@ end of tocinfo -->
     
 <a name="part0001"></a>
 <!-- begin top navigation -->
-<a href="._Langtangen_bitgit000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._Langtangen_bitgit000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a>
 
-<a href="._Langtangen_bitgit002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._Langtangen_bitgit002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a>
 <!-- end top navigation -->
 
 <p>
@@ -181,21 +183,6 @@ more sophisticated tools, which means a <em>true version control system</em>.
 The following text aims at providing you with the minimum information
 to started with Git, the leading version control system, combined
 with project hosting services for file storage.
-
-<p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Essence.</b>
-The essence of project hosting services is that you have the files
-associated with a project in the cloud. Many people may share these
-files.  Every time you want to work on the project you explicitly
-update your version of the files, edit the files as you like, and
-synchronize the files with the "master version" in the cloud.
-It is a trivial operation to go back to a previous
-version of a file, corresponding to a certain point of time or
-labeled with a comment.
-You can also use tools to see
-what various people have done with the files in the various versions.
-</div>
-
 
 <h2>Project hosting services  <a name="___sec2"></a></h2>
 
@@ -293,7 +280,7 @@ Linux computers.
 On Ubuntu or any Debian-based system the relevant installation command is
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; sudo apt-get install git gitk git-doc
 </pre></div>
 <p>
@@ -312,7 +299,7 @@ should omit when bringing new directories under version control.
 Here is a simplified version of the author's <code>.gitconfig</code> file:
 <p>
 
-<!-- code=text (from !bc dat) typeset with pygments style "default" -->
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[user]
 name = Hans Petter Langtangen
 email = hpl@simula.no
@@ -330,7 +317,7 @@ or they can easily be regenerated from
 some other source files. A suggested <a href="http://hplgit.github.com/teamods/bitgit/src-bitgit/.gitignore" target="_self"><tt>.gitignore</tt></a> file looks like
 <p>
 
-<!-- code=text (from !bc dat) typeset with pygments style "default" -->
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># compiled files:
 *.o
 *.so
@@ -371,9 +358,9 @@ some program.
 <p>
 <p>
 <!-- begin bottom navigation -->
-<a href="._Langtangen_bitgit000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="previous"></a>
+<a href="._Langtangen_bitgit000.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a>
 
-<a href="._Langtangen_bitgit002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="next"></a>
+<a href="._Langtangen_bitgit002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a>
 <!-- end bottom navigation -->
 
 <!-- ------------------- end of main content --------------- -->
