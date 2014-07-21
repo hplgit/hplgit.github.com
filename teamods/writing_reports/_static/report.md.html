@@ -4,7 +4,7 @@
 <html>
 <head>
   <title></title>
-  <meta http-equiv="content-type" content="text/html; charset=latin1">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <style type="text/css">
 td.linenos { background-color: #f0f0f0; padding-right: 10px; }
 span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
@@ -134,10 +134,8 @@ for <span class="s">$</span><span class="nb">n</span><span class="o">=</span><sp
 
   * The [Forward Euler](http://en.wikipedia.org/wiki/Forward<span class="nb">_</span>Euler<span class="nb">_</span>method)
     scheme when <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">0</span><span class="s">$</span>
-
   * The [Backward Euler](http://en.wikipedia.org/wiki/Backward<span class="nb">_</span>Euler<span class="nb">_</span>method)
     scheme when <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">1</span><span class="s">$</span>
-
   * The [Crank-Nicolson](http://en.wikipedia.org/wiki/Crank-Nicolson)
     scheme when <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="s">$</span>
 
@@ -233,14 +231,10 @@ The numbers corresponding to the figure above are given in the table below.
 
 *Summary.*<span class="k">\g</span>&lt;space&gt;
 1. <span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="m">1</span><span class="s">$</span>: <span class="s">$</span><span class="nb">E</span><span class="nv">\sim</span><span class="nb"> </span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> (first-order convergence).
-
 2. <span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="s">$</span>: <span class="s">$</span><span class="nb">E</span><span class="nv">\sim</span><span class="nb"> </span><span class="nv">\Delta</span><span class="nb"> t^</span><span class="m">2</span><span class="s">$</span> (second-order convergence).
-
 3. <span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="m">1</span><span class="s">$</span> is always stable and gives qualitatively corrects results.
-
 4. <span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="s">$</span> never blows up, but may give oscillating solutions
    if <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> is not sufficiently small.
-
 5. <span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="m">0</span><span class="s">$</span> suffers from fast-growing solution if <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> is
    not small enough, but even below this limit one can have oscillating
    solutions that disappear if <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> is sufficiently small.
@@ -252,7 +246,6 @@ The numbers corresponding to the figure above are given in the table below.
     *A First Course in the Numerical Analysis of Differential Equations*,
     Cambridge University Press,
     2009.
-
  2. <span class="k">\label</span><span class="nb">{</span>Langtangen<span class="nb">_</span>2012<span class="nb">}</span> <span class="nb">_</span>H. P. Langtangen<span class="nb">_</span>. 
     *A Primer on Scientific Programming With Python*,
     Springer,

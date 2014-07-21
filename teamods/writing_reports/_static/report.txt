@@ -7,14 +7,12 @@ Hans Petter Langtangen [1, 2] (hpl@simula.no)
 [1] Center for Biomedical Computing, Simula Research Laboratory
 [2] Department of Informatics, University of Oslo.
 
-Date: Apr 30, 2014
+Date: Jul 21, 2014
 
 *Summary.* This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation u'=-au with the
 aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
-
-
 
 Table of contents:
 
@@ -27,14 +25,9 @@ Table of contents:
    The Forward Euler method 
    Error vs \Delta t 
 
-
-
-
-
 # !split
 Mathematical problem
 ====================
-
 
 We address the initial-value problem::
 
@@ -51,7 +44,6 @@ cooling of an object, and radioactive decay.
 
 Numerical solution method
 =========================
-
 
 We introduce a mesh in time with points 0= t_0< t_1 \cdots < t_{N_t}=T.
 For simplicity, we assume constant spacing \Delta t between the
@@ -79,10 +71,8 @@ for n=0,1,\ldots,N_t-1. This scheme corresponds to
 Implementation
 ==============
 
-
 The numerical method is implemented in a Python function
 [2] solver (found in the decay_mod (https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py) module)::
-
 
         def solver(I, a, T, dt, theta):
             """Solve u'=-a*u, u(0)=I, for t in (0,T] with steps of dt."""
@@ -97,57 +87,33 @@ The numerical method is implemented in a Python function
                 u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
             return u, t
 
-
-
 Numerical experiments
 =====================
-
-
 
 We define a set of numerical experiments where I, a, and T are
 fixed, while \Delta t and \theta are varied.
 In particular, I=1, a=2, \Delta t = 1.25, 0.75, 0.5, 0.1.
 
-
-
 The Backward Euler method
 -------------------------
 
-
-
-
 FIGURE: [BE, width=800]
-
-
 
 The Crank-Nicolson method
 -------------------------
 
-
-
-
 FIGURE: [CN, width=800]
-
-
 
 The Forward Euler method
 ------------------------
 
-
-
-
 FIGURE: [FE, width=800]
-
-
 
 Error vs \Delta t
 -----------------
 
-
-
 How E varies with \Delta t for \theta=0,0.5,1
 is shown below.
-
 
 
 Observe: -------------------------------------------------------|
@@ -158,9 +124,7 @@ Observe: -------------------------------------------------------|
 |---------------------------------------------------------------|
 
 
-
 FIGURE: [error, width=400]
-
 
 The numbers corresponding to the figure above are given in the table below.
 
@@ -172,7 +136,6 @@ The numbers corresponding to the figure above are given in the table below.
       0.50      0.2797      0.0315      0.1397  
       0.10      0.0377      0.0012      0.0335  
 ==========  ==========  ==========  ==========  
-
 
 
 Summary ------------------------------------------------------------------|
@@ -190,7 +153,6 @@ Summary ------------------------------------------------------------------|
 |    not small enough, but even below this limit one can have oscillating |
 |    solutions that disappear if \Delta t is sufficiently small.          |
 |-------------------------------------------------------------------------|
-
 
 
  1. A. Iserles. 

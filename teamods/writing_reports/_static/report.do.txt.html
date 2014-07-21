@@ -1,4 +1,4 @@
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">TITLE:</span> Experiments with Schemes for Exponential Decay
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">TITLE: Experiments with Schemes for Exponential Decay</span>
 <span style="color: #000080; font-weight: bold">AUTHOR:</span> Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory &amp; Department of Informatics, University of Oslo.
 <span style="color: #000080; font-weight: bold">DATE:</span> today
 
@@ -16,7 +16,7 @@ demonstrated.
 <span style="color: #000080; font-weight: bold">TOC:</span> on
 
 
-<span style="color: #658b00">!split</span>
+<span style="color: #8B008B; font-weight: bold">!split</span>
 <span style="color: #000080; font-weight: bold">======= Mathematical problem =======</span>
 <span style="color: #658b00">label{math:problem}</span>
 
@@ -24,16 +24,16 @@ demonstrated.
 <span style="color: #228B22">## idx{keyword} adds keyword to the index</span>
 <span style="color: #228B22">## (to be place before the actual paragraph).</span>
 
-idx{model problem} idx{exponential decay}
+<span style="color: #658b00">idx{model problem}</span> idx{exponential decay}
 
 We address the initial-value problem
 
-<span style="color: #658b00">!bt</span>
-\begin{align}
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
 u&#39;(t) &amp;= -au(t), \quad t \in (0,T], label{ode}\\
 u(0)  &amp;= I,                         label{initial:value}
-\end{align}
-<span style="color: #658b00">!et</span>
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
 where $a$, $I$, and $T$ are prescribed parameters, and $u(t)$ is
 the unknown function to be estimated. This mathematical model
 is relevant for physical phenomena featuring exponential decay
@@ -46,8 +46,8 @@ cooling of an object, and radioactive decay.
 <span style="color: #228B22">## Purpose: section with single-line equation, equation reference,</span>
 <span style="color: #228B22">## a bullet list, and links to URLs (&quot;link text&quot;: &quot;url&quot;).</span>
 
-idx{mesh in time} idx{$\theta$-rule} idx{numerical scheme}
-idx{finite difference scheme}
+<span style="color: #658b00">idx{mesh in time}</span> idx{$\theta$-rule} idx{numerical scheme}
+<span style="color: #658b00">idx{finite difference scheme}</span>
 
 We introduce a mesh in time with points $0= t_0&lt; t_1 \cdots &lt; t_{N_t}=T$.
 For simplicity, we assume constant spacing $\Delta t$ between the
@@ -57,11 +57,11 @@ $u^n$ be the numerical approximation to the exact solution at $t_n$.
 The $\theta$-rule cite{Iserles_2009}
 is used to solve (ref{ode}) numerically:
 
-<span style="color: #658b00">!bt</span>
+<span style="color: #8B008B; font-weight: bold">!bt</span>
 \[
 u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
 \]
-<span style="color: #658b00">!et</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
 for $n=0,1,\ldots,N_t-1$. This scheme corresponds to
 
   * The &quot;Forward Euler&quot;:
@@ -93,7 +93,7 @@ cite{Langtangen_2012} `solver` (found in the &quot;`decay_mod`&quot;:
 
 <span style="color: #228B22">## Purpose: section with figures.</span>
 
-idx{numerical experiments}
+<span style="color: #658b00">idx{numerical experiments}</span>
 
 We define a set of numerical experiments where $I$, $a$, and $T$ are
 fixed, while $\Delta t$ and $\theta$ are varied.
@@ -106,7 +106,7 @@ In particular, $I=1$, $a=2$, $\Delta t = 1.25, 0.75, 0.5, 0.1$.
 <span style="color: #228B22">## Purpose: subsection with inline figure (figure without caption).</span>
 
 
-idx{BE}
+<span style="color: #658b00">idx{BE}</span>
 
 <span style="color: #658b00">FIGURE: [BE, width=800]</span>
 
@@ -117,7 +117,7 @@ idx{BE}
 <span style="color: #228B22">## Purpose: subsection with inline figure (figure without caption).</span>
 
 
-idx{CN}
+<span style="color: #658b00">idx{CN}</span>
 
 <span style="color: #658b00">FIGURE: [CN, width=800]</span>
 
@@ -128,7 +128,7 @@ idx{CN}
 <span style="color: #228B22">## Purpose: subsection with inline figure (figure without caption).</span>
 
 
-idx{FE}
+<span style="color: #658b00">idx{FE}</span>
 
 <span style="color: #658b00">FIGURE: [FE, width=800]</span>
 
@@ -138,18 +138,18 @@ idx{FE}
 
 <span style="color: #228B22">## Purpose: exemplify referring to a figure with label and caption.</span>
 
-idx{error vs time step}
+<span style="color: #658b00">idx{error vs time step}</span>
 
 How $E$ varies with $\Delta t$ for $\theta=0,0.5,1$
 is shown below.
 
 <span style="color: #228B22">## Here is an admonition box for warnings</span>
 
-<span style="color: #658b00">!bwarning Observe:</span>
+<span style="color: #8B008B; font-weight: bold">!bwarning</span> Observe:
 The data points for the three largest $\Delta t$ values in the
 Forward Euler method are not relevant as the solution behaves
 non-physically.
-<span style="color: #658b00">!ewarning</span>
+<span style="color: #8B008B; font-weight: bold">!ewarning</span>
 
 <span style="color: #228B22">## Here is a figure without caption (becomes inline)</span>
 
@@ -159,18 +159,18 @@ non-physically.
 
 The numbers corresponding to the figure above are given in the table below.
 
-|------c--------------c--------------c--------------c-------|
-| $\Delta t$   | $\theta=0$   | $\theta=0.5$ | $\theta=1$   |
-|------r--------------r--------------r--------------r-------|
-| 1.25         | 7.4630       | 0.2161       | 0.2440       |
-| 0.75         | 0.6632       | 0.0744       | 0.1875       |
-| 0.50         | 0.2797       | 0.0315       | 0.1397       |
-| 0.10         | 0.0377       | 0.0012       | 0.0335       |
-|-----------------------------------------------------------|
+<span style="color: #CD5555">|------c--------------c--------------c--------------c-------|</span>
+<span style="color: #CD5555">| $\Delta t$   | $\theta=0$   | $\theta=0.5$ | $\theta=1$   |</span>
+<span style="color: #CD5555">|------r--------------r--------------r--------------r-------|</span>
+<span style="color: #CD5555">| 1.25         | 7.4630       | 0.2161       | 0.2440       |</span>
+<span style="color: #CD5555">| 0.75         | 0.6632       | 0.0744       | 0.1875       |</span>
+<span style="color: #CD5555">| 0.50         | 0.2797       | 0.0315       | 0.1397       |</span>
+<span style="color: #CD5555">| 0.10         | 0.0377       | 0.0012       | 0.0335       |</span>
+<span style="color: #CD5555">|-----------------------------------------------------------|</span>
 
 <span style="color: #228B22">## Here is an admonition box for summaries</span>
 
-<span style="color: #658b00">!bsummary</span>
+<span style="color: #8B008B; font-weight: bold">!bsummary</span>
  o $\theta =1$: $E\sim \Delta t$ (first-order convergence).
  o $\theta =0.5$: $E\sim \Delta t^2$ (second-order convergence).
  o $\theta =1$ is always stable and gives qualitatively corrects results.
@@ -179,7 +179,7 @@ The numbers corresponding to the figure above are given in the table below.
  o $\theta =0$ suffers from fast-growing solution if $\Delta t$ is
    not small enough, but even below this limit one can have oscillating
    solutions that disappear if $\Delta t$ is sufficiently small.
-<span style="color: #658b00">!esummary</span>
+<span style="color: #8B008B; font-weight: bold">!esummary</span>
 
 <span style="color: #228B22">## Publish (https://bitbucket.org/logg/publish is used to</span>
 <span style="color: #228B22">## handle references. The line below specifies the name of</span>

@@ -4,7 +4,7 @@
 <html>
 <head>
   <title></title>
-  <meta http-equiv="content-type" content="text/html; charset=latin1">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <style type="text/css">
 td.linenos { background-color: #f0f0f0; padding-right: 10px; }
 span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
@@ -77,242 +77,242 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <body>
 <h2></h2>
 
-<div class="highlight"><pre>{
- &quot;metadata&quot;: {},
- &quot;nbformat&quot;: 3,
- &quot;nbformat_minor&quot;: 0,
- &quot;worksheets&quot;: [
-  {
-   &quot;cells&quot;: [
-    {
-     &quot;cell_type&quot;: &quot;markdown&quot;,
-     &quot;metadata&quot;: {},
-     &quot;source&quot;: [
-      &quot;# Experiments with Schemes for Exponential Decay\n&quot;,
-      &quot;_Apr 30, 2014_\n&quot;,
-      &quot;\n&quot;,
-      &quot;*Summary.* This report investigates the accuracy of three finite difference\n&quot;,
-      &quot;schemes for the ordinary differential equation $u&#39;=-au$ with the\n&quot;,
-      &quot;aid of numerical experiments. Numerical artifacts are in particular\n&quot;,
-      &quot;demonstrated.\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;&lt;!-- !split --&gt;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;## Mathematical problem\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;We address the initial-value problem&quot;
-     ]
-    },
-    {
-     &quot;cell_type&quot;: &quot;markdown&quot;,
-     &quot;metadata&quot;: {},
-     &quot;source&quot;: [
-      &quot;$$\n&quot;,
-      &quot;\\begin{equation}\n&quot;,
-      &quot;u&#39;(t) = -au(t), \\quad t \\in (0,T], \\label{ode}\n&quot;,
-      &quot;\\end{equation}\n&quot;,
-      &quot;$$&quot;
-     ]
-    },
-    {
-     &quot;cell_type&quot;: &quot;markdown&quot;,
-     &quot;metadata&quot;: {},
-     &quot;source&quot;: [
-      &quot;$$\n&quot;,
-      &quot;\\begin{equation} \n&quot;,
-      &quot;u(0)  = I,                         \\label{initial:value}\n&quot;,
-      &quot;\\end{equation}\n&quot;,
-      &quot;$$&quot;
-     ]
-    },
-    {
-     &quot;cell_type&quot;: &quot;markdown&quot;,
-     &quot;metadata&quot;: {},
-     &quot;source&quot;: [
-      &quot;where $a$, $I$, and $T$ are prescribed parameters, and $u(t)$ is\n&quot;,
-      &quot;the unknown function to be estimated. This mathematical model\n&quot;,
-      &quot;is relevant for physical phenomena featuring exponential decay\n&quot;,
-      &quot;in time, e.g., vertical pressure variation in the atmosphere,\n&quot;,
-      &quot;cooling of an object, and radioactive decay.\n&quot;,
-      &quot;\n&quot;,
-      &quot;## Numerical solution method\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;We introduce a mesh in time with points $0= t_0&lt; t_1 \\cdots &lt; t_{N_t}=T$.\n&quot;,
-      &quot;For simplicity, we assume constant spacing $\\Delta t$ between the\n&quot;,
-      &quot;mesh points: $\\Delta t = t_{n}-t_{n-1}$, $n=1,\\ldots,N_t$. Let\n&quot;,
-      &quot;$u^n$ be the numerical approximation to the exact solution at $t_n$.\n&quot;,
-      &quot;\n&quot;,
-      &quot;The $\\theta$-rule [Iserles_2009]\n&quot;,
-      &quot;is used to solve Eq (ode) numerically:&quot;
-     ]
-    },
-    {
-     &quot;cell_type&quot;: &quot;markdown&quot;,
-     &quot;metadata&quot;: {},
-     &quot;source&quot;: [
-      &quot;$$\n&quot;,
-      &quot;u^{n+1} = \\frac{1 - (1-\\theta) a\\Delta t}{1 + \\theta a\\Delta t}u^n,\n&quot;,
-      &quot;$$&quot;
-     ]
-    },
-    {
-     &quot;cell_type&quot;: &quot;markdown&quot;,
-     &quot;metadata&quot;: {},
-     &quot;source&quot;: [
-      &quot;for $n=0,1,\\ldots,N_t-1$. This scheme corresponds to\n&quot;,
-      &quot;\n&quot;,
-      &quot;  * The [Forward Euler](http://en.wikipedia.org/wiki/Forward_Euler_method)\n&quot;,
-      &quot;    scheme when $\\theta=0$\n&quot;,
-      &quot;\n&quot;,
-      &quot;  * The [Backward Euler](http://en.wikipedia.org/wiki/Backward_Euler_method)\n&quot;,
-      &quot;    scheme when $\\theta=1$\n&quot;,
-      &quot;\n&quot;,
-      &quot;  * The [Crank-Nicolson](http://en.wikipedia.org/wiki/Crank-Nicolson)\n&quot;,
-      &quot;    scheme when $\\theta=1/2$\n&quot;,
-      &quot;\n&quot;,
-      &quot;## Implementation\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;The numerical method is implemented in a Python function\n&quot;,
-      &quot;[Langtangen_2012] `solver` (found in the [`decay_mod`](https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py) module):&quot;
-     ]
-    },
-    {
-     &quot;cell_type&quot;: &quot;code&quot;,
-     &quot;collapsed&quot;: false,
-     &quot;input&quot;: [
-      &quot;def solver(I, a, T, dt, theta):\n&quot;,
-      &quot;    \&quot;\&quot;\&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.\&quot;\&quot;\&quot;\n&quot;,
-      &quot;    dt = float(dt)            # avoid integer division\n&quot;,
-      &quot;    Nt = int(round(T/dt))     # no of time intervals\n&quot;,
-      &quot;    T = Nt*dt                 # adjust T to fit time step dt\n&quot;,
-      &quot;    u = zeros(Nt+1)           # array of u[n] values\n&quot;,
-      &quot;    t = linspace(0, T, Nt+1)  # time mesh\n&quot;,
-      &quot;\n&quot;,
-      &quot;    u[0] = I                  # assign initial condition\n&quot;,
-      &quot;    for n in range(0, Nt):    # n=0,1,...,Nt-1\n&quot;,
-      &quot;        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]\n&quot;,
-      &quot;    return u, t\n&quot;
-     ],
-     &quot;language&quot;: &quot;python&quot;,
-     &quot;metadata&quot;: {},
-     &quot;outputs&quot;: [],
-     &quot;prompt_number&quot;: 1
-    },
-    {
-     &quot;cell_type&quot;: &quot;markdown&quot;,
-     &quot;metadata&quot;: {},
-     &quot;source&quot;: [
-      &quot;## Numerical experiments\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;We define a set of numerical experiments where $I$, $a$, and $T$ are\n&quot;,
-      &quot;fixed, while $\\Delta t$ and $\\theta$ are varied.\n&quot;,
-      &quot;In particular, $I=1$, $a=2$, $\\Delta t = 1.25, 0.75, 0.5, 0.1$.\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;### The Backward Euler method\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;![](files/BE.png)\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;### The Crank-Nicolson method\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;![](files/CN.png)\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;### The Forward Euler method\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;![](files/FE.png)\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;### Error vs $\\Delta t$\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;How $E$ varies with $\\Delta t$ for $\\theta=0,0.5,1$\n&quot;,
-      &quot;is shown below.\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;!bwarning Observe:\n&quot;,
-      &quot;The data points for the three largest $\\Delta t$ values in the\n&quot;,
-      &quot;Forward Euler method are not relevant as the solution behaves\n&quot;,
-      &quot;non-physically.\n&quot;,
-      &quot;!ewarning\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;![](files/error.png)\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;The numbers corresponding to the figure above are given in the table below.\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot; $\\Delta t$    $\\theta=0$   $\\theta=0.5$   $\\theta=1$   \n&quot;,
-      &quot;------------  ------------  ------------  ------------  \n&quot;,
-      &quot;        1.25        7.4630        0.2161        0.2440  \n&quot;,
-      &quot;        0.75        0.6632        0.0744        0.1875  \n&quot;,
-      &quot;        0.50        0.2797        0.0315        0.1397  \n&quot;,
-      &quot;        0.10        0.0377        0.0012        0.0335  \n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot;!bsummary\n&quot;,
-      &quot;1. $\\theta =1$: $E\\sim \\Delta t$ (first-order convergence).\n&quot;,
-      &quot;\n&quot;,
-      &quot;2. $\\theta =0.5$: $E\\sim \\Delta t^2$ (second-order convergence).\n&quot;,
-      &quot;\n&quot;,
-      &quot;3. $\\theta =1$ is always stable and gives qualitatively corrects results.\n&quot;,
-      &quot;\n&quot;,
-      &quot;4. $\\theta =0.5$ never blows up, but may give oscillating solutions\n&quot;,
-      &quot;   if $\\Delta t$ is not sufficiently small.\n&quot;,
-      &quot;\n&quot;,
-      &quot;5. $\\theta =0$ suffers from fast-growing solution if $\\Delta t$ is\n&quot;,
-      &quot;   not small enough, but even below this limit one can have oscillating\n&quot;,
-      &quot;   solutions that disappear if $\\Delta t$ is sufficiently small.\n&quot;,
-      &quot;\n&quot;,
-      &quot;!esummary\n&quot;,
-      &quot;\n&quot;,
-      &quot;\n&quot;,
-      &quot; 1. \\label{Iserles_2009} _A. Iserles_. \n&quot;,
-      &quot;    *A First Course in the Numerical Analysis of Differential Equations*,\n&quot;,
-      &quot;    Cambridge University Press,\n&quot;,
-      &quot;    2009.\n&quot;,
-      &quot;\n&quot;,
-      &quot; 2. \\label{Langtangen_2012} _H. P. Langtangen_. \n&quot;,
-      &quot;    *A Primer on Scientific Programming With Python*,\n&quot;,
-      &quot;    Springer,\n&quot;,
-      &quot;    2012.&quot;
-     ]
-    }
-   ],
-   &quot;metadata&quot;: {}
-  }
- ]
-}
+<div class="highlight"><pre><span class="p">{</span>
+ <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
+ <span class="nt">&quot;nbformat&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+ <span class="nt">&quot;nbformat_minor&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+ <span class="nt">&quot;worksheets&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+   <span class="nt">&quot;cells&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+     <span class="nt">&quot;cell_type&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
+     <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;# Experiments with Schemes for Exponential Decay\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;_Jul 21, 2014_\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;*Summary.* This report investigates the accuracy of three finite difference\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;schemes for the ordinary differential equation $u&#39;=-au$ with the\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;aid of numerical experiments. Numerical artifacts are in particular\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;demonstrated.\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;!-- !split --&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;## Mathematical problem\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;We address the initial-value problem&quot;</span>
+     <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+     <span class="nt">&quot;cell_type&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
+     <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;$$\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\\begin{equation}\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;u&#39;(t) = -au(t), \\quad t \\in (0,T], \\label{ode}\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\\end{equation}\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;$$&quot;</span>
+     <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+     <span class="nt">&quot;cell_type&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
+     <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;$$\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\\begin{equation} \n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;u(0)  = I,                         \\label{initial:value}\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\\end{equation}\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;$$&quot;</span>
+     <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+     <span class="nt">&quot;cell_type&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
+     <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;where $a$, $I$, and $T$ are prescribed parameters, and $u(t)$ is\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;the unknown function to be estimated. This mathematical model\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;is relevant for physical phenomena featuring exponential decay\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;in time, e.g., vertical pressure variation in the atmosphere,\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;cooling of an object, and radioactive decay.\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;## Numerical solution method\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;We introduce a mesh in time with points $0= t_0&lt; t_1 \\cdots &lt; t_{N_t}=T$.\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;For simplicity, we assume constant spacing $\\Delta t$ between the\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;mesh points: $\\Delta t = t_{n}-t_{n-1}$, $n=1,\\ldots,N_t$. Let\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;$u^n$ be the numerical approximation to the exact solution at $t_n$.\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;The $\\theta$-rule [Iserles_2009]\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;is used to solve Eq (ode) numerically:&quot;</span>
+     <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+     <span class="nt">&quot;cell_type&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
+     <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;$$\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;u^{n+1} = \\frac{1 - (1-\\theta) a\\Delta t}{1 + \\theta a\\Delta t}u^n,\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;$$&quot;</span>
+     <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+     <span class="nt">&quot;cell_type&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
+     <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;for $n=0,1,\\ldots,N_t-1$. This scheme corresponds to\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;  * The [Forward Euler](http://en.wikipedia.org/wiki/Forward_Euler_method)\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;    scheme when $\\theta=0$\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;  * The [Backward Euler](http://en.wikipedia.org/wiki/Backward_Euler_method)\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;    scheme when $\\theta=1$\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;  * The [Crank-Nicolson](http://en.wikipedia.org/wiki/Crank-Nicolson)\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;    scheme when $\\theta=1/2$\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;## Implementation\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;The numerical method is implemented in a Python function\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;[Langtangen_2012] `solver` (found in the [`decay_mod`](https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py) module):&quot;</span>
+     <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+     <span class="nt">&quot;cell_type&quot;</span><span class="p">:</span> <span class="s2">&quot;code&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;collapsed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+     <span class="nt">&quot;input&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;def solver(I, a, T, dt, theta):\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;    \&quot;\&quot;\&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.\&quot;\&quot;\&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;    dt = float(dt)            # avoid integer division\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;    Nt = int(round(T/dt))     # no of time intervals\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;    T = Nt*dt                 # adjust T to fit time step dt\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;    u = zeros(Nt+1)           # array of u[n] values\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;    t = linspace(0, T, Nt+1)  # time mesh\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;    u[0] = I                  # assign initial condition\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;    for n in range(0, Nt):    # n=0,1,...,Nt-1\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;    return u, t\n&quot;</span>
+     <span class="p">],</span>
+     <span class="nt">&quot;language&quot;</span><span class="p">:</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
+     <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[],</span>
+     <span class="nt">&quot;prompt_number&quot;</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+     <span class="nt">&quot;cell_type&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
+     <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;## Numerical experiments\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;We define a set of numerical experiments where $I$, $a$, and $T$ are\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;fixed, while $\\Delta t$ and $\\theta$ are varied.\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;In particular, $I=1$, $a=2$, $\\Delta t = 1.25, 0.75, 0.5, 0.1$.\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;### The Backward Euler method\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;![](files/BE.png)\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;### The Crank-Nicolson method\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;![](files/CN.png)\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;### The Forward Euler method\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;![](files/FE.png)\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;### Error vs $\\Delta t$\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;How $E$ varies with $\\Delta t$ for $\\theta=0,0.5,1$\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;is shown below.\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;!bwarning Observe:\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;The data points for the three largest $\\Delta t$ values in the\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Forward Euler method are not relevant as the solution behaves\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;non-physically.\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;!ewarning\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;![](files/error.png)\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;The numbers corresponding to the figure above are given in the table below.\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot; $\\Delta t$    $\\theta=0$   $\\theta=0.5$   $\\theta=1$   \n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;------------  ------------  ------------  ------------  \n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;        1.25        7.4630        0.2161        0.2440  \n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;        0.75        0.6632        0.0744        0.1875  \n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;        0.50        0.2797        0.0315        0.1397  \n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;        0.10        0.0377        0.0012        0.0335  \n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;!bsummary\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;1. $\\theta =1$: $E\\sim \\Delta t$ (first-order convergence).\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;2. $\\theta =0.5$: $E\\sim \\Delta t^2$ (second-order convergence).\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;3. $\\theta =1$ is always stable and gives qualitatively corrects results.\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;4. $\\theta =0.5$ never blows up, but may give oscillating solutions\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;   if $\\Delta t$ is not sufficiently small.\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;5. $\\theta =0$ suffers from fast-growing solution if $\\Delta t$ is\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;   not small enough, but even below this limit one can have oscillating\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;   solutions that disappear if $\\Delta t$ is sufficiently small.\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;!esummary\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot; 1. \\label{Iserles_2009} _A. Iserles_. \n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;    *A First Course in the Numerical Analysis of Differential Equations*,\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;    Cambridge University Press,\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;    2009.\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot; 2. \\label{Langtangen_2012} _H. P. Langtangen_. \n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;    *A Primer on Scientific Programming With Python*,\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;    Springer,\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;    2012.&quot;</span>
+     <span class="p">]</span>
+    <span class="p">}</span>
+   <span class="p">],</span>
+   <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{}</span>
+  <span class="p">}</span>
+ <span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </body>
 </html>

@@ -1,0 +1,278 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Experiments with Schemes for Exponential Decay">
+<meta name="keywords" content="keyword,model problem,exponential decay,mesh in time,$\theta$-rule,numerical scheme,finite difference scheme,numerical experiments,BE,CN,FE,error vs time step">
+
+
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+    .alert-text-small   { font-size: 80%;  }
+    .alert-text-large   { font-size: 130%; }
+    .alert-text-normal  { font-size: 90%;  }
+    .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:1px solid #FFBF00;
+             border-radius: 4px;
+             -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
+             color: #555;
+             background-color: #fbeed5;
+             background-position: 10px 5px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 55px;
+             width: 75%;
+     }
+     .alert-block {padding-top:14px; padding-bottom:14px}
+     .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     .alert li {margin-top: 1em}
+     .alert-block p+p {margin-top:5px}
+     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Mathematical problem ', 1, 'math:problem', 'math:problem'),
+              (' Numerical solution method ',
+               1,
+               'numerical:problem',
+               'numerical:problem'),
+              (' Implementation ', 1, None, '___sec2'),
+              (' Numerical experiments ', 1, None, '___sec3'),
+              (' The Backward Euler method ', 2, None, '___sec4'),
+              (' The Crank-Nicolson method ', 2, None, '___sec5'),
+              (' The Forward Euler method ', 2, None, '___sec6'),
+              (' Error vs $\\Delta t$ ', 2, None, '___sec7')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- Fix slow MathJax rendering in IE8 -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+
+
+
+    
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Experiments with Schemes for Exponential Decay</title>
+
+<center><h1>Experiments with Schemes for Exponential Decay</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Department of Informatics, University of Oslo.</b></center>
+<p>
+<center><h4>Jul 21, 2014</h4></center> <!-- date -->
+<p>
+<b>Summary.</b> This report investigates the accuracy of three finite difference
+schemes for the ordinary differential equation \( u'=-au \) with the
+aid of numerical experiments. Numerical artifacts are in particular
+demonstrated.
+
+<h2>
+Table of contents</h2>
+
+<a href="#math:problem"> Mathematical problem </a><br>
+<a href="#numerical:problem"> Numerical solution method </a><br>
+<a href="#___sec2"> Implementation </a><br>
+<a href="#___sec3"> Numerical experiments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec4"> The Backward Euler method </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec5"> The Crank-Nicolson method </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec6"> The Forward Euler method </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Error vs \( \Delta t \) </a><br>
+</p>
+
+<h1>Mathematical problem <a name="math:problem"></a></h1>
+
+We address the initial-value problem
+
+$$
+\begin{align}
+u'(t) &= -au(t), \quad t \in (0,T], \label{ode}\\
+u(0)  &= I,                         \label{initial:value}
+\end{align}
+$$
+
+where \( a \), \( I \), and \( T \) are prescribed parameters, and \( u(t) \) is
+the unknown function to be estimated. This mathematical model
+is relevant for physical phenomena featuring exponential decay
+in time, e.g., vertical pressure variation in the atmosphere,
+cooling of an object, and radioactive decay.
+
+<h1>Numerical solution method <a name="numerical:problem"></a></h1>
+
+We introduce a mesh in time with points \( 0= t_0< t_1 \cdots < t_{N_t}=T \).
+For simplicity, we assume constant spacing \( \Delta t \) between the
+mesh points: \( \Delta t = t_{n}-t_{n-1} \), \( n=1,\ldots,N_t \). Let
+\( u^n \) be the numerical approximation to the exact solution at \( t_n \).
+
+<p>
+The \( \theta \)-rule <a href="#Iserles_2009">[1]</a>
+is used to solve \eqref{ode} numerically:
+
+$$
+u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+$$
+
+for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
+
+<ul>
+  <li> The <a href="http://en.wikipedia.org/wiki/Forward_Euler_method" target="_self">Forward Euler</a>
+    scheme when \( \theta=0 \)</li>
+  <li> The <a href="http://en.wikipedia.org/wiki/Backward_Euler_method" target="_self">Backward Euler</a>
+    scheme when \( \theta=1 \)</li>
+  <li> The <a href="http://en.wikipedia.org/wiki/Crank-Nicolson" target="_self">Crank-Nicolson</a>
+    scheme when \( \theta=1/2 \)</li>
+</ul>
+
+<h1>Implementation  <a name="___sec2"></a></h1>
+
+The numerical method is implemented in a Python function
+<a href="#Langtangen_2012">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>decay_mod</tt></a> module):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
+    dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)            <span style="color: #408080; font-style: italic"># avoid integer division</span>
+    Nt <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #408080; font-style: italic"># no of time intervals</span>
+    T <span style="color: #666666">=</span> Nt<span style="color: #666666">*</span>dt                 <span style="color: #408080; font-style: italic"># adjust T to fit time step dt</span>
+    u <span style="color: #666666">=</span> zeros(Nt<span style="color: #666666">+1</span>)           <span style="color: #408080; font-style: italic"># array of u[n] values</span>
+    t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, T, Nt<span style="color: #666666">+1</span>)  <span style="color: #408080; font-style: italic"># time mesh</span>
+
+    u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> I                  <span style="color: #408080; font-style: italic"># assign initial condition</span>
+    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, Nt):    <span style="color: #408080; font-style: italic"># n=0,1,...,Nt-1</span>
+        u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
+    <span style="color: #008000; font-weight: bold">return</span> u, t
+</pre></div>
+
+<h1>Numerical experiments  <a name="___sec3"></a></h1>
+
+We define a set of numerical experiments where \( I \), \( a \), and \( T \) are
+fixed, while \( \Delta t \) and \( \theta \) are varied.
+In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
+
+<h2>The Backward Euler method  <a name="___sec4"></a></h2>
+
+<center><p><img src="BE.png" align="bottom" width=800></p></center>
+
+<h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
+
+<center><p><img src="CN.png" align="bottom" width=800></p></center>
+
+<h2>The Forward Euler method  <a name="___sec6"></a></h2>
+
+<center><p><img src="FE.png" align="bottom" width=800></p></center>
+
+<h2>Error vs \( \Delta t \)  <a name="___sec7"></a></h2>
+
+How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
+is shown below.
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Observe:</b>
+The data points for the three largest \( \Delta t \) values in the
+Forward Euler method are not relevant as the solution behaves
+non-physically.
+</div>
+
+
+<p>
+<center><p><img src="error.png" align="bottom" width=400></p></center>
+
+<p>
+The numbers corresponding to the figure above are given in the table below.
+
+<p>
+<table border="1">
+<thead>
+<tr><td align="center"> \( \Delta t \) </td> <td align="center"> \( \theta=0 \) </td> <td align="center">\( \theta=0.5 \)</td> <td align="center"> \( \theta=1 \) </td> </tr>
+</thead>
+<tbody>
+<tr><td align="right">   1.25                </td> <td align="right">   7.4630              </td> <td align="right">   0.2161              </td> <td align="right">   0.2440              </td> </tr>
+<tr><td align="right">   0.75                </td> <td align="right">   0.6632              </td> <td align="right">   0.0744              </td> <td align="right">   0.1875              </td> </tr>
+<tr><td align="right">   0.50                </td> <td align="right">   0.2797              </td> <td align="right">   0.0315              </td> <td align="right">   0.1397              </td> </tr>
+<tr><td align="right">   0.10                </td> <td align="right">   0.0377              </td> <td align="right">   0.0012              </td> <td align="right">   0.0335              </td> </tr>
+</tbody>
+</table>
+<p>
+<div class="alert alert-block alert-summary alert-text-normal"><b>Summary.</b>
+
+<ol>
+<li> \( \theta =1 \): \( E\sim \Delta t \) (first-order convergence).</li>
+<li> \( \theta =0.5 \): \( E\sim \Delta t^2 \) (second-order convergence).</li>
+<li> \( \theta =1 \) is always stable and gives qualitatively corrects results.</li>
+<li> \( \theta =0.5 \) never blows up, but may give oscillating solutions
+   if \( \Delta t \) is not sufficiently small.</li>
+<li> \( \theta =0 \) suffers from fast-growing solution if \( \Delta t \) is
+   not small enough, but even below this limit one can have oscillating
+   solutions that disappear if \( \Delta t \) is sufficiently small.</li>
+</ol>
+</div>
+
+
+<p>
+<!-- begin bibliography -->
+
+<ol>
+ <li> <a name="Iserles_2009"></a> <b>A. Iserles</b>. 
+    <em>A First Course in the Numerical Analysis of Differential Equations</em>,
+    Cambridge University Press,
+    2009.</li>
+ <li> <a name="Langtangen_2012"></a> <b>H. P. Langtangen</b>. 
+    <em>A Primer on Scientific Programming With Python</em>,
+    Springer,
+    2012.</li>
+</ol>
+
+<!-- end bibliography -->
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+
