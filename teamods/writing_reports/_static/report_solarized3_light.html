@@ -13,32 +13,32 @@ Automatically generated HTML file from Doconce source
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
 <style type="text/css">
-    .alert-text-small   { font-size: 80%;  }
-    .alert-text-large   { font-size: 130%; }
-    .alert-text-normal  { font-size: 90%;  }
-    .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:1px solid #FFBF00;
-             border-radius: 4px;
-             -webkit-border-radius: 4px;
-             -moz-border-radius: 4px;
-             color: #555;
-             background-color: #fbeed5;
-             background-position: 10px 5px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 55px;
-             width: 75%;
-     }
-     .alert-block {padding-top:14px; padding-bottom:14px}
-     .alert-block > p, .alert-block > ul {margin-bottom:1em}
-     .alert li {margin-top: 1em}
-     .alert-block p+p {margin-top:5px}
-     .alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-     .alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-     .alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-     .alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -57,7 +57,8 @@ div { text-align: justify; text-justify: inter-word; }
               (' The Backward Euler method ', 2, None, '___sec4'),
               (' The Crank-Nicolson method ', 2, None, '___sec5'),
               (' The Forward Euler method ', 2, None, '___sec6'),
-              (' Error vs $\\Delta t$ ', 2, None, '___sec7')]}
+              (' Error vs $\\Delta t$ ', 2, None, '___sec7'),
+              (' Bibliography ', 1, None, '___sec8')]}
 end of tocinfo -->
 
 <body>
@@ -75,9 +76,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
@@ -103,7 +101,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo.</b></center>
 <p>
-<center><h4>Jul 21, 2014</h4></center> <!-- date -->
+<center><h4>Jul 25, 2014</h4></center> <!-- date -->
 <p>
 <b>Summary.</b> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation \( u'=-au \) with the
@@ -121,6 +119,7 @@ Table of contents</h2>
 &nbsp; &nbsp; &nbsp; <a href="#___sec5"> The Crank-Nicolson method </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec6"> The Forward Euler method </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec7"> Error vs \( \Delta t \) </a><br>
+<a href="#___sec8"> Bibliography </a><br>
 </p>
 
 <h1>Mathematical problem <a name="math:problem"></a></h1>
@@ -172,21 +171,21 @@ The numerical method is implemented in a Python function
 <a href="#Langtangen_2012">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>decay_mod</tt></a> module):
 
 <p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def solver(I, a, T, dt, theta):
+    &quot;&quot;&quot;Solve u'=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;
+    dt = float(dt)            # avoid integer division
+    Nt = int(round(T/dt))     # no of time intervals
+    T = Nt*dt                 # adjust T to fit time step dt
+    u = zeros(Nt+1)           # array of u[n] values
+    t = linspace(0, T, Nt+1)  # time mesh
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
-    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
-    dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)            <span style="color: #408080; font-style: italic"># avoid integer division</span>
-    Nt <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #408080; font-style: italic"># no of time intervals</span>
-    T <span style="color: #666666">=</span> Nt<span style="color: #666666">*</span>dt                 <span style="color: #408080; font-style: italic"># adjust T to fit time step dt</span>
-    u <span style="color: #666666">=</span> zeros(Nt<span style="color: #666666">+1</span>)           <span style="color: #408080; font-style: italic"># array of u[n] values</span>
-    t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, T, Nt<span style="color: #666666">+1</span>)  <span style="color: #408080; font-style: italic"># time mesh</span>
-
-    u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> I                  <span style="color: #408080; font-style: italic"># assign initial condition</span>
-    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, Nt):    <span style="color: #408080; font-style: italic"># n=0,1,...,Nt-1</span>
-        u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
-    <span style="color: #008000; font-weight: bold">return</span> u, t
-</pre></div>
+    u[0] = I                  # assign initial condition
+    for n in range(0, Nt):    # n=0,1,...,Nt-1
+        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
+    return u, t
+</code></pre>
+<!-- end verbatim block -->
 
 <h1>Numerical experiments  <a name="___sec3"></a></h1>
 
@@ -253,7 +252,8 @@ The numbers corresponding to the figure above are given in the table below.
 </div>
 
 
-<p>
+<h1>Bibliography  <a name="___sec8"></a></h1>
+
 <!-- begin bibliography -->
 
 <ol>

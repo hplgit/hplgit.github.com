@@ -68,9 +68,9 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Hans Petter Langtangen (hpl at simula.no)</td>
+<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen (hpl at simula.no)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jul 21, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jul 25, 2014</td>
 </tr>
 </tbody>
 </table>
@@ -78,9 +78,8 @@
 schemes for the ordinary differential equation <span class="math">\(u'=-au\)</span> with the
 aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.</p>
-</div>
 <div class="section" id="mathematical-problem">
-<span id="math-problem"></span><h1>Mathematical problem<a class="headerlink" href="#mathematical-problem" title="Permalink to this headline">¶</a></h1>
+<span id="math-problem"></span><h2>Mathematical problem<a class="headerlink" href="#mathematical-problem" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="index-0"></span><p id="index-1">We address the initial-value problem</p>
 <div class="math" id="equation-ode">
 <span class="eqno">(1)</span>\[     u'(t) = -au(t), \quad t \in (0,T],\]</div>
@@ -93,7 +92,7 @@ in time, e.g., vertical pressure variation in the atmosphere,
 cooling of an object, and radioactive decay.</p>
 </div>
 <div class="section" id="numerical-solution-method">
-<span id="numerical-problem"></span><h1>Numerical solution method<a class="headerlink" href="#numerical-solution-method" title="Permalink to this headline">¶</a></h1>
+<span id="numerical-problem"></span><h2>Numerical solution method<a class="headerlink" href="#numerical-solution-method" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="index-2"></span><span class="target" id="index-3"></span><span class="target" id="index-4"></span><p id="index-5">We introduce a mesh in time with points <span class="math">\(0= t_0&lt; t_1 \cdots &lt; t_{N_t}=T\)</span>.
 For simplicity, we assume constant spacing <span class="math">\(\Delta t\)</span> between the
 mesh points: <span class="math">\(\Delta t = t_{n}-t_{n-1}\)</span>, <span class="math">\(n=1,\ldots,N_t\)</span>. Let
@@ -115,7 +114,7 @@ scheme when <span class="math">\(\theta=1/2\)</span></li>
 </div></blockquote>
 </div>
 <div class="section" id="implementation">
-<h1>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h1>
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>The numerical method is implemented in a Python function
 <a class="reference internal" href="#ref2" id="id2">[Ref2]</a> <tt class="docutils literal"><span class="pre">solver</span></tt> (found in the <a class="reference external" href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py">decay_mod</a> module):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">solver</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
@@ -134,30 +133,30 @@ scheme when <span class="math">\(\theta=1/2\)</span></li>
 </div>
 </div>
 <div class="section" id="numerical-experiments">
-<h1>Numerical experiments<a class="headerlink" href="#numerical-experiments" title="Permalink to this headline">¶</a></h1>
+<h2>Numerical experiments<a class="headerlink" href="#numerical-experiments" title="Permalink to this headline">¶</a></h2>
 <p id="index-6">We define a set of numerical experiments where <span class="math">\(I\)</span>, <span class="math">\(a\)</span>, and <span class="math">\(T\)</span> are
 fixed, while <span class="math">\(\Delta t\)</span> and <span class="math">\(\theta\)</span> are varied.
 In particular, <span class="math">\(I=1\)</span>, <span class="math">\(a=2\)</span>, <span class="math">\(\Delta t = 1.25, 0.75, 0.5, 0.1\)</span>.</p>
 <div class="section" id="the-backward-euler-method">
-<h2>The Backward Euler method<a class="headerlink" href="#the-backward-euler-method" title="Permalink to this headline">¶</a></h2>
+<h3>The Backward Euler method<a class="headerlink" href="#the-backward-euler-method" title="Permalink to this headline">¶</a></h3>
 <div class="figure" id="index-7">
 <a class="reference internal image-reference" href="_images/BE.png"><img alt="_images/BE.png" src="_images/BE.png" style="width: 800px;" /></a>
 </div>
 </div>
 <div class="section" id="the-crank-nicolson-method">
-<h2>The Crank-Nicolson method<a class="headerlink" href="#the-crank-nicolson-method" title="Permalink to this headline">¶</a></h2>
+<h3>The Crank-Nicolson method<a class="headerlink" href="#the-crank-nicolson-method" title="Permalink to this headline">¶</a></h3>
 <div class="figure" id="index-8">
 <a class="reference internal image-reference" href="_images/CN.png"><img alt="_images/CN.png" src="_images/CN.png" style="width: 800px;" /></a>
 </div>
 </div>
 <div class="section" id="the-forward-euler-method">
-<h2>The Forward Euler method<a class="headerlink" href="#the-forward-euler-method" title="Permalink to this headline">¶</a></h2>
+<h3>The Forward Euler method<a class="headerlink" href="#the-forward-euler-method" title="Permalink to this headline">¶</a></h3>
 <div class="figure" id="index-9">
 <a class="reference internal image-reference" href="_images/FE.png"><img alt="_images/FE.png" src="_images/FE.png" style="width: 800px;" /></a>
 </div>
 </div>
 <div class="section" id="error-vs">
-<h2>Error vs <span class="math">\(\Delta t\)</span><a class="headerlink" href="#error-vs" title="Permalink to this headline">¶</a></h2>
+<h3>Error vs <span class="math">\(\Delta t\)</span><a class="headerlink" href="#error-vs" title="Permalink to this headline">¶</a></h3>
 <p id="index-10">How <span class="math">\(E\)</span> varies with <span class="math">\(\Delta t\)</span> for <span class="math">\(\theta=0,0.5,1\)</span>
 is shown below.</p>
 <div class="admonition-observe admonition">
@@ -220,6 +219,10 @@ not small enough, but even below this limit one can have oscillating
 solutions that disappear if <span class="math">\(\Delta t\)</span> is sufficiently small.</li>
 </ol>
 </div>
+</div>
+</div>
+<div class="section" id="bibliography">
+<h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h2>
 <table class="docutils citation" frame="void" id="ref1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
@@ -249,15 +252,12 @@ Springer,
         <div class="sidebar">
           <h3>Table Of Contents</h3>
           <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Experiments with Schemes for Exponential Decay</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#mathematical-problem">Mathematical problem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#numerical-solution-method">Numerical solution method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#implementation">Implementation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#numerical-experiments">Numerical experiments</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#the-backward-euler-method">The Backward Euler method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-crank-nicolson-method">The Crank-Nicolson method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-forward-euler-method">The Forward Euler method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#error-vs">Error vs <span class="math">\(\Delta t\)</span></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Experiments with Schemes for Exponential Decay</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mathematical-problem">Mathematical problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#numerical-solution-method">Numerical solution method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implementation">Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#numerical-experiments">Numerical experiments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bibliography">Bibliography</a></li>
 </ul>
 </li>
 </ul>

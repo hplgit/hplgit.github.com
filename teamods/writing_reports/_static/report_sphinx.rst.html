@@ -80,11 +80,11 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <div class="highlight"><pre><span class="cp">.. Automatically generated Sphinx-extended reStructuredText file from Doconce source</span>
 <span class="cp">   (https://github.com/hplgit/doconce/)</span>
 
-<span class="gh">Experiments with Schemes for Exponential Decay</span>
-<span class="gh">==============================================</span>
+Experiments with Schemes for Exponential Decay
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<span class="nc">:Author:</span> <span class="nf">Hans Petter Langtangen (hpl at simula.no)</span>
-<span class="nc">:Date:</span> <span class="nf">Jul 21, 2014</span>
+<span class="nc">:Authors:</span> <span class="nf">Hans Petter Langtangen (hpl at simula.no)</span>
+<span class="nc">:Date:</span> <span class="nf">Jul 25, 2014</span>
 
 <span class="ge">*Summary.*</span> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation <span class="na">:math:</span><span class="nv">`u&#39;=-au`</span> with the
@@ -150,20 +150,20 @@ is used to solve <span class="na">:eq:</span><span class="nv">`ode`</span> numer
 
 for <span class="na">:math:</span><span class="nv">`n=0,1,\ldots,N_t-1`</span>. This scheme corresponds to
 
-  <span class="m">*</span> The <span class="s">`Forward Euler </span><span class="si">&lt;http://en.wikipedia.org/wiki/Forward_Euler_method&gt;</span><span class="s">`_</span>
+  <span class="m">*</span> The <span class="s">`Forward Euler </span><span class="si">&lt;http://en.wikipedia.org/wiki/Forward_Euler_method&gt;</span><span class="s">`__</span>
     scheme when <span class="na">:math:</span><span class="nv">`\theta=0`</span>
 
-  <span class="m">*</span> The <span class="s">`Backward Euler </span><span class="si">&lt;http://en.wikipedia.org/wiki/Backward_Euler_method&gt;</span><span class="s">`_</span>
+  <span class="m">*</span> The <span class="s">`Backward Euler </span><span class="si">&lt;http://en.wikipedia.org/wiki/Backward_Euler_method&gt;</span><span class="s">`__</span>
     scheme when <span class="na">:math:</span><span class="nv">`\theta=1`</span>
 
-  <span class="m">*</span> The <span class="s">`Crank-Nicolson </span><span class="si">&lt;http://en.wikipedia.org/wiki/Crank-Nicolson&gt;</span><span class="s">`_</span>
+  <span class="m">*</span> The <span class="s">`Crank-Nicolson </span><span class="si">&lt;http://en.wikipedia.org/wiki/Crank-Nicolson&gt;</span><span class="s">`__</span>
     scheme when <span class="na">:math:</span><span class="nv">`\theta=1/2`</span>
 
 <span class="gh">Implementation</span>
 <span class="gh">==============</span>
 
 The numerical method is implemented in a Python function
-<span class="s">[Ref2]_</span> <span class="s">``solver``</span> (found in the <span class="s">`decay_mod </span><span class="si">&lt;https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py&gt;</span><span class="s">`_</span> module):
+<span class="s">[Ref2]_</span> <span class="s">``solver``</span> (found in the <span class="s">`decay_mod </span><span class="si">&lt;https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py&gt;</span><span class="s">`__</span> module):
 
 <span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> python
 
@@ -263,6 +263,9 @@ The numbers corresponding to the figure above are given in the table below.
 
 
 
+
+<span class="gh">Bibliography</span>
+<span class="gh">============</span>
 
 <span class="p">..</span> <span class="nt">[Ref1]</span>
    <span class="gs">**A. Iserles**</span>. <span class="ge">*A First Course in the Numerical Analysis of Differential Equations*</span>,

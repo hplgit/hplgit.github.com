@@ -2,10 +2,10 @@
    (https://github.com/hplgit/doconce/)
 
 Experiments with Schemes for Exponential Decay
-==============================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:Author: Hans Petter Langtangen (hpl at simula.no)
-:Date: Jul 21, 2014
+:Authors: Hans Petter Langtangen (hpl at simula.no)
+:Date: Jul 25, 2014
 
 *Summary.* This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation :math:`u'=-au` with the
@@ -71,20 +71,20 @@ is used to solve :eq:`ode` numerically:
 
 for :math:`n=0,1,\ldots,N_t-1`. This scheme corresponds to
 
-  * The `Forward Euler <http://en.wikipedia.org/wiki/Forward_Euler_method>`_
+  * The `Forward Euler <http://en.wikipedia.org/wiki/Forward_Euler_method>`__
     scheme when :math:`\theta=0`
 
-  * The `Backward Euler <http://en.wikipedia.org/wiki/Backward_Euler_method>`_
+  * The `Backward Euler <http://en.wikipedia.org/wiki/Backward_Euler_method>`__
     scheme when :math:`\theta=1`
 
-  * The `Crank-Nicolson <http://en.wikipedia.org/wiki/Crank-Nicolson>`_
+  * The `Crank-Nicolson <http://en.wikipedia.org/wiki/Crank-Nicolson>`__
     scheme when :math:`\theta=1/2`
 
 Implementation
 ==============
 
 The numerical method is implemented in a Python function
-[Ref2]_ ``solver`` (found in the `decay_mod <https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py>`_ module):
+[Ref2]_ ``solver`` (found in the `decay_mod <https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py>`__ module):
 
 .. code-block:: python
 
@@ -184,6 +184,9 @@ The numbers corresponding to the figure above are given in the table below.
 
 
 
+
+Bibliography
+============
 
 .. [Ref1]
    **A. Iserles**. *A First Course in the Numerical Analysis of Differential Equations*,
