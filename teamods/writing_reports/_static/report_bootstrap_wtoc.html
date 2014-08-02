@@ -1,47 +1,96 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
+<head>
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-<!-- Based on http://jsfiddle.net/jdwire/eytMx/ -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Experiments with Schemes for Exponential Decay</title>
 
-<!-- Bootstrap core CSS -->
-<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap style (purple): http://getbootstrap.com/getting-started/
 
+What to change in this template:
 
-<!-- Documentation extras -->
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap_wtoc/css/bootstrap_wtoc.css" rel="stylesheet">
-  <body data-twttr-rendered="true" gram_dict="true">
+URL to the document (edit http://some.website.net/some/path)
 
-    <!-- Docs master nav -->
-    <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
-  <div class="container">
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="http://getbootstrap.com/" class="navbar-brand">Experiments with Schemes for Exponential Decay</a>
-    </div>
-    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-      </ul>
-    </nav>
+LINK1, LINK2 links in the navigation topbar (remove, edit, or add more)
+
+A subtitle or short description in the optional purple header field
+(edit Investigation of numerical artifacts)
+
+Footer with author(s) and copyright (remove or edit)
+-->
+
+<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet"
+<!-- Various settings from the bootstrap documentation style -->
+<link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
+
+<!-- Can add other themes (then skip bs-docs-header, which has unsuitable
+color, and adjust colors in the navigation sidebar -->
+<!--
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+-->
+
+<!-- Potential adjustment of styles -->
+<style type="text/css">
+/* Colors in the navigation sidebar */
+.bs-docs-sidebar .nav > li > a {
+  color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+  color: #999;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+  color: #563d7c;
+}
+/* Don't know how to adjust color in bs-docs-header...but the
+header can just be removed */
+</style>
+</head>
+
+<body>
+<a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+<!-- Docs master nav -->
+<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+<div class="container">
+  <div class="navbar-header">
+    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a href="http://some.website.net/some/path" class="navbar-brand">Experiments with Schemes for Exponential Decay</a>
   </div>
+  <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="http://wikipedia.org" target="_blank">Wikipedia</a></li>
+      <li><a href="http://wolframalpha.com" target="_blank">WolframAlpha</a></li>
+    </ul>
+  </nav>
+</div>
 </header>
 
 
-    <!-- Docs page layout -->
-    <div class="container bs-docs-container">
+<!-- Docs page layout -->
 
-      <div class="row">
-        <div class="col-md-9" role="main">
+<!-- A purple header field with the title is optional -->
+<div class="bs-docs-header" id="content">
+ <div class="container">
+  <h1>Experiments with Schemes for Exponential Decay</h1>
+Investigation of numerical artifacts</p>
+ </div>
+</div>
+
+<div class="container bs-docs-container">
+
+ <div class="row">
+
+  <!-- main content -->
+  <div class="col-md-9" role="main">
 
 <!-- tocinfo
 {'highest level': 1,
@@ -81,7 +130,7 @@ MathJax.Hub.Config({
 
 <h1>Experiments with Schemes for Exponential Decay</h1>
 
-<!-- AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo. -->
+<!-- AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory &amp; Department of Informatics, University of Oslo. -->
 <p>
 <b>Summary.</b> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation \( u'=-au \) with the
@@ -95,7 +144,7 @@ TOC: on -->
 <p>
 <!-- !split -->
 
-<h1>Mathematical problem <a name="math:problem"></a></h1>
+<h1 id="math:problem">Mathematical problem<a name="math:problem"></a></h1>
 
 We address the initial-value problem
 
@@ -112,7 +161,7 @@ is relevant for physical phenomena featuring exponential decay
 in time, e.g., vertical pressure variation in the atmosphere,
 cooling of an object, and radioactive decay.
 
-<h1>Numerical solution method <a name="numerical:problem"></a></h1>
+<h1 id="numerical:problem">Numerical solution method<a name="numerical:problem"></a></h1>
 
 We introduce a mesh in time with points \( 0= t_0< t_1 \cdots < t_{N_t}=T \).
 For simplicity, we assume constant spacing \( \Delta t \) between the
@@ -138,7 +187,7 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
     scheme when \( \theta=1/2 \)</li>
 </ul>
 
-<h1>Implementation  <a name="___sec2"></a></h1>
+<h1 id="___sec2">Implementation <a name="___sec2"></a></h1>
 
 The numerical method is implemented in a Python function
 <a href="#Langtangen_2012">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>decay_mod</tt></a> module):
@@ -160,25 +209,25 @@ The numerical method is implemented in a Python function
     <span style="color: #008000; font-weight: bold">return</span> u, t
 </pre></div>
 
-<h1>Numerical experiments  <a name="___sec3"></a></h1>
+<h1 id="___sec3">Numerical experiments <a name="___sec3"></a></h1>
 
 We define a set of numerical experiments where \( I \), \( a \), and \( T \) are
 fixed, while \( \Delta t \) and \( \theta \) are varied.
 In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 
-<h2>The Backward Euler method  <a name="___sec4"></a></h2>
+<h2 id="___sec4">The Backward Euler method <a name="___sec4"></a></h2>
 
 <center><p><img src="BE.png" align="bottom" width=800></p></center>
 
-<h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
+<h2 id="___sec5">The Crank-Nicolson method <a name="___sec5"></a></h2>
 
 <center><p><img src="CN.png" align="bottom" width=800></p></center>
 
-<h2>The Forward Euler method  <a name="___sec6"></a></h2>
+<h2 id="___sec6">The Forward Euler method <a name="___sec6"></a></h2>
 
 <center><p><img src="FE.png" align="bottom" width=800></p></center>
 
-<h2>Error vs \( \Delta t \)  <a name="___sec7"></a></h2>
+<h2 id="___sec7">Error vs \( \Delta t \) <a name="___sec7"></a></h2>
 
 How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
 is shown below.
@@ -230,7 +279,7 @@ The numbers corresponding to the figure above are given in the table below.
 </div>
 
 
-<h1>Bibliography  <a name="___sec8"></a></h1>
+<h1 id="___sec8">Bibliography <a name="___sec8"></a></h1>
 
 <!-- begin bibliography -->
 
@@ -249,10 +298,12 @@ The numbers corresponding to the figure above are given in the table below.
 
 <!-- ------------------- end of main content --------------- -->
 
-        </div>
-        <div class="col-md-3">
-          <div class="bs-sidebar hidden-print" role="complementary">
-            <ul class="nav bs-sidenav">
+  </div>
+
+  <!-- sidebar with navigation -->
+  <div class="col-md-3">
+   <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
+    <ul class="nav bs-docs-sidenav">
      <!-- navigation toc: "Mathematical problem" --> <li><a href="#math:problem" style="font-size: 80%;"><b>Mathematical problem</b></a></li>
      <!-- navigation toc: "Numerical solution method" --> <li><a href="#numerical:problem" style="font-size: 80%;"><b>Numerical solution method</b></a></li>
      <!-- navigation toc: "Implementation" --> <li><a href="#___sec2" style="font-size: 80%;"><b>Implementation</b></a></li>
@@ -263,94 +314,27 @@ The numbers corresponding to the figure above are given in the table below.
      <!-- navigation toc: "Error vs $\Delta t$" --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Error vs $\Delta t$</a></li>
      <!-- navigation toc: "Bibliography" --> <li><a href="#___sec8" style="font-size: 80%;"><b>Bibliography</b></a></li>
 
-            </ul>
-            <a class="back-to-top" href="#top">
-              Back to top
-            </a>
+    </ul>
+    <a class="back-to-top" href="#top">Back to top</a>
+   </div>
+  </div>
+ </div>
 
-          </div>
-        </div>
-      </div>
-    </div>
+</div>
 
-    <!-- Footer
+<!-- Footer
 ================================================== -->
 <footer class="bs-docs-footer" role="contentinfo">
-  <div class="container">
-  H. P. Langtangen &copy; 2014
-  </div>
+ <div class="container">
+  <!-- footer --> Here goes a footer, if desired, maybe with author(s) and a copyright &copy;
+ </div>
 </footer>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script>
-    !function ($) {
-
-  $(function(){
-
-    var $window = $(window)
-    var $body   = $(document.body)
-
-    var navHeight = $('.navbar').outerHeight(true) + 10
-
-    $body.scrollspy({
-      target: '.bs-sidebar',
-      offset: navHeight
-    })
-
-    $window.on('load', function () {
-      $body.scrollspy('refresh')
-    })
-
-    $('.bs-docs-container [href=#]').click(function (e) {
-      e.preventDefault()
-    })
-
-    // back to top
-    setTimeout(function () {
-      var $sideBar = $('.bs-sidebar')
-
-      $sideBar.affix({
-        offset: {
-          top: function () {
-            var offsetTop      = $sideBar.offset().top
-            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
-            var navOuterHeight = $('.bs-docs-nav').height()
-
-            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
-          }
-        , bottom: function () {
-            return (this.bottom = $('.bs-footer').outerHeight(true))
-          }
-        }
-      })
-    }, 100)
-
-    setTimeout(function () {
-      $('.bs-top').affix()
-    }, 100)
-
-    // tooltip demo
-    $('.tooltip-demo').tooltip({
-      selector: "[data-toggle=tooltip]",
-      container: "body"
-    })
-
-    $('.tooltip-test').tooltip()
-    $('.popover-test').popover()
-
-    $('.bs-docs-navbar').tooltip({
-      selector: "a[data-toggle=tooltip]",
-      container: ".bs-docs-navbar .nav"
-    })
-})
-
-}(window.jQuery)
-
-</script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+<script src="http://getbootstrap.com/assets/js/docs.min.js"></script>
 </html>
 

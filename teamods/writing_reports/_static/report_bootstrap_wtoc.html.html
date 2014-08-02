@@ -78,49 +78,98 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <h2></h2>
 
 <div class="highlight"><pre><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;&lt;head&gt;&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=UTF-8&quot;</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- Meta, title, CSS, favicons, etc. --&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content=</span><span class="s">&quot;IE=edge&quot;</span><span class="nt">&gt;</span>
-
-<span class="c">&lt;!-- Based on http://jsfiddle.net/jdwire/eytMx/ --&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width, initial-scale=1&quot;</span><span class="nt">&gt;</span>
 
 <span class="nt">&lt;title&gt;</span>Experiments with Schemes for Exponential Decay<span class="nt">&lt;/title&gt;</span>
 
-<span class="c">&lt;!-- Bootstrap core CSS --&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;http://getbootstrap.com/dist/css/bootstrap.min.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- Bootstrap style (purple): http://getbootstrap.com/getting-started/</span>
 
+<span class="c">What to change in this template:</span>
 
-<span class="c">&lt;!-- Documentation extras --&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap_wtoc/css/bootstrap_wtoc.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;body</span> <span class="na">data-twttr-rendered=</span><span class="s">&quot;true&quot;</span> <span class="na">gram_dict=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<span class="c">URL to the document (edit http://some.website.net/some/path)</span>
 
-    <span class="c">&lt;!-- Docs master nav --&gt;</span>
-    <span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">&quot;navbar navbar-static-top bs-docs-nav&quot;</span> <span class="na">id=</span><span class="s">&quot;top&quot;</span> <span class="na">role=</span><span class="s">&quot;banner&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;navbar-header&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;navbar-toggle&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;collapse&quot;</span> <span class="na">data-target=</span><span class="s">&quot;.bs-navbar-collapse&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>Toggle navigation<span class="nt">&lt;/span&gt;</span>
-        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon-bar&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon-bar&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon-bar&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-      <span class="nt">&lt;/button&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://getbootstrap.com/&quot;</span> <span class="na">class=</span><span class="s">&quot;navbar-brand&quot;</span><span class="nt">&gt;</span>Experiments with Schemes for Exponential Decay<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">&quot;collapse navbar-collapse bs-navbar-collapse&quot;</span> <span class="na">role=</span><span class="s">&quot;navigation&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav navbar-nav navbar-right&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/li&gt;</span>
-        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/li&gt;</span>
-      <span class="nt">&lt;/ul&gt;</span>
-    <span class="nt">&lt;/nav&gt;</span>
+<span class="c">LINK1, LINK2 links in the navigation topbar (remove, edit, or add more)</span>
+
+<span class="c">A subtitle or short description in the optional purple header field</span>
+<span class="c">(edit Investigation of numerical artifacts)</span>
+
+<span class="c">Footer with author(s) and copyright (remove or edit)</span>
+<span class="c">--&gt;</span>
+
+<span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;http://getbootstrap.com/dist/css/bootstrap.min.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span>
+<span class="err">&lt;!</span><span class="na">--</span> <span class="na">Various</span> <span class="na">settings</span> <span class="na">from</span> <span class="na">the</span> <span class="na">bootstrap</span> <span class="na">documentation</span> <span class="na">style</span> <span class="na">--</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;http://getbootstrap.com/assets/css/docs.min.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span><span class="nt">&gt;</span>
+
+<span class="c">&lt;!-- Can add other themes (then skip bs-docs-header, which has unsuitable</span>
+<span class="c">color, and adjust colors in the navigation sidebar --&gt;</span>
+<span class="c">&lt;!--</span>
+<span class="c">&lt;link href=&quot;http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;</span>
+<span class="c">--&gt;</span>
+
+<span class="c">&lt;!-- Potential adjustment of styles --&gt;</span>
+<span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span>
+<span class="c">/* Colors in the navigation sidebar */</span>
+<span class="nc">.bs-docs-sidebar</span> <span class="nc">.nav</span> <span class="o">&gt;</span> <span class="nt">li</span> <span class="o">&gt;</span> <span class="nt">a</span> <span class="p">{</span>
+  <span class="k">color</span><span class="o">:</span> <span class="m">#999</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.bs-docs-sidebar</span> <span class="nc">.nav</span> <span class="o">&gt;</span> <span class="nt">li</span> <span class="o">&gt;</span> <span class="nt">a</span><span class="nd">:hover</span><span class="o">,</span>
+<span class="nc">.bs-docs-sidebar</span> <span class="nc">.nav</span> <span class="o">&gt;</span> <span class="nt">li</span> <span class="o">&gt;</span> <span class="nt">a</span><span class="nd">:focus</span> <span class="p">{</span>
+  <span class="k">color</span><span class="o">:</span> <span class="m">#999</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.bs-docs-sidebar</span> <span class="nc">.nav</span> <span class="o">&gt;</span> <span class="nc">.active</span> <span class="o">&gt;</span> <span class="nt">a</span><span class="o">,</span>
+<span class="nc">.bs-docs-sidebar</span> <span class="nc">.nav</span> <span class="o">&gt;</span> <span class="nc">.active</span><span class="nd">:hover</span> <span class="o">&gt;</span> <span class="nt">a</span><span class="o">,</span>
+<span class="nc">.bs-docs-sidebar</span> <span class="nc">.nav</span> <span class="o">&gt;</span> <span class="nc">.active</span><span class="nd">:focus</span> <span class="o">&gt;</span> <span class="nt">a</span> <span class="p">{</span>
+  <span class="k">color</span><span class="o">:</span> <span class="m">#563d7c</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c">/* Don&#39;t know how to adjust color in bs-docs-header...but the</span>
+<span class="c">header can just be removed */</span>
+<span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;sr-only sr-only-focusable&quot;</span> <span class="na">href=</span><span class="s">&quot;#content&quot;</span><span class="nt">&gt;</span>Skip to main content<span class="nt">&lt;/a&gt;</span>
+
+<span class="c">&lt;!-- Docs master nav --&gt;</span>
+<span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">&quot;navbar navbar-static-top bs-docs-nav&quot;</span> <span class="na">id=</span><span class="s">&quot;top&quot;</span> <span class="na">role=</span><span class="s">&quot;banner&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;navbar-header&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;navbar-toggle&quot;</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;collapse&quot;</span> <span class="na">data-target=</span><span class="s">&quot;.bs-navbar-collapse&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>Toggle navigation<span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon-bar&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon-bar&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon-bar&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://some.website.net/some/path&quot;</span> <span class="na">class=</span><span class="s">&quot;navbar-brand&quot;</span><span class="nt">&gt;</span>Experiments with Schemes for Exponential Decay<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">&quot;collapse navbar-collapse bs-navbar-collapse&quot;</span> <span class="na">role=</span><span class="s">&quot;navigation&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav navbar-nav navbar-right&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://wikipedia.org&quot;</span> <span class="na">target=</span><span class="s">&quot;_blank&quot;</span><span class="nt">&gt;</span>Wikipedia<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://wolframalpha.com&quot;</span> <span class="na">target=</span><span class="s">&quot;_blank&quot;</span><span class="nt">&gt;</span>WolframAlpha<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/nav&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/header&gt;</span>
 
 
-    <span class="c">&lt;!-- Docs page layout --&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container bs-docs-container&quot;</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- Docs page layout --&gt;</span>
 
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-9&quot;</span> <span class="na">role=</span><span class="s">&quot;main&quot;</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- A purple header field with the title is optional --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;bs-docs-header&quot;</span> <span class="na">id=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>Experiments with Schemes for Exponential Decay<span class="nt">&lt;/h1&gt;</span>
+Investigation of numerical artifacts<span class="nt">&lt;/p&gt;</span>
+ <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container bs-docs-container&quot;</span><span class="nt">&gt;</span>
+
+ <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+
+  <span class="c">&lt;!-- main content --&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-9&quot;</span> <span class="na">role=</span><span class="s">&quot;main&quot;</span><span class="nt">&gt;</span>
 
 <span class="c">&lt;!-- tocinfo</span>
 <span class="c">{&#39;highest level&#39;: 1,</span>
@@ -160,7 +209,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 
 <span class="nt">&lt;h1&gt;</span>Experiments with Schemes for Exponential Decay<span class="nt">&lt;/h1&gt;</span>
 
-<span class="c">&lt;!-- AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory &amp; Department of Informatics, University of Oslo. --&gt;</span>
+<span class="c">&lt;!-- AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory &amp;amp; Department of Informatics, University of Oslo. --&gt;</span>
 <span class="nt">&lt;p&gt;</span>
 <span class="nt">&lt;b&gt;</span>Summary.<span class="nt">&lt;/b&gt;</span> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation \( u&#39;=-au \) with the
@@ -174,7 +223,7 @@ demonstrated.
 <span class="nt">&lt;p&gt;</span>
 <span class="c">&lt;!-- !split --&gt;</span>
 
-<span class="nt">&lt;h1&gt;</span>Mathematical problem <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;math:problem&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h1&gt;</span>
+<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;math:problem&quot;</span><span class="nt">&gt;</span>Mathematical problem<span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;math:problem&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h1&gt;</span>
 
 We address the initial-value problem
 
@@ -191,7 +240,7 @@ is relevant for physical phenomena featuring exponential decay
 in time, e.g., vertical pressure variation in the atmosphere,
 cooling of an object, and radioactive decay.
 
-<span class="nt">&lt;h1&gt;</span>Numerical solution method <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;numerical:problem&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h1&gt;</span>
+<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;numerical:problem&quot;</span><span class="nt">&gt;</span>Numerical solution method<span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;numerical:problem&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h1&gt;</span>
 
 We introduce a mesh in time with points \( 0= t_0<span class="nt">&lt; t</span><span class="na">_1</span> <span class="err">\</span><span class="na">cdots</span> <span class="err">&lt;</span> <span class="na">t_</span><span class="err">{</span><span class="na">N_t</span><span class="err">}=</span><span class="na">T</span> <span class="err">\).</span>
 <span class="na">For</span> <span class="na">simplicity</span><span class="err">,</span> <span class="na">we</span> <span class="na">assume</span> <span class="na">constant</span> <span class="na">spacing</span> <span class="err">\(</span> <span class="err">\</span><span class="na">Delta</span> <span class="na">t</span> <span class="err">\)</span> <span class="na">between</span> <span class="na">the</span>
@@ -217,7 +266,7 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
     scheme when \( \theta=1/2 \)<span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 
-<span class="nt">&lt;h1&gt;</span>Implementation  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec2&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h1&gt;</span>
+<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;___sec2&quot;</span><span class="nt">&gt;</span>Implementation <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec2&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h1&gt;</span>
 
 The numerical method is implemented in a Python function
 <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#Langtangen_2012&quot;</span><span class="nt">&gt;</span>[2]<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;code&gt;</span>solver<span class="nt">&lt;/code&gt;</span> (found in the <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py&quot;</span> <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;&lt;tt&gt;</span>decay_mod<span class="nt">&lt;/tt&gt;&lt;/a&gt;</span> module):
@@ -239,25 +288,25 @@ The numerical method is implemented in a Python function
     <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>return<span class="nt">&lt;/span&gt;</span> u, t
 <span class="nt">&lt;/pre&gt;&lt;/div&gt;</span>
 
-<span class="nt">&lt;h1&gt;</span>Numerical experiments  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec3&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h1&gt;</span>
+<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;___sec3&quot;</span><span class="nt">&gt;</span>Numerical experiments <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec3&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h1&gt;</span>
 
 We define a set of numerical experiments where \( I \), \( a \), and \( T \) are
 fixed, while \( \Delta t \) and \( \theta \) are varied.
 In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 
-<span class="nt">&lt;h2&gt;</span>The Backward Euler method  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec4&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec4&quot;</span><span class="nt">&gt;</span>The Backward Euler method <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec4&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
 
 <span class="nt">&lt;center&gt;&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;BE.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">800</span><span class="nt">&gt;&lt;/p&gt;&lt;/center&gt;</span>
 
-<span class="nt">&lt;h2&gt;</span>The Crank-Nicolson method  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec5&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec5&quot;</span><span class="nt">&gt;</span>The Crank-Nicolson method <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec5&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
 
 <span class="nt">&lt;center&gt;&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;CN.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">800</span><span class="nt">&gt;&lt;/p&gt;&lt;/center&gt;</span>
 
-<span class="nt">&lt;h2&gt;</span>The Forward Euler method  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec6&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec6&quot;</span><span class="nt">&gt;</span>The Forward Euler method <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec6&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
 
 <span class="nt">&lt;center&gt;&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;FE.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">800</span><span class="nt">&gt;&lt;/p&gt;&lt;/center&gt;</span>
 
-<span class="nt">&lt;h2&gt;</span>Error vs \( \Delta t \)  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec7&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec7&quot;</span><span class="nt">&gt;</span>Error vs \( \Delta t \) <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec7&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
 
 How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
 is shown below.
@@ -309,7 +358,7 @@ The numbers corresponding to the figure above are given in the table below.
 <span class="nt">&lt;/div&gt;</span>
 
 
-<span class="nt">&lt;h1&gt;</span>Bibliography  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec8&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h1&gt;</span>
+<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;___sec8&quot;</span><span class="nt">&gt;</span>Bibliography <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec8&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h1&gt;</span>
 
 <span class="c">&lt;!-- begin bibliography --&gt;</span>
 
@@ -328,10 +377,12 @@ The numbers corresponding to the figure above are given in the table below.
 
 <span class="c">&lt;!-- ------------------- end of main content --------------- --&gt;</span>
 
-        <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-3&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;bs-sidebar hidden-print&quot;</span> <span class="na">role=</span><span class="s">&quot;complementary&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav bs-sidenav&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+
+  <span class="c">&lt;!-- sidebar with navigation --&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-3&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;bs-docs-sidebar hidden-print hidden-xs hidden-sm&quot;</span> <span class="na">role=</span><span class="s">&quot;complementary&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav bs-docs-sidenav&quot;</span><span class="nt">&gt;</span>
      <span class="c">&lt;!-- navigation toc: &quot;Mathematical problem&quot; --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#math:problem&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;&lt;b&gt;</span>Mathematical problem<span class="nt">&lt;/b&gt;&lt;/a&gt;&lt;/li&gt;</span>
      <span class="c">&lt;!-- navigation toc: &quot;Numerical solution method&quot; --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#numerical:problem&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;&lt;b&gt;</span>Numerical solution method<span class="nt">&lt;/b&gt;&lt;/a&gt;&lt;/li&gt;</span>
      <span class="c">&lt;!-- navigation toc: &quot;Implementation&quot; --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec2&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;&lt;b&gt;</span>Implementation<span class="nt">&lt;/b&gt;&lt;/a&gt;&lt;/li&gt;</span>
@@ -342,95 +393,28 @@ The numbers corresponding to the figure above are given in the table below.
      <span class="c">&lt;!-- navigation toc: &quot;Error vs $\Delta t$&quot; --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec7&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>Error vs $\Delta t$<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
      <span class="c">&lt;!-- navigation toc: &quot;Bibliography&quot; --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec8&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;&lt;b&gt;</span>Bibliography<span class="nt">&lt;/b&gt;&lt;/a&gt;&lt;/li&gt;</span>
 
-            <span class="nt">&lt;/ul&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;back-to-top&quot;</span> <span class="na">href=</span><span class="s">&quot;#top&quot;</span><span class="nt">&gt;</span>
-              Back to top
-            <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;back-to-top&quot;</span> <span class="na">href=</span><span class="s">&quot;#top&quot;</span><span class="nt">&gt;</span>Back to top<span class="nt">&lt;/a&gt;</span>
+   <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+ <span class="nt">&lt;/div&gt;</span>
 
-          <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 
-    <span class="c">&lt;!-- Footer</span>
+<span class="c">&lt;!-- Footer</span>
 <span class="c">================================================== --&gt;</span>
 <span class="nt">&lt;footer</span> <span class="na">class=</span><span class="s">&quot;bs-docs-footer&quot;</span> <span class="na">role=</span><span class="s">&quot;contentinfo&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
-  H. P. Langtangen <span class="ni">&amp;copy;</span> 2014
-  <span class="nt">&lt;/div&gt;</span>
+ <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- footer --&gt;</span> Here goes a footer, if desired, maybe with author(s) and a copyright <span class="ni">&amp;copy;</span>
+ <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/footer&gt;</span>
 
 <span class="c">&lt;!-- Bootstrap core JavaScript</span>
 <span class="c">================================================== --&gt;</span>
 <span class="c">&lt;!-- Placed at the end of the document so the pages load faster --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script&gt;</span>
-    <span class="o">!</span><span class="kd">function</span> <span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
-
-  <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-
-    <span class="kd">var</span> <span class="nx">$window</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">)</span>
-    <span class="kd">var</span> <span class="nx">$body</span>   <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span>
-
-    <span class="kd">var</span> <span class="nx">navHeight</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.navbar&#39;</span><span class="p">).</span><span class="nx">outerHeight</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span>
-
-    <span class="nx">$body</span><span class="p">.</span><span class="nx">scrollspy</span><span class="p">({</span>
-      <span class="nx">target</span><span class="o">:</span> <span class="s1">&#39;.bs-sidebar&#39;</span><span class="p">,</span>
-      <span class="nx">offset</span><span class="o">:</span> <span class="nx">navHeight</span>
-    <span class="p">})</span>
-
-    <span class="nx">$window</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-      <span class="nx">$body</span><span class="p">.</span><span class="nx">scrollspy</span><span class="p">(</span><span class="s1">&#39;refresh&#39;</span><span class="p">)</span>
-    <span class="p">})</span>
-
-    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.bs-docs-container [href=#]&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
-    <span class="p">})</span>
-
-    <span class="c1">// back to top</span>
-    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-      <span class="kd">var</span> <span class="nx">$sideBar</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.bs-sidebar&#39;</span><span class="p">)</span>
-
-      <span class="nx">$sideBar</span><span class="p">.</span><span class="nx">affix</span><span class="p">({</span>
-        <span class="nx">offset</span><span class="o">:</span> <span class="p">{</span>
-          <span class="nx">top</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="kd">var</span> <span class="nx">offsetTop</span>      <span class="o">=</span> <span class="nx">$sideBar</span><span class="p">.</span><span class="nx">offset</span><span class="p">().</span><span class="nx">top</span>
-            <span class="kd">var</span> <span class="nx">sideBarMargin</span>  <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">$sideBar</span><span class="p">.</span><span class="nx">children</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s1">&#39;margin-top&#39;</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>
-            <span class="kd">var</span> <span class="nx">navOuterHeight</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.bs-docs-nav&#39;</span><span class="p">).</span><span class="nx">height</span><span class="p">()</span>
-
-            <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="nx">offsetTop</span> <span class="o">-</span> <span class="nx">navOuterHeight</span> <span class="o">-</span> <span class="nx">sideBarMargin</span><span class="p">)</span>
-          <span class="p">}</span>
-        <span class="p">,</span> <span class="nx">bottom</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">bottom</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.bs-footer&#39;</span><span class="p">).</span><span class="nx">outerHeight</span><span class="p">(</span><span class="kc">true</span><span class="p">))</span>
-          <span class="p">}</span>
-        <span class="p">}</span>
-      <span class="p">})</span>
-    <span class="p">},</span> <span class="mi">100</span><span class="p">)</span>
-
-    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-      <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.bs-top&#39;</span><span class="p">).</span><span class="nx">affix</span><span class="p">()</span>
-    <span class="p">},</span> <span class="mi">100</span><span class="p">)</span>
-
-    <span class="c1">// tooltip demo</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.tooltip-demo&#39;</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">({</span>
-      <span class="nx">selector</span><span class="o">:</span> <span class="s2">&quot;[data-toggle=tooltip]&quot;</span><span class="p">,</span>
-      <span class="nx">container</span><span class="o">:</span> <span class="s2">&quot;body&quot;</span>
-    <span class="p">})</span>
-
-    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.tooltip-test&#39;</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">()</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.popover-test&#39;</span><span class="p">).</span><span class="nx">popover</span><span class="p">()</span>
-
-    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.bs-docs-navbar&#39;</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">({</span>
-      <span class="nx">selector</span><span class="o">:</span> <span class="s2">&quot;a[data-toggle=tooltip]&quot;</span><span class="p">,</span>
-      <span class="nx">container</span><span class="o">:</span> <span class="s2">&quot;.bs-docs-navbar .nav&quot;</span>
-    <span class="p">})</span>
-<span class="p">})</span>
-
-<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">)</span>
-
-<span class="nt">&lt;/script&gt;</span>
-
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://getbootstrap.com/dist/js/bootstrap.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://getbootstrap.com/assets/js/docs.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </pre></div>
 </body>
