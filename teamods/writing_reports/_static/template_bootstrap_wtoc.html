@@ -1,140 +1,124 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
+<head>
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-<!-- Based on http://jsfiddle.net/jdwire/eytMx/ -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>%(title)s</title>
 
-<!-- Bootstrap core CSS -->
-<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap style (purple): http://getbootstrap.com/getting-started/
 
+What to change in this template:
 
-<!-- Documentation extras -->
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap_wtoc/css/bootstrap_wtoc.css" rel="stylesheet">
-  <body data-twttr-rendered="true" gram_dict="true">
+URL to the document (edit http://some.website.net/some/path)
 
-    <!-- Docs master nav -->
-    <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
-  <div class="container">
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="http://getbootstrap.com/" class="navbar-brand">%(title)s</a>
-    </div>
-    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-      </ul>
-    </nav>
+LINK1, LINK2 links in the navigation topbar (remove, edit, or add more)
+
+A subtitle or short description in the optional purple header field
+(edit Investigation of numerical artifacts)
+
+Footer with author(s) and copyright (remove or edit)
+-->
+
+<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet"
+<!-- Various settings from the bootstrap documentation style -->
+<link href="http://getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
+
+<!-- Can add other themes (then skip bs-docs-header, which has unsuitable
+color, and adjust colors in the navigation sidebar -->
+<!--
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+-->
+
+<!-- Potential adjustment of styles -->
+<style type="text/css">
+/* Colors in the navigation sidebar */
+.bs-docs-sidebar .nav > li > a {
+  color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+  color: #999;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+  color: #563d7c;
+}
+/* Don't know how to adjust color in bs-docs-header...but the
+header can just be removed */
+</style>
+</head>
+
+<body>
+<a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+<!-- Docs master nav -->
+<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+<div class="container">
+  <div class="navbar-header">
+    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a href="http://some.website.net/some/path" class="navbar-brand">%(title)s</a>
   </div>
+  <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="http://wikipedia.org" target="_blank">Wikipedia</a></li>
+      <li><a href="http://wolframalpha.com" target="_blank">WolframAlpha</a></li>
+    </ul>
+  </nav>
+</div>
 </header>
 
 
-    <!-- Docs page layout -->
-    <div class="container bs-docs-container">
+<!-- Docs page layout -->
 
-      <div class="row">
-        <div class="col-md-9" role="main">
+<!-- A purple header field with the title is optional -->
+<div class="bs-docs-header" id="content">
+ <div class="container">
+  <h1>%(title)s</h1>
+  <p>Investigation of numerical artifacts</p>
+ </div>
+</div>
+
+<div class="container bs-docs-container">
+
+ <div class="row">
+
+  <!-- main content -->
+  <div class="col-md-9" role="main">
 %(main)s
-        </div>
-        <div class="col-md-3">
-          <div class="bs-sidebar hidden-print" role="complementary">
-            <ul class="nav bs-sidenav">
+  </div>
+
+  <!-- sidebar with navigation -->
+  <div class="col-md-3">
+   <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
+    <ul class="nav bs-docs-sidenav">
 %(table_of_contents)s
-            </ul>
-            <a class="back-to-top" href="#top">
-              Back to top
-            </a>
+    </ul>
+    <a class="back-to-top" href="#top">Back to top</a>
+   </div>
+  </div>
+ </div>
 
-          </div>
-        </div>
-      </div>
-    </div>
+</div>
 
-    <!-- Footer
+<!-- Footer
 ================================================== -->
 <footer class="bs-docs-footer" role="contentinfo">
-  <div class="container">
-  H. P. Langtangen &copy; 2014
-  </div>
+ <div class="container">
+  <!-- footer --> Here goes a footer, if desired, maybe with author(s) and a copyright &copy;
+ </div>
 </footer>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script>
-    !function ($) {
-
-  $(function(){
-
-    var $window = $(window)
-    var $body   = $(document.body)
-
-    var navHeight = $('.navbar').outerHeight(true) + 10
-
-    $body.scrollspy({
-      target: '.bs-sidebar',
-      offset: navHeight
-    })
-
-    $window.on('load', function () {
-      $body.scrollspy('refresh')
-    })
-
-    $('.bs-docs-container [href=#]').click(function (e) {
-      e.preventDefault()
-    })
-
-    // back to top
-    setTimeout(function () {
-      var $sideBar = $('.bs-sidebar')
-
-      $sideBar.affix({
-        offset: {
-          top: function () {
-            var offsetTop      = $sideBar.offset().top
-            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
-            var navOuterHeight = $('.bs-docs-nav').height()
-
-            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
-          }
-        , bottom: function () {
-            return (this.bottom = $('.bs-footer').outerHeight(true))
-          }
-        }
-      })
-    }, 100)
-
-    setTimeout(function () {
-      $('.bs-top').affix()
-    }, 100)
-
-    // tooltip demo
-    $('.tooltip-demo').tooltip({
-      selector: "[data-toggle=tooltip]",
-      container: "body"
-    })
-
-    $('.tooltip-test').tooltip()
-    $('.popover-test').popover()
-
-    $('.bs-docs-navbar').tooltip({
-      selector: "a[data-toggle=tooltip]",
-      container: ".bs-docs-navbar .nav"
-    })
-})
-
-}(window.jQuery)
-
-</script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+<script src="http://getbootstrap.com/assets/js/docs.min.js"></script>
 </html>
