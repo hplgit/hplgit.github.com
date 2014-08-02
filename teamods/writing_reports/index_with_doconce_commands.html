@@ -299,31 +299,50 @@ doconce format html report --html_style=$style --pygments_html_style=monokai --h
 doconce split_html report_$style.html
 </pre></div>
 <p>
-<a href="_static/report_vagrant.html" target="_blank">HTML Vagrant style</a> made from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a> with the <a href="_static/template_vagrant.html.html" target="_blank">template file</a>
-
-<p>
-<a href="_static/report_bootstrap_wtoc.html" target="_blank">HTML Bootstrap style with fixed toc</a> made from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a> with the <a href="_static/template_boostrap_wtoc.html.html" target="_blank">template file</a>
+<a href="_static/report_vagrant.html" target="_blank">HTML Vagrant style</a> made from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a> with a <a href="_static/template_vagrant.html.html" target="_blank">template file</a>
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># Copy the style to the current working dir
-cp -r /path/to/doconce/root/bundled/html_styles/style_vagrant .
-# Make sure the css and js directories are local
-cp -r style_vagrant/css css
+cp -r /path/to/doconce/root/bundled/html_styles/style_vagrant/template_vagrant.html .
 # Customize the template (perhaps easier in an interactive editor...)
-doconce replace LogoWord &#39;DiffEq&#39; style_vagrant/template_vagrant.html
-doconce replace withSubWord &#39;Project&#39; style_vagrant/template_vagrant.html
-doconce replace &#39;&lt;a href=&quot;&quot;&gt;GO TO 1&lt;/a&gt;&#39; &#39;&lt;a href=&quot;http://wikipedia.org&quot;&gt;Wikipedia&lt;/a&gt;&#39; style_vagrant/template_vagrant.html
-doconce replace &#39;&lt;a href=&quot;&quot;&gt;GO TO 2&lt;/a&gt;&#39; &#39;&lt;a href=&quot;http://wolframalpha.com&quot;&gt;WolframAlpha&lt;/a&gt;&#39; style_vagrant/template_vagrant.html
-doconce replace &#39;Here goes a footer, if desired, maybe with a Copyright &amp;copy;&#39; &#39;H. P. Langtangen &amp;copy; 2013&#39; style_vagrant/template_vagrant.html
+doconce replace LogoWord &#39;DiffEq&#39; template_vagrant.html
+doconce replace withSubWord &#39;Project&#39; template_vagrant.html
+doconce replace &#39;&lt;a href=&quot;&quot;&gt;GO TO 1&lt;/a&gt;&#39; &#39;&lt;a href=&quot;http://wikipedia.org&quot;&gt;Wikipedia&lt;/a&gt;&#39; template_vagrant.html
+doconce replace &#39;&lt;a href=&quot;&quot;&gt;GO TO 2&lt;/a&gt;&#39; &#39;&lt;a href=&quot;http://wolframalpha.com&quot;&gt;WolframAlpha&lt;/a&gt;&#39; template_vagrant.html
+doconce subst &#39;&lt;!-- footer --&gt; Here .+&#39; &#39;H. P. Langtangen &amp;copy; 2014&#39; template_vagrant.html
 
 # TOC, TITLE and AUTHOR are not appropriate with HTML templates
 cp report.do.txt report2.do.txt
 doconce replace &#39;TITLE: &#39;  &#39;#TITLE: &#39; report2.do.txt
 doconce replace &#39;AUTHOR: &#39;  &#39;#AUTHOR: &#39; report2.do.txt
 doconce replace &#39;TOC: &#39;  &#39;#TOC: &#39; report2.do.txt
-doconce format html report2 --html-style=vagrant --html-template=style_vagrant/template_vagrant.html
+doconce format html report2 --html-style=bootstrap --html-template=template_vagrant.html
+</pre></div>
+<p>
+<a href="_static/report_bootstrap_wtoc.html" target="_blank">HTML Bootstrap style with fixed toc</a> made from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a> with a <a href="_static/template_boostrap_wtoc.html.html" target="_blank">template file</a>
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># Copy the style to the current working dir
+cp -r /path/to/doconce/root/bundled/html_styles/style_bootstrap_wtoc/template_bootstrap_wtoc.html .
+# Customize the template (perhaps easier in an interactive editor...)
+doconce replace LogoWord &#39;DiffEq&#39; template_bootstrap_wtoc.html
+doconce replace withSubWord &#39;Project&#39; template_bootstrap_wtoc.html
+doconce replace &#39;&lt;a href=&quot;&quot;&gt;GO TO 1&lt;/a&gt;&#39; &#39;&lt;a href=&quot;http://wikipedia.org&quot;&gt;Wikipedia&lt;/a&gt;&#39; template_bootstrap_wtoc.html
+doconce replace &#39;&lt;a href=&quot;&quot;&gt;GO TO 2&lt;/a&gt;&#39; &#39;&lt;a href=&quot;http://wolframalpha.com&quot;&gt;WolframAlpha&lt;/a&gt;&#39; template_bootstrap_wtoc.html
+doconce subst &#39;&lt;!-- footer --&gt; Here .+&#39; &#39;H. P. Langtangen &amp;copy; 2014&#39; template_bootstrap_wtoc.html
+
+# TOC, TITLE and AUTHOR are not appropriate with HTML templates
+cp report.do.txt report2.do.txt
+doconce replace &#39;TITLE: &#39;  &#39;#TITLE: &#39; report2.do.txt
+doconce replace &#39;AUTHOR: &#39;  &#39;#AUTHOR: &#39; report2.do.txt
+doconce replace &#39;TOC: &#39;  &#39;#TOC: &#39; report2.do.txt
+doconce format html report2 --html-style=bootstrap --html-template=template_bootstrap_wtoc.html --pygments_html_style=none
+# Note: pygments code typesetting interferes with MathJax for this style,
+# so we turn off pygments (which means plain &lt;pre&gt; tags for code blocks)
 </pre></div>
 <p>
 <a href="_static/report_github_minimal.html" target="_blank">HTML with LaTeX math</a> made from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a> with the GitHub "minimal" theme template
