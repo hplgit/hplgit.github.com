@@ -87,7 +87,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 
 <span class="nt">&lt;title&gt;</span>%(title)s<span class="nt">&lt;/title&gt;</span>
 
-<span class="c">&lt;!-- Bootstrap style (purple): http://getbootstrap.com/getting-started/</span>
+<span class="c">&lt;!-- Bootstrap style: http://getbootstrap.com/getting-started/</span>
 
 <span class="c">What to change in this template:</span>
 
@@ -95,19 +95,12 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 
 <span class="c">LINK1, LINK2 links in the navigation topbar (remove, edit, or add more)</span>
 
-<span class="c">A subtitle or short description in the optional purple header field</span>
-<span class="c">(edit Investigation of numerical artifacts)</span>
-
 <span class="c">Footer with author(s) and copyright (remove or edit)</span>
 <span class="c">--&gt;</span>
 
 <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;http://getbootstrap.com/dist/css/bootstrap.min.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span>
-<span class="err">&lt;!</span><span class="na">--</span> <span class="na">Various</span> <span class="na">settings</span> <span class="na">from</span> <span class="na">the</span> <span class="na">bootstrap</span> <span class="na">documentation</span> <span class="na">style</span> <span class="na">--</span><span class="nt">&gt;</span>
-<span class="c">&lt;!--&lt;link href=&quot;https://raw.githubusercontent.com/twbs/bootstrap/master/docs/assets/css/src/docs.css&quot; rel=&quot;stylesheet&quot;&gt;--&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;http://getbootstrap.com/assets/css/docs.min.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span><span class="nt">&gt;</span>
 
-<span class="c">&lt;!-- Can add other themes (then skip bs-docs-header, which has unsuitable</span>
-<span class="c">color, and adjust colors in the navigation sidebar --&gt;</span>
+<span class="err">&lt;!</span><span class="na">--</span> <span class="na">Can</span> <span class="na">add</span> <span class="na">other</span> <span class="na">themes</span> <span class="na">and</span> <span class="na">adjust</span> <span class="na">colors</span> <span class="na">in</span> <span class="na">the</span> <span class="na">navigation</span> <span class="na">sidebar</span> <span class="na">--</span><span class="nt">&gt;</span>
 <span class="c">&lt;!--</span>
 <span class="c">&lt;link href=&quot;http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;</span>
 <span class="c">--&gt;</span>
@@ -127,14 +120,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="nc">.bs-docs-sidebar</span> <span class="nc">.nav</span> <span class="o">&gt;</span> <span class="nc">.active</span><span class="nd">:focus</span> <span class="o">&gt;</span> <span class="nt">a</span> <span class="p">{</span>
   <span class="k">color</span><span class="o">:</span> <span class="m">#563d7c</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="c">/* Don&#39;t know how to adjust color in bs-docs-header...but the</span>
-<span class="c">header can just be removed */</span>
 <span class="nt">&lt;/style&gt;</span>
-
-<span class="c">&lt;!-- use highlight.js and styles for code (use --pygments_html_style=off) --&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script&gt;</span><span class="nx">hljs</span><span class="p">.</span><span class="nx">initHighlightingOnLoad</span><span class="p">();</span><span class="nt">&lt;/script&gt;</span>
 
 <span class="nt">&lt;/head&gt;</span>
 
@@ -165,13 +151,15 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 
 <span class="c">&lt;!-- Docs page layout --&gt;</span>
 
-<span class="c">&lt;!-- A purple header field with the title is optional --&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;bs-docs-header&quot;</span> <span class="na">id=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
- <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;h1&gt;</span>%(title)s<span class="nt">&lt;/h1&gt;</span>
-  <span class="nt">&lt;p&gt;</span>Investigation of numerical artifacts<span class="nt">&lt;/p&gt;</span>
- <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- A purple header field with the title is optional, but it requires</span>
+<span class="c">the docs.min.css style, which makes orange math...</span>
+<span class="c">&lt;div class=&quot;bs-docs-header&quot; id=&quot;content&quot;&gt;</span>
+<span class="c"> &lt;div class=&quot;container&quot;&gt;</span>
+<span class="c">  &lt;h1&gt;%(title)s&lt;/h1&gt;</span>
+<span class="c">  &lt;p&gt;Investigation of numerical artifacts&lt;/p&gt;</span>
+<span class="c"> &lt;/div&gt;</span>
+<span class="c">&lt;/div&gt;</span>
+<span class="c">--&gt;</span>
 
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container bs-docs-container&quot;</span><span class="nt">&gt;</span>
 
@@ -193,22 +181,21 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
   <span class="nt">&lt;/div&gt;</span>
  <span class="nt">&lt;/div&gt;</span>
 
+ <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row Footer&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;span12&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;center&gt;</span>
+  H. P. Langtangen <span class="ni">&amp;copy;</span> 2014
+   <span class="nt">&lt;/center&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+ <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 
-<span class="c">&lt;!-- Footer</span>
-<span class="c">================================================== --&gt;</span>
-<span class="nt">&lt;footer</span> <span class="na">class=</span><span class="s">&quot;bs-docs-footer&quot;</span> <span class="na">role=</span><span class="s">&quot;contentinfo&quot;</span><span class="nt">&gt;</span>
- <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
-  H. P. Langtangen <span class="ni">&amp;copy;</span> 2014
- <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/footer&gt;</span>
-
-<span class="c">&lt;!-- Bootstrap core JavaScript</span>
-<span class="c">================================================== --&gt;</span>
-<span class="c">&lt;!-- Placed at the end of the document so the pages load faster --&gt;</span>
+<span class="c">&lt;!-- JavaScript placed at the end of the document so the pages load faster --&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://getbootstrap.com/dist/js/bootstrap.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://getbootstrap.com/assets/js/docs.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- NOTE: replace rawgit.com by cdn.rawgit.com for production or</span>
+<span class="c">sites with heavy traffic --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap_wtoc/js/docs.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </pre></div>
 </body>
