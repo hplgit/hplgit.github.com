@@ -39,11 +39,8 @@ Automatically generated HTML file from Doconce source
                'sec:accesspy:vmware',
                'sec:accesspy:vmware'),
               (' Installing Ubuntu ', 2, None, '___sec8'),
-              (' File sharing ', 2, None, '___sec9'),
-              (' VirtualBox virtual machine ',
-               1,
-               'sec:accesspy:virtualbox',
-               'sec:accesspy:virtualbox'),
+              (' Installing software on Ubuntu ', 2, None, '___sec9'),
+              (' File sharing ', 2, None, '___sec10'),
               (' Dual boot on Windows ', 1, None, '___sec11'),
               (' Vagrant virtual machine ',
                1,
@@ -95,9 +92,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_keep.tex -->
 $$
@@ -135,17 +129,16 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "Required software" --> <li><a href="._accesspy_primer4001.html#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
-     <!-- navigation toc: "Installing software on your laptop: Mac OS X and Windows" --> <li><a href="._accesspy_primer4002.html#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
-     <!-- navigation toc: "Anaconda and Spyder" --> <li><a href="._accesspy_primer4003.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
-     <!-- navigation toc: "VMWare Fusion virtual machine" --> <li><a href="._accesspy_primer4004.html#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
-     <!-- navigation toc: "VirtualBox virtual machine" --> <li><a href="._accesspy_primer4005.html#sec:accesspy:virtualbox" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VirtualBox virtual machine</a></li>
-     <!-- navigation toc: "Dual boot on Windows" --> <li><a href="._accesspy_primer4005.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
-     <!-- navigation toc: "Vagrant virtual machine" --> <li><a href="._accesspy_primer4005.html#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
-     <!-- navigation toc: "How to write and run a Python program" --> <li><a href="._accesspy_primer4006.html#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
-     <!-- navigation toc: "The SageMathCloud and Wakari web services" --> <li><a href="._accesspy_primer4007.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
-     <!-- navigation toc: "Writing IPython notebooks" --> <li><a href="._accesspy_primer4008.html#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
-     <!-- navigation toc: "References" --> <li><a href="._accesspy_primer4008.html#___sec26" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4001.html#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4002.html#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4003.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
+     <!-- navigation toc: --> <li><a href="#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4005.html#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4006.html#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4007.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4008.html#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4008.html#___sec26" style="font-size: 80%;"><b>References</b></a></li>
 
         </ul>
       </li>
@@ -161,23 +154,27 @@ $$
 <a name="part0004"></a>
 <!-- !split -->
 
-<h1>VMWare Fusion virtual machine <a name="sec:accesspy:vmware"></a></h1>
+<h1 id="sec:accesspy:vmware">VMWare Fusion virtual machine<a name="sec:accesspy:vmware"></a></h1>
 
 A virtual machine allows you to run another complete computer system in a
-separate window.  For Mac users, I recommend VMWare Fusion over
+separate window.
+For Mac users, I recommend VMWare Fusion over
 VirtualBox for running a Linux (or Windows) virtual
 machine.  (VMWare Fusion's hardware integration seems superior to
 that of VirtualBox.) VMWare Fusion is commercial software, but
-there is a free trial version you can start with.
+there is a free trial version you can start with. Alternatively,
+you can use the simpler VMWare Player, which is free for personal use.
 
-<h2>Installing Ubuntu  <a name="___sec8"></a></h2>
+<h2 id="___sec8">Installing Ubuntu <a name="___sec8"></a></h2>
 
 The following recipe will install a Ubuntu virtual machine under VMWare
 Fusion.
 
 <ol>
-<li> Go to <a href="http://goo.gl/nSeBCg" target="_blank"><tt>http://goo.gl/nSeBCg</tt></a> and download a full-blown Ubuntu box for scientific computing: <code>ubuntu-14.04-amd64-vmware.ova</code> (6.7 Gb!).</li>
-<li> Launch VMWare fusion.</li>
+<li> <a href="http://www.ubuntu.com/desktop/get-ubuntu/download" target="_blank">Download Ubuntu</a>.
+   Choose a version that is compatible with your computer, usually
+   a 64-bit version nowadays.</li>
+<li> Launch VMWare Fusion.</li>
 <li> Click on <em>File - New</em> and choose to <em>install Windows or another
    operating system in a new virtual machine</em>.</li>
 <li> Double-click on <em>Use operating system installation disc or image</em>.</li>
@@ -218,7 +215,52 @@ Fusion.
    say <code>Ctrl+space</code> to switch between the keyboards in different languages.</li>
 </ol>
 
-<h2>File sharing  <a name="___sec9"></a></h2>
+<h2 id="___sec9">Installing software on Ubuntu <a name="___sec9"></a></h2>
+
+You now have a full Ubuntu machine, but there is not much software
+on a it. Installation is performed through the Ubuntu Software Center (a
+graphical application) or through Unix commands, typically
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; sudo apt-get install packagename
+</pre></div>
+<p>
+To look up the right package name, run <code>apt-cache search</code> followed by
+typical words of that package. The strength of the <code>apt-get</code> way
+of installing software is that the package <em>and all packages it depends on</em>
+are automatically installed through the <code>apt-get install</code> command.
+This is in a nutshell why Ubuntu (or Debian-based Linux systems)
+are so user-friendly for installing sophisticated mathematical software.
+
+<p>
+To install a lot of useful packages for scientific work, go to
+<a href="http://goo.gl/RVHixr" target="_blank"><tt>http://goo.gl/RVHixr</tt></a> and click on <em>one</em> of the following
+files, which will install a collection of software for scientific work
+using <code>apt-get</code>:
+
+<ul>
+ <li> <code>install_minimal.sh</code>: install a minimal collection (recommended)</li>
+ <li> <code>install_rich.sh</code>: install a rich collection (takes time to run)</li>
+</ul>
+
+Then click the <em>Raw</em> button. The file comes up in the browser window,
+right-click and choose <em>Save As...</em> to save the file on your computer.
+The next step is to find the file and run it:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; cd ~/Downloads
+Terminal&gt; bash install_minimal.sh
+</pre></div>
+<p>
+The program will run for quite some time, hopefully without problems.
+If it stops, set a comment sign <code>#</code> in front of the line where it stopped
+and rerun.
+
+<h2 id="___sec10">File sharing <a name="___sec10"></a></h2>
 
 The Ubuntu machine can see the files on your host system if you
 download <em>VMWare Tools</em>. Go to the <em>Virtual Machine</em> pull-down menu in
@@ -242,7 +284,7 @@ off, and then running
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; sudo /usr/bin/vmware-config-tools.pl
 </pre></div>
 <p>
@@ -267,17 +309,33 @@ from the previous machine.
 </div>
 
 
+<h1 id="___sec11">Dual boot on Windows <a name="___sec11"></a></h1>
+
+Instead of running Ubuntu in a virtual machine, Windows users also have
+the option of deciding on the operating system when turning on the
+machine (so-called dual boot). The <a href="http://wubi-installer.org" target="_blank">Wubi</a>
+tool makes it very easy to get Ubuntu on a Windows machine this way.
+There are problems with Wubi on Windows 8, see
+<a href="https://www.youtube.com/watch?v=gZqsXAoLBDI" target="_blank">instructions</a> for how
+to get around them. It is also relatively straightforward to
+perform
+a direct install of Ubuntu by downloading an Ubuntu image,
+creating a bootable USB stick on <a href="http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-windows" target="_blank">Windows</a> or <a href="http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-mac-osx" target="_blank">Mac</a>, restarting the machine and
+finally <a href="http://www.ubuntu.com/download/desktop/install-ubuntu-desktop" target="_blank">installing Ubuntu</a>.
+However, with the powerful computers we now have, a virtual machine
+is more flexible since you can switch between Windows and Ubuntu as
+easily as going from one window to another.
+
 <p>
 <p>
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._accesspy_primer4003.html">&larr; Prev</a>
   </li>
-
   <li class="next">
     <a href="._accesspy_primer4005.html">Next &rarr;</a>
   </li>
-
 </ul>
 <!-- ------------------- end of main content --------------- -->
 

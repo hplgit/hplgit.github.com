@@ -90,9 +90,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_keep.tex -->
 $$
@@ -130,16 +127,16 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "Required software" --> <li><a href="._accesspy001.html#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
-     <!-- navigation toc: "Installing software on your laptop: Mac OS X and Windows" --> <li><a href="._accesspy002.html#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
-     <!-- navigation toc: "Anaconda and Spyder" --> <li><a href="._accesspy003.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
-     <!-- navigation toc: "VMWare Fusion virtual machine" --> <li><a href="._accesspy004.html#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
-     <!-- navigation toc: "Dual boot on Windows" --> <li><a href="._accesspy005.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
-     <!-- navigation toc: "Vagrant virtual machine" --> <li><a href="._accesspy005.html#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
-     <!-- navigation toc: "How to write and run a Python program" --> <li><a href="._accesspy006.html#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
-     <!-- navigation toc: "The SageMathCloud and Wakari web services" --> <li><a href="._accesspy007.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
-     <!-- navigation toc: "Writing IPython notebooks" --> <li><a href="._accesspy008.html#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
-     <!-- navigation toc: "References" --> <li><a href="._accesspy008.html#___sec24" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy001.html#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy002.html#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy003.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy004.html#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy004.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy005.html#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy006.html#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy007.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
+     <!-- navigation toc: --> <li><a href="#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec24" style="font-size: 80%;"><b>References</b></a></li>
 
         </ul>
       </li>
@@ -155,7 +152,7 @@ $$
 <a name="part0008"></a>
 <!-- !split -->
 
-<h1>Writing IPython notebooks <a name="sec:accesspy:ipynb"></a></h1>
+<h1 id="sec:accesspy:ipynb">Writing IPython notebooks<a name="sec:accesspy:ipynb"></a></h1>
 
 The IPython notebook is a splendid interactive tool for doing science,
 but it can also be used as a platform for developing Python code.
@@ -166,12 +163,12 @@ also on <a href="http://ipython.org/install.html" target="_self">Windows and Mac
 using Anaconda or Enthought Canopy for the Python installation.
 
 <p>
-The interface to the notebook as a web browser: you write all the
+The interface to the notebook is a web browser: you write all the
 code and see all the results in the browser window.
 There are excellent YouTube videos on how to use the IPython notebook,
 so here we provide a very quick &quot;step zero&quot; to get anyone started.
 
-<h2>A simple program in the notebook  <a name="___sec22"></a></h2>
+<h2 id="___sec22">A simple program in the notebook <a name="___sec22"></a></h2>
 
 Start the IPython notebook locally by the command <code>ipython notebook</code>
 or go to SageMathCloud or Wakari as described above.
@@ -180,7 +177,7 @@ Type
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">g <span style="color: #666666">=</span> <span style="color: #666666">9.81</span>
 v0 <span style="color: #666666">=</span> <span style="color: #666666">5</span>
 t <span style="color: #666666">=</span> <span style="color: #666666">0.6</span>
@@ -203,7 +200,7 @@ to be downloaded: the original notebook format (<code>.ipynb</code> file
 extension) or a plain Python program version of the notebook
 (<code>.py</code> file extension).
 
-<h2>Mixing text, mathematics, code, and graphics  <a name="___sec23"></a></h2>
+<h2 id="___sec23">Mixing text, mathematics, code, and graphics <a name="___sec23"></a></h2>
 
 The real strength of IPython notebooks arises when you want to write
 a report to document how a problem can be explored and solved.
@@ -229,7 +226,7 @@ In the new cell, add some code to plot \( f(x) \):
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
 x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4</span>, <span style="color: #666666">101</span>)
 y <span style="color: #666666">=</span> exp(<span style="color: #666666">-</span>x)<span style="color: #666666">*</span>sin(<span style="color: #666666">2*</span>pi<span style="color: #666666">*</span>x)
@@ -252,15 +249,8 @@ when starting notebooks locally on your machine.
 <p><img src="fig-accesspy/sage_ipynb_eqs_graphics.png" align="bottom" width=700></p>
 </center>
 
-<p>
+<h1 class="page-header" id="___sec24">References <a name="___sec24"></a></h1>
 
-
-<div class="page-header">
-  <h1>References  <a name="___sec24"></a></h1>
-</div>
-
-
-<p>
 <!-- begin bibliography -->
 
 <ol>
@@ -271,7 +261,7 @@ when starting notebooks locally on your machine.
     <a href="http://www.numpy.org" target="_self"><tt>http://www.numpy.org</tt></a>.</li>
  <li> <a name="NumPy:paper"></a> <b>T. E. Oliphant</b>. 
     Python for Scientific Computing,
-    <em>Computing in Science & Engineering</em>,
+    <em>Computing in Science &amp; Engineering</em>,
     9,
     2007.</li>
  <li> <a name="Matplotlib"></a> <b>J. D. Hunter et al.</b>. 
@@ -279,7 +269,7 @@ when starting notebooks locally on your machine.
     <a href="http://matplotlib.org/" target="_self"><tt>http://matplotlib.org/</tt></a>.</li>
  <li> <a name="Matplotlib:paper"></a> <b>J. D. Hunter</b>. 
     Matplotlib: a 2D Graphics Environment,
-    <em>Computing in Science & Engineering</em>,
+    <em>Computing in Science &amp; Engineering</em>,
     9,
     2007.</li>
  <li> <a name="IPython"></a> <b>F. Perez, B. E. Granger et al.</b>. 
@@ -287,7 +277,7 @@ when starting notebooks locally on your machine.
     <a href="http://ipython.org/" target="_self"><tt>http://ipython.org/</tt></a>.</li>
  <li> <a name="IPython:paper"></a> <b>F. Perez and B. E. Granger</b>. 
     IPython: a System for Interactive Scientific Computing,
-    <em>Computing in Science & Engineering</em>,
+    <em>Computing in Science &amp; Engineering</em>,
     9,
     2007.</li>
  <li> <a name="Hinsen:Scientific"></a> ScientificPython Software Package. 
@@ -305,12 +295,11 @@ when starting notebooks locally on your machine.
 <p>
 
 <p>
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._accesspy007.html">&larr; Prev</a>
   </li>
-
-
 </ul>
 <!-- ------------------- end of main content --------------- -->
 
