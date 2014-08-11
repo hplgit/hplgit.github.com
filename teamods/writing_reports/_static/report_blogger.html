@@ -11,7 +11,8 @@
               (' The Backward Euler method ', 2, None, '___sec4'),
               (' The Crank-Nicolson method ', 2, None, '___sec5'),
               (' The Forward Euler method ', 2, None, '___sec6'),
-              (' Error vs $\\Delta t$ ', 2, None, '___sec7')]}
+              (' Error vs $\\Delta t$ ', 2, None, '___sec7'),
+              (' Bibliography ', 1, None, '___sec8')]}
 end of tocinfo -->
 
 
@@ -29,9 +30,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
@@ -55,6 +53,7 @@ Table of contents</h2>
 &nbsp; &nbsp; &nbsp; <a href="#___sec5"> The Crank-Nicolson method </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec6"> The Forward Euler method </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec7"> Error vs \( \Delta t \) </a><br>
+<a href="#___sec8"> Bibliography </a><br>
 </p>
 
 <h1>Mathematical problem <a name="math:problem"></a></h1>
@@ -107,7 +106,7 @@ The numerical method is implemented in a Python function
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
     <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)            <span style="color: #408080; font-style: italic"># avoid integer division</span>
@@ -187,7 +186,8 @@ The numbers corresponding to the figure above are given in the table below.
 </div>
 
 
-<p>
+<h1>Bibliography  <a name="___sec8"></a></h1>
+
 <!-- begin bibliography -->
 
 <ol>

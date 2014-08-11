@@ -38,7 +38,8 @@ pre { color: inherit; background-color: transparent; }
               (' The Backward Euler method ', 2, None, '___sec4'),
               (' The Crank-Nicolson method ', 2, None, '___sec5'),
               (' The Forward Euler method ', 2, None, '___sec6'),
-              (' Error vs $\\Delta t$ ', 2, None, '___sec7')]}
+              (' Error vs $\\Delta t$ ', 2, None, '___sec7'),
+              (' Bibliography ', 1, None, '___sec8')]}
 end of tocinfo -->
 
 <body>
@@ -56,9 +57,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
@@ -78,21 +76,22 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: " Mathematical problem " --> <li>  <a href="._report_bootswatch_cosmo001.html#math:problem"> Mathematical problem </a></li>
-     <!-- navigation toc: " Numerical solution method " --> <li>  <a href="._report_bootswatch_cosmo001.html#numerical:problem"> Numerical solution method </a></li>
-     <!-- navigation toc: " Implementation " --> <li>  <a href="._report_bootswatch_cosmo001.html#___sec2"> Implementation </a></li>
-     <!-- navigation toc: " Numerical experiments " --> <li>  <a href="._report_bootswatch_cosmo001.html#___sec3"> Numerical experiments </a></li>
-     <!-- navigation toc: " The Backward Euler method " --> <li> &nbsp;  <a href="._report_bootswatch_cosmo001.html#___sec4"> The Backward Euler method </a></li>
-     <!-- navigation toc: " The Crank-Nicolson method " --> <li> &nbsp;  <a href="._report_bootswatch_cosmo001.html#___sec5"> The Crank-Nicolson method </a></li>
-     <!-- navigation toc: " The Forward Euler method " --> <li> &nbsp;  <a href="._report_bootswatch_cosmo001.html#___sec6"> The Forward Euler method </a></li>
-     <!-- navigation toc: " Error vs $\Delta t$ " --> <li> &nbsp;  <a href="._report_bootswatch_cosmo001.html#___sec7"> Error vs $\Delta t$ </a></li>
+     <!-- navigation toc: --> <li><a href="._report_bootswatch_cosmo001.html#math:problem" style="font-size: 80%;"><b>Mathematical problem</b></a></li>
+     <!-- navigation toc: --> <li><a href="._report_bootswatch_cosmo001.html#numerical:problem" style="font-size: 80%;"><b>Numerical solution method</b></a></li>
+     <!-- navigation toc: --> <li><a href="._report_bootswatch_cosmo001.html#___sec2" style="font-size: 80%;"><b>Implementation</b></a></li>
+     <!-- navigation toc: --> <li><a href="._report_bootswatch_cosmo001.html#___sec3" style="font-size: 80%;"><b>Numerical experiments</b></a></li>
+     <!-- navigation toc: --> <li><a href="._report_bootswatch_cosmo001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Backward Euler method</a></li>
+     <!-- navigation toc: --> <li><a href="._report_bootswatch_cosmo001.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Crank-Nicolson method</a></li>
+     <!-- navigation toc: --> <li><a href="._report_bootswatch_cosmo001.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Forward Euler method</a></li>
+     <!-- navigation toc: --> <li><a href="._report_bootswatch_cosmo001.html#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Error vs $\Delta t$</a></li>
+     <!-- navigation toc: --> <li><a href="._report_bootswatch_cosmo001.html#___sec8" style="font-size: 80%;"><b>Bibliography</b></a></li>
 
         </ul>
       </li>
     </ul>
   </div>
 </div>
-</div>
+</div> <!-- end of navigation bar -->
 
 <div class="container">
 
@@ -121,7 +120,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo.</b></center>
 <p>
-<center><h4>Apr 30, 2014</h4></center> <!-- date -->
+<center><h4>Aug 6, 2014</h4></center> <!-- date -->
 <p>
 <b>Summary.</b> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation \( u'=-au \) with the
@@ -139,6 +138,7 @@ Table of contents</h2>
 &nbsp; &nbsp; &nbsp; <a href="._report_bootswatch_cosmo001.html#___sec5"> The Crank-Nicolson method </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._report_bootswatch_cosmo001.html#___sec6"> The Forward Euler method </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._report_bootswatch_cosmo001.html#___sec7"> Error vs \( \Delta t \) </a><br>
+<a href="._report_bootswatch_cosmo001.html#___sec8"> Bibliography </a><br>
 </p>
 <p>
 
@@ -149,12 +149,11 @@ Table of contents</h2>
 </div> <!-- end jumbotron -->
 
 <p>
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
-
   <li class="next">
     <a href="._report_bootswatch_cosmo001.html">Next &rarr;</a>
   </li>
-
 </ul>
 <!-- ------------------- end of main content --------------- -->
 

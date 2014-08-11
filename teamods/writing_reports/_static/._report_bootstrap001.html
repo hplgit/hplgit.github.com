@@ -38,7 +38,8 @@ pre { color: inherit; background-color: transparent; }
               (' The Backward Euler method ', 2, None, '___sec4'),
               (' The Crank-Nicolson method ', 2, None, '___sec5'),
               (' The Forward Euler method ', 2, None, '___sec6'),
-              (' Error vs $\\Delta t$ ', 2, None, '___sec7')]}
+              (' Error vs $\\Delta t$ ', 2, None, '___sec7'),
+              (' Bibliography ', 1, None, '___sec8')]}
 end of tocinfo -->
 
 <body>
@@ -56,9 +57,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
@@ -78,21 +76,22 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: " Mathematical problem " --> <li>  <a href="._report_bootstrap001.html#math:problem"> Mathematical problem </a></li>
-     <!-- navigation toc: " Numerical solution method " --> <li>  <a href="._report_bootstrap001.html#numerical:problem"> Numerical solution method </a></li>
-     <!-- navigation toc: " Implementation " --> <li>  <a href="._report_bootstrap001.html#___sec2"> Implementation </a></li>
-     <!-- navigation toc: " Numerical experiments " --> <li>  <a href="._report_bootstrap001.html#___sec3"> Numerical experiments </a></li>
-     <!-- navigation toc: " The Backward Euler method " --> <li> &nbsp;  <a href="._report_bootstrap001.html#___sec4"> The Backward Euler method </a></li>
-     <!-- navigation toc: " The Crank-Nicolson method " --> <li> &nbsp;  <a href="._report_bootstrap001.html#___sec5"> The Crank-Nicolson method </a></li>
-     <!-- navigation toc: " The Forward Euler method " --> <li> &nbsp;  <a href="._report_bootstrap001.html#___sec6"> The Forward Euler method </a></li>
-     <!-- navigation toc: " Error vs $\Delta t$ " --> <li> &nbsp;  <a href="._report_bootstrap001.html#___sec7"> Error vs $\Delta t$ </a></li>
+     <!-- navigation toc: --> <li><a href="#math:problem" style="font-size: 80%;"><b>Mathematical problem</b></a></li>
+     <!-- navigation toc: --> <li><a href="#numerical:problem" style="font-size: 80%;"><b>Numerical solution method</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;"><b>Implementation</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;"><b>Numerical experiments</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Backward Euler method</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Crank-Nicolson method</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Forward Euler method</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Error vs $\Delta t$</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;"><b>Bibliography</b></a></li>
 
         </ul>
       </li>
     </ul>
   </div>
 </div>
-</div>
+</div> <!-- end of navigation bar -->
 
 <div class="container">
 
@@ -101,7 +100,7 @@ MathJax.Hub.Config({
 <a name="part0001"></a>
 <!-- !split -->
 
-<h1>Mathematical problem <a name="math:problem"></a></h1>
+<h1 id="math:problem">Mathematical problem<a name="math:problem"></a></h1>
 
 We address the initial-value problem
 
@@ -118,7 +117,7 @@ is relevant for physical phenomena featuring exponential decay
 in time, e.g., vertical pressure variation in the atmosphere,
 cooling of an object, and radioactive decay.
 
-<h1>Numerical solution method <a name="numerical:problem"></a></h1>
+<h1 id="numerical:problem">Numerical solution method<a name="numerical:problem"></a></h1>
 
 We introduce a mesh in time with points \( 0= t_0< t_1 \cdots < t_{N_t}=T \).
 For simplicity, we assume constant spacing \( \Delta t \) between the
@@ -144,14 +143,14 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
     scheme when \( \theta=1/2 \)</li>
 </ul>
 
-<h1>Implementation  <a name="___sec2"></a></h1>
+<h1 id="___sec2">Implementation <a name="___sec2"></a></h1>
 
 The numerical method is implemented in a Python function
 <a href="#Langtangen_2012">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>decay_mod</tt></a> module):
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
     <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)            <span style="color: #408080; font-style: italic"># avoid integer division</span>
@@ -166,25 +165,25 @@ The numerical method is implemented in a Python function
     <span style="color: #008000; font-weight: bold">return</span> u, t
 </pre></div>
 
-<h1>Numerical experiments  <a name="___sec3"></a></h1>
+<h1 id="___sec3">Numerical experiments <a name="___sec3"></a></h1>
 
 We define a set of numerical experiments where \( I \), \( a \), and \( T \) are
 fixed, while \( \Delta t \) and \( \theta \) are varied.
 In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 
-<h2>The Backward Euler method  <a name="___sec4"></a></h2>
+<h2 id="___sec4">The Backward Euler method <a name="___sec4"></a></h2>
 
 <center><p><img src="BE.png" align="bottom" width=800></p></center>
 
-<h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
+<h2 id="___sec5">The Crank-Nicolson method <a name="___sec5"></a></h2>
 
 <center><p><img src="CN.png" align="bottom" width=800></p></center>
 
-<h2>The Forward Euler method  <a name="___sec6"></a></h2>
+<h2 id="___sec6">The Forward Euler method <a name="___sec6"></a></h2>
 
 <center><p><img src="FE.png" align="bottom" width=800></p></center>
 
-<h2>Error vs \( \Delta t \)  <a name="___sec7"></a></h2>
+<h2 id="___sec7">Error vs \( \Delta t \) <a name="___sec7"></a></h2>
 
 How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
 is shown below.
@@ -236,7 +235,8 @@ The numbers corresponding to the figure above are given in the table below.
 </div>
 
 
-<p>
+<h1 id="___sec8">Bibliography <a name="___sec8"></a></h1>
+
 <!-- begin bibliography -->
 
 <ol>
@@ -253,12 +253,11 @@ The numbers corresponding to the figure above are given in the table below.
 <!-- end bibliography -->
 
 <p>
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._report_bootstrap000.html">&larr; Prev</a>
   </li>
-
-
 </ul>
 <!-- ------------------- end of main content --------------- -->
 

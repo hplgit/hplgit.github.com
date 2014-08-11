@@ -4,7 +4,7 @@
 <html>
 <head>
   <title></title>
-  <meta http-equiv="content-type" content="text/html; charset=latin1">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <style type="text/css">
 td.linenos { background-color: #f0f0f0; padding-right: 10px; }
 span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
@@ -77,53 +77,38 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <body>
 <h2></h2>
 
-<div class="highlight"><pre><span class="cp">.. Automatically generated reST file from Doconce source</span>
+<div class="highlight"><pre><span class="cp">.. Automatically generated Sphinx-extended reStructuredText file from Doconce source</span>
 <span class="cp">   (https://github.com/hplgit/doconce/)</span>
 
+Experiments with Schemes for Exponential Decay
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<span class="gh">Experiments with Schemes for Exponential Decay</span>
-<span class="gh">==============================================</span>
-
-<span class="nc">:Author:</span> <span class="nf">Hans Petter Langtangen (hpl at simula.no)</span>
-<span class="nc">:Date:</span> <span class="nf">Apr 30, 2014</span>
+<span class="nc">:Authors:</span> <span class="nf">Hans Petter Langtangen (hpl at simula.no)</span>
+<span class="nc">:Date:</span> <span class="nf">Aug 6, 2014</span>
 
 <span class="ge">*Summary.*</span> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation <span class="na">:math:</span><span class="nv">`u&#39;=-au`</span> with the
 aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
 
-
-
-
-
-
-
-
 <span class="cp">.. !split</span>
 
 <span class="p">..</span> <span class="nt">_math:</span>problem:
 
-
 <span class="gh">Mathematical problem</span>
 <span class="gh">====================</span>
-
-
 
 <span class="p">..</span> <span class="ow">index</span><span class="p">::</span> model problem
 
 <span class="p">..</span> <span class="ow">index</span><span class="p">::</span> exponential decay
 
-
 We address the initial-value problem
-
 
 <span class="p">..</span> <span class="ow">math</span><span class="p">::</span>
    <span class="nc">:label:</span> <span class="nf">ode</span>
         
         u&#39;(t) = -au(t), \quad t \in (0,T], 
         
-
-
 
 <span class="p">..</span> <span class="ow">math</span><span class="p">::</span>
    <span class="nc">:label:</span> <span class="nf">initial:value</span>
@@ -142,17 +127,13 @@ cooling of an object, and radioactive decay.
 <span class="gh">Numerical solution method</span>
 <span class="gh">=========================</span>
 
-
-
 <span class="p">..</span> <span class="ow">index</span><span class="p">::</span> mesh in time
 
 <span class="p">..</span> <span class="ow">index</span><span class="p">::</span> theta-rule
 
 <span class="p">..</span> <span class="ow">index</span><span class="p">::</span> numerical scheme
 
-
 <span class="p">..</span> <span class="ow">index</span><span class="p">::</span> finite difference scheme
-
 
 We introduce a mesh in time with points <span class="na">:math:</span><span class="nv">`0= t_0&lt; t_1 \cdots &lt; t_{N_t}=T`</span>.
 For simplicity, we assume constant spacing <span class="na">:math:</span><span class="nv">`\Delta t`</span> between the
@@ -162,7 +143,6 @@ mesh points: <span class="na">:math:</span><span class="nv">`\Delta t = t_{n}-t_
 The <span class="na">:math:</span><span class="nv">`\theta`</span>-rule <span class="s">[Ref1]_</span>
 is used to solve <span class="na">:eq:</span><span class="nv">`ode`</span> numerically:
 
-
 <span class="p">..</span> <span class="ow">math</span><span class="p">::</span>
         
         u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
@@ -170,22 +150,20 @@ is used to solve <span class="na">:eq:</span><span class="nv">`ode`</span> numer
 
 for <span class="na">:math:</span><span class="nv">`n=0,1,\ldots,N_t-1`</span>. This scheme corresponds to
 
-  <span class="m">*</span> The <span class="s">`Forward Euler </span><span class="si">&lt;http://en.wikipedia.org/wiki/Forward_Euler_method&gt;</span><span class="s">`_</span>
+  <span class="m">*</span> The <span class="s">`Forward Euler </span><span class="si">&lt;http://en.wikipedia.org/wiki/Forward_Euler_method&gt;</span><span class="s">`__</span>
     scheme when <span class="na">:math:</span><span class="nv">`\theta=0`</span>
 
-  <span class="m">*</span> The <span class="s">`Backward Euler </span><span class="si">&lt;http://en.wikipedia.org/wiki/Backward_Euler_method&gt;</span><span class="s">`_</span>
+  <span class="m">*</span> The <span class="s">`Backward Euler </span><span class="si">&lt;http://en.wikipedia.org/wiki/Backward_Euler_method&gt;</span><span class="s">`__</span>
     scheme when <span class="na">:math:</span><span class="nv">`\theta=1`</span>
 
-  <span class="m">*</span> The <span class="s">`Crank-Nicolson </span><span class="si">&lt;http://en.wikipedia.org/wiki/Crank-Nicolson&gt;</span><span class="s">`_</span>
+  <span class="m">*</span> The <span class="s">`Crank-Nicolson </span><span class="si">&lt;http://en.wikipedia.org/wiki/Crank-Nicolson&gt;</span><span class="s">`__</span>
     scheme when <span class="na">:math:</span><span class="nv">`\theta=1/2`</span>
 
 <span class="gh">Implementation</span>
 <span class="gh">==============</span>
 
-
 The numerical method is implemented in a Python function
-<span class="s">[Ref2]_</span> <span class="s">``solver``</span> (found in the <span class="s">`decay_mod </span><span class="si">&lt;https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py&gt;</span><span class="s">`_</span> module):
-
+<span class="s">[Ref2]_</span> <span class="s">``solver``</span> (found in the <span class="s">`decay_mod </span><span class="si">&lt;https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py&gt;</span><span class="s">`__</span> module):
 
 <span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> python
 
@@ -202,84 +180,46 @@ The numerical method is implemented in a Python function
                 u[n+1] = (1 - (1-theta)<span class="ge">*a*</span>dt)/(1 + theta<span class="ge">*dt*</span>a)*u[n]
             return u, t
 
-
-
 <span class="gh">Numerical experiments</span>
 <span class="gh">=====================</span>
 
-
-
 <span class="p">..</span> <span class="ow">index</span><span class="p">::</span> numerical experiments
-
 
 We define a set of numerical experiments where <span class="na">:math:</span><span class="nv">`I`</span>, <span class="na">:math:</span><span class="nv">`a`</span>, and <span class="na">:math:</span><span class="nv">`T`</span> are
 fixed, while <span class="na">:math:</span><span class="nv">`\Delta t`</span> and <span class="na">:math:</span><span class="nv">`\theta`</span> are varied.
 In particular, <span class="na">:math:</span><span class="nv">`I=1`</span>, <span class="na">:math:</span><span class="nv">`a=2`</span>, <span class="na">:math:</span><span class="nv">`\Delta t = 1.25, 0.75, 0.5, 0.1`</span>.
 
-
-
 <span class="gh">The Backward Euler method</span>
 <span class="gh">-------------------------</span>
 
-
-
-
 <span class="p">..</span> <span class="ow">index</span><span class="p">::</span> BE
-
-
 
 <span class="p">..</span> <span class="ow">figure</span><span class="p">::</span> BE.png
    :width: 800
 
-
-
-
-
 <span class="gh">The Crank-Nicolson method</span>
 <span class="gh">-------------------------</span>
 
-
-
-
 <span class="p">..</span> <span class="ow">index</span><span class="p">::</span> CN
-
-
 
 <span class="p">..</span> <span class="ow">figure</span><span class="p">::</span> CN.png
    :width: 800
 
-
-
-
-
 <span class="gh">The Forward Euler method</span>
 <span class="gh">------------------------</span>
 
-
-
-
 <span class="p">..</span> <span class="ow">index</span><span class="p">::</span> FE
-
-
 
 <span class="p">..</span> <span class="ow">figure</span><span class="p">::</span> FE.png
    :width: 800
 
-
-
-
-
 <span class="gh">Error vs :math:`\Delta t`</span>
 <span class="gh">-------------------------</span>
 
-
-
 <span class="p">..</span> <span class="ow">index</span><span class="p">::</span> error vs time step
-
 
 How <span class="na">:math:</span><span class="nv">`E`</span> varies with <span class="na">:math:</span><span class="nv">`\Delta t`</span> for <span class="na">:math:</span><span class="nv">`\theta=0,0.5,1`</span>
 is shown below.
-
 
 
 <span class="p">..</span> <span class="ow">admonition</span><span class="p">::</span> Observe
@@ -291,13 +231,8 @@ is shown below.
 
 
 
-
-
 <span class="p">..</span> <span class="ow">figure</span><span class="p">::</span> error.png
    :width: 400
-
-
-
 
 The numbers corresponding to the figure above are given in the table below.
 
@@ -309,7 +244,6 @@ The numbers corresponding to the figure above are given in the table below.
               0.50              0.2797              0.0315              0.1397  
               0.10              0.0377              0.0012              0.0335  
 ==================  ==================  ==================  ==================  
-
 
 
 <span class="p">..</span> <span class="ow">admonition</span><span class="p">::</span> Summary
@@ -330,6 +264,8 @@ The numbers corresponding to the figure above are given in the table below.
 
 
 
+<span class="gh">Bibliography</span>
+<span class="gh">============</span>
 
 <span class="p">..</span> <span class="nt">[Ref1]</span>
    <span class="gs">**A. Iserles**</span>. <span class="ge">*A First Course in the Numerical Analysis of Differential Equations*</span>,

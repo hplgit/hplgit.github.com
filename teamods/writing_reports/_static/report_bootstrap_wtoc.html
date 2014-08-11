@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Experiments with Schemes for Exponential Decay</title>
+
+<!-- Bootstrap style: http://getbootstrap.com/getting-started/
+
+What to change in this template:
+
+URL to the document (edit http://some.website.net/some/path)
+
+LINK1, LINK2 links in the navigation topbar (remove, edit, or add more)
+
+Footer with author(s) and copyright (remove or edit)
+-->
+
+<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet"
+
+<!-- Can add other themes and adjust colors in the navigation sidebar -->
+<!--
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+-->
+
+<!-- Potential adjustment of styles -->
+<style type="text/css">
+/* Colors in the navigation sidebar */
+.bs-docs-sidebar .nav > li > a {
+  color: #999;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+  color: #999;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+  color: #563d7c;
+}
+</style>
+
+</head>
+
+<body>
+<a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+<!-- Docs master nav -->
+<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+<div class="container">
+  <div class="navbar-header">
+    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a href="http://some.website.net/some/path" class="navbar-brand">Experiments with Schemes for Exponential Decay</a>
+  </div>
+  <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="http://wikipedia.org" target="_blank">Wikipedia</a></li>
+      <li><a href="http://wolframalpha.com" target="_blank">WolframAlpha</a></li>
+    </ul>
+  </nav>
+</div>
+</header>
+
+
+<!-- Docs page layout -->
+
+<!-- A purple header field with the title is optional, but it requires
+the docs.min.css style, which makes orange math...
+<div class="bs-docs-header" id="content">
+ <div class="container">
+  <h1>Experiments with Schemes for Exponential Decay</h1>
+Investigation of numerical artifacts</p>
+ </div>
+</div>
+-->
+
+<div class="container bs-docs-container">
+
+ <div class="row">
+
+  <!-- main content -->
+  <div class="col-md-9" role="main">
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Mathematical problem ', 1, 'math:problem', 'math:problem'),
+              (' Numerical solution method ',
+               1,
+               'numerical:problem',
+               'numerical:problem'),
+              (' Implementation ', 1, None, '___sec2'),
+              (' Numerical experiments ', 1, None, '___sec3'),
+              (' The Backward Euler method ', 2, None, '___sec4'),
+              (' The Crank-Nicolson method ', 2, None, '___sec5'),
+              (' The Forward Euler method ', 2, None, '___sec6'),
+              (' Error vs $\\Delta t$ ', 2, None, '___sec7'),
+              (' Bibliography ', 1, None, '___sec8')]}
+end of tocinfo -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<!-- ------------------- main content ---------------------- -->
+
+<h1>Experiments with Schemes for Exponential Decay</h1>
+
+<!-- AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory &amp; Department of Informatics, University of Oslo. -->
+<p>
+<b>Summary.</b> This report investigates the accuracy of three finite difference
+schemes for the ordinary differential equation \( u'=-au \) with the
+aid of numerical experiments. Numerical artifacts are in particular
+demonstrated.
+
+<p>
+<!-- 
+TOC: on -->
+
+<p>
+<!-- !split -->
+
+<h1 id="math:problem">Mathematical problem<a name="math:problem"></a></h1>
+
+We address the initial-value problem
+
+$$
+\begin{align}
+u'(t) &= -au(t), \quad t \in (0,T], \label{ode}\\
+u(0)  &= I,                         \label{initial:value}
+\end{align}
+$$
+
+where \( a \), \( I \), and \( T \) are prescribed parameters, and \( u(t) \) is
+the unknown function to be estimated. This mathematical model
+is relevant for physical phenomena featuring exponential decay
+in time, e.g., vertical pressure variation in the atmosphere,
+cooling of an object, and radioactive decay.
+
+<h1 id="numerical:problem">Numerical solution method<a name="numerical:problem"></a></h1>
+
+We introduce a mesh in time with points \( 0= t_0< t_1 \cdots < t_{N_t}=T \).
+For simplicity, we assume constant spacing \( \Delta t \) between the
+mesh points: \( \Delta t = t_{n}-t_{n-1} \), \( n=1,\ldots,N_t \). Let
+\( u^n \) be the numerical approximation to the exact solution at \( t_n \).
+
+<p>
+The \( \theta \)-rule <a href="#Iserles_2009">[1]</a>
+is used to solve \eqref{ode} numerically:
+
+$$
+u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+$$
+
+for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
+
+<ul>
+  <li> The <a href="http://en.wikipedia.org/wiki/Forward_Euler_method" target="_self">Forward Euler</a>
+    scheme when \( \theta=0 \)</li>
+  <li> The <a href="http://en.wikipedia.org/wiki/Backward_Euler_method" target="_self">Backward Euler</a>
+    scheme when \( \theta=1 \)</li>
+  <li> The <a href="http://en.wikipedia.org/wiki/Crank-Nicolson" target="_self">Crank-Nicolson</a>
+    scheme when \( \theta=1/2 \)</li>
+</ul>
+
+<h1 id="___sec2">Implementation <a name="___sec2"></a></h1>
+
+The numerical method is implemented in a Python function
+<a href="#Langtangen_2012">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>decay_mod</tt></a> module):
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def solver(I, a, T, dt, theta):
+    &quot;&quot;&quot;Solve u'=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;
+    dt = float(dt)            # avoid integer division
+    Nt = int(round(T/dt))     # no of time intervals
+    T = Nt*dt                 # adjust T to fit time step dt
+    u = zeros(Nt+1)           # array of u[n] values
+    t = linspace(0, T, Nt+1)  # time mesh
+
+    u[0] = I                  # assign initial condition
+    for n in range(0, Nt):    # n=0,1,...,Nt-1
+        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
+    return u, t
+</code></pre>
+<!-- end verbatim block -->
+
+<h1 id="___sec3">Numerical experiments <a name="___sec3"></a></h1>
+
+We define a set of numerical experiments where \( I \), \( a \), and \( T \) are
+fixed, while \( \Delta t \) and \( \theta \) are varied.
+In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
+
+<h2 id="___sec4">The Backward Euler method <a name="___sec4"></a></h2>
+
+<center><p><img src="BE.png" align="bottom" width=800></p></center>
+
+<h2 id="___sec5">The Crank-Nicolson method <a name="___sec5"></a></h2>
+
+<center><p><img src="CN.png" align="bottom" width=800></p></center>
+
+<h2 id="___sec6">The Forward Euler method <a name="___sec6"></a></h2>
+
+<center><p><img src="FE.png" align="bottom" width=800></p></center>
+
+<h2 id="___sec7">Error vs \( \Delta t \) <a name="___sec7"></a></h2>
+
+How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
+is shown below.
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Observe:</b>
+The data points for the three largest \( \Delta t \) values in the
+Forward Euler method are not relevant as the solution behaves
+non-physically.
+</div>
+
+
+<p>
+<center><p><img src="error.png" align="bottom" width=400></p></center>
+
+<p>
+The numbers corresponding to the figure above are given in the table below.
+
+<p>
+
+<div class="row">
+  <div class="col-xs-5">
+    <table class="table table-striped table-hover table-condensed">
+<thead>
+<tr><td align="center"> \( \Delta t \) </td> <td align="center"> \( \theta=0 \) </td> <td align="center">\( \theta=0.5 \)</td> <td align="center"> \( \theta=1 \) </td> </tr>
+</thead>
+<tbody>
+<tr><td align="right">   1.25                </td> <td align="right">   7.4630              </td> <td align="right">   0.2161              </td> <td align="right">   0.2440              </td> </tr>
+<tr><td align="right">   0.75                </td> <td align="right">   0.6632              </td> <td align="right">   0.0744              </td> <td align="right">   0.1875              </td> </tr>
+<tr><td align="right">   0.50                </td> <td align="right">   0.2797              </td> <td align="right">   0.0315              </td> <td align="right">   0.1397              </td> </tr>
+<tr><td align="right">   0.10                </td> <td align="right">   0.0377              </td> <td align="right">   0.0012              </td> <td align="right">   0.0335              </td> </tr>
+</tbody>
+    </table>
+  </div>
+</div> <!-- col-xs-5 -->
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Summary.</b>
+
+<ol>
+<li> \( \theta =1 \): \( E\sim \Delta t \) (first-order convergence).</li>
+<li> \( \theta =0.5 \): \( E\sim \Delta t^2 \) (second-order convergence).</li>
+<li> \( \theta =1 \) is always stable and gives qualitatively corrects results.</li>
+<li> \( \theta =0.5 \) never blows up, but may give oscillating solutions
+   if \( \Delta t \) is not sufficiently small.</li>
+<li> \( \theta =0 \) suffers from fast-growing solution if \( \Delta t \) is
+   not small enough, but even below this limit one can have oscillating
+   solutions that disappear if \( \Delta t \) is sufficiently small.</li>
+</ol>
+</div>
+
+
+<h1 id="___sec8">Bibliography <a name="___sec8"></a></h1>
+
+<!-- begin bibliography -->
+
+<ol>
+ <li> <a name="Iserles_2009"></a> <b>A. Iserles</b>. 
+    <em>A First Course in the Numerical Analysis of Differential Equations</em>,
+    Cambridge University Press,
+    2009.</li>
+ <li> <a name="Langtangen_2012"></a> <b>H. P. Langtangen</b>. 
+    <em>A Primer on Scientific Programming With Python</em>,
+    Springer,
+    2012.</li>
+</ol>
+
+<!-- end bibliography -->
+
+<!-- ------------------- end of main content --------------- -->
+
+  </div>
+
+  <!-- sidebar with navigation -->
+  <div class="col-md-3">
+   <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
+    <ul class="nav bs-docs-sidenav">
+     <!-- navigation toc: --> <li><a href="#math:problem" style="font-size: 80%;"><b>Mathematical problem</b></a></li>
+     <!-- navigation toc: --> <li><a href="#numerical:problem" style="font-size: 80%;"><b>Numerical solution method</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;"><b>Implementation</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;"><b>Numerical experiments</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Backward Euler method</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Crank-Nicolson method</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Forward Euler method</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Error vs \( \Delta t \)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;"><b>Bibliography</b></a></li>
+
+    </ul>
+    <a class="back-to-top" href="#top">Back to top</a>
+   </div>
+  </div>
+ </div>
+
+ <div class="row Footer">
+  <div class="span12">
+   <center>
+  H. P. Langtangen &copy; 2014
+   </center>
+  </div>
+ </div>
+</div>
+
+<!-- JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+<!-- NOTE: replace rawgit.com by cdn.rawgit.com for production or
+sites with heavy traffic -->
+<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap_wtoc/js/docs.min.js"></script>
+</html>
+

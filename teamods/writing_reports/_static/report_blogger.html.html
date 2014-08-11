@@ -4,7 +4,7 @@
 <html>
 <head>
   <title></title>
-  <meta http-equiv="content-type" content="text/html; charset=latin1">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <style type="text/css">
 td.linenos { background-color: #f0f0f0; padding-right: 10px; }
 span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
@@ -89,7 +89,8 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="c">              (&#39; The Backward Euler method &#39;, 2, None, &#39;___sec4&#39;),</span>
 <span class="c">              (&#39; The Crank-Nicolson method &#39;, 2, None, &#39;___sec5&#39;),</span>
 <span class="c">              (&#39; The Forward Euler method &#39;, 2, None, &#39;___sec6&#39;),</span>
-<span class="c">              (&#39; Error vs $\\Delta t$ &#39;, 2, None, &#39;___sec7&#39;)]}</span>
+<span class="c">              (&#39; Error vs $\\Delta t$ &#39;, 2, None, &#39;___sec7&#39;),</span>
+<span class="c">              (&#39; Bibliography &#39;, 1, None, &#39;___sec8&#39;)]}</span>
 <span class="c">end of tocinfo --&gt;</span>
 
 
@@ -107,9 +108,6 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span>
  <span class="na">src=</span><span class="s">&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/script&gt;</span>
-<span class="c">&lt;!-- Fix slow MathJax rendering in IE8 --&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content=</span><span class="s">&quot;IE=EmulateIE7&quot;</span><span class="nt">&gt;</span>
-
 
 
 
@@ -133,6 +131,7 @@ Table of contents<span class="nt">&lt;/h2&gt;</span>
 <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec5&quot;</span><span class="nt">&gt;</span> The Crank-Nicolson method <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
 <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec6&quot;</span><span class="nt">&gt;</span> The Forward Euler method <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
 <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec7&quot;</span><span class="nt">&gt;</span> Error vs \( \Delta t \) <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec8&quot;</span><span class="nt">&gt;</span> Bibliography <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
 <span class="nt">&lt;/p&gt;</span>
 
 <span class="nt">&lt;h1&gt;</span>Mathematical problem <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;math:problem&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h1&gt;</span>
@@ -154,7 +153,7 @@ cooling of an object, and radioactive decay.
 
 <span class="nt">&lt;h1&gt;</span>Numerical solution method <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;numerical:problem&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h1&gt;</span>
 
-We introduce a mesh in time with points \( 0= t_0<span class="nt">&lt; t_1</span> <span class="err">\</span><span class="na">cdots</span> <span class="err">&lt;</span> <span class="na">t_</span><span class="err">{</span><span class="na">N_t</span><span class="err">}=</span><span class="na">T</span> <span class="err">\).</span>
+We introduce a mesh in time with points \( 0= t_0<span class="nt">&lt; t</span><span class="na">_1</span> <span class="err">\</span><span class="na">cdots</span> <span class="err">&lt;</span> <span class="na">t_</span><span class="err">{</span><span class="na">N_t</span><span class="err">}=</span><span class="na">T</span> <span class="err">\).</span>
 <span class="na">For</span> <span class="na">simplicity</span><span class="err">,</span> <span class="na">we</span> <span class="na">assume</span> <span class="na">constant</span> <span class="na">spacing</span> <span class="err">\(</span> <span class="err">\</span><span class="na">Delta</span> <span class="na">t</span> <span class="err">\)</span> <span class="na">between</span> <span class="na">the</span>
 <span class="na">mesh</span> <span class="na">points:</span> <span class="err">\(</span> <span class="err">\</span><span class="na">Delta</span> <span class="na">t =</span><span class="err"> </span><span class="s">t_{n}-t_{n-1}</span> <span class="err">\),</span> <span class="err">\(</span> <span class="na">n=</span><span class="s">1,\ldots,N_t</span> <span class="err">\).</span> <span class="na">Let</span>
 <span class="err">\(</span> <span class="na">u</span><span class="err">^</span><span class="na">n</span> <span class="err">\)</span> <span class="na">be</span> <span class="na">the</span> <span class="na">numerical</span> <span class="na">approximation</span> <span class="na">to</span> <span class="na">the</span> <span class="na">exact</span> <span class="na">solution</span> <span class="na">at</span> <span class="err">\(</span> <span class="na">t_n</span> <span class="err">\).</span>
@@ -185,7 +184,7 @@ The numerical method is implemented in a Python function
 
 <span class="nt">&lt;p&gt;</span>
 
-<span class="c">&lt;!-- code=python (from !bc pycod) typeset with pygments style &quot;default&quot; --&gt;</span>
+<span class="c">&lt;!-- code=python (!bc pycod) typeset with pygments style &quot;default&quot; --&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;highlight&quot;</span> <span class="na">style=</span><span class="s">&quot;background: #f8f8f8&quot;</span><span class="nt">&gt;&lt;pre</span> <span class="na">style=</span><span class="s">&quot;line-height: 125%&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>def<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #0000FF&quot;</span><span class="nt">&gt;</span>solver<span class="nt">&lt;/span&gt;</span>(I, a, T, dt, theta):
     <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #BA2121; font-style: italic&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;quot;&amp;quot;&amp;quot;</span>Solve u<span class="ni">&amp;#39;</span>=-a*u, u(0)=I, for t in (0,T] with steps of dt.<span class="ni">&amp;quot;&amp;quot;&amp;quot;</span><span class="nt">&lt;/span&gt;</span>
     dt <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #666666&quot;</span><span class="nt">&gt;</span>=<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000&quot;</span><span class="nt">&gt;</span>float<span class="nt">&lt;/span&gt;</span>(dt)            <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #408080; font-style: italic&quot;</span><span class="nt">&gt;</span># avoid integer division<span class="nt">&lt;/span&gt;</span>
@@ -265,7 +264,8 @@ The numbers corresponding to the figure above are given in the table below.
 <span class="nt">&lt;/div&gt;</span>
 
 
-<span class="nt">&lt;p&gt;</span>
+<span class="nt">&lt;h1&gt;</span>Bibliography  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec8&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h1&gt;</span>
+
 <span class="c">&lt;!-- begin bibliography --&gt;</span>
 
 <span class="nt">&lt;ol&gt;</span>

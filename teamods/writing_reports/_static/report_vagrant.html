@@ -1,12 +1,11 @@
 <html>
 <head>
-<!--
-This style is adopted from the (now old) vagrant 1.0 web
-pages. The style builds on the Twitter Bootstrap style.
-Modifications by Hans Petter Langtangen, hpl@simula.no.
+<!-- Bootstrap style: vagrant 1.0 web pages -->
 
-This style file should be copied and the following
-elements edited:
+<!--
+This style is adopted from the (now old) vagrant 1.0 web pages.
+
+This style file should be copied and the following elements edited:
 
 Logo heading:
 
@@ -18,10 +17,7 @@ Navigation links at the top:
  GO TO 1
  GO TO 2
 
-Footer at the end:
-
- H. P. Langtangen &copy; 2013
-
+Footer at the end
 -->
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -58,8 +54,8 @@ h1, h2, h3, h4, h5, h6 {
    <div class="Module navigation">
    <!-- Navigation at the top of the page -->
     <ul>
-     <li> <a href="http://wikipedia.org">Wikipedia</a></li>
-     <li> <a href="http://wolframalpha.com">WolframAlpha</a></li>
+     <li> <a href="http://wikipedia.org" target="_blank">Wikipedia</a></li>
+     <li> <a href="http://wolframalpha.com" target="_blank">WolframAlpha</a></li>
     </ul>
    </div>
   </div>
@@ -74,28 +70,23 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
-     <!-- Syntax:
-     <li> <a href="...">Section 1</a></li>
-     <li class="active"> <a href="...">Section 2</a></li>
-     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2a</a></li>
-     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
-     -->
-     <!-- Doconce automatically fills in the table of contents -->
-          <!-- navigation toc: " Mathematical problem " --> <li>  <a href="#math:problem"> Mathematical problem </a></li>
-     <!-- navigation toc: " Numerical solution method " --> <li>  <a href="#numerical:problem"> Numerical solution method </a></li>
-     <!-- navigation toc: " Implementation " --> <li>  <a href="#___sec2"> Implementation </a></li>
-     <!-- navigation toc: " Numerical experiments " --> <li>  <a href="#___sec3"> Numerical experiments </a></li>
-     <!-- navigation toc: " The Backward Euler method " --> <li> &nbsp;  <a href="#___sec4"> The Backward Euler method </a></li>
-     <!-- navigation toc: " The Crank-Nicolson method " --> <li> &nbsp;  <a href="#___sec5"> The Crank-Nicolson method </a></li>
-     <!-- navigation toc: " The Forward Euler method " --> <li> &nbsp;  <a href="#___sec6"> The Forward Euler method </a></li>
-     <!-- navigation toc: " Error vs \( \Delta t \) " --> <li> &nbsp;  <a href="#___sec7"> Error vs \( \Delta t \) </a></li>
+     <!-- navigation toc: --> <li><a href="#math:problem" style="font-size: 80%;"><b>Mathematical problem</b></a></li>
+     <!-- navigation toc: --> <li><a href="#numerical:problem" style="font-size: 80%;"><b>Numerical solution method</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;"><b>Implementation</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;"><b>Numerical experiments</b></a></li>
+     <ul class="nav">
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">The Backward Euler method</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">The Crank-Nicolson method</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">The Forward Euler method</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">Error vs \( \Delta t \)</a></li>
+     </ul>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;"><b>Bibliography</b></a></li>
 
-    </ul>
-   </div>
+   </ul>
   </div>
+ </div>
 
-  <div class="span9">
-
+ <div class="span9">
 
 <!-- tocinfo
 {'highest level': 1,
@@ -109,7 +100,8 @@ h1, h2, h3, h4, h5, h6 {
               (' The Backward Euler method ', 2, None, '___sec4'),
               (' The Crank-Nicolson method ', 2, None, '___sec5'),
               (' The Forward Euler method ', 2, None, '___sec6'),
-              (' Error vs $\\Delta t$ ', 2, None, '___sec7')]}
+              (' Error vs $\\Delta t$ ', 2, None, '___sec7'),
+              (' Bibliography ', 1, None, '___sec8')]}
 end of tocinfo -->
 
 
@@ -127,9 +119,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
@@ -137,7 +126,7 @@ MathJax.Hub.Config({
 
 <h1>Experiments with Schemes for Exponential Decay</h1>
 
-<!-- AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo. -->
+<!-- AUTHOR: Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory &amp; Department of Informatics, University of Oslo. -->
 <p>
 <b>Summary.</b> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation \( u'=-au \) with the
@@ -151,7 +140,7 @@ TOC: on -->
 <p>
 <!-- !split -->
 
-<h1>Mathematical problem <a name="math:problem"></a></h1>
+<h1 id="math:problem">Mathematical problem<a name="math:problem"></a></h1>
 
 We address the initial-value problem
 
@@ -168,7 +157,7 @@ is relevant for physical phenomena featuring exponential decay
 in time, e.g., vertical pressure variation in the atmosphere,
 cooling of an object, and radioactive decay.
 
-<h1>Numerical solution method <a name="numerical:problem"></a></h1>
+<h1 id="numerical:problem">Numerical solution method<a name="numerical:problem"></a></h1>
 
 We introduce a mesh in time with points \( 0= t_0< t_1 \cdots < t_{N_t}=T \).
 For simplicity, we assume constant spacing \( \Delta t \) between the
@@ -194,14 +183,14 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
     scheme when \( \theta=1/2 \)</li>
 </ul>
 
-<h1>Implementation  <a name="___sec2"></a></h1>
+<h1 id="___sec2">Implementation <a name="___sec2"></a></h1>
 
 The numerical method is implemented in a Python function
 <a href="#Langtangen_2012">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>decay_mod</tt></a> module):
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
     <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)            <span style="color: #408080; font-style: italic"># avoid integer division</span>
@@ -216,25 +205,25 @@ The numerical method is implemented in a Python function
     <span style="color: #008000; font-weight: bold">return</span> u, t
 </pre></div>
 
-<h1>Numerical experiments  <a name="___sec3"></a></h1>
+<h1 id="___sec3">Numerical experiments <a name="___sec3"></a></h1>
 
 We define a set of numerical experiments where \( I \), \( a \), and \( T \) are
 fixed, while \( \Delta t \) and \( \theta \) are varied.
 In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 
-<h2>The Backward Euler method  <a name="___sec4"></a></h2>
+<h2 id="___sec4">The Backward Euler method <a name="___sec4"></a></h2>
 
 <center><p><img src="BE.png" align="bottom" width=800></p></center>
 
-<h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
+<h2 id="___sec5">The Crank-Nicolson method <a name="___sec5"></a></h2>
 
 <center><p><img src="CN.png" align="bottom" width=800></p></center>
 
-<h2>The Forward Euler method  <a name="___sec6"></a></h2>
+<h2 id="___sec6">The Forward Euler method <a name="___sec6"></a></h2>
 
 <center><p><img src="FE.png" align="bottom" width=800></p></center>
 
-<h2>Error vs \( \Delta t \)  <a name="___sec7"></a></h2>
+<h2 id="___sec7">Error vs \( \Delta t \) <a name="___sec7"></a></h2>
 
 How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
 is shown below.
@@ -254,7 +243,10 @@ non-physically.
 The numbers corresponding to the figure above are given in the table below.
 
 <p>
-<table border="1">
+
+<div class="row">
+  <div class="col-xs-5">
+    <table class="table table-striped table-hover table-condensed">
 <thead>
 <tr><td align="center"> \( \Delta t \) </td> <td align="center"> \( \theta=0 \) </td> <td align="center">\( \theta=0.5 \)</td> <td align="center"> \( \theta=1 \) </td> </tr>
 </thead>
@@ -264,7 +256,9 @@ The numbers corresponding to the figure above are given in the table below.
 <tr><td align="right">   0.50                </td> <td align="right">   0.2797              </td> <td align="right">   0.0315              </td> <td align="right">   0.1397              </td> </tr>
 <tr><td align="right">   0.10                </td> <td align="right">   0.0377              </td> <td align="right">   0.0012              </td> <td align="right">   0.0335              </td> </tr>
 </tbody>
-</table>
+    </table>
+  </div>
+</div> <!-- col-xs-5 -->
 <p>
 <div class="alert alert-block alert-warning alert-text-normal"><b>Summary.</b>
 
@@ -281,7 +275,8 @@ The numbers corresponding to the figure above are given in the table below.
 </div>
 
 
-<p>
+<h1 id="___sec8">Bibliography <a name="___sec8"></a></h1>
+
 <!-- begin bibliography -->
 
 <ol>
@@ -299,43 +294,14 @@ The numbers corresponding to the figure above are given in the table below.
 
 <!-- ------------------- end of main content --------------- -->
 
-
-<!--
-Preliminary examples/discussion on vagrant style syntax
-
-<div class='alert alert-block alert-notice'>
-  <h3>What about PHP? Python? Java?</h3>
-
-bla-bla.
-</div>
-
-<p>
-While the <div class="deep-blue">rest of the</div> getting started
--->
-
-<!-- Navigation buttons at the bottom:
-     Doconce will automatically fill in the right URL in these
-     buttons when doconce html_split is run. Otherwise they are empty.
-<ul class="pager">
-  <li class="previous">
-    <a href="">&larr; </a>
-  </li>
-  <li class="next">
-    <a href=""> &rarr;</a>
- </li>
-</ul>
--->
-
  </div>
 
  <div class="row Footer">
   <div class="span12">
-  H. P. Langtangen &copy; 2013
+  H. P. Langtangen &copy; 2014
   </div>
  </div>
 </div>
 </body>
 </html>
-
-
 

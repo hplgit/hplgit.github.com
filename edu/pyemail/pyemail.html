@@ -1,0 +1,374 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Sending emails from programs">
+
+
+
+
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [(' Sending a simple email ', 2, None, '___sec0'),
+              (' Sending a message with attachments ', 2, None, '___sec1'),
+              (' Automatic posting of a blog post ', 2, None, '___sec2')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Sending emails from programs</title>
+
+<center><h1>Sending emails from programs</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<p>
+<center><h4>Aug 4, 2014</h4></center> <!-- date -->
+
+<h2>Table of contents</h2>
+
+<a href="#___sec0"> Sending a simple email </a><br>
+<a href="#___sec1"> Sending a message with attachments </a><br>
+<a href="#___sec2"> Automatic posting of a blog post </a><br>
+</p>
+<p>
+Python has support for formatting and sending emails. This allows a
+script to send an email notification to ourself and others.  We can also
+use the email feature to automatically post a blog. Especially
+in cases where you have a script that steers extensive computations over
+hours, days, or weeks, it is convenient to get an email with a summary
+of the job and links to the results, or a blog where several people
+can be notified and also comment on the results.
+Examples will show how this is easily done.
+
+<h2>Sending a simple email  <a name="___sec0"></a></h2>
+
+Imagine we have some account <code>username@gmail.com</code> on Google with password
+<code>secret</code>.  The minimalistic code for sending an email from
+<code>user@gmail.com</code> to an address <code>someone@cybespace.net</code> via the Gmail
+server is then
+
+<p>
+<!-- begin verbatim block  pypro-->
+<pre><code># Compose email
+sender = 'user@gmail.com'
+recipients = ['someone@cybespace.net']
+msg = &quot;&quot;&quot;\
+From: %s
+To: %s
+Subject: Let Python send email
+
+This is a test.
+&quot;&quot;&quot; % (sender, ', '.join(recipients))
+
+# Credentials
+username = 'user@gmail.com'
+password = 'secret'
+
+# Send email
+import smtplib
+server = smtplib.SMTP('smtp.gmail.com:587')
+server.starttls()
+server.login(username, password)
+server.sendmail(sender, recipients, msg)
+server.quit()
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+<b>Remark.</b>
+Having your password in readable form in a readable text file
+is not a wise idea. A safe way would be to read the password interactively:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>import getpass
+password = getpass.getpass()  # do not echo the input
+</code></pre>
+<!-- end verbatim block -->
+Not as good, but still better than a directly readable password is to decode
+it using, e.g., the <code>base64</code> module. Since <code>base64.encodestring('secret')</code>
+is <code>'c2VjcmV0\n'</code>, we could write
+
+<p>
+<!-- begin verbatim block  pycode-->
+<pre><code>password = 'c2VjcmV0'
+...
+import base64
+server.login(username, base64.decodestring(password))
+</code></pre>
+<!-- end verbatim block -->
+Anyone who gets the program will quickly find the password, but if somebody
+just sees the file briefly, the password is somewhat protected.
+
+<h2>Sending a message with attachments  <a name="___sec1"></a></h2>
+
+The next examples extends the previous ones in various ways:
+
+<ul>
+ <li> We send a multi-part message with text and a PNG image as attachment.</li>
+ <li> We use the <code>email</code> package for formatting the text and the attachment.</li>
+ <li> The username and password for our email account is not hardcoded
+   in the script, but stored safely in some file on our local machine.</li>
+ <li> We test if some recipients of the email did not get it.</li>
+</ul>
+
+The email will now be a <code>MIMEMultipart</code> object consisting of a <code>MIMEText</code>
+object for the text and a <code>MIMEImage</code> object for the attached PNG file.
+The complete program should be easy to read and mostly self-explanatory.
+
+<p>
+<!-- begin verbatim block  pypro-->
+<pre><code>import os
+# smtplib is the tool for sending email
+import smtplib
+# email is the tool for formatting the message
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
+
+sender = 'hpl@simula.no'
+recipients  = [sender, 'langtangen@gmail.com']
+
+# Compose email
+msg = MIMEMultipart()
+msg['Subject']  = 'Simulation results'
+msg['To'] = ', '.join(recipients)
+msg['From'] = sender
+body_text = MIMEText(&quot;&quot;&quot;\
+Results from simulations:
+
+I=1, V=0, m=2, b=0.1 (linear), c=2, A=6, w=1.
+&quot;&quot;&quot;)
+msg.attach(body_text)
+
+# Read image file and attach the content
+img_file = open('demo_plot.png', 'rb')
+png = img_file.read()
+img_file.close()
+img = MIMEImage(png)
+img.add_header('Content-Disposition', 'attachment',
+               filename='plot.png')
+msg.attach(img)
+
+# Credentials
+username, password = open(
+    os.path.join(os.environ['HOME'], '1', '.emailinfo'),
+    'r').read().split()
+
+# Send email
+server = smtplib.SMTP('smtp.gmail.com:587')
+#server.set_debuglevel(1)
+server.starttls()
+server.login(username,password)
+failed_deliveries = server.sendmail(
+    sender, recipients, msg.as_string())
+if failed_deliveries:
+    print 'Could not reach these addresses:', failed_deliveries
+else:
+    print 'Email successfully sent'
+server.quit()
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+Most modern email applications are capable of understanding HTML-formatted
+messages, so let us use HTML for nicely formatting of the body of the text.
+We write a section heading followed by a table with parameters
+from the simulation. To create the table in HTML, it is convenient
+to store the parameters in an <em>ordered</em> dictionary: a fixed ordering
+is essential since we need to run through the keys and values separately
+in the same order when creating the table.
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>from collections import OrderedDict as dict
+# Use list of (key,value) to ensure correct order
+prms = dict([('I',1), ('V',0), ('m',2), ('b',0.1),
+             ('c',2), ('A',6), ('w',1)])
+html_table = '&lt;table border=1&gt;\n&lt;tr&gt;'
+for prm in prms:
+    html_table += '&lt;th&gt;%s&lt;/th&gt;' % prm
+html_table += '&lt;/tr&gt;\n&lt;/tr&gt;'
+for prm in prms:
+    html_table += '&lt;td&gt;%s&lt;/td&gt;' % prms[prm]
+html_table += '&lt;/tr&gt;\n&lt;/table&gt;'
+</code></pre>
+<!-- end verbatim block -->
+Note the <code>'html'</code> argument to the <code>MIMEText</code> object: it is needed to
+make sure the text is rendered as HTML in the email viewer.
+
+<p>
+The full body of the text in HTML can now be generated by
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>body_html = MIMEText(&quot;&quot;&quot;\ 
+&lt;html&gt;
+&lt;body&gt;
+&lt;h2&gt;Vibrating system&lt;/h2&gt;
+%s
+&lt;/body&gt;
+&lt;/html&gt;
+&quot;&quot;&quot; % html_table, 'html')
+msg.attach(body_html)
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+It would be attractive to have mathematics nicely rendered in the
+email, but this author is not aware of email software that can
+render LaTeX mathematics via MathJax, like we can easily do in
+HTML and as we take advantage of below.
+
+<h2>Automatic posting of a blog post  <a name="___sec2"></a></h2>
+
+The possibility for a program to send email also opens up a possibility
+to automatically construct the content of a blog and post it.
+The reason is that several blog services allows posting through email.
+The idea will be illustrated here using Google's blog service. A very
+convenient feature of Google's service is that it allows the HTML code
+to run MathJax such that the blog can display LaTeX mathematics.
+
+<p>
+You need a Google account to be able to follow the recipes below.
+
+<ol>
+<li> Go to <code>blogger.com</code> and the overview of your Google blogs.</li>
+<li> Click <em>Make Blog</em> Make a new blog, say with address <code>someblog.blogspot.com</code>.</li>
+<li> Go to Settings for this new blog.</li>
+<li> Choose <em>Mobile and email</em> in the list on the left.</li>
+<li> Under <em>Email</em> and <em>Posting using email</em>, fill in a
+   secret word in the text area, e.g., <code>f123x0</code>.
+   This secret word becomes part of a secret email address
+   (here <code>username.f123x0@blogger.com</code>)
+   where you must send the blog text to publish it.
+   Mark <em>Publish email immediately</em>.</li>
+</ol>
+
+We are now ready to edit the previous program to publish the
+email content as a blog. All we have to do is replace the
+to-address:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>recipients = ['username.f123x0@blogger.com']
+</code></pre>
+<!-- end verbatim block -->
+where <code>username</code> must be replaced by the name that was displayed when
+you provided the secret word in the secret email address for posting
+blogs. That is all - the subject of the email becomes the heading of
+the blog post, followed by the HTML text with a subheading and a table.
+The image attached to the email appears in the beginning of the blog post.
+
+<p>
+Since Google's blogger service allows MathJax in the HTML code, we can
+extend the blog content with some mathematics, e.g., the equations
+that was solved, together with the values of the parameters typeset
+as mathematical formulas (<code>$I=1.5$</code>, <code>$V=0$</code>, and so on).
+The parameters are available in an ordered dictionary
+<code>prms</code> as above. The appropriate HTML code now becomes
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>html_code = &quot;&quot;&quot;\ 
+&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;
+ &lt;h2&gt;Vibrating system&lt;/h2&gt;
+
+&lt;script type=&quot;text/x-mathjax-config&quot;&gt;
+MathJax.Hub.Config({  TeX: {
+     equationNumbers: {  autoNumber: &quot;AMS&quot;  },
+     extensions: [&quot;AMSmath.js&quot;, &quot;AMSsymbols.js&quot;, &quot;autobold.js&quot;]
+  }
+});
+&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;
+ src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;&lt;/script&gt;
+
+$$
+mu''(t) + bu'(t) + cs(u) = F(t)
+$$
+
+&quot;&quot;&quot;
+prm_data = ['\( %s = %s \)' % (prm, prms[prm]) for prm in prms]
+html_code += ', '.join(prm_data)
+html_code += &quot;&quot;&quot;
+&lt;/body&gt;
+&lt;/html&gt;
+&quot;&quot;&quot;
+body_html = MIMEText(html_code, 'html')
+msg.attach(body_html)
+</code></pre>
+<!-- end verbatim block -->
+The result is shown in Figure <a href="#email:blog:fig1">1</a>. Subscribers to this
+blog may get various sorts of notifications, on their phones for instance,
+and will then be able to start commenting on the results.
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  Screen shot of an automatically posted blog. <a name="email:blog:fig1"></a>. </p></center>
+<p><img src="fig-email/blog1.png" align="bottom" width=500></p>
+</center>
+
+<p>
+<!-- A more extensive numerical experiment with the vib code that results -->
+<!-- in a big report that goes somewher on the net and then a summary -->
+<!-- on the blog? -->
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

@@ -4,7 +4,7 @@
 <html>
 <head>
   <title></title>
-  <meta http-equiv="content-type" content="text/html; charset=latin1">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <style type="text/css">
 td.linenos { background-color: #f0f0f0; padding-right: 10px; }
 span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
@@ -137,16 +137,6 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 <span class="k">\usemintedstyle</span><span class="nb">{</span>default<span class="nb">}</span>
 <span class="c">% #endif</span>
 
-<span class="c">% #ifdef XELATEX</span>
-<span class="c">% xelatex settings</span>
-<span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="nb">{</span>xunicode<span class="nb">}</span>
-<span class="k">\defaultfontfeatures</span><span class="nb">{</span>Mapping=tex-text<span class="nb">}</span> <span class="c">% To support LaTeX quoting style</span>
-<span class="k">\defaultfontfeatures</span><span class="nb">{</span>Ligatures=TeX<span class="nb">}</span>
-<span class="k">\setromanfont</span><span class="nb">{</span>Kinnari<span class="nb">}</span>
-<span class="c">% Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),</span>
-<span class="c">% Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum</span>
-<span class="c">% #else</span>
 <span class="k">\usepackage</span><span class="na">[T1]</span><span class="nb">{</span>fontenc<span class="nb">}</span>
 <span class="c">%\usepackage[latin1]{inputenc}</span>
 <span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
@@ -155,7 +145,6 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 <span class="k">\usepackage</span><span class="na">[sc]</span><span class="nb">{</span>mathpazo<span class="nb">}</span>    <span class="c">% Palatino fonts</span>
 <span class="k">\linespread</span><span class="nb">{</span>1.05<span class="nb">}</span>            <span class="c">% Palatino needs extra line spread to look nice</span>
 
-<span class="c">% #endif</span>
 <span class="k">\usepackage</span><span class="nb">{</span>lmodern<span class="nb">}</span>         <span class="c">% Latin Modern fonts derived from Computer Modern</span>
 
 <span class="c">% Hyperlinks in PDF:</span>
@@ -386,7 +375,7 @@ Experiments with Schemes for Exponential Decay
 <span class="c">% ----------------- end author(s) -------------------------</span>
 
 <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
-Apr 30, 2014
+Aug 6, 2014
 <span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
 
 <span class="k">\vspace</span><span class="nb">{</span>1cm<span class="nb">}</span>
@@ -601,7 +590,6 @@ The numbers corresponding to the figure above are given in the table below.
 
 <span class="k">\noindent</span>
 <span class="k">\end</span><span class="nb">{</span>summary<span class="nb">_</span>mdfboxadmon<span class="nb">}</span>
-
 
 
 
