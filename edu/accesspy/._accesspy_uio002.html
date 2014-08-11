@@ -1,0 +1,225 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="How to access Python for doing scientific computing">
+<meta name="keywords" content="Idle,Emacs,Vim,Gedit,TextWrangler,Notepad++">
+
+
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [(' Required software ',
+               1,
+               'sec:accesspy:softwarelist',
+               'sec:accesspy:softwarelist'),
+              (' Recommendations for INF1100/MAT-INF1100L students ',
+               1,
+               'sec:accesspy:INF1100:rec',
+               'sec:accesspy:INF1100:rec'),
+              (' Installing software on your laptop: Mac OS X and Windows ',
+               1,
+               'sec:accesspy:MacWin',
+               'sec:accesspy:MacWin'),
+              (' Anaconda and Spyder ', 1, None, '___sec3'),
+              (' Spyder on Mac ', 2, None, '___sec4'),
+              (' Installation of additional packages ', 2, None, '___sec5'),
+              (' Installing SciTools on Mac ', 2, None, '___sec6'),
+              (' Installing SciTools on Windows ', 2, None, '___sec7'),
+              (' VMWare Fusion virtual machine ',
+               1,
+               'sec:accesspy:vmware',
+               'sec:accesspy:vmware'),
+              (' Installing Ubuntu ', 2, None, '___sec9'),
+              (' File sharing ', 2, None, '___sec10'),
+              (' VirtualBox virtual machine ',
+               1,
+               'sec:accesspy:virtualbox',
+               'sec:accesspy:virtualbox'),
+              (' Dual boot on Windows ', 1, None, '___sec12'),
+              (' Vagrant virtual machine ',
+               1,
+               'sec:accesspy:vagrant',
+               'sec:accesspy:vagrant'),
+              (' How to write and run a Python program ',
+               1,
+               'sec:accesspy:writerun',
+               'sec:accesspy:writerun'),
+              (' The need for a text editor ', 2, None, '___sec15'),
+              (' Spyder ', 2, None, '___sec16'),
+              (' Text editors ', 2, None, '___sec17'),
+              (' Terminal windows ', 2, None, '___sec18'),
+              (' Using a plain text editor and a terminal window ',
+               2,
+               None,
+               '___sec19'),
+              (' The SageMathCloud and Wakari web services ',
+               1,
+               'sec:accesspy:sagemath:wakari',
+               'sec:accesspy:sagemath:wakari'),
+              (' Basic intro to SageMathCloud ', 2, None, '___sec21'),
+              (' Basic intro to Wakari ', 2, None, '___sec22'),
+              (' Installing your own Python packages ', 2, None, '___sec23'),
+              (' Writing IPython notebooks ',
+               1,
+               'sec:accesspy:ipynb',
+               'sec:accesspy:ipynb'),
+              (' A simple program in the notebook ', 2, None, '___sec25'),
+              (' Mixing text, mathematics, code, and graphics ',
+               2,
+               None,
+               '___sec26'),
+              (' References ', 0, None, '___sec27')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="accesspy_uio.html">How to access Python for doing scientific computing</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._accesspy_uio001.html#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
+     <!-- navigation toc: --> <li><a href="#sec:accesspy:INF1100:rec" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Recommendations for INF1100/MAT-INF1100L students</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio003.html#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio004.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio005.html#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#sec:accesspy:virtualbox" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VirtualBox virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio008.html#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio009.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#___sec27" style="font-size: 80%;"><b>References</b></a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0002"></a>
+<!-- !split -->
+
+<h1 id="sec:accesspy:INF1100:rec">Recommendations for INF1100/MAT-INF1100L students<a name="sec:accesspy:INF1100:rec"></a></h1>
+
+What is the recommended way to access Python if you are a new student
+at the University of Oslo and attend the INF1100 or MAT-INF1100L
+course? The various alternatives are listed below and ranked
+according to what is our recommendation.
+
+<ol>
+<li> Install Ubuntu in a virtual machine, VMWare Fusion/Player or VirtualBox,
+   on your computer. This is the most flexible solution for the future,
+   but requires some work.</li>
+<li> Use a Vagrant box with Ubuntu in a terminal window on your Windows or
+   Mac machine. This also requires some work and is quite similar to
+   running a full Ubuntu virtual machine, but some people get confused
+   by the mix of Ubuntu, Vagrant, and the host operating system
+   (Mac/Windows).</li>
+<li> Use computers at campus, either at terminal rooms or through <a href="http://termvakt.uio.no/Fjerninnlogging" target="_blank">remote
+   login</a> from you laptop.
+   This is the simplest procedure, but remote login requires a fast
+   Internet connection.</li>
+<li> Install Anaconda on your Windows or Mac laptop. This is easy and may sound as
+   a very attractive solution, but has the disadvantage that you learn to
+   work in an environment that is quite different from the Linux
+   computing platform that is used at the University of Oslo. Many later courses
+   have support for Linux only, and it may require significant Mac/Windows
+   competence to install the software correctly along with Anaconda.</li>
+<li> Use the Wakari or SageMathCloud web services. This is a very easy, but
+   you will end up writing IPython notebooks and not get used to and
+   understand how Python programs are stored in files and how programs are
+   run. These web services may not be sufficient in future courses.</li>
+</ol>
+
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pager">
+  <li class="previous">
+    <a href="._accesspy_uio001.html">&larr; Prev</a>
+  </li>
+  <li class="next">
+    <a href="._accesspy_uio003.html">Next &rarr;</a>
+  </li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

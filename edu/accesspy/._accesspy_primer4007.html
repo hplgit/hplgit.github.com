@@ -39,11 +39,8 @@ Automatically generated HTML file from Doconce source
                'sec:accesspy:vmware',
                'sec:accesspy:vmware'),
               (' Installing Ubuntu ', 2, None, '___sec8'),
-              (' File sharing ', 2, None, '___sec9'),
-              (' VirtualBox virtual machine ',
-               1,
-               'sec:accesspy:virtualbox',
-               'sec:accesspy:virtualbox'),
+              (' Installing software on Ubuntu ', 2, None, '___sec9'),
+              (' File sharing ', 2, None, '___sec10'),
               (' Dual boot on Windows ', 1, None, '___sec11'),
               (' Vagrant virtual machine ',
                1,
@@ -95,9 +92,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_keep.tex -->
 $$
@@ -135,17 +129,16 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "Required software" --> <li><a href="._accesspy_primer4001.html#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
-     <!-- navigation toc: "Installing software on your laptop: Mac OS X and Windows" --> <li><a href="._accesspy_primer4002.html#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
-     <!-- navigation toc: "Anaconda and Spyder" --> <li><a href="._accesspy_primer4003.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
-     <!-- navigation toc: "VMWare Fusion virtual machine" --> <li><a href="._accesspy_primer4004.html#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
-     <!-- navigation toc: "VirtualBox virtual machine" --> <li><a href="._accesspy_primer4005.html#sec:accesspy:virtualbox" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VirtualBox virtual machine</a></li>
-     <!-- navigation toc: "Dual boot on Windows" --> <li><a href="._accesspy_primer4005.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
-     <!-- navigation toc: "Vagrant virtual machine" --> <li><a href="._accesspy_primer4005.html#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
-     <!-- navigation toc: "How to write and run a Python program" --> <li><a href="._accesspy_primer4006.html#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
-     <!-- navigation toc: "The SageMathCloud and Wakari web services" --> <li><a href="._accesspy_primer4007.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
-     <!-- navigation toc: "Writing IPython notebooks" --> <li><a href="._accesspy_primer4008.html#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
-     <!-- navigation toc: "References" --> <li><a href="._accesspy_primer4008.html#___sec26" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4001.html#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4002.html#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4003.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4004.html#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4004.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4005.html#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4006.html#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
+     <!-- navigation toc: --> <li><a href="#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4008.html#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4008.html#___sec26" style="font-size: 80%;"><b>References</b></a></li>
 
         </ul>
       </li>
@@ -161,19 +154,19 @@ $$
 <a name="part0007"></a>
 <!-- !split -->
 
-<h1>The SageMathCloud and Wakari web services <a name="sec:accesspy:sagemath:wakari"></a></h1>
+<h1 id="sec:accesspy:sagemath:wakari">The SageMathCloud and Wakari web services<a name="sec:accesspy:sagemath:wakari"></a></h1>
 
-An excellent platform for doing computational science is the
-<a href="http://ipython.org/notebook.html" target="_blank">IPython notebook</a>.
-The notebook is accessed through a web browser and provides
-support for mathematical text, Python code, and graphics - all
-you need to document scientific work.
+You can avoid installing Python on your machine completely by using
+a web service that allows you to write and run Python programs.
+Computational science projects will normally require some kind of
+visualization and associated graphics packages, which is not possible
+unless the service offers IPython notebooks.
 There are two excellent web services with notebooks: <em>SageMathCloud</em> at
 <a href="https://cloud.sagemath.com/" target="_blank"><tt>https://cloud.sagemath.com/</tt></a> and <em>Wakari</em> at <a href="https://www.wakari.io/wakari" target="_blank"><tt>https://www.wakari.io/wakari</tt></a>. At both sites you must create an
 account before you can write notebooks in the web browser and download
 them to your own computer.
 
-<h2>Basic intro to SageMathCloud  <a name="___sec20"></a></h2>
+<h2 id="___sec20">Basic intro to SageMathCloud <a name="___sec20"></a></h2>
 
 Sign in, click on <em>New Project</em>, give a title to your project and
 decide whether it should be private or public, click on the project
@@ -194,7 +187,7 @@ relevant line with the file, and a download icon appears to the very
 right. The IPython notebook option works much in the same way, see
 the section <a href="._accesspy_primer4008.html#sec:accesspy:ipynb">Writing IPython notebooks</a>.
 
-<h2>Basic intro to Wakari  <a name="___sec21"></a></h2>
+<h2 id="___sec21">Basic intro to Wakari <a name="___sec21"></a></h2>
 
 After having logged in at the <code>wakari.io</code> site, you automatically
 enter an IPython notebook with a short introduction to how the
@@ -215,7 +208,7 @@ plain Python programs or commands with graphics.  Just choose the type
 of terminal and click on <em>+Tab</em> to make a new terminal window of the
 chosen type.
 
-<h2>Installing your own Python packages  <a name="___sec22"></a></h2>
+<h2 id="___sec22">Installing your own Python packages <a name="___sec22"></a></h2>
 
 Both SageMathCloud and Wakari let you install your own Python
 packages.
@@ -224,30 +217,30 @@ available at <a href="https://pypi.python.org/pypi" target="_blank">PyPi</a>, ru
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install --user packagename
 </pre></div>
 <p>
 To install the SciTools package,
+which is useful when working with this document,
 create a Terminal (with a Unix shell) and run the command
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install --user -e \ 
     hg+https://code.google.com/p/scitools#egg=scitools
 </pre></div>
 <p>
 <p>
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._accesspy_primer4006.html">&larr; Prev</a>
   </li>
-
   <li class="next">
     <a href="._accesspy_primer4008.html">Next &rarr;</a>
   </li>
-
 </ul>
 <!-- ------------------- end of main content --------------- -->
 
