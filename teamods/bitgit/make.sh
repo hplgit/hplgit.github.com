@@ -7,7 +7,7 @@ repo=$HOME/vc/teamods/doc/src/$name
 rm -rf html *.html .*.html *.pdf
 cp -r $repo/sphinx-rootdir/_build/html .
 cp -r $repo/sphinx-rootdir-extended/_build/html html-githg
-cp -r $repo/sphinx-rootdir-github/_build/html html-github
+cp -r $repo/sphinx-github/_build/html html-github
 cp $repo/${wrap}*.pdf .
 cp $repo/main_github*.pdf .
 cp $repo/${wrap}*.html $repo/._${wrap}*.html .
