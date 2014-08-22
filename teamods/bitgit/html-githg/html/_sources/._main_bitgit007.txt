@@ -271,7 +271,7 @@ as resolved:
         Terminal> hg resolve -m merge myfile
         Terminal> hg commit -m merge myfile
 
-You can read more about merging files in the `hgbook <http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html>`_.
+You can read more about merging files in the `hgbook <http://hgbook.red-bean.com/read/a-tour-of-mercurial-merging-work.html>`__.
 We shall now illustrate the merge problems through an example.
 Suppose we have a global repository ``tmp_repo``, and two (cloned)
 directories ``tmp1`` and ``tmp2``, corresponding to two users, each with
@@ -378,7 +378,7 @@ merge.
         diff myfile ../tmp_repo/myfile
         echo 'Now you must do hg merge manually'
 
-Try to run this `file <http://hplgit.github.com/teamods/bitgit/_static-bitgit/hg_merge.sh>`_ named
+Try to run this `file <http://hplgit.github.com/teamods/bitgit/_static-bitgit/hg_merge.sh>`__ named
 ``hg_merge.sh`` by ``sh -x hg_merge.sh``.
 To resolve the resulting merge conflict you need to go to the ``tmp2``
 directory, run ``hg merge --tool meld`` and use the ``meld`` tool to
@@ -389,20 +389,20 @@ can now do ``hg push`` successfully to update the global repository.
 Stashing with Mercurial
 -----------------------
 
-A recent `extension module <http://mercurial.selenic.com/wiki/ShelveExtension>`_ for Mercurial allows stashing for that version control system as well:
+A recent `extension module <http://mercurial.selenic.com/wiki/ShelveExtension>`__ for Mercurial allows stashing for that version control system as well:
 ``hg shelve --all`` is similar for ``git stash``, and ``hg unshelve``
 is similar to ``git stash apply``.
 
 More documentation on Mercurial
 -------------------------------
 
- * `Mercurial Quick Start <http://mercurial.selenic.com/wiki/QuickStart>`_ (for the impatient)
+ * `Mercurial Quick Start <http://mercurial.selenic.com/wiki/QuickStart>`__ (for the impatient)
 
- * `A Tour of Mercurial - The Basics <http://hgbook.red-bean.com/read/a-tour-of-mercurial-the-basics.html>`_
+ * `A Tour of Mercurial - The Basics <http://hgbook.red-bean.com/read/a-tour-of-mercurial-the-basics.html>`__
 
- * `Mercurial FAQ <http://mercurial.selenic.com/wiki/FAQ>`_
+ * `Mercurial FAQ <http://mercurial.selenic.com/wiki/FAQ>`__
 
- * `Mercurial Tutorial <http://mercurial.selenic.com/wiki/Tutorial>`_
+ * `Mercurial Tutorial <http://mercurial.selenic.com/wiki/Tutorial>`__
 
- * `Mercurial: The Definitive Guide <http://hgbook.red-bean.com/>`_ (online or printed book)
+ * `Mercurial: The Definitive Guide <http://hgbook.red-bean.com/>`__ (online or printed book)
 

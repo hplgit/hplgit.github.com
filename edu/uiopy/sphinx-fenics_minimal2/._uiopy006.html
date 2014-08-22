@@ -1,0 +1,210 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>We use Ubuntu to minimize installation problems</title>
+    
+    <link rel="stylesheet" href="_static/fenics_minimal.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
+    <link rel="top" title="Experience with Using Python for Teaching Scientific Computing" href="index.html" />
+    <link rel="prev" title="We let the students play with advanced problems" href="._uiopy005.html" />
+
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+<link rel="stylesheet" href="_static/featured.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="_static/slides.min.jquery.js"></script>
+  <script>
+	$(function(){
+		$('#products').slides({
+			preload: true,
+			preloadImage: 'img/loading.gif',
+			effect: 'slide, fade',
+			crossfade: true,
+			slideSpeed: 350,
+			fadeSpeed: 500,
+			generateNextPrev: false,
+			generatePagination: false,
+	                play: 5000,
+                        hoverPause: false,
+                        animationStart: function(current){
+				$('.caption').animate({
+					bottom:-35
+				},100);
+				if (window.console && console.log) {
+					// example return of current slide number
+					console.log('animationStart on slide: ', current);
+				};
+			},
+			animationComplete: function(current){
+				$('.caption').animate({
+					bottom:0
+				},200);
+				if (window.console && console.log) {
+					// example return of current slide number
+					console.log('animationComplete on slide: ', current);
+				};
+			},
+			slidesLoaded: function() {
+				$('.caption').animate({
+					bottom:0
+				},200);
+			}
+		});
+	});
+  </script>
+
+
+<link rel="shortcut icon" href="_static/fenics.ico" />
+
+
+  
+   <style type=text/css>
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+
+  <body>
+<div class="wrapper">
+  <a href="http://fenicsproject.org/"><img src="_static/fenics_icon.png" width="100" style="padding-left: 30px; padding-top: 10px;" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="we-use-ubuntu-to-minimize-installation-problems">
+<h1>We use Ubuntu to minimize installation problems<a class="headerlink" href="#we-use-ubuntu-to-minimize-installation-problems" title="Permalink to this headline">¶</a></h1>
+<p>Many fear to introduce programming and simulation in courses because
+there are so many technical details. For example, how shall students
+install Python and 30 software packages on their personal
+laptops? This question quickly scares teachers.
+We have found a solution that has proven to be successful over the last
+four years: <em>force all students to use Ubuntu</em>, and provide support for
+Ubuntu only!</p>
+<p>Mac users typically run Ubuntu in a virtual machine (<a class="reference external" href="http://www.virtualbox.org/">VirtualBox</a>, or preferably, <a class="reference external" href="http://www.vmware.com/products/player">VMWare Player</a> or <a class="reference external" href="http://www.vmware.com/products/fusion/overview.html/">VMWare Fusion</a>), while Windows
+users can run a virtual machine or have a dual boot.  The <a class="reference external" href="http://wubi-installer.org">Wubi</a> software makes installing the dual boot
+solution very easy.  On Ubuntu we have one package (<tt class="docutils literal"><span class="pre">python-scitools</span></tt>)
+that installs everything the students need in one command. Later courses can
+just provide a one-line command with their needs for additional packages.</p>
+<p>There are several reasons why we dare to force the use of only one
+operating system:</p>
+<ol class="arabic simple">
+<li>Installation of programming tools and mathematical software on Windows and Mac OS X requires comprehensive competence that very few students have and want to gain.</li>
+<li>On Debian Linux systems, including Ubuntu, installation of complex mathematical software is done by a one-line command.</li>
+<li>Debian Linux has the largest collection of mathematical software today.</li>
+<li>When the students need to compile and link their own software, this seems to be easier on Linux systems than on Mac OS X and Windows. Although Mac OS X is basically Unix, there are many technical peculiarities that quickly calls for competence beyond what students and the average teacher have.</li>
+<li>Ubuntu&#8217;s graphical interface is very similar to Windows or Mac OS X so students pick up Ubuntu without any noise.</li>
+<li>Students struggle much more with the logic of programming than with
+Emacs and Unix commands.</li>
+</ol>
+<p>I should add that <a class="reference external" href="http://www.floss4science.com/fedora-scientific-amit-saha/">Fedora Scientific</a> may provide a viable alternative to Ubuntu, especially on sites where Fedora is already the supported Linux system. Fedora Scientific
+now offers a lot of very useful <a class="reference external" href="http://spins.fedoraproject.org/scientific-kde/">mathematics software</a></p>
+<p>In future cloud supercomputing I imagine one can just upload the Linux
+image (running in a virtual machine) to the cloud service and avoid
+tedious installation processes. By archiving the image along with
+scientific results, one can at any time rerun simulations - the
+complete operating system, all the needed software, and all data
+reside in the image. This is key to reproducible science.</p>
+<p>So far, I have not heard one single negative comment that we support
+only one operating system.  When we tried to support Unix, Linux,
+Windows, and Mac, there were a lot of complaints from students that
+they did not have access to the right software and that technical
+problems with computers stole too much attention. These complaints
+have simply disappeared with the standardization on Ubuntu. So we have
+learned that giving people more choices does not necessarily make them
+happier.</p>
+<p><strong>A final comment.</strong>
+The use of Ubuntu is mainly motivated by the total need of mathematical
+packages and programming tools during a student&#8217;s
+entire stay at the university. If the need is basically an environment for doing
+Python programming, the <a class="reference external" href="http://www.enthought.com/products/epd.php">Enthought Python Distribution</a> or the <a class="reference external" href="http://code.google.com/p/pythonxy/">Python(x,y)</a> package provide user-friendly environments on any standard Windows computer.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/python6.jpeg"><img alt="_images/python6.jpeg" src="_images/python6.jpeg" style="width: 100px;" /></a>
+</div>
+</div>
+<div class="section" id="resources">
+<h1>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li>Published formats of this essay: <a class="reference external" href="http://hplgit.github.com/teamods/edu/uiopy/uiopy.pdf">PDF</a>, <a class="reference external" href="http://hplgit.github.com/teamods/edu/uiopy/uiopy.html">HTML</a>, <a class="reference external" href="http://hplgit.github.com/teamods/edu/uiopy/sphinx-fenics_minimal2/index.html">Sphinx</a></li>
+<li>The book <a class="reference external" href="http://goo.gl/q8tM7D">Python Scripting for Computational Science</a></li>
+<li>The book <a class="reference external" href="http://goo.gl/SWEQlz">A Primer on Scientific Computing with Python</a></li>
+<li><a class="reference external" href="http://www.uio.no/studier/emner/matnat/ifi/INF1100/index-eng.xml">Student information</a> on our introductory programming course where Python is used</li>
+<li>The <a class="reference external" href="http://www.mn.uio.no/english/about/collaboration/cse/">Computing in Science Education</a> reform of science courses at the University of Oslo</li>
+<li><a class="reference external" href="http://hplgit.github.com/edu/accesspy/accesspy.html">How to access Python on your computer</a></li>
+</ul>
+</div></blockquote>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="._uiopy005.html" title="We let the students play with advanced problems"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Experience with Using Python for Teaching Scientific Computing</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, H. P. Langtangen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.
+    </div>
+  </body>
+</html>

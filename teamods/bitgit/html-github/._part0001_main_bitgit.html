@@ -1,0 +1,263 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Bitbucket &mdash; Quick Intro to Version Control Systems and Project Hosting Services</title>
+    
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Quick Intro to Version Control Systems and Project Hosting Services" href="index.html" />
+    <link rel="next" title="Googlecode" href="._part0002_main_bitgit.html" />
+    <link rel="prev" title="Quick Intro to Version Control Systems and Project Hosting Services" href="._part0000_main_bitgit.html" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="._part0002_main_bitgit.html" title="Googlecode"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="._part0000_main_bitgit.html" title="Quick Intro to Version Control Systems and Project Hosting Services"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Quick Intro to Version Control Systems and Project Hosting Services</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="bitbucket">
+<span id="bitgit-bitbucket"></span><h1>Bitbucket<a class="headerlink" href="#bitbucket" title="Permalink to this headline">¶</a></h1>
+<p id="index-0">To start using Bitbucket, go to <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt> and create an account.
+The communication channel with Bitbucket repositories is either
+through SSH or HTTPS.  To use SSH, you must upload your SSH key,
+typically the contents of the file <tt class="docutils literal"><span class="pre">id_rsa.pub</span></tt> or <tt class="docutils literal"><span class="pre">id_dsa.pub</span></tt> in the
+<tt class="docutils literal"><span class="pre">.ssh</span></tt> subdirectory of your home directory. Go to the page for your
+account, choose <em>SSH keys</em>, and upload one of these files.
+The essence of the SSH keys is that they allow you to communicate with
+Bitbucket without using a password, which is very convenient.</p>
+<p>There are links to extensive help pages if you do not have such keys
+or if you are unfamiliar with SSH. Follow these steps on Mac or Linux
+machines to generate keys: 1) check that you have <tt class="docutils literal"><span class="pre">ssh</span></tt> installed; 2)
+create a <tt class="docutils literal"><span class="pre">.ssh</span></tt> directory in your home directory; and 3) run
+<tt class="docutils literal"><span class="pre">ssh-keygen</span></tt> in the <tt class="docutils literal"><span class="pre">.ssh</span></tt> directory (you are prompted for a
+passphrase - just write something). On Windows one applies the PuTTY
+and the TortoiseHG programs to generate and register keys, see the
+help pages on Bitbucket. Once the keys are generated, you can continue
+using them on any computer.</p>
+<div class="section" id="creating-a-new-project-1">
+<h2>Creating a new project  (1)<a class="headerlink" href="#creating-a-new-project-1" title="Permalink to this headline">¶</a></h2>
+<p>Click at <em>Repositories</em> and at <em>Create repository</em>.
+You can now</p>
+<blockquote>
+<div><ul class="simple">
+<li>fill in the name of the project, here <tt class="docutils literal"><span class="pre">my-project</span></tt>,</li>
+<li>decide whether the project is private or public (the number of
+private repos is unlimited for yourself, but you have to pay to
+invite more than five users in total to share your private repos
+unless you are <a class="reference external" href="http://blog.bitbucket.org/2012/08/20/bitbucket-academic/">certified to be a student or work at an academic
+institution</a>),</li>
+<li>choose between the Git or Mercurial version control system
+(here we assume you run Git),</li>
+<li>click whether you want issue tracking for reporting errors,
+suggesting improvements, etc.,</li>
+<li>click whether you want a wiki page associated with the project,</li>
+<li>fill in a brief description,</li>
+<li>click on <em>Create repository</em>.</li>
+</ul>
+</div></blockquote>
+<p>While doing this you may also want to have the <a class="reference external" href="http://confluence.atlassian.com/display/BITBUCKET/Bitbucket+101">Bitbucket 101 guide</a>
+available.</p>
+<p>It is now time to <em>clone</em> (copy) the project to your laptop.
+Go to the project page
+(you are automatically
+brought to the project page when creating a new project).
+Find the <em>Clone</em> button, click on it, choose
+<em>SSH</em>, copy the <em>clone</em> line and run this command in a terminal:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git clone git@bitbucket.org:user/my-project.git</span>
+</pre></div>
+</div>
+<p>You must replace <tt class="docutils literal"><span class="pre">user</span></tt> with your own username at Bitbucket and
+<tt class="docutils literal"><span class="pre">my-project</span></tt> by the real project name.</p>
+<p>The first time you do the clone command you may be prompted by cryptic
+Unix output ending with &#8220;Are you sure you want to continue connecting
+(yes/no)?&#8221;.  Just answer yes.</p>
+<p>The next step is to collect files and directories that should make up
+the project and put them in the <tt class="docutils literal"><span class="pre">my-project</span></tt> directory.
+Standing in the <tt class="docutils literal"><span class="pre">my-project</span></tt> directory, the following Git command is used
+to add all files in the current
+directory <em>tree</em>, except those having file types listed in <tt class="docutils literal"><span class="pre">.gitignore</span></tt>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git add .</span>
+</pre></div>
+</div>
+<p>Thereafter, the changes to the repository (here adding of files) must
+<em>committed</em> (registered):</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git commit -am &#39;Initial import of files.&#39;</span>
+</pre></div>
+</div>
+<p>The text following the <tt class="docutils literal"><span class="pre">-am</span></tt> option is a required description of the
+changes that have taken place. This description does not matter much
+for this initial import of files into the repository, but is of
+importance for future commit commands so that you can easily track the
+history of your project files and inform others (and yourself) what you have
+done with the files.</p>
+<p>The final step is to push the local changes to the master repo at
+Bitbucket:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git push -u origin master</span>
+</pre></div>
+</div>
+<p>You must be connected to the Internet for the <tt class="docutils literal"><span class="pre">push</span></tt> command to work since
+it sends file information to the <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt> site.</p>
+<p>Further work with the files must always follow the pull, edit, commit, and
+push steps explained in
+the section <a class="reference internal" href="._part0004_main_bitgit.html#bitgit-git"><em>Using Git</em></a> for Git.</p>
+<div class="section" id="collaborating-1">
+<h3>Collaborating  (1)<a class="headerlink" href="#collaborating-1" title="Permalink to this headline">¶</a></h3>
+<p>There is a button <em>Send invitation</em> on the project home page where you
+can invite other Bitbucket users to have push (write) access to your
+repo. Many prefer to be notified in email when changes are pushed to
+the repo: click the settings wheel to the right, choose <em>Services</em>,
+then <em>Email</em>, and fill in the email addresses that are to receive
+notifications on updates. Under <em>Access management</em> you can fill in
+the Bitbucket names of users who are have pull (read)
+or push (write) access to the repo.</p>
+</div>
+</div>
+<div class="section" id="user-web-pages-1">
+<span id="bitgit-bitbucket-web"></span><h2>User web pages  (1)<a class="headerlink" href="#user-web-pages-1" title="Permalink to this headline">¶</a></h2>
+<p>Bitbucket can host web pages associated with a Bitbucket account,
+but does not yet offer web pages as part of a project. Say
+your account/username is <tt class="docutils literal"><span class="pre">user</span></tt>.  Make a new repository on
+Bitbucket called <tt class="docutils literal"><span class="pre">user.bitbucket.org</span></tt>.  Clone it, fill it with a
+file, and push back, e.g.,</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Terminal&gt; git clone git@bitbucket.org:user/user.bitbucket.org.git</span>
+<span class="go">Terminal&gt; cd user.bitbucket.org</span>
+<span class="go">Terminal&gt; echo &quot;Welcome to my web pages!&quot; &gt; test.html</span>
+<span class="go">Terminal&gt; git add test.html</span>
+<span class="go">Terminal&gt; git commit -am &#39;First web page&#39;</span>
+<span class="go">Terminal&gt; git push origin master</span>
+</pre></div>
+</div>
+<p>You can now load the URL <tt class="docutils literal"><span class="pre">http://user.bitbucket.org/test.html</span></tt> into
+a web browser and view the page. By creating various subdirectories
+you can host web pages for a series of projects in this repo.</p>
+</div>
+<div class="section" id="linking-to-bitbucket-files">
+<span id="bitgit-bitbucket-urls"></span><h2>Linking to Bitbucket files<a class="headerlink" href="#linking-to-bitbucket-files" title="Permalink to this headline">¶</a></h2>
+<p>Unfortunately, the default URL shown in your browser to a file in
+a Bitbucket repo contains information about the version of the file.
+For example, a file <tt class="docutils literal"><span class="pre">v1.c</span></tt> under Git might appear with the URL</p>
+<div class="highlight-text"><div class="highlight"><pre>https://bitbucket.org/user/proj/src/5fb228107044/dir/v1.c?at=master
+</pre></div>
+</div>
+<p>The string <tt class="docutils literal"><span class="pre">5fb228107044</span></tt>, called commit hash,
+is connected to the version of this file
+and will change when the file is updated. Such varying URLs are
+useless when you to link to
+the file in documents. To make a stable link to the
+latest version of a file (in a public repo),
+replace the commit hash by <tt class="docutils literal"><span class="pre">master</span></tt> and remove
+the final <tt class="docutils literal"><span class="pre">?at=master</span></tt>:</p>
+<div class="highlight-text"><div class="highlight"><pre>https://bitbucket.org/user/proj/src/master/dir/v1.c
+</pre></div>
+</div>
+<p>Other endings of the URL with commit hash, e.g., <tt class="docutils literal"><span class="pre">?at=default</span></tt>,
+requires the hash to be replaced by <tt class="docutils literal"><span class="pre">default</span></tt>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Bitbucket</a><ul>
+<li><a class="reference internal" href="#creating-a-new-project-1">Creating a new project  (1)</a><ul>
+<li><a class="reference internal" href="#collaborating-1">Collaborating  (1)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#user-web-pages-1">User web pages  (1)</a></li>
+<li><a class="reference internal" href="#linking-to-bitbucket-files">Linking to Bitbucket files</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="._part0000_main_bitgit.html"
+                        title="previous chapter">Quick Intro to Version Control Systems and Project Hosting Services</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="._part0002_main_bitgit.html"
+                        title="next chapter">Googlecode</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="._part0002_main_bitgit.html" title="Googlecode"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="._part0000_main_bitgit.html" title="Quick Intro to Version Control Systems and Project Hosting Services"
+             >previous</a> |</li>
+        <li><a href="index.html">Quick Intro to Version Control Systems and Project Hosting Services</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, H. P. Langtangen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
