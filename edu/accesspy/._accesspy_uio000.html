@@ -20,7 +20,7 @@ Automatically generated HTML file from Doconce source
 </head>
 
 <!-- tocinfo
-{'highest level': 0,
+{'highest level': 1,
  'sections': [(' Required software ',
                1,
                'sec:accesspy:softwarelist',
@@ -42,13 +42,20 @@ Automatically generated HTML file from Doconce source
                1,
                'sec:accesspy:vmware',
                'sec:accesspy:vmware'),
-              (' Installing Ubuntu ', 2, None, '___sec9'),
-              (' File sharing ', 2, None, '___sec10'),
+              (' Installing Ubuntu ',
+               2,
+               'sec:accesspy:vmware:fullblown:machine',
+               'sec:accesspy:vmware:fullblown:machine'),
+              (' Installing software on a minimalistic Ubuntu machine ',
+               2,
+               'sec:accesspy:vmware:minimalistic:machine',
+               'sec:accesspy:vmware:minimalistic:machine'),
+              (' File sharing ', 2, None, '___sec11'),
               (' VirtualBox virtual machine ',
                1,
                'sec:accesspy:virtualbox',
                'sec:accesspy:virtualbox'),
-              (' Dual boot on Windows ', 1, None, '___sec12'),
+              (' Dual boot on Windows ', 1, None, '___sec13'),
               (' Vagrant virtual machine ',
                1,
                'sec:accesspy:vagrant',
@@ -57,31 +64,31 @@ Automatically generated HTML file from Doconce source
                1,
                'sec:accesspy:writerun',
                'sec:accesspy:writerun'),
-              (' The need for a text editor ', 2, None, '___sec15'),
-              (' Spyder ', 2, None, '___sec16'),
-              (' Text editors ', 2, None, '___sec17'),
-              (' Terminal windows ', 2, None, '___sec18'),
+              (' The need for a text editor ', 2, None, '___sec16'),
+              (' Spyder ', 2, None, '___sec17'),
+              (' Text editors ', 2, None, '___sec18'),
+              (' Terminal windows ', 2, None, '___sec19'),
               (' Using a plain text editor and a terminal window ',
                2,
                None,
-               '___sec19'),
+               '___sec20'),
               (' The SageMathCloud and Wakari web services ',
                1,
                'sec:accesspy:sagemath:wakari',
                'sec:accesspy:sagemath:wakari'),
-              (' Basic intro to SageMathCloud ', 2, None, '___sec21'),
-              (' Basic intro to Wakari ', 2, None, '___sec22'),
-              (' Installing your own Python packages ', 2, None, '___sec23'),
+              (' Basic intro to SageMathCloud ', 2, None, '___sec22'),
+              (' Basic intro to Wakari ', 2, None, '___sec23'),
+              (' Installing your own Python packages ', 2, None, '___sec24'),
               (' Writing IPython notebooks ',
                1,
                'sec:accesspy:ipynb',
                'sec:accesspy:ipynb'),
-              (' A simple program in the notebook ', 2, None, '___sec25'),
+              (' A simple program in the notebook ', 2, None, '___sec26'),
               (' Mixing text, mathematics, code, and graphics ',
                2,
                None,
-               '___sec26'),
-              (' References ', 0, None, '___sec27')]}
+               '___sec27'),
+              (' References ', 1, None, '___sec28')]}
 end of tocinfo -->
 
 <body>
@@ -99,6 +106,24 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
 
 
 
@@ -118,18 +143,18 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._accesspy_uio001.html#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio002.html#sec:accesspy:INF1100:rec" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Recommendations for INF1100/MAT-INF1100L students</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio003.html#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio004.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio005.html#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#sec:accesspy:virtualbox" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VirtualBox virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio008.html#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio009.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#___sec27" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio002.html#sec:accesspy:softwarelist" style="font-size: 80%;">Required software</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio003.html#sec:accesspy:INF1100:rec" style="font-size: 80%;">Recommendations for INF1100/MAT-INF1100L students</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio004.html#sec:accesspy:MacWin" style="font-size: 80%;">Installing software on your laptop: Mac OS X and Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio005.html#___sec3" style="font-size: 80%;">Anaconda and Spyder</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#sec:accesspy:vmware" style="font-size: 80%;">VMWare Fusion virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#sec:accesspy:virtualbox" style="font-size: 80%;">VirtualBox virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#___sec13" style="font-size: 80%;">Dual boot on Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio008.html#sec:accesspy:vagrant" style="font-size: 80%;">Vagrant virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio009.html#sec:accesspy:writerun" style="font-size: 80%;">How to write and run a Python program</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">The SageMathCloud and Wakari web services</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio011.html#sec:accesspy:ipynb" style="font-size: 80%;">Writing IPython notebooks</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio011.html#___sec28" style="font-size: 80%;">References</a></li>
 
         </ul>
       </li>
@@ -165,7 +190,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Aug 21, 2014</h4></center> <!-- date -->
+<center><h4>Aug 22, 2014</h4></center> <!-- date -->
 <p>
 <!-- Externaldocuments: ../formulas/main_formulas, ../looplist/main_looplist, ../funcif/main_funcif, ../input/main_input, ../plot/main_plot, ../files/main_files, ../class/main_class, ../random/main_random, ../oo/main_oo, ../diffeq/main_diffeq, ../discalc/main_discalc, ../ode1/main_ode1, ../boxspring/main_boxspring, ../ode2/main_ode2, ../debug/main_debug, ../cython/main_cython, ../tech/main_timing, ../tech/main_runpy, ../tech/main_ostasks, ../tech/main_nose -->
 

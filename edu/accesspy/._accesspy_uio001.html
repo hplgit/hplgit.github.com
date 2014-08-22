@@ -20,7 +20,7 @@ Automatically generated HTML file from Doconce source
 </head>
 
 <!-- tocinfo
-{'highest level': 0,
+{'highest level': 1,
  'sections': [(' Required software ',
                1,
                'sec:accesspy:softwarelist',
@@ -42,13 +42,20 @@ Automatically generated HTML file from Doconce source
                1,
                'sec:accesspy:vmware',
                'sec:accesspy:vmware'),
-              (' Installing Ubuntu ', 2, None, '___sec9'),
-              (' File sharing ', 2, None, '___sec10'),
+              (' Installing Ubuntu ',
+               2,
+               'sec:accesspy:vmware:fullblown:machine',
+               'sec:accesspy:vmware:fullblown:machine'),
+              (' Installing software on a minimalistic Ubuntu machine ',
+               2,
+               'sec:accesspy:vmware:minimalistic:machine',
+               'sec:accesspy:vmware:minimalistic:machine'),
+              (' File sharing ', 2, None, '___sec11'),
               (' VirtualBox virtual machine ',
                1,
                'sec:accesspy:virtualbox',
                'sec:accesspy:virtualbox'),
-              (' Dual boot on Windows ', 1, None, '___sec12'),
+              (' Dual boot on Windows ', 1, None, '___sec13'),
               (' Vagrant virtual machine ',
                1,
                'sec:accesspy:vagrant',
@@ -57,31 +64,31 @@ Automatically generated HTML file from Doconce source
                1,
                'sec:accesspy:writerun',
                'sec:accesspy:writerun'),
-              (' The need for a text editor ', 2, None, '___sec15'),
-              (' Spyder ', 2, None, '___sec16'),
-              (' Text editors ', 2, None, '___sec17'),
-              (' Terminal windows ', 2, None, '___sec18'),
+              (' The need for a text editor ', 2, None, '___sec16'),
+              (' Spyder ', 2, None, '___sec17'),
+              (' Text editors ', 2, None, '___sec18'),
+              (' Terminal windows ', 2, None, '___sec19'),
               (' Using a plain text editor and a terminal window ',
                2,
                None,
-               '___sec19'),
+               '___sec20'),
               (' The SageMathCloud and Wakari web services ',
                1,
                'sec:accesspy:sagemath:wakari',
                'sec:accesspy:sagemath:wakari'),
-              (' Basic intro to SageMathCloud ', 2, None, '___sec21'),
-              (' Basic intro to Wakari ', 2, None, '___sec22'),
-              (' Installing your own Python packages ', 2, None, '___sec23'),
+              (' Basic intro to SageMathCloud ', 2, None, '___sec22'),
+              (' Basic intro to Wakari ', 2, None, '___sec23'),
+              (' Installing your own Python packages ', 2, None, '___sec24'),
               (' Writing IPython notebooks ',
                1,
                'sec:accesspy:ipynb',
                'sec:accesspy:ipynb'),
-              (' A simple program in the notebook ', 2, None, '___sec25'),
+              (' A simple program in the notebook ', 2, None, '___sec26'),
               (' Mixing text, mathematics, code, and graphics ',
                2,
                None,
-               '___sec26'),
-              (' References ', 0, None, '___sec27')]}
+               '___sec27'),
+              (' References ', 1, None, '___sec28')]}
 end of tocinfo -->
 
 <body>
@@ -99,6 +106,24 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
 
 
 
@@ -118,18 +143,18 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio002.html#sec:accesspy:INF1100:rec" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Recommendations for INF1100/MAT-INF1100L students</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio003.html#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio004.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio005.html#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#sec:accesspy:virtualbox" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VirtualBox virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio008.html#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio009.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#___sec27" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio002.html#sec:accesspy:softwarelist" style="font-size: 80%;">Required software</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio003.html#sec:accesspy:INF1100:rec" style="font-size: 80%;">Recommendations for INF1100/MAT-INF1100L students</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio004.html#sec:accesspy:MacWin" style="font-size: 80%;">Installing software on your laptop: Mac OS X and Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio005.html#___sec3" style="font-size: 80%;">Anaconda and Spyder</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#sec:accesspy:vmware" style="font-size: 80%;">VMWare Fusion virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#sec:accesspy:virtualbox" style="font-size: 80%;">VirtualBox virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#___sec13" style="font-size: 80%;">Dual boot on Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio008.html#sec:accesspy:vagrant" style="font-size: 80%;">Vagrant virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio009.html#sec:accesspy:writerun" style="font-size: 80%;">How to write and run a Python program</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">The SageMathCloud and Wakari web services</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio011.html#sec:accesspy:ipynb" style="font-size: 80%;">Writing IPython notebooks</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio011.html#___sec28" style="font-size: 80%;">References</a></li>
 
         </ul>
       </li>
@@ -145,76 +170,38 @@ MathJax.Hub.Config({
 <a name="part0001"></a>
 <!-- !split -->
 
-<h1 id="sec:accesspy:softwarelist">Required software<a name="sec:accesspy:softwarelist"></a></h1>
+<h2>Table of contents</h2>
 
-The strictly required software packages for working with this document are
-
-<ul>
- <li> <a href="http://python.org" target="_blank">Python</a>
-   version 2.7 <a href="._accesspy_uio010.html#Python">[1]</a></li>
- <li> <a href="http://www.numpy.org" target="_blank">Numerical Python</a>
-   (NumPy) <a href="._accesspy_uio010.html#NumPy">[2]</a> <a href="._accesspy_uio010.html#NumPy:paper">[3]</a> for array computing</li>
- <li> <a href="http://matplotlib.org" target="_blank">Matplotlib</a>
-   <a href="._accesspy_uio010.html#Matplotlib">[4]</a> <a href="._accesspy_uio010.html#Matplotlib:paper">[5]</a> for plotting</li>
-</ul>
-
-Desired
-add-on packages are
-
-<ul>
- <li> <a href="http://ipython.org" target="_blank">IPython</a>
-   <a href="._accesspy_uio010.html#IPython">[6]</a> <a href="._accesspy_uio010.html#IPython:paper">[7]</a> for interactive computing</li>
- <li> <a href="http://code.google.com/p/scitools" target="_blank">SciTools</a>
-   <a href="._accesspy_uio010.html#SciTools">[8]</a> for add-ons to NumPy</li>
- <li> <a href="http://starship.python.net/crew/hinsen" target="_blank">ScientificPython</a>
-   <a href="._accesspy_uio010.html#Hinsen:Scientific">[9]</a> for add-ons to NumPy</li>
- <li> <a href="https://nose.readthedocs.org" target="_blank">nose</a>
-   for testing programs</li>
- <li> <a href="http://www.pip-installer.org" target="_blank">pip</a>
-   for installing Python packages</li>
- <li> <a href="http://cython.org" target="_blank">Cython</a>
-   for compiling Python to C</li>
- <li> <a href="http://sympy.org" target="_blank">SymPy</a>
-   <a href="._accesspy_uio010.html#SymPy">[10]</a> for symbolic mathematics</li>
- <li> <a href="http://scipy.org" target="_blank">SciPy</a>
-   <a href="._accesspy_uio010.html#SciPy">[11]</a> for advanced scientific computing</li>
-</ul>
-
-There are different ways to get access to Python with the required packages:
-
-<ol>
-<li> Use the RedHat Linux computer system at the Blindern campus, or perform
-   a remote login to this system.</li>
-<li> Install the software on your own laptop.</li>
-<li> Use a web service.</li>
-</ol>
-
-There are detailed descriptions of <a href="http://termvakt.uio.no/Fjerninnlogging" target="_blank">remote login at the University of Oslo</a>.
-In the following, various techniques for installing the
-necessary mathematical software on your own lap are presented, and we
-briefly describe web services for Python programming.
-
-<p>
-Using a web service is very straightforward, but has the disadvantage that
-you are constrained by the packages that are allowed to install
-on the service.
-There are services at the time of this writing that suffice for
-working with most of this document,
-but if you are going to solve more complicated mathematical problems,
-you will need more sophisticated mathematical Python packages, more
-storage and more computer resources, and then you will benefit greatly
-from having Python installed on your own computer.
-
-<p>
-This author's experience is that installation of mathematical software
-on personal computers quickly becomes a technical challenge.  Linux
-Ubuntu (or any Debian-based Linux version) contains the largest
-repository today of pre-built mathematical software and makes the
-installation trivial without any need for particular
-competence. Despite the user-friendliness of the Mac and Windows
-systems, getting sophisticated mathematical software to work on these
-platforms requires considerable competence.
-
+<a href="._accesspy_uio002.html#sec:accesspy:softwarelist"> Required software </a><br>
+<a href="._accesspy_uio003.html#sec:accesspy:INF1100:rec"> Recommendations for INF1100/MAT-INF1100L students </a><br>
+<a href="._accesspy_uio004.html#sec:accesspy:MacWin"> Installing software on your laptop: Mac OS X and Windows </a><br>
+<a href="._accesspy_uio005.html#___sec3"> Anaconda and Spyder </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._accesspy_uio005.html#___sec4"> Spyder on Mac </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._accesspy_uio005.html#___sec5"> Installation of additional packages </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._accesspy_uio005.html#___sec6"> Installing SciTools on Mac </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._accesspy_uio005.html#___sec7"> Installing SciTools on Windows </a><br>
+<a href="._accesspy_uio006.html#sec:accesspy:vmware"> VMWare Fusion virtual machine </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._accesspy_uio006.html#sec:accesspy:vmware:fullblown:machine"> Installing Ubuntu </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._accesspy_uio006.html#sec:accesspy:vmware:minimalistic:machine"> Installing software on a minimalistic Ubuntu machine </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._accesspy_uio006.html#___sec11"> File sharing </a><br>
+<a href="._accesspy_uio007.html#sec:accesspy:virtualbox"> VirtualBox virtual machine </a><br>
+<a href="._accesspy_uio007.html#___sec13"> Dual boot on Windows </a><br>
+<a href="._accesspy_uio008.html#sec:accesspy:vagrant"> Vagrant virtual machine </a><br>
+<a href="._accesspy_uio009.html#sec:accesspy:writerun"> How to write and run a Python program </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._accesspy_uio009.html#___sec16"> The need for a text editor </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._accesspy_uio009.html#___sec17"> Spyder </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._accesspy_uio009.html#___sec18"> Text editors </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._accesspy_uio009.html#___sec19"> Terminal windows </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._accesspy_uio009.html#___sec20"> Using a plain text editor and a terminal window </a><br>
+<a href="._accesspy_uio010.html#sec:accesspy:sagemath:wakari"> The SageMathCloud and Wakari web services </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._accesspy_uio010.html#___sec22"> Basic intro to SageMathCloud </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._accesspy_uio010.html#___sec23"> Basic intro to Wakari </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._accesspy_uio010.html#___sec24"> Installing your own Python packages </a><br>
+<a href="._accesspy_uio011.html#sec:accesspy:ipynb"> Writing IPython notebooks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._accesspy_uio011.html#___sec26"> A simple program in the notebook </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._accesspy_uio011.html#___sec27"> Mixing text, mathematics, code, and graphics </a><br>
+<a href="._accesspy_uio011.html#___sec28"> References </a><br>
+</p>
 <p>
 <p>
 <!-- navigation buttons at the bottom of the page -->

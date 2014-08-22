@@ -20,7 +20,7 @@ Automatically generated HTML file from Doconce source
 </head>
 
 <!-- tocinfo
-{'highest level': 0,
+{'highest level': 1,
  'sections': [(' Required software ',
                1,
                'sec:accesspy:softwarelist',
@@ -38,7 +38,10 @@ Automatically generated HTML file from Doconce source
                1,
                'sec:accesspy:vmware',
                'sec:accesspy:vmware'),
-              (' Installing Ubuntu ', 2, None, '___sec8'),
+              (' Installing Ubuntu ',
+               2,
+               'sec:accesspy:vmware:fullblown:machine',
+               'sec:accesspy:vmware:fullblown:machine'),
               (' Installing software on Ubuntu ', 2, None, '___sec9'),
               (' File sharing ', 2, None, '___sec10'),
               (' Dual boot on Windows ', 1, None, '___sec11'),
@@ -74,7 +77,7 @@ Automatically generated HTML file from Doconce source
                2,
                None,
                '___sec25'),
-              (' References ', 0, None, '___sec26')]}
+              (' References ', 1, None, '___sec26')]}
 end of tocinfo -->
 
 <body>
@@ -92,6 +95,24 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
 
 
 
@@ -111,16 +132,16 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._accesspy_primer4001.html#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_primer4002.html#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_primer4003.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
-     <!-- navigation toc: --> <li><a href="#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_primer4005.html#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_primer4006.html#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_primer4007.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_primer4008.html#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_primer4008.html#___sec26" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4001.html#sec:accesspy:softwarelist" style="font-size: 80%;">Required software</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4002.html#sec:accesspy:MacWin" style="font-size: 80%;">Installing software on your laptop: Mac OS X and Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4003.html#___sec2" style="font-size: 80%;">Anaconda and Spyder</a></li>
+     <!-- navigation toc: --> <li><a href="#sec:accesspy:vmware" style="font-size: 80%;">VMWare Fusion virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">Dual boot on Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4005.html#sec:accesspy:vagrant" style="font-size: 80%;">Vagrant virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4006.html#sec:accesspy:writerun" style="font-size: 80%;">How to write and run a Python program</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4007.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">The SageMathCloud and Wakari web services</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4008.html#sec:accesspy:ipynb" style="font-size: 80%;">Writing IPython notebooks</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_primer4008.html#___sec26" style="font-size: 80%;">References</a></li>
 
         </ul>
       </li>
@@ -147,7 +168,7 @@ that of VirtualBox.) VMWare Fusion is commercial software, but
 there is a free trial version you can start with. Alternatively,
 you can use the simpler VMWare Player, which is free for personal use.
 
-<h2 id="___sec8">Installing Ubuntu <a name="___sec8"></a></h2>
+<h2 id="sec:accesspy:vmware:fullblown:machine">Installing Ubuntu<a name="sec:accesspy:vmware:fullblown:machine"></a></h2>
 
 The following recipe will install a Ubuntu virtual machine under VMWare
 Fusion.
@@ -202,7 +223,8 @@ Fusion.
 <h2 id="___sec9">Installing software on Ubuntu <a name="___sec9"></a></h2>
 
 You now have a full Ubuntu machine, but there is not much software
-on a it. Installation is performed through the Ubuntu Software Center (a
+on a it for doing scientific computing with Python.
+Installation is performed through the Ubuntu Software Center (a
 graphical application) or through Unix commands, typically
 
 <p>
@@ -225,7 +247,7 @@ files, which will install a collection of software for scientific work
 using <code>apt-get</code>:
 
 <ul>
- <li> <code>install_minimal.sh</code>: install a minimal collection (recommended)</li>
+ <li> <code>install_minimal.sh</code>: install a minimal collection</li>
  <li> <code>install_rich.sh</code>: install a rich collection (takes time to run)</li>
 </ul>
 
