@@ -143,18 +143,18 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._accesspy_uio001.html#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio002.html#sec:accesspy:INF1100:rec" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Recommendations for INF1100/MAT-INF1100L students</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio003.html#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio004.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio005.html#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#sec:accesspy:virtualbox" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VirtualBox virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio008.html#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
-     <!-- navigation toc: --> <li><a href="#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#___sec28" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio002.html#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio003.html#sec:accesspy:INF1100:rec" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Recommendations for INF1100/MAT-INF1100L students</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio004.html#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio005.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#sec:accesspy:virtualbox" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VirtualBox virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio008.html#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio011.html#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio011.html#___sec28" style="font-size: 80%;"><b>References</b></a></li>
 
         </ul>
       </li>
@@ -170,84 +170,155 @@ $$
 <a name="part0009"></a>
 <!-- !split -->
 
-<h1 id="sec:accesspy:sagemath:wakari">The SageMathCloud and Wakari web services<a name="sec:accesspy:sagemath:wakari"></a></h1>
+<h1 id="sec:accesspy:writerun">How to write and run a Python program<a name="sec:accesspy:writerun"></a></h1>
 
-You can avoid installing Python on your machine completely by using
-a web service that allows you to write and run Python programs.
-Computational science projects will normally require some kind of
-visualization and associated graphics packages, which is not possible
-unless the service offers IPython notebooks.
-There are two excellent web services with notebooks: <em>SageMathCloud</em> at
-<a href="https://cloud.sagemath.com/" target="_blank"><tt>https://cloud.sagemath.com/</tt></a> and <em>Wakari</em> at <a href="https://www.wakari.io/wakari" target="_blank"><tt>https://www.wakari.io/wakari</tt></a>. At both sites you must create an
-account before you can write notebooks in the web browser and download
-them to your own computer.
+You have basically three choices to develop and test a Python program:
 
-<h2 id="___sec22">Basic intro to SageMathCloud <a name="___sec22"></a></h2>
+<ol>
+<li> use the IPython notebook</li>
+<li> use an Integrated Development Environment (IDE), like Spyder, which offers
+   a window with a text editor and functionality to run programs and
+   observe the output</li>
+<li> use a text editor and a terminal window</li>
+</ol>
 
-Sign in, click on <em>New Project</em>, give a title to your project and
-decide whether it should be private or public, click on the project
-when it appears in the browser, and click on <em>Create or Import a File,
-Worksheet, Terminal or Directory...</em>. If your Python program needs
-graphics, you need to choose <em>IPython Notebook</em>, otherwise you can
-choose <em>File</em>. Write the name of the file above the row of
-buttons. Assuming we do not need any graphics, we create a plain Python
-file, say with name
-<code>py1.py</code>. By clicking <em>File</em> you are brought to a browser window with
-a text editor where you can write Python code. Write some code and
-click <em>Save</em>. To run the program, click on the plus icon (<em>New</em>),
-choose <em>Terminal</em>, and you have a plain Unix terminal window where you
-can write <code>python py1.py</code> to run the program. Tabs over the terminal
-(or editor) window make it easy to jump between the editor and the
-terminal.  To download the file, click on <em>Files</em>, point on the
-relevant line with the file, and a download icon appears to the very
-right. The IPython notebook option works much in the same way, see
-the section <a href="._accesspy_uio010.html#sec:accesspy:ipynb">Writing IPython notebooks</a>.
+The IPython notebook is briefly descried  in
+the section <a href="._accesspy_uio011.html#sec:accesspy:ipynb">Writing IPython notebooks</a>, while the other two options are
+outlined below.
 
-<h2 id="___sec23">Basic intro to Wakari <a name="___sec23"></a></h2>
+<h2 id="___sec16">The need for a text editor <a name="___sec16"></a></h2>
 
-After having logged in at the <code>wakari.io</code> site, you automatically
-enter an IPython notebook with a short introduction to how the
-notebook can be used. Click on the <em>New Notebook</em> button to start a
-new notebook. Wakari enables creating and editing plain Python files too:
-click on the <em>Add file</em> icon in pane to the left, fill in the program
-name, and you enter an editor where you can write a program. Pressing
-<em>Execute</em> launches an IPython session in a terminal window, where you
-can run the program by <code>run prog.py</code> if <code>prog.py</code> is the name of the
-program.  To download the file, select <code>test2.py</code> in the left pane and
-click on the <em>Download file</em> icon.
+Since programs consist of plain text, we need to write this text with
+the help of another program that can store the text in a file. You
+have most likely extensive experience with writing text on a computer,
+but for writing your own programs you need special programs, called
+<em>editors</em>, which preserve exactly the characters you type.  The
+widespread word processors, Microsoft Word being a primary example,
+are aimed at producing nice-looking reports. These programs <em>format</em>
+the text and are <em>not</em> acceptable tools for writing your own programs,
+even though they can save the document in a pure text format.  Spaces
+are often important in Python programs, and <em>editors</em> for plain text
+give you complete control of the spaces and all other characters in
+the program file.
+
+<h2 id="___sec17">Spyder <a name="___sec17"></a></h2>
+
+Spyder is graphical application for developing and running Python
+programs, available on all major platforms. Spyder comes with Anaconda
+and some other pre-built environments for scientific computing with
+Python. On Ubuntu it is conveniently installed by <code>sudo apt-get
+install spyder</code>.
 
 <p>
-There is a pull-down menu where you can choose what type of terminal
-window you want: a plain Unix shell, an IPython shell, or an IPython
-shell with Matplotlib for plotting.  Using the latter, you can run
-plain Python programs or commands with graphics.  Just choose the type
-of terminal and click on <em>+Tab</em> to make a new terminal window of the
-chosen type.
+The left part of the Spyder window contains a plain text editor.
+Click in this window and write <code>print 'Hello!'</code> and return.
+Choose <em>Run</em> from the <em>Run</em> pull-down menu, and observe the output
+<code>Hello!</code> in the lower right window where the output from
+programs is visible.
 
-<h2 id="___sec24">Installing your own Python packages <a name="___sec24"></a></h2>
-
-Both SageMathCloud and Wakari let you install your own Python
-packages.
-To install any package <code>packagename</code>
-available at <a href="https://pypi.python.org/pypi" target="_blank">PyPi</a>, run
+<p>
+You may continue with more advanced statements involving graphics:
 
 <p>
 
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install --user packagename
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4</span>, <span style="color: #666666">101</span>)
+y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>x)
+plt<span style="color: #666666">.</span>plot(x,y)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&#39;First test of Spyder&#39;</span>)
+plt<span style="color: #666666">.</span>savefig(<span style="color: #BA2121">&#39;tmp.png&#39;</span>)
+plt<span style="color: #666666">.</span>show()
 </pre></div>
 <p>
-To install the SciTools package,
-which is useful when working with this document,
-create a Terminal (with a Unix shell) and run the command
+Choosing <em>Run - Run</em> now leads to a separate window with a plot of
+the function \( e^{-x}\sin (\pi x) \). Figure <a href="#sec:accesspy:fig:spyder">1</a> shows
+how the Spyder application may look like.
 
 <p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  The Spyder Integrated Development Environment. <a name="sec:accesspy:fig:spyder"></a> </p></center>
+<p><img src="fig-accesspy/spyder.png" align="bottom" width=800></p>
+</center>
 
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install --user -e \ 
-    hg+https://code.google.com/p/scitools#egg=scitools
-</pre></div>
 <p>
+The plot file we generate in the above program,
+<code>tmp.png</code>, is by default found in the Spyder folder listed in
+the default text in the top of the program. You can choose
+<em>Run - Configure ...</em> to change this folder as desired.
+The program you write is written to a file <code>.temp.py</code> in the same
+default folder, but any name and folder can be specified in the
+standard <em>File - Save as...</em> menu.
+
+<p>
+A convenient feature of Spyder is that the upper right window
+continuously displays documentation of the statements you write in the
+editor to the left.
+
+<h2 id="___sec18">Text editors <a name="___sec18"></a></h2>
+
+The most widely used editors for writing programs are Emacs and Vim,
+which are available on all major platforms. Some simpler
+alternatives for beginners are
+
+<ul>
+ <li> Linux: Gedit</li>
+ <li> Mac OS X: TextWrangler</li>
+ <li> Windows: Notepad++</li>
+</ul>
+
+We may mention that Python comes with an editor called Idle, which can
+be used to write programs on all three platforms, but running the
+program with command-line arguments is a bit complicated for beginners
+in Idle so Idle is not my favorite recommendation.
+
+<p>
+<!-- http://anh.cs.luc.edu/python/hands-on/3.1/handsonHtml/execution.html -->
+<!-- http://www.youtube.com/watch?v=lBkcDFRA958 -->
+
+<p>
+Gedit is a standard program on Linux platforms, but all other
+editors must installed in your system. This is easy: just google
+for the name, download the file, and follow the standard procedure
+for installation. All of the mentioned editors come with a graphical
+user interface that is intuitive to use, but the major popularity
+of Emacs and Vim is due to their rich set of short-keys
+so that you can avoid using the mouse and consequently edit at
+higher speed.
+
+<h2 id="___sec19">Terminal windows <a name="___sec19"></a></h2>
+
+To run the Python program, you need a <em>terminal window</em>.  This is a
+window where you can issue Unix commands in Linux and Mac OS X systems
+and DOS commands in Windows.  On a Linux computer, <code>gnome-terminal</code>
+is my favorite, but other choices work equally well, such as <code>xterm</code>
+and <code>konsole</code>.  On a Mac computer, launch the application <em>Utilities -
+Terminal</em>.  On Windows, launch <em>PowerShell</em>.
+
+<p>
+You must first move to the right folder using the <code>cd foldername</code>
+command. Then running a python program <code>prog.py</code> is a matter of
+writing <code>python prog.py</code>. Whatever the program prints can be
+seen in the terminal window.
+
+<h2 id="___sec20">Using a plain text editor and a terminal window <a name="___sec20"></a></h2>
+
+<ol>
+<li> Create a folder where your Python programs can be located, say
+   with name <code>mytest</code> under your home folder. This is most conveniently
+   done in the terminal window since you need to use this window
+   anyway to run the program. The command for creating a new folder is
+   <code>mkdir mytest</code>.</li>
+<li> Move to the new folder: <code>cd mytest</code>.</li>
+<li> Start the editor of your choice.</li>
+<li> Write a program in the editor, e.g., just the line <code>print 'Hello!'</code>.
+   Save the program under the name <code>myprog1.py</code> in the <code>mytest</code> folder.</li>
+<li> Move to the terminal window and write <code>python myprog1.py</code>.
+   You should see the word <code>Hello!</code> being printed in the window.</li>
+</ol>
+
 <p>
 <!-- navigation buttons at the bottom of the page -->
 <ul class="pager">

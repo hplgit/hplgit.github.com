@@ -143,18 +143,18 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._accesspy_uio001.html#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio002.html#sec:accesspy:INF1100:rec" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Recommendations for INF1100/MAT-INF1100L students</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio003.html#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio005.html#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#sec:accesspy:virtualbox" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VirtualBox virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio008.html#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio009.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#___sec28" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio002.html#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio003.html#sec:accesspy:INF1100:rec" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Recommendations for INF1100/MAT-INF1100L students</a></li>
+     <!-- navigation toc: --> <li><a href="#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio005.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#sec:accesspy:virtualbox" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VirtualBox virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio008.html#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio009.html#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio011.html#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio011.html#___sec28" style="font-size: 80%;"><b>References</b></a></li>
 
         </ul>
       </li>
@@ -170,74 +170,46 @@ $$
 <a name="part0004"></a>
 <!-- !split -->
 
-<h1 id="___sec3">Anaconda and Spyder <a name="___sec3"></a></h1>
+<h1 id="sec:accesspy:MacWin">Installing software on your laptop: Mac OS X and Windows<a name="sec:accesspy:MacWin"></a></h1>
 
-Anaconda can be downloaded for free from <a href="http://continuum.io/downloads" target="_blank"><tt>http://continuum.io/downloads</tt></a>.
-The Integrated Development Environment (IDE) Spyder is included with
-Anaconda and is my recommended tool for writing and running Python
-programs on Mac and Windows, unless you have preference for a plain
-text editor for writing programs and a terminal window for running them.
+There are various possibilities for installing the software on a Mac OS
+X or Windows platform:
 
-<h2 id="___sec4">Spyder on Mac <a name="___sec4"></a></h2>
+<ol>
+<li> Use <code>.dmg</code> (Mac) or <code>.exe</code> (Windows) files to install individual packages</li>
+<li> Use Homebrew or MacPorts to install packages (Mac only)</li>
+<li> Use a pre-built environment for scientific computing in Python:</li>
 
-Spyder is started by typing <code>spyder</code> in a (new) Terminal application.
-If you get an error message <em>unknown locale</em>, you need to type the
-following line in the Terminal application, or preferably put the line
-in your <code>$HOME/.bashrc</code> Unix initialization file:
+<ul>
+   <li> <a href="http://continuum.io/downloads/" target="_blank">Anaconda</a></li>
+   <li> <a href="https://www.enthought.com/products/canopy/" target="_blank">Enthought Canopy</a></li>
+</ul>
 
-<p>
+<li> Use a virtual machine running Ubuntu:</li>
 
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">export LANG=en_US.UTF-8; export LC_ALL=en_US.UTF-8
-</pre></div>
+<ul>
+   <li> <a href="http://www.vmware.com/products/fusion" target="_blank">VMWare Fusion</a></li>
+   <li> <a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a></li>
+   <li> <a href="http://www.vagrantup.com/" target="_blank">Vagrant</a></li>
+</ul>
 
-<h2 id="___sec5">Installation of additional packages <a name="___sec5"></a></h2>
+</ol>
 
-Anaconda installs the <code>pip</code> tool that is handy to install additional
-packages. In a Terminal application on Mac or in a PowerShell terminal
-on Windows, write
+Alternative 1 is the obvious and perhaps simplest approach, but
+usually requires quite some competence about the operating system as a
+long-term solution when you need many more Python packages than the
+basic three.  This author is not particularly enthusiastic
+about Alternative 2. If you
+anticipate to use Python extensively in your work, I strongly
+recommend operating Python on an Ubuntu platform and going for Alternative
+4 because that is the easiest and most flexible way to build and
+maintain your own software ecosystem.  Alternative 3 is recommended
+for those who are uncertain about the future needs for Python and
+think Alternative 4 is too complicated. My preference is to use
+Anaconda for the Python installation and <a href="https://code.google.com/p/spyderlib/" target="_blank">Spyder</a> (comes with Anaconda) as a
+graphical interface with editor, an output area, and flexible ways of
+running Python programs.
 
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install --user packagename
-</pre></div>
-
-<h2 id="___sec6">Installing SciTools on Mac <a name="___sec6"></a></h2>
-
-The SciTools package can be installed by <code>pip</code> on Mac:
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; pip install mercurial
-Terminal&gt; pip install --user -e \ 
-          hg+https://code.google.com/p/scitools#egg=scitools
-</pre></div>
-
-<h2 id="___sec7">Installing SciTools on Windows <a name="___sec7"></a></h2>
-
-The safest procedure on Windows is to go to
-<a href="http://code.google.com/p/scitools/source/browse" target="_blank"><tt>http://code.google.com/p/scitools/source/browse</tt></a> and download
-the zip file. Double-click on the downloaded file in Windows Explorer
-and click on
-<em>Extract all files</em> to create a new folder with all the SciTools
-files. Find the location of this folder, open a PowerShell
-window, and move to the location, e.g.,
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; cd C:\Users\username\Downloads\scitools-2db3cbb5076a
-</pre></div>
-<p>
-Installation is done by
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python setup.py install
-</pre></div>
 <p>
 <p>
 <!-- navigation buttons at the bottom of the page -->

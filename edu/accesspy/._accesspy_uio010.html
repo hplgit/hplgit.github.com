@@ -143,18 +143,18 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._accesspy_uio001.html#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio002.html#sec:accesspy:INF1100:rec" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Recommendations for INF1100/MAT-INF1100L students</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio003.html#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio004.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio005.html#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#sec:accesspy:virtualbox" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VirtualBox virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio008.html#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio009.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
-     <!-- navigation toc: --> <li><a href="#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec28" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio002.html#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio003.html#sec:accesspy:INF1100:rec" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Recommendations for INF1100/MAT-INF1100L students</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio004.html#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio005.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#sec:accesspy:virtualbox" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VirtualBox virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio008.html#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio009.html#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
+     <!-- navigation toc: --> <li><a href="#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio011.html#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio011.html#___sec28" style="font-size: 80%;"><b>References</b></a></li>
 
         </ul>
       </li>
@@ -170,156 +170,92 @@ $$
 <a name="part0010"></a>
 <!-- !split -->
 
-<h1 id="sec:accesspy:ipynb">Writing IPython notebooks<a name="sec:accesspy:ipynb"></a></h1>
+<h1 id="sec:accesspy:sagemath:wakari">The SageMathCloud and Wakari web services<a name="sec:accesspy:sagemath:wakari"></a></h1>
 
-The IPython notebook is a splendid interactive tool for doing science,
-but it can also be used as a platform for developing Python code.
-You can either run it locally on your computer or in a web service
-like SageMathCloud or Wakari. Installation on your computer
-is trivial on Ubuntu, just <code>sudo apt-get install ipython-notebook</code>, and
-also on <a href="http://ipython.org/install.html" target="_blank">Windows and Mac</a> by
-using Anaconda or Enthought Canopy for the Python installation.
+You can avoid installing Python on your machine completely by using
+a web service that allows you to write and run Python programs.
+Computational science projects will normally require some kind of
+visualization and associated graphics packages, which is not possible
+unless the service offers IPython notebooks.
+There are two excellent web services with notebooks: <em>SageMathCloud</em> at
+<a href="https://cloud.sagemath.com/" target="_blank"><tt>https://cloud.sagemath.com/</tt></a> and <em>Wakari</em> at <a href="https://www.wakari.io/wakari" target="_blank"><tt>https://www.wakari.io/wakari</tt></a>. At both sites you must create an
+account before you can write notebooks in the web browser and download
+them to your own computer.
+
+<h2 id="___sec22">Basic intro to SageMathCloud <a name="___sec22"></a></h2>
+
+Sign in, click on <em>New Project</em>, give a title to your project and
+decide whether it should be private or public, click on the project
+when it appears in the browser, and click on <em>Create or Import a File,
+Worksheet, Terminal or Directory...</em>. If your Python program needs
+graphics, you need to choose <em>IPython Notebook</em>, otherwise you can
+choose <em>File</em>. Write the name of the file above the row of
+buttons. Assuming we do not need any graphics, we create a plain Python
+file, say with name
+<code>py1.py</code>. By clicking <em>File</em> you are brought to a browser window with
+a text editor where you can write Python code. Write some code and
+click <em>Save</em>. To run the program, click on the plus icon (<em>New</em>),
+choose <em>Terminal</em>, and you have a plain Unix terminal window where you
+can write <code>python py1.py</code> to run the program. Tabs over the terminal
+(or editor) window make it easy to jump between the editor and the
+terminal.  To download the file, click on <em>Files</em>, point on the
+relevant line with the file, and a download icon appears to the very
+right. The IPython notebook option works much in the same way, see
+the section <a href="._accesspy_uio011.html#sec:accesspy:ipynb">Writing IPython notebooks</a>.
+
+<h2 id="___sec23">Basic intro to Wakari <a name="___sec23"></a></h2>
+
+After having logged in at the <code>wakari.io</code> site, you automatically
+enter an IPython notebook with a short introduction to how the
+notebook can be used. Click on the <em>New Notebook</em> button to start a
+new notebook. Wakari enables creating and editing plain Python files too:
+click on the <em>Add file</em> icon in pane to the left, fill in the program
+name, and you enter an editor where you can write a program. Pressing
+<em>Execute</em> launches an IPython session in a terminal window, where you
+can run the program by <code>run prog.py</code> if <code>prog.py</code> is the name of the
+program.  To download the file, select <code>test2.py</code> in the left pane and
+click on the <em>Download file</em> icon.
 
 <p>
-The interface to the notebook is a web browser: you write all the
-code and see all the results in the browser window.
-There are excellent YouTube videos on how to use the IPython notebook,
-so here we provide a very quick &quot;step zero&quot; to get anyone started.
+There is a pull-down menu where you can choose what type of terminal
+window you want: a plain Unix shell, an IPython shell, or an IPython
+shell with Matplotlib for plotting.  Using the latter, you can run
+plain Python programs or commands with graphics.  Just choose the type
+of terminal and click on <em>+Tab</em> to make a new terminal window of the
+chosen type.
 
-<h2 id="___sec26">A simple program in the notebook <a name="___sec26"></a></h2>
+<h2 id="___sec24">Installing your own Python packages <a name="___sec24"></a></h2>
 
-Start the IPython notebook locally by the command <code>ipython notebook</code>
-or go to SageMathCloud or Wakari as described above.
-The default input area is a <em>cell</em> for Python code.
-Type
+Both SageMathCloud and Wakari let you install your own Python
+packages.
+To install any package <code>packagename</code>
+available at <a href="https://pypi.python.org/pypi" target="_blank">PyPi</a>, run
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">g <span style="color: #666666">=</span> <span style="color: #666666">9.81</span>
-v0 <span style="color: #666666">=</span> <span style="color: #666666">5</span>
-t <span style="color: #666666">=</span> <span style="color: #666666">0.6</span>
-y <span style="color: #666666">=</span> v0<span style="color: #666666">*</span>t <span style="color: #666666">-</span> <span style="color: #666666">0.5*</span>g<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install --user packagename
 </pre></div>
 <p>
-in a cell and <em>run the cell</em> by clicking on <em>Run Selected</em> (notebook running
-locally on your machine)
-or on the &quot;play&quot; button (notebook running in the cloud).
-This action will execute the Python code and initialize the
-variables <code>g</code>, <code>v0</code>, <code>t</code>, and <code>y</code>. You can then write <code>print y</code> in a
-new cell, execute that cell, and see the output of this statement in
-the browser. It is easy to go back to a cell, edit the code, and
-re-execute it.
-
-<p>
-To download the notebook to your computer, choose the
-<em>File - Download as</em> menu and select the type of file
-to be downloaded: the original notebook format (<code>.ipynb</code> file
-extension) or a plain Python program version of the notebook
-(<code>.py</code> file extension).
-
-<h2 id="___sec27">Mixing text, mathematics, code, and graphics <a name="___sec27"></a></h2>
-
-The real strength of IPython notebooks arises when you want to write
-a report to document how a problem can be explored and solved.
-As a teaser, open a new notebook, click in the first cell, and choose
-<em>Markdown</em> as format (notebook running locally) or switch from <em>Code</em>
-to <em>Markdown</em> in the pull-down menu (notebook in the cloud). The cell
-is now a text field where you can write text with <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown</a> syntax. Mathematics can be entered
-as LaTeX code. Try some text with inline mathematics and an equation on
-a separate line:
+To install the SciTools package,
+which is useful when working with this document,
+create a Terminal (with a Unix shell) and run the command
 
 <p>
 
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Plot the curve $y=f(x)$, where
-
-$$
-f(x) = e^{-x}\sin (2\pi x),\quad x\in [0, 4]
-$$
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install --user -e \ 
+    hg+https://code.google.com/p/scitools#egg=scitools
 </pre></div>
 <p>
-Execute the cell and you will see nicely typeset mathematics in the browser.
-In the new cell, add some code to plot \( f(x) \):
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4</span>, <span style="color: #666666">101</span>)
-y <span style="color: #666666">=</span> exp(<span style="color: #666666">-</span>x)<span style="color: #666666">*</span>sin(<span style="color: #666666">2*</span>pi<span style="color: #666666">*</span>x)
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-plot(x, y, <span style="color: #BA2121">&#39;b-&#39;</span>)
-xlabel(<span style="color: #BA2121">&#39;x&#39;</span>); ylabel(<span style="color: #BA2121">&#39;y&#39;</span>)
-</pre></div>
-<p>
-Executing these statements results in a plot in the browser, see
-Figure <a href="#sec:accesspy:ipynb:fig:graphics">2</a>. The import statements
-can actually be dropped since functions from <code>numpy</code> and
-<code>matplotlib</code> are imported by default when running the notebook
-in the browser or by supplying the command-line argument <code>--pylab</code>
-when starting notebooks locally on your machine.
-
-<p>
-<center> <!-- figure -->
-<hr class="figure">
-<center><p class="caption">Figure 2:  Example on an IPython notebook. <a name="sec:accesspy:ipynb:fig:graphics"></a> </p></center>
-<p><img src="fig-accesspy/sage_ipynb_eqs_graphics.png" align="bottom" width=700></p>
-</center>
-
-<h1 class="page-header" id="___sec28">References <a name="___sec28"></a></h1>
-
-<!-- begin bibliography -->
-
-<ol>
- <li> <a name="Python"></a> Python Programming Language. 
-    <a href="http://python.org" target="_blank"><tt>http://python.org</tt></a>.</li>
- <li> <a name="NumPy"></a> <b>T. E. Oliphant et al.</b>. 
-    NumPy Array Processing Package for Python,
-    <a href="http://www.numpy.org" target="_blank"><tt>http://www.numpy.org</tt></a>.</li>
- <li> <a name="NumPy:paper"></a> <b>T. E. Oliphant</b>. 
-    Python for Scientific Computing,
-    <em>Computing in Science &amp; Engineering</em>,
-    9,
-    2007.</li>
- <li> <a name="Matplotlib"></a> <b>J. D. Hunter et al.</b>. 
-    Matplotlib: Software Package for 2D Graphics,
-    <a href="http://matplotlib.org/" target="_blank"><tt>http://matplotlib.org/</tt></a>.</li>
- <li> <a name="Matplotlib:paper"></a> <b>J. D. Hunter</b>. 
-    Matplotlib: a 2D Graphics Environment,
-    <em>Computing in Science &amp; Engineering</em>,
-    9,
-    2007.</li>
- <li> <a name="IPython"></a> <b>F. Perez, B. E. Granger et al.</b>. 
-    IPython Software Package for Interactive Scientific Computing,
-    <a href="http://ipython.org/" target="_blank"><tt>http://ipython.org/</tt></a>.</li>
- <li> <a name="IPython:paper"></a> <b>F. Perez and B. E. Granger</b>. 
-    IPython: a System for Interactive Scientific Computing,
-    <em>Computing in Science &amp; Engineering</em>,
-    9,
-    2007.</li>
- <li> <a name="SciTools"></a> <b>H. P. Langtangen and J. H. Ring</b>. 
-    SciTools: Software Tools for Scientific Computing,
-    <a href="http://code.google.com/p/scitools" target="_blank"><tt>http://code.google.com/p/scitools</tt></a>.</li>
- <li> <a name="Hinsen:Scientific"></a> ScientificPython Software Package. 
-    <a href="http://starship.python.net/crew/hinsen" target="_blank"><tt>http://starship.python.net/crew/hinsen</tt></a>.</li>
-<li> <a name="SymPy"></a> <b>O. Certik et al.</b>. 
-    SymPy: Python library for symbolic mathematics,
-    <a href="http://sympy.org" target="_blank"><tt>http://sympy.org</tt></a>.</li>
-<li> <a name="SciPy"></a> <b>E. Jones, T. E. Oliphant, P. Peterson et al.</b>. 
-    SciPy Scientific Computing Library for Python,
-    <a href="http://scipy.org" target="_blank"><tt>http://scipy.org</tt></a>.</li>
-</ol>
-
-<!-- end bibliography -->
-
-<p>
-
 <p>
 <!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._accesspy_uio009.html">&larr; Prev</a>
+  </li>
+  <li class="next">
+    <a href="._accesspy_uio011.html">Next &rarr;</a>
   </li>
 </ul>
 <!-- ------------------- end of main content --------------- -->

@@ -143,18 +143,18 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._accesspy_uio001.html#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio002.html#sec:accesspy:INF1100:rec" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Recommendations for INF1100/MAT-INF1100L students</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio003.html#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio004.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio005.html#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="#sec:accesspy:virtualbox" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VirtualBox virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio008.html#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio009.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#___sec28" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio002.html#sec:accesspy:softwarelist" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Required software</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio003.html#sec:accesspy:INF1100:rec" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Recommendations for INF1100/MAT-INF1100L students</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio004.html#sec:accesspy:MacWin" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing software on your laptop: Mac OS X and Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio005.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
+     <!-- navigation toc: --> <li><a href="#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#sec:accesspy:virtualbox" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VirtualBox virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio008.html#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio009.html#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio011.html#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio011.html#___sec28" style="font-size: 80%;"><b>References</b></a></li>
 
         </ul>
       </li>
@@ -170,43 +170,122 @@ $$
 <a name="part0006"></a>
 <!-- !split -->
 
-<h1 id="sec:accesspy:virtualbox">VirtualBox virtual machine<a name="sec:accesspy:virtualbox"></a></h1>
+<h1 id="sec:accesspy:vmware">VMWare Fusion virtual machine<a name="sec:accesspy:vmware"></a></h1>
 
-VirtualBox is free software that allows you to run a virtual machine
-with, e.g., the Ubuntu operating system.
-Download and install <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">VirtualBox</a>. Choose the version
-according to the operating system on the host.
-On Mac OS X, choose
-<em>VirtualBox x.y.z for OS X hosts</em>, where <code>x.y.z</code> is the version number
-of VirtualBox. Double click the downloaded <code>.dmg</code> file to install
-Vagrant. Those who work on a Windows machine will select <em>VirtualBox
-x.y.z for Windows hosts</em>, which downloads an <code>.exe</code> file to be
-double clicked to perform the installation.
+A virtual machine allows you to run another complete computer system in a
+separate window.
+For Mac users, I recommend VMWare Fusion over
+VirtualBox for running a Linux (or Windows) virtual
+machine.  (VMWare Fusion's hardware integration seems superior to
+that of VirtualBox.) VMWare Fusion is commercial software, but
+there is a free trial version you can start with. Alternatively,
+you can use the simpler VMWare Player, which is free for personal use.
+
+<h2 id="sec:accesspy:vmware:fullblown:machine">Installing Ubuntu<a name="sec:accesspy:vmware:fullblown:machine"></a></h2>
+
+The following recipe will install a Ubuntu virtual machine under VMWare
+Fusion.
+
+<ol>
+  <li> Go to <a href="http://goo.gl/nSeBCg" target="_blank"><tt>http://goo.gl/nSeBCg</tt></a> and download a full-blown Ubuntu box for scientific computing: <code>ubuntu-14.04-amd64-vmware.ova</code> (6.7 Gb!).</li>
+  <li> Launch VMWare fusion.</li>
+  <li> Click on <em>File - Import</em>, then <em>Choose file</em>, and browse to the
+     to the <code>ubuntu-14.04-amd64-vmware.ova</code> file you downloaded.</li>
+  <li> Type your chosen name of the virtual machine in the <em>Save As</em> text
+     box and rely on the default location. Your entire virtual machine is
+     stored in this file, and backing up the machine means backing up the file.</li>
+  <li> Click <em>Import</em>.</li>
+  <li> Press <em>Command+E</em> (or go to <em>Virtual Machine - Settings...</em>). Specify
+     the following:</li>
+
+<ul>
+      <li> <em>Processors and Memory</em>: Set a minimum of 2 Gb memory, but
+        not more than half of your computer's total memory.
+        The virtual machine can use all processors.</li>
+      <li> <em>Hard Disk</em>: Choose how much disk space you want to use inside
+        the virtual machine (20 Gb is considered a minimum).</li>
+</ul>
+
+  <li> Start up the virtual Ubuntu machine. The username and password for this machine are <em>fenics</em>.</li>
+  <li> You may need to define a higher resolution of the display.
+     Find the <em>System settings</em> icon on the left, go to <em>Display</em>,
+     choose some display (you can try several, click <em>Keep this configuration</em>
+     when you are satisfied).</li>
+  <li> You can have multiple keyboards on Ubuntu.
+     Launch <em>System settings</em>, go to <em>Keyboard</em>,
+     click the <em>Text entry</em> hyperlink, add keyboard(s) (<em>Input sources to use</em>),
+     and choose a shortcut, say <code>Ctrl+space</code> or <code>Ctrl+backslash</code>, in the
+     <em>Switch to next source using</em> field. Then you can use the shortcut
+     to quickly switch keyboard.</li>
+</ol>
+
+<h2 id="sec:accesspy:vmware:minimalistic:machine">Installing software on a minimalistic Ubuntu machine<a name="sec:accesspy:vmware:minimalistic:machine"></a></h2>
+
+If you have a minimalistic Ubuntu machine downloaded from
+the <a href="http://www.ubuntu.com/desktop/get-ubuntu/download" target="_blank">Ubuntu site</a>,
+you need to install additional software for scientific computing
+with Python:
 
 <p>
-The next step is to download a full-blown, pre-built Ubuntu machine
-with a lot of tools for doing scientific computing.
-Go to <a href="http://goo.gl/nSeBCg" target="_blank"><tt>http://goo.gl/nSeBCg</tt></a> and download
-the file <code>ubuntu-14.04-amd64.ova</code> (6.4 Gb!). We refer to the
-<a href="http://www.virtualbox.org/manual/ch01.html#ovf" target="_blank">VirtualBox manual</a>
-for how to import such a machine.
 
-<h1 id="___sec13">Dual boot on Windows <a name="___sec13"></a></h1>
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; sudo apt-get install python-setuptools python-pip
+Terminal&gt; sudo pip install numpy sympy scipy nose pytest
+Terminal&gt; sudo apt-get install python-matplotlib spyder
+Terminal&gt; sudo pip install ipython --upgrade
+Terminal&gt; sudo pip install tornado --upgrade
+Terminal&gt; sudo pip install pyzmq --upgrade
+Terminal&gt; sudo pip install -e hg+https://code.google.com/p/scitools#egg=scitools
+</pre></div>
 
-Instead of running Ubuntu in a virtual machine, Windows users also have
-the option of deciding on the operating system when turning on the
-machine (so-called dual boot). The <a href="http://wubi-installer.org" target="_blank">Wubi</a>
-tool makes it very easy to get Ubuntu on a Windows machine this way.
-There are problems with Wubi on Windows 8, see
-<a href="https://www.youtube.com/watch?v=gZqsXAoLBDI" target="_blank">instructions</a> for how
-to get around them. It is also relatively straightforward to
-perform
-a direct install of Ubuntu by downloading an Ubuntu image,
-creating a bootable USB stick on <a href="http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-windows" target="_blank">Windows</a> or <a href="http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-mac-osx" target="_blank">Mac</a>, restarting the machine and
-finally <a href="http://www.ubuntu.com/download/desktop/install-ubuntu-desktop" target="_blank">installing Ubuntu</a>.
-However, with the powerful computers we now have, a virtual machine
-is more flexible since you can switch between Windows and Ubuntu as
-easily as going from one window to another.
+<h2 id="___sec11">File sharing <a name="___sec11"></a></h2>
+
+The Ubuntu machine can see the files on your host system if you
+download <em>VMWare Tools</em>. Go to the <em>Virtual Machine</em> pull-down menu in
+VMWare Fusion and choose <em>Install VMWare Tools</em>. A tarfile is
+downloaded. Click on it and it will open a folder <code>vmware-tools-distrib</code>,
+normally in your home folder. Move to the new folder and
+run <code>sudo perl vmware-install.pl</code>.
+You can go with the default answers to all the questions.
+
+<p>
+On a Mac, you must open <em>Virtual Machine - Settings...</em> and choose
+<em>Sharing</em> to bring up a dialog where you can add the folders you want
+to be visible in Ubuntu. Just choose your home folder. Then turn on
+the file sharing button (or turn off and on again). Go to Ubuntu and
+check if you can see all your host system's files in <code>/mnt/hgfs/</code>.
+
+<p>
+If you later detect that <code>/mnt/hgfs/</code> folder has become empty,
+VMWare Tools must be reinstalled by first turning shared folders
+off, and then running
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; sudo /usr/bin/vmware-config-tools.pl
+</pre></div>
+<p>
+Occasionally it is necessary to do a full reinstall by
+<code>sudo perl vmware-install.pl</code> as above.
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Backup of a VMWare virtual machine on a Mac.</b>
+The entire Ubuntu machine is a folder on the host computer,
+typically with a name like <code>Documents/Virtual Machines/Ubuntu 64-bit</code>.
+Backing up the Ubuntu machine means backing up this folder.
+However, if you use tools like Time Machine and work in Ubuntu during
+backup, the copy of the state of the Ubuntu machine is likely to
+be corrupt. You are therefore strongly recommended to shut down the
+virtual machine prior to running Time Machine or simply copying the
+folder with the virtual machine to some backup disk.
+
+<p>
+If something happens to your virtual machine, it is usually a straightforward
+task to make a new machine and import data and software automatically
+from the previous machine.
+</div>
+
 
 <p>
 <p>
