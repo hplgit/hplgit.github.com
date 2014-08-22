@@ -43,12 +43,16 @@ Automatically generated HTML file from Doconce source
                'sec:accesspy:vmware',
                'sec:accesspy:vmware'),
               (' Installing Ubuntu ', 2, None, '___sec9'),
-              (' File sharing ', 2, None, '___sec10'),
+              (' Installing software on a minimalistic Ubuntu machine ',
+               2,
+               None,
+               '___sec10'),
+              (' File sharing ', 2, None, '___sec11'),
               (' VirtualBox virtual machine ',
                1,
                'sec:accesspy:virtualbox',
                'sec:accesspy:virtualbox'),
-              (' Dual boot on Windows ', 1, None, '___sec12'),
+              (' Dual boot on Windows ', 1, None, '___sec13'),
               (' Vagrant virtual machine ',
                1,
                'sec:accesspy:vagrant',
@@ -57,31 +61,31 @@ Automatically generated HTML file from Doconce source
                1,
                'sec:accesspy:writerun',
                'sec:accesspy:writerun'),
-              (' The need for a text editor ', 2, None, '___sec15'),
-              (' Spyder ', 2, None, '___sec16'),
-              (' Text editors ', 2, None, '___sec17'),
-              (' Terminal windows ', 2, None, '___sec18'),
+              (' The need for a text editor ', 2, None, '___sec16'),
+              (' Spyder ', 2, None, '___sec17'),
+              (' Text editors ', 2, None, '___sec18'),
+              (' Terminal windows ', 2, None, '___sec19'),
               (' Using a plain text editor and a terminal window ',
                2,
                None,
-               '___sec19'),
+               '___sec20'),
               (' The SageMathCloud and Wakari web services ',
                1,
                'sec:accesspy:sagemath:wakari',
                'sec:accesspy:sagemath:wakari'),
-              (' Basic intro to SageMathCloud ', 2, None, '___sec21'),
-              (' Basic intro to Wakari ', 2, None, '___sec22'),
-              (' Installing your own Python packages ', 2, None, '___sec23'),
+              (' Basic intro to SageMathCloud ', 2, None, '___sec22'),
+              (' Basic intro to Wakari ', 2, None, '___sec23'),
+              (' Installing your own Python packages ', 2, None, '___sec24'),
               (' Writing IPython notebooks ',
                1,
                'sec:accesspy:ipynb',
                'sec:accesspy:ipynb'),
-              (' A simple program in the notebook ', 2, None, '___sec25'),
+              (' A simple program in the notebook ', 2, None, '___sec26'),
               (' Mixing text, mathematics, code, and graphics ',
                2,
                None,
-               '___sec26'),
-              (' References ', 0, None, '___sec27')]}
+               '___sec27'),
+              (' References ', 0, None, '___sec28')]}
 end of tocinfo -->
 
 <body>
@@ -92,7 +96,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -142,12 +146,12 @@ $$
      <!-- navigation toc: --> <li><a href="._accesspy_uio004.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Anaconda and Spyder</a></li>
      <!-- navigation toc: --> <li><a href="#sec:accesspy:vmware" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VMWare Fusion virtual machine</a></li>
      <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#sec:accesspy:virtualbox" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;VirtualBox virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dual boot on Windows</a></li>
      <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#sec:accesspy:vagrant" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vagrant virtual machine</a></li>
      <!-- navigation toc: --> <li><a href="._accesspy_uio008.html#sec:accesspy:writerun" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to write and run a Python program</a></li>
      <!-- navigation toc: --> <li><a href="._accesspy_uio009.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The SageMathCloud and Wakari web services</a></li>
      <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#sec:accesspy:ipynb" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Writing IPython notebooks</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#___sec27" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#___sec28" style="font-size: 80%;"><b>References</b></a></li>
 
         </ul>
       </li>
@@ -180,49 +184,58 @@ The following recipe will install a Ubuntu virtual machine under VMWare
 Fusion.
 
 <ol>
-<li> Go to <a href="http://goo.gl/nSeBCg" target="_blank"><tt>http://goo.gl/nSeBCg</tt></a> and download a full-blown Ubuntu box for scientific computing: <code>ubuntu-14.04-amd64-vmware.ova</code> (6.7 Gb!).</li>
-<li> Launch VMWare Fusion.</li>
-<li> Click on <em>File - New</em> and choose to <em>install Windows or another
-   operating system in a new virtual machine</em>.</li>
-<li> Double-click on <em>Use operating system installation disc or image</em>.</li>
-<li> Choose <em>Linux</em> and <em>Ubuntu 64 bit</em>. You will be asked to give provide
-   the name of the Ubuntu file you downloaded.</li>
-<li> Choose <em>Customize Settings</em> and make the following
-   settings (these settings can be changed later, if desired):</li>
+  <li> Go to <a href="http://goo.gl/nSeBCg" target="_blank"><tt>http://goo.gl/nSeBCg</tt></a> and download a full-blown Ubuntu box for scientific computing: <code>ubuntu-14.04-amd64-vmware.ova</code> (6.7 Gb!).</li>
+  <li> Launch VMWare fusion.</li>
+  <li> Click on <em>File - Import</em>, then <em>Choose file</em>, and browse to the
+     to the <code>ubuntu-14.04-amd64-vmware.ova</code> file you downloaded.</li>
+  <li> Type your chosen name of the virtual machine in the <em>Save As</em> text
+     box and rely on the default location. Your entire virtual machine is
+     stored in this file, and backing up the machine means backing up the file.</li>
+  <li> Click <em>Import</em>.</li>
+  <li> Press <em>Command+E</em> (or go to <em>Virtual Machine - Settings...</em>). Specify
+     the following:</li>
 
 <ul>
-     <li> <em>Processors and Memory</em>: Set a minimum of 2 Gb memory, but
-       not more than half of your computer's total memory.
-       The virtual machine can use all processors.</li>
-     <li> <em>Hard Disk</em>: Choose how much disk space you want to use inside
-       the virtual machine (20 Gb is considered a minimum).</li>
+      <li> <em>Processors and Memory</em>: Set a minimum of 2 Gb memory, but
+        not more than half of your computer's total memory.
+        The virtual machine can use all processors.</li>
+      <li> <em>Hard Disk</em>: Choose how much disk space you want to use inside
+        the virtual machine (20 Gb is considered a minimum).</li>
 </ul>
 
-<li> Choose where you want to store the Ubuntu iso file on the hard disk.
-   The Ubuntu iso file is a single file containing all of the Ubuntu
-   operating system and all of the associated file system. Backing
-   up this file means backing up your whole Ubuntu installation, something
-   you should frequently do!</li>
-<li> When the start-up of Ubuntu is finished, click on the Ubuntu window
-   to launch the Install application. Click <em>Install</em>. On the next
-   page, fill in <em>Download updates while installing</em> and <em>Install third-party
-   software</em>. Then click <em>Continue</em>.
-   On the next page, choose <em>Erase disk and install Ubuntu</em>, then provide
-   your location, choose a keyboard layout (English is recommended for
-   programmers, but you can easily set up Ubuntu to switch between different
-   keyboards by means of a short-key). Fill in name, etc.
-   Ubuntu will then eventually install the operating system.</li>
-<li> You will most likely need to define a higher resolution of the display.
-   Find the <em>System settings</em> icon on the left, go to <em>Display</em>,
-   choose some display (you can try several, click <em>Keep this configuration</em>
-   when you are satisfied).</li>
-<li> You can have multiple keyboards on Ubuntu.
-   Launch <em>System settings</em>, go to <em>Keyboard</em>, click <em>Layout Settings</em>,
-   choose additional keyboard(s), and define some shortcut keys,
-   say <code>Ctrl+space</code> to switch between the keyboards in different languages.</li>
+  <li> Start up the virtual Ubuntu machine. The username and password for this machine are <em>fenics</em>.</li>
+  <li> You may need to define a higher resolution of the display.
+     Find the <em>System settings</em> icon on the left, go to <em>Display</em>,
+     choose some display (you can try several, click <em>Keep this configuration</em>
+     when you are satisfied).</li>
+  <li> You can have multiple keyboards on Ubuntu.
+     Launch <em>System settings</em>, go to <em>Keyboard</em>,
+     click the <em>Text entry</em> hyperlink, add keyboard(s) (<em>Input sources to use</em>),
+     and choose a shortcut, say <code>Ctrl+space</code> or <code>Ctrl+backslash</code>, in the
+     <em>Switch to next source using</em> field. Then you can use the shortcut
+     to quickly switch keyboard.</li>
 </ol>
 
-<h2 id="___sec10">File sharing <a name="___sec10"></a></h2>
+<h2 id="___sec10">Installing software on a minimalistic Ubuntu machine <a name="___sec10"></a></h2>
+
+If you have a minimalistic Ubuntu machine downloaded from
+the <a href="http://www.ubuntu.com/desktop/get-ubuntu/download" target="_blank">Ubuntu site</a>,
+you need to install additional software for scientific computing
+with Python:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; sudo apt-get install python-setuptools python-pip
+Terminal&gt; sudo pip install numpy sympy scipy nose pytest
+Terminal&gt; sudo apt-get install python-matplotlib spyder
+Terminal&gt; sudo pip install ipython --upgrade
+Terminal&gt; sudo pip install tornado --upgrade
+Terminal&gt; sudo pip install pyzmq --upgrade
+Terminal&gt; sudo pip install -e hg+https://code.google.com/p/scitools#egg=scitools
+</pre></div>
+
+<h2 id="___sec11">File sharing <a name="___sec11"></a></h2>
 
 The Ubuntu machine can see the files on your host system if you
 download <em>VMWare Tools</em>. Go to the <em>Virtual Machine</em> pull-down menu in
