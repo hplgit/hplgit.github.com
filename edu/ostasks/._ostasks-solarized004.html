@@ -138,8 +138,7 @@ The equivalent to the <code>os.path.walk</code> construction is then
 <!-- begin verbatim block  pycod-->
 <pre><code>arg = []
 for dirpath, dirnames, filenames in os.walk(root):
-    for dirname in dirnames:
-        checksize(arg, dirpath, filenames)
+    checksize(arg, dirpath, dirnames + filenames)
 </code></pre>
 <!-- end verbatim block -->
 

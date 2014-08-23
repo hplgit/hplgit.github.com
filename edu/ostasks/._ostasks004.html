@@ -166,8 +166,7 @@ The equivalent to the <code>os.path.walk</code> construction is then
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">arg <span style="color: #666666">=</span> []
 <span style="color: #008000; font-weight: bold">for</span> dirpath, dirnames, filenames <span style="color: #AA22FF; font-weight: bold">in</span> os<span style="color: #666666">.</span>walk(root):
-    <span style="color: #008000; font-weight: bold">for</span> dirname <span style="color: #AA22FF; font-weight: bold">in</span> dirnames:
-        checksize(arg, dirpath, filenames)
+    checksize(arg, dirpath, dirnames <span style="color: #666666">+</span> filenames)
 </pre></div>
 <p>
 <!-- ===== References ===== -->
