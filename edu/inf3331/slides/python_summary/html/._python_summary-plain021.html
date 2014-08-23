@@ -95,25 +95,29 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec15'),
-              (' Functions and arguments ', 2, None, '___sec16'),
+              (' Examples on loops and branching ',
+               2,
+               'py:summary:interactive:loops',
+               'py:summary:interactive:loops'),
+              (' Functions and arguments ', 2, None, '___sec17'),
               (' `eval` and `exec` turn strings into live code ',
                2,
                None,
-               '___sec17'),
-              (' File reading ', 2, None, '___sec18'),
-              (' File writing ', 2, None, '___sec19'),
-              (' Using modules ', 2, None, '___sec20'),
-              (' Making your own Python modules ', 2, None, '___sec21'),
-              (' How Python can find your modules? ', 2, None, '___sec22'),
-              (' Packages ', 2, None, '___sec23'),
-              (' Test block in a module ', 2, None, '___sec24'),
-              (' Installing modules ', 2, None, '___sec25'),
-              (' Writing your own `setup.py` script ', 2, None, '___sec26'),
+               '___sec18'),
+              (' File reading ', 2, None, '___sec19'),
+              (' File writing ', 2, None, '___sec20'),
+              (' Using modules ', 2, None, '___sec21'),
+              (' Making your own Python modules ', 2, None, '___sec22'),
+              (' How Python can find your modules? ', 2, None, '___sec23'),
+              (' Packages ', 2, None, '___sec24'),
+              (' Test block in a module ', 2, None, '___sec25'),
+              (' Installing modules ', 2, None, '___sec26'),
+              (' Writing your own `setup.py` script ', 2, None, '___sec27'),
               (' Use doc strings in functions, classes, and modules! ',
                2,
                None,
-               '___sec27'),
-              (' Doc strings serve many purposes ', 2, None, '___sec28')]}
+               '___sec28'),
+              (' Doc strings serve many purposes ', 2, None, '___sec29')]}
 end of tocinfo -->
 
 <body>
@@ -127,46 +131,19 @@ end of tocinfo -->
 <p>
 <!-- !split -->
 
-<h2>Using modules  <a name="___sec20"></a></h2>
+<h2>File writing  <a name="___sec20"></a></h2>
 
-Import module:
-
-<p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span>
-x <span style="color: #666666">=</span> <span style="color: #008000">float</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>])
-</pre></div>
-<p>
-Import module member <code>argv</code> into current namespace:
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">outfile <span style="color: #666666">=</span> <span style="color: #008000">open</span>(filename, <span style="color: #BA2121">&#39;w&#39;</span>)   <span style="color: #408080; font-style: italic"># new file or overwrite</span>
+outfile <span style="color: #666666">=</span> <span style="color: #008000">open</span>(filename, <span style="color: #BA2121">&#39;a&#39;</span>)   <span style="color: #408080; font-style: italic"># append to existing file</span>
 
-<p>
+outfile<span style="color: #666666">.</span>write(<span style="color: #BA2121">&quot;&quot;&quot;Some string</span>
+<span style="color: #BA2121">....</span>
+<span style="color: #BA2121">&quot;&quot;&quot;</span>)
+outfile<span style="color: #666666">.</span>writelines(list_of_lines)
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sys</span> <span style="color: #008000; font-weight: bold">import</span> argv
-x <span style="color: #666666">=</span> <span style="color: #008000">float</span>(argv[<span style="color: #666666">1</span>])
-</pre></div>
-<p>
-Import everything from <code>sys</code> (not recommended)
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sys</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-x <span style="color: #666666">=</span> <span style="color: #008000">float</span>(argv[<span style="color: #666666">1</span>])
-
-flags <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;&#39;</span>
-<span style="color: #408080; font-style: italic"># Ooops, flags was also imported from sys, this new flags</span>
-<span style="color: #408080; font-style: italic"># name overwrites sys.flags!</span>
-</pre></div>
-<p>
-Import <code>argv</code> under an alias:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sys</span> <span style="color: #008000; font-weight: bold">import</span> argv <span style="color: #008000; font-weight: bold">as</span> a
-x <span style="color: #666666">=</span> <span style="color: #008000">float</span>(a[<span style="color: #666666">1</span>])
+outfile<span style="color: #666666">.</span>close()
 </pre></div>
 <p>
 <p>

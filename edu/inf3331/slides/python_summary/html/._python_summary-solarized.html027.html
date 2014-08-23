@@ -82,25 +82,29 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec15'),
-              (' Functions and arguments ', 2, None, '___sec16'),
+              (' Examples on loops and branching ',
+               2,
+               'py:summary:interactive:loops',
+               'py:summary:interactive:loops'),
+              (' Functions and arguments ', 2, None, '___sec17'),
               (' `eval` and `exec` turn strings into live code ',
                2,
                None,
-               '___sec17'),
-              (' File reading ', 2, None, '___sec18'),
-              (' File writing ', 2, None, '___sec19'),
-              (' Using modules ', 2, None, '___sec20'),
-              (' Making your own Python modules ', 2, None, '___sec21'),
-              (' How Python can find your modules? ', 2, None, '___sec22'),
-              (' Packages ', 2, None, '___sec23'),
-              (' Test block in a module ', 2, None, '___sec24'),
-              (' Installing modules ', 2, None, '___sec25'),
-              (' Writing your own `setup.py` script ', 2, None, '___sec26'),
+               '___sec18'),
+              (' File reading ', 2, None, '___sec19'),
+              (' File writing ', 2, None, '___sec20'),
+              (' Using modules ', 2, None, '___sec21'),
+              (' Making your own Python modules ', 2, None, '___sec22'),
+              (' How Python can find your modules? ', 2, None, '___sec23'),
+              (' Packages ', 2, None, '___sec24'),
+              (' Test block in a module ', 2, None, '___sec25'),
+              (' Installing modules ', 2, None, '___sec26'),
+              (' Writing your own `setup.py` script ', 2, None, '___sec27'),
               (' Use doc strings in functions, classes, and modules! ',
                2,
                None,
-               '___sec27'),
-              (' Doc strings serve many purposes ', 2, None, '___sec28')]}
+               '___sec28'),
+              (' Doc strings serve many purposes ', 2, None, '___sec29')]}
 end of tocinfo -->
 
 <body>
@@ -109,31 +113,20 @@ end of tocinfo -->
 <a name="part0027"></a>
 <!-- !split -->
 
-<h2>Writing your own <code>setup.py</code> script  <a name="___sec26"></a></h2>
+<h2>Installing modules  <a name="___sec26"></a></h2>
 
-Suppose you have a module in <code>mymod.py</code> that you want to distribute to
-others such that they can easily install it by <code>setup.py install</code>.
+<ul>
+ <li> Python has its own tool, Distutils, for distributing and installing modules</li>
+ <li> Installation is based on the script <code>setup.py</code></li>
+</ul>
+
+Standard command:
 
 <p>
 
-<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">distutils.core</span> <span style="color: #8B008B; font-weight: bold">import</span> setup
-name=<span style="color: #CD5555">&#39;mymod&#39;</span>
-
-setup(name=name,
-      version=<span style="color: #CD5555">&#39;0.1&#39;</span>,
-      py_modules=[name],       <span style="color: #228B22"># modules to be installed</span>
-      scripts=[name + <span style="color: #CD5555">&#39;.py&#39;</span>],  <span style="color: #228B22"># executable programs to be installed</span>
-      )
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt; sudo python setup.py install
 </pre></div>
-<p>
-Now, <code>setup.py</code> will be installed both as a module and as an
-executable script (if it has a test block for sensible code).
-
-<p>
-Can easily be extended to install a package of modules, see
-the <a href="https://docs.python.org/2/distutils/introduction.html" target="_blank">introduction to Distutils</a>
-
 <p>
 <p>
 <!-- begin bottom navigation -->

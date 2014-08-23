@@ -82,25 +82,29 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec15'),
-              (' Functions and arguments ', 2, None, '___sec16'),
+              (' Examples on loops and branching ',
+               2,
+               'py:summary:interactive:loops',
+               'py:summary:interactive:loops'),
+              (' Functions and arguments ', 2, None, '___sec17'),
               (' `eval` and `exec` turn strings into live code ',
                2,
                None,
-               '___sec17'),
-              (' File reading ', 2, None, '___sec18'),
-              (' File writing ', 2, None, '___sec19'),
-              (' Using modules ', 2, None, '___sec20'),
-              (' Making your own Python modules ', 2, None, '___sec21'),
-              (' How Python can find your modules? ', 2, None, '___sec22'),
-              (' Packages ', 2, None, '___sec23'),
-              (' Test block in a module ', 2, None, '___sec24'),
-              (' Installing modules ', 2, None, '___sec25'),
-              (' Writing your own `setup.py` script ', 2, None, '___sec26'),
+               '___sec18'),
+              (' File reading ', 2, None, '___sec19'),
+              (' File writing ', 2, None, '___sec20'),
+              (' Using modules ', 2, None, '___sec21'),
+              (' Making your own Python modules ', 2, None, '___sec22'),
+              (' How Python can find your modules? ', 2, None, '___sec23'),
+              (' Packages ', 2, None, '___sec24'),
+              (' Test block in a module ', 2, None, '___sec25'),
+              (' Installing modules ', 2, None, '___sec26'),
+              (' Writing your own `setup.py` script ', 2, None, '___sec27'),
               (' Use doc strings in functions, classes, and modules! ',
                2,
                None,
-               '___sec27'),
-              (' Doc strings serve many purposes ', 2, None, '___sec28')]}
+               '___sec28'),
+              (' Doc strings serve many purposes ', 2, None, '___sec29')]}
 end of tocinfo -->
 
 <body>
@@ -109,27 +113,35 @@ end of tocinfo -->
 <a name="part0024"></a>
 <!-- !split -->
 
-<h2>Packages  <a name="___sec23"></a></h2>
+<h2>How Python can find your modules?  <a name="___sec23"></a></h2>
 
-<ul>
- <li> A class of modules can be collected in a <em>package</em></li>
- <li> Normally, a package is organized as module files in a directory tree</li>
- <li> Each subdirectory has a file <code>__init__</code> (can be empty)</li>
-</ul>
-
-Can import modules in the tree like this:
+Python has some &quot;official&quot; module directories, typically
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">MyMod.numerics.pde.grids</span> <span style="color: #8B008B; font-weight: bold">import</span> fdm_grids
-
-grid = fdm_grids()
-grid.domain(xmin=<span style="color: #B452CD">0</span>, xmax=<span style="color: #B452CD">1</span>, ymin=<span style="color: #B452CD">0</span>, ymax=<span style="color: #B452CD">1</span>)
-...
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">/usr/lib/python2.7
+/usr/lib/python2.7/site-packages
+/usr/lib/python3.4
+/usr/lib/python3.4/site-packages
 </pre></div>
 <p>
-Here, class <code>fdm_grids</code> is in module <code>grids</code> (file <code>grids.py</code> in the directory <code>MyMod/numerics/pde</code>
++ current working directory
+
+<p>
+The environment variable <code>PYTHONPATH</code> may contain additional
+directories with modules
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt; echo $PYTHONPATH
+/home/me/python/mymodules:/usr/lib/python3.4:/home/you/yourlibs
+</pre></div>
+<p>
+Python's <code>sys.path</code> list contains the directories where Python
+searches for modules, and
+<code>sys.path</code> contains &quot;official&quot; directories, plus those in <code>PYTHONPATH</code>
 
 <p>
 <p>

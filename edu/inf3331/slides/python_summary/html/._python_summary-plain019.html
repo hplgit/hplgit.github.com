@@ -95,25 +95,29 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec15'),
-              (' Functions and arguments ', 2, None, '___sec16'),
+              (' Examples on loops and branching ',
+               2,
+               'py:summary:interactive:loops',
+               'py:summary:interactive:loops'),
+              (' Functions and arguments ', 2, None, '___sec17'),
               (' `eval` and `exec` turn strings into live code ',
                2,
                None,
-               '___sec17'),
-              (' File reading ', 2, None, '___sec18'),
-              (' File writing ', 2, None, '___sec19'),
-              (' Using modules ', 2, None, '___sec20'),
-              (' Making your own Python modules ', 2, None, '___sec21'),
-              (' How Python can find your modules? ', 2, None, '___sec22'),
-              (' Packages ', 2, None, '___sec23'),
-              (' Test block in a module ', 2, None, '___sec24'),
-              (' Installing modules ', 2, None, '___sec25'),
-              (' Writing your own `setup.py` script ', 2, None, '___sec26'),
+               '___sec18'),
+              (' File reading ', 2, None, '___sec19'),
+              (' File writing ', 2, None, '___sec20'),
+              (' Using modules ', 2, None, '___sec21'),
+              (' Making your own Python modules ', 2, None, '___sec22'),
+              (' How Python can find your modules? ', 2, None, '___sec23'),
+              (' Packages ', 2, None, '___sec24'),
+              (' Test block in a module ', 2, None, '___sec25'),
+              (' Installing modules ', 2, None, '___sec26'),
+              (' Writing your own `setup.py` script ', 2, None, '___sec27'),
               (' Use doc strings in functions, classes, and modules! ',
                2,
                None,
-               '___sec27'),
-              (' Doc strings serve many purposes ', 2, None, '___sec28')]}
+               '___sec28'),
+              (' Doc strings serve many purposes ', 2, None, '___sec29')]}
 end of tocinfo -->
 
 <body>
@@ -127,30 +131,40 @@ end of tocinfo -->
 <p>
 <!-- !split -->
 
-<h2>File reading  <a name="___sec18"></a></h2>
+<h2><code>eval</code> and <code>exec</code> turn strings into live code  <a name="___sec18"></a></h2>
 
-Reading a file:
+Evaluating string expressions with <code>eval</code>:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> <span style="color: #666666">20</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> r <span style="color: #666666">=</span> <span style="color: #008000">eval</span>(<span style="color: #BA2121">&#39;x + 1.1&#39;</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> r
+<span style="color: #666666">21.1</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000">type</span>(r)
+<span style="color: #666666">&lt;</span><span style="color: #008000">type</span> <span style="color: #BA2121">&#39;float&#39;</span><span style="color: #666666">&gt;</span>
+</pre></div>
+<p>
+Executing strings with Python code, using <code>exec</code>:
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">infile <span style="color: #666666">=</span> <span style="color: #008000">open</span>(filename, <span style="color: #BA2121">&#39;r&#39;</span>)
-<span style="color: #008000; font-weight: bold">for</span> line <span style="color: #AA22FF; font-weight: bold">in</span> infile:
-    <span style="color: #408080; font-style: italic"># process line</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span>
+user_expression <span style="color: #666666">=</span> sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>]
 
-lines <span style="color: #666666">=</span> infile<span style="color: #666666">.</span>readlines()
-<span style="color: #008000; font-weight: bold">for</span> line <span style="color: #AA22FF; font-weight: bold">in</span> lines:
-    <span style="color: #408080; font-style: italic"># process line</span>
+<span style="color: #408080; font-style: italic"># Wrap user_expression in a Python function</span>
+<span style="color: #408080; font-style: italic"># (assuming the expression involves x)</span>
 
-<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">xrange</span>(<span style="color: #008000">len</span>(lines)):
-    <span style="color: #408080; font-style: italic"># process lines[i] and perhaps next line lines[i+1]</span>
+<span style="color: #008000; font-weight: bold">exec</span>(<span style="color: #BA2121">&quot;&quot;&quot;</span>
+<span style="color: #BA2121">def f(x):</span>
+<span style="color: #BA2121">    return </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121"></span>
+<span style="color: #BA2121">&quot;&quot;&quot;</span> <span style="color: #666666">%</span> user_expression
 
-fstr <span style="color: #666666">=</span> infile<span style="color: #666666">.</span>read()  <span style="color: #408080; font-style: italic"># fstr contains the entire file</span>
-fstr <span style="color: #666666">=</span> fstr<span style="color: #666666">.</span>replace(<span style="color: #BA2121">&#39;some string&#39;</span>, <span style="color: #BA2121">&#39;another string&#39;</span>)
-<span style="color: #008000; font-weight: bold">for</span> piece <span style="color: #AA22FF; font-weight: bold">in</span> fstr<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;;&#39;</span>):
-    <span style="color: #408080; font-style: italic"># process piece (separated by ;)</span>
+<span style="color: #408080; font-style: italic"># or</span>
 
-infile<span style="color: #666666">.</span>close()
+f <span style="color: #666666">=</span> <span style="color: #008000">eval</span>(<span style="color: #BA2121">&#39;lambda x: </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> user_expression)
 </pre></div>
 <p>
 <p>

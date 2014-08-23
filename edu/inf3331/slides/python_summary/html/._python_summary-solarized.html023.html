@@ -82,25 +82,29 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec15'),
-              (' Functions and arguments ', 2, None, '___sec16'),
+              (' Examples on loops and branching ',
+               2,
+               'py:summary:interactive:loops',
+               'py:summary:interactive:loops'),
+              (' Functions and arguments ', 2, None, '___sec17'),
               (' `eval` and `exec` turn strings into live code ',
                2,
                None,
-               '___sec17'),
-              (' File reading ', 2, None, '___sec18'),
-              (' File writing ', 2, None, '___sec19'),
-              (' Using modules ', 2, None, '___sec20'),
-              (' Making your own Python modules ', 2, None, '___sec21'),
-              (' How Python can find your modules? ', 2, None, '___sec22'),
-              (' Packages ', 2, None, '___sec23'),
-              (' Test block in a module ', 2, None, '___sec24'),
-              (' Installing modules ', 2, None, '___sec25'),
-              (' Writing your own `setup.py` script ', 2, None, '___sec26'),
+               '___sec18'),
+              (' File reading ', 2, None, '___sec19'),
+              (' File writing ', 2, None, '___sec20'),
+              (' Using modules ', 2, None, '___sec21'),
+              (' Making your own Python modules ', 2, None, '___sec22'),
+              (' How Python can find your modules? ', 2, None, '___sec23'),
+              (' Packages ', 2, None, '___sec24'),
+              (' Test block in a module ', 2, None, '___sec25'),
+              (' Installing modules ', 2, None, '___sec26'),
+              (' Writing your own `setup.py` script ', 2, None, '___sec27'),
               (' Use doc strings in functions, classes, and modules! ',
                2,
                None,
-               '___sec27'),
-              (' Doc strings serve many purposes ', 2, None, '___sec28')]}
+               '___sec28'),
+              (' Doc strings serve many purposes ', 2, None, '___sec29')]}
 end of tocinfo -->
 
 <body>
@@ -109,36 +113,29 @@ end of tocinfo -->
 <a name="part0023"></a>
 <!-- !split -->
 
-<h2>How Python can find your modules?  <a name="___sec22"></a></h2>
+<h2>Making your own Python modules  <a name="___sec22"></a></h2>
 
-Python has some &quot;official&quot; module directories, typically
+<ul>
+ <li> Reuse scripts by wrapping them in classes or functions</li>
+ <li> Collect classes and functions in library modules</li>
+ <li> How? just put classes and functions in a file <code>MyMod.py</code></li>
+ <li> Put <code>MyMod.py</code> in one of the directories where Python can find it<br />
+   (see next slide)</li>
+</ul>
+
+Examples:
 
 <p>
 
-<!-- code=text typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">/usr/lib/python2.7
-/usr/lib/python2.7/site-packages
-/usr/lib/python3.4
-/usr/lib/python3.4/site-packages
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">MyMod</span>
+<span style="color: #228B22"># or</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">MyMod</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">M</span>   <span style="color: #228B22"># M is a short form</span>
+<span style="color: #228B22"># or</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">MyMod</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+<span style="color: #228B22"># or</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">MyMod</span> <span style="color: #8B008B; font-weight: bold">import</span> myspecialfunction, myotherspecialfunction
 </pre></div>
-<p>
-+ current working directory
-
-<p>
-The environment variable <code>PYTHONPATH</code> may contain additional
-directories with modules
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt; echo $PYTHONPATH
-/home/me/python/mymodules:/usr/lib/python3.4:/home/you/yourlibs
-</pre></div>
-<p>
-Python's <code>sys.path</code> list contains the directories where Python
-searches for modules, and
-<code>sys.path</code> contains &quot;official&quot; directories, plus those in <code>PYTHONPATH</code>
-
 <p>
 <p>
 <!-- begin bottom navigation -->

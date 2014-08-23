@@ -95,25 +95,29 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec15'),
-              (' Functions and arguments ', 2, None, '___sec16'),
+              (' Examples on loops and branching ',
+               2,
+               'py:summary:interactive:loops',
+               'py:summary:interactive:loops'),
+              (' Functions and arguments ', 2, None, '___sec17'),
               (' `eval` and `exec` turn strings into live code ',
                2,
                None,
-               '___sec17'),
-              (' File reading ', 2, None, '___sec18'),
-              (' File writing ', 2, None, '___sec19'),
-              (' Using modules ', 2, None, '___sec20'),
-              (' Making your own Python modules ', 2, None, '___sec21'),
-              (' How Python can find your modules? ', 2, None, '___sec22'),
-              (' Packages ', 2, None, '___sec23'),
-              (' Test block in a module ', 2, None, '___sec24'),
-              (' Installing modules ', 2, None, '___sec25'),
-              (' Writing your own `setup.py` script ', 2, None, '___sec26'),
+               '___sec18'),
+              (' File reading ', 2, None, '___sec19'),
+              (' File writing ', 2, None, '___sec20'),
+              (' Using modules ', 2, None, '___sec21'),
+              (' Making your own Python modules ', 2, None, '___sec22'),
+              (' How Python can find your modules? ', 2, None, '___sec23'),
+              (' Packages ', 2, None, '___sec24'),
+              (' Test block in a module ', 2, None, '___sec25'),
+              (' Installing modules ', 2, None, '___sec26'),
+              (' Writing your own `setup.py` script ', 2, None, '___sec27'),
               (' Use doc strings in functions, classes, and modules! ',
                2,
                None,
-               '___sec27'),
-              (' Doc strings serve many purposes ', 2, None, '___sec28')]}
+               '___sec28'),
+              (' Doc strings serve many purposes ', 2, None, '___sec29')]}
 end of tocinfo -->
 
 <body>
@@ -429,6 +433,7 @@ A tuple is a constant list (known as an <em>immutable</em> object)
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">s <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Berlin: 18.4 C at 4 pm&#39;</span>
 s[<span style="color: #666666">8</span>:<span style="color: #666666">17</span>]          <span style="color: #408080; font-style: italic"># extract substring</span>
+<span style="color: #BA2121">&#39;:&#39;</span> <span style="color: #AA22FF; font-weight: bold">in</span> s         <span style="color: #408080; font-style: italic"># is &#39;:&#39; contained in s?</span>
 s<span style="color: #666666">.</span>find(<span style="color: #BA2121">&#39;:&#39;</span>)      <span style="color: #408080; font-style: italic"># index where first &#39;:&#39; is found</span>
 s<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;:&#39;</span>)     <span style="color: #408080; font-style: italic"># split into substrings</span>
 s<span style="color: #666666">.</span>split()        <span style="color: #408080; font-style: italic"># split wrt whitespace</span>
@@ -524,7 +529,21 @@ Python 2.x returns a list of integers.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Functions and arguments  <a name="___sec16"></a></h2>
+<h2>Examples on loops and branching <a name="py:summary:interactive:loops"></a></h2>
+
+
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=x+%3D+0%0Adx+%3D+0.5%0Awhile+x+%3C+6%3A%0A++++if+x+%3C+2%3A%0A++++++++x+%2B%3D+dx%0A++++elif+2+%3C%3D+x+%3C+4%3A%0A++++++++x+%2B%3D+2%2Adx%0A++++else%3A%0A++++++++x+%2B%3D+3%2Adx%0A++++print+%27new+x%3A%27%2C+x&curInstr=0&py=2&cumulative=false">
+</iframe>
+<p>
+
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=mylist+%3D+%5B0%2C+0.5%2C+1%2C+2%2C+4%2C+10%5D%0Afor+i%2C+x+in+enumerate%28mylist%29%3A%0A++++print+i%2C+x&curInstr=0&py=2&cumulative=false">
+</iframe>
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br>
+
+<h2>Functions and arguments  <a name="___sec17"></a></h2>
 
 User-defined functions:
 
@@ -555,7 +574,7 @@ Positional arguments must appear before keyword arguments:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2><code>eval</code> and <code>exec</code> turn strings into live code  <a name="___sec17"></a></h2>
+<h2><code>eval</code> and <code>exec</code> turn strings into live code  <a name="___sec18"></a></h2>
 
 Evaluating string expressions with <code>eval</code>:
 
@@ -593,7 +612,7 @@ f <span style="color: #666666">=</span> <span style="color: #008000">eval</span>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>File reading  <a name="___sec18"></a></h2>
+<h2>File reading  <a name="___sec19"></a></h2>
 
 Reading a file:
 
@@ -621,7 +640,7 @@ infile<span style="color: #666666">.</span>close()
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>File writing  <a name="___sec19"></a></h2>
+<h2>File writing  <a name="___sec20"></a></h2>
 
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -638,7 +657,7 @@ outfile<span style="color: #666666">.</span>close()
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Using modules  <a name="___sec20"></a></h2>
+<h2>Using modules  <a name="___sec21"></a></h2>
 
 Import module:
 
@@ -682,7 +701,7 @@ x <span style="color: #666666">=</span> <span style="color: #008000">float</span
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Making your own Python modules  <a name="___sec21"></a></h2>
+<h2>Making your own Python modules  <a name="___sec22"></a></h2>
 
 <ul>
  <li> Reuse scripts by wrapping them in classes or functions</li>
@@ -708,7 +727,7 @@ Examples:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>How Python can find your modules?  <a name="___sec22"></a></h2>
+<h2>How Python can find your modules?  <a name="___sec23"></a></h2>
 
 Python has some &quot;official&quot; module directories, typically
 
@@ -741,7 +760,7 @@ searches for modules, and
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Packages  <a name="___sec23"></a></h2>
+<h2>Packages  <a name="___sec24"></a></h2>
 
 <ul>
  <li> A class of modules can be collected in a <em>package</em></li>
@@ -766,7 +785,7 @@ Here, class <code>fdm_grids</code> is in module <code>grids</code> (file <code>g
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Test block in a module  <a name="___sec24"></a></h2>
+<h2>Test block in a module  <a name="___sec25"></a></h2>
 
 Module files can have a test/demo section at the end:
 
@@ -785,7 +804,7 @@ Module files can have a test/demo section at the end:
 
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Installing modules  <a name="___sec25"></a></h2>
+<h2>Installing modules  <a name="___sec26"></a></h2>
 
 <ul>
  <li> Python has its own tool, Distutils, for distributing and installing modules</li>
@@ -802,7 +821,7 @@ Standard command:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Writing your own <code>setup.py</code> script  <a name="___sec26"></a></h2>
+<h2>Writing your own <code>setup.py</code> script  <a name="___sec27"></a></h2>
 
 Suppose you have a module in <code>mymod.py</code> that you want to distribute to
 others such that they can easily install it by <code>setup.py install</code>.
@@ -830,7 +849,7 @@ the <a href="https://docs.python.org/2/distutils/introduction.html" target="_bla
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Use doc strings in functions, classes, and modules!  <a name="___sec27"></a></h2>
+<h2>Use doc strings in functions, classes, and modules!  <a name="___sec28"></a></h2>
 
 Doc strings = first string in a function, class, or file (module)
 
@@ -862,7 +881,7 @@ in the top of the file
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Doc strings serve many purposes  <a name="___sec28"></a></h2>
+<h2>Doc strings serve many purposes  <a name="___sec29"></a></h2>
 
 <ul>
  <li> documentation in the source code</li>

@@ -95,25 +95,29 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec15'),
-              (' Functions and arguments ', 2, None, '___sec16'),
+              (' Examples on loops and branching ',
+               2,
+               'py:summary:interactive:loops',
+               'py:summary:interactive:loops'),
+              (' Functions and arguments ', 2, None, '___sec17'),
               (' `eval` and `exec` turn strings into live code ',
                2,
                None,
-               '___sec17'),
-              (' File reading ', 2, None, '___sec18'),
-              (' File writing ', 2, None, '___sec19'),
-              (' Using modules ', 2, None, '___sec20'),
-              (' Making your own Python modules ', 2, None, '___sec21'),
-              (' How Python can find your modules? ', 2, None, '___sec22'),
-              (' Packages ', 2, None, '___sec23'),
-              (' Test block in a module ', 2, None, '___sec24'),
-              (' Installing modules ', 2, None, '___sec25'),
-              (' Writing your own `setup.py` script ', 2, None, '___sec26'),
+               '___sec18'),
+              (' File reading ', 2, None, '___sec19'),
+              (' File writing ', 2, None, '___sec20'),
+              (' Using modules ', 2, None, '___sec21'),
+              (' Making your own Python modules ', 2, None, '___sec22'),
+              (' How Python can find your modules? ', 2, None, '___sec23'),
+              (' Packages ', 2, None, '___sec24'),
+              (' Test block in a module ', 2, None, '___sec25'),
+              (' Installing modules ', 2, None, '___sec26'),
+              (' Writing your own `setup.py` script ', 2, None, '___sec27'),
               (' Use doc strings in functions, classes, and modules! ',
                2,
                None,
-               '___sec27'),
-              (' Doc strings serve many purposes ', 2, None, '___sec28')]}
+               '___sec28'),
+              (' Doc strings serve many purposes ', 2, None, '___sec29')]}
 end of tocinfo -->
 
 <body>
@@ -127,35 +131,31 @@ end of tocinfo -->
 <p>
 <!-- !split -->
 
-<h2>Use doc strings in functions, classes, and modules!  <a name="___sec27"></a></h2>
+<h2>Writing your own <code>setup.py</code> script  <a name="___sec27"></a></h2>
 
-Doc strings = first string in a function, class, or file (module)
+Suppose you have a module in <code>mymod.py</code> that you want to distribute to
+others such that they can easily install it by <code>setup.py install</code>.
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">ignorecase_sort</span>(a, b):
-    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Compare strings a and b, ignoring case.&quot;&quot;&quot;</span>
-    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">cmp</span>(a<span style="color: #666666">.</span>lower(), b<span style="color: #666666">.</span>lower())
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">distutils.core</span> <span style="color: #008000; font-weight: bold">import</span> setup
+name<span style="color: #666666">=</span><span style="color: #BA2121">&#39;mymod&#39;</span>
+
+setup(name<span style="color: #666666">=</span>name,
+      version<span style="color: #666666">=</span><span style="color: #BA2121">&#39;0.1&#39;</span>,
+      py_modules<span style="color: #666666">=</span>[name],       <span style="color: #408080; font-style: italic"># modules to be installed</span>
+      scripts<span style="color: #666666">=</span>[name <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;.py&#39;</span>],  <span style="color: #408080; font-style: italic"># executable programs to be installed</span>
+      )
 </pre></div>
 <p>
-Doc strings in modules are a (often long multi-line) string starting
-in the top of the file
+Now, <code>setup.py</code> will be installed both as a module and as an
+executable script (if it has a test block for sensible code).
 
 <p>
+Can easily be extended to install a package of modules, see
+the <a href="https://docs.python.org/2/distutils/introduction.html" target="_blank">introduction to Distutils</a>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
-<span style="color: #BA2121; font-style: italic">This module is a fake module</span>
-<span style="color: #BA2121; font-style: italic">for exemplifying multi-line</span>
-<span style="color: #BA2121; font-style: italic">doc strings.</span>
-<span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">collections</span>
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">somefunc</span>():
-    <span style="color: #666666">...</span>
-</pre></div>
 <p>
 <p>
 <!-- begin bottom navigation -->

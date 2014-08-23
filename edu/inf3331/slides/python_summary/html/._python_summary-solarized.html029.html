@@ -82,25 +82,29 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec15'),
-              (' Functions and arguments ', 2, None, '___sec16'),
+              (' Examples on loops and branching ',
+               2,
+               'py:summary:interactive:loops',
+               'py:summary:interactive:loops'),
+              (' Functions and arguments ', 2, None, '___sec17'),
               (' `eval` and `exec` turn strings into live code ',
                2,
                None,
-               '___sec17'),
-              (' File reading ', 2, None, '___sec18'),
-              (' File writing ', 2, None, '___sec19'),
-              (' Using modules ', 2, None, '___sec20'),
-              (' Making your own Python modules ', 2, None, '___sec21'),
-              (' How Python can find your modules? ', 2, None, '___sec22'),
-              (' Packages ', 2, None, '___sec23'),
-              (' Test block in a module ', 2, None, '___sec24'),
-              (' Installing modules ', 2, None, '___sec25'),
-              (' Writing your own `setup.py` script ', 2, None, '___sec26'),
+               '___sec18'),
+              (' File reading ', 2, None, '___sec19'),
+              (' File writing ', 2, None, '___sec20'),
+              (' Using modules ', 2, None, '___sec21'),
+              (' Making your own Python modules ', 2, None, '___sec22'),
+              (' How Python can find your modules? ', 2, None, '___sec23'),
+              (' Packages ', 2, None, '___sec24'),
+              (' Test block in a module ', 2, None, '___sec25'),
+              (' Installing modules ', 2, None, '___sec26'),
+              (' Writing your own `setup.py` script ', 2, None, '___sec27'),
               (' Use doc strings in functions, classes, and modules! ',
                2,
                None,
-               '___sec27'),
-              (' Doc strings serve many purposes ', 2, None, '___sec28')]}
+               '___sec28'),
+              (' Doc strings serve many purposes ', 2, None, '___sec29')]}
 end of tocinfo -->
 
 <body>
@@ -109,22 +113,42 @@ end of tocinfo -->
 <a name="part0029"></a>
 <!-- !split -->
 
-<h2>Doc strings serve many purposes  <a name="___sec28"></a></h2>
+<h2>Use doc strings in functions, classes, and modules!  <a name="___sec28"></a></h2>
 
-<ul>
- <li> documentation in the source code</li>
- <li> online documentation<br />
-   (Sphinx can automatically produce manuals with doc strings)</li>
- <li> balloon help in sophisticated GUIs (e.g., IDLE)</li>
- <li> automatic testing with the <a href="https://docs.python.org/2/library/doctest.html?highlight=doctest#doctest" target="_blank"><tt>doctest</tt></a> module</li>
-</ul>
+Doc strings = first string in a function, class, or file (module)
 
+<p>
 
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">ignorecase_sort</span>(a, b):
+    <span style="color: #CD5555">&quot;&quot;&quot;Compare strings a and b, ignoring case.&quot;&quot;&quot;</span>
+    <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">cmp</span>(a.lower(), b.lower())
+</pre></div>
+<p>
+Doc strings in modules are a (often long multi-line) string starting
+in the top of the file
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">This module is a fake module</span>
+<span style="color: #CD5555">for exemplifying multi-line</span>
+<span style="color: #CD5555">doc strings.</span>
+<span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">collections</span>
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">somefunc</span>():
+    ...
+</pre></div>
+<p>
 <p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>
 <div style="text-align: left;"><a href="._python_summary-solarized.html028.html">&laquo; Previous</a></div>
 </td><td>
+<div style="text-align: right;"><a href="._python_summary-solarized.html030.html">Next &raquo;</a></div>
 </td></tr></table>
 <!-- end bottom navigation -->
 </p>

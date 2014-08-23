@@ -468,6 +468,7 @@ A tuple is a constant list (known as an <em>immutable</em> object)
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
 <div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">s</span> <span style="color: #d0d0d0">=</span> <span style="color: #ed9d13">&#39;Berlin: 18.4 C at 4 pm&#39;</span>
 <span style="color: #d0d0d0">s[</span><span style="color: #3677a9">8</span><span style="color: #d0d0d0">:</span><span style="color: #3677a9">17</span><span style="color: #d0d0d0">]</span>          <span style="color: #999999; font-style: italic"># extract substring</span>
+<span style="color: #ed9d13">&#39;:&#39;</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #d0d0d0">s</span>         <span style="color: #999999; font-style: italic"># is &#39;:&#39; contained in s?</span>
 <span style="color: #d0d0d0">s.find(</span><span style="color: #ed9d13">&#39;:&#39;</span><span style="color: #d0d0d0">)</span>      <span style="color: #999999; font-style: italic"># index where first &#39;:&#39; is found</span>
 <span style="color: #d0d0d0">s.split(</span><span style="color: #ed9d13">&#39;:&#39;</span><span style="color: #d0d0d0">)</span>     <span style="color: #999999; font-style: italic"># split into substrings</span>
 <span style="color: #d0d0d0">s.split()</span>        <span style="color: #999999; font-style: italic"># split wrt whitespace</span>
@@ -579,7 +580,25 @@ Python 2.x returns a list of integers.
 
 <section>
 
-<h2>Functions and arguments  <a name="___sec16"></a></h2>
+<h2>Examples on loops and branching <a name="py:summary:interactive:loops"></a></h2>
+
+
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=x+%3D+0%0Adx+%3D+0.5%0Awhile+x+%3C+6%3A%0A++++if+x+%3C+2%3A%0A++++++++x+%2B%3D+dx%0A++++elif+2+%3C%3D+x+%3C+4%3A%0A++++++++x+%2B%3D+2%2Adx%0A++++else%3A%0A++++++++x+%2B%3D+3%2Adx%0A++++print+%27new+x%3A%27%2C+x&curInstr=0&py=2&cumulative=false">
+</iframe>
+<p>
+
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=mylist+%3D+%5B0%2C+0.5%2C+1%2C+2%2C+4%2C+10%5D%0Afor+i%2C+x+in+enumerate%28mylist%29%3A%0A++++print+i%2C+x&curInstr=0&py=2&cumulative=false">
+</iframe>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Functions and arguments  <a name="___sec17"></a></h2>
 
 User-defined functions:
 
@@ -614,7 +633,7 @@ Positional arguments must appear before keyword arguments:
 
 <section>
 
-<h2><code>eval</code> and <code>exec</code> turn strings into live code  <a name="___sec17"></a></h2>
+<h2><code>eval</code> and <code>exec</code> turn strings into live code  <a name="___sec18"></a></h2>
 
 Evaluating string expressions with <code>eval</code>:
 
@@ -656,7 +675,7 @@ Executing strings with Python code, using <code>exec</code>:
 
 <section>
 
-<h2>File reading  <a name="___sec18"></a></h2>
+<h2>File reading  <a name="___sec19"></a></h2>
 
 Reading a file:
 
@@ -688,7 +707,7 @@ Reading a file:
 
 <section>
 
-<h2>File writing  <a name="___sec19"></a></h2>
+<h2>File writing  <a name="___sec20"></a></h2>
 
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -709,7 +728,7 @@ Reading a file:
 
 <section>
 
-<h2>Using modules  <a name="___sec20"></a></h2>
+<h2>Using modules  <a name="___sec21"></a></h2>
 
 Import module:
 
@@ -757,7 +776,7 @@ Import <code>argv</code> under an alias:
 
 <section>
 
-<h2>Making your own Python modules  <a name="___sec21"></a></h2>
+<h2>Making your own Python modules  <a name="___sec22"></a></h2>
 
 <ul>
  <p><li> Reuse scripts by wrapping them in classes or functions</li>
@@ -788,7 +807,7 @@ Examples:
 
 <section>
 
-<h2>How Python can find your modules?  <a name="___sec22"></a></h2>
+<h2>How Python can find your modules?  <a name="___sec23"></a></h2>
 
 Python has some &quot;official&quot; module directories, typically
 
@@ -825,7 +844,7 @@ searches for modules, and
 
 <section>
 
-<h2>Packages  <a name="___sec23"></a></h2>
+<h2>Packages  <a name="___sec24"></a></h2>
 
 <ul>
  <p><li> A class of modules can be collected in a <em>package</em></li>
@@ -855,7 +874,7 @@ Here, class <code>fdm_grids</code> is in module <code>grids</code> (file <code>g
 
 <section>
 
-<h2>Test block in a module  <a name="___sec24"></a></h2>
+<h2>Test block in a module  <a name="___sec25"></a></h2>
 
 Module files can have a test/demo section at the end:
 
@@ -879,7 +898,7 @@ Module files can have a test/demo section at the end:
 
 <section>
 
-<h2>Installing modules  <a name="___sec25"></a></h2>
+<h2>Installing modules  <a name="___sec26"></a></h2>
 
 <ul>
  <p><li> Python has its own tool, Distutils, for distributing and installing modules</li>
@@ -901,7 +920,7 @@ Standard command:
 
 <section>
 
-<h2>Writing your own <code>setup.py</code> script  <a name="___sec26"></a></h2>
+<h2>Writing your own <code>setup.py</code> script  <a name="___sec27"></a></h2>
 
 Suppose you have a module in <code>mymod.py</code> that you want to distribute to
 others such that they can easily install it by <code>setup.py install</code>.
@@ -933,7 +952,7 @@ the <a href="https://docs.python.org/2/distutils/introduction.html" target="_bla
 
 <section>
 
-<h2>Use doc strings in functions, classes, and modules!  <a name="___sec27"></a></h2>
+<h2>Use doc strings in functions, classes, and modules!  <a name="___sec28"></a></h2>
 
 Doc strings = first string in a function, class, or file (module)
 
@@ -969,7 +988,7 @@ in the top of the file
 
 <section>
 
-<h2>Doc strings serve many purposes  <a name="___sec28"></a></h2>
+<h2>Doc strings serve many purposes  <a name="___sec29"></a></h2>
 
 <ul>
  <p><li> documentation in the source code</li>
