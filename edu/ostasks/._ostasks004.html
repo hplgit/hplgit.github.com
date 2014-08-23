@@ -1,0 +1,201 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Doing operating system tasks in Python">
+<meta name="keywords" content="make a folder (in Python),directory,environment variables,move to a folder (in Python),rename file/folder (in Python),list files (in Python),check file/folder existence (in Python),remove files (in Python),delete files (in Python),remove folders (in Python),delete folders (in Python),copy files (in Python),copy folders (in Python),run programs (from Python),execute programs (from Python),split filename">
+
+
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [(' Make a folder ', 2, None, '___sec0'),
+              (' Make intermediate folders ', 2, None, '___sec1'),
+              (' Move to a folder ', 2, None, '___sec2'),
+              (' Rename a file or folder ', 2, None, '___sec3'),
+              (' List files ', 2, None, '___sec4'),
+              (' List all files and folders in a folder ',
+               2,
+               None,
+               '___sec5'),
+              (' Check if a file or folder exists ', 2, None, '___sec6'),
+              (' Remove files ', 2, None, '___sec7'),
+              (' Remove a folder and all its subfolders ',
+               2,
+               None,
+               '___sec8'),
+              (' Copy a file to another file or folder ', 2, None, '___sec9'),
+              (' Copy a folder and all its subfolders ', 2, None, '___sec10'),
+              (' Run any operating system command ', 2, None, '___sec11'),
+              (' Split file or folder name ', 2, None, '___sec12'),
+              (' Traverse a folder (directory) tree ', 2, None, '___sec13')]}
+end of tocinfo -->
+
+<body>
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="ostasks.html">Doing operating system tasks in Python</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec0" style="font-size: 80%;">Make a folder</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec1" style="font-size: 80%;">Make intermediate folders</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec2" style="font-size: 80%;">Move to a folder</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec3" style="font-size: 80%;">Rename a file or folder</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec4" style="font-size: 80%;">List files</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec5" style="font-size: 80%;">List all files and folders in a folder</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec6" style="font-size: 80%;">Check if a file or folder exists</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec7" style="font-size: 80%;">Remove files</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec8" style="font-size: 80%;">Remove a folder and all its subfolders</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec9" style="font-size: 80%;">Copy a file to another file or folder</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec10" style="font-size: 80%;">Copy a folder and all its subfolders</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks003.html#___sec11" style="font-size: 80%;">Run any operating system command</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks003.html#___sec12" style="font-size: 80%;">Split file or folder name</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;">Traverse a folder (directory) tree</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0004"></a>
+<!-- !split -->
+
+<h2 id="___sec13">Traverse a folder (directory) tree <a name="___sec13"></a></h2>
+
+The Bash Unix shell has a convenient command <code>find</code> to traverse
+all files in a folder tree and perform operations on the files.
+For example, the following command lists all files in the
+home directory that are larger than 10 Mb:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; find $HOME -type f -size +10000k -exec ls -s -h {} \;
+</pre></div>
+<p>
+Python has support for doing the same in a cross-platform manner through
+the <code>os.path.walk</code> and <code>os.walk</code> function. The former is called as
+<code>os.path.walk(root, myfunc, arg)</code>, where <code>root</code> is the root of the
+folder tree for traversal, <code>myfunc</code> is a user-defined function that
+is called for each subfolder in the folder tree. The <code>myfunc</code> function
+has three arguments: <code>arg</code>, <code>dirname</code>, and <code>files</code>, where <code>arg</code> is
+any (mutable) user-defined data structure, <code>dirname</code> is the full
+path of the current folder, relative to <code>root</code>, and <code>files</code> is a list
+of the local files names.
+
+<p>
+The <code>find</code> command above can then be implemented as follows in Python:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">os</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">checksize</span>(arg, dirname, files):
+    <span style="color: #008000; font-weight: bold">for</span> <span style="color: #008000">file</span> <span style="color: #AA22FF; font-weight: bold">in</span> files:
+        <span style="color: #408080; font-style: italic"># construct the file&#39;s complete path:</span>
+        filename <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>join(dirname, <span style="color: #008000">file</span>)
+        <span style="color: #008000; font-weight: bold">if</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>isfile(filename):
+            size <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>getsize(filename)
+            <span style="color: #008000; font-weight: bold">if</span> size <span style="color: #666666">&gt;</span> <span style="color: #666666">10000000</span>:
+                <span style="color: #008000; font-weight: bold">if</span> arg <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #008000">None</span>:
+                    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">Mb </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (size<span style="color: #666666">/1000000.0</span>,filename)
+                <span style="color: #008000; font-weight: bold">elif</span> <span style="color: #008000">isinstance</span>(arg, <span style="color: #008000">list</span>):
+                    arg<span style="color: #666666">.</span>append((size<span style="color: #666666">/1000000.0</span>,filename))
+
+root <span style="color: #666666">=</span> os<span style="color: #666666">.</span>environ[<span style="color: #BA2121">&#39;HOME&#39;</span>]
+os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>walk(root, checksize, <span style="color: #008000">None</span>)  <span style="color: #408080; font-style: italic"># print list of large files</span>
+
+arg <span style="color: #666666">=</span> []
+os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>walk(root, checksize, arg)
+<span style="color: #408080; font-style: italic"># arg is now a list of large files</span>
+<span style="color: #008000; font-weight: bold">for</span> size, filename <span style="color: #AA22FF; font-weight: bold">in</span> arg:
+    <span style="color: #008000; font-weight: bold">print</span> filename, <span style="color: #BA2121">&#39;has size&#39;</span>, size, <span style="color: #BA2121">&#39;Mb&#39;</span>
+</pre></div>
+<p>
+Note that if <code>arg</code> is <code>None</code> we just print large files (as in the
+<code>find</code> command above), but if <code>arg</code> is a list, we build a list
+of large files, consisting of 2-tuples with the size (in Mb) and the filename.
+
+<p>
+Python has an alternative construction for folder tree traversal, <code>os.walk</code>,
+which returns an iterator:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> dirpath, dirnames, filenames <span style="color: #AA22FF; font-weight: bold">in</span> os<span style="color: #666666">.</span>walk(root):
+</pre></div>
+<p>
+Here, <code>dirpath</code> is the complete path, relative to <code>root</code> to
+a folder with subfolders <code>dirnames</code> and ordinary files <code>filenames</code>.
+The equivalent to the <code>os.path.walk</code> construction is then
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">arg <span style="color: #666666">=</span> []
+<span style="color: #008000; font-weight: bold">for</span> dirpath, dirnames, filenames <span style="color: #AA22FF; font-weight: bold">in</span> os<span style="color: #666666">.</span>walk(root):
+    <span style="color: #008000; font-weight: bold">for</span> dirname <span style="color: #AA22FF; font-weight: bold">in</span> dirnames:
+        checksize(arg, dirpath, filenames)
+</pre></div>
+<p>
+<!-- ===== References ===== -->
+<!--  -->
+<!-- BIBFILE: ../papers.pub -->
+
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pager">
+  <li class="previous">
+    <a href="._ostasks003.html">&larr; Prev</a>
+  </li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

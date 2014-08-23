@@ -1,0 +1,206 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Doing operating system tasks in Python">
+<meta name="keywords" content="make a folder (in Python),directory,environment variables,move to a folder (in Python),rename file/folder (in Python),list files (in Python),check file/folder existence (in Python),remove files (in Python),delete files (in Python),remove folders (in Python),delete folders (in Python),copy files (in Python),copy folders (in Python),run programs (from Python),execute programs (from Python),split filename">
+
+
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [(' Make a folder ', 2, None, '___sec0'),
+              (' Make intermediate folders ', 2, None, '___sec1'),
+              (' Move to a folder ', 2, None, '___sec2'),
+              (' Rename a file or folder ', 2, None, '___sec3'),
+              (' List files ', 2, None, '___sec4'),
+              (' List all files and folders in a folder ',
+               2,
+               None,
+               '___sec5'),
+              (' Check if a file or folder exists ', 2, None, '___sec6'),
+              (' Remove files ', 2, None, '___sec7'),
+              (' Remove a folder and all its subfolders ',
+               2,
+               None,
+               '___sec8'),
+              (' Copy a file to another file or folder ', 2, None, '___sec9'),
+              (' Copy a folder and all its subfolders ', 2, None, '___sec10'),
+              (' Run any operating system command ', 2, None, '___sec11'),
+              (' Split file or folder name ', 2, None, '___sec12'),
+              (' Traverse a folder (directory) tree ', 2, None, '___sec13')]}
+end of tocinfo -->
+
+<body>
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="ostasks.html">Doing operating system tasks in Python</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec0" style="font-size: 80%;">Make a folder</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec1" style="font-size: 80%;">Make intermediate folders</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec2" style="font-size: 80%;">Move to a folder</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec3" style="font-size: 80%;">Rename a file or folder</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec4" style="font-size: 80%;">List files</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec5" style="font-size: 80%;">List all files and folders in a folder</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec6" style="font-size: 80%;">Check if a file or folder exists</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec7" style="font-size: 80%;">Remove files</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec8" style="font-size: 80%;">Remove a folder and all its subfolders</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec9" style="font-size: 80%;">Copy a file to another file or folder</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks002.html#___sec10" style="font-size: 80%;">Copy a folder and all its subfolders</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">Run any operating system command</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">Split file or folder name</a></li>
+     <!-- navigation toc: --> <li><a href="._ostasks004.html#___sec13" style="font-size: 80%;">Traverse a folder (directory) tree</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0003"></a>
+<!-- !split -->
+
+<h2 id="___sec11">Run any operating system command <a name="___sec11"></a></h2>
+
+The simplest way of running another program from Python is to
+use <code>os.system</code>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">cmd <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;python myprog.py 21 --mass 4&#39;</span>   <span style="color: #408080; font-style: italic"># command to be run</span>
+failure <span style="color: #666666">=</span> os<span style="color: #666666">.</span>system(cmd)
+<span style="color: #008000; font-weight: bold">if</span> failure:
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Execution of &quot;</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&quot; failed!</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> cmd
+    sys<span style="color: #666666">.</span>exit(<span style="color: #666666">1</span>)
+</pre></div>
+<p>
+The recommended way to run operating system commands is to use
+the <code>subprocess</code> module. The above command is equivalent to
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">subprocess</span>
+cmd <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;python myprog.py 21 --mass 4&#39;</span>
+failure <span style="color: #666666">=</span> subprocess<span style="color: #666666">.</span>call(cmd, shell<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+
+<span style="color: #408080; font-style: italic"># or</span>
+failure <span style="color: #666666">=</span> subprocess<span style="color: #666666">.</span>call(
+            [<span style="color: #BA2121">&#39;python&#39;</span>, <span style="color: #BA2121">&#39;myprog.py&#39;</span>, <span style="color: #BA2121">&#39;21&#39;</span>, <span style="color: #BA2121">&#39;--mass&#39;</span>, <span style="color: #BA2121">&#39;4&#39;</span>])
+</pre></div>
+<p>
+The output of an operating system command can be stored in a string
+object:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">try</span>:
+    output <span style="color: #666666">=</span> subprocess<span style="color: #666666">.</span>check_output(cmd, shell<span style="color: #666666">=</span><span style="color: #008000">True</span>,
+                                     stderr<span style="color: #666666">=</span>subprocess<span style="color: #666666">.</span>STDOUT)
+<span style="color: #008000; font-weight: bold">except</span> subprocess<span style="color: #666666">.</span>CalledProcessError:
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Execution of &quot;</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&quot; failed!</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> cmd
+    sys<span style="color: #666666">.</span>exit(<span style="color: #666666">1</span>)
+
+<span style="color: #408080; font-style: italic"># Process output</span>
+<span style="color: #008000; font-weight: bold">for</span> line <span style="color: #AA22FF; font-weight: bold">in</span> output<span style="color: #666666">.</span>splitlines():
+    <span style="color: #666666">...</span>
+</pre></div>
+<p>
+The <code>stderr</code> argument ensures that the <code>output</code>
+string contains everything that the command <code>cmd</code> wrote
+to both standard output and standard error.
+
+<p>
+The constructions above are mainly used for running stand-alone programs.
+Any file or folder listing or manipulation should be done by the
+functionality in the <code>os</code> and <code>shutil</code> modules.
+
+<h2 id="___sec12">Split file or folder name <a name="___sec12"></a></h2>
+
+Given <code>data/file1.dat</code> as a file path relative to the
+home folder <code>/users/me</code> (<code>$HOME/data/file1.dat</code> in Unix).
+Python has tools for extracting the complete folder name
+<code>/users/me/data</code>, the basename <code>file1.dat</code>, and the extension
+<code>.dat</code>:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> path <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>join(os<span style="color: #666666">.</span>environ[<span style="color: #BA2121">&#39;HOME&#39;</span>], <span style="color: #BA2121">&#39;data&#39;</span>, <span style="color: #BA2121">&#39;file1.dat&#39;</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> path
+<span style="color: #BA2121">&#39;/users/me/data/file1.dat&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> foldername, basename <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>split(path)
+<span style="color: #666666">&gt;&gt;&gt;</span> foldername
+<span style="color: #BA2121">&#39;/users/me/data&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> basename
+<span style="color: #BA2121">&#39;file1.dat&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> stem, ext <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>splitext(basename)
+<span style="color: #666666">&gt;&gt;&gt;</span> stem
+<span style="color: #BA2121">&#39;file1&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> ext
+<span style="color: #BA2121">&#39;.dat&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> outfile <span style="color: #666666">=</span> stem <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;.out&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> outfile
+<span style="color: #BA2121">&#39;file1.out&#39;</span>
+</pre></div>
+<p>
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pager">
+  <li class="previous">
+    <a href="._ostasks002.html">&larr; Prev</a>
+  </li>
+  <li class="next">
+    <a href="._ostasks004.html">Next &rarr;</a>
+  </li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+
