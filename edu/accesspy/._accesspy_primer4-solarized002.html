@@ -1,0 +1,222 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="How to access Python for doing scientific computing">
+<meta name="keywords" content="Idle,Emacs,Vim,Gedit,TextWrangler,Notepad++">
+
+
+
+
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Required software ',
+               1,
+               'sec:accesspy:softwarelist',
+               'sec:accesspy:softwarelist'),
+              (' Installing software on your laptop: Mac OS X and Windows ',
+               1,
+               'sec:accesspy:MacWin',
+               'sec:accesspy:MacWin'),
+              (' Anaconda and Spyder ', 1, None, '___sec2'),
+              (' Spyder on Mac ', 2, None, '___sec3'),
+              (' Installation of additional packages ', 2, None, '___sec4'),
+              (' Installing SciTools on Mac ', 2, None, '___sec5'),
+              (' Installing SciTools on Windows ', 2, None, '___sec6'),
+              (' VMWare Fusion virtual machine ',
+               1,
+               'sec:accesspy:vmware',
+               'sec:accesspy:vmware'),
+              (' Installing Ubuntu ',
+               2,
+               'sec:accesspy:vmware:fullblown:machine',
+               'sec:accesspy:vmware:fullblown:machine'),
+              (' Installing software on Ubuntu ', 2, None, '___sec9'),
+              (' File sharing ', 2, None, '___sec10'),
+              (' Dual boot on Windows ', 1, None, '___sec11'),
+              (' Vagrant virtual machine ',
+               1,
+               'sec:accesspy:vagrant',
+               'sec:accesspy:vagrant'),
+              (' How to write and run a Python program ',
+               1,
+               'sec:accesspy:writerun',
+               'sec:accesspy:writerun'),
+              (' The need for a text editor ', 2, None, '___sec14'),
+              (' Spyder ', 2, None, '___sec15'),
+              (' Text editors ', 2, None, '___sec16'),
+              (' Terminal windows ', 2, None, '___sec17'),
+              (' Using a plain text editor and a terminal window ',
+               2,
+               None,
+               '___sec18'),
+              (' The SageMathCloud and Wakari web services ',
+               1,
+               'sec:accesspy:sagemath:wakari',
+               'sec:accesspy:sagemath:wakari'),
+              (' Basic intro to SageMathCloud ', 2, None, '___sec20'),
+              (' Basic intro to Wakari ', 2, None, '___sec21'),
+              (' Installing your own Python packages ', 2, None, '___sec22'),
+              (' Writing IPython notebooks ',
+               1,
+               'sec:accesspy:ipynb',
+               'sec:accesspy:ipynb'),
+              (' A simple program in the notebook ', 2, None, '___sec24'),
+              (' Mixing text, mathematics, code, and graphics ',
+               2,
+               None,
+               '___sec25'),
+              (' References ', 1, None, '___sec26')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
+
+
+
+    
+<a name="part0002"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._accesspy_primer4-solarized001.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._accesspy_primer4-solarized003.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- !split -->
+
+<h1>Installing software on your laptop: Mac OS X and Windows <a name="sec:accesspy:MacWin"></a></h1>
+
+There are various possibilities for installing the software on a Mac OS
+X or Windows platform:
+
+<ol>
+<li> Use <code>.dmg</code> (Mac) or <code>.exe</code> (Windows) files to install individual packages</li>
+<li> Use Homebrew or MacPorts to install packages (Mac only)</li>
+<li> Use a pre-built environment for scientific computing in Python:</li>
+
+<ul>
+   <li> <a href="http://continuum.io/downloads/" target="_blank">Anaconda</a></li>
+   <li> <a href="https://www.enthought.com/products/canopy/" target="_blank">Enthought Canopy</a></li>
+</ul>
+
+<li> Use a virtual machine running Ubuntu:</li>
+
+<ul>
+   <li> <a href="http://www.vmware.com/products/fusion" target="_blank">VMWare Fusion</a></li>
+   <li> <a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a></li>
+   <li> <a href="http://www.vagrantup.com/" target="_blank">Vagrant</a></li>
+</ul>
+
+</ol>
+
+Alternative 1 is the obvious and perhaps simplest approach, but
+usually requires quite some competence about the operating system as a
+long-term solution when you need many more Python packages than the
+basic three.  This author is not particularly enthusiastic
+about Alternative 2. If you
+anticipate to use Python extensively in your work, I strongly
+recommend operating Python on an Ubuntu platform and going for Alternative
+4 because that is the easiest and most flexible way to build and
+maintain your own software ecosystem.  Alternative 3 is recommended
+for those who are uncertain about the future needs for Python and
+think Alternative 4 is too complicated. My preference is to use
+Anaconda for the Python installation and <a href="https://code.google.com/p/spyderlib/" target="_blank">Spyder</a> (comes with Anaconda) as a
+graphical interface with editor, an output area, and flexible ways of
+running Python programs.
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._accesspy_primer4-solarized001.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._accesspy_primer4-solarized003.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

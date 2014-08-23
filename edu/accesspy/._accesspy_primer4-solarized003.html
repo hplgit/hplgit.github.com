@@ -1,0 +1,250 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="How to access Python for doing scientific computing">
+<meta name="keywords" content="Idle,Emacs,Vim,Gedit,TextWrangler,Notepad++">
+
+
+
+
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Required software ',
+               1,
+               'sec:accesspy:softwarelist',
+               'sec:accesspy:softwarelist'),
+              (' Installing software on your laptop: Mac OS X and Windows ',
+               1,
+               'sec:accesspy:MacWin',
+               'sec:accesspy:MacWin'),
+              (' Anaconda and Spyder ', 1, None, '___sec2'),
+              (' Spyder on Mac ', 2, None, '___sec3'),
+              (' Installation of additional packages ', 2, None, '___sec4'),
+              (' Installing SciTools on Mac ', 2, None, '___sec5'),
+              (' Installing SciTools on Windows ', 2, None, '___sec6'),
+              (' VMWare Fusion virtual machine ',
+               1,
+               'sec:accesspy:vmware',
+               'sec:accesspy:vmware'),
+              (' Installing Ubuntu ',
+               2,
+               'sec:accesspy:vmware:fullblown:machine',
+               'sec:accesspy:vmware:fullblown:machine'),
+              (' Installing software on Ubuntu ', 2, None, '___sec9'),
+              (' File sharing ', 2, None, '___sec10'),
+              (' Dual boot on Windows ', 1, None, '___sec11'),
+              (' Vagrant virtual machine ',
+               1,
+               'sec:accesspy:vagrant',
+               'sec:accesspy:vagrant'),
+              (' How to write and run a Python program ',
+               1,
+               'sec:accesspy:writerun',
+               'sec:accesspy:writerun'),
+              (' The need for a text editor ', 2, None, '___sec14'),
+              (' Spyder ', 2, None, '___sec15'),
+              (' Text editors ', 2, None, '___sec16'),
+              (' Terminal windows ', 2, None, '___sec17'),
+              (' Using a plain text editor and a terminal window ',
+               2,
+               None,
+               '___sec18'),
+              (' The SageMathCloud and Wakari web services ',
+               1,
+               'sec:accesspy:sagemath:wakari',
+               'sec:accesspy:sagemath:wakari'),
+              (' Basic intro to SageMathCloud ', 2, None, '___sec20'),
+              (' Basic intro to Wakari ', 2, None, '___sec21'),
+              (' Installing your own Python packages ', 2, None, '___sec22'),
+              (' Writing IPython notebooks ',
+               1,
+               'sec:accesspy:ipynb',
+               'sec:accesspy:ipynb'),
+              (' A simple program in the notebook ', 2, None, '___sec24'),
+              (' Mixing text, mathematics, code, and graphics ',
+               2,
+               None,
+               '___sec25'),
+              (' References ', 1, None, '___sec26')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
+
+
+
+    
+<a name="part0003"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._accesspy_primer4-solarized002.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._accesspy_primer4-solarized004.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- !split -->
+
+<h1>Anaconda and Spyder  <a name="___sec2"></a></h1>
+
+Anaconda can be downloaded for free from <a href="http://continuum.io/downloads" target="_blank"><tt>http://continuum.io/downloads</tt></a>.
+The Integrated Development Environment (IDE) Spyder is included with
+Anaconda and is my recommended tool for writing and running Python
+programs on Mac and Windows, unless you have preference for a plain
+text editor for writing programs and a terminal window for running them.
+
+<h2>Spyder on Mac  <a name="___sec3"></a></h2>
+
+Spyder is started by typing <code>spyder</code> in a (new) Terminal application.
+If you get an error message <em>unknown locale</em>, you need to type the
+following line in the Terminal application, or preferably put the line
+in your <code>$HOME/.bashrc</code> Unix initialization file:
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>export LANG=en_US.UTF-8; export LC_ALL=en_US.UTF-8
+</code></pre>
+<!-- end verbatim block -->
+
+<h2>Installation of additional packages  <a name="___sec4"></a></h2>
+
+Anaconda installs the <code>pip</code> tool that is handy to install additional
+packages. In a Terminal application on Mac or in a PowerShell terminal
+on Windows, write
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>pip install --user packagename
+</code></pre>
+<!-- end verbatim block -->
+
+<h2>Installing SciTools on Mac  <a name="___sec5"></a></h2>
+
+The SciTools package can be installed by <code>pip</code> on Mac:
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; pip install mercurial
+Terminal&gt; pip install --user -e \ 
+          hg+https://code.google.com/p/scitools#egg=scitools
+</code></pre>
+<!-- end verbatim block -->
+
+<h2>Installing SciTools on Windows  <a name="___sec6"></a></h2>
+
+The safest procedure on Windows is to go to
+<a href="http://code.google.com/p/scitools/source/browse" target="_blank"><tt>http://code.google.com/p/scitools/source/browse</tt></a> and download
+the zip file. Double-click on the downloaded file in Windows Explorer
+and click on
+<em>Extract all files</em> to create a new folder with all the SciTools
+files. Find the location of this folder, open a PowerShell
+window, and move to the location, e.g.,
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; cd C:\Users\username\Downloads\scitools-2db3cbb5076a
+</code></pre>
+<!-- end verbatim block -->
+Installation is done by
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; python setup.py install
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._accesspy_primer4-solarized002.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._accesspy_primer4-solarized004.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

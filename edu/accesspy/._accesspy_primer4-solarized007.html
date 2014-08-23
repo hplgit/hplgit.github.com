@@ -1,0 +1,259 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="How to access Python for doing scientific computing">
+<meta name="keywords" content="Idle,Emacs,Vim,Gedit,TextWrangler,Notepad++">
+
+
+
+
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Required software ',
+               1,
+               'sec:accesspy:softwarelist',
+               'sec:accesspy:softwarelist'),
+              (' Installing software on your laptop: Mac OS X and Windows ',
+               1,
+               'sec:accesspy:MacWin',
+               'sec:accesspy:MacWin'),
+              (' Anaconda and Spyder ', 1, None, '___sec2'),
+              (' Spyder on Mac ', 2, None, '___sec3'),
+              (' Installation of additional packages ', 2, None, '___sec4'),
+              (' Installing SciTools on Mac ', 2, None, '___sec5'),
+              (' Installing SciTools on Windows ', 2, None, '___sec6'),
+              (' VMWare Fusion virtual machine ',
+               1,
+               'sec:accesspy:vmware',
+               'sec:accesspy:vmware'),
+              (' Installing Ubuntu ',
+               2,
+               'sec:accesspy:vmware:fullblown:machine',
+               'sec:accesspy:vmware:fullblown:machine'),
+              (' Installing software on Ubuntu ', 2, None, '___sec9'),
+              (' File sharing ', 2, None, '___sec10'),
+              (' Dual boot on Windows ', 1, None, '___sec11'),
+              (' Vagrant virtual machine ',
+               1,
+               'sec:accesspy:vagrant',
+               'sec:accesspy:vagrant'),
+              (' How to write and run a Python program ',
+               1,
+               'sec:accesspy:writerun',
+               'sec:accesspy:writerun'),
+              (' The need for a text editor ', 2, None, '___sec14'),
+              (' Spyder ', 2, None, '___sec15'),
+              (' Text editors ', 2, None, '___sec16'),
+              (' Terminal windows ', 2, None, '___sec17'),
+              (' Using a plain text editor and a terminal window ',
+               2,
+               None,
+               '___sec18'),
+              (' The SageMathCloud and Wakari web services ',
+               1,
+               'sec:accesspy:sagemath:wakari',
+               'sec:accesspy:sagemath:wakari'),
+              (' Basic intro to SageMathCloud ', 2, None, '___sec20'),
+              (' Basic intro to Wakari ', 2, None, '___sec21'),
+              (' Installing your own Python packages ', 2, None, '___sec22'),
+              (' Writing IPython notebooks ',
+               1,
+               'sec:accesspy:ipynb',
+               'sec:accesspy:ipynb'),
+              (' A simple program in the notebook ', 2, None, '___sec24'),
+              (' Mixing text, mathematics, code, and graphics ',
+               2,
+               None,
+               '___sec25'),
+              (' References ', 1, None, '___sec26')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
+
+
+
+    
+<a name="part0007"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._accesspy_primer4-solarized006.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._accesspy_primer4-solarized008.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- !split -->
+
+<h1>The SageMathCloud and Wakari web services <a name="sec:accesspy:sagemath:wakari"></a></h1>
+
+You can avoid installing Python on your machine completely by using
+a web service that allows you to write and run Python programs.
+Computational science projects will normally require some kind of
+visualization and associated graphics packages, which is not possible
+unless the service offers IPython notebooks.
+There are two excellent web services with notebooks: <em>SageMathCloud</em> at
+<a href="https://cloud.sagemath.com/" target="_blank"><tt>https://cloud.sagemath.com/</tt></a> and <em>Wakari</em> at <a href="https://www.wakari.io/wakari" target="_blank"><tt>https://www.wakari.io/wakari</tt></a>. At both sites you must create an
+account before you can write notebooks in the web browser and download
+them to your own computer.
+
+<h2>Basic intro to SageMathCloud  <a name="___sec20"></a></h2>
+
+Sign in, click on <em>New Project</em>, give a title to your project and
+decide whether it should be private or public, click on the project
+when it appears in the browser, and click on <em>Create or Import a File,
+Worksheet, Terminal or Directory...</em>. If your Python program needs
+graphics, you need to choose <em>IPython Notebook</em>, otherwise you can
+choose <em>File</em>. Write the name of the file above the row of
+buttons. Assuming we do not need any graphics, we create a plain Python
+file, say with name
+<code>py1.py</code>. By clicking <em>File</em> you are brought to a browser window with
+a text editor where you can write Python code. Write some code and
+click <em>Save</em>. To run the program, click on the plus icon (<em>New</em>),
+choose <em>Terminal</em>, and you have a plain Unix terminal window where you
+can write <code>python py1.py</code> to run the program. Tabs over the terminal
+(or editor) window make it easy to jump between the editor and the
+terminal.  To download the file, click on <em>Files</em>, point on the
+relevant line with the file, and a download icon appears to the very
+right. The IPython notebook option works much in the same way, see
+the section <a href="._accesspy_primer4-solarized008.html#sec:accesspy:ipynb">Writing IPython notebooks</a>.
+
+<h2>Basic intro to Wakari  <a name="___sec21"></a></h2>
+
+After having logged in at the <code>wakari.io</code> site, you automatically
+enter an IPython notebook with a short introduction to how the
+notebook can be used. Click on the <em>New Notebook</em> button to start a
+new notebook. Wakari enables creating and editing plain Python files too:
+click on the <em>Add file</em> icon in pane to the left, fill in the program
+name, and you enter an editor where you can write a program. Pressing
+<em>Execute</em> launches an IPython session in a terminal window, where you
+can run the program by <code>run prog.py</code> if <code>prog.py</code> is the name of the
+program.  To download the file, select <code>test2.py</code> in the left pane and
+click on the <em>Download file</em> icon.
+
+<p>
+There is a pull-down menu where you can choose what type of terminal
+window you want: a plain Unix shell, an IPython shell, or an IPython
+shell with Matplotlib for plotting.  Using the latter, you can run
+plain Python programs or commands with graphics.  Just choose the type
+of terminal and click on <em>+Tab</em> to make a new terminal window of the
+chosen type.
+
+<h2>Installing your own Python packages  <a name="___sec22"></a></h2>
+
+Both SageMathCloud and Wakari let you install your own Python
+packages.
+To install any package <code>packagename</code>
+available at <a href="https://pypi.python.org/pypi" target="_blank">PyPi</a>, run
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>pip install --user packagename
+</code></pre>
+<!-- end verbatim block -->
+To install the SciTools package,
+which is useful when working with this document,
+create a Terminal (with a Unix shell) and run the command
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>pip install --user -e \ 
+    hg+https://code.google.com/p/scitools#egg=scitools
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._accesspy_primer4-solarized006.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._accesspy_primer4-solarized008.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

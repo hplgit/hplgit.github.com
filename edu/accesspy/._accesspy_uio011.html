@@ -1,0 +1,342 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="How to access Python for doing scientific computing">
+<meta name="keywords" content="Idle,Emacs,Vim,Gedit,TextWrangler,Notepad++">
+
+
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Required software ',
+               1,
+               'sec:accesspy:softwarelist',
+               'sec:accesspy:softwarelist'),
+              (' Recommendations for INF1100/MAT-INF1100L students ',
+               1,
+               'sec:accesspy:INF1100:rec',
+               'sec:accesspy:INF1100:rec'),
+              (' Installing software on your laptop: Mac OS X and Windows ',
+               1,
+               'sec:accesspy:MacWin',
+               'sec:accesspy:MacWin'),
+              (' Anaconda and Spyder ', 1, None, '___sec3'),
+              (' Spyder on Mac ', 2, None, '___sec4'),
+              (' Installation of additional packages ', 2, None, '___sec5'),
+              (' Installing SciTools on Mac ', 2, None, '___sec6'),
+              (' Installing SciTools on Windows ', 2, None, '___sec7'),
+              (' VMWare Fusion virtual machine ',
+               1,
+               'sec:accesspy:vmware',
+               'sec:accesspy:vmware'),
+              (' Installing Ubuntu ',
+               2,
+               'sec:accesspy:vmware:fullblown:machine',
+               'sec:accesspy:vmware:fullblown:machine'),
+              (' Installing software on a minimalistic Ubuntu machine ',
+               2,
+               'sec:accesspy:vmware:minimalistic:machine',
+               'sec:accesspy:vmware:minimalistic:machine'),
+              (' File sharing ', 2, None, '___sec11'),
+              (' VirtualBox virtual machine ',
+               1,
+               'sec:accesspy:virtualbox',
+               'sec:accesspy:virtualbox'),
+              (' Dual boot on Windows ', 1, None, '___sec13'),
+              (' Vagrant virtual machine ',
+               1,
+               'sec:accesspy:vagrant',
+               'sec:accesspy:vagrant'),
+              (' How to write and run a Python program ',
+               1,
+               'sec:accesspy:writerun',
+               'sec:accesspy:writerun'),
+              (' The need for a text editor ', 2, None, '___sec16'),
+              (' Spyder ', 2, None, '___sec17'),
+              (' Text editors ', 2, None, '___sec18'),
+              (' Terminal windows ', 2, None, '___sec19'),
+              (' Using a plain text editor and a terminal window ',
+               2,
+               None,
+               '___sec20'),
+              (' The SageMathCloud and Wakari web services ',
+               1,
+               'sec:accesspy:sagemath:wakari',
+               'sec:accesspy:sagemath:wakari'),
+              (' Basic intro to SageMathCloud ', 2, None, '___sec22'),
+              (' Basic intro to Wakari ', 2, None, '___sec23'),
+              (' Installing your own Python packages ', 2, None, '___sec24'),
+              (' Writing IPython notebooks ',
+               1,
+               'sec:accesspy:ipynb',
+               'sec:accesspy:ipynb'),
+              (' A simple program in the notebook ', 2, None, '___sec26'),
+              (' Mixing text, mathematics, code, and graphics ',
+               2,
+               None,
+               '___sec27'),
+              (' References ', 1, None, '___sec28')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="accesspy_uio.html">How to access Python for doing scientific computing</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._accesspy_uio002.html#sec:accesspy:softwarelist" style="font-size: 80%;">Required software</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio003.html#sec:accesspy:INF1100:rec" style="font-size: 80%;">Recommendations for INF1100/MAT-INF1100L students</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio004.html#sec:accesspy:MacWin" style="font-size: 80%;">Installing software on your laptop: Mac OS X and Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio005.html#___sec3" style="font-size: 80%;">Anaconda and Spyder</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio006.html#sec:accesspy:vmware" style="font-size: 80%;">VMWare Fusion virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#sec:accesspy:virtualbox" style="font-size: 80%;">VirtualBox virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio007.html#___sec13" style="font-size: 80%;">Dual boot on Windows</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio008.html#sec:accesspy:vagrant" style="font-size: 80%;">Vagrant virtual machine</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio009.html#sec:accesspy:writerun" style="font-size: 80%;">How to write and run a Python program</a></li>
+     <!-- navigation toc: --> <li><a href="._accesspy_uio010.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">The SageMathCloud and Wakari web services</a></li>
+     <!-- navigation toc: --> <li><a href="#sec:accesspy:ipynb" style="font-size: 80%;">Writing IPython notebooks</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec28" style="font-size: 80%;">References</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0011"></a>
+<!-- !split -->
+
+<h1 id="sec:accesspy:ipynb">Writing IPython notebooks<a name="sec:accesspy:ipynb"></a></h1>
+
+The IPython notebook is a splendid interactive tool for doing science,
+but it can also be used as a platform for developing Python code.
+You can either run it locally on your computer or in a web service
+like SageMathCloud or Wakari. Installation on your computer
+is trivial on Ubuntu, just <code>sudo apt-get install ipython-notebook</code>, and
+also on <a href="http://ipython.org/install.html" target="_blank">Windows and Mac</a> by
+using Anaconda or Enthought Canopy for the Python installation.
+
+<p>
+The interface to the notebook is a web browser: you write all the
+code and see all the results in the browser window.
+There are excellent YouTube videos on how to use the IPython notebook,
+so here we provide a very quick &quot;step zero&quot; to get anyone started.
+
+<h2 id="___sec26">A simple program in the notebook <a name="___sec26"></a></h2>
+
+Start the IPython notebook locally by the command <code>ipython notebook</code>
+or go to SageMathCloud or Wakari as described above.
+The default input area is a <em>cell</em> for Python code.
+Type
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">g <span style="color: #666666">=</span> <span style="color: #666666">9.81</span>
+v0 <span style="color: #666666">=</span> <span style="color: #666666">5</span>
+t <span style="color: #666666">=</span> <span style="color: #666666">0.6</span>
+y <span style="color: #666666">=</span> v0<span style="color: #666666">*</span>t <span style="color: #666666">-</span> <span style="color: #666666">0.5*</span>g<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>
+</pre></div>
+<p>
+in a cell and <em>run the cell</em> by clicking on <em>Run Selected</em> (notebook running
+locally on your machine)
+or on the &quot;play&quot; button (notebook running in the cloud).
+This action will execute the Python code and initialize the
+variables <code>g</code>, <code>v0</code>, <code>t</code>, and <code>y</code>. You can then write <code>print y</code> in a
+new cell, execute that cell, and see the output of this statement in
+the browser. It is easy to go back to a cell, edit the code, and
+re-execute it.
+
+<p>
+To download the notebook to your computer, choose the
+<em>File - Download as</em> menu and select the type of file
+to be downloaded: the original notebook format (<code>.ipynb</code> file
+extension) or a plain Python program version of the notebook
+(<code>.py</code> file extension).
+
+<h2 id="___sec27">Mixing text, mathematics, code, and graphics <a name="___sec27"></a></h2>
+
+The real strength of IPython notebooks arises when you want to write
+a report to document how a problem can be explored and solved.
+As a teaser, open a new notebook, click in the first cell, and choose
+<em>Markdown</em> as format (notebook running locally) or switch from <em>Code</em>
+to <em>Markdown</em> in the pull-down menu (notebook in the cloud). The cell
+is now a text field where you can write text with <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown</a> syntax. Mathematics can be entered
+as LaTeX code. Try some text with inline mathematics and an equation on
+a separate line:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Plot the curve $y=f(x)$, where
+
+$$
+f(x) = e^{-x}\sin (2\pi x),\quad x\in [0, 4]
+$$
+</pre></div>
+<p>
+Execute the cell and you will see nicely typeset mathematics in the browser.
+In the new cell, add some code to plot \( f(x) \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4</span>, <span style="color: #666666">101</span>)
+y <span style="color: #666666">=</span> exp(<span style="color: #666666">-</span>x)<span style="color: #666666">*</span>sin(<span style="color: #666666">2*</span>pi<span style="color: #666666">*</span>x)
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+plot(x, y, <span style="color: #BA2121">&#39;b-&#39;</span>)
+xlabel(<span style="color: #BA2121">&#39;x&#39;</span>); ylabel(<span style="color: #BA2121">&#39;y&#39;</span>)
+</pre></div>
+<p>
+Executing these statements results in a plot in the browser, see
+Figure <a href="#sec:accesspy:ipynb:fig:graphics">2</a>. The import statements
+can actually be dropped since functions from <code>numpy</code> and
+<code>matplotlib</code> are imported by default when running the notebook
+in the browser or by supplying the command-line argument <code>--pylab</code>
+when starting notebooks locally on your machine.
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 2:  Example on an IPython notebook. <a name="sec:accesspy:ipynb:fig:graphics"></a> </p></center>
+<p><img src="fig-accesspy/sage_ipynb_eqs_graphics.png" align="bottom" width=700></p>
+</center>
+
+<h1 id="___sec28">References <a name="___sec28"></a></h1>
+
+<!-- begin bibliography -->
+
+<ol>
+ <li> <a name="Python"></a> Python Programming Language. 
+    <a href="http://python.org" target="_blank"><tt>http://python.org</tt></a>.</li>
+ <li> <a name="NumPy"></a> <b>T. E. Oliphant et al.</b>. 
+    NumPy Array Processing Package for Python,
+    <a href="http://www.numpy.org" target="_blank"><tt>http://www.numpy.org</tt></a>.</li>
+ <li> <a name="NumPy:paper"></a> <b>T. E. Oliphant</b>. 
+    Python for Scientific Computing,
+    <em>Computing in Science &amp; Engineering</em>,
+    9,
+    2007.</li>
+ <li> <a name="Matplotlib"></a> <b>J. D. Hunter et al.</b>. 
+    Matplotlib: Software Package for 2D Graphics,
+    <a href="http://matplotlib.org/" target="_blank"><tt>http://matplotlib.org/</tt></a>.</li>
+ <li> <a name="Matplotlib:paper"></a> <b>J. D. Hunter</b>. 
+    Matplotlib: a 2D Graphics Environment,
+    <em>Computing in Science &amp; Engineering</em>,
+    9,
+    2007.</li>
+ <li> <a name="IPython"></a> <b>F. Perez, B. E. Granger et al.</b>. 
+    IPython Software Package for Interactive Scientific Computing,
+    <a href="http://ipython.org/" target="_blank"><tt>http://ipython.org/</tt></a>.</li>
+ <li> <a name="IPython:paper"></a> <b>F. Perez and B. E. Granger</b>. 
+    IPython: a System for Interactive Scientific Computing,
+    <em>Computing in Science &amp; Engineering</em>,
+    9,
+    2007.</li>
+ <li> <a name="SciTools"></a> <b>H. P. Langtangen and J. H. Ring</b>. 
+    SciTools: Software Tools for Scientific Computing,
+    <a href="http://code.google.com/p/scitools" target="_blank"><tt>http://code.google.com/p/scitools</tt></a>.</li>
+ <li> <a name="Hinsen:Scientific"></a> ScientificPython Software Package. 
+    <a href="http://starship.python.net/crew/hinsen" target="_blank"><tt>http://starship.python.net/crew/hinsen</tt></a>.</li>
+<li> <a name="SymPy"></a> <b>O. Certik et al.</b>. 
+    SymPy: Python library for symbolic mathematics,
+    <a href="http://sympy.org" target="_blank"><tt>http://sympy.org</tt></a>.</li>
+<li> <a name="SciPy"></a> <b>E. Jones, T. E. Oliphant, P. Peterson et al.</b>. 
+    SciPy Scientific Computing Library for Python,
+    <a href="http://scipy.org" target="_blank"><tt>http://scipy.org</tt></a>.</li>
+</ol>
+
+<!-- end bibliography -->
+
+<p>
+
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pager">
+  <li class="previous">
+    <a href="._accesspy_uio010.html">&larr; Prev</a>
+  </li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

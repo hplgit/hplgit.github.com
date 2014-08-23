@@ -1,0 +1,166 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Doing operating system tasks in Python">
+<meta name="keywords" content="make a folder (in Python),directory,environment variables,move to a folder (in Python),rename file/folder (in Python),list files (in Python),check file/folder existence (in Python),remove files (in Python),delete files (in Python),remove folders (in Python),delete folders (in Python),copy files (in Python),copy folders (in Python),run programs (from Python),execute programs (from Python),split filename">
+
+
+
+
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [(' Make a folder ', 2, None, '___sec0'),
+              (' Make intermediate folders ', 2, None, '___sec1'),
+              (' Move to a folder ', 2, None, '___sec2'),
+              (' Rename a file or folder ', 2, None, '___sec3'),
+              (' List files ', 2, None, '___sec4'),
+              (' List all files and folders in a folder ',
+               2,
+               None,
+               '___sec5'),
+              (' Check if a file or folder exists ', 2, None, '___sec6'),
+              (' Remove files ', 2, None, '___sec7'),
+              (' Remove a folder and all its subfolders ',
+               2,
+               None,
+               '___sec8'),
+              (' Copy a file to another file or folder ', 2, None, '___sec9'),
+              (' Copy a folder and all its subfolders ', 2, None, '___sec10'),
+              (' Run any operating system command ', 2, None, '___sec11'),
+              (' Split file or folder name ', 2, None, '___sec12'),
+              (' Traverse a folder tree ', 2, None, '___sec13')]}
+end of tocinfo -->
+
+<body>
+
+    
+<a name="part0004"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._ostasks-solarized003.html">&laquo; Previous</a></div>
+</td><td>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- !split -->
+
+<h2>Traverse a folder tree  <a name="___sec13"></a></h2>
+
+The Bash Unix shell has a convenient command <code>find</code> to traverse
+all files in a folder tree and perform operations on the files.
+For example, the following command lists all files in the
+home directory that are larger than 10 Mb:
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; find $HOME -type f -size +10000k -exec ls -s -h {} \;
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+Python has support for doing the same in a cross-platform manner through
+the <code>os.path.walk</code> and <code>os.walk</code> function. The former is called as
+<code>os.path.walk(root, myfunc, arg)</code>, where <code>root</code> is the root of the
+folder tree for traversal, <code>myfunc</code> is a user-defined function that
+is called for each subfolder in the folder tree. The <code>myfunc</code> function
+has three arguments: <code>arg</code>, <code>dirname</code>, and <code>files</code>, where <code>arg</code> is
+any (mutable) user-defined data structure, <code>dirname</code> is the full
+path of the current folder, relative to <code>root</code>, and <code>files</code> is a list
+of the local files names.
+
+<p>
+The <code>find</code> command above can then be implemented as follows in Python:
+
+<p>
+<!-- begin verbatim block  pypro-->
+<pre><code>import os
+
+def checksize(arg, dirname, files):
+    for file in files:
+        # construct the file's complete path:
+        filename = os.path.join(dirname, file)
+        if os.path.isfile(filename):
+            size = os.path.getsize(filename)
+            if size &gt; 10000000:
+                if arg is None:
+                    print '%.2fMb %s' % (size/1000000.0,filename)
+                elif isinstance(arg, list):
+                    arg.append((size/1000000.0,filename))
+
+root = os.environ['HOME']
+os.path.walk(root, checksize, None)  # print list of large files
+
+arg = []
+os.path.walk(root, checksize, arg)
+# arg is now a list of large files
+for size, filename in arg:
+    print filename, 'has size', size, 'Mb'
+</code></pre>
+<!-- end verbatim block -->
+Note that if <code>arg</code> is <code>None</code> we just print large files (as in the
+<code>find</code> command above), but if <code>arg</code> is a list, we build a list
+of large files, consisting of 2-tuples with the size (in Mb) and the filename.
+
+<p>
+Python has an alternative construction for folder tree traversal, <code>os.walk</code>,
+which returns an iterator:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>for dirpath, dirnames, filenames in os.walk(root):
+</code></pre>
+<!-- end verbatim block -->
+Here, <code>dirpath</code> is the complete path, relative to <code>root</code> to
+a folder with subfolders <code>dirnames</code> and ordinary files <code>filenames</code>.
+The equivalent to the <code>os.path.walk</code> construction is then
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>arg = []
+for dirpath, dirnames, filenames in os.walk(root):
+    for dirname in dirnames:
+        checksize(arg, dirpath, filenames)
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+<!-- ===== References ===== -->
+<!--  -->
+<!-- BIBFILE: ../papers.pub -->
+
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._ostasks-solarized003.html">&laquo; Previous</a></div>
+</td><td>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

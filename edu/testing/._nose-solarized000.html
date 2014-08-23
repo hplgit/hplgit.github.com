@@ -1,0 +1,187 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Unit testing with pytest and nose">
+<meta name="keywords" content="nose tests,pytest tests,unit testing,software testing nose,software testing pytest">
+
+
+
+
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Model software ', 1, None, '___sec0'),
+              (' Requirements of the test function ', 1, None, '___sec1'),
+              (' Writing the test function; precomputed data ',
+               1,
+               None,
+               '___sec2'),
+              (' Writing the test function; exact numerical solution ',
+               1,
+               None,
+               '___sec3'),
+              (' Testing of function robustness ', 1, None, '___sec4'),
+              (' Automatic execution of tests ', 1, None, '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
+
+
+
+    
+<a name="part0000"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+</td><td>
+<div style="text-align: right;"><a href="._nose-solarized001.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Unit testing with pytest and nose</title>
+
+<center><h1>Unit testing with pytest and nose</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<p>
+<center><h4>Aug 23, 2014</h4></center> <!-- date -->
+
+<h2>Table of contents</h2>
+
+<a href="._nose-solarized001.html#___sec0"> Model software </a><br>
+<a href="._nose-solarized001.html#___sec1"> Requirements of the test function </a><br>
+<a href="._nose-solarized001.html#___sec2"> Writing the test function; precomputed data </a><br>
+<a href="._nose-solarized001.html#___sec3"> Writing the test function; exact numerical solution </a><br>
+<a href="._nose-solarized001.html#___sec4"> Testing of function robustness </a><br>
+<a href="._nose-solarized001.html#___sec5"> Automatic execution of tests </a><br>
+</p>
+<p>
+<!-- Externaldocuments: ../formulas/main_formulas, ../looplist/main_looplist, ../funcif/main_funcif, ../input/main_input, ../plot/main_plot, ../files/main_files, ../class/main_class, ../random/main_random, ../oo/main_oo, ../diffeq/main_diffeq, ../discalc/main_discalc, ../ode1/main_ode1, ../boxspring/main_boxspring, ../ode2/main_ode2, ../debug/main_debug, ../cython/main_cython, ../tech/main_timing, ../tech/main_varargs, ../tech/main_ostasks, ../tech/main_accesspy, ../tech/runpy -->
+
+<p>
+<a name="sec:nose"></a>
+
+<p>
+Unit testing is widely a used technique for verifying software
+implementation. The idea is to identify small units of code and test
+each unit, ideally in a way such that one test does not depend on the
+outcome of other tests. Several tools, often referred to as testing
+frameworks, exist for automatically running all tests in a software
+package and report if any test failed. The value of such tools during
+software development cannot be exaggerated.  Below we describe how to
+write tests that can be used by either the <a href="https://nose.readthedocs.org/" target="_blank">nose</a> or the <a href="http://pytest.org/latest/" target="_blank">pytest</a> testing frameworks.  Both these have a
+very low barrier for beginners, so there is no excuse for not using
+nose or pytest as soon as you have learned about functions in
+programming.
+
+<p>
+<div style="font-size: 80%;">Much of the material in this document is taken from Appendix H.6 in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</div>
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+</td><td>
+<div style="text-align: right;"><a href="._nose-solarized001.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

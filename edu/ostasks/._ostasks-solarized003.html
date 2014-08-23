@@ -1,0 +1,168 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Doing operating system tasks in Python">
+<meta name="keywords" content="make a folder (in Python),directory,environment variables,move to a folder (in Python),rename file/folder (in Python),list files (in Python),check file/folder existence (in Python),remove files (in Python),delete files (in Python),remove folders (in Python),delete folders (in Python),copy files (in Python),copy folders (in Python),run programs (from Python),execute programs (from Python),split filename">
+
+
+
+
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [(' Make a folder ', 2, None, '___sec0'),
+              (' Make intermediate folders ', 2, None, '___sec1'),
+              (' Move to a folder ', 2, None, '___sec2'),
+              (' Rename a file or folder ', 2, None, '___sec3'),
+              (' List files ', 2, None, '___sec4'),
+              (' List all files and folders in a folder ',
+               2,
+               None,
+               '___sec5'),
+              (' Check if a file or folder exists ', 2, None, '___sec6'),
+              (' Remove files ', 2, None, '___sec7'),
+              (' Remove a folder and all its subfolders ',
+               2,
+               None,
+               '___sec8'),
+              (' Copy a file to another file or folder ', 2, None, '___sec9'),
+              (' Copy a folder and all its subfolders ', 2, None, '___sec10'),
+              (' Run any operating system command ', 2, None, '___sec11'),
+              (' Split file or folder name ', 2, None, '___sec12'),
+              (' Traverse a folder tree ', 2, None, '___sec13')]}
+end of tocinfo -->
+
+<body>
+
+    
+<a name="part0003"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._ostasks-solarized002.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._ostasks-solarized004.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- !split -->
+
+<h2>Run any operating system command  <a name="___sec11"></a></h2>
+
+The simplest way of running another program from Python is to
+use <code>os.system</code>:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>cmd = 'python myprog.py 21 --mass 4'   # command to be run
+failure = os.system(cmd)
+if failure:
+    print 'Execution of &quot;%s&quot; failed!\n' % cmd
+    sys.exit(1)
+</code></pre>
+<!-- end verbatim block -->
+The recommended way to run operating system commands is to use
+the <code>subprocess</code> module. The above command is equivalent to
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>import subprocess
+cmd = 'python myprog.py 21 --mass 4'
+failure = subprocess.call(cmd, shell=True)
+
+# or
+failure = subprocess.call(
+            ['python', 'myprog.py', '21', '--mass', '4'])
+</code></pre>
+<!-- end verbatim block -->
+The output of an operating system command can be stored in a string
+object:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>try:
+    output = subprocess.check_output(cmd, shell=True,
+                                     stderr=subprocess.STDOUT)
+except subprocess.CalledProcessError:
+    print 'Execution of &quot;%s&quot; failed!\n' % cmd
+    sys.exit(1)
+
+# Process output
+for line in output.splitlines():
+    ...
+</code></pre>
+<!-- end verbatim block -->
+The <code>stderr</code> argument ensures that the <code>output</code>
+string contains everything that the command <code>cmd</code> wrote
+to both standard output and standard error.
+
+<p>
+The constructions above are mainly used for running stand-alone programs.
+Any file or folder listing or manipulation should be done by the
+functionality in the <code>os</code> and <code>shutil</code> modules.
+
+<h2>Split file or folder name  <a name="___sec12"></a></h2>
+
+Given <code>data/file1.dat</code> as a file path relative to the
+home folder <code>/users/me</code> (<code>$HOME/data/file1.dat</code> in Unix).
+Python has tools for extracting the complete folder name
+<code>/users/me/data</code>, the basename <code>file1.dat</code>, and the extension
+<code>.dat</code>:
+
+<p>
+<!-- begin verbatim block  pyshell-->
+<pre><code>&gt;&gt;&gt; path = os.path.join(os.environ['HOME'], 'data', 'file1.dat')
+&gt;&gt;&gt; path
+'/users/me/data/file1.dat'
+&gt;&gt;&gt; foldername, basename = os.path.split(path)
+&gt;&gt;&gt; foldername
+'/users/me/data'
+&gt;&gt;&gt; basename
+'file1.dat'
+&gt;&gt;&gt; stem, ext = os.path.splitext(basename)
+&gt;&gt;&gt; stem
+'file1'
+&gt;&gt;&gt; ext
+'.dat'
+&gt;&gt;&gt; outfile = stem + '.out'
+&gt;&gt;&gt; outfile
+'file1.out'
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._ostasks-solarized002.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._ostasks-solarized004.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

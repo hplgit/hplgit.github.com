@@ -1,0 +1,196 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Unit testing with pytest and nose">
+<meta name="keywords" content="nose tests,pytest tests,unit testing,software testing nose,software testing pytest">
+
+
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Model software ', 1, None, '___sec0'),
+              (' Requirements of the test function ', 1, None, '___sec1'),
+              (' Writing the test function; precomputed data ',
+               1,
+               None,
+               '___sec2'),
+              (' Writing the test function; exact numerical solution ',
+               1,
+               None,
+               '___sec3'),
+              (' Testing of function robustness ', 1, None, '___sec4'),
+              (' Automatic execution of tests ', 1, None, '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="nose.html">Unit testing with pytest and nose</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._nose001.html#___sec0" style="font-size: 80%;">Model software</a></li>
+     <!-- navigation toc: --> <li><a href="._nose001.html#___sec1" style="font-size: 80%;">Requirements of the test function</a></li>
+     <!-- navigation toc: --> <li><a href="._nose001.html#___sec2" style="font-size: 80%;">Writing the test function; precomputed data</a></li>
+     <!-- navigation toc: --> <li><a href="._nose001.html#___sec3" style="font-size: 80%;">Writing the test function; exact numerical solution</a></li>
+     <!-- navigation toc: --> <li><a href="._nose001.html#___sec4" style="font-size: 80%;">Testing of function robustness</a></li>
+     <!-- navigation toc: --> <li><a href="._nose001.html#___sec5" style="font-size: 80%;">Automatic execution of tests</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0000"></a>
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Unit testing with pytest and nose</title>
+
+<div class="jumbotron">
+<center><h1>Unit testing with pytest and nose</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<p>
+<center><h4>Aug 23, 2014</h4></center> <!-- date -->
+
+<h2>Table of contents</h2>
+
+<a href="._nose001.html#___sec0"> Model software </a><br>
+<a href="._nose001.html#___sec1"> Requirements of the test function </a><br>
+<a href="._nose001.html#___sec2"> Writing the test function; precomputed data </a><br>
+<a href="._nose001.html#___sec3"> Writing the test function; exact numerical solution </a><br>
+<a href="._nose001.html#___sec4"> Testing of function robustness </a><br>
+<a href="._nose001.html#___sec5"> Automatic execution of tests </a><br>
+</p>
+<p>
+<!-- Externaldocuments: ../formulas/main_formulas, ../looplist/main_looplist, ../funcif/main_funcif, ../input/main_input, ../plot/main_plot, ../files/main_files, ../class/main_class, ../random/main_random, ../oo/main_oo, ../diffeq/main_diffeq, ../discalc/main_discalc, ../ode1/main_ode1, ../boxspring/main_boxspring, ../ode2/main_ode2, ../debug/main_debug, ../cython/main_cython, ../tech/main_timing, ../tech/main_varargs, ../tech/main_ostasks, ../tech/main_accesspy, ../tech/runpy -->
+
+<p>
+<a name="sec:nose"></a>
+
+<p>
+Unit testing is widely a used technique for verifying software
+implementation. The idea is to identify small units of code and test
+each unit, ideally in a way such that one test does not depend on the
+outcome of other tests. Several tools, often referred to as testing
+frameworks, exist for automatically running all tests in a software
+package and report if any test failed. The value of such tools during
+software development cannot be exaggerated.  Below we describe how to
+write tests that can be used by either the <a href="https://nose.readthedocs.org/" target="_blank">nose</a> or the <a href="http://pytest.org/latest/" target="_blank">pytest</a> testing frameworks.  Both these have a
+very low barrier for beginners, so there is no excuse for not using
+nose or pytest as soon as you have learned about functions in
+programming.
+
+<p>
+<div style="font-size: 80%;">Much of the material in this document is taken from Appendix H.6 in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</div>
+
+<p>
+
+
+<p><a href="._nose001.html" class="btn btn-primary btn-lg">Read &raquo;</a></p>
+
+
+</div> <!-- end jumbotron -->
+
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pager">
+  <li class="next">
+    <a href="._nose001.html">Next &rarr;</a>
+  </li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

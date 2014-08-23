@@ -1,0 +1,540 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Unit testing with pytest and nose">
+<meta name="keywords" content="nose tests,pytest tests,unit testing,software testing nose,software testing pytest">
+
+
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Model software ', 1, None, '___sec0'),
+              (' Requirements of the test function ', 1, None, '___sec1'),
+              (' Writing the test function; precomputed data ',
+               1,
+               None,
+               '___sec2'),
+              (' Writing the test function; exact numerical solution ',
+               1,
+               None,
+               '___sec3'),
+              (' Testing of function robustness ', 1, None, '___sec4'),
+              (' Automatic execution of tests ', 1, None, '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="nose.html">Unit testing with pytest and nose</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Model software</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">Requirements of the test function</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">Writing the test function; precomputed data</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">Writing the test function; exact numerical solution</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">Testing of function robustness</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">Automatic execution of tests</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0001"></a>
+<!-- !split -->
+
+<h2>Table of contents</h2>
+
+<a href="#___sec0"> Model software </a><br>
+<a href="#___sec1"> Requirements of the test function </a><br>
+<a href="#___sec2"> Writing the test function; precomputed data </a><br>
+<a href="#___sec3"> Writing the test function; exact numerical solution </a><br>
+<a href="#___sec4"> Testing of function robustness </a><br>
+<a href="#___sec5"> Automatic execution of tests </a><br>
+</p>
+
+<h1 id="___sec0">Model software <a name="___sec0"></a></h1>
+
+We need a piece of software we want to test. Here we choose a function
+that runs Newton's method for solving algebraic equations
+\( f(x)=0 \). A very simple implementation goes like
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Newton_basic</span>(f, dfdx, x, eps<span style="color: #666666">=1E-7</span>):
+    n <span style="color: #666666">=</span> <span style="color: #666666">0</span>  <span style="color: #408080; font-style: italic"># iteration counter</span>
+    <span style="color: #008000; font-weight: bold">while</span> <span style="color: #008000">abs</span>(f(x)) <span style="color: #666666">&gt;</span> eps:
+        x <span style="color: #666666">=</span> x <span style="color: #666666">-</span> f(x)<span style="color: #666666">/</span>dfdx(x)
+        n <span style="color: #666666">+=</span> <span style="color: #666666">1</span>
+    <span style="color: #008000; font-weight: bold">return</span> x, f(x), n
+</pre></div>
+
+<h1 id="___sec1">Requirements of the test function <a name="___sec1"></a></h1>
+
+The simplest way of using the pytest or nose testing frameworks is to write a
+set of test functions, scattered around in files, such that pytest or nose
+can automatically find and run all the test functions. To this end,
+the test functions need to follow certain conventions.
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Test function conventions.</b>
+
+<ol>
+<li> The name of a test function starts with <code>test_</code>.</li>
+<li> A test function cannot take any arguments.</li>
+<li> Any test must be formulated as a boolean condition.</li>
+<li> An <code>AssertionError</code> exception is raised if the boolean condition is false
+   (i.e., when the test fails).</li>
+</ol>
+</div>
+
+
+<p>
+There are many ways of raising the <code>AssertionError</code> exception:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic"># Formulate a test</span>
+tol <span style="color: #666666">=</span> <span style="color: #666666">1E-14</span>              <span style="color: #408080; font-style: italic"># comparison tolerance for real numbers</span>
+success <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(reference <span style="color: #666666">-</span> result) <span style="color: #666666">&lt;</span> tol
+msg <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;computed_result=</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121"> != </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (result, reference)
+
+<span style="color: #408080; font-style: italic"># Explicit raise</span>
+<span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> success:
+    <span style="color: #008000; font-weight: bold">raise</span> <span style="color: #D2413A; font-weight: bold">AssertionError</span>(msg)
+
+<span style="color: #408080; font-style: italic"># assert statement</span>
+<span style="color: #008000; font-weight: bold">assert</span> success, msg
+
+<span style="color: #408080; font-style: italic"># nose tools</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">nose.tools</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">nt</span>
+nt<span style="color: #666666">.</span>assert_true(success, msg)
+<span style="color: #408080; font-style: italic"># or</span>
+nt<span style="color: #666666">.</span>assert_almost_equal(result, reference, msg<span style="color: #666666">=</span>msg, delta<span style="color: #666666">=</span>tol)
+</pre></div>
+<p>
+This document contains a lot of test functions following the conventions
+of the pytest and nose testing frameworks, and we almost exclusively use
+the plain <code>assert</code> statement to have full control of what the test method is.
+In more complicated software the many functions in <code>nose.tools</code>
+may save quite some coding and are convenient to use.
+
+<h1 id="___sec2">Writing the test function; precomputed data <a name="___sec2"></a></h1>
+
+Newton's method for solving an algebraic equation \( f(x)=0 \) results in
+only an approximate root \( x_r \), making \( f(x_r)\neq 0 \), but
+\( |f(x_r)|\leq \epsilon \), where \( \epsilon \) is supposed to be a
+prescribed number close to zero. The problem is that we do not know
+beforehand what \( x_r \) and \( f(x_r) \) will be. However, if we strongly
+believe the function we want to test is correctly implemented, we can
+record the output from the function in a test case and use this output
+as a reference for later testing.
+
+<p>
+Assume we try to solve \( \sin(x) = 0 \) with \( x=-\pi/3 \) as start value.
+Running <code>Newton_basic</code> with a moderate-size <code>eps</code> (\( \epsilon \)) of
+\( 10^{-2} \) gives \( x=0.000769691024206 \), \( f(x)=0.000769690948209 \), and
+\( n=3 \).  A test function can now compare new computations with these
+reference results. Since new computations on another computer may lead
+to round-off errors, we must compare real numbers with a small
+tolerance:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_Newton_basic_precomputed</span>():
+    <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, cos, pi
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+        <span style="color: #008000; font-weight: bold">return</span> sin(x)
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">dfdx</span>(x):
+        <span style="color: #008000; font-weight: bold">return</span> cos(x)
+
+    x_ref <span style="color: #666666">=</span> <span style="color: #666666">0.000769691024206</span>
+    f_x_ref <span style="color: #666666">=</span> <span style="color: #666666">0.000769690948209</span>
+    n_ref <span style="color: #666666">=</span> <span style="color: #666666">3</span>
+
+    x, f_x, n <span style="color: #666666">=</span> Newton_basic(f, dfdx, x<span style="color: #666666">=-</span>pi<span style="color: #666666">/3</span>, eps<span style="color: #666666">=1E-2</span>)
+
+    tol <span style="color: #666666">=</span> <span style="color: #666666">1E-15</span>  <span style="color: #408080; font-style: italic"># tolerance for comparing real numbers</span>
+    <span style="color: #008000; font-weight: bold">assert</span> <span style="color: #008000">abs</span>(x_ref <span style="color: #666666">-</span> x) <span style="color: #666666">&lt;</span> tol       <span style="color: #408080; font-style: italic"># is x correct?</span>
+    <span style="color: #008000; font-weight: bold">assert</span> <span style="color: #008000">abs</span>(f_x_ref <span style="color: #666666">-</span> f_x) <span style="color: #666666">&lt;</span> tol   <span style="color: #408080; font-style: italic"># is f_x correct?</span>
+    <span style="color: #008000; font-weight: bold">assert</span> n <span style="color: #666666">==</span> <span style="color: #666666">3</span>                     <span style="color: #408080; font-style: italic"># is n correct?</span>
+</pre></div>
+<p>
+The <code>assert</code> statements involving comparison of real numbers can
+alternatively be carried out by <code>nose.tools</code> functionality:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">nose<span style="color: #666666">.</span>tools<span style="color: #666666">.</span>assert_almost_equal(x_ref, x, delta<span style="color: #666666">=</span>tol)
+</pre></div>
+<p>
+For simplicity we dropped the optional messages explaining what wen
+wrong if tests fail.
+
+<h1 id="___sec3">Writing the test function; exact numerical solution <a name="___sec3"></a></h1>
+
+Approximate numerical methods are sometimes exact in certain special
+cases. An exact answer known beforehand is a good starting point for a
+test since the implementation should reproduce the known answer to
+machine precision. For Newton's method we know that it finds the exact
+root of \( f(x)=0 \) in one iteration if \( f(x) \) is a linear function of
+\( x \).  This fact leads us to a test with \( f(x)=ax+b \), where we can
+choose \( a \) and \( b \) freely, but it is always wise to choose numbers
+different from 0 and 1 since these have special arithmetic properties
+that can hide programming errors.
+
+<p>
+The test function contains the problem setup, a call to the function to
+be verified, and <code>assert</code> tests on the output, this time also with
+an error message in case tests fail:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_Newton_basic_linear</span>():
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Test that a linear function is handled in one iteration.&quot;&quot;&quot;</span>
+    f <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> x: a<span style="color: #666666">*</span>x <span style="color: #666666">+</span> b
+    dfdx <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> x: a
+    a <span style="color: #666666">=</span> <span style="color: #666666">0.25</span>; b <span style="color: #666666">=</span> <span style="color: #666666">-4</span>
+    x_exact <span style="color: #666666">=</span> <span style="color: #666666">16</span>
+    eps <span style="color: #666666">=</span> <span style="color: #666666">1E-5</span>
+    x, f_x, n <span style="color: #666666">=</span> Newton_basic(f, dfdx, <span style="color: #666666">-100</span>, eps)
+
+    tol <span style="color: #666666">=</span> <span style="color: #666666">1E-15</span>  <span style="color: #408080; font-style: italic"># tolerance for comparing real numbers</span>
+    <span style="color: #008000; font-weight: bold">assert</span> <span style="color: #008000">abs</span>(x <span style="color: #666666">-</span> <span style="color: #666666">16</span>) <span style="color: #666666">&lt;</span> tol, <span style="color: #BA2121">&#39;wrong root x=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121"> != 16&#39;</span> <span style="color: #666666">%</span> x
+    <span style="color: #008000; font-weight: bold">assert</span> <span style="color: #008000">abs</span>(f_x) <span style="color: #666666">&lt;</span> eps, <span style="color: #BA2121">&#39;|f(root)|=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121"> &gt; </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (f_x, eps)
+    <span style="color: #008000; font-weight: bold">assert</span> n <span style="color: #666666">==</span> <span style="color: #666666">1</span>, <span style="color: #BA2121">&#39;n=</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">, but linear f should have n=1&#39;</span> <span style="color: #666666">%</span> n
+</pre></div>
+
+<h1 id="___sec4">Testing of function robustness <a name="___sec4"></a></h1>
+
+Our <code>Newton_basic</code> function is very basic and suffers from several
+problems:
+
+<ul>
+ <li> for divergent iterations it will iterate forever,</li>
+ <li> it can divide by zero in <code>f(x)/dfdx(x)</code>,</li>
+ <li> it can perform integer division in <code>f(x)/dfdx(x)</code>,</li>
+ <li> it does not test whether the arguments have acceptable types and values.</li>
+</ul>
+
+A more robust implementation dealing with these potential problems
+look as follows:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Newton</span>(f, dfdx, x, eps<span style="color: #666666">=1E-7</span>, maxit<span style="color: #666666">=100</span>):
+    <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">callable</span>(f):
+        <span style="color: #008000; font-weight: bold">raise</span> <span style="color: #D2413A; font-weight: bold">TypeError</span>(
+            <span style="color: #BA2121">&#39;f is </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">, should be function or class with __call__&#39;</span>
+            <span style="color: #666666">%</span> <span style="color: #008000">type</span>(f))
+    <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">callable</span>(dfdx):
+        <span style="color: #008000; font-weight: bold">raise</span> <span style="color: #D2413A; font-weight: bold">TypeError</span>(
+            <span style="color: #BA2121">&#39;dfdx is </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">, should be function or class with __call__&#39;</span>
+            <span style="color: #666666">%</span> <span style="color: #008000">type</span>(dfdx))
+    <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">isinstance</span>(maxit, <span style="color: #008000">int</span>):
+        <span style="color: #008000; font-weight: bold">raise</span> <span style="color: #D2413A; font-weight: bold">TypeError</span>(<span style="color: #BA2121">&#39;maxit is </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">, must be int&#39;</span> <span style="color: #666666">%</span> <span style="color: #008000">type</span>(maxit))
+    <span style="color: #008000; font-weight: bold">if</span> maxit <span style="color: #666666">&lt;=</span> <span style="color: #666666">0</span>:
+        <span style="color: #008000; font-weight: bold">raise</span> <span style="color: #D2413A; font-weight: bold">ValueError</span>(<span style="color: #BA2121">&#39;maxit=</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121"> &lt;= 0, must be &gt; 0&#39;</span> <span style="color: #666666">%</span> maxit)
+
+    n <span style="color: #666666">=</span> <span style="color: #666666">0</span>  <span style="color: #408080; font-style: italic"># iteration counter</span>
+    <span style="color: #008000; font-weight: bold">while</span> <span style="color: #008000">abs</span>(f(x)) <span style="color: #666666">&gt;</span> eps <span style="color: #AA22FF; font-weight: bold">and</span> n <span style="color: #666666">&lt;</span> maxit:
+        <span style="color: #008000; font-weight: bold">try</span>:
+            x <span style="color: #666666">=</span> x <span style="color: #666666">-</span> f(x)<span style="color: #666666">/</span><span style="color: #008000">float</span>(dfdx(x))
+        <span style="color: #008000; font-weight: bold">except</span> <span style="color: #D2413A; font-weight: bold">ZeroDivisionError</span>:
+            <span style="color: #008000; font-weight: bold">raise</span> <span style="color: #D2413A; font-weight: bold">ZeroDivisionError</span>(
+            <span style="color: #BA2121">&#39;dfdx(</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">)=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121"> - cannot divide by zero&#39;</span> <span style="color: #666666">%</span> (x, dfdx(x)))
+        n <span style="color: #666666">+=</span> <span style="color: #666666">1</span>
+    <span style="color: #008000; font-weight: bold">return</span> x, f(x), n
+</pre></div>
+<p>
+The numerical functionality can be tested as described in the previous
+example, but we should include additional tests for testing the
+additional functionality. One can have different tests in different
+test functions, or collect several tests in one test function.  The
+preferred strategy depends on the problem. Here it may be natural to
+have different test functions only when the \( f(x) \) formula differs to
+avoid repeating code.
+
+<p>
+To test for divergence, we can choose \( f(x) = \tanh(x) \), which is
+known to lead to divergent iterations if not \( x \) is sufficiently
+close to the root \( x=0 \). A start value \( x=20 \) reveals that the iterations
+are divergent, so we set <code>maxit=12</code> and test that the actual number
+of iterations reaches this limit. We can also add a test on \( x \), e.g.,
+that \( x \) is a big as we know it will be: \( x>10^{50} \) after 12 iterations.
+The test function becomes
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_Newton_divergence</span>():
+    <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> tanh
+    f <span style="color: #666666">=</span> tanh
+    dfdx <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> x: <span style="color: #666666">10./</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> x<span style="color: #666666">**2</span>)
+
+    x, f_x, n <span style="color: #666666">=</span> Newton(f, dfdx, <span style="color: #666666">20</span>, eps<span style="color: #666666">=1E-4</span>, maxit<span style="color: #666666">=12</span>)
+    <span style="color: #008000; font-weight: bold">assert</span> n <span style="color: #666666">==</span> <span style="color: #666666">12</span>
+    <span style="color: #008000; font-weight: bold">assert</span> x <span style="color: #666666">&gt;</span> <span style="color: #666666">1E+50</span>
+</pre></div>
+<p>
+To test for division by zero, we can find an \( f(x) \) and an \( x \) such that
+\( f'(x)=0 \). One simple example is \( x=0 \), \( f(x)=\cos(x) \), and \( f'(x)=-\sin(x) \).
+If \( x=0 \) is the start value, we know that a division by zero will take
+place in the first iteration, and this will lead to a <code>ZeroDivisionError</code>
+exception. We can explicitly handle this exception and introduce a
+boolean variable <code>success</code> that is <code>True</code> if the exception is raised
+and otherwise <code>False</code>.
+The corresponding test function reads
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_Newton_div_by_zero1</span>():
+    <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, cos
+    f <span style="color: #666666">=</span> cos
+    dfdx <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> x: <span style="color: #666666">-</span>sin(x)
+    success <span style="color: #666666">=</span> <span style="color: #008000">False</span>
+    <span style="color: #008000; font-weight: bold">try</span>:
+        x, f_x, n <span style="color: #666666">=</span> Newton(f, dfdx, <span style="color: #666666">0</span>, eps<span style="color: #666666">=1E-4</span>, maxit<span style="color: #666666">=1</span>)
+    <span style="color: #008000; font-weight: bold">except</span> <span style="color: #D2413A; font-weight: bold">ZeroDivisionError</span>:
+        success <span style="color: #666666">=</span> <span style="color: #008000">True</span>
+    <span style="color: #008000; font-weight: bold">assert</span> success
+</pre></div>
+<p>
+There is a special <code>nose.tools.assert_raises</code> helper function that can
+be used to test if a function raises a certain exception.
+The arguments to <code>assert_raises</code> are the exception type, the
+name of the function to be called, and all positional and keyword
+arguments in the function call:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">nose.tools</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">nt</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_Newton_div_by_zero2</span>():
+    <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, cos
+    f <span style="color: #666666">=</span> cos
+    dfdx <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> x: <span style="color: #666666">-</span>sin(x)
+    nt<span style="color: #666666">.</span>assert_raises(
+        <span style="color: #D2413A; font-weight: bold">ZeroDivisionError</span>, Newton, f, dfdx, <span style="color: #666666">0</span>, eps<span style="color: #666666">=1E-4</span>, maxit<span style="color: #666666">=1</span>)
+</pre></div>
+<p>
+Let us proceed with testing that wrong input is caught by function <code>Newton</code>.
+Since the same type of exception is raised for different type of
+errors we shall now also examine (parts of) the exception messages.
+The first test involves an argument <code>f</code> that is not a function:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_Newton_f_is_not_callable</span>():
+    success <span style="color: #666666">=</span> <span style="color: #008000">False</span>
+    <span style="color: #008000; font-weight: bold">try</span>:
+        Newton(<span style="color: #666666">4.2</span>, <span style="color: #BA2121">&#39;string&#39;</span>, <span style="color: #666666">1.2</span>, eps<span style="color: #666666">=1E-7</span>, maxit<span style="color: #666666">=100</span>)
+    <span style="color: #008000; font-weight: bold">except</span> <span style="color: #D2413A; font-weight: bold">TypeError</span> <span style="color: #008000; font-weight: bold">as</span> e:
+        <span style="color: #008000; font-weight: bold">if</span> <span style="color: #BA2121">&quot;f is &lt;type &#39;float&#39;&gt;&quot;</span> <span style="color: #AA22FF; font-weight: bold">in</span> e<span style="color: #666666">.</span>message:
+            success <span style="color: #666666">=</span> <span style="color: #008000">True</span>
+</pre></div>
+<p>
+As seen, <code>success = True</code> demands that the right exception is raised and
+that its message starts with <code>f is <type 'float'></code>. What text to expect
+in the message is evident from the source in function <code>Newton</code>.
+
+<p>
+The <code>nose.tools</code> module also has a function for testing the exception
+type and the message content. This is illustrated when <code>dfdx</code> is
+not callable:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_Newton_dfdx_is_not_callable</span>():
+    nt<span style="color: #666666">.</span>assert_raises_regexp(
+        <span style="color: #D2413A; font-weight: bold">TypeError</span>, <span style="color: #BA2121">&quot;dfdx is &lt;type &#39;str&#39;&gt;&quot;</span>,
+        Newton, <span style="color: #008000; font-weight: bold">lambda</span> x: x<span style="color: #666666">**2</span>, <span style="color: #BA2121">&#39;string&#39;</span>, <span style="color: #666666">1.2</span>, eps<span style="color: #666666">=1E-7</span>, maxit<span style="color: #666666">=100</span>)
+</pre></div>
+<p>
+Checking that <code>Newton</code> catches <code>maxit</code> of wrong type or with a
+negative value can be carried out by these test functions:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_Newton_maxit_is_not_int</span>():
+    nt<span style="color: #666666">.</span>assert_raises_regexp(
+        <span style="color: #D2413A; font-weight: bold">TypeError</span>, <span style="color: #BA2121">&quot;maxit is &lt;type &#39;float&#39;&gt;&quot;</span>,
+        Newton, <span style="color: #008000; font-weight: bold">lambda</span> x: x<span style="color: #666666">**2</span>, <span style="color: #008000; font-weight: bold">lambda</span> x: <span style="color: #666666">2*</span>x,
+        <span style="color: #666666">1.2</span>, eps<span style="color: #666666">=1E-7</span>, maxit<span style="color: #666666">=1.2</span>)
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_Newton_maxit_is_neg</span>():
+    nt<span style="color: #666666">.</span>assert_raises_regexp(
+        <span style="color: #D2413A; font-weight: bold">ValueError</span>, <span style="color: #BA2121">&quot;maxit=-2 &lt;= 0&quot;</span>,
+        Newton, <span style="color: #008000; font-weight: bold">lambda</span> x: x<span style="color: #666666">**2</span>, <span style="color: #008000; font-weight: bold">lambda</span> x: <span style="color: #666666">2*</span>x,
+        <span style="color: #666666">1.2</span>, eps<span style="color: #666666">=1E-7</span>, maxit<span style="color: #666666">=-2</span>)
+</pre></div>
+<p>
+The corresponding support for testing exceptions in pytest is
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pytest</span>
+<span style="color: #008000; font-weight: bold">with</span> pytest<span style="color: #666666">.</span>raises(<span style="color: #D2413A; font-weight: bold">TypeError</span>) <span style="color: #008000; font-weight: bold">as</span> e:
+    Newton(<span style="color: #008000; font-weight: bold">lambda</span> x: x<span style="color: #666666">**2</span>, <span style="color: #008000; font-weight: bold">lambda</span> x: <span style="color: #666666">2*</span>x, <span style="color: #666666">1.2</span>, eps<span style="color: #666666">=1E-7</span>, maxit<span style="color: #666666">=-2</span>)
+</pre></div>
+
+<h1 id="___sec5">Automatic execution of tests <a name="___sec5"></a></h1>
+
+Our code for the <code>Newton_basic</code> and <code>Newton</code> functions is placed in
+a file <a href="http://tinyurl.com/pwyasaa/tech/eq_solver.py" target="_blank"><tt>eq_solver.py</tt></a> together
+with the tests. To run all test functions with names of the
+form <code>test_*()</code> in this file, use the <code>nosetests</code> or <code>py.test</code> commands,
+e.g.,:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; nosetests -s eq_solver.py
+..........
+-------------------------------------------------------------------
+Ran 10 tests in 0.004s
+
+OK
+</pre></div>
+<p>
+The <code>-s</code> option causes all output from the called functions in the
+program <code>eq_solver.py</code> to appear on the screen (by default,
+<code>nosetests</code> and <code>py.test</code> suppress all output).  The final <code>OK</code> points
+to the fact that no test failed. Adding the option <code>-v</code> prints out the
+outcome of each individual test function. In case of failure, the
+<code>AssertionError</code> exception and the associated message, if existing,
+are displayed. Pytest also displays the code that failed.
+
+<p>
+One can also collect test functions in separate files with names
+starting with <code>test</code>.  A simple command <code>nosetests -s -v</code> will look for
+all such files in this folder as well as in all subfolders if the
+folder names start with <code>test</code> or end with <code>_test</code> or <code>_tests</code>. By
+following this naming convention, <code>nosetests</code> can automatically run a
+potentially large number of tests and give us quick feedback.  The
+<code>py.test -s -v</code> command will look for and run all test files in the
+entire tree of <em>any</em> subfolder.
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Remark on classical class-based unit testing.</b>
+The pytest and nose testing frameworks allow ordinary functions, as
+explained above, to perform the testing. The most widespread way of
+implementing unit tests, however, is to use class-based
+frameworks. This is also possible with nose and with a module
+<code>unittest</code> that comes with standard Python. The class-based approach
+is very accessible for people with experience from JUnit in Java and
+similar tools in other languages.  Without such a background, plain
+functions that follow the pytest/nose conventions are faster and
+cleaner to write than the class-based counterparts.
+</div>
+
+
+<p>
+<!-- ===== References ===== -->
+<!--  -->
+<!-- BIBFILE: ../papers.pub -->
+
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pager">
+  <li class="previous">
+    <a href="._nose000.html">&larr; Prev</a>
+  </li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

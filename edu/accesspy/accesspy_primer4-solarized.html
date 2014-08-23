@@ -11,11 +11,42 @@ Automatically generated HTML file from Doconce source
 
 
 
-<!-- Bootstrap style: bootswatch_readable -->
-<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
-<!-- not necessary
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
--->
+
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
 
 </head>
 
@@ -32,6 +63,8 @@ Automatically generated HTML file from Doconce source
               (' Anaconda and Spyder ', 1, None, '___sec2'),
               (' Spyder on Mac ', 2, None, '___sec3'),
               (' Installation of additional packages ', 2, None, '___sec4'),
+              (' Installing SciTools on Mac ', 2, None, '___sec5'),
+              (' Installing SciTools on Windows ', 2, None, '___sec6'),
               (' VMWare Fusion virtual machine ',
                1,
                'sec:accesspy:vmware',
@@ -40,9 +73,9 @@ Automatically generated HTML file from Doconce source
                2,
                'sec:accesspy:vmware:fullblown:machine',
                'sec:accesspy:vmware:fullblown:machine'),
-              (' Installing software on Ubuntu ', 2, None, '___sec7'),
-              (' File sharing ', 2, None, '___sec8'),
-              (' Dual boot on Windows ', 1, None, '___sec9'),
+              (' Installing software on Ubuntu ', 2, None, '___sec9'),
+              (' File sharing ', 2, None, '___sec10'),
+              (' Dual boot on Windows ', 1, None, '___sec11'),
               (' Vagrant virtual machine ',
                1,
                'sec:accesspy:vagrant',
@@ -51,31 +84,31 @@ Automatically generated HTML file from Doconce source
                1,
                'sec:accesspy:writerun',
                'sec:accesspy:writerun'),
-              (' The need for a text editor ', 2, None, '___sec12'),
-              (' Spyder ', 2, None, '___sec13'),
-              (' Text editors ', 2, None, '___sec14'),
-              (' Terminal windows ', 2, None, '___sec15'),
+              (' The need for a text editor ', 2, None, '___sec14'),
+              (' Spyder ', 2, None, '___sec15'),
+              (' Text editors ', 2, None, '___sec16'),
+              (' Terminal windows ', 2, None, '___sec17'),
               (' Using a plain text editor and a terminal window ',
                2,
                None,
-               '___sec16'),
+               '___sec18'),
               (' The SageMathCloud and Wakari web services ',
                1,
                'sec:accesspy:sagemath:wakari',
                'sec:accesspy:sagemath:wakari'),
-              (' Basic intro to SageMathCloud ', 2, None, '___sec18'),
-              (' Basic intro to Wakari ', 2, None, '___sec19'),
-              (' Installing your own Python packages ', 2, None, '___sec20'),
+              (' Basic intro to SageMathCloud ', 2, None, '___sec20'),
+              (' Basic intro to Wakari ', 2, None, '___sec21'),
+              (' Installing your own Python packages ', 2, None, '___sec22'),
               (' Writing IPython notebooks ',
                1,
                'sec:accesspy:ipynb',
                'sec:accesspy:ipynb'),
-              (' A simple program in the notebook ', 2, None, '___sec22'),
+              (' A simple program in the notebook ', 2, None, '___sec24'),
               (' Mixing text, mathematics, code, and graphics ',
                2,
                None,
-               '___sec23'),
-              (' References ', 1, None, '___sec24')]}
+               '___sec25'),
+              (' References ', 1, None, '___sec26')]}
 end of tocinfo -->
 
 <body>
@@ -115,50 +148,22 @@ $$
 
 
     
-<!-- Bootstrap navigation bar -->
-<div class="navbar navbar-default navbar-fixed-top">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="accesspy.html">How to access Python for doing scientific computing</a>
-  </div>
-  <div class="navbar-collapse collapse navbar-responsive-collapse">
-    <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._accesspy001.html#sec:accesspy:softwarelist" style="font-size: 80%;">Required software</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy002.html#sec:accesspy:MacWin" style="font-size: 80%;">Installing software on your laptop: Mac OS X and Windows</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy003.html#___sec2" style="font-size: 80%;">Anaconda and Spyder</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy004.html#sec:accesspy:vmware" style="font-size: 80%;">VMWare Fusion virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy004.html#___sec9" style="font-size: 80%;">Dual boot on Windows</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy005.html#sec:accesspy:vagrant" style="font-size: 80%;">Vagrant virtual machine</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy006.html#sec:accesspy:writerun" style="font-size: 80%;">How to write and run a Python program</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy007.html#sec:accesspy:sagemath:wakari" style="font-size: 80%;">The SageMathCloud and Wakari web services</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy008.html#sec:accesspy:ipynb" style="font-size: 80%;">Writing IPython notebooks</a></li>
-     <!-- navigation toc: --> <li><a href="._accesspy008.html#___sec24" style="font-size: 80%;">References</a></li>
-
-        </ul>
-      </li>
-    </ul>
-  </div>
-</div>
-</div> <!-- end of navigation bar -->
-
-<div class="container">
-
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
-
 <a name="part0000"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+</td><td>
+<div style="text-align: right;"><a href="._accesspy_primer4-solarized001.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
 <!-- ------------------- main content ---------------------- -->
 
 
 <title>How to access Python for doing scientific computing</title>
 
-<div class="jumbotron">
 <center><h1>How to access Python for doing scientific computing</h1></center>  <!-- document title -->
 
 <p>
@@ -193,35 +198,19 @@ An overview of the
 possibilities together with my own recommendations appears next.
 
 <p>
-<!-- Acknowledge Springer book -->
+<div style="font-size: 80%;">The material in this document is taken from Appendix H.1 in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</div>
 
 <p>
-
-
-<p><a href="._accesspy001.html" class="btn btn-primary btn-lg">Read &raquo;</a></p>
-
-
-</div> <!-- end jumbotron -->
-
 <p>
-<!-- navigation buttons at the bottom of the page -->
-<ul class="pager">
-  <li class="next">
-    <a href="._accesspy001.html">Next &rarr;</a>
-  </li>
-</ul>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+</td><td>
+<div style="text-align: right;"><a href="._accesspy_primer4-solarized001.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
 <!-- ------------------- end of main content --------------- -->
-
-</div>  <!-- end container -->
-<!-- include javascript, jQuery *first* -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
-<!-- Bootstrap footer
-<footer>
-<a href="http://..."><img width="250" align=right src="http://..."></a>
-</footer>
--->
 
 
 </body>

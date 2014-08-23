@@ -1,0 +1,243 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Doing operating system tasks in Python">
+<meta name="keywords" content="make a folder (in Python),directory,environment variables,move to a folder (in Python),rename file/folder (in Python),list files (in Python),check file/folder existence (in Python),remove files (in Python),delete files (in Python),remove folders (in Python),delete folders (in Python),copy files (in Python),copy folders (in Python),run programs (from Python),execute programs (from Python),split filename">
+
+
+
+
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [(' Make a folder ', 2, None, '___sec0'),
+              (' Make intermediate folders ', 2, None, '___sec1'),
+              (' Move to a folder ', 2, None, '___sec2'),
+              (' Rename a file or folder ', 2, None, '___sec3'),
+              (' List files ', 2, None, '___sec4'),
+              (' List all files and folders in a folder ',
+               2,
+               None,
+               '___sec5'),
+              (' Check if a file or folder exists ', 2, None, '___sec6'),
+              (' Remove files ', 2, None, '___sec7'),
+              (' Remove a folder and all its subfolders ',
+               2,
+               None,
+               '___sec8'),
+              (' Copy a file to another file or folder ', 2, None, '___sec9'),
+              (' Copy a folder and all its subfolders ', 2, None, '___sec10'),
+              (' Run any operating system command ', 2, None, '___sec11'),
+              (' Split file or folder name ', 2, None, '___sec12'),
+              (' Traverse a folder tree ', 2, None, '___sec13')]}
+end of tocinfo -->
+
+<body>
+
+    
+<a name="part0002"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._ostasks-solarized001.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._ostasks-solarized003.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- !split -->
+
+<h2>Make a folder  <a name="___sec0"></a></h2>
+
+Python applies the term directory instead of folder.
+The equivalent of the Unix <code>mkdir mydir</code> is
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>import os
+os.mkdir('mydir')
+</code></pre>
+<!-- end verbatim block -->
+Ordinary
+files are created by the <code>open</code> and <code>close</code> functions in Python.
+
+<h2>Make intermediate folders  <a name="___sec1"></a></h2>
+
+Suppose you want to make a subfolder under your home folder:
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>$HOME/python/project1/temp
+</code></pre>
+<!-- end verbatim block -->
+but the intermediate folders <code>python</code> and <code>project1</code> do not exist.
+This requires each new folder to be made separately by <code>os.mkdir</code>,
+or you can make all folders at once with <code>os.makedirs</code>:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>foldername = os.path.join(os.environ['HOME'], 'python',
+                          'project1', 'temp')
+os.makedirs(foldername)
+</code></pre>
+<!-- end verbatim block -->
+With <code>os.environ[var]</code> we can get the value of
+any environment variable <code>var</code> as
+a string. The <code>os.path.join</code> function joins folder names and a filename
+in a platform-independent way.
+
+<h2>Move to a folder  <a name="___sec2"></a></h2>
+
+The <code>cd</code> command reads <code>os.chdir</code> and <code>cwd</code> is <code>os.getcwd</code>:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>origfolder = os.getcwd()  # get name of current folder
+os.chdir(foldername)      # move (&quot;change directory&quot;)
+...
+os.chdir(origfolder)      # move back
+</code></pre>
+<!-- end verbatim block -->
+
+<h2>Rename a file or folder  <a name="___sec3"></a></h2>
+
+The cross-platform <code>mv</code> command is
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>os.rename(oldname, newname)
+</code></pre>
+<!-- end verbatim block -->
+
+<h2>List files  <a name="___sec4"></a></h2>
+
+Unix wildcard notation can be used to list files. The equivalent of
+<code>ls *.py</code> and <code>ls plot*[1-4]*.dat</code> reads
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>import glob
+filelist1 = glob.glob('*.py')
+filelist2 = glob.glob('plot*[1-4]*.dat')
+</code></pre>
+<!-- end verbatim block -->
+
+<h2>List all files and folders in a folder  <a name="___sec5"></a></h2>
+
+The counterparts to <code>ls -a mydir</code> and just <code>ls -a</code> are
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>filelist1 = os.listdir('mydir')
+filelist1 = os.listdir(os.curdir)  # current folder (directory)
+filelist1.sort()                   # sort alphabetically
+</code></pre>
+<!-- end verbatim block -->
+
+<h2>Check if a file or folder exists  <a name="___sec6"></a></h2>
+
+The widely used constructions in Unix scripts for
+testing if a file or folder
+exist are <code>if [ -f $filename ]; then</code> and
+<code>if [ -d $dirname ]; then</code>. These
+have very readable counterparts in Python:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>if os.path.isfile(filename):
+    inputfile = open(filename, 'r')
+    ...
+
+if os.path.isdir(dirnamename):
+    filelist = os.listdir(dirname)
+    ...
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+<a name="app:ostasks:os:remove:glob"></a>
+
+<h2>Remove files  <a name="___sec7"></a></h2>
+
+Removing a single file is done with <code>os.rename</code>, and a loop is
+required for doing <code>rm tmp_*.df</code>:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>import glob
+filelist = glob.glob('tmp_*.pdf')
+for filename in filelist:
+    os.remove(filename)
+</code></pre>
+<!-- end verbatim block -->
+
+<h2>Remove a folder and all its subfolders  <a name="___sec8"></a></h2>
+
+The <code>rm -rf mytree</code> command removes an entire folder tree.
+In Python, the cross-platform valid command becomes
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>import shutil
+shutil.rmtree(foldername)
+</code></pre>
+<!-- end verbatim block -->
+It goes without saying that this command must be used with great care!
+
+<h2>Copy a file to another file or folder  <a name="___sec9"></a></h2>
+
+The <code>cp fromfile tofile</code> construction applies <code>shutil.copy</code> in Python:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>shutil.copy('fromfile', 'tofile')
+</code></pre>
+<!-- end verbatim block -->
+
+<h2>Copy a folder and all its subfolders  <a name="___sec10"></a></h2>
+
+The recursive copy command <code>cp -r</code> for folder trees
+is in Python expressed by <code>shell.copytree</code>:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>shutil.copytree(sourcefolder, destination)
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._ostasks-solarized001.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._ostasks-solarized003.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

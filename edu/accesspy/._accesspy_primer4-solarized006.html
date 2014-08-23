@@ -1,0 +1,329 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="How to access Python for doing scientific computing">
+<meta name="keywords" content="Idle,Emacs,Vim,Gedit,TextWrangler,Notepad++">
+
+
+
+
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Required software ',
+               1,
+               'sec:accesspy:softwarelist',
+               'sec:accesspy:softwarelist'),
+              (' Installing software on your laptop: Mac OS X and Windows ',
+               1,
+               'sec:accesspy:MacWin',
+               'sec:accesspy:MacWin'),
+              (' Anaconda and Spyder ', 1, None, '___sec2'),
+              (' Spyder on Mac ', 2, None, '___sec3'),
+              (' Installation of additional packages ', 2, None, '___sec4'),
+              (' Installing SciTools on Mac ', 2, None, '___sec5'),
+              (' Installing SciTools on Windows ', 2, None, '___sec6'),
+              (' VMWare Fusion virtual machine ',
+               1,
+               'sec:accesspy:vmware',
+               'sec:accesspy:vmware'),
+              (' Installing Ubuntu ',
+               2,
+               'sec:accesspy:vmware:fullblown:machine',
+               'sec:accesspy:vmware:fullblown:machine'),
+              (' Installing software on Ubuntu ', 2, None, '___sec9'),
+              (' File sharing ', 2, None, '___sec10'),
+              (' Dual boot on Windows ', 1, None, '___sec11'),
+              (' Vagrant virtual machine ',
+               1,
+               'sec:accesspy:vagrant',
+               'sec:accesspy:vagrant'),
+              (' How to write and run a Python program ',
+               1,
+               'sec:accesspy:writerun',
+               'sec:accesspy:writerun'),
+              (' The need for a text editor ', 2, None, '___sec14'),
+              (' Spyder ', 2, None, '___sec15'),
+              (' Text editors ', 2, None, '___sec16'),
+              (' Terminal windows ', 2, None, '___sec17'),
+              (' Using a plain text editor and a terminal window ',
+               2,
+               None,
+               '___sec18'),
+              (' The SageMathCloud and Wakari web services ',
+               1,
+               'sec:accesspy:sagemath:wakari',
+               'sec:accesspy:sagemath:wakari'),
+              (' Basic intro to SageMathCloud ', 2, None, '___sec20'),
+              (' Basic intro to Wakari ', 2, None, '___sec21'),
+              (' Installing your own Python packages ', 2, None, '___sec22'),
+              (' Writing IPython notebooks ',
+               1,
+               'sec:accesspy:ipynb',
+               'sec:accesspy:ipynb'),
+              (' A simple program in the notebook ', 2, None, '___sec24'),
+              (' Mixing text, mathematics, code, and graphics ',
+               2,
+               None,
+               '___sec25'),
+              (' References ', 1, None, '___sec26')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
+
+
+
+    
+<a name="part0006"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._accesspy_primer4-solarized005.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._accesspy_primer4-solarized007.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- !split -->
+
+<h1>How to write and run a Python program <a name="sec:accesspy:writerun"></a></h1>
+
+You have basically three choices to develop and test a Python program:
+
+<ol>
+<li> use the IPython notebook</li>
+<li> use an Integrated Development Environment (IDE), like Spyder, which offers
+   a window with a text editor and functionality to run programs and
+   observe the output</li>
+<li> use a text editor and a terminal window</li>
+</ol>
+
+The IPython notebook is briefly descried  in
+the section <a href="._accesspy_primer4-solarized008.html#sec:accesspy:ipynb">Writing IPython notebooks</a>, while the other two options are
+outlined below.
+
+<h2>The need for a text editor  <a name="___sec14"></a></h2>
+
+Since programs consist of plain text, we need to write this text with
+the help of another program that can store the text in a file. You
+have most likely extensive experience with writing text on a computer,
+but for writing your own programs you need special programs, called
+<em>editors</em>, which preserve exactly the characters you type.  The
+widespread word processors, Microsoft Word being a primary example,
+are aimed at producing nice-looking reports. These programs <em>format</em>
+the text and are <em>not</em> acceptable tools for writing your own programs,
+even though they can save the document in a pure text format.  Spaces
+are often important in Python programs, and <em>editors</em> for plain text
+give you complete control of the spaces and all other characters in
+the program file.
+
+<h2>Spyder  <a name="___sec15"></a></h2>
+
+Spyder is graphical application for developing and running Python
+programs, available on all major platforms. Spyder comes with Anaconda
+and some other pre-built environments for scientific computing with
+Python. On Ubuntu it is conveniently installed by <code>sudo apt-get
+install spyder</code>.
+
+<p>
+The left part of the Spyder window contains a plain text editor.
+Click in this window and write <code>print 'Hello!'</code> and return.
+Choose <em>Run</em> from the <em>Run</em> pull-down menu, and observe the output
+<code>Hello!</code> in the lower right window where the output from
+programs is visible.
+
+<p>
+You may continue with more advanced statements involving graphics:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>import matplotlib.pyplot as plt
+import numpy as np
+x = np.linspace(0, 4, 101)
+y = np.exp(-x)*np.sin(np.pi*x)
+plt.plot(x,y)
+plt.title('First test of Spyder')
+plt.savefig('tmp.png')
+plt.show()
+</code></pre>
+<!-- end verbatim block -->
+Choosing <em>Run - Run</em> now leads to a separate window with a plot of
+the function \( e^{-x}\sin (\pi x) \). Figure <a href="#sec:accesspy:fig:spyder">1</a> shows
+how the Spyder application may look like.
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  The Spyder Integrated Development Environment. <a name="sec:accesspy:fig:spyder"></a> </p></center>
+<p><img src="fig-accesspy/spyder.png" align="bottom" width=800></p>
+</center>
+
+<p>
+The plot file we generate in the above program,
+<code>tmp.png</code>, is by default found in the Spyder folder listed in
+the default text in the top of the program. You can choose
+<em>Run - Configure ...</em> to change this folder as desired.
+The program you write is written to a file <code>.temp.py</code> in the same
+default folder, but any name and folder can be specified in the
+standard <em>File - Save as...</em> menu.
+
+<p>
+A convenient feature of Spyder is that the upper right window
+continuously displays documentation of the statements you write in the
+editor to the left.
+
+<h2>Text editors  <a name="___sec16"></a></h2>
+
+The most widely used editors for writing programs are Emacs and Vim,
+which are available on all major platforms. Some simpler
+alternatives for beginners are
+
+<ul>
+ <li> Linux: Gedit</li>
+ <li> Mac OS X: TextWrangler</li>
+ <li> Windows: Notepad++</li>
+</ul>
+
+We may mention that Python comes with an editor called Idle, which can
+be used to write programs on all three platforms, but running the
+program with command-line arguments is a bit complicated for beginners
+in Idle so Idle is not my favorite recommendation.
+
+<p>
+<!-- http://anh.cs.luc.edu/python/hands-on/3.1/handsonHtml/execution.html -->
+<!-- http://www.youtube.com/watch?v=lBkcDFRA958 -->
+
+<p>
+Gedit is a standard program on Linux platforms, but all other
+editors must installed in your system. This is easy: just google
+for the name, download the file, and follow the standard procedure
+for installation. All of the mentioned editors come with a graphical
+user interface that is intuitive to use, but the major popularity
+of Emacs and Vim is due to their rich set of short-keys
+so that you can avoid using the mouse and consequently edit at
+higher speed.
+
+<h2>Terminal windows  <a name="___sec17"></a></h2>
+
+To run the Python program, you need a <em>terminal window</em>.  This is a
+window where you can issue Unix commands in Linux and Mac OS X systems
+and DOS commands in Windows.  On a Linux computer, <code>gnome-terminal</code>
+is my favorite, but other choices work equally well, such as <code>xterm</code>
+and <code>konsole</code>.  On a Mac computer, launch the application <em>Utilities -
+Terminal</em>.  On Windows, launch <em>PowerShell</em>.
+
+<p>
+You must first move to the right folder using the <code>cd foldername</code>
+command. Then running a python program <code>prog.py</code> is a matter of
+writing <code>python prog.py</code>. Whatever the program prints can be
+seen in the terminal window.
+
+<h2>Using a plain text editor and a terminal window  <a name="___sec18"></a></h2>
+
+<ol>
+<li> Create a folder where your Python programs can be located, say
+   with name <code>mytest</code> under your home folder. This is most conveniently
+   done in the terminal window since you need to use this window
+   anyway to run the program. The command for creating a new folder is
+   <code>mkdir mytest</code>.</li>
+<li> Move to the new folder: <code>cd mytest</code>.</li>
+<li> Start the editor of your choice.</li>
+<li> Write a program in the editor, e.g., just the line <code>print 'Hello!'</code>.
+   Save the program under the name <code>myprog1.py</code> in the <code>mytest</code> folder.</li>
+<li> Move to the terminal window and write <code>python myprog1.py</code>.
+   You should see the word <code>Hello!</code> being printed in the window.</li>
+</ol>
+
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._accesspy_primer4-solarized005.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._accesspy_primer4-solarized007.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

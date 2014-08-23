@@ -1,0 +1,538 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Unit testing with pytest and nose">
+<meta name="keywords" content="nose tests,pytest tests,unit testing,software testing nose,software testing pytest">
+
+
+
+
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Model software ', 1, None, '___sec0'),
+              (' Requirements of the test function ', 1, None, '___sec1'),
+              (' Writing the test function; precomputed data ',
+               1,
+               None,
+               '___sec2'),
+              (' Writing the test function; exact numerical solution ',
+               1,
+               None,
+               '___sec3'),
+              (' Testing of function robustness ', 1, None, '___sec4'),
+              (' Automatic execution of tests ', 1, None, '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
+
+
+
+    
+<a name="part0001"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._nose-solarized000.html">&laquo; Previous</a></div>
+</td><td>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- !split -->
+
+<h2>Table of contents</h2>
+
+<a href="#___sec0"> Model software </a><br>
+<a href="#___sec1"> Requirements of the test function </a><br>
+<a href="#___sec2"> Writing the test function; precomputed data </a><br>
+<a href="#___sec3"> Writing the test function; exact numerical solution </a><br>
+<a href="#___sec4"> Testing of function robustness </a><br>
+<a href="#___sec5"> Automatic execution of tests </a><br>
+</p>
+
+<h1>Model software  <a name="___sec0"></a></h1>
+
+We need a piece of software we want to test. Here we choose a function
+that runs Newton's method for solving algebraic equations
+\( f(x)=0 \). A very simple implementation goes like
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def Newton_basic(f, dfdx, x, eps=1E-7):
+    n = 0  # iteration counter
+    while abs(f(x)) &gt; eps:
+        x = x - f(x)/dfdx(x)
+        n += 1
+    return x, f(x), n
+</code></pre>
+<!-- end verbatim block -->
+
+<h1>Requirements of the test function  <a name="___sec1"></a></h1>
+
+The simplest way of using the pytest or nose testing frameworks is to write a
+set of test functions, scattered around in files, such that pytest or nose
+can automatically find and run all the test functions. To this end,
+the test functions need to follow certain conventions.
+
+<p>
+<div class="alert alert-block alert-notice alert-text-normal"><b>Test function conventions.</b>
+
+<ol>
+<li> The name of a test function starts with <code>test_</code>.</li>
+<li> A test function cannot take any arguments.</li>
+<li> Any test must be formulated as a boolean condition.</li>
+<li> An <code>AssertionError</code> exception is raised if the boolean condition is false
+   (i.e., when the test fails).</li>
+</ol>
+</div>
+
+
+<p>
+There are many ways of raising the <code>AssertionError</code> exception:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code># Formulate a test
+tol = 1E-14              # comparison tolerance for real numbers
+success = abs(reference - result) &lt; tol
+msg = 'computed_result=%d != %d' % (result, reference)
+
+# Explicit raise
+if not success:
+    raise AssertionError(msg)
+
+# assert statement
+assert success, msg
+
+# nose tools
+import nose.tools as nt
+nt.assert_true(success, msg)
+# or
+nt.assert_almost_equal(result, reference, msg=msg, delta=tol)
+</code></pre>
+<!-- end verbatim block -->
+This document contains a lot of test functions following the conventions
+of the pytest and nose testing frameworks, and we almost exclusively use
+the plain <code>assert</code> statement to have full control of what the test method is.
+In more complicated software the many functions in <code>nose.tools</code>
+may save quite some coding and are convenient to use.
+
+<h1>Writing the test function; precomputed data  <a name="___sec2"></a></h1>
+
+Newton's method for solving an algebraic equation \( f(x)=0 \) results in
+only an approximate root \( x_r \), making \( f(x_r)\neq 0 \), but
+\( |f(x_r)|\leq \epsilon \), where \( \epsilon \) is supposed to be a
+prescribed number close to zero. The problem is that we do not know
+beforehand what \( x_r \) and \( f(x_r) \) will be. However, if we strongly
+believe the function we want to test is correctly implemented, we can
+record the output from the function in a test case and use this output
+as a reference for later testing.
+
+<p>
+Assume we try to solve \( \sin(x) = 0 \) with \( x=-\pi/3 \) as start value.
+Running <code>Newton_basic</code> with a moderate-size <code>eps</code> (\( \epsilon \)) of
+\( 10^{-2} \) gives \( x=0.000769691024206 \), \( f(x)=0.000769690948209 \), and
+\( n=3 \).  A test function can now compare new computations with these
+reference results. Since new computations on another computer may lead
+to round-off errors, we must compare real numbers with a small
+tolerance:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def test_Newton_basic_precomputed():
+    from math import sin, cos, pi
+
+    def f(x):
+        return sin(x)
+
+    def dfdx(x):
+        return cos(x)
+
+    x_ref = 0.000769691024206
+    f_x_ref = 0.000769690948209
+    n_ref = 3
+
+    x, f_x, n = Newton_basic(f, dfdx, x=-pi/3, eps=1E-2)
+
+    tol = 1E-15  # tolerance for comparing real numbers
+    assert abs(x_ref - x) &lt; tol       # is x correct?
+    assert abs(f_x_ref - f_x) &lt; tol   # is f_x correct?
+    assert n == 3                     # is n correct?
+</code></pre>
+<!-- end verbatim block -->
+The <code>assert</code> statements involving comparison of real numbers can
+alternatively be carried out by <code>nose.tools</code> functionality:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>nose.tools.assert_almost_equal(x_ref, x, delta=tol)
+</code></pre>
+<!-- end verbatim block -->
+For simplicity we dropped the optional messages explaining what wen
+wrong if tests fail.
+
+<h1>Writing the test function; exact numerical solution  <a name="___sec3"></a></h1>
+
+Approximate numerical methods are sometimes exact in certain special
+cases. An exact answer known beforehand is a good starting point for a
+test since the implementation should reproduce the known answer to
+machine precision. For Newton's method we know that it finds the exact
+root of \( f(x)=0 \) in one iteration if \( f(x) \) is a linear function of
+\( x \).  This fact leads us to a test with \( f(x)=ax+b \), where we can
+choose \( a \) and \( b \) freely, but it is always wise to choose numbers
+different from 0 and 1 since these have special arithmetic properties
+that can hide programming errors.
+
+<p>
+The test function contains the problem setup, a call to the function to
+be verified, and <code>assert</code> tests on the output, this time also with
+an error message in case tests fail:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def test_Newton_basic_linear():
+    &quot;&quot;&quot;Test that a linear function is handled in one iteration.&quot;&quot;&quot;
+    f = lambda x: a*x + b
+    dfdx = lambda x: a
+    a = 0.25; b = -4
+    x_exact = 16
+    eps = 1E-5
+    x, f_x, n = Newton_basic(f, dfdx, -100, eps)
+
+    tol = 1E-15  # tolerance for comparing real numbers
+    assert abs(x - 16) &lt; tol, 'wrong root x=%g != 16' % x
+    assert abs(f_x) &lt; eps, '|f(root)|=%g &gt; %g' % (f_x, eps)
+    assert n == 1, 'n=%d, but linear f should have n=1' % n
+</code></pre>
+<!-- end verbatim block -->
+
+<h1>Testing of function robustness  <a name="___sec4"></a></h1>
+
+Our <code>Newton_basic</code> function is very basic and suffers from several
+problems:
+
+<ul>
+ <li> for divergent iterations it will iterate forever,</li>
+ <li> it can divide by zero in <code>f(x)/dfdx(x)</code>,</li>
+ <li> it can perform integer division in <code>f(x)/dfdx(x)</code>,</li>
+ <li> it does not test whether the arguments have acceptable types and values.</li>
+</ul>
+
+A more robust implementation dealing with these potential problems
+look as follows:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def Newton(f, dfdx, x, eps=1E-7, maxit=100):
+    if not callable(f):
+        raise TypeError(
+            'f is %s, should be function or class with __call__'
+            % type(f))
+    if not callable(dfdx):
+        raise TypeError(
+            'dfdx is %s, should be function or class with __call__'
+            % type(dfdx))
+    if not isinstance(maxit, int):
+        raise TypeError('maxit is %s, must be int' % type(maxit))
+    if maxit &lt;= 0:
+        raise ValueError('maxit=%d &lt;= 0, must be &gt; 0' % maxit)
+
+    n = 0  # iteration counter
+    while abs(f(x)) &gt; eps and n &lt; maxit:
+        try:
+            x = x - f(x)/float(dfdx(x))
+        except ZeroDivisionError:
+            raise ZeroDivisionError(
+            'dfdx(%g)=%g - cannot divide by zero' % (x, dfdx(x)))
+        n += 1
+    return x, f(x), n
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+The numerical functionality can be tested as described in the previous
+example, but we should include additional tests for testing the
+additional functionality. One can have different tests in different
+test functions, or collect several tests in one test function.  The
+preferred strategy depends on the problem. Here it may be natural to
+have different test functions only when the \( f(x) \) formula differs to
+avoid repeating code.
+
+<p>
+To test for divergence, we can choose \( f(x) = \tanh(x) \), which is
+known to lead to divergent iterations if not \( x \) is sufficiently
+close to the root \( x=0 \). A start value \( x=20 \) reveals that the iterations
+are divergent, so we set <code>maxit=12</code> and test that the actual number
+of iterations reaches this limit. We can also add a test on \( x \), e.g.,
+that \( x \) is a big as we know it will be: \( x>10^{50} \) after 12 iterations.
+The test function becomes
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def test_Newton_divergence():
+    from math import tanh
+    f = tanh
+    dfdx = lambda x: 10./(1 + x**2)
+
+    x, f_x, n = Newton(f, dfdx, 20, eps=1E-4, maxit=12)
+    assert n == 12
+    assert x &gt; 1E+50
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+To test for division by zero, we can find an \( f(x) \) and an \( x \) such that
+\( f'(x)=0 \). One simple example is \( x=0 \), \( f(x)=\cos(x) \), and \( f'(x)=-\sin(x) \).
+If \( x=0 \) is the start value, we know that a division by zero will take
+place in the first iteration, and this will lead to a <code>ZeroDivisionError</code>
+exception. We can explicitly handle this exception and introduce a
+boolean variable <code>success</code> that is <code>True</code> if the exception is raised
+and otherwise <code>False</code>.
+The corresponding test function reads
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def test_Newton_div_by_zero1():
+    from math import sin, cos
+    f = cos
+    dfdx = lambda x: -sin(x)
+    success = False
+    try:
+        x, f_x, n = Newton(f, dfdx, 0, eps=1E-4, maxit=1)
+    except ZeroDivisionError:
+        success = True
+    assert success
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+There is a special <code>nose.tools.assert_raises</code> helper function that can
+be used to test if a function raises a certain exception.
+The arguments to <code>assert_raises</code> are the exception type, the
+name of the function to be called, and all positional and keyword
+arguments in the function call:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>import nose.tools as nt
+
+def test_Newton_div_by_zero2():
+    from math import sin, cos
+    f = cos
+    dfdx = lambda x: -sin(x)
+    nt.assert_raises(
+        ZeroDivisionError, Newton, f, dfdx, 0, eps=1E-4, maxit=1)
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+Let us proceed with testing that wrong input is caught by function <code>Newton</code>.
+Since the same type of exception is raised for different type of
+errors we shall now also examine (parts of) the exception messages.
+The first test involves an argument <code>f</code> that is not a function:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def test_Newton_f_is_not_callable():
+    success = False
+    try:
+        Newton(4.2, 'string', 1.2, eps=1E-7, maxit=100)
+    except TypeError as e:
+        if &quot;f is &lt;type 'float'&gt;&quot; in e.message:
+            success = True
+</code></pre>
+<!-- end verbatim block -->
+As seen, <code>success = True</code> demands that the right exception is raised and
+that its message starts with <code>f is <type 'float'></code>. What text to expect
+in the message is evident from the source in function <code>Newton</code>.
+
+<p>
+The <code>nose.tools</code> module also has a function for testing the exception
+type and the message content. This is illustrated when <code>dfdx</code> is
+not callable:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def test_Newton_dfdx_is_not_callable():
+    nt.assert_raises_regexp(
+        TypeError, &quot;dfdx is &lt;type 'str'&gt;&quot;,
+        Newton, lambda x: x**2, 'string', 1.2, eps=1E-7, maxit=100)
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+Checking that <code>Newton</code> catches <code>maxit</code> of wrong type or with a
+negative value can be carried out by these test functions:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def test_Newton_maxit_is_not_int():
+    nt.assert_raises_regexp(
+        TypeError, &quot;maxit is &lt;type 'float'&gt;&quot;,
+        Newton, lambda x: x**2, lambda x: 2*x,
+        1.2, eps=1E-7, maxit=1.2)
+
+def test_Newton_maxit_is_neg():
+    nt.assert_raises_regexp(
+        ValueError, &quot;maxit=-2 &lt;= 0&quot;,
+        Newton, lambda x: x**2, lambda x: 2*x,
+        1.2, eps=1E-7, maxit=-2)
+</code></pre>
+<!-- end verbatim block -->
+The corresponding support for testing exceptions in pytest is
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>import pytest
+with pytest.raises(TypeError) as e:
+    Newton(lambda x: x**2, lambda x: 2*x, 1.2, eps=1E-7, maxit=-2)
+</code></pre>
+<!-- end verbatim block -->
+
+<h1>Automatic execution of tests  <a name="___sec5"></a></h1>
+
+Our code for the <code>Newton_basic</code> and <code>Newton</code> functions is placed in
+a file <a href="http://tinyurl.com/pwyasaa/tech/eq_solver.py" target="_blank"><tt>eq_solver.py</tt></a> together
+with the tests. To run all test functions with names of the
+form <code>test_*()</code> in this file, use the <code>nosetests</code> or <code>py.test</code> commands,
+e.g.,:
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; nosetests -s eq_solver.py
+..........
+-------------------------------------------------------------------
+Ran 10 tests in 0.004s
+
+OK
+</code></pre>
+<!-- end verbatim block -->
+The <code>-s</code> option causes all output from the called functions in the
+program <code>eq_solver.py</code> to appear on the screen (by default,
+<code>nosetests</code> and <code>py.test</code> suppress all output).  The final <code>OK</code> points
+to the fact that no test failed. Adding the option <code>-v</code> prints out the
+outcome of each individual test function. In case of failure, the
+<code>AssertionError</code> exception and the associated message, if existing,
+are displayed. Pytest also displays the code that failed.
+
+<p>
+One can also collect test functions in separate files with names
+starting with <code>test</code>.  A simple command <code>nosetests -s -v</code> will look for
+all such files in this folder as well as in all subfolders if the
+folder names start with <code>test</code> or end with <code>_test</code> or <code>_tests</code>. By
+following this naming convention, <code>nosetests</code> can automatically run a
+potentially large number of tests and give us quick feedback.  The
+<code>py.test -s -v</code> command will look for and run all test files in the
+entire tree of <em>any</em> subfolder.
+
+<p>
+<div class="alert alert-block alert-notice alert-text-normal"><b>Remark on classical class-based unit testing.</b>
+The pytest and nose testing frameworks allow ordinary functions, as
+explained above, to perform the testing. The most widespread way of
+implementing unit tests, however, is to use class-based
+frameworks. This is also possible with nose and with a module
+<code>unittest</code> that comes with standard Python. The class-based approach
+is very accessible for people with experience from JUnit in Java and
+similar tools in other languages.  Without such a background, plain
+functions that follow the pytest/nose conventions are faster and
+cleaner to write than the class-based counterparts.
+</div>
+
+
+<p>
+<!-- ===== References ===== -->
+<!--  -->
+<!-- BIBFILE: ../papers.pub -->
+
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._nose-solarized000.html">&laquo; Previous</a></div>
+</td><td>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+
