@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Brief summary of basic Python syntax">
+
+
+
+
+
+
+
+
+<!-- deck.js: https://github.com/imakewebthings/deck.js -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=1024, user-scalable=no">
+
+<!-- Required stylesheet -->
+<link rel="stylesheet" href="deck.js/core/deck.core.css">
+
+<!-- Extension CSS files go here. Remove or add as needed.
+deck.goto: Adds a shortcut key to jump to any slide number.
+Hit g, type in the slide number, and hit enter.
+
+deck.hash: Enables internal linking within slides, deep
+linking to individual slides, and updates the address bar and
+a permalink anchor with each slide change.
+
+deck.menu: Adds a menu view, letting you see all slides in a grid.
+Hit m to toggle to menu view, continue navigating your deck,
+and hit m to return to normal view. Touch devices can double-tap
+the deck to switch between views.
+
+deck.navigation: Adds clickable left and right buttons for the
+less keyboard inclined.
+
+deck.status: Adds a page number indicator. (current/total).
+
+deck.scale: Scales each slide to fit within the deck container
+using CSS Transforms for those browsers that support them.
+
+deck.pointer: Turn mouse into laser pointer (toggle with p).
+(Requires https://github.com/mikeharris100/deck.pointer.js)
+-->
+
+<link rel="stylesheet" href="deck.js/extensions/menu/deck.menu.css">
+<link rel="stylesheet" href="deck.js/extensions/navigation/deck.navigation.css">
+<link rel="stylesheet" href="deck.js/extensions/scale/deck.scale.css">
+<link rel="stylesheet" href="deck.js/extensions/pointer/deck.pointer.css">
+<link rel="stylesheet" href="deck.js/extensions/notes/deck.notes.css">
+<!--
+<link rel="stylesheet" href="deck.js/extensions/goto/deck.goto.css">
+<link rel="stylesheet" href="deck.js/extensions/hash/deck.hash.css">
+<link rel="stylesheet" href="deck.js/extensions/status/deck.status.css">
+-->
+
+<!-- Style theme. More available in themes/style/ or create your own. -->
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.default.css">
+
+<!--
+<link rel="stylesheet" href="deck.js/themes/style/neon.css">
+<link rel="stylesheet" href="deck.js/themes/style/swiss.css">
+<link rel="stylesheet" href="deck.js/themes/style/web-2.0.css">
+
+git clone git://github.com/duijf/mnml.git
+<link rel="stylesheet" href="deck.js/themes/style/mnml.css">
+
+git://github.com/groovecoder/deckjs-theme-mozilla.git
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.aurora.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.dark.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.default.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.firefox.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.light.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.mdn.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.nightly.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.cbc.css">
+
+git://github.com/barraq/deck.ext.js.git
+<link rel="stylesheet" href="deck.js/themes/style/beamer.css">
+-->
+
+<!-- Transition theme. More available in /themes/transition/ or create your own. -->
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
+<!--
+<link rel="stylesheet" href="deck.js/themes/transition/fade.css">
+<link rel="stylesheet" href="deck.js/themes/transition/vertical-slide.css">
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
+-->
+
+<!-- Required Modernizr file -->
+<script src="deck.js/modernizr.custom.js"></script>
+
+<style type="text/css">
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .slide .alert-text-small   { font-size: 80%;  }
+    .slide .alert-text-large   { font-size: 130%; }
+    .slide .alert-text-normal  { font-size: 90%;  }
+    .slide .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:5px solid #bababa;
+               -webkit-border-radius:14px; -moz-border-radius:14px;
+             border-radius:14px
+             background-position: 10px 10px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 30px; /* 55px; if icon */
+     }
+     .slide .alert-block {padding-top:14px; padding-bottom:14px}
+     .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
+     /*.slide .alert li {margin-top: 1em}*/
+     .deck .alert-block p+p {margin-top:5px}
+     /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
+     .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
+     .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
+     .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+<body class="deck-container">
+
+<header>
+<!-- Here goes a potential header -->
+</header>
+
+<!-- do not use the article tag - it gives strange sizings -->
+
+
+
+    
+
+
+
+<section class="slide">
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Brief summary of basic Python syntax</title>
+
+<center><h1>Brief summary of basic Python syntax</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Joakim Sundnes, Hans Petter Langtangen, and Ola Skavhaug -->
+
+<center>
+<b style="font-weight: bold">Joakim Sundnes</b> [1, 2]
+</center>
+
+<center>
+<b style="font-weight: bold">Hans Petter Langtangen</b> [1, 2]
+</center>
+
+<center>
+<b style="font-weight: bold">Ola Skavhaug</b> [3, 4]
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b style="font-weight: bold">Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b style="font-weight: bold">Dept. of Informatics, University of Oslo</b></center>
+<center>[3] <b style="font-weight: bold">mCASH</b></center>
+<center>[4] <b style="font-weight: bold">formerly Dept. of Informatics, University of Oslo</b></center>
+<p>
+<center><h4>Aug 23, 2014</h4></center> <!-- date -->
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Contents  <a name="___sec0"></a></h2>
+
+<ul>
+  <p><li> Python variables; numbers, strings, lists++</li>
+  <p><li> Simple control structures</li>
+  <p><li> Functions</li>
+  <p><li> Reading and writing files</li>
+  <p><li> Using and writing modules</li>
+  <p><li> Doc strings</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<h2>Sources for more information and documentation  <a name="___sec1"></a></h2>
+
+<ul>
+  <p><li> H.P. Langtangen and G. K. Sandve: Illustrating Python via Bioinformatics Examples: <a href="http://hplgit.github.io/bioinf-py/doc/tutorial/bioinf-py.pdf" target="_blank">PDF</a> or <a href="http://hplgit.github.com/teamods/bitgit/Langtangen_bitgit-bootstrap.html" target="_blank">HTML</a></li>
+  <p><li> <code>pydoc anymodule</code>, <code>pydoc anymodule.anyfunc</code></li>
+  <p><li> <a href="http://docs.python.org/lib/lib.html" target="_blank">Python Library Reference</a> (go to <em>index</em> in the upper right corner)</li>
+  <p><li> <a href="http://rgruet.free.fr/PQR27/PQR2.7.html" target="_blank">Python 2.7 Quick Reference</a></li>
+  <p><li> <a href="http://docs.python.org/modindex.html" target="_blank">Python Global Module Index</a></li>
+  <p><li> <a href="http://www.greenteapress.com/thinkpython/" target="_blank">Think Python</a> (textbook)</li>
+  <p><li> <a href="http://www.diveintopython.net/" target="_blank">Dive Into Python</a> (texbook)</li>
+  <p><li> <a href="http://www.freenetpages.co.uk/hp/alan.gauld/" target="_blank">Think Like a Computer Scientist</a> (textbook)</li>
+  <p><li> <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-189-a-gentle-introduction-to-programming-using-python-january-iap-2008/" target="_blank">A Gentle Introduction to Programming Using Python</a> (MIT OpenCourseWare)</li>
+  <p><li> <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/" target="_blank">Introduction to Computer Science and Programming</a> (MIT OpenCourseWare m/videoer)</li>
+  <p><li> <a href="http://www.catonmat.net/blog/learning-python-programming-language-through-video-lectures/" target="_blank">Learning Python Programming Language Through Video Lectures</a></li>
+  <p><li> <a href="http://www.learnerstv.com/Free-Computers-Video-lectures-ltv163-Page1.htm" target="_blank">Python Programming Tutorials Video Lecture Course</a> (Learners TV)</li>
+  <p><li> <a href="http://showmedo.com/videotutorials/python" target="_blank">Python Videos, Tutorials and Screencasts</a></li>
+  <p><li> <a href="http://www.ifi.uio.no/~inf1100/QuickUnix.html" target="_blank">Unix Need-to-know</a></li>
+  <p><li> <a href="http://www.ifi.uio.no/~inf1100/QuickEmacs.html" target="_blank">Emacs Need-to-know</a></li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<h2>First Python encounter: a scientific hello world program  <a name="___sec2"></a></h2>
+
+
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #228B22">#!/usr/bin/env python</span>
+
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> sin
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+
+x = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&quot;Hello world, sin({0}) = {1}&quot;</span>.format(x, sin(x))
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Running the script from the command line  <a name="___sec3"></a></h2>
+
+Code in file <code>hw.py</code>.
+
+<p>
+Run with command:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt; python hw.py 0.5
+Hello world, sin(0.5) = 0.479426.
+</pre></div>
+<p>
+Linux alternative if file is executable (<code>chmod a+x hw.py</code>):
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt; ./hw.py 0.5
+Hello world, sin(0.5) = 0.479426.
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Interactive Python &amp; IPython  <a name="___sec4"></a></h2>
+
+<ul>
+  <p><li> Typing <code>python</code> gives you an interactive Python shell</li>
+  <p><li> IPython is better, can also run scripts: <code>In [1]: run hw.py 3.14159</code></li>
+  <p><li> IPython is integrated with Python's <code>pdb</code> debugger</li>
+  <p><li> <code>pdb</code> can be automatically invoked when an exception occurs</li>
+  <p><li> IPython supports tab completion, additional help commands, and much more, ...</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<h2>Dissection of <code>hw.py</code>  <a name="___sec5"></a></h2>
+
+On Unix: find out what kind of script language (interpreter) to use:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #228B22">#!/usr/bin/env python</span>
+</pre></div>
+<p>
+Access library functionality like the function <code>sin</code> and the list <code>sys.arg</code>
+(of command-line arguments):
+
+<p>
+
+<!-- code=text (!bc pcyod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">from math import sin
+import sys
+</pre></div>
+<p>
+Read 1st command line argument and convert it to a floating point object:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">x = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])
+</pre></div>
+<p>
+Print out the result using a format string:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&quot;Hello world, sin({0}) = {1}&quot;</span>.format(x, sin(x))   <span style="color: #228B22"># v2.x</span>
+<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&quot;Hello world, sin({0}) = {1}&quot;</span>.format(x, sin(x)))  <span style="color: #228B22"># v3.x</span>
+</pre></div>
+<p>
+or with complete control of the formating of floats (printf syntax):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&quot;Hello world, sin({x:g}) = {s:.3f}&quot;</span>.format(x=x, s=sin(x))  <span style="color: #228B22"># v2.x</span>
+<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&quot;Hello world, sin({x:g}) = {s:.3f}&quot;</span>.format(x=x, s=sin(x))) <span style="color: #228B22"># v3.x</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Python variables  <a name="___sec6"></a></h2>
+
+Variables are not declared
+
+<p>
+<b style="font-weight: bold">Variables hold references to objects</b>
+
+<p>
+
+<!-- code=text (!bc pyod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">a = 3        # ref to an int object containing 3
+a = 3.0      # ref to a float object containing 3.0
+a = &#39;3.&#39;     # ref to a string object containing &#39;3.&#39;
+a = [&#39;1&#39;, 2] # ref to a list object containing
+             # a string &#39;1&#39; and an integer 2
+</pre></div>
+<p>
+Test for a variable's type:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">isinstance</span>(a, <span style="color: #658b00">int</span>): <span style="color: #228B22"># int?</span>
+<span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">isinstance</span>(a, (<span style="color: #658b00">list</span>, <span style="color: #658b00">tuple</span>)): <span style="color: #228B22"># list or tuple?</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Common types  <a name="___sec7"></a></h2>
+
+<ul>
+  <p><li> Numbers: <code>int</code>, <code>float</code>, <code>complex</code></li>
+  <p><li> Sequences: <code>str</code> (string), <code>list</code>, <code>tuple</code>, <code>ndarray</code> (NumPy array)</li>
+  <p><li> Mappings: <code>dict</code> (dictionary/hash)</li>
+  <p><li> User-defined type (via user-defined class)</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<h2>Simple Assignments  <a name="___sec8"></a></h2>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">a = <span style="color: #B452CD">10</span>             <span style="color: #228B22"># a is a variable referencing an</span>
+                   <span style="color: #228B22"># integer object of value 10</span>
+
+b = <span style="color: #658b00">True</span>           <span style="color: #228B22"># b is a boolean variable</span>
+
+a = b              <span style="color: #228B22"># a is now a boolean as well</span>
+                   <span style="color: #228B22"># (referencing the same object as b)</span>
+
+b = increment(<span style="color: #B452CD">4</span>)   <span style="color: #228B22"># b is the value returned by a function</span>
+
+is_equal = a == b  <span style="color: #228B22"># is_equal is True if a == b</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Lists and tuples  <a name="___sec9"></a></h2>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">mylist  = [<span style="color: #CD5555">&#39;a string&#39;</span>, <span style="color: #B452CD">2.5</span>, <span style="color: #B452CD">6</span>, <span style="color: #CD5555">&#39;another string&#39;</span>]
+mytuple = (<span style="color: #CD5555">&#39;a string&#39;</span>, <span style="color: #B452CD">2.5</span>, <span style="color: #B452CD">6</span>, <span style="color: #CD5555">&#39;another string&#39;</span>)
+mylist[<span style="color: #B452CD">1</span>]  = -<span style="color: #B452CD">10</span>
+mylist.append(<span style="color: #CD5555">&#39;a third string&#39;</span>)
+mytuple[<span style="color: #B452CD">1</span>] = -<span style="color: #B452CD">10</span>  <span style="color: #228B22"># illegal: cannot change a tuple</span>
+</pre></div>
+<p>
+A tuple is a constant list (known as an <em>immutable</em> object)
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>List functionality  <a name="___sec10"></a></h2>
+
+<table border="1">
+<thead>
+<tr><th align="center">                       Construction                       </th> <th align="center">                         Meaning                          </th> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   <code>a = [] </code>                                          </td> <td align="left">   initialize an empty list                                      </td> </tr>
+<tr><td align="left">   <code>a = [1, 4.4, 'run.py'] </code>                          </td> <td align="left">   initialize a list                                             </td> </tr>
+<tr><td align="left">   <code>a.append(elem)</code>                                   </td> <td align="left">   add <code>elem</code> object to the end                       </td> </tr>
+<tr><td align="left">   <code>a + [1,3]</code>                                        </td> <td align="left">   add two lists                                                 </td> </tr>
+<tr><td align="left">   <code>a.insert(i, e)</code>                                   </td> <td align="left">   insert element <code>e</code> before index <code>i</code>     </td> </tr>
+<tr><td align="left">   <code>a[3]</code>                                             </td> <td align="left">   index a list element                                          </td> </tr>
+<tr><td align="left">   <code>a[-1]</code>                                            </td> <td align="left">   get last list element                                         </td> </tr>
+<tr><td align="left">   <code>a[1:3]</code>                                           </td> <td align="left">   slice: copy data to sublist (here: index 1, 2)                </td> </tr>
+<tr><td align="left">   <code>del a[3]</code>                                         </td> <td align="left">   delete an element (index <code>3</code>)                      </td> </tr>
+<tr><td align="left">   <code>a.remove(e)</code>                                      </td> <td align="left">   remove an element with value <code>e</code>                   </td> </tr>
+<tr><td align="left">   <code>a.index('run.py')</code>                                </td> <td align="left">   find index corresponding to an element's value                </td> </tr>
+<tr><td align="left">   <code>'run.py' in a</code>                                    </td> <td align="left">   test if a value is contained in the list                      </td> </tr>
+<tr><td align="left">   <code>a.count(v)</code>                                       </td> <td align="left">   count how many elements that have the value <code>v</code>    </td> </tr>
+<tr><td align="left">   <code>len(a)</code>                                           </td> <td align="left">   number of elements in list <code>a</code>                     </td> </tr>
+<tr><td align="left">   <code>min(a)</code>                                           </td> <td align="left">   the smallest element in <code>a</code>                        </td> </tr>
+<tr><td align="left">   <code>max(a)</code>                                           </td> <td align="left">   the largest element in <code>a</code>                         </td> </tr>
+<tr><td align="left">   <code>sum(a)</code>                                           </td> <td align="left">   add all elements in <code>a</code>                            </td> </tr>
+<tr><td align="left">   <code>sorted(a)</code>                                        </td> <td align="left">   return sorted version of list <code>a</code>                  </td> </tr>
+<tr><td align="left">   <code>reversed(a)</code>                                      </td> <td align="left">   return reversed sorted version of list <code>a</code>         </td> </tr>
+<tr><td align="left">   <code>b[3][0][2]</code>                                       </td> <td align="left">   nested list indexing                                          </td> </tr>
+<tr><td align="left">   <code>isinstance(a, list)</code>                              </td> <td align="left">   is <code>True</code> if <code>a</code> is a list              </td> </tr>
+<tr><td align="left">   <code>type(a) is list</code>                                  </td> <td align="left">   is <code>True</code> if <code>a</code> is a list              </td> </tr>
+</tbody>
+</table>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Dictionary functionality  <a name="___sec11"></a></h2>
+
+<table border="1">
+<thead>
+<tr><th align="center">                               Construction                              </th> <th align="center">                                 Meaning                                 </th> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   <code>a = {}</code>                                                          </td> <td align="left">   initialize an empty dictionary                                               </td> </tr>
+<tr><td align="left">   <code>a = {'point': [0,0.1], 'value': 7}</code>                              </td> <td align="left">   initialize a dictionary                                                      </td> </tr>
+<tr><td align="left">   <code>a = dict(point=[2,7], value=3)</code>                                  </td> <td align="left">   initialize a dictionary w/string keys                                        </td> </tr>
+<tr><td align="left">   <code>a.update(b)</code>                                                     </td> <td align="left">   add key-value pairs from <code>b</code> in <code>a</code>                    </td> </tr>
+<tr><td align="left">   <code>a.update(key1=value1, key2=value2)</code>                              </td> <td align="left">   add key-value pairs in <code>a</code>                                        </td> </tr>
+<tr><td align="left">   <code>a['hide'] = True</code>                                                </td> <td align="left">   add new key-value pair to <code>a</code>                                     </td> </tr>
+<tr><td align="left">   <code>a['point']</code>                                                      </td> <td align="left">   get value corresponding to key <code>point</code>                            </td> </tr>
+<tr><td align="left">   <code>for key in a:</code>                                                   </td> <td align="left">   loop over keys in unknown order                                              </td> </tr>
+<tr><td align="left">   <code>for key in sorted(a):</code>                                           </td> <td align="left">   loop over keys in alphabetic order                                           </td> </tr>
+<tr><td align="left">   <code>'value' in a</code>                                                    </td> <td align="left">   <code>True</code> if string <code>value</code> is a key in <code>a</code>    </td> </tr>
+<tr><td align="left">   <code>del a['point']</code>                                                  </td> <td align="left">   delete a key-value pair from <code>a</code>                                  </td> </tr>
+<tr><td align="left">   <code>list(a.keys())</code>                                                  </td> <td align="left">   list of keys                                                                 </td> </tr>
+<tr><td align="left">   <code>list(a.values())</code>                                                </td> <td align="left">   list of values                                                               </td> </tr>
+<tr><td align="left">   <code>len(a)</code>                                                          </td> <td align="left">   number of key-value pairs in <code>a</code>                                  </td> </tr>
+<tr><td align="left">   <code>isinstance(a, dict)</code>                                             </td> <td align="left">   is <code>True</code> if <code>a</code> is a dictionary                       </td> </tr>
+</tbody>
+</table>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>String operations  <a name="___sec12"></a></h2>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">s = <span style="color: #CD5555">&#39;Berlin: 18.4 C at 4 pm&#39;</span>
+s[<span style="color: #B452CD">8</span>:<span style="color: #B452CD">17</span>]          <span style="color: #228B22"># extract substring</span>
+s.find(<span style="color: #CD5555">&#39;:&#39;</span>)      <span style="color: #228B22"># index where first &#39;:&#39; is found</span>
+s.split(<span style="color: #CD5555">&#39;:&#39;</span>)     <span style="color: #228B22"># split into substrings</span>
+s.split()        <span style="color: #228B22"># split wrt whitespace</span>
+<span style="color: #CD5555">&#39;Berlin&#39;</span> <span style="color: #8B008B">in</span> s    <span style="color: #228B22"># test if substring is in s</span>
+s.replace(<span style="color: #CD5555">&#39;18.4&#39;</span>, <span style="color: #CD5555">&#39;20&#39;</span>)
+s.lower()        <span style="color: #228B22"># lower case letters only</span>
+s.upper()        <span style="color: #228B22"># upper case letters only</span>
+s.split()[<span style="color: #B452CD">4</span>].isdigit()
+s.strip()        <span style="color: #228B22"># remove leading/trailing blanks</span>
+<span style="color: #CD5555">&#39;, &#39;</span>.join(list_of_words)
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Strings in Python use single or double quotes, or triple single/double quotes  <a name="___sec13"></a></h2>
+
+Single- and double-quoted strings work in the same way: <code>'some string'</code> is equivalent to <code>"some string"</code>
+
+<p>
+Triple-quoted strings can be multi line with embedded newlines:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">text = <span style="color: #CD5555">&quot;&quot;&quot;large portions of a text</span>
+<span style="color: #CD5555">can be conveniently placed inside</span>
+<span style="color: #CD5555">triple-quoted strings (newlines</span>
+<span style="color: #CD5555">are preserved)&quot;&quot;&quot;</span>
+</pre></div>
+<p>
+Raw strings, where backslash is backslash:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">s3 = <span style="color: #CD5555">r&#39;\(\s+\.\d+\)&#39;</span>
+<span style="color: #228B22"># in an ordinary string one must quote backslash:</span>
+s3 = <span style="color: #CD5555">&#39;\\(\\s+\\.\\d+\\)&#39;</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Simple control structures  <a name="___sec14"></a></h2>
+
+Loops:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">while</span> condition:
+    &lt;block of statements&gt;
+</pre></div>
+<p>
+Here, <code>condition</code> must be a boolean expression (or have a boolean interpretation), for example: <code>i < 10</code> or <code>!found</code>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">for</span> element <span style="color: #8B008B">in</span> somelist:
+    &lt;block of statements&gt;
+</pre></div>
+<p>
+Conditionals/branching:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">if</span> condition:
+    &lt;block of statements&gt;
+<span style="color: #8B008B; font-weight: bold">elif</span> condition:
+    &lt;block of statements&gt;
+<span style="color: #8B008B; font-weight: bold">else</span>:
+    &lt;block of statements&gt;
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Looping over integer indices is done with <code>range</code>  <a name="___sec15"></a></h2>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">10</span>):
+    <span style="color: #8B008B; font-weight: bold">print</span>(i)
+</pre></div>
+<p>
+<div class="alert alert-block alert-notice alert-text-normal"><b style="font-weight: bold">Remark:</b>
+<code>range</code> in Pyton 3.x is equal to <code>xrange</code> in Python
+2.x and generates an <em>iterator</em> over integers, while <code>range</code> in
+Python 2.x returns a list of integers.
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Functions and arguments  <a name="___sec16"></a></h2>
+
+User-defined functions:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">split</span>(string, char):
+    position = string.find(char)
+    <span style="color: #8B008B; font-weight: bold">if</span>  position &gt; <span style="color: #B452CD">0</span>:
+        <span style="color: #8B008B; font-weight: bold">return</span> string[:position+<span style="color: #B452CD">1</span>], string[position+<span style="color: #B452CD">1</span>:]
+    <span style="color: #8B008B; font-weight: bold">else</span>:
+        <span style="color: #8B008B; font-weight: bold">return</span> string, <span style="color: #CD5555">&#39;&#39;</span>
+
+<span style="color: #228B22"># function call:</span>
+message = <span style="color: #CD5555">&#39;Heisann&#39;</span>
+<span style="color: #8B008B; font-weight: bold">print</span>(split(message, <span style="color: #CD5555">&#39;i&#39;</span>))
+<span style="color: #228B22"># prints (&#39;Hei&#39;, &#39;sann&#39;)</span>
+</pre></div>
+<p>
+Positional arguments must appear before keyword arguments:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">split</span>(message, char=<span style="color: #CD5555">&#39;i&#39;</span>):
+    <span style="color: #228B22"># ...</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2><code>eval</code> and <code>exec</code> turn strings into live code  <a name="___sec17"></a></h2>
+
+Evaluating string expressions with <code>eval</code>:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; x = <span style="color: #B452CD">20</span>
+&gt;&gt;&gt; r = <span style="color: #658b00">eval</span>(<span style="color: #CD5555">&#39;x + 1.1&#39;</span>)
+&gt;&gt;&gt; r
+<span style="color: #B452CD">21.1</span>
+&gt;&gt;&gt; <span style="color: #658b00">type</span>(r)
+&lt;<span style="color: #658b00">type</span> <span style="color: #CD5555">&#39;float&#39;</span>&gt;
+</pre></div>
+<p>
+Executing strings with Python code, using <code>exec</code>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+user_expression = sys.argv[<span style="color: #B452CD">1</span>]
+
+<span style="color: #228B22"># Wrap user_expression in a Python function</span>
+<span style="color: #228B22"># (assuming the expression involves x)</span>
+
+<span style="color: #8B008B; font-weight: bold">exec</span>(<span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">def f(x):</span>
+<span style="color: #CD5555">    return %s</span>
+<span style="color: #CD5555">&quot;&quot;&quot;</span> % user_expression
+
+<span style="color: #228B22"># or</span>
+
+f = <span style="color: #658b00">eval</span>(<span style="color: #CD5555">&#39;lambda x: %s&#39;</span> % user_expression)
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>File reading  <a name="___sec18"></a></h2>
+
+Reading a file:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">infile = <span style="color: #658b00">open</span>(filename, <span style="color: #CD5555">&#39;r&#39;</span>)
+<span style="color: #8B008B; font-weight: bold">for</span> line <span style="color: #8B008B">in</span> infile:
+    <span style="color: #228B22"># process line</span>
+
+lines = infile.readlines()
+<span style="color: #8B008B; font-weight: bold">for</span> line <span style="color: #8B008B">in</span> lines:
+    <span style="color: #228B22"># process line</span>
+
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">xrange</span>(<span style="color: #658b00">len</span>(lines)):
+    <span style="color: #228B22"># process lines[i] and perhaps next line lines[i+1]</span>
+
+fstr = infile.read()  <span style="color: #228B22"># fstr contains the entire file</span>
+fstr = fstr.replace(<span style="color: #CD5555">&#39;some string&#39;</span>, <span style="color: #CD5555">&#39;another string&#39;</span>)
+<span style="color: #8B008B; font-weight: bold">for</span> piece <span style="color: #8B008B">in</span> fstr.split(<span style="color: #CD5555">&#39;;&#39;</span>):
+    <span style="color: #228B22"># process piece (separated by ;)</span>
+
+infile.close()
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>File writing  <a name="___sec19"></a></h2>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">outfile = <span style="color: #658b00">open</span>(filename, <span style="color: #CD5555">&#39;w&#39;</span>)   <span style="color: #228B22"># new file or overwrite</span>
+outfile = <span style="color: #658b00">open</span>(filename, <span style="color: #CD5555">&#39;a&#39;</span>)   <span style="color: #228B22"># append to existing file</span>
+
+outfile.write(<span style="color: #CD5555">&quot;&quot;&quot;Some string</span>
+<span style="color: #CD5555">....</span>
+<span style="color: #CD5555">&quot;&quot;&quot;</span>)
+outfile.writelines(list_of_lines)
+
+outfile.close()
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Using modules  <a name="___sec20"></a></h2>
+
+Import module:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+x = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])
+</pre></div>
+<p>
+Import module member <code>argv</code> into current namespace:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sys</span> <span style="color: #8B008B; font-weight: bold">import</span> argv
+x = <span style="color: #658b00">float</span>(argv[<span style="color: #B452CD">1</span>])
+</pre></div>
+<p>
+Import everything from <code>sys</code> (not recommended)
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sys</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+x = <span style="color: #658b00">float</span>(argv[<span style="color: #B452CD">1</span>])
+
+flags = <span style="color: #CD5555">&#39;&#39;</span>
+<span style="color: #228B22"># Ooops, flags was also imported from sys, this new flags</span>
+<span style="color: #228B22"># name overwrites sys.flags!</span>
+</pre></div>
+<p>
+Import <code>argv</code> under an alias:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sys</span> <span style="color: #8B008B; font-weight: bold">import</span> argv <span style="color: #8B008B; font-weight: bold">as</span> a
+x = <span style="color: #658b00">float</span>(a[<span style="color: #B452CD">1</span>])
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Making your own Python modules  <a name="___sec21"></a></h2>
+
+<ul>
+ <p><li> Reuse scripts by wrapping them in classes or functions</li>
+ <p><li> Collect classes and functions in library modules</li>
+ <p><li> How? just put classes and functions in a file <code>MyMod.py</code></li>
+ <p><li> Put <code>MyMod.py</code> in one of the directories where Python can find it<br />
+   (see next slide)</li>
+</ul>
+<p>
+
+Examples:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">MyMod</span>
+<span style="color: #228B22"># or</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">MyMod</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">M</span>   <span style="color: #228B22"># M is a short form</span>
+<span style="color: #228B22"># or</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">MyMod</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+<span style="color: #228B22"># or</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">MyMod</span> <span style="color: #8B008B; font-weight: bold">import</span> myspecialfunction, myotherspecialfunction
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>How Python can find your modules?  <a name="___sec22"></a></h2>
+
+Python has some &quot;official&quot; module directories, typically
+
+<p>
+
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">/usr/lib/python2.7
+/usr/lib/python2.7/site-packages
+/usr/lib/python3.4
+/usr/lib/python3.4/site-packages
+</pre></div>
+<p>
++ current working directory
+
+<p>
+The environment variable <code>PYTHONPATH</code> may contain additional
+directories with modules
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt; echo $PYTHONPATH
+/home/me/python/mymodules:/usr/lib/python3.4:/home/you/yourlibs
+</pre></div>
+<p>
+Python's <code>sys.path</code> list contains the directories where Python
+searches for modules, and
+<code>sys.path</code> contains &quot;official&quot; directories, plus those in <code>PYTHONPATH</code>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Packages  <a name="___sec23"></a></h2>
+
+<ul>
+ <p><li> A class of modules can be collected in a <em>package</em></li>
+ <p><li> Normally, a package is organized as module files in a directory tree</li>
+ <p><li> Each subdirectory has a file <code>__init__</code> (can be empty)</li>
+</ul>
+<p>
+
+Can import modules in the tree like this:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">MyMod.numerics.pde.grids</span> <span style="color: #8B008B; font-weight: bold">import</span> fdm_grids
+
+grid = fdm_grids()
+grid.domain(xmin=<span style="color: #B452CD">0</span>, xmax=<span style="color: #B452CD">1</span>, ymin=<span style="color: #B452CD">0</span>, ymax=<span style="color: #B452CD">1</span>)
+...
+</pre></div>
+<p>
+Here, class <code>fdm_grids</code> is in module <code>grids</code> (file <code>grids.py</code> in the directory <code>MyMod/numerics/pde</code>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Test block in a module  <a name="___sec24"></a></h2>
+
+Module files can have a test/demo section at the end:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">if</span> __name__ == <span style="color: #CD5555">&#39;__main__&#39;</span>:
+    infile = sys.argv[<span style="color: #B452CD">1</span>]; outfile = sys.argv[<span style="color: #B452CD">2</span>]
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> sys.argv[<span style="color: #B452CD">3</span>:]:
+        create(infile, outfile, i)
+</pre></div>
+<ul>
+ <p><li> The block is executed <em>only if</em> the module file is run as a program</li>
+ <p><li> The tests at the end of a module often serve as good examples on the usage of the module</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<h2>Installing modules  <a name="___sec25"></a></h2>
+
+<ul>
+ <p><li> Python has its own tool, Distutils, for distributing and installing modules</li>
+ <p><li> Installation is based on the script <code>setup.py</code></li>
+</ul>
+<p>
+
+Standard command:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt; sudo python setup.py install
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Writing your own <code>setup.py</code> script  <a name="___sec26"></a></h2>
+
+Suppose you have a module in <code>mymod.py</code> that you want to distribute to
+others such that they can easily install it by <code>setup.py install</code>.
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">distutils.core</span> <span style="color: #8B008B; font-weight: bold">import</span> setup
+name=<span style="color: #CD5555">&#39;mymod&#39;</span>
+
+setup(name=name,
+      version=<span style="color: #CD5555">&#39;0.1&#39;</span>,
+      py_modules=[name],       <span style="color: #228B22"># modules to be installed</span>
+      scripts=[name + <span style="color: #CD5555">&#39;.py&#39;</span>],  <span style="color: #228B22"># executable programs to be installed</span>
+      )
+</pre></div>
+<p>
+Now, <code>setup.py</code> will be installed both as a module and as an
+executable script (if it has a test block for sensible code).
+
+<p>
+Can easily be extended to install a package of modules, see
+the <a href="https://docs.python.org/2/distutils/introduction.html" target="_blank">introduction to Distutils</a>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Use doc strings in functions, classes, and modules!  <a name="___sec27"></a></h2>
+
+Doc strings = first string in a function, class, or file (module)
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">ignorecase_sort</span>(a, b):
+    <span style="color: #CD5555">&quot;&quot;&quot;Compare strings a and b, ignoring case.&quot;&quot;&quot;</span>
+    <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">cmp</span>(a.lower(), b.lower())
+</pre></div>
+<p>
+Doc strings in modules are a (often long multi-line) string starting
+in the top of the file
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">This module is a fake module</span>
+<span style="color: #CD5555">for exemplifying multi-line</span>
+<span style="color: #CD5555">doc strings.</span>
+<span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">collections</span>
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">somefunc</span>():
+    ...
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Doc strings serve many purposes  <a name="___sec28"></a></h2>
+
+<ul>
+ <p><li> documentation in the source code</li>
+ <p><li> online documentation<br />
+   (Sphinx can automatically produce manuals with doc strings)</li>
+ <p><li> balloon help in sophisticated GUIs (e.g., IDLE)</li>
+ <p><li> automatic testing with the <a href="https://docs.python.org/2/library/doctest.html?highlight=doctest#doctest" target="_blank"><tt>doctest</tt></a> module</li>
+</ul>
+<p>
+
+
+
+</section>
+
+
+
+
+<footer>
+<!-- Here goes a footer -->
+</footer>
+
+<!-- Begin extension snippets. Add or remove as needed. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+-->
+
+<!-- deck.goto snippet
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+-->
+
+<!-- deck.hash snippet
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+-->
+
+<!-- End extension snippets. -->
+
+
+<!-- Required JS files. -->
+<script src="deck.js/jquery.min.js"></script>
+<script src="deck.js/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="deck.js/core/deck.core.js"></script>
+<script src="deck.js/extensions/hash/deck.hash.js"></script>
+<script src="deck.js/extensions/menu/deck.menu.js"></script>
+<script src="deck.js/extensions/goto/deck.goto.js"></script>
+<script src="deck.js/extensions/status/deck.status.js"></script>
+<script src="deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src="deck.js/extensions/scale/deck.scale.js"></script>
+<script src="deck.js/extensions/notes/deck.notes.js"></script>
+
+<!-- From https://github.com/mikeharris100/deck.pointer.js -->
+<script src="deck.js/extensions/pointer/deck.pointer.js"></script>
+
+<!-- From https://github.com/stvnwrgs/presenterview
+<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script> -->
+
+<!-- From https://github.com/nemec/deck.annotate.js
+<script type="text/javascript" src="deck.js/extensions/deck.annotate.js/deck.annotate.js"></script>
+-->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+
+
+</body>
+</html>

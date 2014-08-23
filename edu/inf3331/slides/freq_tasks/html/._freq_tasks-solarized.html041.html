@@ -1,0 +1,210 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Frequently encountered operating system tasks in Python">
+
+
+
+
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Program Python instead of Bash? ', 2, None, '___sec0'),
+              (' Environment variables ', 2, None, '___sec1'),
+              (' File globbing: list files that match a wildcard expression ',
+               2,
+               None,
+               '___sec2'),
+              (' Finding file type, size, age ', 2, None, '___sec3'),
+              (' More detailed file info via `os.stat` ', 2, None, '___sec4'),
+              (' Copy, rename and remove files ', 2, None, '___sec5'),
+              (' Use `os.path.join` for file path construction ',
+               2,
+               None,
+               '___sec6'),
+              (' Directory management ', 2, None, '___sec7'),
+              (' Basename and directory of a path ', 2, None, '___sec8'),
+              (' Platform-dependent operations ', 2, None, '___sec9'),
+              (' Traversing directory trees with `find` in Bash ',
+               2,
+               None,
+               '___sec10'),
+              (' Traversing directory trees with `os.path.walk` in Python ',
+               2,
+               None,
+               '___sec11'),
+              (' Example on finding large files with `os.path.walk` ',
+               2,
+               None,
+               '___sec12'),
+              (' Time for a bug! ', 2, None, '___sec13'),
+              (' Example on finding large files with `os.walk` ',
+               2,
+               None,
+               '___sec14'),
+              (' Creating tar archives for file collections ',
+               2,
+               None,
+               '___sec15'),
+              (' Reading tar archives ', 2, None, '___sec16'),
+              (' Parsing command-line arguments ', 2, None, '___sec17'),
+              (' A case involving option-value pairs and the `argparse` module ',
+               2,
+               None,
+               '___sec18'),
+              (' How to use `argparse` ', 2, None, '___sec19'),
+              (' Writing Python data structures to file ',
+               2,
+               None,
+               '___sec20'),
+              (' Reading Python data structures from file ',
+               2,
+               None,
+               '___sec21'),
+              (' Remark about `str`, `repr`, and `eval` ',
+               2,
+               None,
+               '___sec22'),
+              (' A class with tailored `str` and `repr` ',
+               2,
+               None,
+               '___sec23'),
+              (' Illustration of `str`, `repr`, and `eval` ',
+               2,
+               None,
+               '___sec24'),
+              (' Persistence: permanent storage of data structures ',
+               2,
+               None,
+               '___sec25'),
+              (' Pickling is used for storing a sequence of objects ',
+               2,
+               None,
+               '___sec26'),
+              (' Shelving ', 2, None, '___sec27'),
+              (' Running an application (old-style) ', 2, None, '___sec28'),
+              (' The new standard: `subprocess` ', 2, None, '___sec29'),
+              (' Output pipe ', 2, None, '___sec30'),
+              (' Find a program ', 2, None, '___sec31'),
+              (' Cross-platform fix of previous script ',
+               2,
+               None,
+               '___sec32'),
+              (' Simple text processing ', 1, None, '___sec33'),
+              (' Splitting text ', 2, None, '___sec34'),
+              (' Example on using split to read data from file ',
+               2,
+               None,
+               '___sec35'),
+              (' Joining a list of strings ', 2, None, '___sec36'),
+              (' Common use of join/split ', 2, None, '___sec37'),
+              (' Searching in strings ', 2, None, '___sec38'),
+              (' Searching in strings with regular expressions ',
+               2,
+               None,
+               '___sec39'),
+              (' Substitution ', 2, None, '___sec40'),
+              (' Brief summary ', 2, None, '___sec41')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<a name="part0041"></a>
+<!-- !split -->
+
+<h2>Substitution  <a name="___sec40"></a></h2>
+
+Simple substitution:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">newstring = oldstring.replace(substring, newsubstring)
+</pre></div>
+<p>
+Substitute regular expression
+<code>pattern</code> by <code>replacement</code> in <code>str</code>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">re</span>
+<span style="color: #658b00">str</span> = re.sub(pattern, replacement, <span style="color: #658b00">str</span>)
+</pre></div>
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._freq_tasks-solarized.html040.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._freq_tasks-solarized.html042.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

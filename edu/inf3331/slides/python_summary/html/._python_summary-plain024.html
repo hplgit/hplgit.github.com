@@ -1,0 +1,169 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Brief summary of basic Python syntax">
+
+
+
+
+<style type="text/css">
+/* bloodish style */
+
+body {
+  font-family: Helvetica, Verdana, Arial, Sans-serif;
+  color: #404040;
+  background: #ffffff;
+}
+h1 { font-size: 1.8em;  color: #8A0808; }
+h2 { font-size: 1.6em;  color: #8A0808; }
+h3 { font-size: 1.4em;  color: #8A0808; }
+h4 { color: #8A0808; }
+a { color: #8A0808; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #bababa;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #f8f8f8;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [(' Contents ', 2, None, '___sec0'),
+              (' Sources for more information and documentation ',
+               2,
+               None,
+               '___sec1'),
+              (' First Python encounter: a scientific hello world program ',
+               2,
+               None,
+               '___sec2'),
+              (' Running the script from the command line ',
+               2,
+               None,
+               '___sec3'),
+              (' Interactive Python & IPython ', 2, None, '___sec4'),
+              (' Dissection of `hw.py` ', 2, None, '___sec5'),
+              (' Python variables ', 2, None, '___sec6'),
+              (' Common types ', 2, None, '___sec7'),
+              (' Simple Assignments ', 2, None, '___sec8'),
+              (' Lists and tuples ', 2, None, '___sec9'),
+              (' List functionality ', 2, None, '___sec10'),
+              (' Dictionary functionality ', 2, None, '___sec11'),
+              (' String operations ', 2, None, '___sec12'),
+              (' Strings in Python use single or double quotes, or triple single/double quotes ',
+               2,
+               None,
+               '___sec13'),
+              (' Simple control structures ', 2, None, '___sec14'),
+              (' Looping over integer indices is done with `range` ',
+               2,
+               None,
+               '___sec15'),
+              (' Functions and arguments ', 2, None, '___sec16'),
+              (' `eval` and `exec` turn strings into live code ',
+               2,
+               None,
+               '___sec17'),
+              (' File reading ', 2, None, '___sec18'),
+              (' File writing ', 2, None, '___sec19'),
+              (' Using modules ', 2, None, '___sec20'),
+              (' Making your own Python modules ', 2, None, '___sec21'),
+              (' How Python can find your modules? ', 2, None, '___sec22'),
+              (' Packages ', 2, None, '___sec23'),
+              (' Test block in a module ', 2, None, '___sec24'),
+              (' Installing modules ', 2, None, '___sec25'),
+              (' Writing your own `setup.py` script ', 2, None, '___sec26'),
+              (' Use doc strings in functions, classes, and modules! ',
+               2,
+               None,
+               '___sec27'),
+              (' Doc strings serve many purposes ', 2, None, '___sec28')]}
+end of tocinfo -->
+
+<body>
+
+    
+<a name="part0024"></a>
+<p>
+
+</p>
+
+<p>
+<!-- !split -->
+
+<h2>Packages  <a name="___sec23"></a></h2>
+
+<ul>
+ <li> A class of modules can be collected in a <em>package</em></li>
+ <li> Normally, a package is organized as module files in a directory tree</li>
+ <li> Each subdirectory has a file <code>__init__</code> (can be empty)</li>
+</ul>
+
+Can import modules in the tree like this:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">MyMod.numerics.pde.grids</span> <span style="color: #008000; font-weight: bold">import</span> fdm_grids
+
+grid <span style="color: #666666">=</span> fdm_grids()
+grid<span style="color: #666666">.</span>domain(xmin<span style="color: #666666">=0</span>, xmax<span style="color: #666666">=1</span>, ymin<span style="color: #666666">=0</span>, ymax<span style="color: #666666">=1</span>)
+<span style="color: #666666">...</span>
+</pre></div>
+<p>
+Here, class <code>fdm_grids</code> is in module <code>grids</code> (file <code>grids.py</code> in the directory <code>MyMod/numerics/pde</code>
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._python_summary-plain023.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+<div style="text-align: right;"><a href="._python_summary-plain025.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

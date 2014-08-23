@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Frequently encountered operating system tasks in Python">
+
+
+
+
+
+
+
+
+<!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<!--
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+-->
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+</script>
+
+<style type="text/css">
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .reveal .alert-text-small   { font-size: 80%;  }
+    .reveal .alert-text-large   { font-size: 130%; }
+    .reveal .alert-text-normal  { font-size: 90%;  }
+    .reveal .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:5px solid #bababa;
+             -webkit-border-radius: 14px; -moz-border-radius: 14px;
+             border-radius:14px
+             background-position: 10px 10px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 30px; /* 55px; if icon */
+     }
+     .reveal .alert-block {padding-top:14px; padding-bottom:14px}
+     .reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     /*.reveal .alert li {margin-top: 1em}*/
+     .reveal .alert-block p+p {margin-top:5px}
+     /*.reveal .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_notice.png); }
+     .reveal .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_summary.png); }
+     .reveal .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_warning.png); }
+     .reveal .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+<body>
+<div class="reveal">
+
+<!-- Any section element inside the <div class="slides"> container
+     is displayed as a slide -->
+
+<div class="slides">
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+
+
+
+<section>
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Frequently encountered operating system tasks in Python</title>
+
+<center><h1>Frequently encountered operating system tasks in Python</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Joakim Sundnes, Hans Petter Langtangen, and Ola Skavhaug -->
+
+<center>
+<b>Joakim Sundnes</b> [1, 2]
+</center>
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+<center>
+<b>Ola Skavhaug</b> [3, 4]
+</center>
+
+
+<p>&nbsp;<br>
+<!-- institution(s) -->
+
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Dept. of Informatics, University of Oslo</b></center>
+<center>[3] <b>mCASH</b></center>
+<center>[4] <b>formerly Dept. of Informatics, University of Oslo</b></center>
+<p>&nbsp;<br>
+<center><h4>Aug 23, 2014</h4></center> <!-- date -->
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Program Python instead of Bash?  <a name="___sec0"></a></h2>
+
+<div class="alert alert-block alert-summary alert-text-normal"><b>Essence:</b>
+We can do Bash operations in Python too, in a cross-platform fashion
+(Mac, Windows, Linux) and with much more flexibility for extensions.
+</div>
+
+
+<p>
+Topics to be covered:
+
+<ul>
+  <p><li> environment variables</li>
+  <p><li> file globbing, testing file types</li>
+  <p><li> copying and renaming files, creating and moving to directories, creating directory paths, removing files and directories</li>
+  <p><li> directory tree traversal</li>
+  <p><li> parsing command-line arguments</li>
+  <p><li> running an application from a script</li>
+  <p><li> Text processing (some repetition)</li>
+  <p><li> use of <code>split, join</code></li>
+  <p><li> searching and substituting</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2>Environment variables  <a name="___sec1"></a></h2>
+
+The dictionary-like <code>os.environ</code> object holds the environment variables:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> os<span style="color: #666666">.</span>environ[<span style="color: #BA2121">&#39;PATH&#39;</span>]
+<span style="color: #BA2121">&#39;/users/me/bin:/bin:/usr/sbin/:/some/strange/path&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> os<span style="color: #666666">.</span>environ[<span style="color: #BA2121">&#39;HOME&#39;</span>]
+<span style="color: #BA2121">&#39;/users/me&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> os<span style="color: #666666">.</span>environ[<span style="color: #BA2121">&#39;PYTHONPATH&#39;</span>]
+<span style="color: #BA2121">&#39;/users/me/mypy/lib:/users/you/yourpy/new/lib&#39;</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> os<span style="color: #666666">.</span>environ[<span style="color: #BA2121">&#39;my_self_defined_environment_variable&#39;</span>] <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;ON&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> os<span style="color: #666666">.</span>environ[<span style="color: #BA2121">&#39;my_self_defined_environment_variable&#39;</span>]
+<span style="color: #BA2121">&#39;ON&#39;</span>
+</pre></div>
+<p>
+Write all the environment variables in alphabethic order:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> var <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">sorted</span>(os<span style="color: #666666">.</span>environ):
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">=</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (var, os<span style="color: #666666">.</span>environ[var])
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>File globbing: list files that match a wildcard expression  <a name="___sec2"></a></h2>
+
+List all <code>.pdf</code> and <code>.gif files</code> in the current directory (Unix):
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">&gt; ls *.pdf *.gif
+</pre></div>
+<p>
+Cross-platform way to do it in Python:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">glob</span>
+filelist <span style="color: #666666">=</span> glob<span style="color: #666666">.</span>glob(<span style="color: #BA2121">&#39;*.pdf&#39;</span>) <span style="color: #666666">+</span> glob<span style="color: #666666">.</span>glob(<span style="color: #BA2121">&#39;*.gif&#39;</span>)
+</pre></div>
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+This is referred to as <em>file globbing</em>.
+</div>
+
+
+<p>
+More sophisticated example: find all files not starting with <code>P</code> or <code>p</code>,
+followed by any string, then two numbers, and then and ending in <code>.txt</code>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">filelist <span style="color: #666666">=</span> glob<span style="color: #666666">.</span>glob(<span style="color: #BA2121">&#39;[!Pp]*[0-9][0-9].txt&#39;</span>)
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Finding file type, size, age  <a name="___sec3"></a></h2>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">os.path</span>
+<span style="color: #008000; font-weight: bold">print</span> myfile,
+
+<span style="color: #008000; font-weight: bold">if</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>isfile(myfile):
+     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;is a plain file&#39;</span>
+
+<span style="color: #008000; font-weight: bold">if</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>isdir(myfile):
+     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;is a directory&#39;</span>
+
+<span style="color: #008000; font-weight: bold">if</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>islink(myfile):
+     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;is a link&#39;</span>
+
+<span style="color: #408080; font-style: italic"># the size and age:</span>
+size <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>getsize(myfile)
+time_of_last_access       <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>getatime(myfile)
+time_of_last_modification <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>getmtime(myfile)
+
+<span style="color: #408080; font-style: italic"># times are measured in seconds since 1970.01.01</span>
+days_since_last_access <span style="color: #666666">=</span> \
+(time<span style="color: #666666">.</span>time() <span style="color: #666666">-</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>getatime(myfile))<span style="color: #666666">/</span>(<span style="color: #666666">3600*24</span>)
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>More detailed file info via <code>os.stat</code>  <a name="___sec4"></a></h2>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">stat</span>
+
+myfile_stat <span style="color: #666666">=</span> os<span style="color: #666666">.</span>stat(myfile)
+
+filesize <span style="color: #666666">=</span> myfile_stat[stat<span style="color: #666666">.</span>ST_SIZE]
+
+mode <span style="color: #666666">=</span> myfile_stat[stat<span style="color: #666666">.</span>ST_MODE]
+
+<span style="color: #008000; font-weight: bold">if</span> stat<span style="color: #666666">.</span>S_ISREG(mode):
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%(myfile)s</span><span style="color: #BA2121"> is a regular file &#39;</span>\
+          <span style="color: #BA2121">&#39;with </span><span style="color: #BB6688; font-weight: bold">%(filesize)d</span><span style="color: #BA2121"> bytes&#39;</span> <span style="color: #666666">%</span> <span style="color: #008000">vars</span>()
+</pre></div>
+<p>
+Check out the <code>stat</code> module in the <a href="https://docs.python.org/2/library/os.html?highlight=os.stat#os.stat" target="_blank">Python Library Reference</a>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Copy, rename and remove files  <a name="___sec5"></a></h2>
+
+Copy a file:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">shutil</span>
+shutil<span style="color: #666666">.</span>copy(myfile, tmpfile)
+</pre></div>
+<p>
+Rename a file:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">os<span style="color: #666666">.</span>rename(myfile, <span style="color: #BA2121">&#39;tmp.1&#39;</span>)
+</pre></div>
+<p>
+Remove a file:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">os<span style="color: #666666">.</span>remove(<span style="color: #BA2121">&#39;mydata.dat&#39;</span>)
+<span style="color: #408080; font-style: italic"># or os.unlink(&#39;mydata.dat&#39;)</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Use <code>os.path.join</code> for file path construction  <a name="___sec6"></a></h2>
+
+Cross-platform construction of file paths:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">filename <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>join(os<span style="color: #666666">.</span>pardir, <span style="color: #BA2121">&#39;src&#39;</span>, <span style="color: #BA2121">&#39;lib&#39;</span>)
+
+<span style="color: #408080; font-style: italic"># Unix:    ../src/lib</span>
+<span style="color: #408080; font-style: italic"># Windows: ..\src\lib</span>
+</pre></div>
+<p>
+Current directory is <code>os.curdir</code>, parent directory is <code>os.pardir</code>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #408080; font-style: italic"># Unix:  cp ../../myfile .</span>
+shutil<span style="color: #666666">.</span>copy(os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>join(os<span style="color: #666666">.</span>pardir, os<span style="color: #666666">.</span>pardir, filename), os<span style="color: #666666">.</span>curdir)
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Directory management  <a name="___sec7"></a></h2>
+
+Creating and moving to directories:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">dirname <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;mynewdir&#39;</span>
+<span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>isdir(dirname):
+    os<span style="color: #666666">.</span>mkdir(dirname) <span style="color: #408080; font-style: italic"># or os.mkdir(dirname, mode=&#39;0755&#39;)</span>
+os<span style="color: #666666">.</span>chdir(dirname)
+</pre></div>
+<p>
+Equivalent Bash commands:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">&gt; dirname=mynewdir
+&gt; mkdir $dirname
+&gt; cd $dirname
+</pre></div>
+<p>
+Make complete directory path with intermediate directories:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">path <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>join(os<span style="color: #666666">.</span>environ[<span style="color: #BA2121">&#39;HOME&#39;</span>], <span style="color: #BA2121">&#39;py&#39;</span>, <span style="color: #BA2121">&#39;src&#39;</span>)
+os<span style="color: #666666">.</span>makedirs(path)
+
+<span style="color: #408080; font-style: italic"># Unix: mkdirhier $HOME/py/src or mkdir -p $HOME/py/src</span>
+</pre></div>
+<p>
+Remove a non-empty directory tree:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">shutil<span style="color: #666666">.</span>rmtree(<span style="color: #BA2121">&#39;somedir&#39;</span>)   <span style="color: #408080; font-style: italic"># dangerous - know what you do!</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Basename and directory of a path  <a name="___sec8"></a></h2>
+
+Given a path, e.g.,
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">path <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;/home/me/scripting/python/intro/hw.py&#39;</span>
+</pre></div>
+<p>
+Extract directory and basename:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #408080; font-style: italic"># basename: hw.py</span>
+basename <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>basename(path)
+
+<span style="color: #408080; font-style: italic"># dirname: /home/me/scripting/python/intro</span>
+dirname  <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>dirname(path)
+
+<span style="color: #408080; font-style: italic"># or</span>
+dirname, basename <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>split(path)
+</pre></div>
+<p>
+Extract file suffix/extension:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">stem, suffix <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>splitext(path)
+<span style="color: #408080; font-style: italic"># stem: /home/me/scripting/python/intro/hw</span>
+<span style="color: #408080; font-style: italic"># suffix: .py</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Platform-dependent operations  <a name="___sec9"></a></h2>
+
+The operating system interface in Python is the same on Unix, Windows and Mac
+However, sometimes you need to perform platform-specific operations, but how can you make a portable script?
+
+<p>
+Key variables:
+
+<ul>
+ <p><li> <code>os.name</code>: operating system name</li>
+ <p><li> <code>sys.platform</code>: platform identifier</li>
+</ul>
+<p>
+
+Example: <code>cmd</code> holds a command to be run in the background
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">if</span> os<span style="color: #666666">.</span>name <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;posix&#39;</span>:            <span style="color: #408080; font-style: italic"># Unix?</span>
+  failure <span style="color: #666666">=</span> os<span style="color: #666666">.</span>system(cmd <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;&amp;&#39;</span>)
+
+<span style="color: #008000; font-weight: bold">elif</span> sys<span style="color: #666666">.</span>platform[:<span style="color: #666666">3</span>] <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;win&#39;</span>:   <span style="color: #408080; font-style: italic"># Windows?</span>
+  failure <span style="color: #666666">=</span> os<span style="color: #666666">.</span>system(<span style="color: #BA2121">&#39;start &#39;</span> <span style="color: #666666">+</span> cmd)
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Traversing directory trees with <code>find</code> in Bash  <a name="___sec10"></a></h2>
+
+Run through all files in your home directory and list files that are larger than 1 Mb:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">&gt; find $HOME -type f -size +1000k -exec ls -s -h {} \;
+</pre></div>
+<p>
+This (and all features of Unix find) can be given a cross-platform
+implementation in Python so it works on Windows too
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Traversing directory trees with <code>os.path.walk</code> in Python  <a name="___sec11"></a></h2>
+
+Run through all files in your home directory and list files that are larger than 1 Mb:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">root <span style="color: #666666">=</span> os<span style="color: #666666">.</span>environ[<span style="color: #BA2121">&#39;HOME&#39;</span>]             <span style="color: #408080; font-style: italic"># home directory</span>
+os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>walk(root, myfunc, arg)
+</pre></div>
+<p>
+<code>os.path.walk</code> walks through a directory tree (<code>root</code>)
+and calls, for each directory <code>dirname</code>,
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">myfunc(arg, dirname, files)
+</pre></div>
+<p>
+where
+
+<ul>
+ <p><li> <code>files</code> is the list of local filenames in directory <code>dirname</code></li>
+ <p><li> <code>arg</code> is any user-defined argument, e.g., a nested list of variables</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2>Example on finding large files with <code>os.path.walk</code>  <a name="___sec12"></a></h2>
+
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">os</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">checksize</span>(arg, dirname, files):
+    <span style="color: #008000; font-weight: bold">for</span> <span style="color: #008000">file</span> <span style="color: #AA22FF; font-weight: bold">in</span> files:
+        <span style="color: #408080; font-style: italic"># construct the file&#39;s complete path:</span>
+        filename <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>join(dirname, <span style="color: #008000">file</span>)
+        <span style="color: #008000; font-weight: bold">if</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>isfile(filename):
+            size <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>getsize(filename)
+            <span style="color: #008000; font-weight: bold">if</span> size <span style="color: #666666">&gt;</span> <span style="color: #666666">1000000</span>:
+                <span style="color: #008000; font-weight: bold">if</span> arg <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #008000">None</span>:
+                    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">Mb </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (size<span style="color: #666666">/1000000.0</span>,filename)
+                <span style="color: #008000; font-weight: bold">elif</span> <span style="color: #008000">isinstance</span>(arg, <span style="color: #008000">list</span>):
+                    arg<span style="color: #666666">.</span>append((size<span style="color: #666666">/1000000.0</span>,filename))
+
+root <span style="color: #666666">=</span> os<span style="color: #666666">.</span>environ[<span style="color: #BA2121">&#39;HOME&#39;</span>]
+os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>walk(root, checksize, <span style="color: #008000">None</span>)  <span style="color: #408080; font-style: italic"># print list of large files</span>
+
+arg <span style="color: #666666">=</span> []
+os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>walk(root, checksize, arg)
+<span style="color: #408080; font-style: italic"># arg is now a list of large files</span>
+<span style="color: #008000; font-weight: bold">for</span> size, filename <span style="color: #AA22FF; font-weight: bold">in</span> arg:
+    <span style="color: #008000; font-weight: bold">print</span> filename, <span style="color: #BA2121">&#39;has size&#39;</span>, size, <span style="color: #BA2121">&#39;Mb&#39;</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Time for a bug!  <a name="___sec13"></a></h2>
+
+In the previous example, let's use a tuple instead of a list:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">checksize2</span>(arg, dirname, files):
+    <span style="color: #008000; font-weight: bold">for</span> <span style="color: #008000">file</span> <span style="color: #AA22FF; font-weight: bold">in</span> files:
+        <span style="color: #408080; font-style: italic"># construct the file&#39;s complete path:</span>
+        filename <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>join(dirname, <span style="color: #008000">file</span>)
+        <span style="color: #008000; font-weight: bold">if</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>isfile(filename):
+            size <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>getsize(filename)
+            <span style="color: #008000; font-weight: bold">if</span> size <span style="color: #666666">&gt;</span> <span style="color: #666666">1000000</span>:
+                <span style="color: #008000; font-weight: bold">if</span> arg <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #008000">None</span>:
+                    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">Mb </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (size<span style="color: #666666">/1000000.0</span>,filename)
+                <span style="color: #008000; font-weight: bold">elif</span> <span style="color: #008000">isinstance</span>(arg, <span style="color: #008000">list</span>):
+                    arg <span style="color: #666666">=</span> arg <span style="color: #666666">+</span> ((size<span style="color: #666666">/1000000.0</span>,filename))
+
+root <span style="color: #666666">=</span> os<span style="color: #666666">.</span>environ[<span style="color: #BA2121">&#39;HOME&#39;</span>]
+arg <span style="color: #666666">=</span> ()
+os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>walk(root, checksize2, arg)
+</pre></div>
+<p>
+<div class="alert alert-block alert-question alert-text-normal"><b>Question.</b>
+Why is <code>arg</code> an empty tuple after the call?
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Example on finding large files with <code>os.walk</code>  <a name="___sec14"></a></h2>
+
+<code>os.walk(root, followlinks=False)</code> is an iterator:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> dirpath, dirnames, filenames <span style="color: #AA22FF; font-weight: bold">in</span> os<span style="color: #666666">.</span>walk(root):
+</pre></div>
+<p>
+Here,
+
+<ul>
+  <p><li> <code>dirpath</code> is the complete path, relative to <code>root</code>, to
+    a subdirectory</li>
+  <p><li> <code>dirnames</code> are the names of the subdirectories in <code>dirpath</code></li>
+  <p><li> <code>filenames</code> are the names of ordinary files in <code>dirpath</code></li>
+</ul>
+<p>
+
+Previous example programmed with <code>os.walk</code>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">arg <span style="color: #666666">=</span> []
+<span style="color: #008000; font-weight: bold">for</span> dirpath, dirnames, filenames <span style="color: #AA22FF; font-weight: bold">in</span> os<span style="color: #666666">.</span>walk(root):
+    checksize(arg, dirpath, dirnames <span style="color: #666666">+</span> filenames)
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Creating tar archives for file collections  <a name="___sec15"></a></h2>
+
+Bash:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">&gt; tar czf tmp.tar.gz myfile.py yourfile.f mydirectory
+</pre></div>
+<p>
+Cross-platform Python:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">tarfile</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> files <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;myfile.py&#39;</span>, <span style="color: #BA2121">&#39;yourfile.f&#39;</span>, <span style="color: #BA2121">&#39;mydirectory&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> tar <span style="color: #666666">=</span> tarfile<span style="color: #666666">.</span>open(<span style="color: #BA2121">&#39;tmp.tar.gz&#39;</span>, <span style="color: #BA2121">&#39;w:gz&#39;</span>)  <span style="color: #408080; font-style: italic"># gzip compression</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">for</span> <span style="color: #008000">file</span> <span style="color: #AA22FF; font-weight: bold">in</span> files:
+<span style="color: #666666">...</span>     tar<span style="color: #666666">.</span>add(<span style="color: #008000">file</span>)
+<span style="color: #666666">...</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># check what&#39;s in this archive:</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> members <span style="color: #666666">=</span> tar<span style="color: #666666">.</span>getmembers()  <span style="color: #408080; font-style: italic"># list of TarInfo objects</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">for</span> info <span style="color: #AA22FF; font-weight: bold">in</span> members:
+<span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">: size=</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">, mode=</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">, mtime=</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> \
+<span style="color: #666666">...</span>           (info<span style="color: #666666">.</span>name, info<span style="color: #666666">.</span>size, info<span style="color: #666666">.</span>mode,
+<span style="color: #666666">...</span>            time<span style="color: #666666">.</span>strftime(<span style="color: #BA2121">&#39;%Y.%m.</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">&#39;</span>, time<span style="color: #666666">.</span>gmtime(info<span style="color: #666666">.</span>mtime)))
+<span style="color: #666666">...</span>
+myfile<span style="color: #666666">.</span>py: size<span style="color: #666666">=11898</span>, mode<span style="color: #666666">=33261</span>, mtime<span style="color: #666666">=2004.11.23</span>
+yourfile<span style="color: #666666">.</span>f: size<span style="color: #666666">=206</span>, mode<span style="color: #666666">=33261</span>, mtime<span style="color: #666666">=2005.08.12</span>
+mydirectory<span style="color: #666666">/</span>file1<span style="color: #666666">.</span>py: size<span style="color: #666666">=1560</span>, mode<span style="color: #666666">=33261</span>, mtime<span style="color: #666666">=2014.09.14</span>
+mydirectory<span style="color: #666666">/</span>file2<span style="color: #666666">.</span>py: size27560, mode<span style="color: #666666">=33261</span>, mtime<span style="color: #666666">=2014.08.08</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> tar<span style="color: #666666">.</span>close()
+</pre></div>
+<p>
+Compressions: uncompressed (<code>w:</code>), gzip (<code>w:gz</code>), bzip2 (<code>w:bz2</code>)
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Reading tar archives  <a name="___sec16"></a></h2>
+
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> tar <span style="color: #666666">=</span> tarfile<span style="color: #666666">.</span>open(<span style="color: #BA2121">&#39;tmp.tar.gz&#39;</span>, <span style="color: #BA2121">&#39;r&#39;</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">for</span> <span style="color: #008000">file</span> <span style="color: #AA22FF; font-weight: bold">in</span> tar<span style="color: #666666">.</span>getmembers():
+<span style="color: #666666">...</span>     tar<span style="color: #666666">.</span>extract(<span style="color: #008000">file</span>)   <span style="color: #408080; font-style: italic"># extract file to current working dir.</span>
+<span style="color: #666666">...</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> f <span style="color: #666666">=</span> tar<span style="color: #666666">.</span>extractfile(<span style="color: #BA2121">&#39;myfile.py&#39;</span>)  <span style="color: #408080; font-style: italic"># extract as file object</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> f<span style="color: #666666">.</span>readlines()
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Parsing command-line arguments  <a name="___sec17"></a></h2>
+
+<ul>
+  <p><li> Three types of command-line options: <code>myprog.py arg1 arg2 -m 1.5 --mass 2.5</code></li>
+
+<ol>
+   <p><li> positional arguments: <code>arg1</code>, <code>arg2</code></li>
+   <p><li> option-value pair with short option: <code>-m</code></li>
+   <p><li> option-value pair with long option: <code>--mass</code></li>
+</ol>
+<p>
+
+  <p><li> Running through <code>sys.argv[1:]</code> and extracting command-line info &quot;manually&quot; is easy</li>
+  <p><li> Using standardized modules and interface specifications is better!</li>
+  <p><li> The standard module is <code>argparse</code></li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2>A case involving option-value pairs and the <code>argparse</code> module  <a name="___sec18"></a></h2>
+
+We have some program with four parameters \( v_0 \), \( s_0 \), \( a \), and \( t \),
+corresponding to logical names <em>initial velocity</em>, <em>initial position</em>,
+<em>acceleration</em>, and <em>time</em>.
+
+<p>
+All these have sensible default values.
+We use command-line option-value pairs to override default values
+(cf. keyword arguments).
+
+<p>
+The user can choose between long and short options, but we let
+short options also have double hyphen:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">&gt; python position.py --v0 1.0 --acceleration 0.9
+&gt; python position.py --initial_velocity 1.0 --a 0.9 --t 3
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>How to use <code>argparse</code>  <a name="___sec19"></a></h2>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">argparse</span>
+parser <span style="color: #666666">=</span> argparse<span style="color: #666666">.</span>ArgumentParser()
+
+<span style="color: #408080; font-style: italic"># Define command-line arguments</span>
+parser<span style="color: #666666">.</span>add_argument(<span style="color: #BA2121">&#39;--v0&#39;</span>, <span style="color: #BA2121">&#39;--initial_velocity&#39;</span>, <span style="color: #008000">type</span><span style="color: #666666">=</span><span style="color: #008000">float</span>,
+                    default<span style="color: #666666">=0.0</span>, help<span style="color: #666666">=</span><span style="color: #BA2121">&#39;initial velocity&#39;</span>)
+
+parser<span style="color: #666666">.</span>add_argument(<span style="color: #BA2121">&#39;--s0&#39;</span>, <span style="color: #BA2121">&#39;--initial_position&#39;</span>, <span style="color: #008000">type</span><span style="color: #666666">=</span><span style="color: #008000">float</span>,
+                    default<span style="color: #666666">=0.0</span>, help<span style="color: #666666">=</span><span style="color: #BA2121">&#39;initial position&#39;</span>)
+
+parser<span style="color: #666666">.</span>add_argument(<span style="color: #BA2121">&#39;--a&#39;</span>, <span style="color: #BA2121">&#39;--acceleration&#39;</span>, <span style="color: #008000">type</span><span style="color: #666666">=</span><span style="color: #008000">float</span>,
+                    default<span style="color: #666666">=1.0</span>, help<span style="color: #666666">=</span><span style="color: #BA2121">&#39;acceleration&#39;</span>)
+
+parser<span style="color: #666666">.</span>add_argument(<span style="color: #BA2121">&#39;--t&#39;</span>, <span style="color: #BA2121">&#39;--time&#39;</span>, <span style="color: #008000">type</span><span style="color: #666666">=</span><span style="color: #008000">float</span>,
+                    default<span style="color: #666666">=1.0</span>, help<span style="color: #666666">=</span><span style="color: #BA2121">&#39;time&#39;</span>)
+
+<span style="color: #408080; font-style: italic"># Read the command line and interpret the arguments</span>
+args <span style="color: #666666">=</span> parser<span style="color: #666666">.</span>parse_args()
+
+<span style="color: #408080; font-style: italic"># Extract values</span>
+s <span style="color: #666666">=</span> args<span style="color: #666666">.</span>s0 <span style="color: #666666">+</span> args<span style="color: #666666">.</span>v0<span style="color: #666666">*</span>t <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>args<span style="color: #666666">.</span>a<span style="color: #666666">*</span>args<span style="color: #666666">.</span>t<span style="color: #666666">**2</span>
+<span style="color: #408080; font-style: italic"># or</span>
+s0 <span style="color: #666666">=</span> args<span style="color: #666666">.</span>s0; v0 <span style="color: #666666">=</span> args<span style="color: #666666">.</span>v0; a <span style="color: #666666">=</span> args<span style="color: #666666">.</span>a; t <span style="color: #666666">=</span> args<span style="color: #666666">.</span>t
+s <span style="color: #666666">=</span> s0 <span style="color: #666666">+</span> v0<span style="color: #666666">*</span>t <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>a<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>
+</pre></div>
+<p>
+See the <a href="https://docs.python.org/2/library/argparse.html?highlight=argparse#argparse" target="_blank">documentation of argparse</a> for more examples
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Writing Python data structures to file  <a name="___sec20"></a></h2>
+
+Write nested lists to file using <code>str</code> for converting an object to a string:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">somelist <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;text1&#39;</span>, <span style="color: #BA2121">&#39;text2&#39;</span>]
+a <span style="color: #666666">=</span> [[<span style="color: #666666">1.3</span>,somelist], <span style="color: #BA2121">&#39;some text&#39;</span>]
+f <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;tmp.dat&#39;</span>, <span style="color: #BA2121">&#39;w&#39;</span>)
+
+<span style="color: #408080; font-style: italic"># convert data structure to its string representation:</span>
+f<span style="color: #666666">.</span>write(<span style="color: #008000">str</span>(a))
+f<span style="color: #666666">.</span>close()
+</pre></div>
+<p>
+<code>tmp.dat</code>:
+
+<p>
+
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">[[1.3, [&#39;text1&#39;, &#39;text2&#39;]], &#39;some text&#39;]
+</pre></div>
+<p>
+Writing to standard output: <code>print a</code> implies <code>print str(a)</code>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> a     <span style="color: #408080; font-style: italic"># v2.x</span>
+<span style="color: #008000; font-weight: bold">print</span>(a)    <span style="color: #408080; font-style: italic"># v3.x</span>
+sys<span style="color: #666666">.</span>stdout<span style="color: #666666">.</span>write(<span style="color: #008000">str</span>(a) <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span>)  <span style="color: #408080; font-style: italic"># standard output file object</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Reading Python data structures from file  <a name="___sec21"></a></h2>
+
+<ul>
+ <p><li> <code>eval(s)</code>: turn string <code>s</code> into live Python code</li>
+ <p><li> <code>a = eval(str(a))</code> is a valid &quot;equation&quot; for basic Python data structures
+   (since <code>str(a)</code> turns <code>a</code> into a string with valid Python syntax for
+   defining <code>a</code>, and <code>eval</code> turns the string back into a living Python object)</li>
+</ul>
+<p>
+
+Last slide created <code>tmp.dat</code>:
+
+<p>
+
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">[[1.3, [&#39;text1&#39;, &#39;text2&#39;]], &#39;some text&#39;]
+</pre></div>
+<p>
+Read this nested list back into a Python object <code>a</code>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">f <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;tmp.dat&#39;</span>, <span style="color: #BA2121">&#39;r&#39;</span>)
+<span style="color: #408080; font-style: italic"># evaluate first line in file as Python code:</span>
+a <span style="color: #666666">=</span> <span style="color: #008000">eval</span>(f<span style="color: #666666">.</span>readline())
+</pre></div>
+<p>
+Now, <code>a</code> is
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">[[<span style="color: #666666">1.3</span>, [<span style="color: #BA2121">&#39;text1&#39;</span>, <span style="color: #BA2121">&#39;text2&#39;</span>]], <span style="color: #BA2121">&#39;some text&#39;</span>]
+
+<span style="color: #408080; font-style: italic"># i.e.</span>
+a <span style="color: #666666">=</span> <span style="color: #008000">eval</span>(f<span style="color: #666666">.</span>readline())
+<span style="color: #408080; font-style: italic"># is the same as</span>
+a <span style="color: #666666">=</span> [[<span style="color: #666666">1.3</span>, [<span style="color: #BA2121">&#39;text1&#39;</span>, <span style="color: #BA2121">&#39;text2&#39;</span>]], <span style="color: #BA2121">&#39;some text&#39;</span>]
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Remark about <code>str</code>, <code>repr</code>, and <code>eval</code>  <a name="___sec22"></a></h2>
+
+<ul>
+ <p><li> <code>str(a)</code> is used for &quot;pretty print&quot; and defined by the object's
+   special method <code>__str__</code></li>
+ <p><li> <code>repr(a)</code> is used for &quot;string representation&quot; of the object
+   and defined by the object's special method <code>__repr__</code></li>
+ <p><li> Strictly speaking, <code>eval(repr(a))</code> recreates <code>a</code>, while
+   <code>eval(str(a))</code> is not always meaningful if <code>str(a)</code> is a pretty print
+   of the object and not exactly the syntax needed to create the object</li>
+ <p><li> For the Python standard objects (numbers, lists, tuples, dicts),
+   <code>str(a)</code> and <code>repr(a)</code> are the same</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2>A class with tailored <code>str</code> and <code>repr</code>  <a name="___sec23"></a></h2>
+
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">LinearFunction</span>:
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Represent a linear function a*x + b.&quot;&quot;&quot;</span>
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, a, b):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>a, <span style="color: #008000">self</span><span style="color: #666666">.</span>b <span style="color: #666666">=</span> a, b
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>a<span style="color: #666666">*</span>x <span style="color: #666666">+</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>b
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__str__</span>(<span style="color: #008000">self</span>):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Return pretty print of function: -1.3*x - 4.&quot;&quot;&quot;</span>
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">*x </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121"> </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (<span style="color: #008000">self</span><span style="color: #666666">.</span>a,
+                               <span style="color: #BA2121">&#39;+ if self.b &gt; 0 else &#39;</span><span style="color: #666666">-</span><span style="color: #BA2121">&#39;,  # right sign</span>
+                               <span style="color: #008000">abs</span>(<span style="color: #008000">self</span><span style="color: #666666">.</span>b))
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__repr</span>(<span style="color: #008000">self</span>):
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #BA2121">&#39;LinearFunction(</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">, </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">)&#39;</span> <span style="color: #666666">%</span> (<span style="color: #008000">self</span><span style="color: #666666">.</span>a, <span style="color: #008000">self</span><span style="color: #666666">.</span>b)
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Illustration of <code>str</code>, <code>repr</code>, and <code>eval</code>  <a name="___sec24"></a></h2>
+
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> f <span style="color: #666666">=</span> LinearFunction(<span style="color: #666666">-1</span>, <span style="color: #666666">2</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000">str</span>(a)   <span style="color: #408080; font-style: italic"># calls f.__str__()</span>
+<span style="color: #BA2121">&#39;-1*x + 2&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000">eval</span>(<span style="color: #008000">str</span>(a))
+Traceback (most recent call last):
+<span style="color: #666666">...</span>
+<span style="color: #D2413A; font-weight: bold">NameError</span>: name <span style="color: #BA2121">&#39;x&#39;</span> <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #AA22FF; font-weight: bold">not</span> defined
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000">repr</span>(a)
+<span style="color: #BA2121">&#39;LinearFunction(-1, 2)&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> new_a <span style="color: #666666">=</span> <span style="color: #008000">eval</span>(<span style="color: #008000">repr</span>(a))
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000">str</span>(new_a)
+<span style="color: #BA2121">&#39;-1*x + 2&#39;</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Persistence: permanent storage of data structures  <a name="___sec25"></a></h2>
+
+<ul>
+  <p><li> Many programs need to have persistent data structures, i.e., the data live after the program is terminated and can be retrieved the next time the program is executed</li>
+  <p><li> <code>str</code>, <code>repr</code> and <code>eval</code> are convenient for making data structures persistent</li>
+  <p><li> <code>pickle</code>, <code>cPickle</code> and <code>shelve</code> are other (more sophisticated) Python modules for implementing persistence</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2>Pickling is used for storing a sequence of objects  <a name="___sec26"></a></h2>
+
+Write <em>any</em> set of data structures to file using
+the <code>pickle</code> module:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">f <span style="color: #666666">=</span> <span style="color: #008000">open</span>(filename, <span style="color: #BA2121">&#39;w&#39;</span>)
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pickle</span>
+pickle<span style="color: #666666">.</span>dump(a1, f)
+pickle<span style="color: #666666">.</span>dump(a2, f)
+pickle<span style="color: #666666">.</span>dump(a3, f)
+f<span style="color: #666666">.</span>close()
+</pre></div>
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Remark:</b>
+In v2.x, cPickle is a faster version than pickle, but
+works in the same way. In 3.x, <code>pickle</code> is <code>cPickle</code>.
+</div>
+
+
+<p>
+Read data structures in again later (the sequence is important):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">f <span style="color: #666666">=</span> <span style="color: #008000">open</span>(filename, <span style="color: #BA2121">&#39;r&#39;</span>)
+a1 <span style="color: #666666">=</span> pickle<span style="color: #666666">.</span>load(f)
+a2 <span style="color: #666666">=</span> pickle<span style="color: #666666">.</span>load(f)
+a3 <span style="color: #666666">=</span> pickle<span style="color: #666666">.</span>load(f)
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Shelving  <a name="___sec27"></a></h2>
+
+Think of shelves as dictionaries with file storage:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">shelve</span>
+database <span style="color: #666666">=</span> shelve<span style="color: #666666">.</span>open(filename)
+database[<span style="color: #BA2121">&#39;a1&#39;</span>] <span style="color: #666666">=</span> a1  <span style="color: #408080; font-style: italic"># store a1 under the key &#39;a1&#39;</span>
+database[<span style="color: #BA2121">&#39;a2&#39;</span>] <span style="color: #666666">=</span> a2
+database[<span style="color: #BA2121">&#39;a3&#39;</span>] <span style="color: #666666">=</span> a3
+<span style="color: #408080; font-style: italic"># or</span>
+database[<span style="color: #BA2121">&#39;a123&#39;</span>] <span style="color: #666666">=</span> (a1, a2, a3)
+
+<span style="color: #408080; font-style: italic"># retrieve data:</span>
+<span style="color: #008000; font-weight: bold">if</span> <span style="color: #BA2121">&#39;a1&#39;</span> <span style="color: #AA22FF; font-weight: bold">in</span> database:
+    a1 <span style="color: #666666">=</span> database[<span style="color: #BA2121">&#39;a1&#39;</span>]
+<span style="color: #408080; font-style: italic"># and so on</span>
+
+<span style="color: #408080; font-style: italic"># delete an entry:</span>
+<span style="color: #008000; font-weight: bold">del</span> database[<span style="color: #BA2121">&#39;a2&#39;</span>]
+
+database<span style="color: #666666">.</span>close()
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Running an application (old-style)  <a name="___sec28"></a></h2>
+
+Run a stand-alone program:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">cmd <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;myprog -c file.1 -p -f -q &gt; res&#39;</span>
+failure <span style="color: #666666">=</span> os<span style="color: #666666">.</span>system(cmd)
+<span style="color: #008000; font-weight: bold">if</span> failure:
+    <span style="color: #008000; font-weight: bold">print</span> cmd, <span style="color: #BA2121">&#39;failed&#39;</span>
+    sys<span style="color: #666666">.</span>exit(<span style="color: #666666">1</span>)
+</pre></div>
+<p>
+Redirect output from the application to a list of lines:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">pipe <span style="color: #666666">=</span> os<span style="color: #666666">.</span>popen(cmd)
+output <span style="color: #666666">=</span> pipe<span style="color: #666666">.</span>readlines()
+pipe<span style="color: #666666">.</span>close()
+
+<span style="color: #008000; font-weight: bold">for</span> line <span style="color: #AA22FF; font-weight: bold">in</span> output:
+  <span style="color: #408080; font-style: italic"># process line</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The new standard: <code>subprocess</code>  <a name="___sec29"></a></h2>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">subprocess</span> <span style="color: #008000; font-weight: bold">import</span> call
+cmd <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;myprog -c file.1 -p -f -q &gt; res&#39;</span>
+<span style="color: #008000; font-weight: bold">try</span>:
+    returncode <span style="color: #666666">=</span> call(cmd, shell<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+    <span style="color: #008000; font-weight: bold">if</span> returncode:
+        <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;failure&#39;</span>  <span style="color: #408080; font-style: italic"># returncode has no meaning when != 0</span>
+        sys<span style="color: #666666">.</span>exit(<span style="color: #666666">1</span>)
+<span style="color: #008000; font-weight: bold">except</span> <span style="color: #D2413A; font-weight: bold">OSError</span>, message:
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;execution failed!</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span>, message
+    sys<span style="color: #666666">.</span>exit(<span style="color: #666666">1</span>)
+</pre></div>
+<p>
+Grab the output using <code>subprocess.Popen</code>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">subprocess</span> <span style="color: #008000; font-weight: bold">import</span> Popen, PIPE
+p <span style="color: #666666">=</span> Popen(cmd, shell<span style="color: #666666">=</span><span style="color: #008000">True</span>, stdout<span style="color: #666666">=</span>PIPE)
+output, errors <span style="color: #666666">=</span> p<span style="color: #666666">.</span>communicate()
+
+<span style="color: #408080; font-style: italic"># output: text written to standard output</span>
+<span style="color: #408080; font-style: italic"># errors: text written to standard error</span>
+
+<span style="color: #008000; font-weight: bold">for</span> line <span style="color: #AA22FF; font-weight: bold">in</span> output<span style="color: #666666">.</span>splitlines():
+    <span style="color: #008000; font-weight: bold">print</span> line
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Output pipe  <a name="___sec30"></a></h2>
+
+Open (in a script) a dialog with an interactive program:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">subprocess</span> <span style="color: #008000; font-weight: bold">import</span> Popen, PIPE
+pipe <span style="color: #666666">=</span> Popen(<span style="color: #BA2121">&#39;gnuplot -persist&#39;</span>, shell<span style="color: #666666">=</span><span style="color: #008000">True</span>, stdin<span style="color: #666666">=</span>PIPE)<span style="color: #666666">.</span>stdin
+pipe<span style="color: #666666">.</span>write(<span style="color: #BA2121">&#39;set xrange [0:10]; set yrange [-2:2]</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span>)
+pipe<span style="color: #666666">.</span>write(<span style="color: #BA2121">&#39;plot sin(x)</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span>)
+pipe<span style="color: #666666">.</span>write(<span style="color: #BA2121">&#39;quit&#39;</span>)  <span style="color: #408080; font-style: italic"># quit Gnuplot</span>
+</pre></div>
+<p>
+Same as &quot;here documents&quot; in Unix shells:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">gnuplot <span style="color: #666666">&lt;&lt;</span>EOF
+<span style="color: #008000">set</span> <span style="color: #008000">xrange</span> [<span style="color: #666666">0</span>:<span style="color: #666666">10</span>]; <span style="color: #008000">set</span> yrange [<span style="color: #666666">-2</span>:<span style="color: #666666">2</span>]
+plot sin(x)
+quit
+EOF
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Find a program  <a name="___sec31"></a></h2>
+
+Check if a given program is on the system:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">program <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;someprog&#39;</span>
+path <span style="color: #666666">=</span> os<span style="color: #666666">.</span>environ[<span style="color: #BA2121">&#39;PATH&#39;</span>]
+<span style="color: #408080; font-style: italic"># PATH can be /usr/bin:/usr/local/bin:/usr/X11/bin</span>
+<span style="color: #408080; font-style: italic"># os.pathsep is the separator in PATH</span>
+<span style="color: #408080; font-style: italic"># (: on Unix, ; on Windows)</span>
+paths <span style="color: #666666">=</span> path<span style="color: #666666">.</span>split(os<span style="color: #666666">.</span>pathsep)
+<span style="color: #008000; font-weight: bold">for</span> d <span style="color: #AA22FF; font-weight: bold">in</span> paths:
+    <span style="color: #008000; font-weight: bold">if</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>isdir(d):
+        <span style="color: #008000; font-weight: bold">if</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>isfile(os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>join(d, program)):
+             program_path <span style="color: #666666">=</span> d; <span style="color: #008000; font-weight: bold">break</span>
+
+<span style="color: #008000; font-weight: bold">try</span>:  <span style="color: #408080; font-style: italic"># program was found if program_path is defined</span>
+    <span style="color: #008000; font-weight: bold">print</span> program, <span style="color: #BA2121">&#39;resides in&#39;</span>, program_path
+<span style="color: #008000; font-weight: bold">except</span>:
+    <span style="color: #008000; font-weight: bold">print</span> program, <span style="color: #BA2121">&#39;was not found&#39;</span>
+</pre></div>
+<p>
+Corresponds to <code>which someprog</code> in Unix
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Cross-platform fix of previous script  <a name="___sec32"></a></h2>
+
+On Windows, programs usually end with <code>.exe</code> (binaries) or <code>.bat</code> (DOS scripts), while on Unix most programs have no extension
+
+<p>
+We test if we are on Windows:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">if</span> sys<span style="color: #666666">.</span>platform[:<span style="color: #666666">3</span>] <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;win&#39;</span>:
+    <span style="color: #408080; font-style: italic"># Windows-specific actions</span>
+</pre></div>
+<p>
+Cross-platform snippet for finding a program:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> d <span style="color: #AA22FF; font-weight: bold">in</span> paths:
+    <span style="color: #008000; font-weight: bold">if</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>isdir(d):
+        fullpath <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>join(<span style="color: #008000">dir</span>, program)
+        <span style="color: #008000; font-weight: bold">if</span> sys<span style="color: #666666">.</span>platform[:<span style="color: #666666">3</span>] <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;win&#39;</span>:   <span style="color: #408080; font-style: italic"># windows machine?</span>
+            <span style="color: #008000; font-weight: bold">for</span> ext <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #BA2121">&#39;.exe&#39;</span>, <span style="color: #BA2121">&#39;.bat&#39;</span>:  <span style="color: #408080; font-style: italic"># add extensions</span>
+                <span style="color: #008000; font-weight: bold">if</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>isfile(fullpath <span style="color: #666666">+</span> ext):
+                    program_path <span style="color: #666666">=</span> d; <span style="color: #008000; font-weight: bold">break</span>
+        <span style="color: #008000; font-weight: bold">else</span>:
+            <span style="color: #008000; font-weight: bold">if</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>isfile(fullpath):
+                program_path <span style="color: #666666">=</span> d; <span style="color: #008000; font-weight: bold">break</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h1>Simple text processing  <a name="___sec33"></a></h1>
+
+
+</section>
+
+
+<section>
+
+<h2>Splitting text  <a name="___sec34"></a></h2>
+
+Split string into words:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> files <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;case1.png case2.png case3.png&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> files<span style="color: #666666">.</span>split()
+[<span style="color: #BA2121">&#39;case1.png&#39;</span>, <span style="color: #BA2121">&#39;case2.png&#39;</span>, <span style="color: #BA2121">&#39;case3.png&#39;</span>]
+</pre></div>
+<p>
+Can split wrt other characters:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> files <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;case1.png, case2.png, case3.png&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> files<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;, &#39;</span>)
+[<span style="color: #BA2121">&#39;case1.png&#39;</span>, <span style="color: #BA2121">&#39;case2.png&#39;</span>, <span style="color: #BA2121">&#39;case3.png&#39;</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> files<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;,  &#39;</span>)  <span style="color: #408080; font-style: italic"># extra erroneous space after comma...</span>
+[<span style="color: #BA2121">&#39;case1.png, case2.png, case3.png&#39;</span>]  <span style="color: #408080; font-style: italic"># unintended split??</span>
+</pre></div>
+<p>
+Very useful when interpreting text in files!
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Example on using split to read data from file  <a name="___sec35"></a></h2>
+
+Suppose you have file containing numbers only. The numbers appear
+without any structure:
+
+<p>
+
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">1.432 5E-09
+1.0
+
+3.2 5 69 -111
+4 7 8
+</pre></div>
+<p>
+It is easy to get a list of all these numbers:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">f <span style="color: #666666">=</span> <span style="color: #008000">open</span>(filename, <span style="color: #BA2121">&#39;r&#39;</span>)
+numbers <span style="color: #666666">=</span> [<span style="color: #008000">float</span>(n) <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> f<span style="color: #666666">.</span>read()<span style="color: #666666">.</span>split()]
+
+<span style="color: #408080; font-style: italic"># or equivalently with map</span>
+numbers <span style="color: #666666">=</span> <span style="color: #008000">map</span>(<span style="color: #008000">float</span>, f<span style="color: #666666">.</span>read()<span style="color: #666666">.</span>split())
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Joining a list of strings  <a name="___sec36"></a></h2>
+
+Join is the opposite of split:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> filelist <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;case1.png&#39;</span>, <span style="color: #BA2121">&#39;case2.png&#39;</span>, <span style="color: #BA2121">&#39;case3.png&#39;</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> text <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;, &#39;</span><span style="color: #666666">.</span>join(filelist)
+<span style="color: #666666">&gt;&gt;&gt;</span> text
+<span style="color: #BA2121">&#39;case1.png, case2.png, case3.png&#39;</span>
+</pre></div>
+<p>
+Any delimiter text can be used:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #BA2121">&#39;@@@&#39;</span><span style="color: #666666">.</span>join(filelist)
+<span style="color: #BA2121">&#39;case1.png@@@case2.png@@@case3.png&#39;</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Common use of join/split  <a name="___sec37"></a></h2>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #408080; font-style: italic"># Read file into a string</span>
+f <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;myfile&#39;</span>, <span style="color: #BA2121">&#39;r&#39;</span>)
+filestr <span style="color: #666666">=</span> <span style="color: #008000">file</span><span style="color: #666666">.</span>read()
+f<span style="color: #666666">.</span>close()
+
+filestr <span style="color: #666666">=</span> filestr<span style="color: #666666">.</span>replace(<span style="color: #BA2121">&#39;directory&#39;</span>, <span style="color: #BA2121">&#39;folder&#39;</span>)
+
+<span style="color: #408080; font-style: italic"># convert back to list of lines and process lines</span>
+lines <span style="color: #666666">=</span> filestr<span style="color: #666666">.</span>splitlines()
+<span style="color: #008000; font-weight: bold">for</span> i, line <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">enumerate</span>(lines):
+    <span style="color: #408080; font-style: italic"># if line starts with &gt;&gt;&gt; and previous line is not empty,</span>
+    <span style="color: #408080; font-style: italic"># remove the leading &gt;&gt;&gt;</span>
+    <span style="color: #008000; font-weight: bold">if</span> line<span style="color: #666666">.</span>startswith(<span style="color: #BA2121">&#39;&gt;&gt;&gt;&#39;</span>) <span style="color: #AA22FF; font-weight: bold">and</span> i<span style="color: #666666">&gt;0</span> \
+       <span style="color: #AA22FF; font-weight: bold">and</span> <span style="color: #AA22FF; font-weight: bold">not</span> lines[i<span style="color: #666666">-1</span>]<span style="color: #666666">.</span>strip() <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;&#39;</span>:
+        lines[i] <span style="color: #666666">=</span> lines[i][<span style="color: #666666">3</span>:]  <span style="color: #408080; font-style: italic"># strip off &gt;&gt;&gt;</span>
+
+filestr <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span><span style="color: #666666">.</span>join(lines)  <span style="color: #408080; font-style: italic"># make a string again</span>
+
+f <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;myfile.new&#39;</span>, <span style="color: #BA2121">&#39;w&#39;</span>)
+f<span style="color: #666666">.</span>write(filestr)
+f<span style="color: #666666">.</span>close()
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Searching in strings  <a name="___sec38"></a></h2>
+
+Exact word match:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">if</span> <span style="color: #BA2121">&#39;somestring&#39;</span> <span style="color: #AA22FF; font-weight: bold">in</span> line
+
+<span style="color: #008000; font-weight: bold">if</span> line <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;somestring&#39;</span>:
+   <span style="color: #408080; font-style: italic"># line equals &#39;somestring&#39;</span>
+</pre></div>
+<p>
+Matching with Unix shell-style wildcard notation:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">fnmatch</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> filename <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;package-python-sympy.txt&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> wildcard_pattern <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;*-python-*.t*xt&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> fnmatch<span style="color: #666666">.</span>fnmatch(filename, wildcard_pattern)
+<span style="color: #008000">True</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> filename <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;package-python-sympy.text&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> fnmatch<span style="color: #666666">.</span>fnmatch(filename, wildcard_pattern)
+<span style="color: #008000">True</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> filename <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;package-python-sympy&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> fnmatch<span style="color: #666666">.</span>fnmatch(filename, wildcard_pattern)
+<span style="color: #008000">False</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Searching in strings with regular expressions  <a name="___sec39"></a></h2>
+
+Matching with full regular expressions:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">re</span>
+
+<span style="color: #008000; font-weight: bold">if</span> re<span style="color: #666666">.</span>search(<span style="color: #BA2121">r&#39;somestring&#39;</span>, line):
+    <span style="color: #408080; font-style: italic"># line contains &#39;somestring&#39;</span>
+
+<span style="color: #008000; font-weight: bold">if</span> re<span style="color: #666666">.</span>search(<span style="color: #BA2121">r&#39;^somestring$&#39;</span>, line):
+    <span style="color: #408080; font-style: italic"># line equals &#39;somestring&#39;</span>
+
+pattern <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;.*-python-.*\.t.*xt&#39;</span>
+<span style="color: #008000; font-weight: bold">if</span> re<span style="color: #666666">.</span>search(pattern, line):
+    <span style="color: #408080; font-style: italic"># line contains some text of the form specified by pattern</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Substitution  <a name="___sec40"></a></h2>
+
+Simple substitution:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">newstring <span style="color: #666666">=</span> oldstring<span style="color: #666666">.</span>replace(substring, newsubstring)
+</pre></div>
+<p>
+Substitute regular expression
+<code>pattern</code> by <code>replacement</code> in <code>str</code>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">re</span>
+<span style="color: #008000">str</span> <span style="color: #666666">=</span> re<span style="color: #666666">.</span>sub(pattern, replacement, <span style="color: #008000">str</span>)
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Brief summary  <a name="___sec41"></a></h2>
+
+<ul>
+  <p><li> Typical Unix shell tasks can also be done using Python in a cross-platform
+    fashion so it works on Mac, Windows, and Linux</li>
+  <p><li> Key Python modules for shell operations; <code>os</code>, <code>shutil</code>, <code>glob</code>, <code>tarfile</code>, <code>subprocess</code></li>
+  <p><li> Python has numerous tools for text processing:</li>
+
+<ul>
+    <p><li> <code>join</code> and <code>split</code></li>
+    <p><li> <code>fnmatch</code> for Unix wildcard matching</li>
+    <p><li> regular expressions</li>
+</ul>
+<p>
+
+</ul>
+<p>
+
+
+
+</section>
+
+
+
+</div> <!-- class="slides" -->
+</div> <!-- class="reveal" -->
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.min.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+    // Display navigation controls in the bottom right corner
+    controls: true,
+
+    // Display progress bar (below the horiz. slider)
+    progress: true,
+
+    // Display the page number of the current slide
+    slideNumber: true,
+
+    // Push each slide change to the browser history
+    history: false,
+
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+
+    // Enable the slide overview mode
+    overview: true,
+
+    // Vertical centering of slides
+    //center: true,
+    center: false,
+
+    // Enables touch navigation on devices with touch input
+    touch: true,
+
+    // Loop the presentation
+    loop: false,
+
+    // Change the presentation direction to be RTL
+    rtl: false,
+
+    // Turns fragments on and off globally
+    fragments: true,
+
+    // Flags if the presentation is running in an embedded mode,
+    // i.e. contained within a limited portion of the screen
+    embedded: false,
+
+    // Number of milliseconds between automatically proceeding to the
+    // next slide, disabled when set to 0, this value can be overwritten
+    // by using a data-autoslide attribute on your slides
+    autoSlide: 0,
+
+    // Stop auto-sliding after user input
+    autoSlideStoppable: true,
+
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+
+    // Hides the address bar on mobile devices
+    hideAddressBar: true,
+
+    // Opens links in an iframe preview overlay
+    previewLinks: false,
+
+    // Transition style
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Transition speed
+    transitionSpeed: 'default', // default/fast/slow
+
+    // Transition style for full page slide backgrounds
+    backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+
+    // Number of slides away from the current that are visible
+    viewDistance: 3,
+
+    // Parallax background image
+    //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+    // Parallax background size
+    //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+    theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+});
+
+Reveal.initialize({
+    dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+        // Syntax highlight for <code> elements
+        { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+        // Zoom in and out with Alt+click
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Speaker notes
+        { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Remote control your reveal.js presentation using a touch device
+        //{ src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // MathJax
+        //{ src: 'reveal.js/plugin/math/math.js', async: true }
+    ]
+});
+
+Reveal.initialize({
+
+    // The "normal" size of the presentation, aspect ratio will be preserved
+    // when the presentation is scaled to fit different resolutions. Can be
+    // specified using percentage units.
+    width:  960,
+    height: 700,
+
+    // Factor of the display size that should remain empty around the content
+    margin: 0.1,
+
+    // Bounds for smallest/largest possible scale to apply to content
+    minScale: 0.2,
+    maxScale: 1.0
+
+});
+</script>
+
+<!-- begin footer logo
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
+<img src="somelogo.png">
+</div>
+     end footer logo -->
+
+
+
+</body>
+</html>
