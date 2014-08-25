@@ -11,27 +11,37 @@ Automatically generated HTML file from Doconce source
 
 
 
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
-<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
 <style type="text/css">
-h1 {color: #b58900;}  /* yellow */
-/* h1 {color: #cb4b16;}  orange */
-/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+/* bloodish style */
+
+body {
+  font-family: Helvetica, Verdana, Arial, Sans-serif;
+  color: #404040;
+  background: #ffffff;
+}
+h1 { font-size: 1.8em;  color: #8A0808; }
+h2 { font-size: 1.6em;  color: #8A0808; }
+h3 { font-size: 1.4em;  color: #8A0808; }
+h4 { color: #8A0808; }
+a { color: #8A0808; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
 .alert {
   padding:8px 35px 8px 14px; margin-bottom:18px;
   text-shadow:0 1px 0 rgba(255,255,255,0.5);
-  border:1px solid #93a1a1;
+  border:1px solid #bababa;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   color: #555;
-  background-color: #eee8d5;
+  background-color: #f8f8f8;
   background-position: 10px 5px;
   background-repeat: no-repeat;
   background-size: 38px;
@@ -42,10 +52,10 @@ h1 {color: #b58900;}  /* yellow */
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -124,44 +134,30 @@ end of tocinfo -->
 <body>
 
     
-<a name="part0000"></a>
-<!-- ------------------- main content ---------------------- -->
+<a name="part0035"></a>
+<p>
 
-
-<title>Brief summary of basic Python syntax</title>
-
-<center><h1>Brief summary of basic Python syntax</h1></center>  <!-- document title -->
+</p>
 
 <p>
-<!-- author(s): Joakim Sundnes, Hans Petter Langtangen, and Ola Skavhaug -->
+<!-- !split -->
 
-<center>
-<b>Joakim Sundnes</b> [1, 2]
-</center>
+<h2>Doc strings serve many purposes  <a name="___sec34"></a></h2>
 
-<center>
-<b>Hans Petter Langtangen</b> [1, 2]
-</center>
-
-<center>
-<b>Ola Skavhaug</b> [3]
-</center>
+<ul>
+ <li> Documentation in the source code</li>
+ <li> Online documentation<br />
+   (Sphinx can automatically produce manuals with doc strings)</li>
+ <li> Balloon help in sophisticated GUIs (e.g., IDLE)</li>
+ <li> Automatic testing with the <a href="https://docs.python.org/2/library/doctest.html?highlight=doctest#doctest" target="_blank"><tt>doctest</tt></a> module</li>
+</ul>
 
 
-<p>
-<!-- institution(s) -->
-
-<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
-<center>[2] <b>Dept. of Informatics, University of Oslo</b></center>
-<center>[3] <b>mCASH (formerly Dept. of Informatics, University of Oslo)</b></center>
-<p>
-<center><h4>Aug 25, 2014</h4></center> <!-- date -->
-<p>
 <p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._python_summary-plain034.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
 </td><td>
-<div style="text-align: right;"><a href="._python_summary-solarized.html001.html">Next &raquo;</a></div>
 </td></tr></table>
 <!-- end bottom navigation -->
 </p>

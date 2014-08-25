@@ -111,15 +111,24 @@ div { text-align: justify; text-justify: inter-word; }
               (' Using modules ', 2, None, '___sec23'),
               (' Making your own Python modules ', 2, None, '___sec24'),
               (' How Python can find your modules? ', 2, None, '___sec25'),
-              (' Packages ', 2, None, '___sec26'),
-              (' Test block in a module ', 2, None, '___sec27'),
-              (' Installing modules ', 2, None, '___sec28'),
-              (' Writing your own `setup.py` script ', 2, None, '___sec29'),
+              (' Search path for modules can be set in the script ',
+               2,
+               None,
+               '___sec26'),
+              (' Packages ', 2, None, '___sec27'),
+              (' Test block in a module ', 2, None, '___sec28'),
+              (' Public/non-public module variables ', 2, None, '___sec29'),
+              (' Installing modules ', 2, None, '___sec30'),
+              (' Controlling the installation destination ',
+               2,
+               None,
+               '___sec31'),
+              (' Writing your own `setup.py` script ', 2, None, '___sec32'),
               (' Use doc strings in functions, classes, and modules! ',
                2,
                None,
-               '___sec30'),
-              (' Doc strings serve many purposes ', 2, None, '___sec31')]}
+               '___sec33'),
+              (' Doc strings serve many purposes ', 2, None, '___sec34')]}
 end of tocinfo -->
 
 <body>
@@ -780,14 +789,47 @@ searches for modules, and
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Packages  <a name="___sec26"></a></h2>
+<h2>Search path for modules can be set in the script  <a name="___sec26"></a></h2>
+
+Add module path(s) directly to the <code>sys.path</code> list:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span><span style="color: #666666">,</span> <span style="color: #0000FF; font-weight: bold">os</span>
+
+sys<span style="color: #666666">.</span>path<span style="color: #666666">.</span>insert(
+    <span style="color: #666666">0</span>, os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>join(os<span style="color: #666666">.</span>environ[<span style="color: #BA2121">&#39;HOME&#39;</span>], <span style="color: #BA2121">&#39;python&#39;</span>, <span style="color: #BA2121">&#39;lib&#39;</span>)
+
+<span style="color: #666666">...</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">MyMod</span>
+</pre></div>
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br>
+
+<h2>Packages  <a name="___sec27"></a></h2>
 
 <ul>
  <li> A class of modules can be collected in a <em>package</em></li>
  <li> Normally, a package is organized as module files in a directory tree</li>
  <li> Each subdirectory has a file <code>__init__</code> (can be empty)</li>
+ <li> Documentation: <a href="https://docs.python.org/2/tutorial/modules.html" target="_blank">Section 6 in the Python Tutorial</a></li>
 </ul>
 
+Example tree:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">MyMod
+   __init__.py
+   numerics
+      __init__.py
+      pde
+         __init__.py
+         grids.py     # contains fdm_grids object
+</pre></div>
+<p>
 Can import modules in the tree like this:
 
 <p>
@@ -800,12 +842,9 @@ grid<span style="color: #666666">.</span>domain(xmin<span style="color: #666666"
 <span style="color: #666666">...</span>
 </pre></div>
 <p>
-Here, class <code>fdm_grids</code> is in module <code>grids</code> (file <code>grids.py</code> in the directory <code>MyMod/numerics/pde</code>
-
-<p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Test block in a module  <a name="___sec27"></a></h2>
+<h2>Test block in a module  <a name="___sec28"></a></h2>
 
 Module files can have a test/demo section at the end:
 
@@ -824,14 +863,58 @@ Module files can have a test/demo section at the end:
 
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Installing modules  <a name="___sec28"></a></h2>
+<h2>Public/non-public module variables  <a name="___sec29"></a></h2>
+
+Python convention: add a leading underscore to non-public functions and (module) variables
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">_counter <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">_filename</span>():
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Generate a random filename.&quot;&quot;&quot;</span>
+    <span style="color: #666666">...</span>
+</pre></div>
+<p>
+After a <code>from MyMod import *</code> the names with leading underscore are <em>not</em> available:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">MyMod</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> _counter
+<span style="color: #D2413A; font-weight: bold">NameError</span>: name <span style="color: #BA2121">&#39;_counter&#39;</span> <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #AA22FF; font-weight: bold">not</span> defined
+<span style="color: #666666">&gt;&gt;&gt;</span> _filename()
+<span style="color: #D2413A; font-weight: bold">NameError</span>: name <span style="color: #BA2121">&#39;_filename&#39;</span> <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #AA22FF; font-weight: bold">not</span> defined
+</pre></div>
+<p>
+But with <code>import MyMod</code> and <code>MyMod.</code> prefix we get access to the
+non-public variables:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">MyMod</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> MyMod<span style="color: #666666">.</span>_counter
+<span style="color: #666666">4</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> MyMod<span style="color: #666666">.</span>_filename()
+<span style="color: #BA2121">&#39;temp_756241.dat&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> MyMod<span style="color: #666666">.</span>_counter <span style="color: #666666">=</span> <span style="color: #666666">42</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> MyMod<span style="color: #666666">.</span>_counter
+<span style="color: #666666">42</span>
+</pre></div>
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br>
+
+<h2>Installing modules  <a name="___sec30"></a></h2>
 
 <ul>
- <li> Python has its own tool, Distutils, for distributing and installing modules</li>
+ <li> Python has its own tool, <a href="https://docs.python.org/2/library/distutils.html" target="_blank">Distutils</a>, for distributing and installing modules</li>
  <li> Installation is based on the script <code>setup.py</code></li>
 </ul>
 
-Standard command:
+Standard command for installing Python software with <code>setup.py</code> file:
 
 <p>
 
@@ -839,9 +922,50 @@ Standard command:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&gt; sudo python setup.py install
 </pre></div>
 <p>
+<div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
+If your package contains Python modules and extension modules written
+in C, the latter will be automatically compiled (using the same compiler
+and options as used for Python itself when it was installed).
+</div>
+
+
+<p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Writing your own <code>setup.py</code> script  <a name="___sec29"></a></h2>
+<h2>Controlling the installation destination  <a name="___sec31"></a></h2>
+
+<code>setup.py</code> has many options, see the <a href="https://docs.python.org/2/install/index.html" target="_blank">Installing Python modules</a>
+
+<p>
+Install in some user-chosen local directory (no need for <code>sudo</code> now):
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&gt; python setup.py install --prefix=$HOME/install
+# copies modules  to $HOME/install/lib/python2.7/site-packages
+# copies programs to $HOME/install/bin
+</pre></div>
+<p>
+Make sure that
+
+<ul>
+ <li> <code>$HOME/install/lib/python2.7/site-packages</code> is in your <code>PYTHONPATH</code></li>
+ <li> <code>$HOME/install/bin</code> is in your <code>PATH</code></li>
+</ul>
+
+In <code>~/.bashrc</code>:
+
+<p>
+
+<!-- code=bash (!bc shcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000">export </span><span style="color: #19177C">PATH</span><span style="color: #666666">=</span><span style="color: #19177C">$HOME</span>/install/bin:<span style="color: #19177C">$PATH</span>
+<span style="color: #008000">export </span><span style="color: #19177C">PYTHONPATH</span><span style="color: #666666">=</span><span style="color: #19177C">$HOME</span>/install/lib/python2.7/site-packages:<span style="color: #19177C">$PYTHONPATH</span>
+</pre></div>
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br>
+
+<h2>Writing your own <code>setup.py</code> script  <a name="___sec32"></a></h2>
 
 Suppose you have a module in <code>mymod.py</code> that you want to distribute to
 others such that they can easily install it by <code>setup.py install</code>.
@@ -864,12 +988,12 @@ executable script (if it has a test block for sensible code).
 
 <p>
 Can easily be extended to install a package of modules, see
-the <a href="https://docs.python.org/2/distutils/introduction.html" target="_blank">introduction to Distutils</a>
+the <a href="https://docs.python.org/2/distutils/index.html" target="_blank">introduction to Distutils</a>
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Use doc strings in functions, classes, and modules!  <a name="___sec30"></a></h2>
+<h2>Use doc strings in functions, classes, and modules!  <a name="___sec33"></a></h2>
 
 Doc strings = first string in a function, class, or file (module)
 
@@ -901,7 +1025,7 @@ in the top of the file
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Doc strings serve many purposes  <a name="___sec31"></a></h2>
+<h2>Doc strings serve many purposes  <a name="___sec34"></a></h2>
 
 <ul>
  <li> Documentation in the source code</li>

@@ -111,15 +111,24 @@ div { text-align: justify; text-justify: inter-word; }
               (' Using modules ', 2, None, '___sec23'),
               (' Making your own Python modules ', 2, None, '___sec24'),
               (' How Python can find your modules? ', 2, None, '___sec25'),
-              (' Packages ', 2, None, '___sec26'),
-              (' Test block in a module ', 2, None, '___sec27'),
-              (' Installing modules ', 2, None, '___sec28'),
-              (' Writing your own `setup.py` script ', 2, None, '___sec29'),
+              (' Search path for modules can be set in the script ',
+               2,
+               None,
+               '___sec26'),
+              (' Packages ', 2, None, '___sec27'),
+              (' Test block in a module ', 2, None, '___sec28'),
+              (' Public/non-public module variables ', 2, None, '___sec29'),
+              (' Installing modules ', 2, None, '___sec30'),
+              (' Controlling the installation destination ',
+               2,
+               None,
+               '___sec31'),
+              (' Writing your own `setup.py` script ', 2, None, '___sec32'),
               (' Use doc strings in functions, classes, and modules! ',
                2,
                None,
-               '___sec30'),
-              (' Doc strings serve many purposes ', 2, None, '___sec31')]}
+               '___sec33'),
+              (' Doc strings serve many purposes ', 2, None, '___sec34')]}
 end of tocinfo -->
 
 <body>
@@ -133,35 +142,28 @@ end of tocinfo -->
 <p>
 <!-- !split -->
 
-<h2>Use doc strings in functions, classes, and modules!  <a name="___sec30"></a></h2>
+<h2>Installing modules  <a name="___sec30"></a></h2>
 
-Doc strings = first string in a function, class, or file (module)
+<ul>
+ <li> Python has its own tool, <a href="https://docs.python.org/2/library/distutils.html" target="_blank">Distutils</a>, for distributing and installing modules</li>
+ <li> Installation is based on the script <code>setup.py</code></li>
+</ul>
+
+Standard command for installing Python software with <code>setup.py</code> file:
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">ignorecase_sort</span>(a, b):
-    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Compare strings a and b, ignoring case.&quot;&quot;&quot;</span>
-    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">cmp</span>(a<span style="color: #666666">.</span>lower(), b<span style="color: #666666">.</span>lower())
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&gt; sudo python setup.py install
 </pre></div>
 <p>
-Doc strings in modules are a (often long multi-line) string starting
-in the top of the file
+<div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
+If your package contains Python modules and extension modules written
+in C, the latter will be automatically compiled (using the same compiler
+and options as used for Python itself when it was installed).
+</div>
 
-<p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
-<span style="color: #BA2121; font-style: italic">This module is a fake module</span>
-<span style="color: #BA2121; font-style: italic">for exemplifying multi-line</span>
-<span style="color: #BA2121; font-style: italic">doc strings.</span>
-<span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">collections</span>
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">somefunc</span>():
-    <span style="color: #666666">...</span>
-</pre></div>
 <p>
 <p>
 <!-- begin bottom navigation -->

@@ -101,15 +101,24 @@ div { text-align: justify; text-justify: inter-word; }
               (' Using modules ', 2, None, '___sec23'),
               (' Making your own Python modules ', 2, None, '___sec24'),
               (' How Python can find your modules? ', 2, None, '___sec25'),
-              (' Packages ', 2, None, '___sec26'),
-              (' Test block in a module ', 2, None, '___sec27'),
-              (' Installing modules ', 2, None, '___sec28'),
-              (' Writing your own `setup.py` script ', 2, None, '___sec29'),
+              (' Search path for modules can be set in the script ',
+               2,
+               None,
+               '___sec26'),
+              (' Packages ', 2, None, '___sec27'),
+              (' Test block in a module ', 2, None, '___sec28'),
+              (' Public/non-public module variables ', 2, None, '___sec29'),
+              (' Installing modules ', 2, None, '___sec30'),
+              (' Controlling the installation destination ',
+               2,
+               None,
+               '___sec31'),
+              (' Writing your own `setup.py` script ', 2, None, '___sec32'),
               (' Use doc strings in functions, classes, and modules! ',
                2,
                None,
-               '___sec30'),
-              (' Doc strings serve many purposes ', 2, None, '___sec31')]}
+               '___sec33'),
+              (' Doc strings serve many purposes ', 2, None, '___sec34')]}
 end of tocinfo -->
 
 <body>
@@ -118,22 +127,43 @@ end of tocinfo -->
 <a name="part0032"></a>
 <!-- !split -->
 
-<h2>Doc strings serve many purposes  <a name="___sec31"></a></h2>
+<h2>Controlling the installation destination  <a name="___sec31"></a></h2>
+
+<code>setup.py</code> has many options, see the <a href="https://docs.python.org/2/install/index.html" target="_blank">Installing Python modules</a>
+
+<p>
+Install in some user-chosen local directory (no need for <code>sudo</code> now):
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt; python setup.py install --prefix=$HOME/install
+# copies modules  to $HOME/install/lib/python2.7/site-packages
+# copies programs to $HOME/install/bin
+</pre></div>
+<p>
+Make sure that
 
 <ul>
- <li> Documentation in the source code</li>
- <li> Online documentation<br />
-   (Sphinx can automatically produce manuals with doc strings)</li>
- <li> Balloon help in sophisticated GUIs (e.g., IDLE)</li>
- <li> Automatic testing with the <a href="https://docs.python.org/2/library/doctest.html?highlight=doctest#doctest" target="_blank"><tt>doctest</tt></a> module</li>
+ <li> <code>$HOME/install/lib/python2.7/site-packages</code> is in your <code>PYTHONPATH</code></li>
+ <li> <code>$HOME/install/bin</code> is in your <code>PATH</code></li>
 </ul>
 
+In <code>~/.bashrc</code>:
 
+<p>
+
+<!-- code=bash (!bc shcod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #658b00">export </span><span style="color: #00688B">PATH</span>=<span style="color: #00688B">$HOME</span>/install/bin:<span style="color: #00688B">$PATH</span>
+<span style="color: #658b00">export </span><span style="color: #00688B">PYTHONPATH</span>=<span style="color: #00688B">$HOME</span>/install/lib/python2.7/site-packages:<span style="color: #00688B">$PYTHONPATH</span>
+</pre></div>
+<p>
 <p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>
 <div style="text-align: left;"><a href="._python_summary-solarized.html031.html">&laquo; Previous</a></div>
 </td><td>
+<div style="text-align: right;"><a href="._python_summary-solarized.html033.html">Next &raquo;</a></div>
 </td></tr></table>
 <!-- end bottom navigation -->
 </p>

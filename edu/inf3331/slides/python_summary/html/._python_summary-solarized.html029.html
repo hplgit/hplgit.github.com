@@ -101,15 +101,24 @@ div { text-align: justify; text-justify: inter-word; }
               (' Using modules ', 2, None, '___sec23'),
               (' Making your own Python modules ', 2, None, '___sec24'),
               (' How Python can find your modules? ', 2, None, '___sec25'),
-              (' Packages ', 2, None, '___sec26'),
-              (' Test block in a module ', 2, None, '___sec27'),
-              (' Installing modules ', 2, None, '___sec28'),
-              (' Writing your own `setup.py` script ', 2, None, '___sec29'),
+              (' Search path for modules can be set in the script ',
+               2,
+               None,
+               '___sec26'),
+              (' Packages ', 2, None, '___sec27'),
+              (' Test block in a module ', 2, None, '___sec28'),
+              (' Public/non-public module variables ', 2, None, '___sec29'),
+              (' Installing modules ', 2, None, '___sec30'),
+              (' Controlling the installation destination ',
+               2,
+               None,
+               '___sec31'),
+              (' Writing your own `setup.py` script ', 2, None, '___sec32'),
               (' Use doc strings in functions, classes, and modules! ',
                2,
                None,
-               '___sec30'),
-              (' Doc strings serve many purposes ', 2, None, '___sec31')]}
+               '___sec33'),
+              (' Doc strings serve many purposes ', 2, None, '___sec34')]}
 end of tocinfo -->
 
 <body>
@@ -118,21 +127,23 @@ end of tocinfo -->
 <a name="part0029"></a>
 <!-- !split -->
 
-<h2>Installing modules  <a name="___sec28"></a></h2>
+<h2>Test block in a module  <a name="___sec28"></a></h2>
 
+Module files can have a test/demo section at the end:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">if</span> __name__ == <span style="color: #CD5555">&#39;__main__&#39;</span>:
+    infile = sys.argv[<span style="color: #B452CD">1</span>]; outfile = sys.argv[<span style="color: #B452CD">2</span>]
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> sys.argv[<span style="color: #B452CD">3</span>:]:
+        create(infile, outfile, i)
+</pre></div>
 <ul>
- <li> Python has its own tool, Distutils, for distributing and installing modules</li>
- <li> Installation is based on the script <code>setup.py</code></li>
+ <li> The block is executed <em>only if</em> the module file is run as a program</li>
+ <li> The tests at the end of a module often serve as good examples on the usage of the module</li>
 </ul>
 
-Standard command:
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt; sudo python setup.py install
-</pre></div>
-<p>
 <p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>
