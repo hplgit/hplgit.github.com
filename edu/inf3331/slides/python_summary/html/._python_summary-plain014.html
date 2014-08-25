@@ -69,55 +69,57 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec1'),
+              (' Video material ', 2, None, '___sec2'),
               (' First Python encounter: a scientific hello world program ',
                2,
                None,
-               '___sec2'),
+               '___sec3'),
               (' Running the script from the command line ',
                2,
                None,
-               '___sec3'),
-              (' Interactive Python & IPython ', 2, None, '___sec4'),
-              (' Dissection of `hw.py` ', 2, None, '___sec5'),
-              (' Python variables ', 2, None, '___sec6'),
-              (' Common types ', 2, None, '___sec7'),
-              (' Simple Assignments ', 2, None, '___sec8'),
-              (' Lists and tuples ', 2, None, '___sec9'),
-              (' List functionality ', 2, None, '___sec10'),
-              (' Dictionary functionality ', 2, None, '___sec11'),
-              (' String operations ', 2, None, '___sec12'),
+               '___sec4'),
+              (' Interactive Python & IPython ', 2, None, '___sec5'),
+              (' Dissection of `hw.py` (1) ', 2, None, '___sec6'),
+              (' Dissection of `hw.py` (2) ', 2, None, '___sec7'),
+              (' Python variables ', 2, None, '___sec8'),
+              (' Common types ', 2, None, '___sec9'),
+              (' Simple Assignments ', 2, None, '___sec10'),
+              (' Lists and tuples ', 2, None, '___sec11'),
+              (' List functionality ', 2, None, '___sec12'),
+              (' Dictionary functionality ', 2, None, '___sec13'),
+              (' String operations ', 2, None, '___sec14'),
               (' Strings in Python use single or double quotes, or triple single/double quotes ',
                2,
                None,
-               '___sec13'),
-              (' Simple control structures ', 2, None, '___sec14'),
+               '___sec15'),
+              (' Simple control structures ', 2, None, '___sec16'),
               (' Looping over integer indices is done with `range` ',
                2,
                None,
-               '___sec15'),
+               '___sec17'),
               (' Examples on loops and branching ',
                2,
                'py:summary:interactive:loops',
                'py:summary:interactive:loops'),
-              (' Functions and arguments ', 2, None, '___sec17'),
+              (' Functions and arguments ', 2, None, '___sec19'),
               (' `eval` and `exec` turn strings into live code ',
                2,
                None,
-               '___sec18'),
-              (' File reading ', 2, None, '___sec19'),
-              (' File writing ', 2, None, '___sec20'),
-              (' Using modules ', 2, None, '___sec21'),
-              (' Making your own Python modules ', 2, None, '___sec22'),
-              (' How Python can find your modules? ', 2, None, '___sec23'),
-              (' Packages ', 2, None, '___sec24'),
-              (' Test block in a module ', 2, None, '___sec25'),
-              (' Installing modules ', 2, None, '___sec26'),
-              (' Writing your own `setup.py` script ', 2, None, '___sec27'),
+               '___sec20'),
+              (' File reading ', 2, None, '___sec21'),
+              (' File writing ', 2, None, '___sec22'),
+              (' Using modules ', 2, None, '___sec23'),
+              (' Making your own Python modules ', 2, None, '___sec24'),
+              (' How Python can find your modules? ', 2, None, '___sec25'),
+              (' Packages ', 2, None, '___sec26'),
+              (' Test block in a module ', 2, None, '___sec27'),
+              (' Installing modules ', 2, None, '___sec28'),
+              (' Writing your own `setup.py` script ', 2, None, '___sec29'),
               (' Use doc strings in functions, classes, and modules! ',
                2,
                None,
-               '___sec28'),
-              (' Doc strings serve many purposes ', 2, None, '___sec29')]}
+               '___sec30'),
+              (' Doc strings serve many purposes ', 2, None, '___sec31')]}
 end of tocinfo -->
 
 <body>
@@ -131,31 +133,30 @@ end of tocinfo -->
 <p>
 <!-- !split -->
 
-<h2>Strings in Python use single or double quotes, or triple single/double quotes  <a name="___sec13"></a></h2>
+<h2>Dictionary functionality  <a name="___sec13"></a></h2>
 
-Single- and double-quoted strings work in the same way: <code>'some string'</code> is equivalent to <code>"some string"</code>
-
-<p>
-Triple-quoted strings can be multi line with embedded newlines:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">text <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;&quot;&quot;large portions of a text</span>
-<span style="color: #BA2121">can be conveniently placed inside</span>
-<span style="color: #BA2121">triple-quoted strings (newlines</span>
-<span style="color: #BA2121">are preserved)&quot;&quot;&quot;</span>
-</pre></div>
-<p>
-Raw strings, where backslash is backslash:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">s3 <span style="color: #666666">=</span> <span style="color: #BA2121">r&#39;\(\s+\.\d+\)&#39;</span>
-<span style="color: #408080; font-style: italic"># in an ordinary string one must quote backslash:</span>
-s3 <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6622; font-weight: bold">\\</span><span style="color: #BA2121">(</span><span style="color: #BB6622; font-weight: bold">\\</span><span style="color: #BA2121">s+</span><span style="color: #BB6622; font-weight: bold">\\</span><span style="color: #BA2121">.</span><span style="color: #BB6622; font-weight: bold">\\</span><span style="color: #BA2121">d+</span><span style="color: #BB6622; font-weight: bold">\\</span><span style="color: #BA2121">)&#39;</span>
-</pre></div>
+<table border="1">
+<thead>
+<tr><th align="center">                               Construction                              </th> <th align="center">                                 Meaning                                 </th> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   <code>a = {}</code>                                                          </td> <td align="left">   initialize an empty dictionary                                               </td> </tr>
+<tr><td align="left">   <code>a = {'point': [0,0.1], 'value': 7}</code>                              </td> <td align="left">   initialize a dictionary                                                      </td> </tr>
+<tr><td align="left">   <code>a = dict(point=[2,7], value=3)</code>                                  </td> <td align="left">   initialize a dictionary w/string keys                                        </td> </tr>
+<tr><td align="left">   <code>a.update(b)</code>                                                     </td> <td align="left">   add key-value pairs from <code>b</code> in <code>a</code>                    </td> </tr>
+<tr><td align="left">   <code>a.update(key1=value1, key2=value2)</code>                              </td> <td align="left">   add key-value pairs in <code>a</code>                                        </td> </tr>
+<tr><td align="left">   <code>a['hide'] = True</code>                                                </td> <td align="left">   add new key-value pair to <code>a</code>                                     </td> </tr>
+<tr><td align="left">   <code>a['point']</code>                                                      </td> <td align="left">   get value corresponding to key <code>point</code>                            </td> </tr>
+<tr><td align="left">   <code>for key in a:</code>                                                   </td> <td align="left">   loop over keys in unknown order                                              </td> </tr>
+<tr><td align="left">   <code>for key in sorted(a):</code>                                           </td> <td align="left">   loop over keys in alphabetic order                                           </td> </tr>
+<tr><td align="left">   <code>'value' in a</code>                                                    </td> <td align="left">   <code>True</code> if string <code>value</code> is a key in <code>a</code>    </td> </tr>
+<tr><td align="left">   <code>del a['point']</code>                                                  </td> <td align="left">   delete a key-value pair from <code>a</code>                                  </td> </tr>
+<tr><td align="left">   <code>list(a.keys())</code>                                                  </td> <td align="left">   list of keys                                                                 </td> </tr>
+<tr><td align="left">   <code>list(a.values())</code>                                                </td> <td align="left">   list of values                                                               </td> </tr>
+<tr><td align="left">   <code>len(a)</code>                                                          </td> <td align="left">   number of key-value pairs in <code>a</code>                                  </td> </tr>
+<tr><td align="left">   <code>isinstance(a, dict)</code>                                             </td> <td align="left">   is <code>True</code> if <code>a</code> is a dictionary                       </td> </tr>
+</tbody>
+</table>
 <p>
 <p>
 <!-- begin bottom navigation -->

@@ -17,6 +17,9 @@ Automatically generated HTML file from Doconce source
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
 <style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -56,55 +59,57 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec1'),
+              (' Video material ', 2, None, '___sec2'),
               (' First Python encounter: a scientific hello world program ',
                2,
                None,
-               '___sec2'),
+               '___sec3'),
               (' Running the script from the command line ',
                2,
                None,
-               '___sec3'),
-              (' Interactive Python & IPython ', 2, None, '___sec4'),
-              (' Dissection of `hw.py` ', 2, None, '___sec5'),
-              (' Python variables ', 2, None, '___sec6'),
-              (' Common types ', 2, None, '___sec7'),
-              (' Simple Assignments ', 2, None, '___sec8'),
-              (' Lists and tuples ', 2, None, '___sec9'),
-              (' List functionality ', 2, None, '___sec10'),
-              (' Dictionary functionality ', 2, None, '___sec11'),
-              (' String operations ', 2, None, '___sec12'),
+               '___sec4'),
+              (' Interactive Python & IPython ', 2, None, '___sec5'),
+              (' Dissection of `hw.py` (1) ', 2, None, '___sec6'),
+              (' Dissection of `hw.py` (2) ', 2, None, '___sec7'),
+              (' Python variables ', 2, None, '___sec8'),
+              (' Common types ', 2, None, '___sec9'),
+              (' Simple Assignments ', 2, None, '___sec10'),
+              (' Lists and tuples ', 2, None, '___sec11'),
+              (' List functionality ', 2, None, '___sec12'),
+              (' Dictionary functionality ', 2, None, '___sec13'),
+              (' String operations ', 2, None, '___sec14'),
               (' Strings in Python use single or double quotes, or triple single/double quotes ',
                2,
                None,
-               '___sec13'),
-              (' Simple control structures ', 2, None, '___sec14'),
+               '___sec15'),
+              (' Simple control structures ', 2, None, '___sec16'),
               (' Looping over integer indices is done with `range` ',
                2,
                None,
-               '___sec15'),
+               '___sec17'),
               (' Examples on loops and branching ',
                2,
                'py:summary:interactive:loops',
                'py:summary:interactive:loops'),
-              (' Functions and arguments ', 2, None, '___sec17'),
+              (' Functions and arguments ', 2, None, '___sec19'),
               (' `eval` and `exec` turn strings into live code ',
                2,
                None,
-               '___sec18'),
-              (' File reading ', 2, None, '___sec19'),
-              (' File writing ', 2, None, '___sec20'),
-              (' Using modules ', 2, None, '___sec21'),
-              (' Making your own Python modules ', 2, None, '___sec22'),
-              (' How Python can find your modules? ', 2, None, '___sec23'),
-              (' Packages ', 2, None, '___sec24'),
-              (' Test block in a module ', 2, None, '___sec25'),
-              (' Installing modules ', 2, None, '___sec26'),
-              (' Writing your own `setup.py` script ', 2, None, '___sec27'),
+               '___sec20'),
+              (' File reading ', 2, None, '___sec21'),
+              (' File writing ', 2, None, '___sec22'),
+              (' Using modules ', 2, None, '___sec23'),
+              (' Making your own Python modules ', 2, None, '___sec24'),
+              (' How Python can find your modules? ', 2, None, '___sec25'),
+              (' Packages ', 2, None, '___sec26'),
+              (' Test block in a module ', 2, None, '___sec27'),
+              (' Installing modules ', 2, None, '___sec28'),
+              (' Writing your own `setup.py` script ', 2, None, '___sec29'),
               (' Use doc strings in functions, classes, and modules! ',
                2,
                None,
-               '___sec28'),
-              (' Doc strings serve many purposes ', 2, None, '___sec29')]}
+               '___sec30'),
+              (' Doc strings serve many purposes ', 2, None, '___sec31')]}
 end of tocinfo -->
 
 <body>
@@ -113,22 +118,38 @@ end of tocinfo -->
 <a name="part0030"></a>
 <!-- !split -->
 
-<h2>Doc strings serve many purposes  <a name="___sec29"></a></h2>
+<h2>Writing your own <code>setup.py</code> script  <a name="___sec29"></a></h2>
 
-<ul>
- <li> documentation in the source code</li>
- <li> online documentation<br />
-   (Sphinx can automatically produce manuals with doc strings)</li>
- <li> balloon help in sophisticated GUIs (e.g., IDLE)</li>
- <li> automatic testing with the <a href="https://docs.python.org/2/library/doctest.html?highlight=doctest#doctest" target="_blank"><tt>doctest</tt></a> module</li>
-</ul>
+Suppose you have a module in <code>mymod.py</code> that you want to distribute to
+others such that they can easily install it by <code>setup.py install</code>.
 
+<p>
 
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">distutils.core</span> <span style="color: #8B008B; font-weight: bold">import</span> setup
+name=<span style="color: #CD5555">&#39;mymod&#39;</span>
+
+setup(name=name,
+      version=<span style="color: #CD5555">&#39;0.1&#39;</span>,
+      py_modules=[name],       <span style="color: #228B22"># modules to be installed</span>
+      scripts=[name + <span style="color: #CD5555">&#39;.py&#39;</span>],  <span style="color: #228B22"># programs to be installed</span>
+      )
+</pre></div>
+<p>
+Now, <code>setup.py</code> will be installed both as a module and as an
+executable script (if it has a test block for sensible code).
+
+<p>
+Can easily be extended to install a package of modules, see
+the <a href="https://docs.python.org/2/distutils/introduction.html" target="_blank">introduction to Distutils</a>
+
+<p>
 <p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>
 <div style="text-align: left;"><a href="._python_summary-solarized.html029.html">&laquo; Previous</a></div>
 </td><td>
+<div style="text-align: right;"><a href="._python_summary-solarized.html031.html">Next &raquo;</a></div>
 </td></tr></table>
 <!-- end bottom navigation -->
 </p>

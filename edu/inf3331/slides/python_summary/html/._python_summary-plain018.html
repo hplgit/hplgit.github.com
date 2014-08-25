@@ -69,55 +69,57 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec1'),
+              (' Video material ', 2, None, '___sec2'),
               (' First Python encounter: a scientific hello world program ',
                2,
                None,
-               '___sec2'),
+               '___sec3'),
               (' Running the script from the command line ',
                2,
                None,
-               '___sec3'),
-              (' Interactive Python & IPython ', 2, None, '___sec4'),
-              (' Dissection of `hw.py` ', 2, None, '___sec5'),
-              (' Python variables ', 2, None, '___sec6'),
-              (' Common types ', 2, None, '___sec7'),
-              (' Simple Assignments ', 2, None, '___sec8'),
-              (' Lists and tuples ', 2, None, '___sec9'),
-              (' List functionality ', 2, None, '___sec10'),
-              (' Dictionary functionality ', 2, None, '___sec11'),
-              (' String operations ', 2, None, '___sec12'),
+               '___sec4'),
+              (' Interactive Python & IPython ', 2, None, '___sec5'),
+              (' Dissection of `hw.py` (1) ', 2, None, '___sec6'),
+              (' Dissection of `hw.py` (2) ', 2, None, '___sec7'),
+              (' Python variables ', 2, None, '___sec8'),
+              (' Common types ', 2, None, '___sec9'),
+              (' Simple Assignments ', 2, None, '___sec10'),
+              (' Lists and tuples ', 2, None, '___sec11'),
+              (' List functionality ', 2, None, '___sec12'),
+              (' Dictionary functionality ', 2, None, '___sec13'),
+              (' String operations ', 2, None, '___sec14'),
               (' Strings in Python use single or double quotes, or triple single/double quotes ',
                2,
                None,
-               '___sec13'),
-              (' Simple control structures ', 2, None, '___sec14'),
+               '___sec15'),
+              (' Simple control structures ', 2, None, '___sec16'),
               (' Looping over integer indices is done with `range` ',
                2,
                None,
-               '___sec15'),
+               '___sec17'),
               (' Examples on loops and branching ',
                2,
                'py:summary:interactive:loops',
                'py:summary:interactive:loops'),
-              (' Functions and arguments ', 2, None, '___sec17'),
+              (' Functions and arguments ', 2, None, '___sec19'),
               (' `eval` and `exec` turn strings into live code ',
                2,
                None,
-               '___sec18'),
-              (' File reading ', 2, None, '___sec19'),
-              (' File writing ', 2, None, '___sec20'),
-              (' Using modules ', 2, None, '___sec21'),
-              (' Making your own Python modules ', 2, None, '___sec22'),
-              (' How Python can find your modules? ', 2, None, '___sec23'),
-              (' Packages ', 2, None, '___sec24'),
-              (' Test block in a module ', 2, None, '___sec25'),
-              (' Installing modules ', 2, None, '___sec26'),
-              (' Writing your own `setup.py` script ', 2, None, '___sec27'),
+               '___sec20'),
+              (' File reading ', 2, None, '___sec21'),
+              (' File writing ', 2, None, '___sec22'),
+              (' Using modules ', 2, None, '___sec23'),
+              (' Making your own Python modules ', 2, None, '___sec24'),
+              (' How Python can find your modules? ', 2, None, '___sec25'),
+              (' Packages ', 2, None, '___sec26'),
+              (' Test block in a module ', 2, None, '___sec27'),
+              (' Installing modules ', 2, None, '___sec28'),
+              (' Writing your own `setup.py` script ', 2, None, '___sec29'),
               (' Use doc strings in functions, classes, and modules! ',
                2,
                None,
-               '___sec28'),
-              (' Doc strings serve many purposes ', 2, None, '___sec29')]}
+               '___sec30'),
+              (' Doc strings serve many purposes ', 2, None, '___sec31')]}
 end of tocinfo -->
 
 <body>
@@ -131,34 +133,27 @@ end of tocinfo -->
 <p>
 <!-- !split -->
 
-<h2>Functions and arguments  <a name="___sec17"></a></h2>
+<h2>Looping over integer indices is done with <code>range</code>  <a name="___sec17"></a></h2>
 
-User-defined functions:
-
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">split</span>(string, char):
-    position <span style="color: #666666">=</span> string<span style="color: #666666">.</span>find(char)
-    <span style="color: #008000; font-weight: bold">if</span>  position <span style="color: #666666">&gt;</span> <span style="color: #666666">0</span>:
-        <span style="color: #008000; font-weight: bold">return</span> string[:position<span style="color: #666666">+1</span>], string[position<span style="color: #666666">+1</span>:]
-    <span style="color: #008000; font-weight: bold">else</span>:
-        <span style="color: #008000; font-weight: bold">return</span> string, <span style="color: #BA2121">&#39;&#39;</span>
-
-<span style="color: #408080; font-style: italic"># function call:</span>
-message <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Heisann&#39;</span>
-<span style="color: #008000; font-weight: bold">print</span>(split(message, <span style="color: #BA2121">&#39;i&#39;</span>))
-<span style="color: #408080; font-style: italic"># prints (&#39;Hei&#39;, &#39;sann&#39;)</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">10</span>):
+    <span style="color: #008000; font-weight: bold">print</span>(i)
 </pre></div>
 <p>
-Positional arguments must appear before keyword arguments:
+</div>
+
 
 <p>
+<div class="alert alert-block alert-notice alert-text-normal"><b>Remark:</b>
+<code>range</code> in Pyton 3.x is equal to <code>xrange</code> in Python
+2.x and generates an <em>iterator</em> over integers, while <code>range</code> in
+Python 2.x returns a list of integers.
+</div>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">split</span>(message, char<span style="color: #666666">=</span><span style="color: #BA2121">&#39;i&#39;</span>):
-    <span style="color: #408080; font-style: italic"># ...</span>
-</pre></div>
+
 <p>
 <p>
 <!-- begin bottom navigation -->

@@ -181,7 +181,7 @@ td.padding {
 <center>[2] <b style="font-weight: bold">Dept. of Informatics, University of Oslo</b></center>
 <center>[3] <b style="font-weight: bold">mCASH (formerly Dept. of Informatics, University of Oslo)</b></center>
 <p>
-<center><h4>Aug 23, 2014</h4></center> <!-- date -->
+<center><h4>Aug 25, 2014</h4></center> <!-- date -->
 <p>
 
 </section>
@@ -218,11 +218,6 @@ td.padding {
   <p><li> <a href="http://www.greenteapress.com/thinkpython/" target="_blank">Think Python</a> (textbook)</li>
   <p><li> <a href="http://www.diveintopython.net/" target="_blank">Dive Into Python</a> (texbook)</li>
   <p><li> <a href="http://www.freenetpages.co.uk/hp/alan.gauld/" target="_blank">Think Like a Computer Scientist</a> (textbook)</li>
-  <p><li> <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-189-a-gentle-introduction-to-programming-using-python-january-iap-2008/" target="_blank">A Gentle Introduction to Programming Using Python</a> (MIT OpenCourseWare)</li>
-  <p><li> <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/" target="_blank">Introduction to Computer Science and Programming</a> (MIT OpenCourseWare m/videoer)</li>
-  <p><li> <a href="http://www.catonmat.net/blog/learning-python-programming-language-through-video-lectures/" target="_blank">Learning Python Programming Language Through Video Lectures</a></li>
-  <p><li> <a href="http://www.learnerstv.com/Free-Computers-Video-lectures-ltv163-Page1.htm" target="_blank">Python Programming Tutorials Video Lecture Course</a> (Learners TV)</li>
-  <p><li> <a href="http://showmedo.com/videotutorials/python" target="_blank">Python Videos, Tutorials and Screencasts</a></li>
   <p><li> <a href="http://www.ifi.uio.no/~inf1100/QuickUnix.html" target="_blank">Unix Need-to-know</a></li>
   <p><li> <a href="http://www.ifi.uio.no/~inf1100/QuickEmacs.html" target="_blank">Emacs Need-to-know</a></li>
 </ul>
@@ -234,7 +229,24 @@ td.padding {
 
 <section class="slide">
 
-<h2>First Python encounter: a scientific hello world program  <a name="___sec2"></a></h2>
+<h2>Video material  <a name="___sec2"></a></h2>
+
+<ul>
+  <p><li> <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-189-a-gentle-introduction-to-programming-using-python-january-iap-2008/" target="_blank">A Gentle Introduction to Programming Using Python</a></li>
+  <p><li> <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/" target="_blank">Introduction to Computer Science and Programming</a></li>
+  <p><li> <a href="http://www.catonmat.net/blog/learning-python-programming-language-through-video-lectures/" target="_blank">Learning Python Programming Language Through Video Lectures</a></li>
+  <p><li> <a href="http://www.learnerstv.com/Free-Computers-Video-lectures-ltv163-Page1.htm" target="_blank">Python Programming Tutorials Video Lecture Course</a></li>
+  <p><li> <a href="http://showmedo.com/videotutorials/python" target="_blank">Python Videos, Tutorials and Screencasts</a></li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section class="slide">
+
+<h2>First Python encounter: a scientific hello world program  <a name="___sec3"></a></h2>
 
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
@@ -253,7 +265,7 @@ x = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452
 
 <section class="slide">
 
-<h2>Running the script from the command line  <a name="___sec3"></a></h2>
+<h2>Running the script from the command line  <a name="___sec4"></a></h2>
 
 Code in file <code>hw.py</code>.
 
@@ -282,7 +294,7 @@ Hello world, sin(0.5) = 0.479426.
 
 <section class="slide">
 
-<h2>Interactive Python &amp; IPython  <a name="___sec4"></a></h2>
+<h2>Interactive Python &amp; IPython  <a name="___sec5"></a></h2>
 
 <ul>
   <p><li> Typing <code>python</code> gives you an interactive Python shell</li>
@@ -299,7 +311,7 @@ Hello world, sin(0.5) = 0.479426.
 
 <section class="slide">
 
-<h2>Dissection of <code>hw.py</code>  <a name="___sec5"></a></h2>
+<h2>Dissection of <code>hw.py</code> (1)  <a name="___sec6"></a></h2>
 
 On Unix: find out what kind of script language (interpreter) to use:
 
@@ -327,6 +339,14 @@ Read 1st command line argument and convert it to a floating point object:
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">x = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])
 </pre></div>
 <p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Dissection of <code>hw.py</code> (2)  <a name="___sec7"></a></h2>
+
 Print out the result using a format string:
 
 <p>
@@ -341,8 +361,8 @@ or with complete control of the formating of floats (printf syntax):
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&quot;Hello world, sin({x:g}) = {s:.3f}&quot;</span>.format(x=x, s=sin(x))  <span style="color: #228B22"># v2.x</span>
-<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&quot;Hello world, sin({x:g}) = {s:.3f}&quot;</span>.format(x=x, s=sin(x))) <span style="color: #228B22"># v3.x</span>
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&quot;Hello world, sin({x:g}) = {s:.3f}&quot;</span>.format(x=x, s=sin(x))
+<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&quot;Hello world, sin({x:g}) = {s:.3f}&quot;</span>.format(x=x, s=sin(x)))
 </pre></div>
 <p>
 
@@ -351,7 +371,7 @@ or with complete control of the formating of floats (printf syntax):
 
 <section class="slide">
 
-<h2>Python variables  <a name="___sec6"></a></h2>
+<h2>Python variables  <a name="___sec8"></a></h2>
 
 Variables are not declared
 
@@ -360,12 +380,12 @@ Variables are not declared
 
 <p>
 
-<!-- code=text (!bc pyod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">a = 3        # ref to an int object containing 3
-a = 3.0      # ref to a float object containing 3.0
-a = &#39;3.&#39;     # ref to a string object containing &#39;3.&#39;
-a = [&#39;1&#39;, 2] # ref to a list object containing
-             # a string &#39;1&#39; and an integer 2
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">a = <span style="color: #B452CD">3</span>        <span style="color: #228B22"># ref to an int object containing 3</span>
+a = <span style="color: #B452CD">3.0</span>      <span style="color: #228B22"># ref to a float object containing 3.0</span>
+a = <span style="color: #CD5555">&#39;3.&#39;</span>     <span style="color: #228B22"># ref to a string object containing &#39;3.&#39;</span>
+a = [<span style="color: #CD5555">&#39;1&#39;</span>, <span style="color: #B452CD">2</span>] <span style="color: #228B22"># ref to a list object containing</span>
+             <span style="color: #228B22"># a string &#39;1&#39; and an integer 2</span>
 </pre></div>
 <p>
 Test for a variable's type:
@@ -383,11 +403,11 @@ Test for a variable's type:
 
 <section class="slide">
 
-<h2>Common types  <a name="___sec7"></a></h2>
+<h2>Common types  <a name="___sec9"></a></h2>
 
 <ul>
   <p><li> Numbers: <code>int</code>, <code>float</code>, <code>complex</code></li>
-  <p><li> Sequences: <code>str</code> (string), <code>list</code>, <code>tuple</code>, <code>ndarray</code> (NumPy array)</li>
+  <p><li> Sequences: <code>str</code>, <code>list</code>, <code>tuple</code>, <code>ndarray</code></li>
   <p><li> Mappings: <code>dict</code> (dictionary/hash)</li>
   <p><li> User-defined type (via user-defined class)</li>
 </ul>
@@ -399,7 +419,7 @@ Test for a variable's type:
 
 <section class="slide">
 
-<h2>Simple Assignments  <a name="___sec8"></a></h2>
+<h2>Simple Assignments  <a name="___sec10"></a></h2>
 
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -422,7 +442,7 @@ is_equal = a == b  <span style="color: #228B22"># is_equal is True if a == b</sp
 
 <section class="slide">
 
-<h2>Lists and tuples  <a name="___sec9"></a></h2>
+<h2>Lists and tuples  <a name="___sec11"></a></h2>
 
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -433,7 +453,8 @@ mylist.append(<span style="color: #CD5555">&#39;a third string&#39;</span>)
 mytuple[<span style="color: #B452CD">1</span>] = -<span style="color: #B452CD">10</span>  <span style="color: #228B22"># illegal: cannot change a tuple</span>
 </pre></div>
 <p>
-A tuple is a constant list (known as an <em>immutable</em> object)
+A tuple is a constant list (known as an <em>immutable</em> object,
+contrary to <em>mutable</em> objects which can change their content)
 
 <p>
 
@@ -442,15 +463,15 @@ A tuple is a constant list (known as an <em>immutable</em> object)
 
 <section class="slide">
 
-<h2>List functionality  <a name="___sec10"></a></h2>
+<h2>List functionality  <a name="___sec12"></a></h2>
 
 <table border="1">
 <thead>
 <tr><th align="center">                       Construction                       </th> <th align="center">                         Meaning                          </th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   <code>a = [] </code>                                          </td> <td align="left">   initialize an empty list                                      </td> </tr>
-<tr><td align="left">   <code>a = [1, 4.4, 'run.py'] </code>                          </td> <td align="left">   initialize a list                                             </td> </tr>
+<tr><td align="left">   <code>a = []</code>                                           </td> <td align="left">   initialize an empty list                                      </td> </tr>
+<tr><td align="left">   <code>a = [1, 4.4, 'run.py']</code>                           </td> <td align="left">   initialize a list                                             </td> </tr>
 <tr><td align="left">   <code>a.append(elem)</code>                                   </td> <td align="left">   add <code>elem</code> object to the end                       </td> </tr>
 <tr><td align="left">   <code>a + [1,3]</code>                                        </td> <td align="left">   add two lists                                                 </td> </tr>
 <tr><td align="left">   <code>a.insert(i, e)</code>                                   </td> <td align="left">   insert element <code>e</code> before index <code>i</code>     </td> </tr>
@@ -480,7 +501,7 @@ A tuple is a constant list (known as an <em>immutable</em> object)
 
 <section class="slide">
 
-<h2>Dictionary functionality  <a name="___sec11"></a></h2>
+<h2>Dictionary functionality  <a name="___sec13"></a></h2>
 
 <table border="1">
 <thead>
@@ -511,7 +532,7 @@ A tuple is a constant list (known as an <em>immutable</em> object)
 
 <section class="slide">
 
-<h2>String operations  <a name="___sec12"></a></h2>
+<h2>String operations  <a name="___sec14"></a></h2>
 
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -536,7 +557,7 @@ s.strip()        <span style="color: #228B22"># remove leading/trailing blanks</
 
 <section class="slide">
 
-<h2>Strings in Python use single or double quotes, or triple single/double quotes  <a name="___sec13"></a></h2>
+<h2>Strings in Python use single or double quotes, or triple single/double quotes  <a name="___sec15"></a></h2>
 
 Single- and double-quoted strings work in the same way: <code>'some string'</code> is equivalent to <code>"some string"</code>
 
@@ -568,7 +589,7 @@ s3 = <span style="color: #CD5555">&#39;\\(\\s+\\.\\d+\\)&#39;</span>
 
 <section class="slide">
 
-<h2>Simple control structures  <a name="___sec14"></a></h2>
+<h2>Simple control structures  <a name="___sec16"></a></h2>
 
 Loops:
 
@@ -607,13 +628,19 @@ Conditionals/branching:
 
 <section class="slide">
 
-<h2>Looping over integer indices is done with <code>range</code>  <a name="___sec15"></a></h2>
+<h2>Looping over integer indices is done with <code>range</code>  <a name="___sec17"></a></h2>
 
+<div class="alert alert-block alert-block alert-text-normal"><b style="font-weight: bold"></b>
+<p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">10</span>):
     <span style="color: #8B008B; font-weight: bold">print</span>(i)
 </pre></div>
+<p>
+</div>
+
+
 <p>
 <div class="alert alert-block alert-notice alert-text-normal"><b style="font-weight: bold">Remark:</b>
 <code>range</code> in Pyton 3.x is equal to <code>xrange</code> in Python
@@ -647,7 +674,7 @@ Python 2.x returns a list of integers.
 
 <section class="slide">
 
-<h2>Functions and arguments  <a name="___sec17"></a></h2>
+<h2>Functions and arguments  <a name="___sec19"></a></h2>
 
 User-defined functions:
 
@@ -682,7 +709,7 @@ Positional arguments must appear before keyword arguments:
 
 <section class="slide">
 
-<h2><code>eval</code> and <code>exec</code> turn strings into live code  <a name="___sec18"></a></h2>
+<h2><code>eval</code> and <code>exec</code> turn strings into live code  <a name="___sec20"></a></h2>
 
 Evaluating string expressions with <code>eval</code>:
 
@@ -724,7 +751,7 @@ f = <span style="color: #658b00">eval</span>(<span style="color: #CD5555">&#39;l
 
 <section class="slide">
 
-<h2>File reading  <a name="___sec19"></a></h2>
+<h2>File reading  <a name="___sec21"></a></h2>
 
 Reading a file:
 
@@ -756,7 +783,7 @@ infile.close()
 
 <section class="slide">
 
-<h2>File writing  <a name="___sec20"></a></h2>
+<h2>File writing  <a name="___sec22"></a></h2>
 
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -777,7 +804,7 @@ outfile.close()
 
 <section class="slide">
 
-<h2>Using modules  <a name="___sec21"></a></h2>
+<h2>Using modules  <a name="___sec23"></a></h2>
 
 Import module:
 
@@ -825,13 +852,13 @@ x = <span style="color: #658b00">float</span>(a[<span style="color: #B452CD">1</
 
 <section class="slide">
 
-<h2>Making your own Python modules  <a name="___sec22"></a></h2>
+<h2>Making your own Python modules  <a name="___sec24"></a></h2>
 
 <ul>
  <p><li> Reuse scripts by wrapping them in classes or functions</li>
  <p><li> Collect classes and functions in library modules</li>
  <p><li> How? just put classes and functions in a file <code>MyMod.py</code></li>
- <p><li> Put <code>MyMod.py</code> in one of the directories where Python can find it<br />
+ <p><li> Put <code>MyMod.py</code> in one of the directories where Python can find it
    (see next slide)</li>
 </ul>
 <p>
@@ -856,7 +883,7 @@ Examples:
 
 <section class="slide">
 
-<h2>How Python can find your modules?  <a name="___sec23"></a></h2>
+<h2>How Python can find your modules?  <a name="___sec25"></a></h2>
 
 Python has some &quot;official&quot; module directories, typically
 
@@ -893,7 +920,7 @@ searches for modules, and
 
 <section class="slide">
 
-<h2>Packages  <a name="___sec24"></a></h2>
+<h2>Packages  <a name="___sec26"></a></h2>
 
 <ul>
  <p><li> A class of modules can be collected in a <em>package</em></li>
@@ -923,7 +950,7 @@ Here, class <code>fdm_grids</code> is in module <code>grids</code> (file <code>g
 
 <section class="slide">
 
-<h2>Test block in a module  <a name="___sec25"></a></h2>
+<h2>Test block in a module  <a name="___sec27"></a></h2>
 
 Module files can have a test/demo section at the end:
 
@@ -947,7 +974,7 @@ Module files can have a test/demo section at the end:
 
 <section class="slide">
 
-<h2>Installing modules  <a name="___sec26"></a></h2>
+<h2>Installing modules  <a name="___sec28"></a></h2>
 
 <ul>
  <p><li> Python has its own tool, Distutils, for distributing and installing modules</li>
@@ -969,7 +996,7 @@ Standard command:
 
 <section class="slide">
 
-<h2>Writing your own <code>setup.py</code> script  <a name="___sec27"></a></h2>
+<h2>Writing your own <code>setup.py</code> script  <a name="___sec29"></a></h2>
 
 Suppose you have a module in <code>mymod.py</code> that you want to distribute to
 others such that they can easily install it by <code>setup.py install</code>.
@@ -983,7 +1010,7 @@ name=<span style="color: #CD5555">&#39;mymod&#39;</span>
 setup(name=name,
       version=<span style="color: #CD5555">&#39;0.1&#39;</span>,
       py_modules=[name],       <span style="color: #228B22"># modules to be installed</span>
-      scripts=[name + <span style="color: #CD5555">&#39;.py&#39;</span>],  <span style="color: #228B22"># executable programs to be installed</span>
+      scripts=[name + <span style="color: #CD5555">&#39;.py&#39;</span>],  <span style="color: #228B22"># programs to be installed</span>
       )
 </pre></div>
 <p>
@@ -1001,7 +1028,7 @@ the <a href="https://docs.python.org/2/distutils/introduction.html" target="_bla
 
 <section class="slide">
 
-<h2>Use doc strings in functions, classes, and modules!  <a name="___sec28"></a></h2>
+<h2>Use doc strings in functions, classes, and modules!  <a name="___sec30"></a></h2>
 
 Doc strings = first string in a function, class, or file (module)
 
@@ -1037,14 +1064,14 @@ in the top of the file
 
 <section class="slide">
 
-<h2>Doc strings serve many purposes  <a name="___sec29"></a></h2>
+<h2>Doc strings serve many purposes  <a name="___sec31"></a></h2>
 
 <ul>
- <p><li> documentation in the source code</li>
- <p><li> online documentation<br />
+ <p><li> Documentation in the source code</li>
+ <p><li> Online documentation<br />
    (Sphinx can automatically produce manuals with doc strings)</li>
- <p><li> balloon help in sophisticated GUIs (e.g., IDLE)</li>
- <p><li> automatic testing with the <a href="https://docs.python.org/2/library/doctest.html?highlight=doctest#doctest" target="_blank"><tt>doctest</tt></a> module</li>
+ <p><li> Balloon help in sophisticated GUIs (e.g., IDLE)</li>
+ <p><li> Automatic testing with the <a href="https://docs.python.org/2/library/doctest.html?highlight=doctest#doctest" target="_blank"><tt>doctest</tt></a> module</li>
 </ul>
 <p>
 

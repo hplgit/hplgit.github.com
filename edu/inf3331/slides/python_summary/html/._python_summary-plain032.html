@@ -125,7 +125,7 @@ end of tocinfo -->
 <body>
 
     
-<a name="part0007"></a>
+<a name="part0032"></a>
 <p>
 
 </p>
@@ -133,40 +133,22 @@ end of tocinfo -->
 <p>
 <!-- !split -->
 
-<h2>Dissection of <code>hw.py</code> (1)  <a name="___sec6"></a></h2>
+<h2>Doc strings serve many purposes  <a name="___sec31"></a></h2>
 
-On Unix: find out what kind of script language (interpreter) to use:
+<ul>
+ <li> Documentation in the source code</li>
+ <li> Online documentation<br />
+   (Sphinx can automatically produce manuals with doc strings)</li>
+ <li> Balloon help in sophisticated GUIs (e.g., IDLE)</li>
+ <li> Automatic testing with the <a href="https://docs.python.org/2/library/doctest.html?highlight=doctest#doctest" target="_blank"><tt>doctest</tt></a> module</li>
+</ul>
 
-<p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#!/usr/bin/env python</span>
-</pre></div>
-<p>
-Access library functionality like the function <code>sin</code> and the list <code>sys.arg</code>
-(of command-line arguments):
-
-<p>
-
-<!-- code=text (!bc pcyod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">from math import sin
-import sys
-</pre></div>
-<p>
-Read 1st command line argument and convert it to a floating point object:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">x <span style="color: #666666">=</span> <span style="color: #008000">float</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>])
-</pre></div>
-<p>
 <p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>
-<div style="text-align: left;"><a href="._python_summary-plain006.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+<div style="text-align: left;"><a href="._python_summary-plain031.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
 </td><td>
-<div style="text-align: right;"><a href="._python_summary-plain008.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
 </td></tr></table>
 <!-- end bottom navigation -->
 </p>

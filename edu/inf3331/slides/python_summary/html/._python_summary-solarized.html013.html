@@ -17,6 +17,9 @@ Automatically generated HTML file from Doconce source
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
 <style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -56,55 +59,57 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec1'),
+              (' Video material ', 2, None, '___sec2'),
               (' First Python encounter: a scientific hello world program ',
                2,
                None,
-               '___sec2'),
+               '___sec3'),
               (' Running the script from the command line ',
                2,
                None,
-               '___sec3'),
-              (' Interactive Python & IPython ', 2, None, '___sec4'),
-              (' Dissection of `hw.py` ', 2, None, '___sec5'),
-              (' Python variables ', 2, None, '___sec6'),
-              (' Common types ', 2, None, '___sec7'),
-              (' Simple Assignments ', 2, None, '___sec8'),
-              (' Lists and tuples ', 2, None, '___sec9'),
-              (' List functionality ', 2, None, '___sec10'),
-              (' Dictionary functionality ', 2, None, '___sec11'),
-              (' String operations ', 2, None, '___sec12'),
+               '___sec4'),
+              (' Interactive Python & IPython ', 2, None, '___sec5'),
+              (' Dissection of `hw.py` (1) ', 2, None, '___sec6'),
+              (' Dissection of `hw.py` (2) ', 2, None, '___sec7'),
+              (' Python variables ', 2, None, '___sec8'),
+              (' Common types ', 2, None, '___sec9'),
+              (' Simple Assignments ', 2, None, '___sec10'),
+              (' Lists and tuples ', 2, None, '___sec11'),
+              (' List functionality ', 2, None, '___sec12'),
+              (' Dictionary functionality ', 2, None, '___sec13'),
+              (' String operations ', 2, None, '___sec14'),
               (' Strings in Python use single or double quotes, or triple single/double quotes ',
                2,
                None,
-               '___sec13'),
-              (' Simple control structures ', 2, None, '___sec14'),
+               '___sec15'),
+              (' Simple control structures ', 2, None, '___sec16'),
               (' Looping over integer indices is done with `range` ',
                2,
                None,
-               '___sec15'),
+               '___sec17'),
               (' Examples on loops and branching ',
                2,
                'py:summary:interactive:loops',
                'py:summary:interactive:loops'),
-              (' Functions and arguments ', 2, None, '___sec17'),
+              (' Functions and arguments ', 2, None, '___sec19'),
               (' `eval` and `exec` turn strings into live code ',
                2,
                None,
-               '___sec18'),
-              (' File reading ', 2, None, '___sec19'),
-              (' File writing ', 2, None, '___sec20'),
-              (' Using modules ', 2, None, '___sec21'),
-              (' Making your own Python modules ', 2, None, '___sec22'),
-              (' How Python can find your modules? ', 2, None, '___sec23'),
-              (' Packages ', 2, None, '___sec24'),
-              (' Test block in a module ', 2, None, '___sec25'),
-              (' Installing modules ', 2, None, '___sec26'),
-              (' Writing your own `setup.py` script ', 2, None, '___sec27'),
+               '___sec20'),
+              (' File reading ', 2, None, '___sec21'),
+              (' File writing ', 2, None, '___sec22'),
+              (' Using modules ', 2, None, '___sec23'),
+              (' Making your own Python modules ', 2, None, '___sec24'),
+              (' How Python can find your modules? ', 2, None, '___sec25'),
+              (' Packages ', 2, None, '___sec26'),
+              (' Test block in a module ', 2, None, '___sec27'),
+              (' Installing modules ', 2, None, '___sec28'),
+              (' Writing your own `setup.py` script ', 2, None, '___sec29'),
               (' Use doc strings in functions, classes, and modules! ',
                2,
                None,
-               '___sec28'),
-              (' Doc strings serve many purposes ', 2, None, '___sec29')]}
+               '___sec30'),
+              (' Doc strings serve many purposes ', 2, None, '___sec31')]}
 end of tocinfo -->
 
 <body>
@@ -113,24 +118,37 @@ end of tocinfo -->
 <a name="part0013"></a>
 <!-- !split -->
 
-<h2>String operations  <a name="___sec12"></a></h2>
+<h2>List functionality  <a name="___sec12"></a></h2>
 
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">s = <span style="color: #CD5555">&#39;Berlin: 18.4 C at 4 pm&#39;</span>
-s[<span style="color: #B452CD">8</span>:<span style="color: #B452CD">17</span>]          <span style="color: #228B22"># extract substring</span>
-<span style="color: #CD5555">&#39;:&#39;</span> <span style="color: #8B008B">in</span> s         <span style="color: #228B22"># is &#39;:&#39; contained in s?</span>
-s.find(<span style="color: #CD5555">&#39;:&#39;</span>)      <span style="color: #228B22"># index where first &#39;:&#39; is found</span>
-s.split(<span style="color: #CD5555">&#39;:&#39;</span>)     <span style="color: #228B22"># split into substrings</span>
-s.split()        <span style="color: #228B22"># split wrt whitespace</span>
-<span style="color: #CD5555">&#39;Berlin&#39;</span> <span style="color: #8B008B">in</span> s    <span style="color: #228B22"># test if substring is in s</span>
-s.replace(<span style="color: #CD5555">&#39;18.4&#39;</span>, <span style="color: #CD5555">&#39;20&#39;</span>)
-s.lower()        <span style="color: #228B22"># lower case letters only</span>
-s.upper()        <span style="color: #228B22"># upper case letters only</span>
-s.split()[<span style="color: #B452CD">4</span>].isdigit()
-s.strip()        <span style="color: #228B22"># remove leading/trailing blanks</span>
-<span style="color: #CD5555">&#39;, &#39;</span>.join(list_of_words)
-</pre></div>
+<table border="1">
+<thead>
+<tr><th align="center">                       Construction                       </th> <th align="center">                         Meaning                          </th> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   <code>a = []</code>                                           </td> <td align="left">   initialize an empty list                                      </td> </tr>
+<tr><td align="left">   <code>a = [1, 4.4, 'run.py']</code>                           </td> <td align="left">   initialize a list                                             </td> </tr>
+<tr><td align="left">   <code>a.append(elem)</code>                                   </td> <td align="left">   add <code>elem</code> object to the end                       </td> </tr>
+<tr><td align="left">   <code>a + [1,3]</code>                                        </td> <td align="left">   add two lists                                                 </td> </tr>
+<tr><td align="left">   <code>a.insert(i, e)</code>                                   </td> <td align="left">   insert element <code>e</code> before index <code>i</code>     </td> </tr>
+<tr><td align="left">   <code>a[3]</code>                                             </td> <td align="left">   index a list element                                          </td> </tr>
+<tr><td align="left">   <code>a[-1]</code>                                            </td> <td align="left">   get last list element                                         </td> </tr>
+<tr><td align="left">   <code>a[1:3]</code>                                           </td> <td align="left">   slice: copy data to sublist (here: index 1, 2)                </td> </tr>
+<tr><td align="left">   <code>del a[3]</code>                                         </td> <td align="left">   delete an element (index <code>3</code>)                      </td> </tr>
+<tr><td align="left">   <code>a.remove(e)</code>                                      </td> <td align="left">   remove an element with value <code>e</code>                   </td> </tr>
+<tr><td align="left">   <code>a.index('run.py')</code>                                </td> <td align="left">   find index corresponding to an element's value                </td> </tr>
+<tr><td align="left">   <code>'run.py' in a</code>                                    </td> <td align="left">   test if a value is contained in the list                      </td> </tr>
+<tr><td align="left">   <code>a.count(v)</code>                                       </td> <td align="left">   count how many elements that have the value <code>v</code>    </td> </tr>
+<tr><td align="left">   <code>len(a)</code>                                           </td> <td align="left">   number of elements in list <code>a</code>                     </td> </tr>
+<tr><td align="left">   <code>min(a)</code>                                           </td> <td align="left">   the smallest element in <code>a</code>                        </td> </tr>
+<tr><td align="left">   <code>max(a)</code>                                           </td> <td align="left">   the largest element in <code>a</code>                         </td> </tr>
+<tr><td align="left">   <code>sum(a)</code>                                           </td> <td align="left">   add all elements in <code>a</code>                            </td> </tr>
+<tr><td align="left">   <code>sorted(a)</code>                                        </td> <td align="left">   return sorted version of list <code>a</code>                  </td> </tr>
+<tr><td align="left">   <code>reversed(a)</code>                                      </td> <td align="left">   return reversed sorted version of list <code>a</code>         </td> </tr>
+<tr><td align="left">   <code>b[3][0][2]</code>                                       </td> <td align="left">   nested list indexing                                          </td> </tr>
+<tr><td align="left">   <code>isinstance(a, list)</code>                              </td> <td align="left">   is <code>True</code> if <code>a</code> is a list              </td> </tr>
+<tr><td align="left">   <code>type(a) is list</code>                                  </td> <td align="left">   is <code>True</code> if <code>a</code> is a list              </td> </tr>
+</tbody>
+</table>
 <p>
 <p>
 <!-- begin bottom navigation -->

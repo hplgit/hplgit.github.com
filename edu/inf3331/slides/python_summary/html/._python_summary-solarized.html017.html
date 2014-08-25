@@ -17,6 +17,9 @@ Automatically generated HTML file from Doconce source
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
 <style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -56,55 +59,57 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec1'),
+              (' Video material ', 2, None, '___sec2'),
               (' First Python encounter: a scientific hello world program ',
                2,
                None,
-               '___sec2'),
+               '___sec3'),
               (' Running the script from the command line ',
                2,
                None,
-               '___sec3'),
-              (' Interactive Python & IPython ', 2, None, '___sec4'),
-              (' Dissection of `hw.py` ', 2, None, '___sec5'),
-              (' Python variables ', 2, None, '___sec6'),
-              (' Common types ', 2, None, '___sec7'),
-              (' Simple Assignments ', 2, None, '___sec8'),
-              (' Lists and tuples ', 2, None, '___sec9'),
-              (' List functionality ', 2, None, '___sec10'),
-              (' Dictionary functionality ', 2, None, '___sec11'),
-              (' String operations ', 2, None, '___sec12'),
+               '___sec4'),
+              (' Interactive Python & IPython ', 2, None, '___sec5'),
+              (' Dissection of `hw.py` (1) ', 2, None, '___sec6'),
+              (' Dissection of `hw.py` (2) ', 2, None, '___sec7'),
+              (' Python variables ', 2, None, '___sec8'),
+              (' Common types ', 2, None, '___sec9'),
+              (' Simple Assignments ', 2, None, '___sec10'),
+              (' Lists and tuples ', 2, None, '___sec11'),
+              (' List functionality ', 2, None, '___sec12'),
+              (' Dictionary functionality ', 2, None, '___sec13'),
+              (' String operations ', 2, None, '___sec14'),
               (' Strings in Python use single or double quotes, or triple single/double quotes ',
                2,
                None,
-               '___sec13'),
-              (' Simple control structures ', 2, None, '___sec14'),
+               '___sec15'),
+              (' Simple control structures ', 2, None, '___sec16'),
               (' Looping over integer indices is done with `range` ',
                2,
                None,
-               '___sec15'),
+               '___sec17'),
               (' Examples on loops and branching ',
                2,
                'py:summary:interactive:loops',
                'py:summary:interactive:loops'),
-              (' Functions and arguments ', 2, None, '___sec17'),
+              (' Functions and arguments ', 2, None, '___sec19'),
               (' `eval` and `exec` turn strings into live code ',
                2,
                None,
-               '___sec18'),
-              (' File reading ', 2, None, '___sec19'),
-              (' File writing ', 2, None, '___sec20'),
-              (' Using modules ', 2, None, '___sec21'),
-              (' Making your own Python modules ', 2, None, '___sec22'),
-              (' How Python can find your modules? ', 2, None, '___sec23'),
-              (' Packages ', 2, None, '___sec24'),
-              (' Test block in a module ', 2, None, '___sec25'),
-              (' Installing modules ', 2, None, '___sec26'),
-              (' Writing your own `setup.py` script ', 2, None, '___sec27'),
+               '___sec20'),
+              (' File reading ', 2, None, '___sec21'),
+              (' File writing ', 2, None, '___sec22'),
+              (' Using modules ', 2, None, '___sec23'),
+              (' Making your own Python modules ', 2, None, '___sec24'),
+              (' How Python can find your modules? ', 2, None, '___sec25'),
+              (' Packages ', 2, None, '___sec26'),
+              (' Test block in a module ', 2, None, '___sec27'),
+              (' Installing modules ', 2, None, '___sec28'),
+              (' Writing your own `setup.py` script ', 2, None, '___sec29'),
               (' Use doc strings in functions, classes, and modules! ',
                2,
                None,
-               '___sec28'),
-              (' Doc strings serve many purposes ', 2, None, '___sec29')]}
+               '___sec30'),
+              (' Doc strings serve many purposes ', 2, None, '___sec31')]}
 end of tocinfo -->
 
 <body>
@@ -113,17 +118,38 @@ end of tocinfo -->
 <a name="part0017"></a>
 <!-- !split -->
 
-<h2>Examples on loops and branching <a name="py:summary:interactive:loops"></a></h2>
+<h2>Simple control structures  <a name="___sec16"></a></h2>
 
+Loops:
 
-<iframe width="950" height="500" frameborder="0"
-        src="http://pythontutor.com/iframe-embed.html#code=x+%3D+0%0Adx+%3D+1.0%0Awhile+x+%3C+6%3A%0A++++if+x+%3C+2%3A%0A++++++++x+%2B%3D+dx%0A++++elif+2+%3C%3D+x+%3C+4%3A%0A++++++++x+%2B%3D+2%2Adx%0A++++else%3A%0A++++++++x+%2B%3D+3%2Adx%0A++++print+%27new+x%3A%27%2C+x%0Aprint+%27loop+is+over%27&curInstr=0&py=2&cumulative=false">
-</iframe>
 <p>
 
-<iframe width="950" height="500" frameborder="0"
-        src="http://pythontutor.com/iframe-embed.html#code=mylist+%3D+%5B0%2C+0.5%2C+1%2C+2%2C+4%2C+10%5D%0Afor+i%2C+x+in+enumerate%28mylist%29%3A%0A++++print+i%2C+x%0Aprint+%27loop+is+over%27&curInstr=0&py=2&cumulative=false">
-</iframe>
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">while</span> condition:
+    &lt;block of statements&gt;
+</pre></div>
+<p>
+Here, <code>condition</code> must be a boolean expression (or have a boolean interpretation), for example: <code>i < 10</code> or <code>!found</code>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">for</span> element <span style="color: #8B008B">in</span> somelist:
+    &lt;block of statements&gt;
+</pre></div>
+<p>
+Conditionals/branching:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">if</span> condition:
+    &lt;block of statements&gt;
+<span style="color: #8B008B; font-weight: bold">elif</span> condition:
+    &lt;block of statements&gt;
+<span style="color: #8B008B; font-weight: bold">else</span>:
+    &lt;block of statements&gt;
+</pre></div>
 <p>
 <p>
 <!-- begin bottom navigation -->

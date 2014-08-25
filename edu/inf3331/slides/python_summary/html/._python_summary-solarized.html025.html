@@ -17,6 +17,9 @@ Automatically generated HTML file from Doconce source
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
 <style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -56,55 +59,57 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec1'),
+              (' Video material ', 2, None, '___sec2'),
               (' First Python encounter: a scientific hello world program ',
                2,
                None,
-               '___sec2'),
+               '___sec3'),
               (' Running the script from the command line ',
                2,
                None,
-               '___sec3'),
-              (' Interactive Python & IPython ', 2, None, '___sec4'),
-              (' Dissection of `hw.py` ', 2, None, '___sec5'),
-              (' Python variables ', 2, None, '___sec6'),
-              (' Common types ', 2, None, '___sec7'),
-              (' Simple Assignments ', 2, None, '___sec8'),
-              (' Lists and tuples ', 2, None, '___sec9'),
-              (' List functionality ', 2, None, '___sec10'),
-              (' Dictionary functionality ', 2, None, '___sec11'),
-              (' String operations ', 2, None, '___sec12'),
+               '___sec4'),
+              (' Interactive Python & IPython ', 2, None, '___sec5'),
+              (' Dissection of `hw.py` (1) ', 2, None, '___sec6'),
+              (' Dissection of `hw.py` (2) ', 2, None, '___sec7'),
+              (' Python variables ', 2, None, '___sec8'),
+              (' Common types ', 2, None, '___sec9'),
+              (' Simple Assignments ', 2, None, '___sec10'),
+              (' Lists and tuples ', 2, None, '___sec11'),
+              (' List functionality ', 2, None, '___sec12'),
+              (' Dictionary functionality ', 2, None, '___sec13'),
+              (' String operations ', 2, None, '___sec14'),
               (' Strings in Python use single or double quotes, or triple single/double quotes ',
                2,
                None,
-               '___sec13'),
-              (' Simple control structures ', 2, None, '___sec14'),
+               '___sec15'),
+              (' Simple control structures ', 2, None, '___sec16'),
               (' Looping over integer indices is done with `range` ',
                2,
                None,
-               '___sec15'),
+               '___sec17'),
               (' Examples on loops and branching ',
                2,
                'py:summary:interactive:loops',
                'py:summary:interactive:loops'),
-              (' Functions and arguments ', 2, None, '___sec17'),
+              (' Functions and arguments ', 2, None, '___sec19'),
               (' `eval` and `exec` turn strings into live code ',
                2,
                None,
-               '___sec18'),
-              (' File reading ', 2, None, '___sec19'),
-              (' File writing ', 2, None, '___sec20'),
-              (' Using modules ', 2, None, '___sec21'),
-              (' Making your own Python modules ', 2, None, '___sec22'),
-              (' How Python can find your modules? ', 2, None, '___sec23'),
-              (' Packages ', 2, None, '___sec24'),
-              (' Test block in a module ', 2, None, '___sec25'),
-              (' Installing modules ', 2, None, '___sec26'),
-              (' Writing your own `setup.py` script ', 2, None, '___sec27'),
+               '___sec20'),
+              (' File reading ', 2, None, '___sec21'),
+              (' File writing ', 2, None, '___sec22'),
+              (' Using modules ', 2, None, '___sec23'),
+              (' Making your own Python modules ', 2, None, '___sec24'),
+              (' How Python can find your modules? ', 2, None, '___sec25'),
+              (' Packages ', 2, None, '___sec26'),
+              (' Test block in a module ', 2, None, '___sec27'),
+              (' Installing modules ', 2, None, '___sec28'),
+              (' Writing your own `setup.py` script ', 2, None, '___sec29'),
               (' Use doc strings in functions, classes, and modules! ',
                2,
                None,
-               '___sec28'),
-              (' Doc strings serve many purposes ', 2, None, '___sec29')]}
+               '___sec30'),
+              (' Doc strings serve many purposes ', 2, None, '___sec31')]}
 end of tocinfo -->
 
 <body>
@@ -113,28 +118,29 @@ end of tocinfo -->
 <a name="part0025"></a>
 <!-- !split -->
 
-<h2>Packages  <a name="___sec24"></a></h2>
+<h2>Making your own Python modules  <a name="___sec24"></a></h2>
 
 <ul>
- <li> A class of modules can be collected in a <em>package</em></li>
- <li> Normally, a package is organized as module files in a directory tree</li>
- <li> Each subdirectory has a file <code>__init__</code> (can be empty)</li>
+ <li> Reuse scripts by wrapping them in classes or functions</li>
+ <li> Collect classes and functions in library modules</li>
+ <li> How? just put classes and functions in a file <code>MyMod.py</code></li>
+ <li> Put <code>MyMod.py</code> in one of the directories where Python can find it
+   (see next slide)</li>
 </ul>
 
-Can import modules in the tree like this:
+Examples:
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">MyMod.numerics.pde.grids</span> <span style="color: #8B008B; font-weight: bold">import</span> fdm_grids
-
-grid = fdm_grids()
-grid.domain(xmin=<span style="color: #B452CD">0</span>, xmax=<span style="color: #B452CD">1</span>, ymin=<span style="color: #B452CD">0</span>, ymax=<span style="color: #B452CD">1</span>)
-...
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">MyMod</span>
+<span style="color: #228B22"># or</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">MyMod</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">M</span>   <span style="color: #228B22"># M is a short form</span>
+<span style="color: #228B22"># or</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">MyMod</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+<span style="color: #228B22"># or</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">MyMod</span> <span style="color: #8B008B; font-weight: bold">import</span> myspecialfunction, myotherspecialfunction
 </pre></div>
-<p>
-Here, class <code>fdm_grids</code> is in module <code>grids</code> (file <code>grids.py</code> in the directory <code>MyMod/numerics/pde</code>
-
 <p>
 <p>
 <!-- begin bottom navigation -->
