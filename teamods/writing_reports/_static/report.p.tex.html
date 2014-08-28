@@ -117,8 +117,6 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 
 <span class="k">\listfiles</span>               <span class="c">% print all files needed to compile this document</span>
 
-<span class="k">\usepackage</span><span class="na">[a4paper]</span><span class="nb">{</span>geometry<span class="nb">}</span>
-
 <span class="k">\usepackage</span><span class="nb">{</span>relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts<span class="nb">}</span>
 <span class="k">\usepackage</span><span class="na">[table]</span><span class="nb">{</span>xcolor<span class="nb">}</span>
 <span class="k">\usepackage</span><span class="nb">{</span>bm,microtype<span class="nb">}</span>
@@ -144,8 +142,8 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 <span class="k">\definecolor</span><span class="nb">{</span>linkcolor<span class="nb">}{</span>rgb<span class="nb">}{</span>0,0,0.4<span class="nb">}</span>
 <span class="k">\usepackage</span>[<span class="c">%</span>
     colorlinks=true,
-    linkcolor=linkcolor,
-    urlcolor=linkcolor,
+    linkcolor=seccolor,
+    urlcolor=seccolor,
     citecolor=black,
     filecolor=black,
     <span class="c">%filecolor=blue,</span>
@@ -171,148 +169,120 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 <span class="c">% 3. enable begin{figure}[H] (often leads to ugly pagebreaks)</span>
 <span class="c">%\usepackage{float}\restylefloat{figure}</span>
 
-<span class="k">\usepackage</span><span class="na">[framemethod=TikZ]</span><span class="nb">{</span>mdframed<span class="nb">}</span>
+<span class="c">% --- fancyhdr package for fancy headers ---</span>
+<span class="k">\usepackage</span><span class="nb">{</span>fancyhdr<span class="nb">}</span>
+<span class="k">\fancyhf</span><span class="nb">{}</span>
+<span class="c">% section name to the left (L) and page number to the right (R)</span>
+<span class="c">% on even (E) pages, the other way around on odd pages</span>
+<span class="k">\fancyhead</span><span class="na">[LE,RO]</span><span class="nb">{</span><span class="k">\rightmark</span><span class="nb">}</span> <span class="c">%section</span>
+<span class="k">\fancyhead</span><span class="na">[RE,LO]</span><span class="nb">{</span><span class="k">\thepage</span><span class="nb">}</span>
+<span class="k">\pagestyle</span><span class="nb">{</span>fancy<span class="nb">}</span>
+
+
+<span class="k">\usepackage</span><span class="nb">{</span>framed,wrapfig<span class="nb">}</span>
 
 <span class="c">% --- begin definitions of admonition environments ---</span>
 
-<span class="c">% Admonition style &quot;mdfbox&quot; is an oval colored box based on mdframed</span>
-<span class="c">% &quot;notice&quot; admon</span>
-<span class="k">\colorlet</span><span class="nb">{</span>mdfbox<span class="nb">_</span>notice<span class="nb">_</span>background<span class="nb">}{</span>gray!5<span class="nb">}</span>
-<span class="k">\newmdenv</span>[
-  skipabove=15pt,
-  skipbelow=15pt,
-  outerlinewidth=0,
-  backgroundcolor=mdfbox<span class="nb">_</span>notice<span class="nb">_</span>background,
-  linecolor=black,
-  linewidth=2pt,       <span class="c">% frame thickness</span>
-  frametitlebackgroundcolor=mdfbox<span class="nb">_</span>notice<span class="nb">_</span>background,
-  frametitlerule=true,
-  frametitlefont=<span class="k">\normalfont\bfseries</span>,
-  shadow=false,        <span class="c">% frame shadow?</span>
-  shadowsize=11pt,
-  leftmargin=0,
-  rightmargin=0,
-  roundcorner=5,
-  needspace=0pt,
-]<span class="nb">{</span>notice<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
+<span class="c">% Admonition style &quot;yellowicon&quot; has colored background, yellow icons, and no farme</span>
+<span class="c">% Admon &quot;notice&quot;</span>
+<span class="k">\colorlet</span><span class="nb">{</span>yellowicon<span class="nb">_</span>notice<span class="nb">_</span>background<span class="nb">}{</span>yellow!5<span class="nb">}</span>
+<span class="c">% \fboxsep sets the space between the text and the box</span>
+<span class="k">\newenvironment</span><span class="nb">{</span>noticeshaded<span class="nb">}</span>
+<span class="nb">{</span><span class="k">\def\FrameCommand</span><span class="nb">{</span><span class="k">\fboxsep</span>=3mm<span class="k">\colorbox</span><span class="nb">{</span>yellowicon<span class="nb">_</span>notice<span class="nb">_</span>background<span class="nb">}}</span>
+ <span class="k">\MakeFramed</span> <span class="nb">{</span><span class="k">\advance\hsize</span>-<span class="k">\width</span> <span class="k">\FrameRestore</span><span class="nb">}}{</span><span class="k">\endMakeFramed</span><span class="nb">}</span>
 
-<span class="k">\newenvironment</span><span class="nb">{</span>notice<span class="nb">_</span>mdfboxadmon<span class="nb">}</span>[1][]<span class="nb">{</span>
-<span class="k">\begin</span><span class="nb">{</span>notice<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>[frametitle=#1]
+<span class="k">\newenvironment</span><span class="nb">{</span>notice<span class="nb">_</span>yellowiconadmon<span class="nb">}</span>[1][Notice]<span class="nb">{</span>
+<span class="k">\begin</span><span class="nb">{</span>noticeshaded<span class="nb">}</span>
+<span class="k">\noindent</span>
+<span class="k">\begin</span><span class="nb">{</span>wrapfigure<span class="nb">}{</span>l<span class="nb">}{</span>0.07<span class="k">\textwidth</span><span class="nb">}</span>
+<span class="k">\vspace</span><span class="nb">{</span>-13pt<span class="nb">}</span>
+<span class="k">\includegraphics</span><span class="na">[width=0.07\textwidth]</span><span class="nb">{</span>latex<span class="nb">_</span>figs/small<span class="nb">_</span>yellow<span class="nb">_</span>notice<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>wrapfigure<span class="nb">}</span> <span class="k">\textbf</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\par</span>
+<span class="k">\nobreak\noindent\ignorespaces</span>
 <span class="nb">}</span>
 <span class="nb">{</span>
-<span class="k">\end</span><span class="nb">{</span>notice<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>noticeshaded<span class="nb">}</span>
 <span class="nb">}</span>
 
-<span class="c">% Admonition style &quot;mdfbox&quot; is an oval colored box based on mdframed</span>
-<span class="c">% &quot;summary&quot; admon</span>
-<span class="k">\colorlet</span><span class="nb">{</span>mdfbox<span class="nb">_</span>summary<span class="nb">_</span>background<span class="nb">}{</span>gray!5<span class="nb">}</span>
-<span class="k">\newmdenv</span>[
-  skipabove=15pt,
-  skipbelow=15pt,
-  outerlinewidth=0,
-  backgroundcolor=mdfbox<span class="nb">_</span>summary<span class="nb">_</span>background,
-  linecolor=black,
-  linewidth=2pt,       <span class="c">% frame thickness</span>
-  frametitlebackgroundcolor=mdfbox<span class="nb">_</span>summary<span class="nb">_</span>background,
-  frametitlerule=true,
-  frametitlefont=<span class="k">\normalfont\bfseries</span>,
-  shadow=false,        <span class="c">% frame shadow?</span>
-  shadowsize=11pt,
-  leftmargin=0,
-  rightmargin=0,
-  roundcorner=5,
-  needspace=0pt,
-]<span class="nb">{</span>summary<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
+<span class="c">% Admonition style &quot;yellowicon&quot; has colored background, yellow icons, and no farme</span>
+<span class="c">% Admon &quot;summary&quot;</span>
+<span class="k">\colorlet</span><span class="nb">{</span>yellowicon<span class="nb">_</span>summary<span class="nb">_</span>background<span class="nb">}{</span>yellow!5<span class="nb">}</span>
+<span class="c">% \fboxsep sets the space between the text and the box</span>
+<span class="k">\newenvironment</span><span class="nb">{</span>summaryshaded<span class="nb">}</span>
+<span class="nb">{</span><span class="k">\def\FrameCommand</span><span class="nb">{</span><span class="k">\fboxsep</span>=3mm<span class="k">\colorbox</span><span class="nb">{</span>yellowicon<span class="nb">_</span>summary<span class="nb">_</span>background<span class="nb">}}</span>
+ <span class="k">\MakeFramed</span> <span class="nb">{</span><span class="k">\advance\hsize</span>-<span class="k">\width</span> <span class="k">\FrameRestore</span><span class="nb">}}{</span><span class="k">\endMakeFramed</span><span class="nb">}</span>
 
-<span class="k">\newenvironment</span><span class="nb">{</span>summary<span class="nb">_</span>mdfboxadmon<span class="nb">}</span>[1][]<span class="nb">{</span>
-<span class="k">\begin</span><span class="nb">{</span>summary<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>[frametitle=#1]
+<span class="k">\newenvironment</span><span class="nb">{</span>summary<span class="nb">_</span>yellowiconadmon<span class="nb">}</span>[1][Summary]<span class="nb">{</span>
+<span class="k">\begin</span><span class="nb">{</span>summaryshaded<span class="nb">}</span>
+<span class="k">\noindent</span>
+<span class="k">\begin</span><span class="nb">{</span>wrapfigure<span class="nb">}{</span>l<span class="nb">}{</span>0.07<span class="k">\textwidth</span><span class="nb">}</span>
+<span class="k">\vspace</span><span class="nb">{</span>-13pt<span class="nb">}</span>
+<span class="k">\includegraphics</span><span class="na">[width=0.07\textwidth]</span><span class="nb">{</span>latex<span class="nb">_</span>figs/small<span class="nb">_</span>yellow<span class="nb">_</span>summary<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>wrapfigure<span class="nb">}</span> <span class="k">\textbf</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\par</span>
+<span class="k">\nobreak\noindent\ignorespaces</span>
 <span class="nb">}</span>
 <span class="nb">{</span>
-<span class="k">\end</span><span class="nb">{</span>summary<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>summaryshaded<span class="nb">}</span>
 <span class="nb">}</span>
 
-<span class="c">% Admonition style &quot;mdfbox&quot; is an oval colored box based on mdframed</span>
-<span class="c">% &quot;warning&quot; admon</span>
-<span class="k">\colorlet</span><span class="nb">{</span>mdfbox<span class="nb">_</span>warning<span class="nb">_</span>background<span class="nb">}{</span>gray!5<span class="nb">}</span>
-<span class="k">\newmdenv</span>[
-  skipabove=15pt,
-  skipbelow=15pt,
-  outerlinewidth=0,
-  backgroundcolor=mdfbox<span class="nb">_</span>warning<span class="nb">_</span>background,
-  linecolor=black,
-  linewidth=2pt,       <span class="c">% frame thickness</span>
-  frametitlebackgroundcolor=mdfbox<span class="nb">_</span>warning<span class="nb">_</span>background,
-  frametitlerule=true,
-  frametitlefont=<span class="k">\normalfont\bfseries</span>,
-  shadow=false,        <span class="c">% frame shadow?</span>
-  shadowsize=11pt,
-  leftmargin=0,
-  rightmargin=0,
-  roundcorner=5,
-  needspace=0pt,
-]<span class="nb">{</span>warning<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
+<span class="c">% Admonition style &quot;yellowicon&quot; has colored background, yellow icons, and no farme</span>
+<span class="c">% Admon &quot;warning&quot;</span>
+<span class="k">\colorlet</span><span class="nb">{</span>yellowicon<span class="nb">_</span>warning<span class="nb">_</span>background<span class="nb">}{</span>yellow!5<span class="nb">}</span>
+<span class="c">% \fboxsep sets the space between the text and the box</span>
+<span class="k">\newenvironment</span><span class="nb">{</span>warningshaded<span class="nb">}</span>
+<span class="nb">{</span><span class="k">\def\FrameCommand</span><span class="nb">{</span><span class="k">\fboxsep</span>=3mm<span class="k">\colorbox</span><span class="nb">{</span>yellowicon<span class="nb">_</span>warning<span class="nb">_</span>background<span class="nb">}}</span>
+ <span class="k">\MakeFramed</span> <span class="nb">{</span><span class="k">\advance\hsize</span>-<span class="k">\width</span> <span class="k">\FrameRestore</span><span class="nb">}}{</span><span class="k">\endMakeFramed</span><span class="nb">}</span>
 
-<span class="k">\newenvironment</span><span class="nb">{</span>warning<span class="nb">_</span>mdfboxadmon<span class="nb">}</span>[1][]<span class="nb">{</span>
-<span class="k">\begin</span><span class="nb">{</span>warning<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>[frametitle=#1]
+<span class="k">\newenvironment</span><span class="nb">{</span>warning<span class="nb">_</span>yellowiconadmon<span class="nb">}</span>[1][Warning]<span class="nb">{</span>
+<span class="k">\begin</span><span class="nb">{</span>warningshaded<span class="nb">}</span>
+<span class="k">\noindent</span>
+<span class="k">\begin</span><span class="nb">{</span>wrapfigure<span class="nb">}{</span>l<span class="nb">}{</span>0.07<span class="k">\textwidth</span><span class="nb">}</span>
+<span class="k">\vspace</span><span class="nb">{</span>-13pt<span class="nb">}</span>
+<span class="k">\includegraphics</span><span class="na">[width=0.07\textwidth]</span><span class="nb">{</span>latex<span class="nb">_</span>figs/small<span class="nb">_</span>yellow<span class="nb">_</span>warning<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>wrapfigure<span class="nb">}</span> <span class="k">\textbf</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\par</span>
+<span class="k">\nobreak\noindent\ignorespaces</span>
 <span class="nb">}</span>
 <span class="nb">{</span>
-<span class="k">\end</span><span class="nb">{</span>warning<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>warningshaded<span class="nb">}</span>
 <span class="nb">}</span>
 
-<span class="c">% Admonition style &quot;mdfbox&quot; is an oval colored box based on mdframed</span>
-<span class="c">% &quot;question&quot; admon</span>
-<span class="k">\colorlet</span><span class="nb">{</span>mdfbox<span class="nb">_</span>question<span class="nb">_</span>background<span class="nb">}{</span>gray!5<span class="nb">}</span>
-<span class="k">\newmdenv</span>[
-  skipabove=15pt,
-  skipbelow=15pt,
-  outerlinewidth=0,
-  backgroundcolor=mdfbox<span class="nb">_</span>question<span class="nb">_</span>background,
-  linecolor=black,
-  linewidth=2pt,       <span class="c">% frame thickness</span>
-  frametitlebackgroundcolor=mdfbox<span class="nb">_</span>question<span class="nb">_</span>background,
-  frametitlerule=true,
-  frametitlefont=<span class="k">\normalfont\bfseries</span>,
-  shadow=false,        <span class="c">% frame shadow?</span>
-  shadowsize=11pt,
-  leftmargin=0,
-  rightmargin=0,
-  roundcorner=5,
-  needspace=0pt,
-]<span class="nb">{</span>question<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
+<span class="c">% Admonition style &quot;yellowicon&quot; has colored background, yellow icons, and no farme</span>
+<span class="c">% Admon &quot;question&quot;</span>
+<span class="k">\colorlet</span><span class="nb">{</span>yellowicon<span class="nb">_</span>question<span class="nb">_</span>background<span class="nb">}{</span>yellow!5<span class="nb">}</span>
+<span class="c">% \fboxsep sets the space between the text and the box</span>
+<span class="k">\newenvironment</span><span class="nb">{</span>questionshaded<span class="nb">}</span>
+<span class="nb">{</span><span class="k">\def\FrameCommand</span><span class="nb">{</span><span class="k">\fboxsep</span>=3mm<span class="k">\colorbox</span><span class="nb">{</span>yellowicon<span class="nb">_</span>question<span class="nb">_</span>background<span class="nb">}}</span>
+ <span class="k">\MakeFramed</span> <span class="nb">{</span><span class="k">\advance\hsize</span>-<span class="k">\width</span> <span class="k">\FrameRestore</span><span class="nb">}}{</span><span class="k">\endMakeFramed</span><span class="nb">}</span>
 
-<span class="k">\newenvironment</span><span class="nb">{</span>question<span class="nb">_</span>mdfboxadmon<span class="nb">}</span>[1][]<span class="nb">{</span>
-<span class="k">\begin</span><span class="nb">{</span>question<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>[frametitle=#1]
+<span class="k">\newenvironment</span><span class="nb">{</span>question<span class="nb">_</span>yellowiconadmon<span class="nb">}</span>[1][Question]<span class="nb">{</span>
+<span class="k">\begin</span><span class="nb">{</span>questionshaded<span class="nb">}</span>
+<span class="k">\noindent</span>
+<span class="k">\begin</span><span class="nb">{</span>wrapfigure<span class="nb">}{</span>l<span class="nb">}{</span>0.07<span class="k">\textwidth</span><span class="nb">}</span>
+<span class="k">\vspace</span><span class="nb">{</span>-13pt<span class="nb">}</span>
+<span class="k">\includegraphics</span><span class="na">[width=0.07\textwidth]</span><span class="nb">{</span>latex<span class="nb">_</span>figs/small<span class="nb">_</span>yellow<span class="nb">_</span>question<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>wrapfigure<span class="nb">}</span> <span class="k">\textbf</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\par</span>
+<span class="k">\nobreak\noindent\ignorespaces</span>
 <span class="nb">}</span>
 <span class="nb">{</span>
-<span class="k">\end</span><span class="nb">{</span>question<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>questionshaded<span class="nb">}</span>
 <span class="nb">}</span>
 
-<span class="c">% Admonition style &quot;mdfbox&quot; is an oval colored box based on mdframed</span>
-<span class="c">% &quot;block&quot; admon</span>
-<span class="k">\colorlet</span><span class="nb">{</span>mdfbox<span class="nb">_</span>block<span class="nb">_</span>background<span class="nb">}{</span>gray!5<span class="nb">}</span>
-<span class="k">\newmdenv</span>[
-  skipabove=15pt,
-  skipbelow=15pt,
-  outerlinewidth=0,
-  backgroundcolor=mdfbox<span class="nb">_</span>block<span class="nb">_</span>background,
-  linecolor=black,
-  linewidth=2pt,       <span class="c">% frame thickness</span>
-  frametitlebackgroundcolor=mdfbox<span class="nb">_</span>block<span class="nb">_</span>background,
-  frametitlerule=true,
-  frametitlefont=<span class="k">\normalfont\bfseries</span>,
-  shadow=false,        <span class="c">% frame shadow?</span>
-  shadowsize=11pt,
-  leftmargin=0,
-  rightmargin=0,
-  roundcorner=5,
-  needspace=0pt,
-]<span class="nb">{</span>block<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
+<span class="c">% Admonition style &quot;yellowicon&quot; has colored background, yellow icons, and no farme</span>
+<span class="c">% Admon &quot;block&quot;</span>
+<span class="k">\colorlet</span><span class="nb">{</span>yellowicon<span class="nb">_</span>block<span class="nb">_</span>background<span class="nb">}{</span>yellow!5<span class="nb">}</span>
+<span class="c">% \fboxsep sets the space between the text and the box</span>
+<span class="k">\newenvironment</span><span class="nb">{</span>blockshaded<span class="nb">}</span>
+<span class="nb">{</span><span class="k">\def\FrameCommand</span><span class="nb">{</span><span class="k">\fboxsep</span>=3mm<span class="k">\colorbox</span><span class="nb">{</span>yellowicon<span class="nb">_</span>block<span class="nb">_</span>background<span class="nb">}}</span>
+ <span class="k">\MakeFramed</span> <span class="nb">{</span><span class="k">\advance\hsize</span>-<span class="k">\width</span> <span class="k">\FrameRestore</span><span class="nb">}}{</span><span class="k">\endMakeFramed</span><span class="nb">}</span>
 
-<span class="k">\newenvironment</span><span class="nb">{</span>block<span class="nb">_</span>mdfboxadmon<span class="nb">}</span>[1][]<span class="nb">{</span>
-<span class="k">\begin</span><span class="nb">{</span>block<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>[frametitle=#1]
+<span class="k">\newenvironment</span><span class="nb">{</span>block<span class="nb">_</span>yellowiconadmon<span class="nb">}</span>[1][Block]<span class="nb">{</span>
+<span class="k">\begin</span><span class="nb">{</span>blockshaded<span class="nb">}</span>
+<span class="k">\noindent</span>
+ <span class="k">\textbf</span><span class="nb">{</span>#1<span class="nb">}</span><span class="k">\par</span>
+<span class="k">\nobreak\noindent\ignorespaces</span>
 <span class="nb">}</span>
 <span class="nb">{</span>
-<span class="k">\end</span><span class="nb">{</span>block<span class="nb">_</span>mdfboxmdframed<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>blockshaded<span class="nb">}</span>
 <span class="nb">}</span>
 
 <span class="c">% --- end of definitions of admonition environments ---</span>
@@ -320,6 +290,38 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 <span class="c">% prevent orhpans and widows</span>
 <span class="k">\clubpenalty</span> = 10000
 <span class="k">\widowpenalty</span> = 10000
+
+<span class="c">% http://www.ctex.org/documents/packages/layout/titlesec.pdf</span>
+<span class="k">\usepackage</span><span class="nb">{</span>titlesec<span class="nb">}</span>  <span class="c">% needed for colored section headings</span>
+<span class="c">%\usepackage[]{titlesec}  % reduce the spacing around section headings</span>
+
+<span class="c">% --- section/subsection headings with blue color ---</span>
+<span class="k">\definecolor</span><span class="nb">{</span>seccolor<span class="nb">}{</span>cmyk<span class="nb">}{</span>.9,.5,0,.35<span class="nb">}</span>  <span class="c">% siamltexmm.sty section color</span>
+<span class="k">\titleformat</span><span class="nb">{</span>name=<span class="k">\section</span><span class="nb">}</span>
+<span class="nb">{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span><span class="k">\normalfont\Large\bfseries</span><span class="nb">}</span>
+<span class="nb">{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span><span class="k">\thesection</span><span class="nb">}{</span>1em<span class="nb">}{}</span>
+<span class="k">\titleformat</span><span class="nb">{</span>name=<span class="k">\subsection</span><span class="nb">}</span>
+<span class="nb">{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span><span class="k">\normalfont\large\bfseries</span><span class="nb">}</span>
+<span class="nb">{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span><span class="k">\thesubsection</span><span class="nb">}{</span>1em<span class="nb">}{}</span>
+<span class="k">\titleformat</span><span class="nb">{</span>name=<span class="k">\paragraph</span><span class="nb">}</span>[runin]
+<span class="nb">{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span><span class="k">\normalfont\normalsize\bfseries</span><span class="nb">}</span>
+<span class="nb">{}{}{</span><span class="k">\indent</span><span class="nb">}</span>
+
+<span class="c">% let the header have a thick gray hrule with section and page in blue above</span>
+<span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\headrulewidth</span><span class="nb">}{</span>0.4pt<span class="nb">}</span>
+<span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\headrule</span><span class="nb">}{{</span><span class="k">\color</span><span class="nb">{</span>gray!50<span class="nb">}</span><span class="c">%</span>
+<span class="k">\hrule</span> width<span class="k">\headwidth</span> height<span class="k">\headrulewidth</span> <span class="k">\vskip</span>-<span class="k">\headrulewidth</span><span class="nb">}}</span>
+<span class="k">\fancyhead</span><span class="na">[LE,RO]</span><span class="nb">{{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span><span class="k">\rightmark</span><span class="nb">}}</span> <span class="c">%section</span>
+<span class="k">\fancyhead</span><span class="na">[RE,LO]</span><span class="nb">{{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span><span class="k">\thepage</span><span class="nb">}}</span>
+
+
+<span class="c">% --- color every two table rows ---</span>
+<span class="k">\let\oldtabular\tabular</span>
+<span class="k">\let\endoldtabular\endtabular</span>
+<span class="k">\definecolor</span><span class="nb">{</span>appleblue<span class="nb">}{</span>rgb<span class="nb">}{</span>0.93,0.95,1.0<span class="nb">}</span>  <span class="c">% Apple blue</span>
+<span class="k">\renewenvironment</span><span class="nb">{</span>tabular<span class="nb">}{</span><span class="k">\rowcolors</span><span class="nb">{</span>2<span class="nb">}{</span>white<span class="nb">}{</span>appleblue<span class="nb">}</span><span class="c">%</span>
+<span class="k">\oldtabular</span><span class="nb">}{</span><span class="k">\endoldtabular</span><span class="nb">}</span>
+
 
 <span class="c">% --- end of standard preamble for documents ---</span>
 
@@ -343,35 +345,16 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 
 <span class="c">% ----------------- title -------------------------</span>
 
-<span class="k">\thispagestyle</span><span class="nb">{</span>empty<span class="nb">}</span>
-
-<span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
-<span class="nb">{</span><span class="k">\LARGE\bf</span>
-<span class="k">\begin</span><span class="nb">{</span>spacing<span class="nb">}{</span>1.25<span class="nb">}</span>
-Experiments with Schemes for Exponential Decay
-<span class="k">\end</span><span class="nb">{</span>spacing<span class="nb">}</span>
-<span class="nb">}</span>
-<span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
+<span class="k">\title</span><span class="nb">{{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span> Experiments with Schemes for Exponential Decay<span class="nb">}}</span>
 
 <span class="c">% ----------------- author(s) -------------------------</span>
 
-<span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
-<span class="nb">{</span><span class="k">\bf</span> Hans Petter Langtangen<span class="s">$</span><span class="nb">{}^{</span><span class="m">1</span><span class="nb">, </span><span class="m">2</span><span class="nb">}</span><span class="s">$</span> (<span class="k">\texttt</span><span class="nb">{</span>hpl@simula.no<span class="nb">}</span>)<span class="nb">}</span> <span class="k">\\</span> [0mm]
-<span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
-
-    <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
-<span class="c">% List of all institutions:</span>
-<span class="k">\centerline</span><span class="nb">{{</span><span class="k">\small</span> <span class="s">$</span><span class="nb">{}^</span><span class="m">1</span><span class="s">$</span>Center for Biomedical Computing, Simula Research Laboratory<span class="nb">}}</span>
-<span class="k">\centerline</span><span class="nb">{{</span><span class="k">\small</span> <span class="s">$</span><span class="nb">{}^</span><span class="m">2</span><span class="s">$</span>Department of Informatics, University of Oslo.<span class="nb">}}</span>
-<span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
+<span class="k">\author</span><span class="nb">{</span>Hans Petter Langtangen<span class="k">\footnote</span><span class="nb">{</span>Email: <span class="k">\texttt</span><span class="nb">{</span>hpl@simula.no<span class="nb">}</span>. Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo.<span class="nb">}}</span>
 
 <span class="c">% ----------------- end author(s) -------------------------</span>
 
-<span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
-Aug 28, 2014
-<span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
-
-<span class="k">\vspace</span><span class="nb">{</span>1cm<span class="nb">}</span>
+<span class="k">\date</span><span class="nb">{</span>Aug 28, 2014<span class="nb">}</span>
+<span class="k">\maketitle</span>
 
 <span class="k">\begin</span><span class="nb">{</span>quote<span class="nb">}</span><span class="k">\small</span>
 This report investigates the accuracy of three finite difference
@@ -533,11 +516,11 @@ is shown in Figure~<span class="k">\ref</span><span class="nb">{</span>fig:error
 
 
 
-<span class="k">\begin</span><span class="nb">{</span>warning<span class="nb">_</span>mdfboxadmon<span class="nb">}</span>[Observe:]
+<span class="k">\begin</span><span class="nb">{</span>warning<span class="nb">_</span>yellowiconadmon<span class="nb">}</span>[Observe:]
 The data points for the three largest <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> values in the
 Forward Euler method are not relevant as the solution behaves
 non-physically.
-<span class="k">\end</span><span class="nb">{</span>warning<span class="nb">_</span>mdfboxadmon<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>warning<span class="nb">_</span>yellowiconadmon<span class="nb">}</span>
 
 
 
@@ -571,7 +554,7 @@ The numbers corresponding to the figure above are given in the table below.
 <span class="k">\noindent</span>
 
 
-<span class="k">\begin</span><span class="nb">{</span>summary<span class="nb">_</span>mdfboxadmon<span class="nb">}</span>[Summary.]
+<span class="k">\begin</span><span class="nb">{</span>summary<span class="nb">_</span>yellowiconadmon<span class="nb">}</span>[Summary]
 <span class="k">\begin</span><span class="nb">{</span>enumerate<span class="nb">}</span>
 <span class="k">\item</span> <span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="m">1</span><span class="s">$</span>: <span class="s">$</span><span class="nb">E</span><span class="nv">\sim</span><span class="nb"> </span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> (first-order convergence).
 
@@ -588,7 +571,7 @@ The numbers corresponding to the figure above are given in the table below.
 <span class="k">\end</span><span class="nb">{</span>enumerate<span class="nb">}</span>
 
 <span class="k">\noindent</span>
-<span class="k">\end</span><span class="nb">{</span>summary<span class="nb">_</span>mdfboxadmon<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>summary<span class="nb">_</span>yellowiconadmon<span class="nb">}</span>
 
 
 
