@@ -1,6 +1,5 @@
 #!/bin/sh
-#source=~/vc/deqbook/doc/src/decay/src-decay/experiments/archived-reports/
-source=~/vc/deqbook/doc/src/archive/decay-reports
+source=~/vc/deqbook/doc/src/chapters/archive/decay-reports
 cp -r $source/* $source/.publish*.bib .
 git add .
 # git ignores temp*

@@ -165,7 +165,7 @@ do.write(r"""
 idx{error vs time step}
 
 How $E$ varies with $\Delta t$ for $\theta=0,0.5,1$
-is shown below.
+is shown in Figure ref{fig:error}.
 
 ## Here is an admonition box for warnings
 
@@ -175,9 +175,7 @@ Forward Euler method are not relevant as the solution behaves
 non-physically.
 !ewarning
 
-## Here is a figure without caption (becomes inline)
-
-FIGURE: [error, width=400]
+FIGURE: [error, width=400] Variation of the error with the time step. label{fig:error}
 
 ## A corresponding table
 

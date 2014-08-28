@@ -92,7 +92,7 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -206,10 +206,12 @@ In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 <h2>Error vs \( \Delta t \)  <a name="___sec7"></a></h2>
 
 How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
-is shown below.
+is shown in Figure <a href="#fig:error">1</a>.
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Observe:</b>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>Observe:</b>
+<p>
 The data points for the three largest \( \Delta t \) values in the
 Forward Euler method are not relevant as the solution behaves
 non-physically.
@@ -217,7 +219,11 @@ non-physically.
 
 
 <p>
-<center><p><img src="error.png" align="bottom" width=400></p></center>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  Variation of the error with the time step. <a name="fig:error"></a> </p></center>
+<p><img src="error.png" align="bottom" width=400></p>
+</center>
 
 <p>
 The numbers corresponding to the figure above are given in the table below.
@@ -235,7 +241,9 @@ The numbers corresponding to the figure above are given in the table below.
 </tbody>
 </table>
 <p>
-<div class="alert alert-block alert-summary alert-text-normal"><b>Summary.</b>
+<div class="alert alert-block alert-summary alert-text-normal">
+<b>Summary.</b>
+<p>
 
 <ol>
 <li> \( \theta =1 \): \( E\sim \Delta t \) (first-order convergence).</li>

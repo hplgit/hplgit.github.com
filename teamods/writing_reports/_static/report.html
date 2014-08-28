@@ -30,7 +30,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
@@ -98,10 +98,10 @@ u(0)  = I,                         \label{initial:value}
 <img src="FE.png" />
 </div>
 <h3 id="error-vs-delta-t">Error vs <span class="math">\(\Delta t\)</span></h3>
-<p>How <span class="math">\(E\)</span> varies with <span class="math">\(\Delta t\)</span> for <span class="math">\(\theta=0,0.5,1\)</span> is shown below.</p>
+<p>How <span class="math">\(E\)</span> varies with <span class="math">\(\Delta t\)</span> for <span class="math">\(\theta=0,0.5,1\)</span> is shown in Figure ref{fig:error}.</p>
 <p><em>Observe:</em><space> The data points for the three largest <span class="math">\(\Delta t\)</span> values in the Forward Euler method are not relevant as the solution behaves non-physically.</p>
 <div class="figure">
-<img src="error.png" />
+<img src="error.png" alt="Variation of the error with the time step." /><p class="caption">Variation of the error with the time step.</p>
 </div>
 <p>The numbers corresponding to the figure above are given in the table below.</p>
 <table>
@@ -143,8 +143,8 @@ u(0)  = I,                         \label{initial:value}
 <p><em>Summary.</em><space> 1. <span class="math">\(\theta =1\)</span>: <span class="math">\(E\sim \Delta t\)</span> (first-order convergence). 2. <span class="math">\(\theta =0.5\)</span>: <span class="math">\(E\sim \Delta t^2\)</span> (second-order convergence). 3. <span class="math">\(\theta =1\)</span> is always stable and gives qualitatively corrects results. 4. <span class="math">\(\theta =0.5\)</span> never blows up, but may give oscillating solutions if <span class="math">\(\Delta t\)</span> is not sufficiently small. 5. <span class="math">\(\theta =0\)</span> suffers from fast-growing solution if <span class="math">\(\Delta t\)</span> is not small enough, but even below this limit one can have oscillating solutions that disappear if <span class="math">\(\Delta t\)</span> is sufficiently small.</p>
 <h2 id="bibliography">Bibliography</h2>
 <ol style="list-style-type: decimal">
-<li> <em>A. Iserles</em>. <em>A First Course in the Numerical Analysis of Differential Equations</em>, Cambridge University Press, 2009.</li>
-<li> <em>H. P. Langtangen</em>. <em>A Primer on Scientific Programming With Python</em>, Springer, 2012.</li>
+<li> <strong>A. Iserles</strong>. <em>A First Course in the Numerical Analysis of Differential Equations</em>, Cambridge University Press, 2009.</li>
+<li> <strong>H. P. Langtangen</strong>. <em>A Primer on Scientific Programming With Python</em>, Springer, 2012.</li>
 </ol>
 </body>
 </html>

@@ -166,7 +166,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
   <span class="nx">TeX</span><span class="o">:</span> <span class="p">{</span>
      <span class="nx">equationNumbers</span><span class="o">:</span> <span class="p">{</span>  <span class="nx">autoNumber</span><span class="o">:</span> <span class="s2">&quot;AMS&quot;</span>  <span class="p">},</span>
-     <span class="nx">extensions</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;AMSmath.js&quot;</span><span class="p">,</span> <span class="s2">&quot;AMSsymbols.js&quot;</span><span class="p">,</span> <span class="s2">&quot;autobold.js&quot;</span><span class="p">]</span>
+     <span class="nx">extensions</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;AMSmath.js&quot;</span><span class="p">,</span> <span class="s2">&quot;AMSsymbols.js&quot;</span><span class="p">,</span> <span class="s2">&quot;autobold.js&quot;</span><span class="p">,</span> <span class="s2">&quot;color.js&quot;</span><span class="p">]</span>
   <span class="p">}</span>
 <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
@@ -198,7 +198,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="nt">&lt;center&gt;</span>[1] <span class="nt">&lt;b&gt;</span>Center for Biomedical Computing, Simula Research Laboratory<span class="nt">&lt;/b&gt;&lt;/center&gt;</span>
 <span class="nt">&lt;center&gt;</span>[2] <span class="nt">&lt;b&gt;</span>Department of Informatics, University of Oslo.<span class="nt">&lt;/b&gt;&lt;/center&gt;</span>
 <span class="nt">&lt;p&gt;</span>
-<span class="nt">&lt;center&gt;&lt;h4&gt;</span>Aug 6, 2014<span class="nt">&lt;/h4&gt;&lt;/center&gt;</span> <span class="c">&lt;!-- date --&gt;</span>
+<span class="nt">&lt;center&gt;&lt;h4&gt;</span>Aug 28, 2014<span class="nt">&lt;/h4&gt;&lt;/center&gt;</span> <span class="c">&lt;!-- date --&gt;</span>
 <span class="nt">&lt;p&gt;</span>
 <span class="nt">&lt;b&gt;</span>Summary.<span class="nt">&lt;/b&gt;</span> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation \( u&#39;=-au \) with the
@@ -305,10 +305,12 @@ In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 <span class="nt">&lt;h2&gt;</span>Error vs \( \Delta t \)  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec7&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
 
 How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
-is shown below.
+is shown in Figure <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#fig:error&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/a&gt;</span>.
 
 <span class="nt">&lt;p&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-block alert-warning alert-text-normal&quot;</span><span class="nt">&gt;&lt;b&gt;</span>Observe:<span class="nt">&lt;/b&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-block alert-warning alert-text-normal&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;b&gt;</span>Observe:<span class="nt">&lt;/b&gt;</span>
+<span class="nt">&lt;p&gt;</span>
 The data points for the three largest \( \Delta t \) values in the
 Forward Euler method are not relevant as the solution behaves
 non-physically.
@@ -316,7 +318,11 @@ non-physically.
 
 
 <span class="nt">&lt;p&gt;</span>
-<span class="nt">&lt;center&gt;&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;error.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">400</span><span class="nt">&gt;&lt;/p&gt;&lt;/center&gt;</span>
+<span class="nt">&lt;center&gt;</span> <span class="c">&lt;!-- figure --&gt;</span>
+<span class="nt">&lt;hr</span> <span class="na">class=</span><span class="s">&quot;figure&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;center&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;caption&quot;</span><span class="nt">&gt;</span>Figure 1:  Variation of the error with the time step. <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;fig:error&quot;</span><span class="nt">&gt;&lt;/a&gt;</span> <span class="nt">&lt;/p&gt;&lt;/center&gt;</span>
+<span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;error.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">400</span><span class="nt">&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/center&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
 The numbers corresponding to the figure above are given in the table below.
@@ -334,7 +340,9 @@ The numbers corresponding to the figure above are given in the table below.
 <span class="nt">&lt;/tbody&gt;</span>
 <span class="nt">&lt;/table&gt;</span>
 <span class="nt">&lt;p&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-block alert-summary alert-text-normal&quot;</span><span class="nt">&gt;&lt;b&gt;</span>Summary.<span class="nt">&lt;/b&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-block alert-summary alert-text-normal&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;b&gt;</span>Summary.<span class="nt">&lt;/b&gt;</span>
+<span class="nt">&lt;p&gt;</span>
 
 <span class="nt">&lt;ol&gt;</span>
 <span class="nt">&lt;li&gt;</span> \( \theta =1 \): \( E\sim \Delta t \) (first-order convergence).<span class="nt">&lt;/li&gt;</span>

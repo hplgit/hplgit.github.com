@@ -92,14 +92,7 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 
 <span class="k">\listfiles</span>               <span class="c">% print all files needed to compile this document</span>
 
-<span class="c">% a6paper is suitable for mobile devices</span>
-<span class="k">\usepackage</span>[<span class="c">%</span>
-  a6paper,
-  text=<span class="nb">{</span>90mm,130mm<span class="nb">}</span>,
-  inner=<span class="nb">{</span>5mm<span class="nb">}</span>,           <span class="c">% inner margin (two sided documents)</span>
-  top=5mm,
-  headsep=4mm
-  ]<span class="nb">{</span>geometry<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="na">[a4paper]</span><span class="nb">{</span>geometry<span class="nb">}</span>
 
 <span class="k">\usepackage</span><span class="nb">{</span>relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts<span class="nb">}</span>
 <span class="k">\usepackage</span><span class="na">[table]</span><span class="nb">{</span>xcolor<span class="nb">}</span>
@@ -114,9 +107,9 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 <span class="c">%\usepackage[latin1]{inputenc}</span>
 <span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
 
-<span class="c">% Set palatino as the default font family:</span>
-<span class="k">\usepackage</span><span class="na">[sc]</span><span class="nb">{</span>mathpazo<span class="nb">}</span>    <span class="c">% Palatino fonts</span>
-<span class="k">\linespread</span><span class="nb">{</span>1.05<span class="nb">}</span>            <span class="c">% Palatino needs extra line spread to look nice</span>
+<span class="c">% Set helvetica as the default font family:</span>
+<span class="k">\RequirePackage</span><span class="nb">{</span>helvet<span class="nb">}</span>
+<span class="k">\renewcommand\familydefault</span><span class="nb">{</span>phv<span class="nb">}</span>
 
 <span class="k">\usepackage</span><span class="nb">{</span>lmodern<span class="nb">}</span>         <span class="c">% Latin Modern fonts derived from Computer Modern</span>
 
@@ -347,7 +340,7 @@ Experiments with Schemes for Exponential Decay
 <span class="c">% ----------------- end author(s) -------------------------</span>
 
 <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
-Aug 6, 2014
+Aug 28, 2014
 <span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
 
 <span class="k">\vspace</span><span class="nb">{</span>1cm<span class="nb">}</span>
@@ -464,9 +457,10 @@ In particular, <span class="s">$</span><span class="nb">I</span><span class="o">
 <span class="k">\index</span><span class="nb">{</span>BE<span class="nb">}</span>
 
 
-<span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>  <span class="c">% inline figure</span>
-  <span class="k">\centerline</span><span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[width=0.9\linewidth]</span><span class="nb">{</span>BE.pdf<span class="nb">}}</span>
-<span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
+
+<span class="c">% inline figure</span>
+<span class="k">\centerline</span><span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[width=0.9\linewidth]</span><span class="nb">{</span>BE.pdf<span class="nb">}}</span>
+
 
 
 
@@ -478,9 +472,10 @@ In particular, <span class="s">$</span><span class="nb">I</span><span class="o">
 <span class="k">\index</span><span class="nb">{</span>CN<span class="nb">}</span>
 
 
-<span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>  <span class="c">% inline figure</span>
-  <span class="k">\centerline</span><span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[width=0.9\linewidth]</span><span class="nb">{</span>CN.pdf<span class="nb">}}</span>
-<span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
+
+<span class="c">% inline figure</span>
+<span class="k">\centerline</span><span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[width=0.9\linewidth]</span><span class="nb">{</span>CN.pdf<span class="nb">}}</span>
+
 
 
 
@@ -492,9 +487,10 @@ In particular, <span class="s">$</span><span class="nb">I</span><span class="o">
 <span class="k">\index</span><span class="nb">{</span>FE<span class="nb">}</span>
 
 
-<span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>  <span class="c">% inline figure</span>
-  <span class="k">\centerline</span><span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[width=0.9\linewidth]</span><span class="nb">{</span>FE.pdf<span class="nb">}}</span>
-<span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
+
+<span class="c">% inline figure</span>
+<span class="k">\centerline</span><span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[width=0.9\linewidth]</span><span class="nb">{</span>FE.pdf<span class="nb">}}</span>
+
 
 
 
@@ -505,7 +501,7 @@ In particular, <span class="s">$</span><span class="nb">I</span><span class="o">
 <span class="k">\index</span><span class="nb">{</span>error vs time step<span class="nb">}</span>
 
 How <span class="s">$</span><span class="nb">E</span><span class="s">$</span> varies with <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> for <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">0</span><span class="nb">,</span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="nb">,</span><span class="m">1</span><span class="s">$</span>
-is shown below.
+is shown in Figure~<span class="k">\ref</span><span class="nb">{</span>fig:error<span class="nb">}</span>.
 
 
 
@@ -518,10 +514,13 @@ non-physically.
 
 
 
-
-<span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>  <span class="c">% inline figure</span>
+<span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>[ht]
   <span class="k">\centerline</span><span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[width=0.9\linewidth]</span><span class="nb">{</span>error.pdf<span class="nb">}}</span>
-<span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
+  <span class="k">\caption</span><span class="nb">{</span>
+  Variation of the error with the time step. <span class="k">\label</span><span class="nb">{</span>fig:error<span class="nb">}</span>
+  <span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>figure<span class="nb">}</span>
+<span class="c">%\clearpage % flush figures fig:error</span>
 
 
 

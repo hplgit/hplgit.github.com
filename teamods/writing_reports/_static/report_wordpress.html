@@ -117,10 +117,12 @@ In particular, $latex I=1$, $latex a=2$, $latex \Delta t = 1.25, 0.75, 0.5, 0.1$
 <h2>Error vs $latex \Delta t$  <a name="___sec7"></a></h2>
 
 How $latex E$ varies with $latex \Delta t$ for $latex \theta=0,0.5,1$
-is shown below.
+is shown in Figure <a href="#fig:error">1</a>.
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Observe:</b>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>Observe:</b>
+<p>
 The data points for the three largest $latex \Delta t$ values in the
 Forward Euler method are not relevant as the solution behaves
 non-physically.
@@ -128,7 +130,11 @@ non-physically.
 
 
 <p>
-<center><p><img src="https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/error.png" align="bottom" width=400></p></center>
+<center> 
+<hr class="figure">
+<center><p class="caption">Figure 1:  Variation of the error with the time step. <a name="fig:error"></a> </p></center>
+<p><img src="https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/error.png" align="bottom" width=400></p>
+</center>
 
 <p>
 The numbers corresponding to the figure above are given in the table below.
@@ -146,7 +152,9 @@ The numbers corresponding to the figure above are given in the table below.
 </tbody>
 </table>
 <p>
-<div class="alert alert-block alert-summary alert-text-normal"><b>Summary.</b>
+<div class="alert alert-block alert-summary alert-text-normal">
+<b>Summary.</b>
+<p>
 
 <ol>
 <li> $latex \theta =1$: $latex E\sim \Delta t$ (first-order convergence).</li>

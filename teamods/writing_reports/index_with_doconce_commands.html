@@ -19,7 +19,11 @@ Automatically generated HTML file from Doconce source
 </head>
 
 <!-- tocinfo
-{'highest level': 4, 'sections': []}
+{'highest level': 3,
+ 'sections': [(' Handling of literature citations ', 3, None, '___sec0'),
+              (' PDF files generated from LaTeX ', 3, None, '___sec1'),
+              (' Sphinx documents ', 3, None, '___sec2'),
+              (' HTML styles ', 3, None, '___sec3')]}
 end of tocinfo -->
 
 <body>
@@ -40,6 +44,10 @@ end of tocinfo -->
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Handling of literature citations</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">PDF files generated from LaTeX</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">Sphinx documents</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">HTML styles</a></li>
 
         </ul>
       </li>
@@ -57,6 +65,7 @@ end of tocinfo -->
 
 <title>Examples of scientific reports in different formats and how they are made</title>
 
+<div class="jumbotron">
 <center><h1>Examples of scientific reports in different formats and how they are made</h1></center>  <!-- document title -->
 
 <p>
@@ -73,18 +82,26 @@ end of tocinfo -->
 <center>[1] <b>Simula</b></center>
 <center>[2] <b>Univ. of Oslo</b></center>
 <p>
-<center><h4>Aug 6, 2014</h4></center> <!-- date -->
+<center><h4>Aug 28, 2014</h4></center> <!-- date -->
 <p>
 The purpose of this page is to exemplify how to write scientific
 reports in various formats: LaTeX PDF, HTML, Sphinx, IPython notebook,
 HTML blog post, etc.
 
 <p>
-<a href="_static/report.pdf" target="_blank">PDF</a> for <em>electronic view</em> made from <a href="_static/report.tex.html" target="_blank">LaTeX source</a> generated from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a> (where URLs and references are hyperlinks)
+Here is a report in <a href="_static/report.pdf" target="_blank">PDF format</a> for <em>electronic view</em>
+(where URLs and references are hyperlinks) made from <a href="_static/report.tex.html" target="_blank">LaTeX source</a> generated from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a>.
 
 <p>
-References must appear in a <a href="https://bitbucket.org/logg/publish" target="_blank">Publish</a>
-database, which is easily created from a BibTeX file <code>refs.bib</code> by
+
+
+</div> <!-- end jumbotron -->
+
+<h3 id="___sec0">Handling of literature citations <a name="___sec0"></a></h3>
+
+References in DocOnce files make use of information in <a href="https://bitbucket.org/logg/publish" target="_blank">Publish</a> database. Either you have your references already
+in the Publish format, or you can transform a BibTeX file <code>refs.bib</code> to
+Publish format by
 
 <p>
 
@@ -92,18 +109,9 @@ database, which is easily created from a BibTeX file <code>refs.bib</code> by
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">publish import refs
 </pre></div>
 <p>
-According to <a href="publish_config.py" target="_blank"><tt>publish_config.py</tt></a>,
-
-<p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">from publish.config.defaults import *
-database_filename = &#39;.publish_references.pub&#39;
-</pre></div>
-<p>
-the Publish database is named
-"`.publish_references.pub`": ".publish_references.pub"
-("invisible" since the name starts with a dot) and looks like
+This creates a file <code>papers.pub</code> that acts as the Publish database
+(one can easily assign other filenames to the database).
+Such a <code>.pub</code> file looks as follows:
 
 <p>
 
@@ -129,24 +137,59 @@ the Publish database is named
    entrytype: book
 </pre></div>
 <p>
-Now we are ready to run <code>doconce</code> to produce various formats.
-The PDF file is created from LaTeX the following way:
+The reason why DocOnce applies Publish is that it is easy to export
+Publish references to BibTeX, HTML, reStructuredText, pure ascii, etc.
+
+<p>
+Next, we exemplify how run <code>doconce</code> to produce a range of output
+formats and many different layout styles within each format.
+
+<h3 id="___sec1">PDF files generated from LaTeX <a name="___sec1"></a></h3>
+
+The <a href="_static/report.pdf" target="_blank">PDF file</a> mentioned above
+is created from DocOnce source in <code>report.do.txt</code> in the following way,
+via LaTeX:
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format pdflatex report --latex_font=palatino \
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># Transform DocOnce file to LaTeX
+doconce format pdflatex report --latex_font=palatino \
         --latex_admon=yellowbox &#39;--latex_admon_color=yellow!5&#39;
         --latex_fancy_header \
         --latex_section_headings=blue --latex_colored_table_rows=blue
+</pre></div>
+<p>
+The <code>doconce format</code> program has a lot of options
+(see <code>doconce format --help</code>). Here we
+fine-tune the way admonitions are typeset (admonitions are boxes for
+warnings, tips, notes, questions, summaries, etc. - DocOnce has
+strong support for such boxes and many alternative layouts,
+in some formats, especially LaTeX,
+HTML, and Sphinx). In this particular case we also specify blue
+headings and blue-and-white rows in tables.
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># Typeset code blocks the way you want, here all with
+# the Pygments package (minted)
 doconce ptex2tex report envir=minted
 rm -f report.aux
-pdflatex -shell-escape report  # minted requires -shell-escape
+# Run pdflatex: the minted environment for code requires
+# use of the -shell-escape option
+pdflatex -shell-escape report
 bibtex report
 pdflatex -shell-escape report
 </pre></div>
 <p>
-<a href="_static/report_4printing.pdf" target="_blank">PDF for printing</a> made from <a href="_static/report.tex.html" target="_blank">LaTeX source</a> generated from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a> (where linked URLs appear as footnotes)
+<a href="_static/report_4printing.pdf" target="_blank">PDF for printing</a> (where linked URLs appear as footnotes) made from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a>
+
+<p>
+The option <code>--device=paper</code> makes all URL appear as footnotes, which
+makes them visible in a paper version (they are still clickable in
+the text, but the link text is in black, as the rest of the text - the
+footnote superscript indicates the word to be clicked).
 
 <p>
 
@@ -161,7 +204,12 @@ bibtex report
 pdflatex -shell-escape report
 </pre></div>
 <p>
-<a href="_static/report_4phone.pdf" target="_blank">PDF for viewing on a phone</a> made from <a href="_static/report.tex.html" target="_blank">LaTeX source</a> generated from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a>
+<a href="_static/report_4phone.pdf" target="_blank">PDF for viewing on a phone</a> made from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a>
+
+<p>
+DocOnce can generate LaTeX for A4 or A6 paper size, if desired. The A6
+size is good for smart phones. Here we also change the LaTeX font
+to Palatino (<code>--latex_font=helvetica</code> is another possibility).
 
 <p>
 
@@ -174,21 +222,53 @@ bibtex report
 pdflatex -shell-escape report
 </pre></div>
 <p>
-<a href="_static/sphinx-default/index.html" target="_blank">Sphinx (default layout)</a> made from <a href="_static/report_sphinx.rst.html" target="_blank">Sphinx-extended reStructuredText source</a> generated from <a href="_static/report.do.txt.html" target="_blank">DocOnce</a> (other layouts: <a href="_static/sphinx-ADCtheme/index.html" target="_blank">sphinx-ADCtheme</a>, <a href="_static/sphinx-agni/index.html" target="_blank">sphinx-agni</a>, <a href="_static/sphinx-agogo/index.html" target="_blank">sphinx-agogo</a>, <a href="_static/sphinx-basic/index.html" target="_blank">sphinx-basic</a>, <a href="_static/sphinx-basicstrap/index.html" target="_blank">sphinx-basicstrap</a>, <a href="_static/sphinx-bloodish/index.html" target="_blank">sphinx-bloodish</a>, <a href="_static/sphinx-bootstrap/index.html" target="_blank">sphinx-bootstrap</a>, <a href="_static/sphinx-cbc/index.html" target="_blank">sphinx-cbc</a>, <a href="_static/sphinx-classy/index.html" target="_blank">sphinx-classy</a>, <a href="_static/sphinx-cloud/index.html" target="_blank">sphinx-cloud</a>, <a href="_static/sphinx-default/index.html" target="_blank">sphinx-default</a>, <a href="_static/sphinx-epub/index.html" target="_blank">sphinx-epub</a>, <a href="_static/sphinx-fenics/index.html" target="_blank">sphinx-fenics</a>, <a href="_static/sphinx-fenics_minimal1/index.html" target="_blank">sphinx-fenics_minimal1</a>, <a href="_static/sphinx-fenics_minimal2/index.html" target="_blank">sphinx-fenics_minimal2</a>, <a href="_static/sphinx-flask/index.html" target="_blank">sphinx-flask</a>, <a href="_static/sphinx-haiku/index.html" target="_blank">sphinx-haiku</a>, <a href="_static/sphinx-impressjs/index.html" target="_blank">sphinx-impressjs</a>, <a href="_static/sphinx-jal/index.html" target="_blank">sphinx-jal</a>, <a href="_static/sphinx-nature/index.html" target="_blank">sphinx-nature</a>, <a href="_static/sphinx-pylons/index.html" target="_blank">sphinx-pylons</a>, <a href="_static/sphinx-pyramid/index.html" target="_blank">sphinx-pyramid</a>, <a href="_static/sphinx-redcloud/index.html" target="_blank">sphinx-redcloud</a>, <a href="_static/sphinx-scipy_lectures/index.html" target="_blank">sphinx-scipy_lectures</a>, <a href="_static/sphinx-scrolls/index.html" target="_blank">sphinx-scrolls</a>, <a href="_static/sphinx-slim-agogo/index.html" target="_blank">sphinx-slim-agogo</a>, <a href="_static/sphinx-sphinxdoc/index.html" target="_blank">sphinx-sphinxdoc</a>, <a href="_static/sphinx-traditional/index.html" target="_blank">sphinx-traditional</a>, <a href="_static/sphinx-uio/index.html" target="_blank">sphinx-uio</a>, <a href="_static/sphinx-vlinux-theme/index.html" target="_blank">sphinx-vlinux-theme</a>)
+<a href="_static/report_ans.pdf" target="_blank">PDF with another typesetting of code blocks</a> made from <a href="_static/report.tex.html" target="_blank">LaTeX source</a> generated from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a>
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce sphinx_dir theme=pyramid report
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format pdflatex report --latex_papersize=a4 --latex_font=helvetica
+doconce ptex2tex report envir=ans:nt
+rm -f *.aux
+pdflatex report
+bibtex report
+pdflatex report
+</pre></div>
+<p>
+(The <code>envir=ans:nt</code> specificiation applies <code>anslistings.sty</code> (comes with
+DocOnce) for typesetting of verbatim code blocks via the <code>listings</code>
+package with special settings.)
+
+<h3 id="___sec2">Sphinx documents <a name="___sec2"></a></h3>
+
+<a href="_static/sphinx-default/index.html" target="_blank">Sphinx (default layout)</a> made from <a href="_static/report_sphinx.rst.html" target="_blank">Sphinx-extended reStructuredText source</a> generated from <a href="_static/report.do.txt.html" target="_blank">DocOnce</a> (other layouts: <a href="_static/sphinx-ADCtheme/index.html" target="_blank">sphinx-ADCtheme</a>, <a href="_static/sphinx-agni/index.html" target="_blank">sphinx-agni</a>, <a href="_static/sphinx-agogo/index.html" target="_blank">sphinx-agogo</a>, <a href="_static/sphinx-basic/index.html" target="_blank">sphinx-basic</a>, <a href="_static/sphinx-basicstrap/index.html" target="_blank">sphinx-basicstrap</a>, <a href="_static/sphinx-bloodish/index.html" target="_blank">sphinx-bloodish</a>, <a href="_static/sphinx-bootstrap/index.html" target="_blank">sphinx-bootstrap</a>, <a href="_static/sphinx-cbc/index.html" target="_blank">sphinx-cbc</a>, <a href="_static/sphinx-classy/index.html" target="_blank">sphinx-classy</a>, <a href="_static/sphinx-cloud/index.html" target="_blank">sphinx-cloud</a>, <a href="_static/sphinx-default/index.html" target="_blank">sphinx-default</a>, <a href="_static/sphinx-epub/index.html" target="_blank">sphinx-epub</a>, <a href="_static/sphinx-fenics/index.html" target="_blank">sphinx-fenics</a>, <a href="_static/sphinx-fenics_minimal1/index.html" target="_blank">sphinx-fenics_minimal1</a>, <a href="_static/sphinx-fenics_minimal2/index.html" target="_blank">sphinx-fenics_minimal2</a>, <a href="_static/sphinx-flask/index.html" target="_blank">sphinx-flask</a>, <a href="_static/sphinx-haiku/index.html" target="_blank">sphinx-haiku</a>, <a href="_static/sphinx-impressjs/index.html" target="_blank">sphinx-impressjs</a>, <a href="_static/sphinx-jal/index.html" target="_blank">sphinx-jal</a>, <a href="_static/sphinx-nature/index.html" target="_blank">sphinx-nature</a>, <a href="_static/sphinx-pylons/index.html" target="_blank">sphinx-pylons</a>, <a href="_static/sphinx-pyramid/index.html" target="_blank">sphinx-pyramid</a>, <a href="_static/sphinx-redcloud/index.html" target="_blank">sphinx-redcloud</a>, <a href="_static/sphinx-scipy_lectures/index.html" target="_blank">sphinx-scipy_lectures</a>, <a href="_static/sphinx-scrolls/index.html" target="_blank">sphinx-scrolls</a>, <a href="_static/sphinx-slim-agogo/index.html" target="_blank">sphinx-slim-agogo</a>, <a href="_static/sphinx-sphinxdoc/index.html" target="_blank">sphinx-sphinxdoc</a>, <a href="_static/sphinx-traditional/index.html" target="_blank">sphinx-traditional</a>, <a href="_static/sphinx-uio/index.html" target="_blank">sphinx-uio</a>, <a href="_static/sphinx-vlinux-theme/index.html" target="_blank">sphinx-vlinux-theme</a>)
+
+<p>
+DocOnce can easily generate a lot of various Sphinx styles (see all
+the names above). For the <code>pyramid</code> style one writes
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format sphinx report
+doconce sphinx_dir theme=pyramid report
 python automake_sphinx.py
 </pre></div>
 <p>
+Sphinx documents need a special directory, by default called <code>sphinx-rootdir</code>,
+which is automatically generated by the <code>doconce sphin_dir</code> command.
+The <code>automake_sphinx.py</code> script copies necessary files to the Sphinx
+directory and runs the necessary commands to compile the Sphinx
+document to HTML format.
+
+<h3 id="___sec3">HTML styles <a name="___sec3"></a></h3>
+
 <a href="_static/report_blueish.html" target="_blank">HTML with the blueish style</a> made from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a> (see <a href="_static/report_blueish.html.html" target="_blank">HTML code</a>)
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html report --html-style=blueish
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html report
 </pre></div>
 <p>
 <a href="_static/report_bloodish.html" target="_blank">HTML with the bloodish style</a> made from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a>
@@ -263,7 +343,7 @@ python automake_sphinx.py
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html report --html-style=solarized3_dark
 </pre></div>
 <p>
-<a href="_static/report_solarized_box.html" target="_blank">HTML with with the solarized_box html template</a> made from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a> with the <a href="_static/template_solarized_box.html.html" target="_blank">template file</a>
+<a href="_static/report_solarized_box.html" target="_blank">HTML with with the solarized_box html template</a> made from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a> with a <a href="_static/template_solarized_box.html.html" target="_blank">template file</a>
 
 <p>
 
@@ -271,13 +351,17 @@ python automake_sphinx.py
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format html report --html-style=solarized --html_template=template_solarized_box.html
 </pre></div>
 <p>
-HTML with with Bootstrap style:
+HTML with with many Bootstrap styles:
 <a href="_static/report_bootstrap.html" target="_blank">plain bootstrap</a> made from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a>. Other variations of the Bootstrap
 style: <a href="_static/report_bootswatch_cosmo.html" target="_blank">cosmo</a>,
 <a href="_static/report_bootswatch_journal.html" target="_blank">journal</a>,
 <a href="_static/report_bootswatch_readable.html" target="_blank">readable</a>,
 <a href="_static/report_bootswatch_cyborg.html" target="_blank">cyborg</a>,
 <a href="_static/report_bootstrap_bloodish.html" target="_blank">bloodish</a>.
+
+<p>
+The Bootstrap styles automatically generate responsive HTML pages for
+viewing on small and large screens.
 
 <p>
 
@@ -289,6 +373,8 @@ doconce split_html report_$style.html
 <p>
 The other <code>style</code> values are <code>bootswatch_cosmo</code>, <code>bootswatch_journal</code>,
 <code>bootswatch_readable</code>, and <code>bootstrap_bloodish</code> (many more exist).
+
+<p>
 The dark <code>bootswatch_cyborg</code> style is generated by
 
 <p>
@@ -298,6 +384,10 @@ The dark <code>bootswatch_cyborg</code> style is generated by
 doconce format html report --html_style=$style --pygments_html_style=monokai --html_admon=bootstrap_alert --html_output=report_${style} --keep_pygments_html_bg --html_code_style=inherit --html_pre_style=inherit
 doconce split_html report_$style.html
 </pre></div>
+<p>
+It is recommended to use this setting of the Pygments style (<code>monokai</code>)
+for all the dark Bootswatch styles.
+
 <p>
 <a href="_static/report_vagrant.html" target="_blank">HTML Vagrant style</a> made from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a> with a <a href="_static/template_vagrant.html.html" target="_blank">template file</a>
 
@@ -345,7 +435,7 @@ doconce format html report2 --html-style=bootstrap --html-template=template_boot
 # so we turn off pygments (which means plain &lt;pre&gt; tags for code blocks)
 </pre></div>
 <p>
-<a href="_static/report_github_minimal.html" target="_blank">HTML with LaTeX math</a> made from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a> with the GitHub "minimal" theme template
+<a href="_static/report_github_minimal.html" target="_blank">HTML GitHub minimal style</a> made from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a> with the GitHub minimal theme template: "https://github.com/hplgit/doconce/blob/master/bundled/html_styles/style_github_minimal/template_github_minimal.html"
 
 <p>
 
@@ -369,7 +459,7 @@ doconce format html report2 --html-template=style_github_minimal/template_github
 # and the css and js directories
 </pre></div>
 <p>
-<a href="_static/report_md.html" target="_blank">HTML with LaTeX math</a> made from <a href="_static/report.md.html" target="_blank">Markdown</a> generated from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a>
+<a href="_static/report_md.html" target="_blank">HTML Markdown style</a> made from <a href="_static/report.md.html" target="_blank">Markdown</a> generated from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a>
 
 <p>
 
@@ -380,6 +470,12 @@ doconce subst &#39;% .*&#39; &#39;&#39; report.md
 doconce md2html report
 </pre></div>
 <p>
+(One could (more naturally) use the <code>pandoc</code> program to transform the
+<code>report.md</code> file in Markdown format to HTML, but <code>doconce md2html</code>
+performs some additional hacks to get the mathematics to be rendered
+correctly.)
+
+<p>
 <a href="http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb" target="_blank">IPython notebook</a> made from <a href="_static/report.ipynb.html" target="_blank">IPython notebook .ipynb file</a> generated from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a>
 
 <p>
@@ -387,8 +483,9 @@ doconce md2html report
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format ipynb report
 # Put report.ipynb on the web, e.g.,
-# hplgit.github.com/teamods/writing_reports/_static/report.ipynb
-# URL: http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb
+# hplgit.github.com/teamods/writing_reports/_static/report.ipynb and
+# then use the following URL to get the notebook rendered in a browser:
+# http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb
 </pre></div>
 <p>
 <a href="https://github.com/hplgit/hplgit.github.com/wiki/Experiments-with-Schemes-for-Exponential-Decay" target="_blank">MediaWiki</a> made from <a href="_static/report.mwiki.html" target="_blank">MediaWiki format</a> generated from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a>
