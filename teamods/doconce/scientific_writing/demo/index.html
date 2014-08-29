@@ -26,7 +26,8 @@ Automatically generated HTML file from DocOnce source
               (' dzslides and csss HTML5 slides ', 2, None, '___sec2'),
               (' Plain HTML slides ', 2, None, '___sec3'),
               (' LaTeX Beamer PDF ', 2, None, '___sec4'),
-              (' Doconce talk: Why and How ', 2, None, '___sec5')]}
+              (' IPython notebook ', 2, None, '___sec5'),
+              (' Doconce talk: Why and How ', 2, None, '___sec6')]}
 end of tocinfo -->
 
 <body>
@@ -52,7 +53,8 @@ end of tocinfo -->
      <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">dzslides and csss HTML5 slides</a></li>
      <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">Plain HTML slides</a></li>
      <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">LaTeX Beamer PDF</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">Doconce talk: Why and How</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">IPython notebook</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">Doconce talk: Why and How</a></li>
 
         </ul>
       </li>
@@ -461,14 +463,16 @@ doconce slides_html demo doconce --nav_button=text
 
 <h2 id="___sec4">LaTeX Beamer PDF <a name="___sec4"></a></h2>
 
-<a href="demo_blue_plain.pdf" target="_blank">Beamer theme blue_plain</a>
-<a href="demo_blue_shadow.pdf" target="_blank">Beamer theme blue_shadow</a>
-<a href="demo_red_plain.pdf" target="_blank">Beamer theme red_plain</a>
-<a href="demo_red_shadow.pdf" target="_blank">Beamer theme red_shadow</a>
-<a href="demo_dark_gradient.pdf" target="_blank">Beamer theme dark_gradient</a>
-<a href="demo_vintage.pdf" target="_blank">Beamer theme vintage</a>
-<a href="demo_cbc.pdf" target="_blank">Beamer theme cbc</a>
-<a href="demo_simula.pdf" target="_blank">Beamer theme simula</a>
+<ul>
+ <li> <a href="demo_blue_plain.pdf" target="_blank">Beamer theme blue_plain</a></li>
+ <li> <a href="demo_blue_shadow.pdf" target="_blank">Beamer theme blue_shadow</a></li>
+ <li> <a href="demo_red_plain.pdf" target="_blank">Beamer theme red_plain</a></li>
+ <li> <a href="demo_red_shadow.pdf" target="_blank">Beamer theme red_shadow</a></li>
+ <li> <a href="demo_dark_gradient.pdf" target="_blank">Beamer theme dark_gradient</a></li>
+ <li> <a href="demo_vintage.pdf" target="_blank">Beamer theme vintage</a></li>
+ <li> <a href="demo_cbc.pdf" target="_blank">Beamer theme cbc</a></li>
+ <li> <a href="demo_simula.pdf" target="_blank">Beamer theme simula</a></li>
+</ul>
 
 <p>
 
@@ -479,18 +483,18 @@ doconce slides_beamer demo --beamer_slide_theme=red_shadow
 pdflatex -shell-escape demo
 </pre></div>
 <p>
-<a href="demo_red_shadow_handouts2x3.pdf" target="_blank">Traditional handouts (2x3) in PDF</a>
+<a href="demo_red_plain_handouts2x3.pdf" target="_blank">Traditional handouts (2x3) in PDF</a>
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format pdflatex demo SLIDE_TYPE=&quot;beamer&quot; SLIDE_THEME=&quot;red_shadow&quot; --latex_title_layout=beamer
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format pdflatex demo SLIDE_TYPE=&quot;beamer&quot; SLIDE_THEME=&quot;red_plain&quot; --latex_title_layout=beamer
 doconce ptex2tex demo envir=minted
 
 # --handout prevents pop ups from generating multiple pages
-doconce slides_beamer demo --beamer_slide_theme=red_shadow --handout  # note --handout!
+doconce slides_beamer demo --beamer_slide_theme=red_plain --handout  # note --handout!
 pdflatex -shell-escape demo
-# Merge slides to 2x3 per page
+# Merge slides to 3 rows and 2 columns per page
 pdfnup --nup 2x3 --frame true --delta &quot;1cm 1cm&quot; --scale 0.9 --outfile demo.pdf demo.pdf
 </pre></div>
 <p>
@@ -504,7 +508,11 @@ doconce ptex2tex demo envir=minted
 pdflatex -shell-escape demo
 </pre></div>
 
-<h2 id="___sec5">Doconce talk: Why and How <a name="___sec5"></a></h2>
+<h2 id="___sec5">IPython notebook <a name="___sec5"></a></h2>
+
+<a href="http://nbviewer.ipython.org/url/hplgit.github.io/teamods/doconce/scientific_writing/demo/demo.ipynb" target="_blank">IPython notebook (w/viewer)</a>
+
+<h2 id="___sec6">Doconce talk: Why and How <a name="___sec6"></a></h2>
 
 <ul>
   <li> <a href="../scientific_writing-reveal.html" target="_blank">reveal w/darkgrey</a>,</li>
