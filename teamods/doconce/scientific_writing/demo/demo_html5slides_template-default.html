@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="On Schemes for Exponential Decay">
 
+<title>On Schemes for Exponential Decay</title>
 
 
 
@@ -57,17 +58,14 @@ td.padding {
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: {
-     equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
@@ -79,7 +77,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>On Schemes for Exponential Decay</title>
 
 <center><h1>On Schemes for Exponential Decay</h1></center>  <!-- document title -->
 
@@ -87,7 +84,7 @@ MathJax.Hub.Config({
 <!-- author(s): Hans Petter Langtangen -->
 
 <center>
-<b>Hans Petter Langtangen</b> [1, 2]
+<b>Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
 </center>
 
 
@@ -97,7 +94,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Jun 29, 2013</h4></center> <!-- date -->
+<center><h4>Aug 30, 2014</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
@@ -108,21 +105,28 @@ MathJax.Hub.Config({
 
 <article>
 
-<h2>Goal  <a name="___sec0"></a></h2>
+<h1>Goal  <a name="___sec0"></a></h1>
 
-<p>
 The primary goal of this demo talk is to demonstrate how to write
-talks with <a href="http://code.google.com/p/doconce">doconce</a>
+talks with <a href="https://github.com/hplgit/doconce" target="_self">DocOnce</a>
 and get them rendered in numerous HTML formats.
-<div class="alert alert-block alert-notice alert-text-normal"><b>Layout.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Layout.</b>
+<p>
 This version
 utilizes html5slides slides with the theme <code>template-default</code>.
 </div>
+
+
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Notice.</b>
+<p>
 Speaker notes show up by
 pressing "p".
 </div>
+
+
 <p>
 <aside class="note">
 <!-- press "p" to activate -->
@@ -142,25 +146,21 @@ demonstrated.
 
 <article>
 
-<h2>Mathematical problem  <a name="___sec1"></a></h2>
+<h1>Mathematical problem  <a name="___sec1"></a></h1>
 
-<p>
 
 <table border="0">
 <tr>
 <td class="padding">
-<p>
 $$
 \begin{align}
 u'(t) &= -au(t),
-\label{ode}\\ 
+\tag{1}\\ 
 u(0)  &= I,
-\label{initial:value}
+\tag{2}
 \end{align}
 $$
 
-
-<p>
 
 <ul>
  <p><li> \( t\in (0,T] \)</li>
@@ -187,9 +187,8 @@ $$
 
 <article>
 
-<h2>Numerical solution method  <a name="___sec2"></a></h2>
+<h1>Numerical solution method  <a name="___sec2"></a></h1>
 
-<p>
 
 
 <ul class="build">
@@ -222,9 +221,8 @@ $$
 
 <article>
 
-<h3>Forward Euler explained  <a name="___sec3"></a></h3>
+<h2>Forward Euler explained  <a name="___sec3"></a></h2>
 
-<p>
 
 <iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
 
@@ -236,14 +234,13 @@ $$
 
 <article>
 
-<h2>Implementation  <a name="___sec4"></a></h2>
+<h1>Implementation  <a name="___sec4"></a></h1>
 
-<p>
 The numerical method is implemented in a Python function:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "autumn" -->
+<!-- code=python (!bc pycod) typeset with pygments style "autumn" -->
 <div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #0000aa">def</span> <span style="color: #00aa00">solver</span>(I, a, T, dt, theta):
     <span style="color: #aa5500">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     dt = <span style="color: #00aaaa">float</span>(dt)           <span style="color: #aaaaaa; font-style: italic"># avoid integer division</span>
@@ -264,9 +261,8 @@ The numerical method is implemented in a Python function:
 
 <article>
 
-<h3>The Crank-Nicolson method  <a name="___sec5"></a></h3>
+<h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
 
-<p>
 <center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
 
 <p>
@@ -276,14 +272,12 @@ The numerical method is implemented in a Python function:
 
 <article>
 
-<h3>The artifacts can be explained by some theory  <a name="___sec6"></a></h3>
+<h2>The artifacts can be explained by some theory  <a name="___sec6"></a></h2>
 
-<p>
 
 <p class="build">
 
 Exact solution of the scheme:
-
 
 $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .$$
 
@@ -309,10 +303,13 @@ $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thi
 
 <p class="build">
 
-<div class="build alert alert-block alert-summary alert-text-normal"><b>Concluding remarks:</b>
+<div class="build alert alert-block alert-summary alert-text-normal">
+<b>Concluding remarks:</b>
+
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 </div>
+
 
 </p>
 

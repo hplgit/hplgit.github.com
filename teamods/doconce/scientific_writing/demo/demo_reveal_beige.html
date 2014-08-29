@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="On Schemes for Exponential Decay">
 
+<title>On Schemes for Exponential Decay</title>
 
 
 
@@ -12,6 +13,8 @@
 
 <!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
@@ -19,15 +22,24 @@
 <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 <!--
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/reveal.min.css">
 <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
 -->
 
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 <script>
 document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 </script>
@@ -51,13 +63,13 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
              padding-left: 30px; /* 55px; if icon */
      }
      .reveal .alert-block {padding-top:14px; padding-bottom:14px}
-     .reveal .alert-block > p, .alert-block > ul {margin-bottom:0}
+     .reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
      /*.reveal .alert li {margin-top: 1em}*/
      .reveal .alert-block p+p {margin-top:5px}
-     /*.reveal .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
-     .reveal .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_summary.png); }
-     .reveal .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_warning.png); }
-     .reveal .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_question.png); } */
+     /*.reveal .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_notice.png); }
+     .reveal .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_summary.png); }
+     .reveal .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_warning.png); }
+     .reveal .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
 
 </style>
 
@@ -90,17 +102,14 @@ td.padding {
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: {
-     equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
@@ -112,7 +121,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>On Schemes for Exponential Decay</title>
 
 <center><h1>On Schemes for Exponential Decay</h1></center>  <!-- document title -->
 
@@ -130,7 +138,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>&nbsp;<br>
-<center><h4>Jun 29, 2013</h4></center> <!-- date -->
+<center><h4>Aug 30, 2014</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
@@ -141,21 +149,29 @@ MathJax.Hub.Config({
 
 <section>
 
-<h2>Goal  <a name="___sec0"></a></h2>
+<h1>Goal  <a name="___sec0"></a></h1>
 
-<p>
 The primary goal of this demo talk is to demonstrate how to write
-talks with <a href="http://code.google.com/p/doconce">doconce</a>
+talks with <a href="https://github.com/hplgit/doconce" target="_self">DocOnce</a>
 and get them rendered in numerous HTML formats.
-<div class="alert alert-block alert-notice alert-text-normal"><b>Layout.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Layout.</b>
+<p>
 This version
 utilizes reveal slides with the theme <code>beige</code>.
 </div>
+
+
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Notice.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Notice.</b>
+<p>
 Speaker notes show up by
-pressing "s".
+pressing "s" (but you must run reveal locally and
+some packages installed, see <a href="https://github.com/hakimel/reveal.js/#installation" target="_self">this description</a>).
 </div>
+
+
 <p>
 <aside class="notes">
 <!-- click "s" to activate -->
@@ -175,27 +191,23 @@ demonstrated.
 
 <section>
 
-<h2>Mathematical problem  <a name="___sec1"></a></h2>
+<h1>Mathematical problem  <a name="___sec1"></a></h1>
 
-<p>
 
 <table border="0">
 <tr>
 <td class="padding">
-<p>
 <p>&nbsp;<br>
 $$
 \begin{align}
 u'(t) &= -au(t),
-\label{ode}\\ 
+\tag{1}\\ 
 u(0)  &= I,
-\label{initial:value}
+\tag{2}
 \end{align}
 $$
 <p>&nbsp;<br>
 
-
-<p>
 
 <ul>
  <p><li> \( t\in (0,T] \)</li>
@@ -222,9 +234,8 @@ $$
 
 <section>
 
-<h2>Numerical solution method  <a name="___sec2"></a></h2>
+<h1>Numerical solution method  <a name="___sec2"></a></h1>
 
-<p>
 
 
 <ul>
@@ -259,9 +270,8 @@ $$
 
 <section>
 
-<h3>Forward Euler explained  <a name="___sec3"></a></h3>
+<h2>Forward Euler explained  <a name="___sec3"></a></h2>
 
-<p>
 
 <iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
 
@@ -273,15 +283,14 @@ $$
 
 <section>
 
-<h2>Implementation  <a name="___sec4"></a></h2>
+<h1>Implementation  <a name="___sec4"></a></h1>
 
-<p>
 The numerical method is implemented in a Python function:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">solver</span>(I, a, T, dt, theta):
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">solver</span>(I, a, T, dt, theta):
     <span style="color: #CD5555">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     dt = <span style="color: #658b00">float</span>(dt)           <span style="color: #228B22"># avoid integer division</span>
     N = <span style="color: #658b00">int</span>(<span style="color: #658b00">round</span>(T/dt))     <span style="color: #228B22"># no of time intervals</span>
@@ -301,9 +310,8 @@ The numerical method is implemented in a Python function:
 
 <section>
 
-<h3>The Crank-Nicolson method  <a name="___sec5"></a></h3>
+<h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
 
-<p>
 <center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
 
 <p>
@@ -313,14 +321,12 @@ The numerical method is implemented in a Python function:
 
 <section>
 
-<h3>The artifacts can be explained by some theory  <a name="___sec6"></a></h3>
+<h2>The artifacts can be explained by some theory  <a name="___sec6"></a></h2>
 
-<p>
 
 <p class="fragment">
 
 Exact solution of the scheme:
-
 
 &nbsp;<br>&nbsp;<br>
 $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .$$
@@ -348,10 +354,13 @@ $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thi
 
 <p class="fragment">
 
-<div class="fragment alert alert-block alert-summary alert-text-normal"><b>Concluding remarks:</b>
+<div class="fragment alert alert-block alert-summary alert-text-normal">
+<b>Concluding remarks:</b>
+
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 </div>
+
 
 </p>
 
@@ -368,29 +377,138 @@ qualitatively correct results.
 <script src="reveal.js/js/reveal.min.js"></script>
 
 <script>
-
 // Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
-controls: true,
-progress: true,
-history: true,
-center: true,
-heme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
-transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
 
-// Optional libraries used to extend on reveal.js
-dependencies: [
-{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-{ src: 'reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-{ src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-// { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-]
+    // Display navigation controls in the bottom right corner
+    controls: true,
+
+    // Display progress bar (below the horiz. slider)
+    progress: true,
+
+    // Display the page number of the current slide
+    slideNumber: true,
+
+    // Push each slide change to the browser history
+    history: false,
+
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+
+    // Enable the slide overview mode
+    overview: true,
+
+    // Vertical centering of slides
+    //center: true,
+    center: false,
+
+    // Enables touch navigation on devices with touch input
+    touch: true,
+
+    // Loop the presentation
+    loop: false,
+
+    // Change the presentation direction to be RTL
+    rtl: false,
+
+    // Turns fragments on and off globally
+    fragments: true,
+
+    // Flags if the presentation is running in an embedded mode,
+    // i.e. contained within a limited portion of the screen
+    embedded: false,
+
+    // Number of milliseconds between automatically proceeding to the
+    // next slide, disabled when set to 0, this value can be overwritten
+    // by using a data-autoslide attribute on your slides
+    autoSlide: 0,
+
+    // Stop auto-sliding after user input
+    autoSlideStoppable: true,
+
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+
+    // Hides the address bar on mobile devices
+    hideAddressBar: true,
+
+    // Opens links in an iframe preview overlay
+    previewLinks: false,
+
+    // Transition style
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Transition speed
+    transitionSpeed: 'default', // default/fast/slow
+
+    // Transition style for full page slide backgrounds
+    backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+
+    // Number of slides away from the current that are visible
+    viewDistance: 3,
+
+    // Parallax background image
+    //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+    // Parallax background size
+    //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+    theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+});
+
+Reveal.initialize({
+    dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+        // Syntax highlight for <code> elements
+        { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+        // Zoom in and out with Alt+click
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Speaker notes
+        { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Remote control your reveal.js presentation using a touch device
+        //{ src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // MathJax
+        //{ src: 'reveal.js/plugin/math/math.js', async: true }
+    ]
+});
+
+Reveal.initialize({
+
+    // The "normal" size of the presentation, aspect ratio will be preserved
+    // when the presentation is scaled to fit different resolutions. Can be
+    // specified using percentage units.
+    width:  960,
+    height: 700,
+
+    // Factor of the display size that should remain empty around the content
+    margin: 0.1,
+
+    // Bounds for smallest/largest possible scale to apply to content
+    minScale: 0.2,
+    maxScale: 1.0
+
 });
 </script>
+
+<!-- begin footer logo
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
+<img src="somelogo.png">
+</div>
+     end footer logo -->
+
 
 
 </body>

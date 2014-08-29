@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="On Schemes for Exponential Decay">
 
+<title>On Schemes for Exponential Decay</title>
 
 
 
@@ -15,8 +16,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=1024, user-scalable=no">
-
-<title>None</title>
 
 <!-- Required stylesheet -->
 <link rel="stylesheet" href="deck.js/core/deck.core.css">
@@ -77,6 +76,7 @@ git://github.com/groovecoder/deckjs-theme-mozilla.git
 <link rel="stylesheet" href="deck.js/themes/style/sandstone.light.css">
 <link rel="stylesheet" href="deck.js/themes/style/sandstone.mdn.css">
 <link rel="stylesheet" href="deck.js/themes/style/sandstone.nightly.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.cbc.css">
 
 git://github.com/barraq/deck.ext.js.git
 <link rel="stylesheet" href="deck.js/themes/style/beamer.css">
@@ -115,10 +115,10 @@ git://github.com/barraq/deck.ext.js.git
      .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
      /*.slide .alert li {margin-top: 1em}*/
      .deck .alert-block p+p {margin-top:5px}
-     /*.slide .alert-notice { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_notice.png); }
-     .slide .alert-summary  { background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_summary.png); }
-     .slide .alert-warning { background-image: url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_warning.png); }
-     .slide .alert-question {background-image:url(https://doconce.googlecode.com/hg/bundled/html_images/small_gray_question.png); } */
+     /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
+     .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
+     .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
+     .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
 
 </style>
 
@@ -138,6 +138,12 @@ td.padding {
 
 <body class="deck-container">
 
+<header>
+<!-- Here goes a potential header -->
+</header>
+
+<!-- do not use the article tag - it gives strange sizings -->
+
 
 
 
@@ -145,17 +151,14 @@ td.padding {
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: {
-     equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
@@ -167,7 +170,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>On Schemes for Exponential Decay</title>
 
 <center><h1>On Schemes for Exponential Decay</h1></center>  <!-- document title -->
 
@@ -175,7 +177,7 @@ MathJax.Hub.Config({
 <!-- author(s): Hans Petter Langtangen -->
 
 <center>
-<b style="font-weight: bold">Hans Petter Langtangen</b> [1, 2]
+<b style="font-weight: bold">Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
 </center>
 
 
@@ -185,7 +187,7 @@ MathJax.Hub.Config({
 <center>[1] <b style="font-weight: bold">Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b style="font-weight: bold">Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Jun 29, 2013</h4></center> <!-- date -->
+<center><h4>Aug 30, 2014</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
@@ -196,21 +198,28 @@ MathJax.Hub.Config({
 
 <section class="slide">
 
-<h2>Goal  <a name="___sec0"></a></h2>
+<h1>Goal  <a name="___sec0"></a></h1>
 
-<p>
 The primary goal of this demo talk is to demonstrate how to write
-talks with <a href="http://code.google.com/p/doconce">doconce</a>
+talks with <a href="https://github.com/hplgit/doconce" target="_self">DocOnce</a>
 and get them rendered in numerous HTML formats.
-<div class="alert alert-block alert-notice alert-text-normal"><b style="font-weight: bold">Layout.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b style="font-weight: bold">Layout.</b>
+<p>
 This version
 utilizes deck slides with the theme <code>web-2.0</code>.
 </div>
+
+
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b style="font-weight: bold">Notice.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b style="font-weight: bold">Notice.</b>
+<p>
 Speaker notes show up by
 pressing "n".
 </div>
+
+
 <p>
 <div class="notes">
 <!-- press "n" to activate -->
@@ -230,27 +239,23 @@ demonstrated.
 
 <section class="slide">
 
-<h2>Mathematical problem  <a name="___sec1"></a></h2>
+<h1>Mathematical problem  <a name="___sec1"></a></h1>
 
-<p>
 
 <table border="0">
 <tr>
 <td class="padding">
-<p>
 <p>&nbsp;<br>
 $$
 \begin{align}
 u'(t) &= -au(t),
-\label{ode}\\ 
+\tag{1}\\ 
 u(0)  &= I,
-\label{initial:value}
+\tag{2}
 \end{align}
 $$
 <p>&nbsp;<br>
 
-
-<p>
 
 <ul>
  <p><li> \( t\in (0,T] \)</li>
@@ -277,9 +282,8 @@ $$
 
 <section class="slide">
 
-<h2>Numerical solution method  <a name="___sec2"></a></h2>
+<h1>Numerical solution method  <a name="___sec2"></a></h1>
 
-<p>
 
 
 <ul>
@@ -314,9 +318,8 @@ $$
 
 <section class="slide">
 
-<h3>Forward Euler explained  <a name="___sec3"></a></h3>
+<h2>Forward Euler explained  <a name="___sec3"></a></h2>
 
-<p>
 
 <iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
 
@@ -328,14 +331,13 @@ $$
 
 <section class="slide">
 
-<h2>Implementation  <a name="___sec4"></a></h2>
+<h1>Implementation  <a name="___sec4"></a></h1>
 
-<p>
 The numerical method is implemented in a Python function:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "autumn" -->
+<!-- code=python (!bc pycod) typeset with pygments style "autumn" -->
 <div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #0000aa">def</span> <span style="color: #00aa00">solver</span>(I, a, T, dt, theta):
     <span style="color: #aa5500">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     dt = <span style="color: #00aaaa">float</span>(dt)           <span style="color: #aaaaaa; font-style: italic"># avoid integer division</span>
@@ -348,7 +350,7 @@ The numerical method is implemented in a Python function:
     <span style="color: #0000aa">for</span> n <span style="color: #0000aa">in</span> <span style="color: #00aaaa">range</span>(<span style="color: #009999">0</span>, N):    <span style="color: #aaaaaa; font-style: italic"># n=0,1,...,N-1</span>
         u[n+<span style="color: #009999">1</span>] = (<span style="color: #009999">1</span> - (<span style="color: #009999">1</span>-theta)*a*dt)/(<span style="color: #009999">1</span> + theta*dt*a)*u[n]
     <span style="color: #0000aa">return</span> u, t
-</code></pre></div>
+</pre></div>
 <p>
 
 </section>
@@ -356,9 +358,8 @@ The numerical method is implemented in a Python function:
 
 <section class="slide">
 
-<h3>The Crank-Nicolson method  <a name="___sec5"></a></h3>
+<h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
 
-<p>
 <center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
 
 <p>
@@ -368,14 +369,12 @@ The numerical method is implemented in a Python function:
 
 <section class="slide">
 
-<h3>The artifacts can be explained by some theory  <a name="___sec6"></a></h3>
+<h2>The artifacts can be explained by some theory  <a name="___sec6"></a></h2>
 
-<p>
 
 <p class="slide">
 
 Exact solution of the scheme:
-
 
 &nbsp;<br>&nbsp;<br>
 $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .$$
@@ -403,10 +402,13 @@ $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thi
 
 <p class="slide">
 
-<div class="slide alert alert-block alert-summary alert-text-normal"><b style="font-weight: bold">Concluding remarks:</b>
+<div class="slide alert alert-block alert-summary alert-text-normal">
+<b style="font-weight: bold">Concluding remarks:</b>
+
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 </div>
+
 
 </p>
 
@@ -415,6 +417,11 @@ qualitatively correct results.
 </section>
 
 
+
+
+<footer>
+<!-- Here goes a footer -->
+</footer>
 
 <!-- Begin extension snippets. Add or remove as needed. -->
 
@@ -447,7 +454,7 @@ qualitatively correct results.
 
 
 <!-- Required JS files. -->
-<script src="deck.js/jquery-1.7.2.min.js"></script>
+<script src="deck.js/jquery.min.js"></script>
 <script src="deck.js/core/deck.core.js"></script>
 
 <!-- Extension JS files. Add or remove as needed. -->
@@ -463,8 +470,8 @@ qualitatively correct results.
 <!-- From https://github.com/mikeharris100/deck.pointer.js -->
 <script src="deck.js/extensions/pointer/deck.pointer.js"></script>
 
-<!-- From https://github.com/stvnwrgs/presenterview -->
-<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script>
+<!-- From https://github.com/stvnwrgs/presenterview
+<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script> -->
 
 <!-- From https://github.com/nemec/deck.annotate.js
 <script type="text/javascript" src="deck.js/extensions/deck.annotate.js/deck.annotate.js"></script>
