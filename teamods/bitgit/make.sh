@@ -17,5 +17,5 @@ scitools rename main_github Langtangen_github *.pdf *.html .*.html
 scitools replace $wrap Langtangen_$name *.html .*.html
 scitools replace main_github Langtangen_github *.html .*.html
 rm -f *~ .*~
-git add .
+git add --all .
 git commit -am 'New updates (copies)'
