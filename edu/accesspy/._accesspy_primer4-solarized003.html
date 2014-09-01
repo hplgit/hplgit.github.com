@@ -1,15 +1,15 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="How to access Python for doing scientific computing">
 <meta name="keywords" content="Idle,Emacs,Vim,Gedit,TextWrangler,Notepad++">
 
-
+<title>How to access Python for doing scientific computing</title>
 
 
 <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
@@ -18,6 +18,9 @@ Automatically generated HTML file from Doconce source
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
 <style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -60,7 +63,10 @@ div { text-align: justify; text-justify: inter-word; }
                1,
                'sec:accesspy:MacWin',
                'sec:accesspy:MacWin'),
-              (' Anaconda and Spyder ', 1, None, '___sec2'),
+              (' Anaconda and Spyder ',
+               1,
+               'sec:accesspy:anaconda',
+               'sec:accesspy:anaconda'),
               (' Spyder on Mac ', 2, None, '___sec3'),
               (' Installation of additional packages ', 2, None, '___sec4'),
               (' Installing SciTools on Mac ', 2, None, '___sec5'),
@@ -127,24 +133,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_keep.tex -->
-$$
-\newcommand{\tp}{\thinspace .}
-\renewcommand{\Re}{\bbbr}
-
-\newcommand{\rhodim}{\mbox{kgm}^{-3}}
-\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
-\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
-
-
-\newcommand{\Oof}[1]{\mathcal{O}(#1)}
-\newcommand{\Prob}[1]{\hbox{P}(#1)}
-\newcommand{\Var}[1]{\hbox{Var}(#1)}
-\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
-\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
-$$
-
-
 
 
     
@@ -162,9 +150,16 @@ $$
 <p>
 <!-- !split -->
 
-<h1>Anaconda and Spyder  <a name="___sec2"></a></h1>
+<h1>Anaconda and Spyder <a name="sec:accesspy:anaconda"></a></h1>
 
-Anaconda can be downloaded for free from <a href="http://continuum.io/downloads" target="_blank"><tt>http://continuum.io/downloads</tt></a>.
+<a href="https://store.continuum.io/cshop/anaconda/" target="_blank">Anaconda</a> is
+a free Python distribution produced by Continuum Analytics
+and contains about 200 Python packages, as well as Python itself, for doing
+a wide range of scientific computations.
+Anaconda can be downloaded from <a href="http://continuum.io/downloads" target="_blank"><tt>http://continuum.io/downloads</tt></a>.
+Choose Python version 2.7.
+
+<p>
 The Integrated Development Environment (IDE) Spyder is included with
 Anaconda and is my recommended tool for writing and running Python
 programs on Mac and Windows, unless you have preference for a plain

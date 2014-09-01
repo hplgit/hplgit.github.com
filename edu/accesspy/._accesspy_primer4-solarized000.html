@@ -1,15 +1,15 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="How to access Python for doing scientific computing">
 <meta name="keywords" content="Idle,Emacs,Vim,Gedit,TextWrangler,Notepad++">
 
-
+<title>How to access Python for doing scientific computing</title>
 
 
 <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
@@ -18,6 +18,9 @@ Automatically generated HTML file from Doconce source
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
 <style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -60,7 +63,10 @@ div { text-align: justify; text-justify: inter-word; }
                1,
                'sec:accesspy:MacWin',
                'sec:accesspy:MacWin'),
-              (' Anaconda and Spyder ', 1, None, '___sec2'),
+              (' Anaconda and Spyder ',
+               1,
+               'sec:accesspy:anaconda',
+               'sec:accesspy:anaconda'),
               (' Spyder on Mac ', 2, None, '___sec3'),
               (' Installation of additional packages ', 2, None, '___sec4'),
               (' Installing SciTools on Mac ', 2, None, '___sec5'),
@@ -127,24 +133,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_keep.tex -->
-$$
-\newcommand{\tp}{\thinspace .}
-\renewcommand{\Re}{\bbbr}
-
-\newcommand{\rhodim}{\mbox{kgm}^{-3}}
-\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
-\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
-
-
-\newcommand{\Oof}[1]{\mathcal{O}(#1)}
-\newcommand{\Prob}[1]{\hbox{P}(#1)}
-\newcommand{\Var}[1]{\hbox{Var}(#1)}
-\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
-\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
-$$
-
-
 
 
     
@@ -162,7 +150,6 @@ $$
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>How to access Python for doing scientific computing</title>
 
 <center><h1>How to access Python for doing scientific computing</h1></center>  <!-- document title -->
 
@@ -180,7 +167,7 @@ $$
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Aug 23, 2014</h4></center> <!-- date -->
+<center><h4>Sep 1, 2014</h4></center> <!-- date -->
 <p>
 <!-- Externaldocuments: ../formulas/main_formulas, ../looplist/main_looplist, ../funcif/main_funcif, ../input/main_input, ../plot/main_plot, ../files/main_files, ../class/main_class, ../random/main_random, ../oo/main_oo, ../diffeq/main_diffeq, ../discalc/main_discalc, ../ode1/main_ode1, ../boxspring/main_boxspring, ../ode2/main_ode2, ../debug/main_debug, ../cython/main_cython, ../tech/main_timing, ../tech/main_runpy, ../tech/main_ostasks, ../tech/main_nose -->
 
