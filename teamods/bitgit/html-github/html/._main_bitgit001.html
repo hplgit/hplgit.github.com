@@ -1,0 +1,275 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Motivation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
+    <link rel="top" title="Quick Intro to Git and GitHub" href="index.html" />
+    <link rel="next" title="GitHub" href="._main_bitgit002.html" />
+    <link rel="prev" title="Need-to-Know Intro to Git and GitHub" href="._main_bitgit000.html" />
+ 
+  
+   <style type="text/css">
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="._main_bitgit002.html" title="GitHub"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="._main_bitgit000.html" title="Need-to-Know Intro to Git and GitHub"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Quick Intro to Git and GitHub</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="motivation">
+<h1>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h1>
+<p>Greg Wilson&#8217;s excellent <a class="reference external" href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/">Script for Introduction to Version Control</a> provides a detailed motivation why you will benefit greatly
+from using version control systems. Here follows a shorter motivation
+and a quick overview of the basic concepts.</p>
+<div class="section" id="why-not-dropbox-or-google-drive">
+<h2>Why not Dropbox or Google Drive?<a class="headerlink" href="#why-not-dropbox-or-google-drive" title="Permalink to this headline">¶</a></h2>
+<p>The simplest services for hosting project files are <a class="reference external" href="http://dropbox.com">Dropbox</a> and <a class="reference external" href="http://drive.google.com">Google Drive</a>.
+It is very easy to get started with these systems, and they allow you
+to share files among laptops and mobile units with as many users as
+you want. The systems offer a kind of version control in that the
+files are stored frequently (several times per minute), and you can go
+back to previous versions for the last 30 days. However, it is
+challenging  to find the right version from the past when there are
+so many of them and when the different versions are not annotated with
+sensible comments. Another deficiency of Dropbox and Google Drive is
+that they sync all your files in a folder, a feature you clearly do not
+want if there are many large files (simulation data, visualizations,
+movies, binaries from compilations,
+temporary scratch files, automatically generated copies)
+that can easily be regenerated.</p>
+<p>However, the most serious problem with Dropbox and Google Drive arises
+when several people edit files simultaneously: it can be difficult
+detect who did what when, roll back to previous versions, and to
+manually merge the edits when these are incompatible. Then one needs
+more sophisticated tools, which means a <em>true version control system</em>.
+The following text aims at providing you with the minimum information
+to started with Git, the leading version control system, combined
+with project hosting services for file storage.</p>
+</div>
+<div class="section" id="repositories-and-local-copies">
+<h2>Repositories and local copies<a class="headerlink" href="#repositories-and-local-copies" title="Permalink to this headline">¶</a></h2>
+<p>The mentioned services host all your files in a specific project in what
+is known as a <em>repository</em>, or <em>repo</em> for short.  When a copy of the
+files are wanted on a certain computer, one clones the repository on
+that computer.  This creates a local copy of the files. Now files can
+be edited, new ones can be added, and files can be deleted.  These
+changes are then brought back to the repository.  If users at
+different computers synchronize their files frequently with the
+repository, most modern version control systems will be able to merge
+changes in files that have been edited simultaneously on different
+computers. This is perhaps one of the most useful features of project
+hosting services. However, the merge functionality clearly works best
+for pure text files and less well for binary files, such as PDF files,
+MS Word or Excel documents, and OpenOffice documents.</p>
+</div>
+<div class="section" id="installing-git">
+<h2>Installing Git<a class="headerlink" href="#installing-git" title="Permalink to this headline">¶</a></h2>
+<p id="index-0">The installation of Git on various systems is described
+on the <a class="reference external" href="http://git-scm.com/">Git website</a> under the <em>Download</em> section.
+Git involves compiled code so it is most convenient to download a
+precompiled binary version of the software on Windows, Mac and other
+Linux computers.
+On Ubuntu or any Debian-based system the relevant installation command is</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; sudo apt-get install git gitk git-doc
+</pre></div>
+</div>
+<p>This tutorial explains Git interaction through command-line applications
+in a terminal window. There are numerous <a class="reference external" href="https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools#Graphical_Interfaces">graphical user interfaces to
+Git</a>. Three examples are
+<a class="reference external" href="http://git-cola.github.com/downloads.html">git-cola</a>,
+<a class="reference external" href="https://code.google.com/p/tortoisegit/">TortoiseGit</a>, and
+<a class="reference external" href="http://sourcetreeapp.com/">SourceTree</a>.</p>
+<p>Make a file <tt class="docutils literal"><span class="pre">.gitconfig</span></tt> in your home directory with information on
+your full name, email address, your favorite text editor, and
+the name of an &#8220;excludes file&#8221; which defines the file types that Git
+should omit when bringing new directories under version control.
+Here is a simplified version of the author&#8217;s <tt class="docutils literal"><span class="pre">.gitconfig</span></tt> file:</p>
+<div class="highlight-text"><div class="highlight"><pre>[user]
+name = Hans Petter Langtangen
+email = hpl@simula.no
+editor = emacs
+
+[core]
+excludesfile = ~/.gitignore
+</pre></div>
+</div>
+<p>The &#8220;excludes file&#8221; is called <tt class="docutils literal"><span class="pre">.gitignore</span></tt> and must list,
+using the Unix Shell Wildcard notation,
+the type of files that you do not need to have under version control,
+because they represent garbage or temporary information,
+or they can easily be regenerated from
+some other source files. A suggested <a class="reference external" href="http://hplgit.github.com/teamods/bitgit/src-bitgit/.gitignore">.gitignore</a> file looks like</p>
+<div class="highlight-text"><div class="highlight"><pre># compiled files:
+*.o
+*.so
+*.a
+# temporary files:
+*.bak
+*.swp
+*~
+.*~
+*.old
+tmp*
+temp*
+.#*
+\#*
+# tex files:
+*.log
+*.dvi
+*.aux
+*.blg
+*.idx
+*.nav
+*.out
+*.toc
+*.snm
+*.vrb
+# eclipse files:
+*.cproject
+*.project
+# misc:
+.DS_Store
+</pre></div>
+</div>
+<p>Be critical to what kind of files you really need a full history of.
+For example, you do not want to populate the repository with
+big graphics files of the type that can easily be regenerated by
+some program.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <center>
+            <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
+              <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
+            </a></p>
+            </center>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Motivation</a><ul>
+<li><a class="reference internal" href="#why-not-dropbox-or-google-drive">Why not Dropbox or Google Drive?</a></li>
+<li><a class="reference internal" href="#repositories-and-local-copies">Repositories and local copies</a></li>
+<li><a class="reference internal" href="#installing-git">Installing Git</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="._main_bitgit000.html"
+                        title="previous chapter">Need-to-Know Intro to Git and GitHub</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="._main_bitgit002.html"
+                        title="next chapter">GitHub</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/._main_bitgit001.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="._main_bitgit002.html" title="GitHub"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="._main_bitgit000.html" title="Need-to-Know Intro to Git and GitHub"
+             >previous</a> |</li>
+        <li><a href="index.html">Quick Intro to Git and GitHub</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+  <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
+  </div>
+</div>
+
+  </body>
+</html>

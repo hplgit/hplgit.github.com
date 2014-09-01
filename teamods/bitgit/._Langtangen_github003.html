@@ -1,15 +1,15 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Need-to-Know Intro to Git and GitHub">
 <meta name="keywords" content="GitHub,gh-pages on GitHub,merging files,forking (a repo),pull request">
 
-
+<title>Need-to-Know Intro to Git and GitHub</title>
 
 
 <style type="text/css">
@@ -65,7 +65,7 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Introduction ', 1, None, '___sec0'),
+ 'sections': [(' Motivation ', 1, None, '___sec0'),
               (' Why not Dropbox or Google Drive? ', 2, None, '___sec1'),
               (' Repositories and local copies ', 2, None, '___sec2'),
               (' Installing Git ', 2, None, '___sec3'),
@@ -129,9 +129,11 @@ end of tocinfo -->
 <a name="part0003"></a>
 <p>
 <!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
 <div style="text-align: left;"><a href="._Langtangen_bitgit002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
-
+</td><td>
 <div style="text-align: right;"><a href="._Langtangen_bitgit004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
 <!-- end top navigation -->
 </p>
 
@@ -226,7 +228,9 @@ computers). Infrequent push and pull easily leads to merge problems
 cannot get your changes before they are pushed.
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Do commit and pull often!</b>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>Do commit and pull often!</b>
+<p>
 If the central repo undergoes changes (by you on other computers or by
 others), it is essential to often commit your local work and perform
 a pull. This will keep your local files in sync with the repo.
@@ -238,7 +242,9 @@ merge algorithm to succeed).
 
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Do not forget to add important files.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Do not forget to add important files.</b>
+<p>
 You should run <code>git status -s</code> frequently to see the status of
 files: <code>A</code> for added, <code>M</code> for modified, <code>R</code> for renamed,
 and <code>??</code> for not being registered in the repo. Pay particular attention
@@ -666,7 +672,9 @@ convenient technique to move some immature edits after the last commit
 out in a new branch for further experimental work.
 
 <p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Warning.</b>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>Warning.</b>
+<p>
 You can get the stashed files back by <code>git stash apply</code>. It is
 possible to multiple <code>git stash</code> and <code>git stash apply</code>
 commands. However, it is easy to run into trouble with multiple
@@ -786,7 +794,9 @@ different types of files, e.g., <code>latexdiff</code> for LaTeX files
 and <code>pdiff</code> for pure text files.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Replacing all your files with those in the repo.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Replacing all your files with those in the repo.</b>
+<p>
 Occasionally it becomes desirable to replace <em>all</em> files in
 the local repo with those at the file hosting service.
 One possibility is removing your repo and cloning again, or
@@ -798,7 +808,7 @@ use the Git commands
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git fetch --all
 Terminal&gt; git reset --hard origin/master
 </pre></div>
-<p>
+
 </div>
 
 
@@ -1066,9 +1076,11 @@ not <code>merge</code>, when updating the branches!
 
 <p>
 <!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
 <div style="text-align: left;"><a href="._Langtangen_bitgit002.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
-
+</td><td>
 <div style="text-align: right;"><a href="._Langtangen_bitgit004.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
 <!-- end bottom navigation -->
 </p>
 
