@@ -7,7 +7,7 @@ Hans Petter Langtangen [1, 2] (hpl@simula.no)
 [1] Center for Biomedical Computing, Simula Research Laboratory
 [2] Department of Informatics, University of Oslo.
 
-Date: Aug 28, 2014
+Date: Oct 3, 2014
 
 *Summary.* This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation u'=-au with the
@@ -46,7 +46,7 @@ cooling of an object, and radioactive decay.
 Numerical solution method
 =========================
 
-We introduce a mesh in time with points 0= t_0< t_1 \cdots < t_{N_t}=T.
+We introduce a mesh in time with points 0 = t_0 < t_1 \cdots < t_{N_t}=T.
 For simplicity, we assume constant spacing \Delta t between the
 mesh points: \Delta t = t_{n}-t_{n-1}, n=1,\ldots,N_t. Let
 u^n be the numerical approximation to the exact solution at t_n.
@@ -129,14 +129,14 @@ FIGURE: [error, width=400] Variation of the error with the time step. {fig:error
 
 The numbers corresponding to the figure above are given in the table below.
 
-==========  ==========  ==========  ==========  
- \Delta t    \theta=0   \theta=0.5   \theta=1   
-==========  ==========  ==========  ==========  
-      1.25      7.4630      0.2161      0.2440  
-      0.75      0.6632      0.0744      0.1875  
-      0.50      0.2797      0.0315      0.1397  
-      0.10      0.0377      0.0012      0.0335  
-==========  ==========  ==========  ==========  
+========  ========  ==========  ========  
+\Delta t  \theta=0  \theta=0.5  \theta=1  
+========  ========  ==========  ========  
+    1.25    7.4630      0.2161    0.2440  
+    0.75    0.6632      0.0744    0.1875  
+    0.50    0.2797      0.0315    0.1397  
+    0.10    0.0377      0.0012    0.0335  
+========  ========  ==========  ========  
 
 
 Summary ------------------------------------------------------------------|

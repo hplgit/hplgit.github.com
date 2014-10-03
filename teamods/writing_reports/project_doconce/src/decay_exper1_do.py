@@ -68,7 +68,7 @@ label{numerical:problem}
 idx{mesh in time} idx{$\theta$-rule} idx{numerical scheme}
 idx{finite difference scheme}
 
-We introduce a mesh in time with points $0= t_0< t_1 \cdots < t_{N_t}=T$.
+We introduce a mesh in time with points $0 = t_0 < t_1 \cdots < t_{N_t}=T$.
 For simplicity, we assume constant spacing $\Delta t$ between the
 mesh points: $\Delta t = t_{n}-t_{n-1}$, $n=1,\ldots,N_t$. Let
 $u^n$ be the numerical approximation to the exact solution at $t_n$.

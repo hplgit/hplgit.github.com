@@ -1,0 +1,459 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Experiments with Schemes for Exponential Decay">
+<meta name="keywords" content="keyword,model problem,exponential decay,mesh in time,$\theta$-rule,numerical scheme,finite difference scheme,numerical experiments,BE,CN,FE,error vs time step">
+
+<title>Experiments with Schemes for Exponential Decay</title>
+
+
+<style type="text/css">
+
+/* Builds on
+   http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+   Many changes for DocOnce by Hans Petter Langtangen.
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body { line-height: 1; }
+ol, ul { list-style: none; }
+blockquote, q {	quotes: none; }
+blockquote:before, blockquote:after,
+q:before, q:after { content: ''; content: none; }
+table {	border-collapse: collapse; border-spacing: 0; }
+
+body {
+  font-size: 1em;
+  line-height: 1.5;
+  background: #e7e7e7 url(https://raw.githubusercontent.com/hplgit/num-methods-for-PDEs/master/doc/web/images/body-bg.png) 0 0 repeat;
+  font-family: 'Helvetica Neue', Helvetica, Arial, serif;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  color: #6d6d6d;
+  width: 620px;
+  margin: 0 auto;
+}
+
+code, pre {
+  font-family: "Monospace";
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+code {
+  border: solid 2px #ddd;
+  padding: 0 3px;
+}
+
+pre {
+  padding: 20px;
+  color: #222;
+  text-shadow: none;
+  overflow: auto;
+  border: solid 4px #ddd;
+}
+
+a { color: #d5000d; }
+a:hover { color: #c5000c; }
+ul, ol, dl { margin-bottom: 20px; }
+
+hr {
+  height: 1px;
+  line-height: 1px;
+  margin-top: 1em;
+  padding-bottom: 1em;
+  border: none;
+}
+
+b, strong { font-weight: bold; }
+em { font-style: italic; }
+table { width: 100%; border: 1px solid #ebebeb; }
+th { font-weight: 500; }
+td { border: 1px solid #ddd; text-align: center; font-weight: 300; }
+
+/* red color: #d5000d; /*black color: #303030; gray is default */
+
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #d5000d;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #d5000d;
+}
+
+h3 { font-size: 18px; }
+p { font-weight: 300; margin-bottom: 20px; }
+a { text-decoration: none; }
+p a { font-weight: 400; }
+
+blockquote {
+  font-size: 1.6em;
+  border-left: 10px solid #e9e9e9;
+  margin-bottom: 20px;
+  padding: 0 0 0 30px;
+}
+
+ul li {
+  list-style: disc inside;
+  padding-left: 20px;
+}
+
+ol li {
+  list-style: decimal inside;
+  padding-left: 3px;
+}
+
+dl dt {
+  color: #303030;
+}
+
+footer {
+  background: transparent url('../images/hr.png') 0 0 no-repeat;
+  margin-top: 40px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+footer a {
+  color: #666;
+}
+footer a:hover {
+  color: #444;
+}
+
+
+/* #Media Queries
+================================================== */
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #bababa;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #f8f8f8;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Mathematical problem ', 1, 'math:problem', 'math:problem'),
+              (' Numerical solution method ',
+               1,
+               'numerical:problem',
+               'numerical:problem'),
+              (' Implementation ', 1, None, '___sec2'),
+              (' Numerical experiments ', 1, None, '___sec3'),
+              (' The Backward Euler method ', 2, None, '___sec4'),
+              (' The Crank-Nicolson method ', 2, None, '___sec5'),
+              (' The Forward Euler method ', 2, None, '___sec6'),
+              (' Error vs $\\Delta t$ ', 2, None, '___sec7'),
+              (' Bibliography ', 1, None, '___sec8')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- ------------------- main content ---------------------- -->
+
+
+<p>
+
+
+<center><h1>Experiments with Schemes for Exponential Decay</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Department of Informatics, University of Oslo.</b></center>
+<p>
+<center><h4>Oct 3, 2014</h4></center> <!-- date -->
+<p>
+<b>Summary.</b> This report investigates the accuracy of three finite difference
+schemes for the ordinary differential equation \( u'=-au \) with the
+aid of numerical experiments. Numerical artifacts are in particular
+demonstrated.
+
+<h2>
+Table of contents</h2>
+
+<p>
+<a href="#math:problem"> Mathematical problem </a><br>
+<a href="#numerical:problem"> Numerical solution method </a><br>
+<a href="#___sec2"> Implementation </a><br>
+<a href="#___sec3"> Numerical experiments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec4"> The Backward Euler method </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec5"> The Crank-Nicolson method </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec6"> The Forward Euler method </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Error vs \( \Delta t \) </a><br>
+<a href="#___sec8"> Bibliography </a><br>
+</p>
+
+<h1>Mathematical problem <a name="math:problem"></a></h1>
+
+<p>
+We address the initial-value problem
+
+$$
+\begin{align}
+u'(t) &= -au(t), \quad t \in (0,T], \label{ode}\\
+u(0)  &= I,                         \label{initial:value}
+\end{align}
+$$
+
+where \( a \), \( I \), and \( T \) are prescribed parameters, and \( u(t) \) is
+the unknown function to be estimated. This mathematical model
+is relevant for physical phenomena featuring exponential decay
+in time, e.g., vertical pressure variation in the atmosphere,
+cooling of an object, and radioactive decay.
+
+<h1>Numerical solution method <a name="numerical:problem"></a></h1>
+
+<p>
+We introduce a mesh in time with points \( 0 = t_0 < t_1 \cdots < t_{N_t}=T \).
+For simplicity, we assume constant spacing \( \Delta t \) between the
+mesh points: \( \Delta t = t_{n}-t_{n-1} \), \( n=1,\ldots,N_t \). Let
+\( u^n \) be the numerical approximation to the exact solution at \( t_n \).
+
+<p>
+The \( \theta \)-rule <a href="#Iserles_2009">[1]</a>
+is used to solve \eqref{ode} numerically:
+
+$$
+u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
+$$
+
+for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
+
+<ul>
+  <li> The <a href="http://en.wikipedia.org/wiki/Forward_Euler_method" target="_self">Forward Euler</a>
+    scheme when \( \theta=0 \)</li>
+  <li> The <a href="http://en.wikipedia.org/wiki/Backward_Euler_method" target="_self">Backward Euler</a>
+    scheme when \( \theta=1 \)</li>
+  <li> The <a href="http://en.wikipedia.org/wiki/Crank-Nicolson" target="_self">Crank-Nicolson</a>
+    scheme when \( \theta=1/2 \)</li>
+</ul>
+
+<h1>Implementation  <a name="___sec2"></a></h1>
+
+<p>
+The numerical method is implemented in a Python function
+<a href="#Langtangen_2012">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>decay_mod</tt></a> module):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "trac" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="font-weight: bold">def</span> <span style="color: #990000; font-weight: bold">solver</span>(I, a, T, dt, theta):
+    <span style="color: #bb8844">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
+    dt <span style="font-weight: bold">=</span> <span style="color: #999999">float</span>(dt)            <span style="color: #999988; font-style: italic"># avoid integer division</span>
+    Nt <span style="font-weight: bold">=</span> <span style="color: #999999">int</span>(<span style="color: #999999">round</span>(T<span style="font-weight: bold">/</span>dt))     <span style="color: #999988; font-style: italic"># no of time intervals</span>
+    T <span style="font-weight: bold">=</span> Nt<span style="font-weight: bold">*</span>dt                 <span style="color: #999988; font-style: italic"># adjust T to fit time step dt</span>
+    u <span style="font-weight: bold">=</span> zeros(Nt<span style="font-weight: bold">+</span><span style="color: #009999">1</span>)           <span style="color: #999988; font-style: italic"># array of u[n] values</span>
+    t <span style="font-weight: bold">=</span> linspace(<span style="color: #009999">0</span>, T, Nt<span style="font-weight: bold">+</span><span style="color: #009999">1</span>)  <span style="color: #999988; font-style: italic"># time mesh</span>
+
+    u[<span style="color: #009999">0</span>] <span style="font-weight: bold">=</span> I                  <span style="color: #999988; font-style: italic"># assign initial condition</span>
+    <span style="font-weight: bold">for</span> n <span style="font-weight: bold">in</span> <span style="color: #999999">range</span>(<span style="color: #009999">0</span>, Nt):    <span style="color: #999988; font-style: italic"># n=0,1,...,Nt-1</span>
+        u[n<span style="font-weight: bold">+</span><span style="color: #009999">1</span>] <span style="font-weight: bold">=</span> (<span style="color: #009999">1</span> <span style="font-weight: bold">-</span> (<span style="color: #009999">1</span><span style="font-weight: bold">-</span>theta)<span style="font-weight: bold">*</span>a<span style="font-weight: bold">*</span>dt)<span style="font-weight: bold">/</span>(<span style="color: #009999">1</span> <span style="font-weight: bold">+</span> theta<span style="font-weight: bold">*</span>dt<span style="font-weight: bold">*</span>a)<span style="font-weight: bold">*</span>u[n]
+    <span style="font-weight: bold">return</span> u, t
+</pre></div>
+
+<h1>Numerical experiments  <a name="___sec3"></a></h1>
+
+<p>
+We define a set of numerical experiments where \( I \), \( a \), and \( T \) are
+fixed, while \( \Delta t \) and \( \theta \) are varied.
+In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
+
+<h2>The Backward Euler method  <a name="___sec4"></a></h2>
+
+<p>
+<center><p><img src="BE.png" align="bottom" width=800></p></center>
+
+<h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
+
+<p>
+<center><p><img src="CN.png" align="bottom" width=800></p></center>
+
+<h2>The Forward Euler method  <a name="___sec6"></a></h2>
+
+<p>
+<center><p><img src="FE.png" align="bottom" width=800></p></center>
+
+<h2>Error vs \( \Delta t \)  <a name="___sec7"></a></h2>
+
+<p>
+How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
+is shown in Figure <a href="#fig:error">1</a>.
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>Observe:</b>
+<p>
+The data points for the three largest \( \Delta t \) values in the
+Forward Euler method are not relevant as the solution behaves
+non-physically.
+</div>
+
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  Variation of the error with the time step. <a name="fig:error"></a> </p></center>
+<p><img src="error.png" align="bottom" width=400></p>
+</center>
+
+<p>
+The numbers corresponding to the figure above are given in the table below.
+
+<p>
+<table border="1">
+<thead>
+<tr><td align="center">\( \Delta t \)</td> <td align="center">\( \theta=0 \)</td> <td align="center">\( \theta=0.5 \)</td> <td align="center">\( \theta=1 \)</td> </tr>
+</thead>
+<tbody>
+<tr><td align="right">   1.25              </td> <td align="right">   7.4630            </td> <td align="right">   0.2161              </td> <td align="right">   0.2440            </td> </tr>
+<tr><td align="right">   0.75              </td> <td align="right">   0.6632            </td> <td align="right">   0.0744              </td> <td align="right">   0.1875            </td> </tr>
+<tr><td align="right">   0.50              </td> <td align="right">   0.2797            </td> <td align="right">   0.0315              </td> <td align="right">   0.1397            </td> </tr>
+<tr><td align="right">   0.10              </td> <td align="right">   0.0377            </td> <td align="right">   0.0012              </td> <td align="right">   0.0335            </td> </tr>
+</tbody>
+</table>
+<p>
+<div class="alert alert-block alert-summary alert-text-normal">
+<b>Summary.</b>
+<p>
+
+<ol>
+<li> \( \theta =1 \): \( E\sim \Delta t \) (first-order convergence).</li>
+<li> \( \theta =0.5 \): \( E\sim \Delta t^2 \) (second-order convergence).</li>
+<li> \( \theta =1 \) is always stable and gives qualitatively corrects results.</li>
+<li> \( \theta =0.5 \) never blows up, but may give oscillating solutions
+   if \( \Delta t \) is not sufficiently small.</li>
+<li> \( \theta =0 \) suffers from fast-growing solution if \( \Delta t \) is
+   not small enough, but even below this limit one can have oscillating
+   solutions that disappear if \( \Delta t \) is sufficiently small.</li>
+</ol>
+</div>
+
+
+<h1>Bibliography  <a name="___sec8"></a></h1>
+
+<p>
+<!-- begin bibliography -->
+
+<ol>
+ <li> <a name="Iserles_2009"></a> <b>A. Iserles</b>. 
+    <em>A First Course in the Numerical Analysis of Differential Equations</em>,
+    Cambridge University Press,
+    2009.</li>
+ <li> <a name="Langtangen_2012"></a> <b>H. P. Langtangen</b>. 
+    <em>A Primer on Scientific Programming With Python</em>,
+    Springer,
+    2012.</li>
+</ol>
+
+<!-- end bibliography -->
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+
