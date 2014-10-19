@@ -13,7 +13,7 @@ Automatically generated HTML file from DocOnce source
 
 
 <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
@@ -50,6 +50,7 @@ h1 {color: #b58900;}  /* yellow */
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -91,7 +92,7 @@ div { text-align: justify; text-justify: inter-word; }
                3,
                None,
                '___sec26'),
-              (' Going back to the last commit ', 3, None, '___sec27'),
+              (' Going back to a previous commit ', 3, None, '___sec27'),
               (' Merging files with Git ',
                2,
                'bitgit:git:merge',
@@ -152,7 +153,7 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Deptartment of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Sep 1, 2014</h4></center> <!-- date -->
+<center><h4>Oct 19, 2014</h4></center> <!-- date -->
 <p>
 <a name="bitgit:top"></a>
 
@@ -196,12 +197,14 @@ of the project.
 
 <h1>Motivation  <a name="___sec0"></a></h1>
 
+<p>
 Greg Wilson's excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/" target="_self">Script for Introduction to Version Control</a> provides a detailed motivation why you will benefit greatly
 from using version control systems. Here follows a shorter motivation
 and a quick overview of the basic concepts.
 
 <h2>Why not Dropbox or Google Drive?  <a name="___sec1"></a></h2>
 
+<p>
 The simplest services for hosting project files are <a href="http://dropbox.com" target="_self">Dropbox</a> and <a href="http://drive.google.com" target="_self">Google Drive</a>.
 It is very easy to get started with these systems, and they allow you
 to share files among laptops and mobile units with as many users as
@@ -229,6 +232,7 @@ with project hosting services for file storage.
 
 <h2>Project hosting services  <a name="___sec2"></a></h2>
 
+<p>
 Four popular project hosting services are
 
 <ul>
@@ -266,6 +270,7 @@ easily access the many references I provide to material on the web.
 
 <h2>Repositories and local copies  <a name="___sec3"></a></h2>
 
+<p>
 The mentioned services host all your files in a specific project in what
 is known as a <em>repository</em>, or <em>repo</em> for short.  When a copy of the
 files are wanted on a certain computer, one clones the repository on
@@ -282,6 +287,7 @@ MS Word or Excel documents, and OpenOffice documents.
 
 <h2>What to choose?  <a name="___sec4"></a></h2>
 
+<p>
 It might seem challenging to pick the project hosting service
 and the version control system that are right for you. Below
 is some very personal advice.
@@ -315,6 +321,7 @@ project is "My Project".
 
 <h2>Installing Git  <a name="___sec5"></a></h2>
 
+<p>
 The installation of Git on various systems is described
 on the <a href="http://git-scm.com/" target="_self">Git website</a> under the <em>Download</em> section.
 Git involves compiled code so it is most convenient to download a
@@ -401,6 +408,7 @@ some program.
 
 <h1>Bitbucket <a name="bitgit:bitbucket"></a></h1>
 
+<p>
 To start using Bitbucket, go to <code>bitbucket.org</code> and create an account.
 The communication channel with Bitbucket repositories is either
 through SSH or HTTPS.  To use SSH, you must upload your SSH key,
@@ -423,6 +431,7 @@ using them on any computer.
 
 <h2>Creating a new project  <a name="___sec7"></a></h2>
 
+<p>
 Click at <em>Repositories</em> and at <em>Create repository</em>.
 You can now
 
@@ -506,6 +515,7 @@ the section <a href="#bitgit:git">Using Git</a> for Git.
 
 <h3>Collaborating  <a name="___sec8"></a></h3>
 
+<p>
 There is a button <em>Send invitation</em> on the project home page where you
 can invite other Bitbucket users to have push (write) access to your
 repo. Many prefer to be notified in email when changes are pushed to
@@ -517,6 +527,7 @@ or push (write) access to the repo.
 
 <h2>User web pages <a name="bitgit:bitbucket:web"></a></h2>
 
+<p>
 Bitbucket can host web pages associated with a Bitbucket account,
 but does not yet offer web pages as part of a project. Say
 your account/username is <code>user</code>.  Make a new repository on
@@ -539,6 +550,7 @@ you can host web pages for a series of projects in this repo.
 
 <h2>Linking to Bitbucket files <a name="bitgit:bitbucket:URLs"></a></h2>
 
+<p>
 Unfortunately, the default URL shown in your browser to a file in
 a Bitbucket repo contains information about the version of the file.
 For example, a file <code>v1.c</code> under Git might appear with the URL
@@ -570,6 +582,7 @@ requires the hash to be replaced by <code>default</code>.
 
 <h1>Googlecode <a name="bitgit:googlecode"></a></h1>
 
+<p>
 To use Googlecode you need a general account on Google, which allows
 you to use Gmail, Google Docs, and other Google services.
 Googlecode offers free file hosting, but all the files are public and
@@ -577,6 +590,7 @@ open to the world.
 
 <h2>Creating a new project  <a name="___sec12"></a></h2>
 
+<p>
 Go to <a href="http://code.google.com/hosting" target="_self"><tt>http://code.google.com/hosting</tt></a> and click on
 <em>Creating a new project</em>. Fill out <em>all</em> the fields. For now
 the project name is <code>my-project</code>.
@@ -666,6 +680,7 @@ listed under each other in the <em>Project committers</em> field.
 
 <h2>Wiki pages  <a name="___sec13"></a></h2>
 
+<p>
 Wiki pages can intuitively be made directly in the browser. However,
 it is often more convenient to have them locally on your computer.
 Click on <em>Source</em> and choose <em>wiki</em> on the <em>Repository</em> pull down menu.
@@ -689,6 +704,7 @@ for many formats) and that the wiki pages are frequently updated.
 
 <h1>GitHub <a name="bitgit:github"></a></h1>
 
+<p>
 Go to <code>github.com</code> and create an account. Then go to your account
 settings (icon in the upper left corner of the page),
 choose <em>SSH Keys</em>, and provide your SSH key
@@ -711,6 +727,7 @@ to log in and add collaborators using their personal GitHub usernames.
 
 <h2>Creating a new project  <a name="___sec15"></a></h2>
 
+<p>
 Click on <em>New repository</em> on the main page and fill out a project
 name, here <em>My Project</em>, click the check button <em>Initialize this
 repository with a README</em>, and click on <em>Create repository</em>.
@@ -751,6 +768,7 @@ The daily file operations are explained in the section <a href="#bitgit:git">Usi
 
 <h3>Collaborating  <a name="___sec16"></a></h3>
 
+<p>
 To give others permissions to push their edits of files to the
 repository, you click on the <em>Settings</em> link in the right sidebar,
 then click on <em>Collaborators</em> on the left, and fill in the name
@@ -776,6 +794,7 @@ the <em>watch</em> button), respectively.
 
 <h2>Wiki pages  <a name="___sec17"></a></h2>
 
+<p>
 With every GitHub project there is an option to create wiki pages.
 Click on the <em>Wiki</em> button in the right sidebar on the main page of
 the project. Click on <em>New Page</em> to create a new page. The wiki pages
@@ -825,6 +844,7 @@ root directory of the wiki project so that just a
 
 <h2>Project web pages  <a name="___sec18"></a></h2>
 
+<p>
 HTML pages stored in your repo cannot be linked to and properly
 rendered as web pages.
 Links to HTML files at GitHub will be either rendered as nicely typeset
@@ -877,7 +897,7 @@ username and <code>My-Project</code> is the project name.
 
 <p>
 The web pages and project files are now in two different branches.
-To see the branches, type <code>git branch</code> and the one you are in will
+To see the branches, type <code>git branch</code>, and the one you are in will
 be marked with <code>*</code> in the output. Switching to the master branch
 is done by <code>git checkout master</code>. Similarly, <code>git checkout gh-pages</code>
 switches to the gh-pages branch.
@@ -988,7 +1008,7 @@ just find the file in GitHub's web interface, choose which version of
 the file you want to link to (nicely HTML formatted version or the raw
 file), right-click on the link, choose <em>Copy Link</em>, and paste the
 link into the document you want. You can test that the link works by
-the Unix command <code>curl -O <link></code>. Note that the link to a file
+the Unix command <code>curl -O &lt;link&gt;</code>. Note that the link to a file
 is different from the source file's intuitive path in the repository.
 Typically, a source file <code>dir/f.py</code> in project <code>prj</code> is reached
 through
@@ -1023,6 +1043,7 @@ the HTML code.
 
 <h2>User web pages  <a name="___sec19"></a></h2>
 
+<p>
 GitHub also allows you to create user pages and organization pages not
 tied to any specific project.
 Your personal site has address
@@ -1056,6 +1077,7 @@ If you want to use Sphinx generated HTML pages, recall to add an empty file
 
 <h1>Using Git <a name="bitgit:git"></a></h1>
 
+<p>
 Most Mac and Linux users prefer to work with Git via commands in a
 terminal window. Windows users may prefer a graphical user interface (GUI),
 and there are many <a href="http://git-scm.com/downloads/guis" target="_self">options</a> in
@@ -1066,6 +1088,7 @@ Here we concentrate on the efficient command-line interface to Git.
 
 <h3>Cloning  <a name="___sec22"></a></h3>
 
+<p>
 You get started with your project on a new machine, or another user
 can get started with the project,
 by running
@@ -1080,6 +1103,7 @@ actual project name.
 
 <h3>The pull-change-push cycle  <a name="___sec23"></a></h3>
 
+<p>
 The typical work flow with the "My Project" project starts with
 updating the local repository by going to the <code>My-Project</code> directory
 and writing
@@ -1159,6 +1183,7 @@ regenerated from other files - of not, run <code>git add</code>.
 
 <h3>Viewing the history of files  <a name="___sec24"></a></h3>
 
+<p>
 A nice graphical tool allows you to view all changes, or just
 the latest ones:
 <!-- begin verbatim block  sys-->
@@ -1209,6 +1234,7 @@ expressions instead of exact text: just replace <code>-S</code> by <code>-G</cod
 
 <h3>Retrieving old files  <a name="___sec25"></a></h3>
 
+<p>
 Occasionally you need to go back to an earlier version of a file,
 say its name is <code>f.py</code>. Start with viewing the history:
 <!-- begin verbatim block  sys-->
@@ -1232,12 +1258,12 @@ configure the tools used by the <code>git diff</code> command). If you want to r
 <!-- end verbatim block -->
 To go back to another version (the most recent one, for instance),
 find the commit hash with <code>git log f.py</code>, and do <code>get checkout
-<commit hash> f.py</code>.
+&lt;commit hash&gt; f.py</code>.
 
 <p>
 If <code>f.py</code> changed name from <code>e.py</code> at some point and you want
 <code>e.py</code> back, run <code>git log --follow f.py</code> to find the commit
-when <code>e.py</code> existed, and do a <code>git checkout <commit hash> e.py</code>.
+when <code>e.py</code> existed, and do a <code>git checkout &lt;commit hash&gt; e.py</code>.
 
 <p>
 In case <code>f.py</code> no longer exists, run <code>git log -- f.py</code> to
@@ -1257,8 +1283,9 @@ it requires the full path from the root git directory:
 
 <h3>Reset the entire repo to an old version  <a name="___sec26"></a></h3>
 
+<p>
 Run <code>git log</code> on some file and find the commit hash of the date
-or message when want to go back to. Run <code>git checkout <commit hash></code>
+or message when want to go back to. Run <code>git checkout &lt;commit hash&gt;</code>
 to change all files to this state.
 The problem of going back to the most recent state is that <code>git log</code>
 has no newer commits than the one you checked out. The trick is to say
@@ -1278,8 +1305,9 @@ Note the period at the end of the first command (without it, you only
 get the possibility to look at old files, but the next commit is not
 affected).
 
-<h3>Going back to the last commit  <a name="___sec27"></a></h3>
+<h3>Going back to a previous commit  <a name="___sec27"></a></h3>
 
+<p>
 Sometimes accidents with many files happen and you want to go back
 to the last commit. Find the hash of the last commit and do
 
@@ -1289,9 +1317,17 @@ to the last commit. Find the hash of the last commit and do
 </code></pre>
 <!-- end verbatim block -->
 This command destroys <em>everything</em> you have done since the last commit.
+To push it as the new state of the repo, do
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; git push origin HEAD --force
+</code></pre>
+<!-- end verbatim block -->
 
 <h2>Merging files with Git <a name="bitgit:git:merge"></a></h2>
 
+<p>
 The <code>git pull</code> command fetches new files from the repository and
 tries to perform an automatic merge if there are conflicts between
 the local files and the files in the repository. Alternatively,
@@ -1304,7 +1340,7 @@ occasionally happens.
 Git will write a message in the terminal window
 if the merge is unsuccessful for one or
 more files. These files will have to be edited manually.
-Merge markers of the type <code>>>>>></code>, <code>======</code>, and <code><<<<<</code> have been
+Merge markers of the type <code>&gt;&gt;&gt;&gt;&gt;</code>, <code>======</code>, and <code>&lt;&lt;&lt;&lt;&lt;</code> have been
 inserted by Git to mark sections of a file where the version in the
 repository differ from the local version. You must decide which
 lines that are to appear in the final, merged version. When done,
@@ -1466,6 +1502,7 @@ Then run <code>git commit -am merge</code> to finalize the merge.
 
 <h2>Git working style with branching and stashing <a name="bitgit:git:branch:stash"></a></h2>
 
+<p>
 <!-- git clone is without branches, say something about that in clone -->
 
 <p>
@@ -1480,6 +1517,7 @@ have committed.
 
 <h3>Branching  <a name="___sec30"></a></h3>
 
+<p>
 A better organization of your work would
 be to keep the latest, ongoing
 developments separate from the more official and stable version
@@ -1488,7 +1526,8 @@ where new developments takes place:
 
 <p>
 <!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; git branch newstuff      # create and switch to new branch
+<pre><code>Terminal&gt; git branch newstuff      # create new branch
+Terminal&gt; git checkout newstuff
 Terminal&gt; # extend and modify files...
 Terminal&gt; git commit -am 'Modified ... Added a file on ...'
 Terminal&gt; git checkout master      # swith back to master
@@ -1528,8 +1567,12 @@ in the remote repo, run
 </code></pre>
 <!-- end verbatim block -->
 
+<p>
+You can learn more in an <a href="http://pcottle.github.io/learnGitBranching/" target="_self">excellent introduction and demonstration of Git branching</a>.
+
 <h3>Stashing  <a name="___sec31"></a></h3>
 
+<p>
 It is not possible to switch branches unless you have committed the
 files in the current branch. If your work on some files is in a mess
 and you want to change to another branch or fix other files in the
@@ -1571,6 +1614,7 @@ branch with <code>git stash branch newstuff</code>.
 
 <h2>Replacing pull by fetch and merge <a name="bitgit:git:fetch"></a></h2>
 
+<p>
 The <code>git pull</code> command actually performs two steps that are sometimes
 advantageous to run separately. First, a <code>get fetch</code> is run to fetch
 new files from the repository, and thereafter a <code>git merge</code> command is
@@ -1637,6 +1681,7 @@ Terminal&gt; git checkout master
 
 <h3>Configuring the <code>git diff</code> command  <a name="___sec33"></a></h3>
 
+<p>
 The <code>git diff</code> command launches by default the
 Unix <code>diff</code> tool in the terminal window.
 Many users prefer to use other diff tools, and the desired one
@@ -1677,7 +1722,7 @@ and <code>pdiff</code> for pure text files.
 <b>Replacing all your files with those in the repo.</b>
 <p>
 Occasionally it becomes desirable to replace <em>all</em> files in
-the local repo with those at the file hosting service.
+the local repo with those in the repo at the file hosting service.
 One possibility is removing your repo and cloning again, or
 use the Git commands
 
@@ -1692,6 +1737,7 @@ Terminal&gt; git reset --hard origin/master
 
 <h2>Team work with forking and pull requests <a name="bitgit:git:team"></a></h2>
 
+<p>
 In small collaboration teams it is natural that everyone has push access
 to the repo. On GitHub this is known as the <em>Shared Repository Model</em>.
 As teams grow larger, there will usually be a few
@@ -1772,6 +1818,7 @@ is actually updated with new contributions.
 
 <h2>Cloning a repo with multiple branches <a name="bitgit:git:clone:branches"></a></h2>
 
+<p>
 An annoying feature of Git for beginners is the fact that if you
 clone a repo, you only get the <code>master</code> branch. There are seemingly
 no other branches:
@@ -1835,6 +1882,7 @@ out all branches via <code>git checkout</code>.
 
 <h2>Git workflows  <a name="___sec36"></a></h2>
 
+<p>
 Although the purpose of these notes is just to get the reader started
 with Git, it must be mentioned that there are advanced features of Git
 that have led to very powerful workflows with files and people,
@@ -1877,6 +1925,7 @@ useful.
 
 <h3>How can I see which files are tracked by Git?  <a name="___sec38"></a></h3>
 
+<p>
 <code>git ls-files</code> is the command:
 
 <p>
@@ -1892,6 +1941,7 @@ See <code>man git-ls-files</code> for the many options this utility has.
 
 <h3>How can I reduce the size of a repo?  <a name="___sec39"></a></h3>
 
+<p>
 The command <code>git gc</code> can compress a git repository and should be
 run regularly on large repositories. Greater effect
 is achieved by <code>git gc --aggressive</code>. You can measure the
@@ -1928,6 +1978,16 @@ not <code>merge</code>, when updating the branches!
  <li> <a href="http://try.github.com/" target="_self">Web course on Git</a></li>
  <li> <a href="http://schacon.github.com/git/everyday.html" target="_self">Everyday GIT With 20 Commands Or So</a></li>
  <li> <a href="http://www.ndpsoftware.com/git-cheatsheet.html" target="_self">Git cheat sheet</a></li>
+ <li> GitHub Guides:</li>
+
+<ul>
+  <li> <a href="https://guides.github.com/introduction/getting-your-project-on-github/" target="_self">Getting your project on GitHub</a></li>
+  <li> <a href="https://guides.github.com/activities/hello-world/" target="_self">Repositories, branches, commits, issues, and pull requests</a></li>
+  <li> <a href="https://guides.github.com/features/pages/" target="_self">GitHub (web) pages</a></li>
+  <li> <a href="https://guides.github.com/introduction/flow/" target="_self">Understanding the GitHub Flow</a></li>
+</ul>
+
+ <li> <a href="http://pcottle.github.io/learnGitBranching/" target="_self">Git branching</a></li>
  <li> <a href="http://sixrevisions.com/resources/git-tutorials-beginners/" target="_self">Git top 10 tutorials</a></li>
  <li> <a href="http://www.vogella.com/articles/Git/article.html" target="_self">Lars Vogel's Git Tutorial</a></li>
  <li> <a href="http://book.git-scm.com/" target="_self">Git Community Book</a> (<em>explains</em> Git very well)</li>
@@ -1948,6 +2008,7 @@ not <code>merge</code>, when updating the branches!
 
 <h1>Appendix: Working with multiple GitHub accounts <a name="appendix:github:multiple:accounts"></a></h1>
 
+<p>
 Working against different GitHub accounts is easy if each project you work
 with on each account adds you as a collaborator. The term "you" here means your
 primary username on GitHub. My strong recommendation is to always check

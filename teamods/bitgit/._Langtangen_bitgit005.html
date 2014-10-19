@@ -26,7 +26,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -60,6 +60,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -101,7 +102,7 @@ div { text-align: justify; text-justify: inter-word; }
                3,
                None,
                '___sec26'),
-              (' Going back to the last commit ', 3, None, '___sec27'),
+              (' Going back to a previous commit ', 3, None, '___sec27'),
               (' Merging files with Git ',
                2,
                'bitgit:git:merge',
@@ -158,6 +159,7 @@ end of tocinfo -->
 
 <h1>Using Git <a name="bitgit:git"></a></h1>
 
+<p>
 Most Mac and Linux users prefer to work with Git via commands in a
 terminal window. Windows users may prefer a graphical user interface (GUI),
 and there are many <a href="http://git-scm.com/downloads/guis" target="_self">options</a> in
@@ -168,6 +170,7 @@ Here we concentrate on the efficient command-line interface to Git.
 
 <h3>Cloning  <a name="___sec22"></a></h3>
 
+<p>
 You get started with your project on a new machine, or another user
 can get started with the project,
 by running
@@ -184,6 +187,7 @@ actual project name.
 
 <h3>The pull-change-push cycle  <a name="___sec23"></a></h3>
 
+<p>
 The typical work flow with the "My Project" project starts with
 updating the local repository by going to the <code>My-Project</code> directory
 and writing
@@ -271,6 +275,7 @@ regenerated from other files - of not, run <code>git add</code>.
 
 <h3>Viewing the history of files  <a name="___sec24"></a></h3>
 
+<p>
 A nice graphical tool allows you to view all changes, or just
 the latest ones:
 <p>
@@ -329,6 +334,7 @@ expressions instead of exact text: just replace <code>-S</code> by <code>-G</cod
 
 <h3>Retrieving old files  <a name="___sec25"></a></h3>
 
+<p>
 Occasionally you need to go back to an earlier version of a file,
 say its name is <code>f.py</code>. Start with viewing the history:
 <p>
@@ -358,12 +364,12 @@ configure the tools used by the <code>git diff</code> command). If you want to r
 <p>
 To go back to another version (the most recent one, for instance),
 find the commit hash with <code>git log f.py</code>, and do <code>get checkout
-<commit hash> f.py</code>.
+&lt;commit hash&gt; f.py</code>.
 
 <p>
 If <code>f.py</code> changed name from <code>e.py</code> at some point and you want
 <code>e.py</code> back, run <code>git log --follow f.py</code> to find the commit
-when <code>e.py</code> existed, and do a <code>git checkout <commit hash> e.py</code>.
+when <code>e.py</code> existed, and do a <code>git checkout &lt;commit hash&gt; e.py</code>.
 
 <p>
 In case <code>f.py</code> no longer exists, run <code>git log -- f.py</code> to
@@ -384,8 +390,9 @@ it requires the full path from the root git directory:
 
 <h3>Reset the entire repo to an old version  <a name="___sec26"></a></h3>
 
+<p>
 Run <code>git log</code> on some file and find the commit hash of the date
-or message when want to go back to. Run <code>git checkout <commit hash></code>
+or message when want to go back to. Run <code>git checkout &lt;commit hash&gt;</code>
 to change all files to this state.
 The problem of going back to the most recent state is that <code>git log</code>
 has no newer commits than the one you checked out. The trick is to say
@@ -406,8 +413,9 @@ Note the period at the end of the first command (without it, you only
 get the possibility to look at old files, but the next commit is not
 affected).
 
-<h3>Going back to the last commit  <a name="___sec27"></a></h3>
+<h3>Going back to a previous commit  <a name="___sec27"></a></h3>
 
+<p>
 Sometimes accidents with many files happen and you want to go back
 to the last commit. Find the hash of the last commit and do
 
@@ -418,9 +426,17 @@ to the last commit. Find the hash of the last commit and do
 </pre></div>
 <p>
 This command destroys <em>everything</em> you have done since the last commit.
+To push it as the new state of the repo, do
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git push origin HEAD --force
+</pre></div>
 
 <h2>Merging files with Git <a name="bitgit:git:merge"></a></h2>
 
+<p>
 The <code>git pull</code> command fetches new files from the repository and
 tries to perform an automatic merge if there are conflicts between
 the local files and the files in the repository. Alternatively,
@@ -433,7 +449,7 @@ occasionally happens.
 Git will write a message in the terminal window
 if the merge is unsuccessful for one or
 more files. These files will have to be edited manually.
-Merge markers of the type <code>>>>>></code>, <code>======</code>, and <code><<<<<</code> have been
+Merge markers of the type <code>&gt;&gt;&gt;&gt;&gt;</code>, <code>======</code>, and <code>&lt;&lt;&lt;&lt;&lt;</code> have been
 inserted by Git to mark sections of a file where the version in the
 repository differ from the local version. You must decide which
 lines that are to appear in the final, merged version. When done,
@@ -596,6 +612,7 @@ Then run <code>git commit -am merge</code> to finalize the merge.
 
 <h2>Git working style with branching and stashing <a name="bitgit:git:branch:stash"></a></h2>
 
+<p>
 <!-- git clone is without branches, say something about that in clone -->
 
 <p>
@@ -610,6 +627,7 @@ have committed.
 
 <h3>Branching  <a name="___sec30"></a></h3>
 
+<p>
 A better organization of your work would
 be to keep the latest, ongoing
 developments separate from the more official and stable version
@@ -619,7 +637,8 @@ where new developments takes place:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git branch newstuff      # create and switch to new branch
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git branch newstuff      # create new branch
+Terminal&gt; git checkout newstuff
 Terminal&gt; # extend and modify files...
 Terminal&gt; git commit -am &#39;Modified ... Added a file on ...&#39;
 Terminal&gt; git checkout master      # swith back to master
@@ -660,9 +679,12 @@ in the remote repo, run
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git push origin --delete newstuff
 </pre></div>
+<p>
+You can learn more in an <a href="http://pcottle.github.io/learnGitBranching/" target="_self">excellent introduction and demonstration of Git branching</a>.
 
 <h3>Stashing  <a name="___sec31"></a></h3>
 
+<p>
 It is not possible to switch branches unless you have committed the
 files in the current branch. If your work on some files is in a mess
 and you want to change to another branch or fix other files in the
@@ -704,6 +726,7 @@ branch with <code>git stash branch newstuff</code>.
 
 <h2>Replacing pull by fetch and merge <a name="bitgit:git:fetch"></a></h2>
 
+<p>
 The <code>git pull</code> command actually performs two steps that are sometimes
 advantageous to run separately. First, a <code>get fetch</code> is run to fetch
 new files from the repository, and thereafter a <code>git merge</code> command is
@@ -772,6 +795,7 @@ Terminal&gt; git checkout master
 
 <h3>Configuring the <code>git diff</code> command  <a name="___sec33"></a></h3>
 
+<p>
 The <code>git diff</code> command launches by default the
 Unix <code>diff</code> tool in the terminal window.
 Many users prefer to use other diff tools, and the desired one
@@ -814,7 +838,7 @@ and <code>pdiff</code> for pure text files.
 <b>Replacing all your files with those in the repo.</b>
 <p>
 Occasionally it becomes desirable to replace <em>all</em> files in
-the local repo with those at the file hosting service.
+the local repo with those in the repo at the file hosting service.
 One possibility is removing your repo and cloning again, or
 use the Git commands
 
@@ -830,6 +854,7 @@ Terminal&gt; git reset --hard origin/master
 
 <h2>Team work with forking and pull requests <a name="bitgit:git:team"></a></h2>
 
+<p>
 In small collaboration teams it is natural that everyone has push access
 to the repo. On GitHub this is known as the <em>Shared Repository Model</em>.
 As teams grow larger, there will usually be a few
@@ -912,6 +937,7 @@ is actually updated with new contributions.
 
 <h2>Cloning a repo with multiple branches <a name="bitgit:git:clone:branches"></a></h2>
 
+<p>
 An annoying feature of Git for beginners is the fact that if you
 clone a repo, you only get the <code>master</code> branch. There are seemingly
 no other branches:
@@ -979,6 +1005,7 @@ out all branches via <code>git checkout</code>.
 
 <h2>Git workflows  <a name="___sec36"></a></h2>
 
+<p>
 Although the purpose of these notes is just to get the reader started
 with Git, it must be mentioned that there are advanced features of Git
 that have led to very powerful workflows with files and people,
@@ -1021,6 +1048,7 @@ useful.
 
 <h3>How can I see which files are tracked by Git?  <a name="___sec38"></a></h3>
 
+<p>
 <code>git ls-files</code> is the command:
 
 <p>
@@ -1037,6 +1065,7 @@ See <code>man git-ls-files</code> for the many options this utility has.
 
 <h3>How can I reduce the size of a repo?  <a name="___sec39"></a></h3>
 
+<p>
 The command <code>git gc</code> can compress a git repository and should be
 run regularly on large repositories. Greater effect
 is achieved by <code>git gc --aggressive</code>. You can measure the
@@ -1074,6 +1103,16 @@ not <code>merge</code>, when updating the branches!
  <li> <a href="http://try.github.com/" target="_self">Web course on Git</a></li>
  <li> <a href="http://schacon.github.com/git/everyday.html" target="_self">Everyday GIT With 20 Commands Or So</a></li>
  <li> <a href="http://www.ndpsoftware.com/git-cheatsheet.html" target="_self">Git cheat sheet</a></li>
+ <li> GitHub Guides:</li>
+
+<ul>
+  <li> <a href="https://guides.github.com/introduction/getting-your-project-on-github/" target="_self">Getting your project on GitHub</a></li>
+  <li> <a href="https://guides.github.com/activities/hello-world/" target="_self">Repositories, branches, commits, issues, and pull requests</a></li>
+  <li> <a href="https://guides.github.com/features/pages/" target="_self">GitHub (web) pages</a></li>
+  <li> <a href="https://guides.github.com/introduction/flow/" target="_self">Understanding the GitHub Flow</a></li>
+</ul>
+
+ <li> <a href="http://pcottle.github.io/learnGitBranching/" target="_self">Git branching</a></li>
  <li> <a href="http://sixrevisions.com/resources/git-tutorials-beginners/" target="_self">Git top 10 tutorials</a></li>
  <li> <a href="http://www.vogella.com/articles/Git/article.html" target="_self">Lars Vogel's Git Tutorial</a></li>
  <li> <a href="http://book.git-scm.com/" target="_self">Git Community Book</a> (<em>explains</em> Git very well)</li>

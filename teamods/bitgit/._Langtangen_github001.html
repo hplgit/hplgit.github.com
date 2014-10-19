@@ -26,7 +26,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -61,6 +61,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 div { text-align: justify; text-justify: inter-word; }
 </style>
 
+
 </head>
 
 <!-- tocinfo
@@ -85,7 +86,7 @@ div { text-align: justify; text-justify: inter-word; }
                3,
                None,
                '___sec16'),
-              (' Going back to the last commit ', 3, None, '___sec17'),
+              (' Going back to a previous commit ', 3, None, '___sec17'),
               (' Merging files with Git ',
                2,
                'bitgit:git:merge',
@@ -142,12 +143,14 @@ end of tocinfo -->
 
 <h1>Motivation  <a name="___sec0"></a></h1>
 
+<p>
 Greg Wilson's excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/" target="_self">Script for Introduction to Version Control</a> provides a detailed motivation why you will benefit greatly
 from using version control systems. Here follows a shorter motivation
 and a quick overview of the basic concepts.
 
 <h2>Why not Dropbox or Google Drive?  <a name="___sec1"></a></h2>
 
+<p>
 The simplest services for hosting project files are <a href="http://dropbox.com" target="_self">Dropbox</a> and <a href="http://drive.google.com" target="_self">Google Drive</a>.
 It is very easy to get started with these systems, and they allow you
 to share files among laptops and mobile units with as many users as
@@ -175,6 +178,7 @@ with project hosting services for file storage.
 
 <h2>Repositories and local copies  <a name="___sec2"></a></h2>
 
+<p>
 The mentioned services host all your files in a specific project in what
 is known as a <em>repository</em>, or <em>repo</em> for short.  When a copy of the
 files are wanted on a certain computer, one clones the repository on
@@ -191,6 +195,7 @@ MS Word or Excel documents, and OpenOffice documents.
 
 <h2>Installing Git  <a name="___sec3"></a></h2>
 
+<p>
 The installation of Git on various systems is described
 on the <a href="http://git-scm.com/" target="_self">Git website</a> under the <em>Download</em> section.
 Git involves compiled code so it is most convenient to download a

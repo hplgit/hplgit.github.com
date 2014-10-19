@@ -17,6 +17,7 @@ Automatically generated HTML file from DocOnce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+
 </head>
 
 <!-- tocinfo
@@ -41,7 +42,7 @@ Automatically generated HTML file from DocOnce source
                3,
                None,
                '___sec16'),
-              (' Going back to the last commit ', 3, None, '___sec17'),
+              (' Going back to a previous commit ', 3, None, '___sec17'),
               (' Merging files with Git ',
                2,
                'bitgit:git:merge',
@@ -118,6 +119,7 @@ end of tocinfo -->
 
 <h1 id="bitgit:github">GitHub<a name="bitgit:github"></a></h1>
 
+<p>
 Go to <code>github.com</code> and create an account. Then go to your account
 settings (icon in the upper left corner of the page),
 choose <em>SSH Keys</em>, and provide your SSH key
@@ -140,6 +142,7 @@ to log in and add collaborators using their personal GitHub usernames.
 
 <h2 id="___sec5">Creating a new project <a name="___sec5"></a></h2>
 
+<p>
 Click on <em>New repository</em> on the main page and fill out a project
 name, here <em>My Project</em>, click the check button <em>Initialize this
 repository with a README</em>, and click on <em>Create repository</em>.
@@ -184,6 +187,7 @@ The daily file operations are explained in the section <a href="._Langtangen_bit
 
 <h3 id="___sec6">Collaborating <a name="___sec6"></a></h3>
 
+<p>
 To give others permissions to push their edits of files to the
 repository, you click on the <em>Settings</em> link in the right sidebar,
 then click on <em>Collaborators</em> on the left, and fill in the name
@@ -209,6 +213,7 @@ the <em>watch</em> button), respectively.
 
 <h2 id="___sec7">Wiki pages <a name="___sec7"></a></h2>
 
+<p>
 With every GitHub project there is an option to create wiki pages.
 Click on the <em>Wiki</em> button in the right sidebar on the main page of
 the project. Click on <em>New Page</em> to create a new page. The wiki pages
@@ -262,6 +267,7 @@ root directory of the wiki project so that just a
 
 <h2 id="___sec8">Project web pages <a name="___sec8"></a></h2>
 
+<p>
 HTML pages stored in your repo cannot be linked to and properly
 rendered as web pages.
 Links to HTML files at GitHub will be either rendered as nicely typeset
@@ -315,7 +321,7 @@ username and <code>My-Project</code> is the project name.
 
 <p>
 The web pages and project files are now in two different branches.
-To see the branches, type <code>git branch</code> and the one you are in will
+To see the branches, type <code>git branch</code>, and the one you are in will
 be marked with <code>*</code> in the output. Switching to the master branch
 is done by <code>git checkout master</code>. Similarly, <code>git checkout gh-pages</code>
 switches to the gh-pages branch.
@@ -429,7 +435,7 @@ just find the file in GitHub's web interface, choose which version of
 the file you want to link to (nicely HTML formatted version or the raw
 file), right-click on the link, choose <em>Copy Link</em>, and paste the
 link into the document you want. You can test that the link works by
-the Unix command <code>curl -O <link></code>. Note that the link to a file
+the Unix command <code>curl -O &lt;link&gt;</code>. Note that the link to a file
 is different from the source file's intuitive path in the repository.
 Typically, a source file <code>dir/f.py</code> in project <code>prj</code> is reached
 through
@@ -462,6 +468,7 @@ the HTML code.
 
 <h2 id="___sec9">User web pages <a name="___sec9"></a></h2>
 
+<p>
 GitHub also allows you to create user pages and organization pages not
 tied to any specific project.
 Your personal site has address
