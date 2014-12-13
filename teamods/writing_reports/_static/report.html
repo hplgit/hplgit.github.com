@@ -88,22 +88,26 @@ u(0)  = I,                         \label{initial:value}
 <h2 id="numerical-experiments">Numerical experiments</h2>
 <p>We define a set of numerical experiments where <span class="math">\(I\)</span>, <span class="math">\(a\)</span>, and <span class="math">\(T\)</span> are fixed, while <span class="math">\(\Delta t\)</span> and <span class="math">\(\theta\)</span> are varied. In particular, <span class="math">\(I=1\)</span>, <span class="math">\(a=2\)</span>, <span class="math">\(\Delta t = 1.25, 0.75, 0.5, 0.1\)</span>.</p>
 <h3 id="the-backward-euler-method">The Backward Euler method</h3>
+<!-- <img src="BE.png" width=800> -->
 <div class="figure">
 <img src="BE.png" />
 </div>
 <h3 id="the-crank-nicolson-method">The Crank-Nicolson method</h3>
+<!-- <img src="CN.png" width=800> -->
 <div class="figure">
 <img src="CN.png" />
 </div>
 <h3 id="the-forward-euler-method">The Forward Euler method</h3>
+<!-- <img src="FE.png" width=800> -->
 <div class="figure">
 <img src="FE.png" />
 </div>
 <h3 id="error-vs-delta-t">Error vs <span class="math">\(\Delta t\)</span></h3>
 <p>How <span class="math">\(E\)</span> varies with <span class="math">\(\Delta t\)</span> for <span class="math">\(\theta=0,0.5,1\)</span> is shown in <a href="#fig:error">Figure</a>.</p>
 <p><em>Observe:</em> The data points for the three largest <span class="math">\(\Delta t\)</span> values in the Forward Euler method are not relevant as the solution behaves non-physically.</p>
+<!-- <img src="error.png" width=400><p><em>Variation of the error with the time step. <a name="fig:error"/></em></p> -->
 <div class="figure">
-<img src="error.png" alt="Variation of the error with the time step. " /><p class="caption">Variation of the error with the time step. <a name="fig:error"/></p>
+<img src="error.png" />
 </div>
 <p>The numbers corresponding to the figure above are given in the table below.</p>
 <table>

@@ -64,7 +64,7 @@ body {
   margin: 0 auto;
 }
 
-code, pre {
+pre, code {
   font-family: "Monospace";
   margin-bottom: 30px;
   font-size: 14px;
@@ -99,7 +99,7 @@ b, strong { font-weight: bold; }
 em { font-style: italic; }
 table { width: 100%; border: 1px solid #ebebeb; }
 th { font-weight: 500; }
-td { border: 1px solid #ddd; text-align: center; font-weight: 300; }
+td { border: 4px solid #ddd; text-align: center; font-weight: 300; }
 
 /* red color: #d5000d; /*black color: #303030; gray is default */
 
@@ -107,18 +107,18 @@ h1 {
   font-size: 32px;
   font-weight: bold;
   margin-bottom: 8px;
-  
+  color: #303030;
 }
 
 h2 {
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 8px;
-  
+  color: #303030;
 }
 
 h3 { font-size: 18px; }
-p { font-weight: 300; margin-bottom: 20px; }
+p { font-weight: 300; margin-bottom: 20px; margin-top: 12px; }
 a { text-decoration: none; }
 p a { font-weight: 400; }
 
@@ -264,7 +264,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo.</b></center>
 <p>
-<center><h4>Oct 3, 2014</h4></center> <!-- date -->
+<center><h4>Dec 13, 2014</h4></center> <!-- date -->
 <p>
 <b>Summary.</b> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation \( u'=-au \) with the
@@ -339,19 +339,19 @@ The numerical method is implemented in a Python function
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "trac" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="font-weight: bold">def</span> <span style="color: #990000; font-weight: bold">solver</span>(I, a, T, dt, theta):
-    <span style="color: #bb8844">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
-    dt <span style="font-weight: bold">=</span> <span style="color: #999999">float</span>(dt)            <span style="color: #999988; font-style: italic"># avoid integer division</span>
-    Nt <span style="font-weight: bold">=</span> <span style="color: #999999">int</span>(<span style="color: #999999">round</span>(T<span style="font-weight: bold">/</span>dt))     <span style="color: #999988; font-style: italic"># no of time intervals</span>
-    T <span style="font-weight: bold">=</span> Nt<span style="font-weight: bold">*</span>dt                 <span style="color: #999988; font-style: italic"># adjust T to fit time step dt</span>
-    u <span style="font-weight: bold">=</span> zeros(Nt<span style="font-weight: bold">+</span><span style="color: #009999">1</span>)           <span style="color: #999988; font-style: italic"># array of u[n] values</span>
-    t <span style="font-weight: bold">=</span> linspace(<span style="color: #009999">0</span>, T, Nt<span style="font-weight: bold">+</span><span style="color: #009999">1</span>)  <span style="color: #999988; font-style: italic"># time mesh</span>
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
+    dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)            <span style="color: #408080; font-style: italic"># avoid integer division</span>
+    Nt <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #408080; font-style: italic"># no of time intervals</span>
+    T <span style="color: #666666">=</span> Nt<span style="color: #666666">*</span>dt                 <span style="color: #408080; font-style: italic"># adjust T to fit time step dt</span>
+    u <span style="color: #666666">=</span> zeros(Nt<span style="color: #666666">+1</span>)           <span style="color: #408080; font-style: italic"># array of u[n] values</span>
+    t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, T, Nt<span style="color: #666666">+1</span>)  <span style="color: #408080; font-style: italic"># time mesh</span>
 
-    u[<span style="color: #009999">0</span>] <span style="font-weight: bold">=</span> I                  <span style="color: #999988; font-style: italic"># assign initial condition</span>
-    <span style="font-weight: bold">for</span> n <span style="font-weight: bold">in</span> <span style="color: #999999">range</span>(<span style="color: #009999">0</span>, Nt):    <span style="color: #999988; font-style: italic"># n=0,1,...,Nt-1</span>
-        u[n<span style="font-weight: bold">+</span><span style="color: #009999">1</span>] <span style="font-weight: bold">=</span> (<span style="color: #009999">1</span> <span style="font-weight: bold">-</span> (<span style="color: #009999">1</span><span style="font-weight: bold">-</span>theta)<span style="font-weight: bold">*</span>a<span style="font-weight: bold">*</span>dt)<span style="font-weight: bold">/</span>(<span style="color: #009999">1</span> <span style="font-weight: bold">+</span> theta<span style="font-weight: bold">*</span>dt<span style="font-weight: bold">*</span>a)<span style="font-weight: bold">*</span>u[n]
-    <span style="font-weight: bold">return</span> u, t
+    u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> I                  <span style="color: #408080; font-style: italic"># assign initial condition</span>
+    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, Nt):    <span style="color: #408080; font-style: italic"># n=0,1,...,Nt-1</span>
+        u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
+    <span style="color: #008000; font-weight: bold">return</span> u, t
 </pre></div>
 
 <h1>Numerical experiments  <a name="___sec3"></a></h1>
