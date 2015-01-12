@@ -1,19 +1,21 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Experiments with Schemes for Exponential Decay">
 <meta name="keywords" content="keyword,model problem,exponential decay,mesh in time,$\theta$-rule,numerical scheme,finite difference scheme,numerical experiments,BE,CN,FE,error vs time step">
 
-
+<title>Experiments with Schemes for Exponential Decay</title>
 
 
 <style type="text/css">
-/* blueish2 style */
+/* blueish2 style (as blueish style, but different pre and code tags
+   (only effective if not pygments is used))
+*/
 
 /* Color definitions:  http://www.december.com/html/spec/color0.html
    CSS examples:       http://www.w3schools.com/css/css_examples.asp */
@@ -29,9 +31,15 @@ h2 { font-size: 1.6em; color: #1e36ce; }
 h3 { font-size: 1.4em; color: #1e36ce; }
 a { color: #1e36ce; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+pre {
+background-color: #fefbf3;
+vpadding: 9px;
+border: 1px solid rgba(0,0,0,.2);
+-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+        box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
 pre, code { font-size: 90%; line-height: 1.6em; }
-
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -65,6 +73,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -106,7 +115,8 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Experiments with Schemes for Exponential Decay</title>
+<p>
+
 
 <center><h1>Experiments with Schemes for Exponential Decay</h1></center>  <!-- document title -->
 
@@ -124,7 +134,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo.</b></center>
 <p>
-<center><h4>Aug 28, 2014</h4></center> <!-- date -->
+<center><h4>Dec 13, 2014</h4></center> <!-- date -->
 <p>
 <b>Summary.</b> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation \( u'=-au \) with the
@@ -134,6 +144,7 @@ demonstrated.
 <h2>
 Table of contents</h2>
 
+<p>
 <a href="#math:problem"> Mathematical problem </a><br>
 <a href="#numerical:problem"> Numerical solution method </a><br>
 <a href="#___sec2"> Implementation </a><br>
@@ -147,6 +158,7 @@ Table of contents</h2>
 
 <h1>Mathematical problem <a name="math:problem"></a></h1>
 
+<p>
 We address the initial-value problem
 
 $$
@@ -164,7 +176,8 @@ cooling of an object, and radioactive decay.
 
 <h1>Numerical solution method <a name="numerical:problem"></a></h1>
 
-We introduce a mesh in time with points \( 0= t_0< t_1 \cdots < t_{N_t}=T \).
+<p>
+We introduce a mesh in time with points \( 0 = t_0 < t_1 \cdots < t_{N_t}=T \).
 For simplicity, we assume constant spacing \( \Delta t \) between the
 mesh points: \( \Delta t = t_{n}-t_{n-1} \), \( n=1,\ldots,N_t \). Let
 \( u^n \) be the numerical approximation to the exact solution at \( t_n \).
@@ -190,46 +203,52 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
 
 <h1>Implementation  <a name="___sec2"></a></h1>
 
+<p>
 The numerical method is implemented in a Python function
 <a href="#Langtangen_2012">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>decay_mod</tt></a> module):
 
 <p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def solver(I, a, T, dt, theta):
+    &quot;&quot;&quot;Solve u'=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;
+    dt = float(dt)            # avoid integer division
+    Nt = int(round(T/dt))     # no of time intervals
+    T = Nt*dt                 # adjust T to fit time step dt
+    u = zeros(Nt+1)           # array of u[n] values
+    t = linspace(0, T, Nt+1)  # time mesh
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
-    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
-    dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)            <span style="color: #408080; font-style: italic"># avoid integer division</span>
-    Nt <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #408080; font-style: italic"># no of time intervals</span>
-    T <span style="color: #666666">=</span> Nt<span style="color: #666666">*</span>dt                 <span style="color: #408080; font-style: italic"># adjust T to fit time step dt</span>
-    u <span style="color: #666666">=</span> zeros(Nt<span style="color: #666666">+1</span>)           <span style="color: #408080; font-style: italic"># array of u[n] values</span>
-    t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, T, Nt<span style="color: #666666">+1</span>)  <span style="color: #408080; font-style: italic"># time mesh</span>
-
-    u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> I                  <span style="color: #408080; font-style: italic"># assign initial condition</span>
-    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, Nt):    <span style="color: #408080; font-style: italic"># n=0,1,...,Nt-1</span>
-        u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
-    <span style="color: #008000; font-weight: bold">return</span> u, t
-</pre></div>
+    u[0] = I                  # assign initial condition
+    for n in range(0, Nt):    # n=0,1,...,Nt-1
+        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
+    return u, t
+</code></pre>
+<!-- end verbatim block -->
 
 <h1>Numerical experiments  <a name="___sec3"></a></h1>
 
+<p>
 We define a set of numerical experiments where \( I \), \( a \), and \( T \) are
 fixed, while \( \Delta t \) and \( \theta \) are varied.
 In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 
 <h2>The Backward Euler method  <a name="___sec4"></a></h2>
 
+<p>
 <center><p><img src="BE.png" align="bottom" width=800></p></center>
 
 <h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
 
+<p>
 <center><p><img src="CN.png" align="bottom" width=800></p></center>
 
 <h2>The Forward Euler method  <a name="___sec6"></a></h2>
 
+<p>
 <center><p><img src="FE.png" align="bottom" width=800></p></center>
 
 <h2>Error vs \( \Delta t \)  <a name="___sec7"></a></h2>
 
+<p>
 How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
 is shown in Figure <a href="#fig:error">1</a>.
 
@@ -256,13 +275,13 @@ The numbers corresponding to the figure above are given in the table below.
 <p>
 <table border="1">
 <thead>
-<tr><td align="center"> \( \Delta t \) </td> <td align="center"> \( \theta=0 \) </td> <td align="center">\( \theta=0.5 \)</td> <td align="center"> \( \theta=1 \) </td> </tr>
+<tr><td align="center">\( \Delta t \)</td> <td align="center">\( \theta=0 \)</td> <td align="center">\( \theta=0.5 \)</td> <td align="center">\( \theta=1 \)</td> </tr>
 </thead>
 <tbody>
-<tr><td align="right">   1.25                </td> <td align="right">   7.4630              </td> <td align="right">   0.2161              </td> <td align="right">   0.2440              </td> </tr>
-<tr><td align="right">   0.75                </td> <td align="right">   0.6632              </td> <td align="right">   0.0744              </td> <td align="right">   0.1875              </td> </tr>
-<tr><td align="right">   0.50                </td> <td align="right">   0.2797              </td> <td align="right">   0.0315              </td> <td align="right">   0.1397              </td> </tr>
-<tr><td align="right">   0.10                </td> <td align="right">   0.0377              </td> <td align="right">   0.0012              </td> <td align="right">   0.0335              </td> </tr>
+<tr><td align="right">   1.25              </td> <td align="right">   7.4630            </td> <td align="right">   0.2161              </td> <td align="right">   0.2440            </td> </tr>
+<tr><td align="right">   0.75              </td> <td align="right">   0.6632            </td> <td align="right">   0.0744              </td> <td align="right">   0.1875            </td> </tr>
+<tr><td align="right">   0.50              </td> <td align="right">   0.2797            </td> <td align="right">   0.0315              </td> <td align="right">   0.1397            </td> </tr>
+<tr><td align="right">   0.10              </td> <td align="right">   0.0377            </td> <td align="right">   0.0012              </td> <td align="right">   0.0335            </td> </tr>
 </tbody>
 </table>
 <p>
@@ -285,6 +304,7 @@ The numbers corresponding to the figure above are given in the table below.
 
 <h1>Bibliography  <a name="___sec8"></a></h1>
 
+<p>
 <!-- begin bibliography -->
 
 <ol>

@@ -47,6 +47,7 @@ Table of contents: Run pandoc with --toc option -->
 
 <!-- !split -->
 <h2 id="mathematical-problem">Mathematical problem</h2>
+<p><a name="math:problem"/></p>
 <p>We address the initial-value problem</p>
 <p><span class="math">\[
 \begin{equation}
@@ -59,7 +60,8 @@ u(0)  = I,                         \label{initial:value}
 \end{equation}
 \]</span> where <span class="math">\(a\)</span>, <span class="math">\(I\)</span>, and <span class="math">\(T\)</span> are prescribed parameters, and <span class="math">\(u(t)\)</span> is the unknown function to be estimated. This mathematical model is relevant for physical phenomena featuring exponential decay in time, e.g., vertical pressure variation in the atmosphere, cooling of an object, and radioactive decay.</p>
 <h2 id="numerical-solution-method">Numerical solution method</h2>
-<p>We introduce a mesh in time with points <span class="math">\(0= t_0&lt; t_1 \cdots &lt; t_{N_t}=T\)</span>. For simplicity, we assume constant spacing <span class="math">\(\Delta t\)</span> between the mesh points: <span class="math">\(\Delta t = t_{n}-t_{n-1}\)</span>, <span class="math">\(n=1,\ldots,N_t\)</span>. Let <span class="math">\(u^n\)</span> be the numerical approximation to the exact solution at <span class="math">\(t_n\)</span>.</p>
+<p><a name="numerical:problem"/></p>
+<p>We introduce a mesh in time with points <span class="math">\(0 = t_0 &lt; t_1 \cdots &lt; t_{N_t}=T\)</span>. For simplicity, we assume constant spacing <span class="math">\(\Delta t\)</span> between the mesh points: <span class="math">\(\Delta t = t_{n}-t_{n-1}\)</span>, <span class="math">\(n=1,\ldots,N_t\)</span>. Let <span class="math">\(u^n\)</span> be the numerical approximation to the exact solution at <span class="math">\(t_n\)</span>.</p>
 <p>The <span class="math">\(\theta\)</span>-rule <span class="citation">@Iserles_2009</span> is used to solve \eqref{ode} numerically:</p>
 <p>$$</p>
 <p>u^{n+1} = u^n,</p>
@@ -86,61 +88,65 @@ u(0)  = I,                         \label{initial:value}
 <h2 id="numerical-experiments">Numerical experiments</h2>
 <p>We define a set of numerical experiments where <span class="math">\(I\)</span>, <span class="math">\(a\)</span>, and <span class="math">\(T\)</span> are fixed, while <span class="math">\(\Delta t\)</span> and <span class="math">\(\theta\)</span> are varied. In particular, <span class="math">\(I=1\)</span>, <span class="math">\(a=2\)</span>, <span class="math">\(\Delta t = 1.25, 0.75, 0.5, 0.1\)</span>.</p>
 <h3 id="the-backward-euler-method">The Backward Euler method</h3>
+<!-- <img src="BE.png" width=800> -->
 <div class="figure">
 <img src="BE.png" />
 </div>
 <h3 id="the-crank-nicolson-method">The Crank-Nicolson method</h3>
+<!-- <img src="CN.png" width=800> -->
 <div class="figure">
 <img src="CN.png" />
 </div>
 <h3 id="the-forward-euler-method">The Forward Euler method</h3>
+<!-- <img src="FE.png" width=800> -->
 <div class="figure">
 <img src="FE.png" />
 </div>
 <h3 id="error-vs-delta-t">Error vs <span class="math">\(\Delta t\)</span></h3>
-<p>How <span class="math">\(E\)</span> varies with <span class="math">\(\Delta t\)</span> for <span class="math">\(\theta=0,0.5,1\)</span> is shown in Figure ref{fig:error}.</p>
-<p><em>Observe:</em><space> The data points for the three largest <span class="math">\(\Delta t\)</span> values in the Forward Euler method are not relevant as the solution behaves non-physically.</p>
+<p>How <span class="math">\(E\)</span> varies with <span class="math">\(\Delta t\)</span> for <span class="math">\(\theta=0,0.5,1\)</span> is shown in <a href="#fig:error">Figure</a>.</p>
+<p><em>Observe:</em> The data points for the three largest <span class="math">\(\Delta t\)</span> values in the Forward Euler method are not relevant as the solution behaves non-physically.</p>
+<!-- <img src="error.png" width=400><p><em>Variation of the error with the time step. <a name="fig:error"/></em></p> -->
 <div class="figure">
-<img src="error.png" alt="Variation of the error with the time step." /><p class="caption">Variation of the error with the time step.</p>
+<img src="error.png" />
 </div>
 <p>The numbers corresponding to the figure above are given in the table below.</p>
 <table>
 <thead>
 <tr class="header">
-<th align="center"><span class="math">\(\Delta t\)</span></th>
-<th align="center"><span class="math">\(\theta=0\)</span></th>
+<th align="left"><span class="math">\(\Delta t\)</span></th>
+<th align="left"><span class="math">\(\theta=0\)</span></th>
 <th align="left"><span class="math">\(\theta=0.5\)</span></th>
-<th align="center"><span class="math">\(\theta=1\)</span></th>
+<th align="left"><span class="math">\(\theta=1\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">1.25</td>
-<td align="center">7.4630</td>
+<td align="left">1.25</td>
+<td align="left">7.4630</td>
 <td align="left">0.2161</td>
-<td align="center">0.2440</td>
+<td align="left">0.2440</td>
 </tr>
 <tr class="even">
-<td align="center">0.75</td>
-<td align="center">0.6632</td>
+<td align="left">0.75</td>
+<td align="left">0.6632</td>
 <td align="left">0.0744</td>
-<td align="center">0.1875</td>
+<td align="left">0.1875</td>
 </tr>
 <tr class="odd">
-<td align="center">0.50</td>
-<td align="center">0.2797</td>
+<td align="left">0.50</td>
+<td align="left">0.2797</td>
 <td align="left">0.0315</td>
-<td align="center">0.1397</td>
+<td align="left">0.1397</td>
 </tr>
 <tr class="even">
-<td align="center">0.10</td>
-<td align="center">0.0377</td>
+<td align="left">0.10</td>
+<td align="left">0.0377</td>
 <td align="left">0.0012</td>
-<td align="center">0.0335</td>
+<td align="left">0.0335</td>
 </tr>
 </tbody>
 </table>
-<p><em>Summary.</em><space> 1. <span class="math">\(\theta =1\)</span>: <span class="math">\(E\sim \Delta t\)</span> (first-order convergence). 2. <span class="math">\(\theta =0.5\)</span>: <span class="math">\(E\sim \Delta t^2\)</span> (second-order convergence). 3. <span class="math">\(\theta =1\)</span> is always stable and gives qualitatively corrects results. 4. <span class="math">\(\theta =0.5\)</span> never blows up, but may give oscillating solutions if <span class="math">\(\Delta t\)</span> is not sufficiently small. 5. <span class="math">\(\theta =0\)</span> suffers from fast-growing solution if <span class="math">\(\Delta t\)</span> is not small enough, but even below this limit one can have oscillating solutions that disappear if <span class="math">\(\Delta t\)</span> is sufficiently small.</p>
+<p><em>Summary.</em> 1. <span class="math">\(\theta =1\)</span>: <span class="math">\(E\sim \Delta t\)</span> (first-order convergence). 2. <span class="math">\(\theta =0.5\)</span>: <span class="math">\(E\sim \Delta t^2\)</span> (second-order convergence). 3. <span class="math">\(\theta =1\)</span> is always stable and gives qualitatively corrects results. 4. <span class="math">\(\theta =0.5\)</span> never blows up, but may give oscillating solutions if <span class="math">\(\Delta t\)</span> is not sufficiently small. 5. <span class="math">\(\theta =0\)</span> suffers from fast-growing solution if <span class="math">\(\Delta t\)</span> is not small enough, but even below this limit one can have oscillating solutions that disappear if <span class="math">\(\Delta t\)</span> is sufficiently small.</p>
 <h2 id="bibliography">Bibliography</h2>
 <ol style="list-style-type: decimal">
 <li> <strong>A. Iserles</strong>. <em>A First Course in the Numerical Analysis of Differential Equations</em>, Cambridge University Press, 2009.</li>

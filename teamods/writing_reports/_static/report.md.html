@@ -93,6 +93,8 @@ Table of contents: Run pandoc with --toc option --&gt;
 
 &lt;!-- !split --&gt;
 ## Mathematical problem
+&lt;a name=&quot;math:problem&quot;/&gt;
+
 
 
 We address the initial-value problem
@@ -115,9 +117,11 @@ in time, e.g., vertical pressure variation in the atmosphere,
 cooling of an object, and radioactive decay.
 
 ## Numerical solution method
+&lt;a name=&quot;numerical:problem&quot;/&gt;
 
 
-We introduce a mesh in time with points <span class="s">$</span><span class="m">0</span><span class="o">=</span><span class="nb"> t_</span><span class="m">0</span><span class="nb">&lt; t_</span><span class="m">1</span><span class="nb"> </span><span class="nv">\cdots</span><span class="nb"> &lt; t_{N_t}</span><span class="o">=</span><span class="nb">T</span><span class="s">$</span>.
+
+We introduce a mesh in time with points <span class="s">$</span><span class="m">0</span><span class="nb"> </span><span class="o">=</span><span class="nb"> t_</span><span class="m">0</span><span class="nb"> &lt; t_</span><span class="m">1</span><span class="nb"> </span><span class="nv">\cdots</span><span class="nb"> &lt; t_{N_t}</span><span class="o">=</span><span class="nb">T</span><span class="s">$</span>.
 For simplicity, we assume constant spacing <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> between the
 mesh points: <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t </span><span class="o">=</span><span class="nb"> t_{n}</span><span class="o">-</span><span class="nb">t_{n</span><span class="o">-</span><span class="m">1</span><span class="nb">}</span><span class="s">$</span>, <span class="s">$</span><span class="nb">n</span><span class="o">=</span><span class="m">1</span><span class="nb">,</span><span class="nv">\ldots</span><span class="nb">,N_t</span><span class="s">$</span>. Let
 <span class="s">$</span><span class="nb">u^n</span><span class="s">$</span> be the numerical approximation to the exact solution at <span class="s">$</span><span class="nb">t_n</span><span class="s">$</span>.
@@ -176,6 +180,7 @@ In particular, <span class="s">$</span><span class="nb">I</span><span class="o">
 
 
 
+&lt;!-- &lt;img src=&quot;BE.png&quot; width=800&gt; --&gt;
 ![](BE.png)
 
 
@@ -185,6 +190,7 @@ In particular, <span class="s">$</span><span class="nb">I</span><span class="o">
 
 
 
+&lt;!-- &lt;img src=&quot;CN.png&quot; width=800&gt; --&gt;
 ![](CN.png)
 
 
@@ -194,6 +200,7 @@ In particular, <span class="s">$</span><span class="nb">I</span><span class="o">
 
 
 
+&lt;!-- &lt;img src=&quot;FE.png&quot; width=800&gt; --&gt;
 ![](FE.png)
 
 
@@ -203,32 +210,33 @@ In particular, <span class="s">$</span><span class="nb">I</span><span class="o">
 
 
 How <span class="s">$</span><span class="nb">E</span><span class="s">$</span> varies with <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> for <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">0</span><span class="nb">,</span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="nb">,</span><span class="m">1</span><span class="s">$</span>
-is shown in Figure ref<span class="nb">{</span>fig:error<span class="nb">}</span>.
+is shown in [Figure](#fig:error).
 
 
-*Observe:*<span class="k">\g</span>&lt;space&gt;
+*Observe:* 
 The data points for the three largest <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> values in the
 Forward Euler method are not relevant as the solution behaves
 non-physically.
 
 
 
-![Variation of the error with the time step. ](error.png)
+&lt;!-- &lt;img src=&quot;error.png&quot; width=400&gt;&lt;p&gt;&lt;em&gt;Variation of the error with the time step. &lt;a name=&quot;fig:error&quot;/&gt;&lt;/em&gt;&lt;/p&gt; --&gt;
+![&lt;p&gt;&lt;em&gt;Variation of the error with the time step. &lt;a name=&quot;fig:error&quot;/&gt;&lt;/em&gt;&lt;/p&gt;](error.png)
 
 
 The numbers corresponding to the figure above are given in the table below.
 
 
- <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span>    <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">0</span><span class="s">$</span>   <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="s">$</span>   <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">1</span><span class="s">$</span>   
-------------  ------------  ------------  ------------  
-        1.25        7.4630        0.2161        0.2440  
-        0.75        0.6632        0.0744        0.1875  
-        0.50        0.2797        0.0315        0.1397  
-        0.10        0.0377        0.0012        0.0335  
+<span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span>  <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">0</span><span class="s">$</span>  <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="s">$</span>  <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">1</span><span class="s">$</span>  
+----------  ----------  ------------  ----------  
+      1.25      7.4630        0.2161      0.2440  
+      0.75      0.6632        0.0744      0.1875  
+      0.50      0.2797        0.0315      0.1397  
+      0.10      0.0377        0.0012      0.0335  
 
 
 
-*Summary.*<span class="k">\g</span>&lt;space&gt;
+*Summary.* 
 1. <span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="m">1</span><span class="s">$</span>: <span class="s">$</span><span class="nb">E</span><span class="nv">\sim</span><span class="nb"> </span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> (first-order convergence).
 2. <span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="s">$</span>: <span class="s">$</span><span class="nb">E</span><span class="nv">\sim</span><span class="nb"> </span><span class="nv">\Delta</span><span class="nb"> t^</span><span class="m">2</span><span class="s">$</span> (second-order convergence).
 3. <span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="m">1</span><span class="s">$</span> is always stable and gives qualitatively corrects results.

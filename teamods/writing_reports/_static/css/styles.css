@@ -1,5 +1,4 @@
 /* Small changes by Hans Petter Langtangen, hpl@simula.no */
-/* see comments with "original: ..." */
 
 @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
 
@@ -11,7 +10,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color:#222;
+  color:#888;
   margin:0 0 20px;
 }
 
@@ -24,15 +23,7 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size:28px;
-}
-
-h2 {
-  color:#393939;
-}
-
-h3, h4, h5, h6 {
-  color:#494949;
+  font-size:30px;
 }
 
 a {
@@ -49,7 +40,7 @@ a small {
 }
 
 .wrapper {
-  width:960px;  /* original: 860px */
+  width:960px;
   margin:0 auto;
 }
 
@@ -61,9 +52,8 @@ blockquote {
 }
 
 code, pre {
-  font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
-  color:#333;
-  font-size:12px;
+  font-family: "Monospace";
+  color:#777;
 }
 
 pre {
@@ -163,7 +153,7 @@ header ul a strong {
 }
 
 section {
-  width:650px;  /* original: 500px */
+  width:650px;
   float:right;
   padding-bottom:50px;
 }
@@ -183,7 +173,8 @@ footer {
   width:270px;
   float:left;
   position:fixed;
-  bottom:50px;
+  /*bottom:50px; original value */
+  bottom: 0px;
 }
 
 @media print, screen and (max-width: 960px) {

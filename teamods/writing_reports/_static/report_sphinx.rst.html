@@ -77,21 +77,21 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <body>
 <h2></h2>
 
-<div class="highlight"><pre><span class="cp">.. Automatically generated Sphinx-extended reStructuredText file from Doconce source</span>
+<div class="highlight"><pre><span class="cp">.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source</span>
 <span class="cp">   (https://github.com/hplgit/doconce/)</span>
+
+<span class="cp">.. !split</span>
 
 Experiments with Schemes for Exponential Decay
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <span class="nc">:Authors:</span> <span class="nf">Hans Petter Langtangen (hpl at simula.no)</span>
-<span class="nc">:Date:</span> <span class="nf">Aug 28, 2014</span>
+<span class="nc">:Date:</span> <span class="nf">Dec 13, 2014</span>
 
 <span class="ge">*Summary.*</span> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation <span class="na">:math:</span><span class="nv">`u&#39;=-au`</span> with the
 aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
-
-<span class="cp">.. !split</span>
 
 <span class="p">..</span> <span class="nt">_math:</span>problem:
 
@@ -135,7 +135,7 @@ cooling of an object, and radioactive decay.
 
 <span class="p">..</span> <span class="ow">index</span><span class="p">::</span> finite difference scheme
 
-We introduce a mesh in time with points <span class="na">:math:</span><span class="nv">`0= t_0&lt; t_1 \cdots &lt; t_{N_t}=T`</span>.
+We introduce a mesh in time with points <span class="na">:math:</span><span class="nv">`0 = t_0 &lt; t_1 \cdots &lt; t_{N_t}=T`</span>.
 For simplicity, we assume constant spacing <span class="na">:math:</span><span class="nv">`\Delta t`</span> between the
 mesh points: <span class="na">:math:</span><span class="nv">`\Delta t = t_{n}-t_{n-1}`</span>, <span class="na">:math:</span><span class="nv">`n=1,\ldots,N_t`</span>. Let
 <span class="na">:math:</span><span class="nv">`u^n`</span> be the numerical approximation to the exact solution at <span class="na">:math:</span><span class="nv">`t_n`</span>.
@@ -240,14 +240,14 @@ is shown in Figure <span class="na">:ref:</span><span class="nv">`fig:error`</sp
 
 The numbers corresponding to the figure above are given in the table below.
 
-==================  ==================  ==================  ==================  
- <span class="na">:math:</span><span class="nv">`\Delta t`</span>    <span class="na">:math:</span><span class="nv">`\theta=0`</span>   <span class="na">:math:</span><span class="nv">`\theta=0.5`</span>   <span class="na">:math:</span><span class="nv">`\theta=1`</span>   
-==================  ==================  ==================  ==================  
-              1.25              7.4630              0.2161              0.2440  
-              0.75              0.6632              0.0744              0.1875  
-              0.50              0.2797              0.0315              0.1397  
-              0.10              0.0377              0.0012              0.0335  
-==================  ==================  ==================  ==================  
+================  ================  ==================  ================  
+<span class="na">:math:</span><span class="nv">`\Delta t`</span>  <span class="na">:math:</span><span class="nv">`\theta=0`</span>  <span class="na">:math:</span><span class="nv">`\theta=0.5`</span>  <span class="na">:math:</span><span class="nv">`\theta=1`</span>  
+================  ================  ==================  ================  
+            1.25            7.4630              0.2161            0.2440  
+            0.75            0.6632              0.0744            0.1875  
+            0.50            0.2797              0.0315            0.1397  
+            0.10            0.0377              0.0012            0.0335  
+================  ================  ==================  ================  
 
 
 <span class="p">..</span> <span class="ow">admonition</span><span class="p">::</span> Summary

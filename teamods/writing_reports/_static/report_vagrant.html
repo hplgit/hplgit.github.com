@@ -23,6 +23,8 @@ Footer at the end
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
 
+<title>Experiments with Schemes for Exponential Decay</title>
+
 <!-- If you copy the css subdirectory (and, e.g., make optional edits):
 <link rel="stylesheet" href="css/twitter_bootstrap.css">
 <link rel="stylesheet" href="css/vagrant.css">
@@ -42,8 +44,6 @@ h1, h2, h3, h4, h5, h6 {
 </style>
 </head>
 <body>
-
-<title>Experiments with Schemes for Exponential Decay</title>
 
 <div class="container">
  <div class="row Header with-border">
@@ -142,6 +142,7 @@ TOC: on -->
 
 <h1 id="math:problem">Mathematical problem<a name="math:problem"></a></h1>
 
+<p>
 We address the initial-value problem
 
 $$
@@ -159,7 +160,8 @@ cooling of an object, and radioactive decay.
 
 <h1 id="numerical:problem">Numerical solution method<a name="numerical:problem"></a></h1>
 
-We introduce a mesh in time with points \( 0= t_0< t_1 \cdots < t_{N_t}=T \).
+<p>
+We introduce a mesh in time with points \( 0 = t_0 < t_1 \cdots < t_{N_t}=T \).
 For simplicity, we assume constant spacing \( \Delta t \) between the
 mesh points: \( \Delta t = t_{n}-t_{n-1} \), \( n=1,\ldots,N_t \). Let
 \( u^n \) be the numerical approximation to the exact solution at \( t_n \).
@@ -185,6 +187,7 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
 
 <h1 id="___sec2">Implementation <a name="___sec2"></a></h1>
 
+<p>
 The numerical method is implemented in a Python function
 <a href="#Langtangen_2012">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>decay_mod</tt></a> module):
 
@@ -207,24 +210,29 @@ The numerical method is implemented in a Python function
 
 <h1 id="___sec3">Numerical experiments <a name="___sec3"></a></h1>
 
+<p>
 We define a set of numerical experiments where \( I \), \( a \), and \( T \) are
 fixed, while \( \Delta t \) and \( \theta \) are varied.
 In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 
 <h2 id="___sec4">The Backward Euler method <a name="___sec4"></a></h2>
 
+<p>
 <center><p><img src="BE.png" align="bottom" width=800></p></center>
 
 <h2 id="___sec5">The Crank-Nicolson method <a name="___sec5"></a></h2>
 
+<p>
 <center><p><img src="CN.png" align="bottom" width=800></p></center>
 
 <h2 id="___sec6">The Forward Euler method <a name="___sec6"></a></h2>
 
+<p>
 <center><p><img src="FE.png" align="bottom" width=800></p></center>
 
 <h2 id="___sec7">Error vs \( \Delta t \) <a name="___sec7"></a></h2>
 
+<p>
 How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
 is shown in Figure <a href="#fig:error">1</a>.
 
@@ -249,20 +257,20 @@ The numbers corresponding to the figure above are given in the table below.
 <p>
 
 <div class="row">
-  <div class="col-xs-5">
+  <div class="col-xs-6">
     <table class="table table-striped table-hover table-condensed">
 <thead>
-<tr><td align="center"> \( \Delta t \) </td> <td align="center"> \( \theta=0 \) </td> <td align="center">\( \theta=0.5 \)</td> <td align="center"> \( \theta=1 \) </td> </tr>
+<tr><td align="center">\( \Delta t \)</td> <td align="center">\( \theta=0 \)</td> <td align="center">\( \theta=0.5 \)</td> <td align="center">\( \theta=1 \)</td> </tr>
 </thead>
 <tbody>
-<tr><td align="right">   1.25                </td> <td align="right">   7.4630              </td> <td align="right">   0.2161              </td> <td align="right">   0.2440              </td> </tr>
-<tr><td align="right">   0.75                </td> <td align="right">   0.6632              </td> <td align="right">   0.0744              </td> <td align="right">   0.1875              </td> </tr>
-<tr><td align="right">   0.50                </td> <td align="right">   0.2797              </td> <td align="right">   0.0315              </td> <td align="right">   0.1397              </td> </tr>
-<tr><td align="right">   0.10                </td> <td align="right">   0.0377              </td> <td align="right">   0.0012              </td> <td align="right">   0.0335              </td> </tr>
+<tr><td align="right">   1.25              </td> <td align="right">   7.4630            </td> <td align="right">   0.2161              </td> <td align="right">   0.2440            </td> </tr>
+<tr><td align="right">   0.75              </td> <td align="right">   0.6632            </td> <td align="right">   0.0744              </td> <td align="right">   0.1875            </td> </tr>
+<tr><td align="right">   0.50              </td> <td align="right">   0.2797            </td> <td align="right">   0.0315              </td> <td align="right">   0.1397            </td> </tr>
+<tr><td align="right">   0.10              </td> <td align="right">   0.0377            </td> <td align="right">   0.0012              </td> <td align="right">   0.0335            </td> </tr>
 </tbody>
     </table>
   </div>
-</div> <!-- col-xs-5 -->
+</div> <!-- col-xs-6 -->
 <p>
 <div class="alert alert-block alert-warning alert-text-normal"><b>Summary.</b>
 
@@ -281,6 +289,7 @@ The numbers corresponding to the figure above are given in the table below.
 
 <h1 id="___sec8">Bibliography <a name="___sec8"></a></h1>
 
+<p>
 <!-- begin bibliography -->
 
 <ol>

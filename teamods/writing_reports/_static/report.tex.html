@@ -78,7 +78,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <h2></h2>
 
 <div class="highlight"><pre><span class="c">%%</span>
-<span class="c">%% Automatically generated file from Doconce source</span>
+<span class="c">%% Automatically generated file from DocOnce source</span>
 <span class="c">%% (https://github.com/hplgit/doconce/)</span>
 <span class="c">%%</span>
 
@@ -92,9 +92,11 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 
 <span class="k">\listfiles</span>               <span class="c">% print all files needed to compile this document</span>
 
-<span class="k">\usepackage</span><span class="nb">{</span>relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>relsize,makeidx,color,setspace,amsmath,amsfonts<span class="nb">}</span>
 <span class="k">\usepackage</span><span class="na">[table]</span><span class="nb">{</span>xcolor<span class="nb">}</span>
 <span class="k">\usepackage</span><span class="nb">{</span>bm,microtype<span class="nb">}</span>
+
+<span class="k">\usepackage</span><span class="nb">{</span>graphicx<span class="nb">}</span>
 
 <span class="k">\usepackage</span><span class="nb">{</span>fancyvrb<span class="nb">}</span> <span class="c">% packages needed for verbatim environments</span>
 
@@ -325,7 +327,7 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 
 <span class="c">% ----------------- end author(s) -------------------------</span>
 
-<span class="k">\date</span><span class="nb">{</span>Aug 28, 2014<span class="nb">}</span>
+<span class="k">\date</span><span class="nb">{</span>Dec 13, 2014<span class="nb">}</span>
 <span class="k">\maketitle</span>
 
 <span class="k">\begin</span><span class="nb">{</span>quote<span class="nb">}</span><span class="k">\small</span>
@@ -333,11 +335,6 @@ This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation <span class="s">$</span><span class="nb">u&#39;</span><span class="o">=-</span><span class="nb">au</span><span class="s">$</span> with the
 aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
-
-
-
-
-
 <span class="k">\end</span><span class="nb">{</span>quote<span class="nb">}</span>
 
 <span class="k">\tableofcontents</span>
@@ -375,7 +372,7 @@ cooling of an object, and radioactive decay.
 <span class="k">\index</span><span class="nb">{</span>mesh in time<span class="nb">}</span> <span class="k">\index</span><span class="nb">{</span><span class="s">$</span><span class="nv">\theta</span><span class="s">$</span>-rule<span class="nb">}</span> <span class="k">\index</span><span class="nb">{</span>numerical scheme<span class="nb">}</span>
 <span class="k">\index</span><span class="nb">{</span>finite difference scheme<span class="nb">}</span>
 
-We introduce a mesh in time with points <span class="s">$</span><span class="m">0</span><span class="o">=</span><span class="nb"> t_</span><span class="m">0</span><span class="nb">&lt; t_</span><span class="m">1</span><span class="nb"> </span><span class="nv">\cdots</span><span class="nb"> &lt; t_{N_t}</span><span class="o">=</span><span class="nb">T</span><span class="s">$</span>.
+We introduce a mesh in time with points <span class="s">$</span><span class="m">0</span><span class="nb"> </span><span class="o">=</span><span class="nb"> t_</span><span class="m">0</span><span class="nb"> &lt; t_</span><span class="m">1</span><span class="nb"> </span><span class="nv">\cdots</span><span class="nb"> &lt; t_{N_t}</span><span class="o">=</span><span class="nb">T</span><span class="s">$</span>.
 For simplicity, we assume constant spacing <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> between the
 mesh points: <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t </span><span class="o">=</span><span class="nb"> t_{n}</span><span class="o">-</span><span class="nb">t_{n</span><span class="o">-</span><span class="m">1</span><span class="nb">}</span><span class="s">$</span>, <span class="s">$</span><span class="nb">n</span><span class="o">=</span><span class="m">1</span><span class="nb">,</span><span class="nv">\ldots</span><span class="nb">,N_t</span><span class="s">$</span>. Let
 <span class="s">$</span><span class="nb">u^n</span><span class="s">$</span> be the numerical approximation to the exact solution at <span class="s">$</span><span class="nb">t_n</span><span class="s">$</span>.
@@ -515,10 +512,10 @@ The numbers corresponding to the figure above are given in the table below.
 <span class="k">\hline</span>
 <span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>c<span class="nb">}{</span> <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> <span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>c<span class="nb">}{</span> <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">0</span><span class="s">$</span> <span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>c<span class="nb">}{</span> <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="s">$</span> <span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>c<span class="nb">}{</span> <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">1</span><span class="s">$</span> <span class="nb">}</span> <span class="k">\\</span>
 <span class="k">\hline</span>
-1.25         <span class="nb">&amp;</span> 7.4630       <span class="nb">&amp;</span> 0.2161       <span class="nb">&amp;</span> 0.2440       <span class="k">\\</span>
-0.75         <span class="nb">&amp;</span> 0.6632       <span class="nb">&amp;</span> 0.0744       <span class="nb">&amp;</span> 0.1875       <span class="k">\\</span>
-0.50         <span class="nb">&amp;</span> 0.2797       <span class="nb">&amp;</span> 0.0315       <span class="nb">&amp;</span> 0.1397       <span class="k">\\</span>
-0.10         <span class="nb">&amp;</span> 0.0377       <span class="nb">&amp;</span> 0.0012       <span class="nb">&amp;</span> 0.0335       <span class="k">\\</span>
+1.25       <span class="nb">&amp;</span> 7.4630     <span class="nb">&amp;</span> 0.2161       <span class="nb">&amp;</span> 0.2440     <span class="k">\\</span>
+0.75       <span class="nb">&amp;</span> 0.6632     <span class="nb">&amp;</span> 0.0744       <span class="nb">&amp;</span> 0.1875     <span class="k">\\</span>
+0.50       <span class="nb">&amp;</span> 0.2797     <span class="nb">&amp;</span> 0.0315       <span class="nb">&amp;</span> 0.1397     <span class="k">\\</span>
+0.10       <span class="nb">&amp;</span> 0.0377     <span class="nb">&amp;</span> 0.0012       <span class="nb">&amp;</span> 0.0335     <span class="k">\\</span>
 <span class="k">\hline</span>
 <span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
 <span class="k">\end</span><span class="nb">{</span>quote<span class="nb">}</span>

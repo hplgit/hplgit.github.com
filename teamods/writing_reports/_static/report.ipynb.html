@@ -89,9 +89,9 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
      <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
       <span class="s2">&quot;# Experiments with Schemes for Exponential Decay\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;**Aug 28, 2014**\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;**Dec 13, 2014**\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;*Summary.* This report investigates the accuracy of three finite difference\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;**Summary.** This report investigates the accuracy of three finite difference\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;schemes for the ordinary differential equation $u&#39;=-au$ with the\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;aid of numerical experiments. Numerical artifacts are in particular\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;demonstrated.\n&quot;</span><span class="p">,</span>
@@ -106,6 +106,8 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;## Mathematical problem\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;a name=\&quot;math:problem\&quot;/&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;We address the initial-value problem&quot;</span>
@@ -115,9 +117,12 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
      <span class="nt">&quot;cell_type&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
      <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;&lt;!-- Equation labels as ordinary links --&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;a name=\&quot;ode\&quot;/&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;$$\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\\begin{equation}\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;u&#39;(t) = -au(t), \\quad t \\in (0,T], \\label{ode}\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;u&#39;(t) = -au(t), \\quad t \\in (0,T], \\label{ode} \\tag{1}\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\\end{equation}\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;$$&quot;</span>
      <span class="p">]</span>
@@ -126,9 +131,12 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
      <span class="nt">&quot;cell_type&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
      <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;&lt;!-- Equation labels as ordinary links --&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;a name=\&quot;initial:value\&quot;/&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;$$\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\\begin{equation} \n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;u(0)  = I,                         \\label{initial:value}\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;u(0)  = I,                         \\label{initial:value} \\tag{2}\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\\end{equation}\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;$$&quot;</span>
      <span class="p">]</span>
@@ -144,15 +152,17 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
       <span class="s2">&quot;cooling of an object, and radioactive decay.\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;## Numerical solution method\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;a name=\&quot;numerical:problem\&quot;/&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;We introduce a mesh in time with points $0= t_0&lt; t_1 \\cdots &lt; t_{N_t}=T$.\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;We introduce a mesh in time with points $0 = t_0 &lt; t_1 \\cdots &lt; t_{N_t}=T$.\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;For simplicity, we assume constant spacing $\\Delta t$ between the\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;mesh points: $\\Delta t = t_{n}-t_{n-1}$, $n=1,\\ldots,N_t$. Let\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;$u^n$ be the numerical approximation to the exact solution at $t_n$.\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;The $\\theta$-rule [Iserles_2009]\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;is used to solve Eq (ode) numerically:&quot;</span>
+      <span class="s2">&quot;is used to solve [(1)](#initial:value) numerically:&quot;</span>
      <span class="p">]</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -227,7 +237,11 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;FIGURE: [BE, width=800]\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;p&gt;&lt;/p&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;img src=\&quot;BE.png\&quot; width=800&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
@@ -236,7 +250,11 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;FIGURE: [CN, width=800]\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;p&gt;&lt;/p&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;img src=\&quot;CN.png\&quot; width=800&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
@@ -245,7 +263,11 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;FIGURE: [FE, width=800]\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;p&gt;&lt;/p&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;img src=\&quot;FE.png\&quot; width=800&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
@@ -254,7 +276,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;How $E$ varies with $\\Delta t$ for $\\theta=0,0.5,1$\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;is shown in Figure ref{fig:error}.\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;is shown in [Figure](#fig:error).\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;**Observe:**\n&quot;</span><span class="p">,</span>
@@ -265,20 +287,26 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;FIGURE: [error, width=400] Variation of the error with the time step. {fig:error}\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;a name=\&quot;fig:error\&quot;/&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;p&gt;Variation of the error with the time step.&lt;/p&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;img src=\&quot;error.png\&quot; width=400&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;The numbers corresponding to the figure above are given in the table below.\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot; $\\Delta t$    $\\theta=0$   $\\theta=0.5$   $\\theta=1$   \n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;------------  ------------  ------------  ------------  \n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;        1.25        7.4630        0.2161        0.2440  \n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;        0.75        0.6632        0.0744        0.1875  \n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;        0.50        0.2797        0.0315        0.1397  \n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;        0.10        0.0377        0.0012        0.0335  \n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;table border=\&quot;1\&quot;&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;thead&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;tr&gt;&lt;th align=\&quot;center\&quot;&gt;$\\Delta t$&lt;/th&gt; &lt;th align=\&quot;center\&quot;&gt;$\\theta=0$&lt;/th&gt; &lt;th align=\&quot;center\&quot;&gt;$\\theta=0.5$&lt;/th&gt; &lt;th align=\&quot;center\&quot;&gt;$\\theta=1$&lt;/th&gt; &lt;/tr&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;/thead&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;tbody&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;tr&gt;&lt;td align=\&quot;right\&quot;&gt;   1.25          &lt;/td&gt; &lt;td align=\&quot;right\&quot;&gt;   7.4630        &lt;/td&gt; &lt;td align=\&quot;right\&quot;&gt;   0.2161          &lt;/td&gt; &lt;td align=\&quot;right\&quot;&gt;   0.2440        &lt;/td&gt; &lt;/tr&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;tr&gt;&lt;td align=\&quot;right\&quot;&gt;   0.75          &lt;/td&gt; &lt;td align=\&quot;right\&quot;&gt;   0.6632        &lt;/td&gt; &lt;td align=\&quot;right\&quot;&gt;   0.0744          &lt;/td&gt; &lt;td align=\&quot;right\&quot;&gt;   0.1875        &lt;/td&gt; &lt;/tr&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;tr&gt;&lt;td align=\&quot;right\&quot;&gt;   0.50          &lt;/td&gt; &lt;td align=\&quot;right\&quot;&gt;   0.2797        &lt;/td&gt; &lt;td align=\&quot;right\&quot;&gt;   0.0315          &lt;/td&gt; &lt;td align=\&quot;right\&quot;&gt;   0.1397        &lt;/td&gt; &lt;/tr&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;tr&gt;&lt;td align=\&quot;right\&quot;&gt;   0.10          &lt;/td&gt; &lt;td align=\&quot;right\&quot;&gt;   0.0377        &lt;/td&gt; &lt;td align=\&quot;right\&quot;&gt;   0.0012          &lt;/td&gt; &lt;td align=\&quot;right\&quot;&gt;   0.0335        &lt;/td&gt; &lt;/tr&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;/tbody&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;/table&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;**Summary.**\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>

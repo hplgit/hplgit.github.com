@@ -1,18 +1,18 @@
-.. Automatically generated Sphinx-extended reStructuredText file from Doconce source
+.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
+
+.. !split
 
 Experiments with Schemes for Exponential Decay
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen (hpl at simula.no)
-:Date: Aug 28, 2014
+:Date: Dec 13, 2014
 
 *Summary.* This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation :math:`u'=-au` with the
 aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
-
-.. !split
 
 .. _math:problem:
 
@@ -56,7 +56,7 @@ Numerical solution method
 
 .. index:: finite difference scheme
 
-We introduce a mesh in time with points :math:`0= t_0< t_1 \cdots < t_{N_t}=T`.
+We introduce a mesh in time with points :math:`0 = t_0 < t_1 \cdots < t_{N_t}=T`.
 For simplicity, we assume constant spacing :math:`\Delta t` between the
 mesh points: :math:`\Delta t = t_{n}-t_{n-1}`, :math:`n=1,\ldots,N_t`. Let
 :math:`u^n` be the numerical approximation to the exact solution at :math:`t_n`.
@@ -161,14 +161,14 @@ is shown in Figure :ref:`fig:error`.
 
 The numbers corresponding to the figure above are given in the table below.
 
-==================  ==================  ==================  ==================  
- :math:`\Delta t`    :math:`\theta=0`   :math:`\theta=0.5`   :math:`\theta=1`   
-==================  ==================  ==================  ==================  
-              1.25              7.4630              0.2161              0.2440  
-              0.75              0.6632              0.0744              0.1875  
-              0.50              0.2797              0.0315              0.1397  
-              0.10              0.0377              0.0012              0.0335  
-==================  ==================  ==================  ==================  
+================  ================  ==================  ================  
+:math:`\Delta t`  :math:`\theta=0`  :math:`\theta=0.5`  :math:`\theta=1`  
+================  ================  ==================  ================  
+            1.25            7.4630              0.2161            0.2440  
+            0.75            0.6632              0.0744            0.1875  
+            0.50            0.2797              0.0315            0.1397  
+            0.10            0.0377              0.0012            0.0335  
+================  ================  ==================  ================  
 
 
 .. admonition:: Summary
@@ -201,5 +201,4 @@ Bibliography
    **H. P. Langtangen**. *A Primer on Scientific Programming With Python*,
    Springer,
    2012.
-
 

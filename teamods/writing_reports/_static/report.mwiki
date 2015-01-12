@@ -2,7 +2,7 @@
 #TITLE (actually governed by the filename): Experiments with Schemes for Exponential Decay
 
 By '''Hans Petter Langtangen''' (hpl at simula.no)
-==== Aug 28, 2014 ====
+==== Dec 13, 2014 ====
 
 ''Summary.'' This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation <math>u'=-au</math> with the
@@ -40,7 +40,7 @@ cooling of an object, and radioactive decay.
 
 
 
-We introduce a mesh in time with points <math>0= t_0< t_1 \cdots < t_{N_t}=T</math>.
+We introduce a mesh in time with points <math>0 = t_0 < t_1 \cdots < t_{N_t}=T</math>.
 For simplicity, we assume constant spacing <math>\Delta t</math> between the
 mesh points: <math>\Delta t = t_{n}-t_{n-1}</math>, <math>n=1,\ldots,N_t</math>. Let
 <math>u^n</math> be the numerical approximation to the exact solution at <math>t_n</math>.
@@ -144,13 +144,13 @@ The numbers corresponding to the figure above are given in the table below.
 
 <table border="1">
 <thead>
-<tr><th align="center"> <math>\Delta t</math> </th> <th align="center"> <math>\theta=0</math> </th> <th align="center"><math>\theta=0.5</math></th> <th align="center"> <math>\theta=1</math> </th> </tr>
+<tr><th align="center"><math>\Delta t</math></th> <th align="center"><math>\theta=0</math></th> <th align="center"><math>\theta=0.5</math></th> <th align="center"><math>\theta=1</math></th> </tr>
 </thead>
 <tbody>
-<tr><td align="right">   1.25                       </td> <td align="right">   7.4630                     </td> <td align="right">   0.2161                     </td> <td align="right">   0.2440                     </td> </tr>
-<tr><td align="right">   0.75                       </td> <td align="right">   0.6632                     </td> <td align="right">   0.0744                     </td> <td align="right">   0.1875                     </td> </tr>
-<tr><td align="right">   0.50                       </td> <td align="right">   0.2797                     </td> <td align="right">   0.0315                     </td> <td align="right">   0.1397                     </td> </tr>
-<tr><td align="right">   0.10                       </td> <td align="right">   0.0377                     </td> <td align="right">   0.0012                     </td> <td align="right">   0.0335                     </td> </tr>
+<tr><td align="right">   1.25                     </td> <td align="right">   7.4630                   </td> <td align="right">   0.2161                     </td> <td align="right">   0.2440                   </td> </tr>
+<tr><td align="right">   0.75                     </td> <td align="right">   0.6632                   </td> <td align="right">   0.0744                     </td> <td align="right">   0.1875                   </td> </tr>
+<tr><td align="right">   0.50                     </td> <td align="right">   0.2797                   </td> <td align="right">   0.0315                     </td> <td align="right">   0.1397                   </td> </tr>
+<tr><td align="right">   0.10                     </td> <td align="right">   0.0377                   </td> <td align="right">   0.0012                     </td> <td align="right">   0.0335                   </td> </tr>
 </tbody>
 </table>
 

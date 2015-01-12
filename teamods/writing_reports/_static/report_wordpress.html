@@ -1,7 +1,76 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="keywords" content="keyword,model problem,exponential decay,mesh in time,$\theta$-rule,numerical scheme,finite difference scheme,numerical experiments,BE,CN,FE,error vs time step">
+
+<title></title>
+
+
+<style type="text/css">
+/* blueish style */
+
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #bababa;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #f8f8f8;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
 
 
 
+<body>
 
+    
 
 
 
@@ -14,6 +83,7 @@ demonstrated.
 <h2>
 Table of contents</h2>
 
+<p>
 <a href="#math:problem"> Mathematical problem </a><br>
 <a href="#numerical:problem"> Numerical solution method </a><br>
 <a href="#___sec2"> Implementation </a><br>
@@ -27,6 +97,7 @@ Table of contents</h2>
 
 <h1>Mathematical problem <a name="math:problem"></a></h1>
 
+<p>
 We address the initial-value problem
 
 <p>
@@ -47,7 +118,8 @@ cooling of an object, and radioactive decay.
 
 <h1>Numerical solution method <a name="numerical:problem"></a></h1>
 
-We introduce a mesh in time with points $latex 0= t_0< t_1 \cdots < t_{N_t}=T$.
+<p>
+We introduce a mesh in time with points $latex 0 = t_0 < t_1 \cdots < t_{N_t}=T$.
 For simplicity, we assume constant spacing $latex \Delta t$ between the
 mesh points: $latex \Delta t = t_{n}-t_{n-1}$, $latex n=1,\ldots,N_t$. Let
 $latex u^n$ be the numerical approximation to the exact solution at $latex t_n$.
@@ -76,6 +148,7 @@ for $latex n=0,1,\ldots,N_t-1$. This scheme corresponds to
 
 <h1>Implementation  <a name="___sec2"></a></h1>
 
+<p>
 The numerical method is implemented in a Python function
 <a href="#Langtangen_2012">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>decay_mod</tt></a> module):
 
@@ -98,24 +171,29 @@ The numerical method is implemented in a Python function
 
 <h1>Numerical experiments  <a name="___sec3"></a></h1>
 
+<p>
 We define a set of numerical experiments where $latex I$, $latex a$, and $latex T$ are
 fixed, while $latex \Delta t$ and $latex \theta$ are varied.
 In particular, $latex I=1$, $latex a=2$, $latex \Delta t = 1.25, 0.75, 0.5, 0.1$.
 
 <h2>The Backward Euler method  <a name="___sec4"></a></h2>
 
+<p>
 <center><p><img src="https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/BE.png" align="bottom" width=800></p></center>
 
 <h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
 
+<p>
 <center><p><img src="https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/CN.png" align="bottom" width=800></p></center>
 
 <h2>The Forward Euler method  <a name="___sec6"></a></h2>
 
+<p>
 <center><p><img src="https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/FE.png" align="bottom" width=800></p></center>
 
 <h2>Error vs $latex \Delta t$  <a name="___sec7"></a></h2>
 
+<p>
 How $latex E$ varies with $latex \Delta t$ for $latex \theta=0,0.5,1$
 is shown in Figure <a href="#fig:error">1</a>.
 
@@ -142,13 +220,13 @@ The numbers corresponding to the figure above are given in the table below.
 <p>
 <table border="1">
 <thead>
-<tr><th align="center"> $latex \Delta t$ </th> <th align="center"> $latex \theta=0$ </th> <th align="center">$latex \theta=0.5$</th> <th align="center"> $latex \theta=1$ </th> </tr>
+<tr><th align="center">$latex \Delta t$</th> <th align="center">$latex \theta=0$</th> <th align="center">$latex \theta=0.5$</th> <th align="center">$latex \theta=1$</th> </tr>
 </thead>
 <tbody>
-<tr><td align="right">   1.25                  </td> <td align="right">   7.4630                </td> <td align="right">   0.2161                </td> <td align="right">   0.2440                </td> </tr>
-<tr><td align="right">   0.75                  </td> <td align="right">   0.6632                </td> <td align="right">   0.0744                </td> <td align="right">   0.1875                </td> </tr>
-<tr><td align="right">   0.50                  </td> <td align="right">   0.2797                </td> <td align="right">   0.0315                </td> <td align="right">   0.1397                </td> </tr>
-<tr><td align="right">   0.10                  </td> <td align="right">   0.0377                </td> <td align="right">   0.0012                </td> <td align="right">   0.0335                </td> </tr>
+<tr><td align="right">   1.25                </td> <td align="right">   7.4630              </td> <td align="right">   0.2161                </td> <td align="right">   0.2440              </td> </tr>
+<tr><td align="right">   0.75                </td> <td align="right">   0.6632              </td> <td align="right">   0.0744                </td> <td align="right">   0.1875              </td> </tr>
+<tr><td align="right">   0.50                </td> <td align="right">   0.2797              </td> <td align="right">   0.0315                </td> <td align="right">   0.1397              </td> </tr>
+<tr><td align="right">   0.10                </td> <td align="right">   0.0377              </td> <td align="right">   0.0012                </td> <td align="right">   0.0335              </td> </tr>
 </tbody>
 </table>
 <p>
@@ -185,4 +263,9 @@ The numbers corresponding to the figure above are given in the table below.
 
 
 
+
+
+</body>
+</html>
+    
 
