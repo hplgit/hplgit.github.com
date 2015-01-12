@@ -11,72 +11,47 @@ Automatically generated HTML file from DocOnce source
 
 <title>Need-to-Know Intro to Git and GitHub</title>
 
+<!-- Bootstrap style: bootswatch_journal -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
 
-<style type="text/css">
-/* bloodish style */
-
-body {
-  font-family: Helvetica, Verdana, Arial, Sans-serif;
-  color: #404040;
-  background: #ffffff;
-}
-h1 { font-size: 1.8em;  color: #8A0808; }
-h2 { font-size: 1.6em;  color: #8A0808; }
-h3 { font-size: 1.4em;  color: #8A0808; }
-h4 { color: #8A0808; }
-a { color: #8A0808; text-decoration:none; }
-tt { font-family: "Courier New", Courier; }
-
-p { text-indent: 0px; }
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-p.caption { width: 80%; font-style: normal; text-align: left; }
-hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-.alert-text-small   { font-size: 80%;  }
-.alert-text-large   { font-size: 130%; }
-.alert-text-normal  { font-size: 90%;  }
-.alert {
-  padding:8px 35px 8px 14px; margin-bottom:18px;
-  text-shadow:0 1px 0 rgba(255,255,255,0.5);
-  border:1px solid #bababa;
-  border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  color: #555;
-  background-color: #f8f8f8;
-  background-position: 10px 5px;
-  background-repeat: no-repeat;
-  background-size: 38px;
-  padding-left: 55px;
-  width: 75%;
- }
-.alert-block {padding-top:14px; padding-bottom:14px}
-.alert-block > p, .alert-block > ul {margin-bottom:1em}
-.alert li {margin-top: 1em}
-.alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
-
-div { text-align: justify; text-justify: inter-word; }
-</style>
 
 </head>
 
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Motivation ', 1, None, '___sec0'),
-              (' Why not Dropbox or Google Drive? ', 2, None, '___sec1'),
+              (' Why not Dropbox or Google Drive? ',
+               2,
+               'bitgit:dropbox:googledrive',
+               'bitgit:dropbox:googledrive'),
               (' Repositories and local copies ', 2, None, '___sec2'),
-              (' Installing Git ', 2, None, '___sec3'),
+              (' Installing Git ',
+               2,
+               'bitgit:git:install',
+               'bitgit:git:install'),
               (' GitHub ', 1, 'bitgit:github', 'bitgit:github'),
-              (' Creating a new project ', 2, None, '___sec5'),
+              (' Creating a new project ',
+               2,
+               'bitgit:github:project',
+               'bitgit:github:project'),
               (' Collaborating ', 3, None, '___sec6'),
-              (' Wiki pages ', 2, None, '___sec7'),
-              (' Project web pages ', 2, None, '___sec8'),
-              (' User web pages ', 2, None, '___sec9'),
+              (' Wiki pages ', 2, 'bitgit:github:wiki', 'bitgit:github:wiki'),
+              (' Project web pages ',
+               2,
+               'bitgit:github:web',
+               'bitgit:github:web'),
+              (' User web pages ',
+               2,
+               'bitgit:github:web:user',
+               'bitgit:github:web:user'),
               (' Using Git ', 1, 'bitgit:git', 'bitgit:git'),
-              (' Basic Git commands ', 2, None, '___sec11'),
+              (' Basic Git commands ',
+               2,
+               'bitgit:git:basics',
+               'bitgit:git:basics'),
               (' Cloning ', 3, None, '___sec12'),
               (' The pull-change-push cycle ', 3, None, '___sec13'),
               (' Viewing the history of files ', 3, None, '___sec14'),
@@ -85,22 +60,22 @@ div { text-align: justify; text-justify: inter-word; }
                3,
                None,
                '___sec16'),
-              (' Going back to the last commit ', 3, None, '___sec17'),
-              (' Merging files with Git ',
-               2,
-               'bitgit:git:merge',
-               'bitgit:git:merge'),
+              (' Going back to a previous commit ', 3, None, '___sec17'),
               (' Git working style with branching and stashing ',
                2,
                'bitgit:git:branch:stash',
                'bitgit:git:branch:stash'),
-              (' Branching ', 3, None, '___sec20'),
-              (' Stashing ', 3, None, '___sec21'),
+              (' Branching ', 3, None, '___sec19'),
+              (' Stashing ', 3, None, '___sec20'),
               (' Replacing pull by fetch and merge ',
                2,
                'bitgit:git:fetch',
                'bitgit:git:fetch'),
-              (' Configuring the `git diff` command ', 3, None, '___sec23'),
+              (' Configuring the `git diff` command ', 3, None, '___sec22'),
+              (' Merging files with Git ',
+               2,
+               'bitgit:git:merge',
+               'bitgit:git:merge'),
               (' Team work with forking and pull requests ',
                2,
                'bitgit:git:team',
@@ -109,14 +84,18 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'bitgit:git:clone:branches',
                'bitgit:git:clone:branches'),
-              (' Git workflows ', 2, None, '___sec26'),
-              (' Git tips ', 2, None, '___sec27'),
+              (' Git workflows ',
+               2,
+               'bitgit:git:workflows',
+               'bitgit:git:workflows'),
+              (' Git tips ', 2, 'bitgit:git:tips', 'bitgit:git:tips'),
               (' How can I see which files are tracked by Git? ',
                3,
                None,
                '___sec28'),
               (' How can I reduce the size of a repo? ', 3, None, '___sec29'),
-              (' More documentation on Git ', 2, None, '___sec30'),
+              (' How can I restore missing files? ', 3, None, '___sec30'),
+              (' More documentation on Git ', 2, None, '___sec31'),
               (' Appendix: Working with multiple GitHub accounts ',
                1,
                'appendix:github:multiple:accounts',
@@ -126,21 +105,43 @@ end of tocinfo -->
 <body>
 
     
-<a name="part0004"></a>
-<p>
-<!-- begin top navigation -->
-<table style="width: 100%"><tr><td>
-<div style="text-align: left;"><a href="._Langtangen_bitgit003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
-</td><td>
-</td></tr></table>
-<!-- end top navigation -->
-</p>
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="Langtangen_bitgit-bootstrap.html">Need-to-Know Intro to Git and GitHub</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap002.html#___sec0" style="font-size: 80%;">Motivation</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#bitgit:github" style="font-size: 80%;">GitHub</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap004.html#bitgit:git" style="font-size: 80%;">Using Git</a></li>
+     <!-- navigation toc: --> <li><a href="#appendix:github:multiple:accounts" style="font-size: 80%;">Appendix: Working with multiple GitHub accounts</a></li>
 
-<p>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0005"></a>
 <!-- !split -->
 
-<h1>Appendix: Working with multiple GitHub accounts <a name="appendix:github:multiple:accounts"></a></h1>
+<h1 id="appendix:github:multiple:accounts">Appendix: Working with multiple GitHub accounts</h1>
 
+<p>
 Working against different GitHub accounts is easy if each project you work
 with on each account adds you as a collaborator. The term "you" here means your
 primary username on GitHub. My strong recommendation is to always check
@@ -187,15 +188,24 @@ lists all your SSH keys. The shown strings can be compared with the
 string in the SSH key field of any GitHub account.
 
 <p>
-<!-- begin bottom navigation -->
-<table style="width: 100%"><tr><td>
-<div style="text-align: left;"><a href="._Langtangen_bitgit003.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
-</td><td>
-</td></tr></table>
-<!-- end bottom navigation -->
-</p>
-
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pager">
+  <li class="previous">
+    <a href="._Langtangen_bitgit-bootstrap004.html">&larr; Prev</a>
+  </li>
+</ul>
 <!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
 
 
 </body>
