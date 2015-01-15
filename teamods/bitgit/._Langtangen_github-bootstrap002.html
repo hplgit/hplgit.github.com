@@ -23,17 +23,35 @@ Automatically generated HTML file from DocOnce source
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Motivation ', 1, None, '___sec0'),
-              (' Why not Dropbox or Google Drive? ', 2, None, '___sec1'),
+              (' Why not Dropbox or Google Drive? ',
+               2,
+               'bitgit:dropbox:googledrive',
+               'bitgit:dropbox:googledrive'),
               (' Repositories and local copies ', 2, None, '___sec2'),
-              (' Installing Git ', 2, None, '___sec3'),
+              (' Installing Git ',
+               2,
+               'bitgit:git:install',
+               'bitgit:git:install'),
               (' GitHub ', 1, 'bitgit:github', 'bitgit:github'),
-              (' Creating a new project ', 2, None, '___sec5'),
+              (' Creating a new project ',
+               2,
+               'bitgit:github:project',
+               'bitgit:github:project'),
               (' Collaborating ', 3, None, '___sec6'),
-              (' Wiki pages ', 2, None, '___sec7'),
-              (' Project web pages ', 2, None, '___sec8'),
-              (' User web pages ', 2, None, '___sec9'),
+              (' Wiki pages ', 2, 'bitgit:github:wiki', 'bitgit:github:wiki'),
+              (' Project web pages ',
+               2,
+               'bitgit:github:web',
+               'bitgit:github:web'),
+              (' User web pages ',
+               2,
+               'bitgit:github:web:user',
+               'bitgit:github:web:user'),
               (' Using Git ', 1, 'bitgit:git', 'bitgit:git'),
-              (' Basic Git commands ', 2, None, '___sec11'),
+              (' Basic Git commands ',
+               2,
+               'bitgit:git:basics',
+               'bitgit:git:basics'),
               (' Cloning ', 3, None, '___sec12'),
               (' The pull-change-push cycle ', 3, None, '___sec13'),
               (' Viewing the history of files ', 3, None, '___sec14'),
@@ -43,21 +61,21 @@ Automatically generated HTML file from DocOnce source
                None,
                '___sec16'),
               (' Going back to a previous commit ', 3, None, '___sec17'),
-              (' Merging files with Git ',
-               2,
-               'bitgit:git:merge',
-               'bitgit:git:merge'),
               (' Git working style with branching and stashing ',
                2,
                'bitgit:git:branch:stash',
                'bitgit:git:branch:stash'),
-              (' Branching ', 3, None, '___sec20'),
-              (' Stashing ', 3, None, '___sec21'),
+              (' Branching ', 3, None, '___sec19'),
+              (' Stashing ', 3, None, '___sec20'),
               (' Replacing pull by fetch and merge ',
                2,
                'bitgit:git:fetch',
                'bitgit:git:fetch'),
-              (' Configuring the `git diff` command ', 3, None, '___sec23'),
+              (' Configuring the `git diff` command ', 3, None, '___sec22'),
+              (' Merging files with Git ',
+               2,
+               'bitgit:git:merge',
+               'bitgit:git:merge'),
               (' Team work with forking and pull requests ',
                2,
                'bitgit:git:team',
@@ -66,14 +84,18 @@ Automatically generated HTML file from DocOnce source
                2,
                'bitgit:git:clone:branches',
                'bitgit:git:clone:branches'),
-              (' Git workflows ', 2, None, '___sec26'),
-              (' Git tips ', 2, None, '___sec27'),
+              (' Git workflows ',
+               2,
+               'bitgit:git:workflows',
+               'bitgit:git:workflows'),
+              (' Git tips ', 2, 'bitgit:git:tips', 'bitgit:git:tips'),
               (' How can I see which files are tracked by Git? ',
                3,
                None,
                '___sec28'),
               (' How can I reduce the size of a repo? ', 3, None, '___sec29'),
-              (' More documentation on Git ', 2, None, '___sec30'),
+              (' How can I restore missing files? ', 3, None, '___sec30'),
+              (' More documentation on Git ', 2, None, '___sec31'),
               (' Appendix: Working with multiple GitHub accounts ',
                1,
                'appendix:github:multiple:accounts',
@@ -98,10 +120,10 @@ end of tocinfo -->
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap001.html#___sec0" style="font-size: 80%;">Motivation</a></li>
-     <!-- navigation toc: --> <li><a href="#bitgit:github" style="font-size: 80%;">GitHub</a></li>
-     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#bitgit:git" style="font-size: 80%;">Using Git</a></li>
-     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap004.html#appendix:github:multiple:accounts" style="font-size: 80%;">Appendix: Working with multiple GitHub accounts</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Motivation</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#bitgit:github" style="font-size: 80%;">GitHub</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap004.html#bitgit:git" style="font-size: 80%;">Using Git</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap005.html#appendix:github:multiple:accounts" style="font-size: 80%;">Appendix: Working with multiple GitHub accounts</a></li>
 
         </ul>
       </li>
@@ -116,388 +138,162 @@ end of tocinfo -->
 
 <a name="part0002"></a>
 <!-- !split -->
-
-<h1 id="bitgit:github">GitHub<a name="bitgit:github"></a></h1>
-
-<p>
-Go to <code>github.com</code> and create an account. Then go to your account
-settings (icon in the upper left corner of the page),
-choose <em>SSH Keys</em>, and provide your SSH key
-unless you have already registered this key with another GitHub
-account (see  <a href="._Langtangen_bitgit-bootstrap004.html#appendix:github:multiple:accounts">Appendix: Working with multiple GitHub accounts</a>).
-Often, it is just a
-matter of pasting the contents of <code>id_rsa.pub</code> or <code>id_dsa.pub</code> files,
-located in the
-<code>.ssh</code> subdirectory of your home directory, into the <em>Key</em> box in the
-web page. Make sure to just cut and paste the text from, e.g., <code>id_rsa.pub</code>
-without any extra whitespaces or other text. How to generate these
-files is described in the link <em>generating SSH keys</em> above the SSH Keys
-box.
+<div id="bitgit:top"></div>
 
 <p>
-If the account is a project account and not a personal account,
-I do not recommend to provide an SSH key although it can be
-done (see  <a href="._Langtangen_bitgit-bootstrap004.html#appendix:github:multiple:accounts">Appendix: Working with multiple GitHub accounts</a>). It is easier
-to log in and add collaborators using their personal GitHub usernames.
-
-<h2 id="___sec5">Creating a new project <a name="___sec5"></a></h2>
-
-<p>
-Click on <em>New repository</em> on the main page and fill out a project
-name, here <em>My Project</em>, click the check button <em>Initialize this
-repository with a README</em>, and click on <em>Create repository</em>.
-Unless you pay, all repos are public, but students and teachers
-can request <a href="https://github.com/edu" target="_self">free, private repos</a>.
+Version control systems allow you to share files among several
+computers and collaborators in a professional way. Especially when
+working with software development or technical writing, it is
+essential to record the content history of files and be able to merge
+changes done by multiple collaborators.
 
 <p>
-The next step is to clone the project on your personal computer. Click
-on the <em>SSH</em> button to see the address of the project, and
-paste this address into a terminal window, after <code>git clone</code>:
-<p>
+Projects that you want to share among several computers or project
+workers are most conveniently stored at some web site &quot;in the
+cloud&quot;, here called <em>project hosting services</em>. For efficient access
+to the files, and the possibility to work offline, you interact with
+local copies of the files on your computers.
+I strongly recommend you to use such sites and version control for <em>all</em>
+serious programming and scientific writing work.
 
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone git://github.com:user/My-Project.git
-</pre></div>
-<p>
-Make sure you substitute <code>user</code> by your own username on GitHub.
-
-<p>
-The result of the <code>git clone</code> command is a new directory <code>My-Project</code>.
-It contains the file <code>.git</code>, which shows that it is a Git repository.
-It also contains a default <code>README.md</code> file with the project name and
-description. The extension <code>.md</code> signifies a file written in the
-<a href="http://daringfireball.net/projects/markdown/" target="_self">Markdown</a> format.
-You may use the <a href="http://docutils.sourceforge.net/rst.html" target="_self">reStructuredText</a> format as an alternative
-(<code>README.rst</code>), or simply write a plain text file (<code>README</code>),
-but the <code>git mv</code> command must be used to change the filename.
+<h1 id="___sec0">Motivation </h1>
 
 <p>
-You can now add files and directories into the <code>My-Project</code> directory.
-When your initial file collection has the desired form, you must
-run
-<p>
+Greg Wilson's excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/" target="_self">Script for Introduction to Version Control</a> provides a detailed motivation why you will benefit greatly
+from using version control systems. Here follows a shorter motivation
+and a quick overview of the basic concepts.
 
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git add .
-Terminal&gt; git commit -am &#39;First set of files.&#39;
-Terminal&gt; git push -u origin master
-</pre></div>
-<p>
-The daily file operations are explained in the section <a href="._Langtangen_bitgit-bootstrap003.html#bitgit:git">Using Git</a>.
-
-<h3 id="___sec6">Collaborating <a name="___sec6"></a></h3>
+<h2 id="bitgit:dropbox:googledrive">Why not Dropbox or Google Drive?</h2>
 
 <p>
-To give others permissions to push their edits of files to the
-repository, you click on the <em>Settings</em> link in the right sidebar,
-then click on <em>Collaborators</em> on the left, and fill in the name
-of a collaborator (her or his username on GitHub).
-Many find it convenient to be notified in email when others have
-pushed a new version of the files to the repo. Click on <em>Service Hooks</em>
-in the project's <em>Settings</em> menu, choose <em>Email</em>, fill in
-at most two whitespace-separated email addresses, mark the
-<em>Send from Author</em> and <em>Active</em> boxes, and click on <em>Update Settings</em>.
-More addresses must be dealt with through a <a href="http://stackoverflow.com/questions/7015300/receiving-emails-on-git-push" target="_self">mailing list</a>
-and filling in the name of that list.
+The simplest services for hosting project files are <a href="http://dropbox.com" target="_self">Dropbox</a> and <a href="http://drive.google.com" target="_self">Google Drive</a>.
+It is very easy to get started with these systems, and they allow you
+to share files among laptops and mobile units with as many users as
+you want. The systems offer a kind of version control in that the
+files are stored frequently (several times per minute), and you can go
+back to previous versions for the last 30 days. However, it is
+challenging  to find the right version from the past when there are
+so many of them and when the different versions are not annotated with
+sensible comments. Another deficiency of Dropbox and Google Drive is
+that they sync all your files in a folder, a feature you clearly do not
+want if there are many large files (simulation data, visualizations,
+movies, binaries from compilations,
+temporary scratch files, automatically generated copies)
+that can easily be regenerated.
 
 <p>
-Anyone who participates in a project (has write access) or watches a
-project (having clicked the <em>watch</em> button) can monitor the
-development of the activity on their GitHub main page. Go to <em>Account Settings</em>
-and choose <em>Notification Center</em>.  There you see two sections,
-<em>Participating</em> and <em>Watching</em>, for those participating in the project
-(granted write access) and those watching the project (having clicked
-the <em>watch</em> button), respectively.
-<!-- No, this doesn't work: Clicking the <em>Email</em> button turns -->
-<!-- on email notifications to those participating and/or watching. -->
+However, the most serious problem with Dropbox and Google Drive arises
+when several people edit files simultaneously: it can be difficult
+detect who did what when, roll back to previous versions, and to
+manually merge the edits when these are incompatible. Then one needs
+more sophisticated tools, which means a <em>true version control system</em>.
+The following text aims at providing you with the minimum information
+to started with Git, the leading version control system, combined
+with project hosting services for file storage.
 
-<h2 id="___sec7">Wiki pages <a name="___sec7"></a></h2>
-
-<p>
-With every GitHub project there is an option to create wiki pages.
-Click on the <em>Wiki</em> button in the right sidebar on the main page of
-the project. Click on <em>New Page</em> to create a new page. The wiki pages
-can be written in different markup languages. Markdown is the default
-choice, but you can alternatively use MediaWiki and
-reStructuredText. Unfortunately, <em>GitHub wiki pages do not allow LaTeX
-mathematics through MathJax</em>, even though MediaWiki has support for
-LaTeX (the reason is <a href="http://stackoverflow.com/questions/16889421/how-to-insert-javascript-to-enable-mathjax-on-github-wiki-pages" target="_self">security issues</a>).
+<h2 id="___sec2">Repositories and local copies </h2>
 
 <p>
-The wiki pages can be written and maintained through the web browser
-interface, but it is usually more convenient to clone them on
-your computer as this makes it easy to add figures and other documents
-you may want to link to. It also makes it straightforward to edit
-the wiki text in your favorite text editor. The wiki pages are
-stored in a separate repo and can be cloned by
+The mentioned services host all your files in a specific project in what
+is known as a <em>repository</em>, or <em>repo</em> for short.  When a copy of the
+files are wanted on a certain computer, one clones the repository on
+that computer.  This creates a local copy of the files. Now files can
+be edited, new ones can be added, and files can be deleted.  These
+changes are then brought back to the repository.  If users at
+different computers synchronize their files frequently with the
+repository, most modern version control systems will be able to merge
+changes in files that have been edited simultaneously on different
+computers. This is perhaps one of the most useful features of project
+hosting services. However, the merge functionality clearly works best
+for pure text files and less well for binary files, such as PDF files,
+MS Word or Excel documents, and OpenOffice documents.
+
+<h2 id="bitgit:git:install">Installing Git</h2>
+
+<p>
+The installation of Git on various systems is described
+on the <a href="http://git-scm.com/" target="_self">Git website</a> under the <em>Download</em> section.
+Git involves compiled code so it is most convenient to download a
+precompiled binary version of the software on Windows, Mac and other
+Linux computers.
+On Ubuntu or any Debian-based system the relevant installation command is
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone git://github.com/user/My-Project.wiki.git
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; sudo apt-get install git gitk git-doc
 </pre></div>
 <p>
-This command makes a local copy of the pages in the directory
-<code>My-Project.wiki</code>, which you may prefer to have at the same level
-as the project directory itself in your directory tree.
+This tutorial explains Git interaction through command-line applications
+in a terminal window. There are numerous <a href="https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools#Graphical_Interfaces" target="_self">graphical user interfaces to
+Git</a>. Three examples are
+<a href="http://git-cola.github.com/downloads.html" target="_self">git-cola</a>,
+<a href="https://code.google.com/p/tortoisegit/" target="_self">TortoiseGit</a>, and
+<a href="http://sourcetreeapp.com/" target="_self">SourceTree</a>.
 
 <p>
-Each wiki page has its own file, where the extension reflects
-the markup language used, e.g., <code>.md</code> for Markdown, <code>.rest</code> for
-reStructuredText, <code>.mediawiki</code> for MediaWiki,
-and <code>.creole</code> for Creole wiki. The wiki files are handled as other files in a
-GitHub project, i.e., you need to pull before editing and then
-perform commit and push. After the push you can reload the page
-in the web browser to monitor the effect.
-
-<p>
-You may consider having the original text in <code>doconce</code> format and
-generate the wiki in the reStructuredText or MediaWiki format.
-
-<p>
-Do changes, commit the usual way, and push by
+Make a file <code>.gitconfig</code> in your home directory with information on
+your full name, email address, your favorite text editor, and
+the name of an "excludes file" which defines the file types that Git
+should omit when bringing new directories under version control.
+Here is a simplified version of the author's <code>.gitconfig</code> file:
 <p>
 
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git push git@github.com:user/My-project.wiki.git
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[user]
+name = Hans Petter Langtangen
+email = hpl@simula.no
+editor = emacs
+
+[core]
+excludesfile = ~/.gitignore
 </pre></div>
 <p>
-The address can be stored as <code>url</code> in <code>.git/config</code> in the
-root directory of the wiki project so that just a
-<code>git push</code> works.
-
-<h2 id="___sec8">Project web pages <a name="___sec8"></a></h2>
-
-<p>
-HTML pages stored in your repo cannot be linked to and properly
-rendered as web pages.
-Links to HTML files at GitHub will be either rendered as nicely typeset
-HTML code or as plain text.
-
-<p>
-Quite often you want to create a set of HTML pages to document your
-project. This can be done as part of your repo, but you must apply
-a special technique consisting in creating a separate <em>gh-pages</em>
-branch in Git and making the HTML files in this particular branch.
-The recipe is described in detail below.
-
-<ol>
-<li> Go to the  project page on <code>github.com</code> and click <em>Settings</em>.</li>
-<li> Click on <em>Automatic Page Generator</em> under the <em>GitHub Pages</em>.</li>
-<li> Proceed clicking <em>Continue to Layouts</em>, choose
-   a design of the <code>index.html</code> page that GitHub will
-   create for you, and click <em>Publish</em>.</li>
-<li> Go to the root directory of the project, <code>My-Project</code>
-   and run <code>git fetch origin</code>.</li>
-<li> Run <code>git checkout gh-pages</code>.</li>
-</ol>
-
-You have now a <em>new branch</em> called gh-pages of your project
-containing an <code>index.html</code> file and directories for JavaScript
-programs and CSS style sheets in the root directory. The gh-pages
-branch will also all files <em>not</em> contained in the <em>master branch</em>,
-typically redundant files you have generated and which should not be
-stored in the version control system (remove these manually with <code>git
-rm</code>).  You can populate the root directory and subdirectories of your
-gh-pages branch with HTML and other files as you like. The key issue
-is that the people out there will only see the web pages that
-correspond to your HTML files in the gh-pages branch!
-
-<p>
-The <code>index.html</code> page is invoked by the web address
+The "excludes file" is called <code>.gitignore</code> and must list,
+using the Unix Shell Wildcard notation,
+the type of files that you do not need to have under version control,
+because they represent garbage or temporary information,
+or they can easily be regenerated from
+some other source files. A suggested <a href="http://hplgit.github.com/teamods/bitgit/src-bitgit/.gitignore" target="_self"><tt>.gitignore</tt></a> file looks like
 
 <p>
 
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://user.github.io/My-Project/index.html
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># compiled files:
+*.o
+*.so
+*.a
+# temporary files:
+*.bak
+*.swp
+*~
+.*~
+*.old
+tmp*
+temp*
+.#*
+\#*
+# tex files:
+*.log
+*.dvi
+*.aux
+*.blg
+*.idx
+*.nav
+*.out
+*.toc
+*.snm
+*.vrb
+# eclipse files:
+*.cproject
+*.project
+# misc:
+.DS_Store
 </pre></div>
 <p>
-where <code>user</code> is the GitHub
-username and <code>My-Project</code> is the project name.
-
-<p>
-<!-- Update this info when I have maintained gh-pages for a while! -->
-<!-- Could also have a special section on branching in git (above, -->
-<!-- then the info here is simple... YES!). -->
-
-<p>
-The web pages and project files are now in two different branches.
-To see the branches, type <code>git branch</code>, and the one you are in will
-be marked with <code>*</code> in the output. Switching to the master branch
-is done by <code>git checkout master</code>. Similarly, <code>git checkout gh-pages</code>
-switches to the gh-pages branch.
-
-<p>
-My personal preference is to have the master and gh-pages
-synchronized, at least in projects where I want to link to various
-source code files or other files from the web documentation.
-Sometimes I also update files in the gh-pages branch without
-remembering to switch to the master branch.  To this end, one needs
-to <em>merge</em> the branches, i.e., automatically edit files
-in the current branch such that they are up-to-date and
-identical to files in another branch.
-
-<p>
-To merge the current branch with some branch named <code>otherbranch</code>, run
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git merge otherbranch
-</pre></div>
-<p>
-Git applies smart algorithms that very often manage to merge the
-files without human interaction. However, occasionally these algorithms
-are not able to resolve conflicts between two files.
-A message about the failure of the merge is seen in the terminal
-window, and the corresponding files have markers in them showing
-which sections that needs manual editing to resolve the conflicts.
-Run
-<code>git diff</code> to show the problems (you can tailor this command to your
-needs as explained in the section <a href="._Langtangen_bitgit-bootstrap003.html#bitgit:git:fetch">Replacing pull by fetch and merge</a>). After a manual
-edit, do <code>git commit -a</code>. More details on merging appears
-in the section <a href="._Langtangen_bitgit-bootstrap003.html#bitgit:git:merge">Merging files with Git</a>.
-
-<p>
-If you want to keep the master branch and the gh-pages branch
-synchronized,
-start with merging the gh-pages branch with the master
-branch and push the complete file collection to the gh-pages branch.
-Then switch to the master
-branch and merge with gh-pages so you get the autogenerated
-<code>index.html</code> file and associated files and directories for web pages
-in the root directory of the master branch as well:
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git merge master
-Terminal&gt; touch .nojekyll
-Terminal&gt; git push origin gh-pages
-Terminal&gt; git checkout master
-Terminal&gt; git merge gh-pages
-</pre></div>
-<p>
-You <em>must</em> add an empty file <code>.nojekyll</code> in the top
-directory of the project pages if you want to use Sphinx-generated
-HTML pages (or other pages using javascripts, style sheets, and images
-in subdirectories whose names start with an underscore).
-
-<p>
-You can now add the documentation to the project files and
-maintain them in the master branch.
-Before publishing documents online,
-make sure to update the gh-pages branch by
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git commit -am &#39;Ensure commit of master branch&#39;
-Terminal&gt; git push origin master
-Terminal&gt; git checkout gh-pages
-Terminal&gt; git pull origin gh-pages
-Terminal&gt; git merge master
-Terminal&gt; git push origin gh-pages
-Terminal&gt; git checkout master
-</pre></div>
-<p>
-Personally, I like to move the generated <code>index.html</code> file and all
-associated scripts, stylesheets, and images from the root directory to
-some more isolated place, say <code>doc/web</code>:
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git mv index.html params.json stylesheets/ images/ \
-                 javascripts/ doc/web/
-</pre></div>
-<p>
-The URL of the <code>index.html</code> file is
-<p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://user.github.io/My-Project/doc/web/index.html
-</pre></div>
-<p>
-<!-- See <a href="https://github.com/daler/sphinxdoc-test" target="_self"><tt>https://github.com/daler/sphinxdoc-test</tt></a> -->
-<!-- for ideas on how to do sphinx documentation without full -->
-<!-- mirroring as I do. -->
-<!-- See also <a href="http://lucasbardella.com/report/hosting-your-sphinx-docs-in-github/" target="_self"><tt>http://lucasbardella.com/report/hosting-your-sphinx-docs-in-github/</tt></a> -->
-<!-- Sphinx extension for github: <a href="https://github.com/michaeljones/sphinx-to-github" target="_self"><tt>https://github.com/michaeljones/sphinx-to-github</tt></a> -->
-
-<p>
-<!-- The problem can also be circumvented by -->
-<!-- installing special Sphinx extensions ("sphinx-to-github": -->
-<!-- "https://github.com/michaeljones/sphinx-to-github" or "github-tools": -->
-<!-- "http://pydoc.net/github-tools/0.1.3/"). -->
-
-<p>
-Linking to source code files or other files in the project is easy:
-just find the file in GitHub's web interface, choose which version of
-the file you want to link to (nicely HTML formatted version or the raw
-file), right-click on the link, choose <em>Copy Link</em>, and paste the
-link into the document you want. You can test that the link works by
-the Unix command <code>curl -O &lt;link&gt;</code>. Note that the link to a file
-is different from the source file's intuitive path in the repository.
-Typically, a source file <code>dir/f.py</code> in project <code>prj</code> is reached
-through
-<p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://github.com/user/prj/blob/master/dir/f.py?raw=true
-</pre></div>
-<p>
-Sometimes you want to link to another HTML file, PDF file, movie file,
-or a file that is to be interpreted as a web resource by the browser.
-Do not use the path to the file in the repo as explained above as it will
-just bring the reader to the repo page. Instead, make sure the file is in
-the gh-pages branch and use a local link, like <code>../doc.pdf</code>, or the
-complete gh-pages URL to the file, say
-<p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://user.github.com/My-Project/doc/misc/doc.pdf
-</pre></div>
-<p>
-<div class="alert alert-block alert-success alert-text-normal"><b>Tip.</b>
-The ordinary GitHub URL of image files can be used
-in web pages to insert images from your repo, provided the image files
-are in the <em>raw</em> format - click the <em>Raw</em> button when viewing a file at
-<code>github.com</code> and use the corresponding URL in the <code>img</code> tag in
-the HTML code.
-</div>
-
-
-<h2 id="___sec9">User web pages <a name="___sec9"></a></h2>
-
-<p>
-GitHub also allows you to create user pages and organization pages not
-tied to any specific project.
-Your personal site has address
-<code>http://user.github.com</code>.
-Go to your home page on <code>github.com</code> and click <em>New repository</em>,
-and give it the project name <code>user.github.com</code>.
-Then follow the instructions that come up:
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; mkdir user.github.com
-Terminal&gt; cd user.github.com
-Terminal&gt; git init
-Terminal&gt; # make an index.html file with some test text
-Terminal&gt; git add index.html
-Terminal&gt; git commit -m &#39;First commit&#39;
-Terminal&gt; git remote add origin \
-          git@github.com:user/user.github.com.git
-Terminal&gt; git push -u origin master
-</pre></div>
-<p>
-Go to <code>http://user.github.com</code> and see how the <code>index.html</code> is
-rendered. You can now add various contents as in any ordinary
-Git repository.
-If you want to use Sphinx generated HTML pages, recall to add an empty file
-<code>.nojekyll</code>.
-
-<p>
-<!-- Use gh-pages in a subdirectory of the master branch: <a href="https://gist.github.com/825950" target="_self"><tt>https://gist.github.com/825950</tt></a> -->
+Be critical to what kind of files you really need a full history of.
+For example, you do not want to populate the repository with
+big graphics files of the type that can easily be regenerated by
+some program.
 
 <p>
 <p>

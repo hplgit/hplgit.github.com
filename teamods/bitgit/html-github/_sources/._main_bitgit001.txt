@@ -4,14 +4,27 @@ Need-to-Know Intro to Git and GitHub
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Oct 19, 2014
+:Date: Jan 12, 2015
 
-Version control systems allow you to record the history of files and
-share files among several computers and collaborators in a
-professional way. Especially when working with software development or
-technical writing, it is essential to have file changes documented and
-to ensure that every computer and person involved in the project have
-the most recent updates of the files.
+*Summary.* The essence of project hosting services with version control
+is that you have the files
+associated with a project in the cloud. Many people may share these
+files.  Every time you want to work on the project you explicitly
+update your version of the files, edit the files as you like, and
+synchronize the files with the "master version" in the cloud.
+It is a trivial operation to go back to a previous
+version of a file, corresponding to a certain point of time or
+labeled with a comment.
+You can also use tools to see
+what various people have done with the files throughout the history
+of the project. If several collaborators edit files in parallel, there
+are efficient tools for merging the edits.
+
+Version control systems allow you to share files among several
+computers and collaborators in a professional way. Especially when
+working with software development or technical writing, it is
+essential to record the content history of files and be able to merge
+changes done by multiple collaborators.
 
 Projects that you want to share among several computers or project
 workers are most conveniently stored at some web site "in the
@@ -21,30 +34,14 @@ local copies of the files on your computers.
 I strongly recommend you to use such sites and version control for *all*
 serious programming and scientific writing work.
 
-
-.. admonition:: Essence
-
-   The essence of project hosting services is that you have the files
-   associated with a project in the cloud. Many people may share these
-   files.  Every time you want to work on the project you explicitly
-   update your version of the files, edit the files as you like, and
-   synchronize the files with the "master version" in the cloud.
-   It is a trivial operation to go back to a previous
-   version of a file, corresponding to a certain point of time or
-   labeled with a comment.
-   You can also use tools to see
-   what various people have done with the files throughout the history
-   of the project.
-
-
-
-
 Motivation
 ==========
 
 Greg Wilson's excellent `Script for Introduction to Version Control <http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/>`__ provides a detailed motivation why you will benefit greatly
 from using version control systems. Here follows a shorter motivation
 and a quick overview of the basic concepts.
+
+.. _bitgit:dropbox:googledrive:
 
 Why not Dropbox or Google Drive?
 --------------------------------
@@ -89,6 +86,8 @@ computers. This is perhaps one of the most useful features of project
 hosting services. However, the merge functionality clearly works best
 for pure text files and less well for binary files, such as PDF files,
 MS Word or Excel documents, and OpenOffice documents.
+
+.. _bitgit:git:install:
 
 Installing Git
 --------------
@@ -200,6 +199,8 @@ I do not recommend to provide an SSH key although it can be
 done (see Appendix :ref:`appendix:github:multiple:accounts`). It is easier
 to log in and add collaborators using their personal GitHub usernames.
 
+.. _bitgit:github:project:
+
 Creating a new project
 ----------------------
 
@@ -267,6 +268,8 @@ the *watch* button), respectively.
 
 .. on email notifications to those participating and/or watching.
 
+.. _bitgit:github:wiki:
+
 Wiki pages
 ----------
 
@@ -311,26 +314,50 @@ Do changes, commit the usual way, and push by
 
         Terminal> git push git@github.com:user/My-project.wiki.git
 
-The address can be stored as ``url`` in ``.git/config`` in the
+The address can be stored as ``url`` in the file ``.git/config`` in the
 root directory of the wiki project so that just a
 ``git push`` works.
+
+.. _bitgit:github:web:
 
 Project web pages
 -----------------
 
 HTML pages stored in your repo cannot be linked to and properly
 rendered as web pages.
-Links to HTML files at GitHub will be either rendered as nicely typeset
-HTML code or as plain text.
+Say you have some HTML file ``doc/file.html`` in the repo.
+The normal link to the file is
+
+.. code-block:: text
+
+        https://github.com/user/my-project/blob/master/doc/file.html
+
+which shows up as a nicely typeset, colorful HTML code.
+The raw text file,
+
+.. code-block:: text
+
+        https://raw.githubusercontent.com/user/my-project/master/doc/file.html
+
+shows up as pure text in a browser. If one wants to see the file
+rendered as HTML code, one can view it through ``htmlpreview.github.io``.
+This means that one can use the link
+
+.. code-block:: text
+
+        http://htmlpreview.github.io/?https://raw.githubusercontent.com/user/my-project/master/doc/file.html
+
+to produce the HTML document in a browser.
 
 .. index:: git checkout
 
 .. index:: gh-pages on GitHub
 
-Quite often you want to create a set of HTML pages to document your
-project. This can be done as part of your repo, but you must apply
-a special technique consisting in creating a separate *gh-pages*
-branch in Git and making the HTML files in this particular branch.
+However, there is another technique available where all HTML files in
+a special branch *gh-pages* of the repository are automatically
+rendered correctly as HTML documents in a browser. This is
+the recommended technique for publishing a collection of HTML files
+related to the project in a simple and convenient way.
 The recipe is described in detail below.
 
 1. Go to the  project page on ``github.com`` and click *Settings*.
@@ -387,53 +414,33 @@ to *merge* the branches, i.e., automatically edit files
 in the current branch such that they are up-to-date and
 identical to files in another branch.
 
-.. index:: git merge
-
-.. index:: git pull
-
-.. index:: git commit
-
-.. index:: git push
-
-To merge the current branch with some branch named ``otherbranch``, run
-
-.. code-block:: text
-
-        Terminal> git merge otherbranch
-
-Git applies smart algorithms that very often manage to merge the
-files without human interaction. However, occasionally these algorithms
-are not able to resolve conflicts between two files.
-A message about the failure of the merge is seen in the terminal
-window, and the corresponding files have markers in them showing
-which sections that needs manual editing to resolve the conflicts.
-Run
-``git diff`` to show the problems (you can tailor this command to your
-needs as explained in the section :ref:`bitgit:git:fetch`). After a manual
-edit, do ``git commit -a``. More details on merging appears
-in the section :ref:`bitgit:git:merge`.
-
-If you want to keep the master branch and the gh-pages branch
-synchronized,
-start with merging the gh-pages branch with the master
-branch and push the complete file collection to the gh-pages branch.
-Then switch to the master
-branch and merge with gh-pages so you get the autogenerated
-``index.html`` file and associated files and directories for web pages
-in the root directory of the master branch as well:
+To synchronize (merge) the gh-pages branch with the master branch, run
 
 .. code-block:: text
 
         Terminal> git merge master
+
+If you want to keep the master branch and the gh-pages branch
+synchronized, merge the master branch while standing in the gh-pages
+branch. Then go to the master branch and merge the gh-pages branch such
+that you get the ``index.html`` file and other files (javascript, css, etc.)
+for the web pages also in the master branch. Go to the root directory
+of the repo and do
+
+.. code-block:: text
+
+        Terminal> git checkout gh-pages
         Terminal> touch .nojekyll
-        Terminal> git push origin gh-pages
+        Terminal> git add .nojekyll
+        Terminal> git merge master
         Terminal> git checkout master
         Terminal> git merge gh-pages
 
-You *must* add an empty file ``.nojekyll`` in the top
-directory of the project pages if you want to use Sphinx-generated
-HTML pages (or other pages using javascripts, style sheets, and images
-in subdirectories whose names start with an underscore).
+You must add an empty file ``.nojekyll`` in the top
+directory of the project pages if you want to use HTML pages where file
+or directory names start with underscore or a period (e.g.,
+Sphinx-generated
+HTML pages need such a ``.nojekyll`` file).
 
 You can now add the documentation to the project files and
 maintain them in the master branch.
@@ -520,6 +527,8 @@ complete gh-pages URL to the file, say
 
 
 
+.. _bitgit:github:web:user:
+
 User web pages
 --------------
 
@@ -563,6 +572,8 @@ terminal window. Windows users may prefer a graphical user interface (GUI),
 and there are many `options <http://git-scm.com/downloads/guis>`__ in
 this respect. There are also GUIs for Mac users.
 Here we concentrate on the efficient command-line interface to Git.
+
+.. _bitgit:git:basics:
 
 Basic Git commands
 ------------------
@@ -829,6 +840,256 @@ To push it as the new state of the repo, do
 
         Terminal> git push origin HEAD --force
 
+.. _bitgit:git:branch:stash:
+
+Git working style with branching and stashing
+---------------------------------------------
+
+.. git clone is without branches, say something about that in clone
+
+Branching and stashing are nice features of Git that allow you to try
+out new things without affecting the stable version of your files.
+Usually, you extend and modify files quite often and perform a ``git
+commit`` every time you want to record the changes in your local
+repository. Imagine that you want to correct a set of errors in some
+files and push these corrections immediately.  The problem is that
+such a push will also include the latest, yet unfinished files that you
+have committed.
+
+Branching
+~~~~~~~~~
+
+A better organization of your work would
+be to keep the latest, ongoing
+developments separate from the more official and stable version
+of the files. This is easily achieved by creating a separate branch
+where new developments takes place. You can synchronize (``git merge``)
+this branch with the official master branch as long as the developments
+go on, and when you are ready, you can synchronize the master branch
+with these developments to bring them into the official version of
+your files.
+
+.. index:: git merge
+
+.. index:: git pull
+
+.. index:: git commit
+
+.. index:: git push
+
+The session below shows how to make a branch, change files, and
+merge (synchronize) branches:
+
+.. code-block:: text
+
+        Terminal> git branch newstuff      # create new branch
+        Terminal> git checkout newstuff
+        Terminal> # extend and modify files...
+        Terminal> git commit -am 'Modified ... Added a file on ...'
+        Terminal> git checkout master      # swith back to master
+        Terminal> # correct errors
+        Terminal> git push origin master
+        Terminal> git checkout newstuff    # switch to other branch
+        Terminal> git merge master         # keep branch up-to-date w/master
+        Terminal> # continue development work...
+        Terminal> git commit -am 'More modifications of ...'
+
+At some point, your developments in ``newstuff``
+are mature enough to be incorporated
+in the master branch:
+
+.. code-block:: text
+
+        Terminal> git checkout newstuff
+        Terminal> git merge master        # synchronize newstuff w/master
+        Terminal> git checkout master
+        Terminal> git merge newstuff      # synchronize master w/newstuff
+
+You no longer need the ``newstuff`` branch and can delete it:
+
+.. code-block:: text
+
+        Terminal> git branch -d newstuff
+
+This command deletes the branch locally. To also delete the branch
+in the remote repo, run
+
+.. code-block:: text
+
+        Terminal> git push origin --delete newstuff
+
+You can learn more in an `excellent introduction and demonstration of Git branching <http://pcottle.github.io/learnGitBranching/>`__.
+
+
+.. admonition:: Automatic merge may fail
+
+   Git applies smart algorithms that very often manage to merge the
+   files without human interaction. However, occasionally these algorithms
+   are not able to resolve conflicts between two files.
+   A message about the failure of the merge is seen in the terminal
+   window, and the corresponding files have markers in them showing
+   which sections that needs manual editing to resolve the conflicts.
+   Run
+   ``git diff`` to show the problems (you can tailor this command to your
+   needs as explained in the section :ref:`bitgit:git:fetch`). After a manual
+   edit, do ``git commit -a``. More details on merging appears
+   in the section :ref:`bitgit:git:merge`.
+
+
+
+
+Stashing
+~~~~~~~~
+
+It is not possible to switch branches unless you have committed the
+files in the current branch. If your work on some files is in a mess
+and you want to change to another branch or fix other files in the
+current branch, a "global" commit affecting all files might be
+immature.  Then the `git stash <http://git-scm.com/book/en/Git-Tools-Stashing>`__ command is handy. It
+records the state of your files and sets you back to the state of the
+last commit in the current branch. With ``git stash apply`` you will update the
+files in this branch to the state when you did the last ``git
+stash``.
+
+Let us explain a typical case.  Suppose you have performed some
+extensive edits in some files and then you are suddenly
+interrupted. You need to fix some typos in some other files, commit
+the changes, and push. The problem is that many files are in an
+unfinished state - in hindsight you realize that those files should
+have been modified in a separate branch.  It is not too late to create
+that branch! First run ``git stash`` to get the files back to the state
+they were at the last commit. Then run ``git stash branch newstuff`` to
+create a new branch ``newstuff`` containing the state of the files when
+you did the (last) ``git stash`` command.  Stashing used this way is a
+convenient technique to move some immature edits after the last commit
+out in a new branch for further experimental work.
+
+
+.. warning::
+    You can get the stashed files back by ``git stash apply``. It is
+    possible to multiple ``git stash`` and ``git stash apply``
+    commands. However, it is easy to run into trouble with multiple
+    stashes, especially if they occur in multiple branches, as it becomes
+    difficult to recognize which stashes that belong to which branch.  A
+    good advice is therefore to do ``git stash`` *only once* to get back to
+    a clean state and then move the unfinished messy files to a separate
+    branch with ``git stash branch newstuff``.
+
+
+
+
+.. _bitgit:git:fetch:
+
+Replacing pull by fetch and merge
+---------------------------------
+
+The ``git pull`` command actually performs two steps that are sometimes
+advantageous to run separately. First, a ``get fetch`` is run to fetch
+new files from the repository, and thereafter a ``git merge`` command is
+run to merge the new files with your local version of the files.
+While ``git pull`` tries to do a lot and be smart in the merge, very
+often with success, the merge step may occasionally lead to
+trouble. That is why it is recommended to run a ``git merge``
+separately, especially if you work with branches.
+
+To fetch files from your repository at GitHub, which usually has
+the nickname ``origin``, you write
+
+.. code-block:: text
+
+        Terminal> git fetch origin
+
+You now have the possibility to check out in detail what the differences
+are between the new files and local ones:
+
+.. code-block:: text
+
+        Terminal> git diff origin/master
+
+This command produces comparisons of the files in the current local branch
+and the ``master`` branch at ``origin`` (the GitHub repo).
+In this way you can exactly see the differences between branches.
+It also gives you an overview of what others have done with
+the files.
+When you are ready to merge in the new files from the ``master`` branch
+of ``origin`` with the files in the current local branch, you say
+
+.. code-block:: text
+
+        Terminal> git merge origin/master
+
+Especially when you work with multiple branches, as outlined in
+the section :ref:`bitgit:git:branch:stash`, it is wise to first do a
+``get fetch origin`` and then update each branch separately. The
+``git fetch origin`` command will list the branches, e.g.,
+
+.. code-block:: text
+
+        * master
+          gh-pages
+          next
+
+After updating ``master`` as described, you can continue with another branch:
+
+.. code-block:: text
+
+        Terminal> git checkout next
+        Terminal> git diff origin/next
+        Terminal> git merge origin/next
+        Terminal> git checkout master
+
+Configuring the ``git diff`` command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``git diff`` command launches by default the
+Unix ``diff`` tool in the terminal window.
+Many users prefer to use other diff tools, and the desired one
+can be specified in
+your ``~/.gitconfig`` file. However, a much recommended approach is to
+wrap a shell script around the call to the diff program, because
+``git diff`` actually calls the diff program with a series of
+command-line arguments that will confuse diff programs that take
+the names of the two files to be compared as arguments.
+In ``~/.gitconfig`` you specify a script to do the diff:
+
+.. code-block:: text
+
+        [diff]
+        external = ~/bin/git-diff-wrapper.sh
+
+It remains to write the ``git-diff-wrapper.sh`` script.
+The  2nd and 5th command-line arguments passed to this script are the
+name of the files to be compared in the diff. A typical script may
+therefore look like
+
+.. code-block:: bash
+
+        #!/bin/sh
+        
+        diff "$2" "$5" | less
+
+Here we use the standard (and quite primitive) Unix ``diff`` program,
+but we can replace ``diff`` by, e.g., ``diffuse``, ``kdiff3``, ``xxdiff``, ``meld``, ``pdiff``, or others. With a Python script you can easily check
+for the extensions of the files and use different diff tools for
+different types of files, e.g., ``latexdiff`` for LaTeX files
+and ``pdiff`` for pure text files.
+
+
+.. admonition:: Replacing all your files with those in the repo
+
+   Occasionally it becomes desirable to replace *all* files in
+   the local repo with those in the repo at the file hosting service.
+   One possibility is removing your repo and cloning again, or
+   use the Git commands
+   
+   .. code-block:: text
+   
+           Terminal> git fetch --all
+           Terminal> git reset --hard origin/master
+
+
+
+
 .. _bitgit:git:merge:
 
 Merging files with Git
@@ -1003,223 +1264,6 @@ Launch a text editor and edit the file, or use ``git mergetool``,
 so that the file becomes correct.
 Then run ``git commit -am merge`` to finalize the merge.
 
-.. _bitgit:git:branch:stash:
-
-Git working style with branching and stashing
----------------------------------------------
-
-.. git clone is without branches, say something about that in clone
-
-Branching and stashing are nice features of Git that allow you to try
-out new things without affecting the stable version of your files.
-Usually, you extend and modify files quite often and perform a ``git
-commit`` every time you want to record the changes in your local
-repository. Imagine that you want to correct a set of errors in some
-files and push these corrections immediately.  The problem is that
-such a push will also include the latest, yet unfinished files that you
-have committed.
-
-Branching
-~~~~~~~~~
-
-A better organization of your work would
-be to keep the latest, ongoing
-developments separate from the more official and stable version
-of the files. This is easily achieved by creating a separate branch
-where new developments takes place:
-
-.. code-block:: text
-
-        Terminal> git branch newstuff      # create new branch
-        Terminal> git checkout newstuff
-        Terminal> # extend and modify files...
-        Terminal> git commit -am 'Modified ... Added a file on ...'
-        Terminal> git checkout master      # swith back to master
-        Terminal> # correct errors
-        Terminal> git push origin master
-        Terminal> git checkout newstuff    # switch to other branch
-        Terminal> git merge master         # keep branch up-to-date w/master
-        Terminal> # continue development work...
-        Terminal> git commit -am 'More modifications of ...'
-
-At some point, your developments in ``newstuff``
-are mature enough to be incorporated
-in the master branch:
-
-.. code-block:: text
-
-        Terminal> git checkout newstuff
-        Terminal> git merge master        # synchronize newstuff w/master
-        Terminal> git checkout master
-        Terminal> git merge newstuff      # synchronize master w/newstuff
-
-You no longer need the ``newstuff`` branch and can delete it:
-
-.. code-block:: text
-
-        Terminal> git branch -d newstuff
-
-This command deletes the branch locally. To also delete the branch
-in the remote repo, run
-
-.. code-block:: text
-
-        Terminal> git push origin --delete newstuff
-
-You can learn more in an `excellent introduction and demonstration of Git branching <http://pcottle.github.io/learnGitBranching/>`__.
-
-Stashing
-~~~~~~~~
-
-It is not possible to switch branches unless you have committed the
-files in the current branch. If your work on some files is in a mess
-and you want to change to another branch or fix other files in the
-current branch, a "global" commit affecting all files might be
-immature.  Then the `git stash <http://git-scm.com/book/en/Git-Tools-Stashing>`__ command is handy. It
-records the state of your files and sets you back to the state of the
-last commit in the current branch. With ``git stash apply`` you will update the
-files in this branch to the state when you did the last ``git
-stash``.
-
-Let us explain a typical case.  Suppose you have performed some
-extensive edits in some files and then you are suddenly
-interrupted. You need to fix some typos in some other files, commit
-the changes, and push. The problem is that many files are in an
-unfinished state - in hindsight you realize that those files should
-have been modified in a separate branch.  It is not too late to create
-that branch! First run ``git stash`` to get the files back to the state
-they were at the last commit. Then run ``git stash branch newstuff`` to
-create a new branch ``newstuff`` containing the state of the files when
-you did the (last) ``git stash`` command.  Stashing used this way is a
-convenient technique to move some immature edits after the last commit
-out in a new branch for further experimental work.
-
-
-.. warning::
-    You can get the stashed files back by ``git stash apply``. It is
-    possible to multiple ``git stash`` and ``git stash apply``
-    commands. However, it is easy to run into trouble with multiple
-    stashes, especially if they occur in multiple branches, as it becomes
-    difficult to recognize which stashes that belong to which branch.  A
-    good advice is therefore to do ``git stash`` *only once* to get back to
-    a clean state and then move the unfinished messy files to a separate
-    branch with ``git stash branch newstuff``.
-
-
-
-
-.. _bitgit:git:fetch:
-
-Replacing pull by fetch and merge
----------------------------------
-
-The ``git pull`` command actually performs two steps that are sometimes
-advantageous to run separately. First, a ``get fetch`` is run to fetch
-new files from the repository, and thereafter a ``git merge`` command is
-run to merge the new files with your local version of the files.
-While ``git pull`` tries to do a lot and be smart in the merge, very
-often with success, the merge step may occasionally lead to
-trouble. That is why it is recommended to run a ``git merge``
-separately, especially if you work with branches.
-
-To fetch files from your repository at GitHub, which usually has
-the nickname ``origin``, you write
-
-.. code-block:: text
-
-        Terminal> git fetch origin
-
-You now have the possibility to check out in detail what the differences
-are between the new files and local ones:
-
-.. code-block:: text
-
-        Terminal> git diff origin/master
-
-This command produces comparisons of the files in the current local branch
-and the ``master`` branch at ``origin`` (the GitHub repo).
-In this way you can exactly see the differences between branches.
-It also gives you an overview of what others have done with
-the files.
-When you are ready to merge in the new files from the ``master`` branch
-of ``origin`` with the files in the current local branch, you say
-
-.. code-block:: text
-
-        Terminal> git merge origin/master
-
-Especially when you work with multiple branches, as outlined in
-the section :ref:`bitgit:git:branch:stash`, it is wise to first do a
-``get fetch origin`` and then update each branch separately. The
-``git fetch origin`` command will list the branches, e.g.,
-
-.. code-block:: text
-
-        * master
-          gh-pages
-          next
-
-After updating ``master`` as described, you can continue with another branch:
-
-.. code-block:: text
-
-        Terminal> git checkout next
-        Terminal> git diff origin/next
-        Terminal> git merge origin/next
-        Terminal> git checkout master
-
-Configuring the ``git diff`` command
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The ``git diff`` command launches by default the
-Unix ``diff`` tool in the terminal window.
-Many users prefer to use other diff tools, and the desired one
-can be specified in
-your ``~/.gitconfig`` file. However, a much recommended approach is to
-wrap a shell script around the call to the diff program, because
-``git diff`` actually calls the diff program with a series of
-command-line arguments that will confuse diff programs that take
-the names of the two files to be compared as arguments.
-In ``~/.gitconfig`` you specify a script to do the diff:
-
-.. code-block:: text
-
-        [diff]
-        external = ~/bin/git-diff-wrapper.sh
-
-It remains to write the ``git-diff-wrapper.sh`` script.
-The  2nd and 5th command-line arguments passed to this script are the
-name of the files to be compared in the diff. A typical script may
-therefore look like
-
-.. code-block:: bash
-
-        #!/bin/sh
-        
-        diff "$2" "$5" | less
-
-Here we use the standard (and quite primitive) Unix ``diff`` program,
-but we can replace ``diff`` by, e.g., ``diffuse``, ``kdiff3``, ``xxdiff``, ``meld``, ``pdiff``, or others. With a Python script you can easily check
-for the extensions of the files and use different diff tools for
-different types of files, e.g., ``latexdiff`` for LaTeX files
-and ``pdiff`` for pure text files.
-
-
-.. admonition:: Replacing all your files with those in the repo
-
-   Occasionally it becomes desirable to replace *all* files in
-   the local repo with those in the repo at the file hosting service.
-   One possibility is removing your repo and cloning again, or
-   use the Git commands
-   
-   .. code-block:: text
-   
-           Terminal> git fetch --all
-           Terminal> git reset --hard origin/master
-
-
-
-
 .. _bitgit:git:team:
 
 Team work with forking and pull requests
@@ -1363,6 +1407,8 @@ It is possible to write a little script that takes the output of
 ``git branch -a`` after a ``git clone`` command and automatically check
 out all branches via ``git checkout``.
 
+.. _bitgit:git:workflows:
+
 Git workflows
 -------------
 
@@ -1425,6 +1471,8 @@ useful.
 
 .. these as two users, don't need to be different machines...
 
+.. _bitgit:git:tips:
+
 Git tips
 --------
 
@@ -1448,13 +1496,14 @@ How can I reduce the size of a repo?
 
 The command ``git gc`` can compress a git repository and should be
 run regularly on large repositories. Greater effect
-is achieved by ``git gc --aggressive``. You can measure the
+is achieved by ``git gc --aggressive --prune=all``. You can measure the
 size of a repo before and after compression by ``git gc`` using
-``du -s repodir``.
+``du -s repodir``, where ``repodir`` is the name of the root directory of
+the repository.
 
 Occasionally big or sensitive files are removed from the repo and you want to
 permanently remove these files from the revision history. This is
-achieved using `git filter-branch <https://help.github.com/articles/remove-sensitive-data>`__. To remove a file or directory with path ``doc/src/mydoc`` from the root directory of the repo, go to this root directory, make sure all branches are checkout on your computer, and run
+achieved using `git filter-branch <https://help.github.com/articles/remove-sensitive-data>`__. To remove a file or directory with path ``doc/src/mydoc`` relative to the root directory of the repo, go to this root directory, make sure all branches are checked out on your computer, and run
 
 .. code-block:: text
 
@@ -1472,6 +1521,28 @@ You must repeat the ``push`` command for each branch as indicated.
 If other users have created their own branches in this repo, they
 need to `rebase <http://git-scm.com/book/en/Git-Branching-Rebasing>`__,
 not ``merge``, when updating the branches!
+
+How can I restore missing files?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sometimes you accidentally remove files from a repo, either by ``git rm`` or
+a plain ``rm``. You can get the files back as long as they are in the remote
+repo. In case of a plain ``rm`` command, run
+
+.. code-block:: text
+
+        Terminal> git checkout `git ls-files`
+
+to restore all missing files in the current directory.
+
+In case of a ``git rm`` command, use
+``git log --diff-filter=D --summary`` to find the commit hash
+corresponding to the last commit
+the files were in the repo. Restoring a file is then done by
+
+.. code-block:: text
+
+        Terminal> git checkout <commit hash> filename
 
 More documentation on Git
 -------------------------
@@ -1499,6 +1570,8 @@ More documentation on Git
  * `Git top 10 tutorials <http://sixrevisions.com/resources/git-tutorials-beginners/>`__
 
  * `Lars Vogel's Git Tutorial <http://www.vogella.com/articles/Git/article.html>`__
+
+ * `How to use Git with Dropbox <http://jetheis.com/blog/2013/02/17/using-dropbox-as-a-private-github/>`__
 
  * `Git Community Book <http://book.git-scm.com/>`__ (*explains* Git very well)
 
