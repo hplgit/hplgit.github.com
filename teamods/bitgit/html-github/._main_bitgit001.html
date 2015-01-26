@@ -15,7 +15,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -27,8 +27,26 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="Quick Intro to Git and GitHub" href="index.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="._main_bitgit000.html" /> 
+    <link rel="prev" title="&lt;no title&gt;" href="._main_bitgit000.html" />
+ 
   
    <style type="text/css">
      div.admonition {
@@ -65,12 +83,26 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 12, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 21, 2015</td>
 </tr>
 </tbody>
 </table>
-<p><em>Summary.</em> The essence of project hosting services with version control
-is that you have the files
+<p>Version control systems allow you to record the history of files and
+share files among several computers and collaborators in a
+professional way. Especially when working with software development or
+technical writing, it is essential to have file changes documented and
+to ensure that every computer and person involved in the project have
+the most recent updates of the files.</p>
+<p>Projects that you want to share among several computers or project
+workers are most conveniently stored at some web site &#8220;in the
+cloud&#8221;, here called <em>project hosting services</em>. For efficient access
+to the files, and the possibility to work offline, you interact with
+local copies of the files on your computers.
+I strongly recommend you to use such sites and version control for <em>all</em>
+serious programming and scientific writing work.</p>
+<div class="admonition-essence admonition">
+<p class="first admonition-title">Essence</p>
+<p class="last">The essence of project hosting services is that you have the files
 associated with a project in the cloud. Many people may share these
 files.  Every time you want to work on the project you explicitly
 update your version of the files, edit the files as you like, and
@@ -80,27 +112,15 @@ version of a file, corresponding to a certain point of time or
 labeled with a comment.
 You can also use tools to see
 what various people have done with the files throughout the history
-of the project. If several collaborators edit files in parallel, there
-are efficient tools for merging the edits.</p>
-<p>Version control systems allow you to share files among several
-computers and collaborators in a professional way. Especially when
-working with software development or technical writing, it is
-essential to record the content history of files and be able to merge
-changes done by multiple collaborators.</p>
-<p>Projects that you want to share among several computers or project
-workers are most conveniently stored at some web site &#8220;in the
-cloud&#8221;, here called <em>project hosting services</em>. For efficient access
-to the files, and the possibility to work offline, you interact with
-local copies of the files on your computers.
-I strongly recommend you to use such sites and version control for <em>all</em>
-serious programming and scientific writing work.</p>
+of the project.</p>
+</div>
 <div class="section" id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
 <p>Greg Wilson&#8217;s excellent <a class="reference external" href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/">Script for Introduction to Version Control</a> provides a detailed motivation why you will benefit greatly
 from using version control systems. Here follows a shorter motivation
 and a quick overview of the basic concepts.</p>
 <div class="section" id="why-not-dropbox-or-google-drive">
-<span id="bitgit-dropbox-googledrive"></span><h3>Why not Dropbox or Google Drive?<a class="headerlink" href="#why-not-dropbox-or-google-drive" title="Permalink to this headline">¶</a></h3>
+<h3>Why not Dropbox or Google Drive?<a class="headerlink" href="#why-not-dropbox-or-google-drive" title="Permalink to this headline">¶</a></h3>
 <p>The simplest services for hosting project files are <a class="reference external" href="http://dropbox.com">Dropbox</a> and <a class="reference external" href="http://drive.google.com">Google Drive</a>.
 It is very easy to get started with these systems, and they allow you
 to share files among laptops and mobile units with as many users as
@@ -141,7 +161,7 @@ for pure text files and less well for binary files, such as PDF files,
 MS Word or Excel documents, and OpenOffice documents.</p>
 </div>
 <div class="section" id="installing-git">
-<span id="bitgit-git-install"></span><h3>Installing Git<a class="headerlink" href="#installing-git" title="Permalink to this headline">¶</a></h3>
+<h3>Installing Git<a class="headerlink" href="#installing-git" title="Permalink to this headline">¶</a></h3>
 <p id="index-0">The installation of Git on various systems is described
 on the <a class="reference external" href="http://git-scm.com/">Git website</a> under the <em>Download</em> section.
 Git involves compiled code so it is most convenient to download a
@@ -235,7 +255,7 @@ I do not recommend to provide an SSH key although it can be
 done (see Appendix <a class="reference internal" href="#appendix-github-multiple-accounts"><em>Appendix: Working with multiple GitHub accounts</em></a>). It is easier
 to log in and add collaborators using their personal GitHub usernames.</p>
 <div class="section" id="creating-a-new-project">
-<span id="bitgit-github-project"></span><h3>Creating a new project<a class="headerlink" href="#creating-a-new-project" title="Permalink to this headline">¶</a></h3>
+<h3>Creating a new project<a class="headerlink" href="#creating-a-new-project" title="Permalink to this headline">¶</a></h3>
 <p>Click on <em>New repository</em> on the main page and fill out a project
 name, here <em>My Project</em>, click the check button <em>Initialize this
 repository with a README</em>, and click on <em>Create repository</em>.
@@ -288,7 +308,7 @@ the <em>watch</em> button), respectively.</p>
 </div>
 </div>
 <div class="section" id="wiki-pages">
-<span id="bitgit-github-wiki"></span><h3>Wiki pages<a class="headerlink" href="#wiki-pages" title="Permalink to this headline">¶</a></h3>
+<h3>Wiki pages<a class="headerlink" href="#wiki-pages" title="Permalink to this headline">¶</a></h3>
 <p>With every GitHub project there is an option to create wiki pages.
 Click on the <em>Wiki</em> button in the right sidebar on the main page of
 the project. Click on <em>New Page</em> to create a new page. The wiki pages
@@ -322,12 +342,12 @@ generate the wiki in the reStructuredText or MediaWiki format.</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git push git@github.com:user/My-project.wiki.git
 </pre></div>
 </div>
-<p>The address can be stored as <tt class="docutils literal"><span class="pre">url</span></tt> in the file <tt class="docutils literal"><span class="pre">.git/config</span></tt> in the
-root directory of the wiki project so that just a
+<p>The address can be stored as <tt class="docutils literal"><span class="pre">url</span></tt> in <tt class="docutils literal"><span class="pre">.git/config</span></tt> in the
+root directory of the wiki project so that just a standard
 <tt class="docutils literal"><span class="pre">git</span> <span class="pre">push</span></tt> works.</p>
 </div>
 <div class="section" id="project-web-pages">
-<span id="bitgit-github-web"></span><h3>Project web pages<a class="headerlink" href="#project-web-pages" title="Permalink to this headline">¶</a></h3>
+<h3>Project web pages<a class="headerlink" href="#project-web-pages" title="Permalink to this headline">¶</a></h3>
 <p>HTML pages stored in your repo cannot be linked to and properly
 rendered as web pages.
 Say you have some HTML file <tt class="docutils literal"><span class="pre">doc/file.html</span></tt> in the repo.
@@ -392,29 +412,40 @@ remembering to switch to the master branch.  To this end, one needs
 to <em>merge</em> the branches, i.e., automatically edit files
 in the current branch such that they are up-to-date and
 identical to files in another branch.</p>
-<p>To synchronize (merge) the gh-pages branch with the master branch, run</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git merge master
+<span class="target" id="index-4"></span><span class="target" id="index-5"></span><span class="target" id="index-6"></span><p id="index-7">To merge the current branch with some branch named <tt class="docutils literal"><span class="pre">otherbranch</span></tt>, run</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git merge otherbranch
 </pre></div>
 </div>
+<p>Git applies smart algorithms that very often manage to merge the
+files without human interaction. However, occasionally these algorithms
+are not able to resolve conflicts between two files.
+A message about the failure of the merge is seen in the terminal
+window, and the corresponding files have markers in them showing
+which sections that needs manual editing to resolve the conflicts.
+Run
+<tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> to show the problems (you can tailor this command to your
+needs as explained in the section <a class="reference internal" href="#bitgit-git-fetch"><em>Replacing pull by fetch and merge</em></a>). After a manual
+edit, do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></tt>. More details on merging appears
+in the section <a class="reference internal" href="#bitgit-git-merge"><em>Merging files with Git</em></a>.</p>
 <p>If you want to keep the master branch and the gh-pages branch
-synchronized, merge the master branch while standing in the gh-pages
-branch. Then go to the master branch and merge the gh-pages branch such
-that you get the <tt class="docutils literal"><span class="pre">index.html</span></tt> file and other files (javascript, css, etc.)
-for the web pages also in the master branch. Go to the root directory
-of the repo and do</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git checkout gh-pages
+synchronized,
+start with merging the gh-pages branch with the master
+branch and push the complete file collection to the gh-pages branch.
+Then switch to the master
+branch and merge with gh-pages so you get the autogenerated
+<tt class="docutils literal"><span class="pre">index.html</span></tt> file and associated files and directories for web pages
+in the root directory of the master branch as well:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git merge master
 Terminal&gt; touch .nojekyll
-Terminal&gt; git add .nojekyll
-Terminal&gt; git merge master
+Terminal&gt; git push origin gh-pages
 Terminal&gt; git checkout master
 Terminal&gt; git merge gh-pages
 </pre></div>
 </div>
-<p>You must add an empty file <tt class="docutils literal"><span class="pre">.nojekyll</span></tt> in the top
-directory of the project pages if you want to use HTML pages where file
-or directory names start with underscore or a period (e.g.,
-Sphinx-generated
-HTML pages need such a <tt class="docutils literal"><span class="pre">.nojekyll</span></tt> file).</p>
+<p>You <em>must</em> add an empty file <tt class="docutils literal"><span class="pre">.nojekyll</span></tt> in the top
+directory of the project pages if you want to use Sphinx-generated
+HTML pages (or other pages using javascripts, style sheets, and images
+in subdirectories whose names start with an underscore).</p>
 <p>You can now add the documentation to the project files and
 maintain them in the master branch.
 Before publishing documents online,
@@ -470,7 +501,7 @@ the HTML code.</p>
 </div>
 </div>
 <div class="section" id="user-web-pages">
-<span id="bitgit-github-web-user"></span><h3>User web pages<a class="headerlink" href="#user-web-pages" title="Permalink to this headline">¶</a></h3>
+<h3>User web pages<a class="headerlink" href="#user-web-pages" title="Permalink to this headline">¶</a></h3>
 <p>GitHub also allows you to create user pages and organization pages not
 tied to any specific project.
 Your personal site has address
@@ -498,15 +529,15 @@ If you want to use Sphinx generated HTML pages, recall to add an empty file
 </div>
 <div class="section" id="using-git">
 <span id="bitgit-git"></span><h2>Using Git<a class="headerlink" href="#using-git" title="Permalink to this headline">¶</a></h2>
-<p id="index-4">Most Mac and Linux users prefer to work with Git via commands in a
+<p id="index-8">Most Mac and Linux users prefer to work with Git via commands in a
 terminal window. Windows users may prefer a graphical user interface (GUI),
 and there are many <a class="reference external" href="http://git-scm.com/downloads/guis">options</a> in
 this respect. There are also GUIs for Mac users.
 Here we concentrate on the efficient command-line interface to Git.</p>
 <div class="section" id="basic-git-commands">
-<span id="bitgit-git-basics"></span><h3>Basic Git commands<a class="headerlink" href="#basic-git-commands" title="Permalink to this headline">¶</a></h3>
+<h3>Basic Git commands<a class="headerlink" href="#basic-git-commands" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="cloning">
-<span id="index-5"></span><h4>Cloning<a class="headerlink" href="#cloning" title="Permalink to this headline">¶</a></h4>
+<span id="index-9"></span><h4>Cloning<a class="headerlink" href="#cloning" title="Permalink to this headline">¶</a></h4>
 <p>You get started with your project on a new machine, or another user
 can get started with the project,
 by running</p>
@@ -517,9 +548,9 @@ ls
 </div>
 <p>Recall to replace <tt class="docutils literal"><span class="pre">user</span></tt> by your real username and <tt class="docutils literal"><span class="pre">My-Project</span></tt> by the
 actual project name.</p>
-<span class="target" id="index-6"></span><span class="target" id="index-7"></span><span class="target" id="index-8"></span><span class="target" id="index-9"></span><span class="target" id="index-10"></span></div>
+<span class="target" id="index-10"></span><span class="target" id="index-11"></span><span class="target" id="index-12"></span><span class="target" id="index-13"></span><span class="target" id="index-14"></span></div>
 <div class="section" id="the-pull-change-push-cycle">
-<span id="index-11"></span><h4>The pull-change-push cycle<a class="headerlink" href="#the-pull-change-push-cycle" title="Permalink to this headline">¶</a></h4>
+<span id="index-15"></span><h4>The pull-change-push cycle<a class="headerlink" href="#the-pull-change-push-cycle" title="Permalink to this headline">¶</a></h4>
 <p>The typical work flow with the &#8220;My Project&#8221; project starts with
 updating the local repository by going to the <tt class="docutils literal"><span class="pre">My-Project</span></tt> directory
 and writing</p>
@@ -572,7 +603,7 @@ the repo) will most likely lead to substantial merge problems at a
 later stage (because the files have become too different for an automatic
 merge algorithm to succeed).</p>
 </div>
-<div class="admonition-do-not-forget-to-add-important-files admonition" id="index-12">
+<div class="admonition-do-not-forget-to-add-important-files admonition" id="index-16">
 <p class="first admonition-title">Do not forget to add important files</p>
 <p class="last">You should run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">status</span> <span class="pre">-s</span></tt> frequently to see the status of
 files: <tt class="docutils literal"><span class="pre">A</span></tt> for added, <tt class="docutils literal"><span class="pre">M</span></tt> for modified, <tt class="docutils literal"><span class="pre">R</span></tt> for renamed,
@@ -589,7 +620,7 @@ the latest ones:</p>
 Terminal&gt; gitk --since=&quot;2 weeks ago&quot;
 </pre></div>
 </div>
-<span class="target" id="index-13"></span><p id="index-14">You can also view changes to all files, some selected ones, or
+<span class="target" id="index-17"></span><p id="index-18">You can also view changes to all files, some selected ones, or
 a subdirectory:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git log -p                 # all changes to all files
 Terminal&gt; git log -p filename        # changes to a specific file
@@ -619,9 +650,9 @@ say the text <tt class="docutils literal"><span class="pre">def</span> <span cla
 <p>This is useful to track down particular changes in the files to see when
 they occurred and who introduced them. One can also search for regular
 expressions instead of exact text: just replace <tt class="docutils literal"><span class="pre">-S</span></tt> by <tt class="docutils literal"><span class="pre">-G</span></tt>.</p>
-<span class="target" id="index-15"></span></div>
+<span class="target" id="index-19"></span></div>
 <div class="section" id="retrieving-old-files">
-<span id="index-16"></span><h4>Retrieving old files<a class="headerlink" href="#retrieving-old-files" title="Permalink to this headline">¶</a></h4>
+<span id="index-20"></span><h4>Retrieving old files<a class="headerlink" href="#retrieving-old-files" title="Permalink to this headline">¶</a></h4>
 <p>Occasionally you need to go back to an earlier version of a file,
 say its name is <tt class="docutils literal"><span class="pre">f.py</span></tt>. Start with viewing the history:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git log f.py
@@ -687,201 +718,6 @@ to the last commit. Find the hash of the last commit and do</p>
 To push it as the new state of the repo, do</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git push origin HEAD --force
 </pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="git-working-style-with-branching-and-stashing">
-<span id="bitgit-git-branch-stash"></span><h3>Git working style with branching and stashing<a class="headerlink" href="#git-working-style-with-branching-and-stashing" title="Permalink to this headline">¶</a></h3>
-<p>Branching and stashing are nice features of Git that allow you to try
-out new things without affecting the stable version of your files.
-Usually, you extend and modify files quite often and perform a <tt class="docutils literal"><span class="pre">git</span>
-<span class="pre">commit</span></tt> every time you want to record the changes in your local
-repository. Imagine that you want to correct a set of errors in some
-files and push these corrections immediately.  The problem is that
-such a push will also include the latest, yet unfinished files that you
-have committed.</p>
-<div class="section" id="branching">
-<h4>Branching<a class="headerlink" href="#branching" title="Permalink to this headline">¶</a></h4>
-<p>A better organization of your work would
-be to keep the latest, ongoing
-developments separate from the more official and stable version
-of the files. This is easily achieved by creating a separate branch
-where new developments takes place. You can synchronize (<tt class="docutils literal"><span class="pre">git</span> <span class="pre">merge</span></tt>)
-this branch with the official master branch as long as the developments
-go on, and when you are ready, you can synchronize the master branch
-with these developments to bring them into the official version of
-your files.</p>
-<span class="target" id="index-17"></span><span class="target" id="index-18"></span><span class="target" id="index-19"></span><p id="index-20">The session below shows how to make a branch, change files, and
-merge (synchronize) branches:</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git branch newstuff      # create new branch
-Terminal&gt; git checkout newstuff
-Terminal&gt; # extend and modify files...
-Terminal&gt; git commit -am &#39;Modified ... Added a file on ...&#39;
-Terminal&gt; git checkout master      # swith back to master
-Terminal&gt; # correct errors
-Terminal&gt; git push origin master
-Terminal&gt; git checkout newstuff    # switch to other branch
-Terminal&gt; git merge master         # keep branch up-to-date w/master
-Terminal&gt; # continue development work...
-Terminal&gt; git commit -am &#39;More modifications of ...&#39;
-</pre></div>
-</div>
-<p>At some point, your developments in <tt class="docutils literal"><span class="pre">newstuff</span></tt>
-are mature enough to be incorporated
-in the master branch:</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git checkout newstuff
-Terminal&gt; git merge master        # synchronize newstuff w/master
-Terminal&gt; git checkout master
-Terminal&gt; git merge newstuff      # synchronize master w/newstuff
-</pre></div>
-</div>
-<p>You no longer need the <tt class="docutils literal"><span class="pre">newstuff</span></tt> branch and can delete it:</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git branch -d newstuff
-</pre></div>
-</div>
-<p>This command deletes the branch locally. To also delete the branch
-in the remote repo, run</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git push origin --delete newstuff
-</pre></div>
-</div>
-<p>You can learn more in an <a class="reference external" href="http://pcottle.github.io/learnGitBranching/">excellent introduction and demonstration of Git branching</a>.</p>
-<div class="admonition-automatic-merge-may-fail admonition">
-<p class="first admonition-title">Automatic merge may fail</p>
-<p class="last">Git applies smart algorithms that very often manage to merge the
-files without human interaction. However, occasionally these algorithms
-are not able to resolve conflicts between two files.
-A message about the failure of the merge is seen in the terminal
-window, and the corresponding files have markers in them showing
-which sections that needs manual editing to resolve the conflicts.
-Run
-<tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> to show the problems (you can tailor this command to your
-needs as explained in the section <a class="reference internal" href="#bitgit-git-fetch"><em>Replacing pull by fetch and merge</em></a>). After a manual
-edit, do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></tt>. More details on merging appears
-in the section <a class="reference internal" href="#bitgit-git-merge"><em>Merging files with Git</em></a>.</p>
-</div>
-</div>
-<div class="section" id="stashing">
-<h4>Stashing<a class="headerlink" href="#stashing" title="Permalink to this headline">¶</a></h4>
-<p>It is not possible to switch branches unless you have committed the
-files in the current branch. If your work on some files is in a mess
-and you want to change to another branch or fix other files in the
-current branch, a &#8220;global&#8221; commit affecting all files might be
-immature.  Then the <a class="reference external" href="http://git-scm.com/book/en/Git-Tools-Stashing">git stash</a> command is handy. It
-records the state of your files and sets you back to the state of the
-last commit in the current branch. With <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">apply</span></tt> you will update the
-files in this branch to the state when you did the last <tt class="docutils literal"><span class="pre">git</span>
-<span class="pre">stash</span></tt>.</p>
-<p>Let us explain a typical case.  Suppose you have performed some
-extensive edits in some files and then you are suddenly
-interrupted. You need to fix some typos in some other files, commit
-the changes, and push. The problem is that many files are in an
-unfinished state - in hindsight you realize that those files should
-have been modified in a separate branch.  It is not too late to create
-that branch! First run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span></tt> to get the files back to the state
-they were at the last commit. Then run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">branch</span> <span class="pre">newstuff</span></tt> to
-create a new branch <tt class="docutils literal"><span class="pre">newstuff</span></tt> containing the state of the files when
-you did the (last) <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span></tt> command.  Stashing used this way is a
-convenient technique to move some immature edits after the last commit
-out in a new branch for further experimental work.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">You can get the stashed files back by <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">apply</span></tt>. It is
-possible to multiple <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span></tt> and <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">apply</span></tt>
-commands. However, it is easy to run into trouble with multiple
-stashes, especially if they occur in multiple branches, as it becomes
-difficult to recognize which stashes that belong to which branch.  A
-good advice is therefore to do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span></tt> <em>only once</em> to get back to
-a clean state and then move the unfinished messy files to a separate
-branch with <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">branch</span> <span class="pre">newstuff</span></tt>.</p>
-</div>
-</div>
-</div>
-<div class="section" id="replacing-pull-by-fetch-and-merge">
-<span id="bitgit-git-fetch"></span><h3>Replacing pull by fetch and merge<a class="headerlink" href="#replacing-pull-by-fetch-and-merge" title="Permalink to this headline">¶</a></h3>
-<p>The <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> command actually performs two steps that are sometimes
-advantageous to run separately. First, a <tt class="docutils literal"><span class="pre">get</span> <span class="pre">fetch</span></tt> is run to fetch
-new files from the repository, and thereafter a <tt class="docutils literal"><span class="pre">git</span> <span class="pre">merge</span></tt> command is
-run to merge the new files with your local version of the files.
-While <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> tries to do a lot and be smart in the merge, very
-often with success, the merge step may occasionally lead to
-trouble. That is why it is recommended to run a <tt class="docutils literal"><span class="pre">git</span> <span class="pre">merge</span></tt>
-separately, especially if you work with branches.</p>
-<p>To fetch files from your repository at GitHub, which usually has
-the nickname <tt class="docutils literal"><span class="pre">origin</span></tt>, you write</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git fetch origin
-</pre></div>
-</div>
-<p>You now have the possibility to check out in detail what the differences
-are between the new files and local ones:</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git diff origin/master
-</pre></div>
-</div>
-<p>This command produces comparisons of the files in the current local branch
-and the <tt class="docutils literal"><span class="pre">master</span></tt> branch at <tt class="docutils literal"><span class="pre">origin</span></tt> (the GitHub repo).
-In this way you can exactly see the differences between branches.
-It also gives you an overview of what others have done with
-the files.
-When you are ready to merge in the new files from the <tt class="docutils literal"><span class="pre">master</span></tt> branch
-of <tt class="docutils literal"><span class="pre">origin</span></tt> with the files in the current local branch, you say</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git merge origin/master
-</pre></div>
-</div>
-<p>Especially when you work with multiple branches, as outlined in
-the section <a class="reference internal" href="#bitgit-git-branch-stash"><em>Git working style with branching and stashing</em></a>, it is wise to first do a
-<tt class="docutils literal"><span class="pre">get</span> <span class="pre">fetch</span> <span class="pre">origin</span></tt> and then update each branch separately. The
-<tt class="docutils literal"><span class="pre">git</span> <span class="pre">fetch</span> <span class="pre">origin</span></tt> command will list the branches, e.g.,</p>
-<div class="highlight-text"><div class="highlight"><pre>* master
-  gh-pages
-  next
-</pre></div>
-</div>
-<p>After updating <tt class="docutils literal"><span class="pre">master</span></tt> as described, you can continue with another branch:</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git checkout next
-Terminal&gt; git diff origin/next
-Terminal&gt; git merge origin/next
-Terminal&gt; git checkout master
-</pre></div>
-</div>
-<div class="section" id="configuring-the-git-diff-command">
-<h4>Configuring the <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> command<a class="headerlink" href="#configuring-the-git-diff-command" title="Permalink to this headline">¶</a></h4>
-<p>The <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> command launches by default the
-Unix <tt class="docutils literal"><span class="pre">diff</span></tt> tool in the terminal window.
-Many users prefer to use other diff tools, and the desired one
-can be specified in
-your <tt class="docutils literal"><span class="pre">~/.gitconfig</span></tt> file. However, a much recommended approach is to
-wrap a shell script around the call to the diff program, because
-<tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> actually calls the diff program with a series of
-command-line arguments that will confuse diff programs that take
-the names of the two files to be compared as arguments.
-In <tt class="docutils literal"><span class="pre">~/.gitconfig</span></tt> you specify a script to do the diff:</p>
-<div class="highlight-text"><div class="highlight"><pre>[diff]
-external = ~/bin/git-diff-wrapper.sh
-</pre></div>
-</div>
-<p>It remains to write the <tt class="docutils literal"><span class="pre">git-diff-wrapper.sh</span></tt> script.
-The  2nd and 5th command-line arguments passed to this script are the
-name of the files to be compared in the diff. A typical script may
-therefore look like</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
-
-diff <span class="s2">&quot;$2&quot;</span> <span class="s2">&quot;$5&quot;</span> <span class="p">|</span> less
-</pre></div>
-</div>
-<p>Here we use the standard (and quite primitive) Unix <tt class="docutils literal"><span class="pre">diff</span></tt> program,
-but we can replace <tt class="docutils literal"><span class="pre">diff</span></tt> by, e.g., <tt class="docutils literal"><span class="pre">diffuse</span></tt>, <tt class="docutils literal"><span class="pre">kdiff3</span></tt>, <tt class="docutils literal"><span class="pre">xxdiff</span></tt>, <tt class="docutils literal"><span class="pre">meld</span></tt>, <tt class="docutils literal"><span class="pre">pdiff</span></tt>, or others. With a Python script you can easily check
-for the extensions of the files and use different diff tools for
-different types of files, e.g., <tt class="docutils literal"><span class="pre">latexdiff</span></tt> for LaTeX files
-and <tt class="docutils literal"><span class="pre">pdiff</span></tt> for pure text files.</p>
-<div class="admonition-replacing-all-your-files-with-those-in-the-repo admonition">
-<p class="first admonition-title">Replacing all your files with those in the repo</p>
-<p>Occasionally it becomes desirable to replace <em>all</em> files in
-the local repo with those in the repo at the file hosting service.
-One possibility is removing your repo and cloning again, or
-use the Git commands</p>
-<div class="last highlight-text"><div class="highlight"><pre>Terminal&gt; git fetch --all
-Terminal&gt; git reset --hard origin/master
-</pre></div>
-</div>
 </div>
 </div>
 </div>
@@ -1047,6 +883,181 @@ tmp2-add1
 so that the file becomes correct.
 Then run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-am</span> <span class="pre">merge</span></tt> to finalize the merge.</p>
 </div>
+<div class="section" id="git-working-style-with-branching-and-stashing">
+<span id="bitgit-git-branch-stash"></span><h3>Git working style with branching and stashing<a class="headerlink" href="#git-working-style-with-branching-and-stashing" title="Permalink to this headline">¶</a></h3>
+<p>Branching and stashing are nice features of Git that allow you to try
+out new things without affecting the stable version of your files.
+Usually, you extend and modify files quite often and perform a <tt class="docutils literal"><span class="pre">git</span>
+<span class="pre">commit</span></tt> every time you want to record the changes in your local
+repository. Imagine that you want to correct a set of errors in some
+files and push these corrections immediately.  The problem is that
+such a push will also include the latest, yet unfinished files that you
+have committed.</p>
+<div class="section" id="branching">
+<h4>Branching<a class="headerlink" href="#branching" title="Permalink to this headline">¶</a></h4>
+<p>A better organization of your work would
+be to keep the latest, ongoing
+developments separate from the more official and stable version
+of the files. This is easily achieved by creating a separate branch
+where new developments takes place:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git branch newstuff      # create new branch
+Terminal&gt; git checkout newstuff
+Terminal&gt; # extend and modify files...
+Terminal&gt; git commit -am &#39;Modified ... Added a file on ...&#39;
+Terminal&gt; git checkout master      # swith back to master
+Terminal&gt; # correct errors
+Terminal&gt; git push origin master
+Terminal&gt; git checkout newstuff    # switch to other branch
+Terminal&gt; git merge master         # keep branch up-to-date w/master
+Terminal&gt; # continue development work...
+Terminal&gt; git commit -am &#39;More modifications of ...&#39;
+</pre></div>
+</div>
+<p>At some point, your developments in <tt class="docutils literal"><span class="pre">newstuff</span></tt>
+are mature enough to be incorporated
+in the master branch:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git checkout newstuff
+Terminal&gt; git merge master        # synchronize newstuff w/master
+Terminal&gt; git checkout master
+Terminal&gt; git merge newstuff      # synchronize master w/newstuff
+</pre></div>
+</div>
+<p>You no longer need the <tt class="docutils literal"><span class="pre">newstuff</span></tt> branch and can delete it:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git branch -d newstuff
+</pre></div>
+</div>
+<p>This command deletes the branch locally. To also delete the branch
+in the remote repo, run</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git push origin --delete newstuff
+</pre></div>
+</div>
+<p>You can learn more in an <a class="reference external" href="http://pcottle.github.io/learnGitBranching/">excellent introduction and demonstration of Git branching</a>.</p>
+</div>
+<div class="section" id="stashing">
+<h4>Stashing<a class="headerlink" href="#stashing" title="Permalink to this headline">¶</a></h4>
+<p>It is not possible to switch branches unless you have committed the
+files in the current branch. If your work on some files is in a mess
+and you want to change to another branch or fix other files in the
+current branch, a &#8220;global&#8221; commit affecting all files might be
+immature.  Then the <a class="reference external" href="http://git-scm.com/book/en/Git-Tools-Stashing">git stash</a> command is handy. It
+records the state of your files and sets you back to the state of the
+last commit in the current branch. With <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">apply</span></tt> you will update the
+files in this branch to the state when you did the last <tt class="docutils literal"><span class="pre">git</span>
+<span class="pre">stash</span></tt>.</p>
+<p>Let us explain a typical case.  Suppose you have performed some
+extensive edits in some files and then you are suddenly
+interrupted. You need to fix some typos in some other files, commit
+the changes, and push. The problem is that many files are in an
+unfinished state - in hindsight you realize that those files should
+have been modified in a separate branch.  It is not too late to create
+that branch! First run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span></tt> to get the files back to the state
+they were at the last commit. Then run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">branch</span> <span class="pre">newstuff</span></tt> to
+create a new branch <tt class="docutils literal"><span class="pre">newstuff</span></tt> containing the state of the files when
+you did the (last) <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span></tt> command.  Stashing used this way is a
+convenient technique to move some immature edits after the last commit
+out in a new branch for further experimental work.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">You can get the stashed files back by <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">apply</span></tt>. It is
+possible to multiple <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span></tt> and <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">apply</span></tt>
+commands. However, it is easy to run into trouble with multiple
+stashes, especially if they occur in multiple branches, as it becomes
+difficult to recognize which stashes that belong to which branch.  A
+good advice is therefore to do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span></tt> <em>only once</em> to get back to
+a clean state and then move the unfinished messy files to a separate
+branch with <tt class="docutils literal"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">branch</span> <span class="pre">newstuff</span></tt>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="replacing-pull-by-fetch-and-merge">
+<span id="bitgit-git-fetch"></span><h3>Replacing pull by fetch and merge<a class="headerlink" href="#replacing-pull-by-fetch-and-merge" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> command actually performs two steps that are sometimes
+advantageous to run separately. First, a <tt class="docutils literal"><span class="pre">get</span> <span class="pre">fetch</span></tt> is run to fetch
+new files from the repository, and thereafter a <tt class="docutils literal"><span class="pre">git</span> <span class="pre">merge</span></tt> command is
+run to merge the new files with your local version of the files.
+While <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> tries to do a lot and be smart in the merge, very
+often with success, the merge step may occasionally lead to
+trouble. That is why it is recommended to run a <tt class="docutils literal"><span class="pre">git</span> <span class="pre">merge</span></tt>
+separately, especially if you work with branches.</p>
+<p>To fetch files from your repository at GitHub, which usually has
+the nickname <tt class="docutils literal"><span class="pre">origin</span></tt>, you write</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git fetch origin
+</pre></div>
+</div>
+<p>You now have the possibility to check out in detail what the differences
+are between the new files and local ones:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git diff origin/master
+</pre></div>
+</div>
+<p>This command produces comparisons of the files in the current local branch
+and the <tt class="docutils literal"><span class="pre">master</span></tt> branch at <tt class="docutils literal"><span class="pre">origin</span></tt> (the GitHub repo).
+In this way you can exactly see the differences between branches.
+It also gives you an overview of what others have done with
+the files.
+When you are ready to merge in the new files from the <tt class="docutils literal"><span class="pre">master</span></tt> branch
+of <tt class="docutils literal"><span class="pre">origin</span></tt> with the files in the current local branch, you say</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git merge origin/master
+</pre></div>
+</div>
+<p>Especially when you work with multiple branches, as outlined in
+the section <a class="reference internal" href="#bitgit-git-branch-stash"><em>Git working style with branching and stashing</em></a>, it is wise to first do a
+<tt class="docutils literal"><span class="pre">get</span> <span class="pre">fetch</span> <span class="pre">origin</span></tt> and then update each branch separately. The
+<tt class="docutils literal"><span class="pre">git</span> <span class="pre">fetch</span> <span class="pre">origin</span></tt> command will list the branches, e.g.,</p>
+<div class="highlight-text"><div class="highlight"><pre>* master
+  gh-pages
+  next
+</pre></div>
+</div>
+<p>After updating <tt class="docutils literal"><span class="pre">master</span></tt> as described, you can continue with another branch:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git checkout next
+Terminal&gt; git diff origin/next
+Terminal&gt; git merge origin/next
+Terminal&gt; git checkout master
+</pre></div>
+</div>
+<div class="section" id="configuring-the-git-diff-command">
+<h4>Configuring the <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> command<a class="headerlink" href="#configuring-the-git-diff-command" title="Permalink to this headline">¶</a></h4>
+<p>The <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> command launches by default the
+Unix <tt class="docutils literal"><span class="pre">diff</span></tt> tool in the terminal window.
+Many users prefer to use other diff tools, and the desired one
+can be specified in
+your <tt class="docutils literal"><span class="pre">~/.gitconfig</span></tt> file. However, a much recommended approach is to
+wrap a shell script around the call to the diff program, because
+<tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> actually calls the diff program with a series of
+command-line arguments that will confuse diff programs that take
+the names of the two files to be compared as arguments.
+In <tt class="docutils literal"><span class="pre">~/.gitconfig</span></tt> you specify a script to do the diff:</p>
+<div class="highlight-text"><div class="highlight"><pre>[diff]
+external = ~/bin/git-diff-wrapper.sh
+</pre></div>
+</div>
+<p>It remains to write the <tt class="docutils literal"><span class="pre">git-diff-wrapper.sh</span></tt> script.
+The  2nd and 5th command-line arguments passed to this script are the
+name of the files to be compared in the diff. A typical script may
+therefore look like</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
+
+diff <span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="nv">$5</span><span class="s2">&quot;</span> <span class="p">|</span> less
+</pre></div>
+</div>
+<p>Here we use the standard (and quite primitive) Unix <tt class="docutils literal"><span class="pre">diff</span></tt> program,
+but we can replace <tt class="docutils literal"><span class="pre">diff</span></tt> by, e.g., <tt class="docutils literal"><span class="pre">diffuse</span></tt>, <tt class="docutils literal"><span class="pre">kdiff3</span></tt>, <tt class="docutils literal"><span class="pre">xxdiff</span></tt>, <tt class="docutils literal"><span class="pre">meld</span></tt>, <tt class="docutils literal"><span class="pre">pdiff</span></tt>, or others. With a Python script you can easily check
+for the extensions of the files and use different diff tools for
+different types of files, e.g., <tt class="docutils literal"><span class="pre">latexdiff</span></tt> for LaTeX files
+and <tt class="docutils literal"><span class="pre">pdiff</span></tt> for pure text files.</p>
+<div class="admonition-replacing-all-your-files-with-those-in-the-repo admonition">
+<p class="first admonition-title">Replacing all your files with those in the repo</p>
+<p>Occasionally it becomes desirable to replace <em>all</em> files in
+the local repo with those in the repo at the file hosting service.
+One possibility is removing your repo and cloning again, or
+use the Git commands</p>
+<div class="last highlight-text"><div class="highlight"><pre>Terminal&gt; git fetch --all
+Terminal&gt; git reset --hard origin/master
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="team-work-with-forking-and-pull-requests">
 <span id="bitgit-git-team"></span><h3>Team work with forking and pull requests<a class="headerlink" href="#team-work-with-forking-and-pull-requests" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="index-22"></span><span class="target" id="index-23"></span><span class="target" id="index-24"></span><p id="index-25">In small collaboration teams it is natural that everyone has push access
@@ -1157,7 +1168,7 @@ the local checkout.</p>
 out all branches via <tt class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span></tt>.</p>
 </div>
 <div class="section" id="git-workflows">
-<span id="bitgit-git-workflows"></span><h3>Git workflows<a class="headerlink" href="#git-workflows" title="Permalink to this headline">¶</a></h3>
+<h3>Git workflows<a class="headerlink" href="#git-workflows" title="Permalink to this headline">¶</a></h3>
 <p>Although the purpose of these notes is just to get the reader started
 with Git, it must be mentioned that there are advanced features of Git
 that have led to very powerful workflows with files and people,
@@ -1172,7 +1183,7 @@ associated &#8220;quick summary&#8221; of Git commands for their workflow is als
 useful.</p>
 </div>
 <div class="section" id="git-tips">
-<span id="bitgit-git-tips"></span><h3>Git tips<a class="headerlink" href="#git-tips" title="Permalink to this headline">¶</a></h3>
+<h3>Git tips<a class="headerlink" href="#git-tips" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="how-can-i-see-which-files-are-tracked-by-git">
 <h4>How can I see which files are tracked by Git?<a class="headerlink" href="#how-can-i-see-which-files-are-tracked-by-git" title="Permalink to this headline">¶</a></h4>
 <p><tt class="docutils literal"><span class="pre">git</span> <span class="pre">ls-files</span></tt> is the command:</p>
@@ -1346,6 +1357,7 @@ string in the SSH key field of any GitHub account.</p>
 <li><a class="reference internal" href="#going-back-to-a-previous-commit">Going back to a previous commit</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#merging-files-with-git">Merging files with Git</a></li>
 <li><a class="reference internal" href="#git-working-style-with-branching-and-stashing">Git working style with branching and stashing</a><ul>
 <li><a class="reference internal" href="#branching">Branching</a></li>
 <li><a class="reference internal" href="#stashing">Stashing</a></li>
@@ -1355,7 +1367,6 @@ string in the SSH key field of any GitHub account.</p>
 <li><a class="reference internal" href="#configuring-the-git-diff-command">Configuring the <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> command</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#merging-files-with-git">Merging files with Git</a></li>
 <li><a class="reference internal" href="#team-work-with-forking-and-pull-requests">Team work with forking and pull requests</a></li>
 <li><a class="reference internal" href="#cloning-a-repo-with-multiple-branches">Cloning a repo with multiple branches</a></li>
 <li><a class="reference internal" href="#git-workflows">Git workflows</a></li>

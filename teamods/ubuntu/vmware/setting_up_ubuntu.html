@@ -1,3 +1,22 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+
+<title></title>
+
+<!-- Bootstrap style: bootstrap -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+
+</head>
 
 <!-- tocinfo
 {'highest level': 1,
@@ -17,14 +36,20 @@
                '___sec10')]}
 end of tocinfo -->
 
+<body>
+
+    
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
 
 <!-- ------------------- main content ---------------------- -->
 
-<h2>Setting up Ubuntu  <a name="___sec0"></a></h2>
+<h1 id="___sec0">Setting up Ubuntu </h1>
 
-<h3>Customizing the launcher  <a name="___sec1"></a></h3>
+<h2 id="___sec1">Customizing the launcher </h2>
 
-<h4>Removing icons  <a name="___sec2"></a></h4>
+<h3 id="___sec2">Removing icons </h3>
 
 <p>
 The Lanucher is the vertical stack of application icons at the left end
@@ -34,7 +59,7 @@ right-click on the icons and choose <em>Unlock from Launcher</em>.
 Unix users normally start their application from a terminal window, so you
 probably want to have few icons in the Launcher.
 
-<h4>Adding a terminal application  <a name="___sec3"></a></h4>
+<h3 id="___sec3">Adding a terminal application </h3>
 
 <p>
 You will need a terminal window to issue Unix commands. A
@@ -49,7 +74,7 @@ from the Gnome terminal.
 You can create tabs in the Gone terminal by clicking on that window
 and type Ctrl-shift-t for each tab you want.
 
-<h3>Customizing the keyboard  <a name="___sec4"></a></h3>
+<h2 id="___sec4">Customizing the keyboard </h2>
 
 <p>
 Programmers frequently need curly braces and brackets. An
@@ -74,9 +99,7 @@ click on the <em>System
 Settings</em> icon in the Launcher, click <em>Keyboard Layout</em>, then
 <em>Options...</em>, click <em>Ctrl key position</em>, click <em>Caps Lock as Ctrl</em>.
 
-<h3>Convenient shortcuts  <a name="___sec5"></a></h3>
-
-<p>
+<h2 id="___sec5">Convenient shortcuts </h2>
 
 <ul>
  <li> Make Ctrl-3 switch between windows: click the <em>System Settings</em> icon,
@@ -87,26 +110,26 @@ Settings</em> icon in the Launcher, click <em>Keyboard Layout</em>, then
  <li> Customize the Gnome terminal such that Ctrl-1 and Ctrl-2 moves
    to the next or previous tab, respectively. Launch <code>gconf-editor</code>,
    choose <em>apps</em>, <em>gnome-terminal</em>, <em>keybindings</em>, <em>next_tab</em>,
-   right click and choose <em>Edit key...</em>. Fill in <code><Control>2</code>.
+   right click and choose <em>Edit key...</em>. Fill in <code>&lt;Control&gt;2</code>.
    Choose <em>prev_tab</em>, right click, choose <em>Edit key...</em> and fill in
-   <code><Control>1</code>.</li>
+   <code>&lt;Control&gt;1</code>.</li>
 </ul>
 
-<h3>Installing packages  <a name="___sec6"></a></h3>
+<h2 id="___sec6">Installing packages </h2>
 
-<h4>Text editor  <a name="___sec7"></a></h4>
+<h3 id="___sec7">Text editor </h3>
 
 <p>
 Install an excellent text editor, either <code>emacs</code> or <code>vim</code> (<code>gedit</code> comes
 with standard Ubuntu):
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; apt-get install emacs</span>
-<span style="color: #888888">Terminal&gt; apt-get install vim</span>
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; apt-get install emacs
+Terminal&gt; apt-get install vim
 </pre></div>
 
-<h4>Web browser  <a name="___sec8"></a></h4>
+<h3 id="___sec8">Web browser </h3>
 
 <p>
 Ubuntu comes with the Firefox web browser, but occasionally it does
@@ -114,8 +137,8 @@ not launch correctly. An alternative is Gnome's Epiphany browser:
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; apt-get install epiphany-browser</span>
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; apt-get install epiphany-browser
 </pre></div>
 <p>
 If you prefer the Chrome browser, launch
@@ -125,20 +148,18 @@ Then run
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; cd Downloads</span>
-<span style="color: #888888">Terminal&gt; sudo apt-get install libgconf2-4 libnss3-1d</span>
-<span style="color: #888888">Terminal&gt; sudo dpkg -i google-chrome-stable_current_amd64.deb</span>
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; cd Downloads
+Terminal&gt; sudo apt-get install libgconf2-4 libnss3-1d
+Terminal&gt; sudo dpkg -i google-chrome-stable_current_amd64.deb
 </pre></div>
 
-<h4>Useful software  <a name="___sec9"></a></h4>
+<h3 id="___sec9">Useful software </h3>
 
 <p>
 Some installation scripts (actually used to build <a href="http://hplgit.github.io/vagrantbox/doc/pub/vagrant_box.html" target="_self">Vagrant virtual machines</a>) can be used to
 conveniently install basic packages for a scientific computing environment
 in a Linux machine:
-
-<p>
 
 <ul>
  <li> <a href="https://raw.github.com/hplgit/vagrantbox/master/doc/src/vagrant/src-vagrant/install_minimal.sh" target="_self">A minimal installation</a></li>
@@ -150,72 +171,88 @@ For example,
 
 <p>
 
-<!-- code=console (from !bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #888888">Terminal&gt; bash install_rich.sh</span>
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; bash install_rich.sh
 </pre></div>
 <p>
 Here is a brief explanation of some of the most important packages
 in a Linux installation.
 
 <p>
-<table border="1">
-<tr><td align="center"><b>                    command                     </b></td> <td align="center"><b>                  description                   </b></td> </tr>
-<tr><td align="center">   <code>mercurial</code>                            </td> <td align="center">   version control system                            </td> </tr>
-<tr><td align="center">   <code>git</code>                                  </td> <td align="center">   version control system                            </td> </tr>
-<tr><td align="center">   <code>subversion</code>                           </td> <td align="center">   version control system                            </td> </tr>
-<tr><td align="center">   <code>bzr</code>                                  </td> <td align="center">   version control system                            </td> </tr>
-<tr><td align="center">   <code>imagemagick</code>                          </td> <td align="center">   collection of tools for image files               </td> </tr>
-<tr><td align="center">   <code>konsole</code>                              </td> <td align="center">   alternative to <code>gnome-terminal</code>        </td> </tr>
-<tr><td align="center">   <code>g++</code>                                  </td> <td align="center">   GNU C++ compiler                                  </td> </tr>
-<tr><td align="center">   <code>gfortran</code>                             </td> <td align="center">   GNU Fortran compiler                              </td> </tr>
-<tr><td align="center">   <code>auto*</code>                                </td> <td align="center">   tools for installing software                     </td> </tr>
-<tr><td align="center">   <code>wdiff</code>                                </td> <td align="center">   useful diff program for plain text                </td> </tr>
-<tr><td align="center">   <code>kdiff3</code>                               </td> <td align="center">   diff program for plain text                       </td> </tr>
-<tr><td align="center">   <code>meld</code>                                 </td> <td align="center">   diff program for plain text                       </td> </tr>
-<tr><td align="center">   <code>latexdiff</code>                            </td> <td align="center">   diff program for latex files                      </td> </tr>
-<tr><td align="center">   <code>diffpdf</code>                              </td> <td align="center">   diff program for PDF files                        </td> </tr>
-<tr><td align="center">   <code>antiword</code>                             </td> <td align="center">   fast conversion of MS Word files to plain text    </td> </tr>
-<tr><td align="center">   <code>vlc</code>                                  </td> <td align="center">   audio and video player                            </td> </tr>
-<tr><td align="center">   <code>mencoder</code>                             </td> <td align="center">   tool for making movie files                       </td> </tr>
-<tr><td align="center">   <code>texlive-*</code>                            </td> <td align="center">   tools for TeX and LaTeX                           </td> </tr>
-<tr><td align="center">   <code>latex-*</code>                              </td> <td align="center">   tools for LaTeX                                   </td> </tr>
-<tr><td align="center">   <code>libreoffice</code>                          </td> <td align="center">   OpenOffice tools                                  </td> </tr>
-<tr><td align="center">   <code>a2ps</code>                                 </td> <td align="center">   convert plain text to PostScript for printing     </td> </tr>
-<tr><td align="center">   <code>pandoc</code>                               </td> <td align="center">   convert between many file formats                 </td> </tr>
-<tr><td align="center">   <code>gv</code>                                   </td> <td align="center">   Ghostview PDF and PostScript viewer               </td> </tr>
-<tr><td align="center">   <code>pdftk</code>                                </td> <td align="center">   tools for manipulating PDF files                  </td> </tr>
-<tr><td align="center">   <code>pdfjam</code>                               </td> <td align="center">   tools for manipulating PDF files                  </td> </tr>
-<tr><td align="center">   <code>gconf-editor</code>                         </td> <td align="center">   configure settings for Gnome applications         </td> </tr>
-<tr><td align="center">   <code>ispell</code>                               </td> <td align="center">   spell checker                                     </td> </tr>
-</table>
 
-<h3>Ultra-quick intro to Unix (sufficient for programming)  <a name="___sec10"></a></h3>
+<div class="row">
+  <div class="col-xs-8">
+    <table class="table table-striped table-hover table-condensed">
+<thead>
+<tr><td align="center"><b>         command         </b></td> <td align="center"><b>                 description                  </b></td> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   <code>mercurial</code>       </td> <td align="center">   version control system                            </td> </tr>
+<tr><td align="center">   <code>git</code>             </td> <td align="center">   version control system                            </td> </tr>
+<tr><td align="center">   <code>subversion</code>      </td> <td align="center">   version control system                            </td> </tr>
+<tr><td align="center">   <code>bzr</code>             </td> <td align="center">   version control system                            </td> </tr>
+<tr><td align="center">   <code>imagemagick</code>     </td> <td align="center">   collection of tools for image files               </td> </tr>
+<tr><td align="center">   <code>konsole</code>         </td> <td align="center">   alternative to <code>gnome-terminal</code>        </td> </tr>
+<tr><td align="center">   <code>g++</code>             </td> <td align="center">   GNU C++ compiler                                  </td> </tr>
+<tr><td align="center">   <code>gfortran</code>        </td> <td align="center">   GNU Fortran compiler                              </td> </tr>
+<tr><td align="center">   <code>auto*</code>           </td> <td align="center">   tools for installing software                     </td> </tr>
+<tr><td align="center">   <code>wdiff</code>           </td> <td align="center">   useful diff program for plain text                </td> </tr>
+<tr><td align="center">   <code>kdiff3</code>          </td> <td align="center">   diff program for plain text                       </td> </tr>
+<tr><td align="center">   <code>meld</code>            </td> <td align="center">   diff program for plain text                       </td> </tr>
+<tr><td align="center">   <code>latexdiff</code>       </td> <td align="center">   diff program for latex files                      </td> </tr>
+<tr><td align="center">   <code>diffpdf</code>         </td> <td align="center">   diff program for PDF files                        </td> </tr>
+<tr><td align="center">   <code>antiword</code>        </td> <td align="center">   fast conversion of MS Word files to plain text    </td> </tr>
+<tr><td align="center">   <code>vlc</code>             </td> <td align="center">   audio and video player                            </td> </tr>
+<tr><td align="center">   <code>mencoder</code>        </td> <td align="center">   tool for making movie files                       </td> </tr>
+<tr><td align="center">   <code>texlive-*</code>       </td> <td align="center">   tools for TeX and LaTeX                           </td> </tr>
+<tr><td align="center">   <code>latex-*</code>         </td> <td align="center">   tools for LaTeX                                   </td> </tr>
+<tr><td align="center">   <code>libreoffice</code>     </td> <td align="center">   OpenOffice tools                                  </td> </tr>
+<tr><td align="center">   <code>a2ps</code>            </td> <td align="center">   convert plain text to PostScript for printing     </td> </tr>
+<tr><td align="center">   <code>pandoc</code>          </td> <td align="center">   convert between many file formats                 </td> </tr>
+<tr><td align="center">   <code>gv</code>              </td> <td align="center">   Ghostview PDF and PostScript viewer               </td> </tr>
+<tr><td align="center">   <code>pdftk</code>           </td> <td align="center">   tools for manipulating PDF files                  </td> </tr>
+<tr><td align="center">   <code>pdfjam</code>          </td> <td align="center">   tools for manipulating PDF files                  </td> </tr>
+<tr><td align="center">   <code>gconf-editor</code>    </td> <td align="center">   configure settings for Gnome applications         </td> </tr>
+<tr><td align="center">   <code>ispell</code>          </td> <td align="center">   spell checker                                     </td> </tr>
+</tbody>
+    </table>
+  </div>
+</div> <!-- col-xs-8 -->
+
+<h2 id="___sec10">Ultra-quick intro to Unix (sufficient for programming) </h2>
 
 <p>
-<table border="1">
-<tr><td align="center"><b>                         command                          </b></td> <td align="center"><b>                       description                        </b></td> </tr>
-<tr><td align="center">   <code>mkdir</code>                                          </td> <td align="center">   make directory (folder)                                     </td> </tr>
-<tr><td align="center">   <code>cd</code>                                             </td> <td align="center">   change directory (folder)                                   </td> </tr>
-<tr><td align="center">   <code>emacs</code>                                          </td> <td align="center">   start an editor for writing programs                        </td> </tr>
-<tr><td align="center">   <code>ls</code>                                             </td> <td align="center">   list files (in the current folder)                          </td> </tr>
-<tr><td align="center">   <code>ls -l</code>                                          </td> <td align="center">   list files with size, date and owner info                   </td> </tr>
-<tr><td align="center">   <code>rm</code>                                             </td> <td align="center">   remove file                                                 </td> </tr>
-<tr><td align="center">   <code>rm -r</code>                                          </td> <td align="center">   remove folder                                               </td> </tr>
-<tr><td align="center">   <code>mv</code>                                             </td> <td align="center">   move (rename) file or folder                                </td> </tr>
-<tr><td align="center">   <code>cp</code>                                             </td> <td align="center">   copy file                                                   </td> </tr>
-<tr><td align="center">   <code>cp -r</code>                                          </td> <td align="center">   copy folder                                                 </td> </tr>
-<tr><td align="center">   <code>ls > res</code>                                       </td> <td align="center">   store output of a program (here ls) in a file (here res)    </td> </tr>
-<tr><td align="center">   <code>less res</code>                                       </td> <td align="center">   look quickly at a file (here res), press q to quit          </td> </tr>
-<tr><td align="center">   <code>ssh -X name@machine</code>                            </td> <td align="center">   log in on another "machine" as "name"                       </td> </tr>
-</table>
+
+<div class="row">
+  <div class="col-xs-10">
+    <table class="table table-striped table-hover table-condensed">
+<thead>
+<tr><td align="center"><b>            command             </b></td> <td align="center"><b>                      description                       </b></td> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   <code>mkdir</code>                  </td> <td align="center">   make directory (folder)                                     </td> </tr>
+<tr><td align="center">   <code>cd</code>                     </td> <td align="center">   change directory (folder)                                   </td> </tr>
+<tr><td align="center">   <code>emacs</code>                  </td> <td align="center">   start an editor for writing programs                        </td> </tr>
+<tr><td align="center">   <code>ls</code>                     </td> <td align="center">   list files (in the current folder)                          </td> </tr>
+<tr><td align="center">   <code>ls -l</code>                  </td> <td align="center">   list files with size, date and owner info                   </td> </tr>
+<tr><td align="center">   <code>rm</code>                     </td> <td align="center">   remove file                                                 </td> </tr>
+<tr><td align="center">   <code>rm -r</code>                  </td> <td align="center">   remove folder                                               </td> </tr>
+<tr><td align="center">   <code>mv</code>                     </td> <td align="center">   move (rename) file or folder                                </td> </tr>
+<tr><td align="center">   <code>cp</code>                     </td> <td align="center">   copy file                                                   </td> </tr>
+<tr><td align="center">   <code>cp -r</code>                  </td> <td align="center">   copy folder                                                 </td> </tr>
+<tr><td align="center">   <code>ls &gt; res</code>            </td> <td align="center">   store output of a program (here ls) in a file (here res)    </td> </tr>
+<tr><td align="center">   <code>less res</code>               </td> <td align="center">   look quickly at a file (here res), press q to quit          </td> </tr>
+<tr><td align="center">   <code>ssh -X name@machine</code>    </td> <td align="center">   log in on another "machine" as "name"                       </td> </tr>
+</tbody>
+    </table>
+  </div>
+</div> <!-- col-xs-10 -->
 <p>
 Unix commands are written in a terminal window, also called console
 window, xterm, rxvt, konsole, or shell.
 
 <p>
 Below is a sample session illustrating all the commands above. We
-
-<p>
 
 <ol>
  <li> create a new folder named <code>mydir</code></li>
@@ -265,8 +302,6 @@ way of moving one folder up in the folder hierarchy.
 <p>
 Here are some more Unix goodies:
 
-<p>
-
 <ul>
  <li> The TAB key can be used to complete filenames: just type the first
    character of a filename and press TAB to expand the name.</li>
@@ -291,4 +326,20 @@ Unix&gt; tar xvzf myprograms.tar.gz        # unpack
 <p>
 
 <!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
 

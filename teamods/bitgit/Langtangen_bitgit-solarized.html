@@ -62,22 +62,13 @@ div { text-align: justify; text-justify: inter-word; }
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Motivation ', 1, None, '___sec0'),
-              (' Why not Dropbox or Google Drive? ',
-               2,
-               'bitgit:dropbox:googledrive',
-               'bitgit:dropbox:googledrive'),
+              (' Why not Dropbox or Google Drive? ', 2, None, '___sec1'),
               (' Project hosting services ', 2, None, '___sec2'),
               (' Repositories and local copies ', 2, None, '___sec3'),
               (' What to choose? ', 2, None, '___sec4'),
-              (' Installing Git ',
-               2,
-               'bitgit:git:install',
-               'bitgit:git:install'),
+              (' Installing Git ', 2, None, '___sec5'),
               (' Bitbucket ', 1, 'bitgit:bitbucket', 'bitgit:bitbucket'),
-              (' Creating a new project ',
-               2,
-               'bitgit:bitbucket:project',
-               'bitgit:bitbucket:project'),
+              (' Creating a new project ', 2, None, '___sec7'),
               (' Collaborating ', 3, None, '___sec8'),
               (' User web pages ',
                2,
@@ -88,34 +79,16 @@ div { text-align: justify; text-justify: inter-word; }
                'bitgit:bitbucket:URLs',
                'bitgit:bitbucket:URLs'),
               (' Googlecode ', 1, 'bitgit:googlecode', 'bitgit:googlecode'),
-              (' Creating a new project ',
-               2,
-               'bitgit:googlecode:project',
-               'bitgit:googlecode:project'),
-              (' Wiki pages ',
-               2,
-               'bitgit:googlecode:wiki',
-               'bitgit:googlecode:wiki'),
+              (' Creating a new project ', 2, None, '___sec12'),
+              (' Wiki pages ', 2, None, '___sec13'),
               (' GitHub ', 1, 'bitgit:github', 'bitgit:github'),
-              (' Creating a new project ',
-               2,
-               'bitgit:github:project',
-               'bitgit:github:project'),
+              (' Creating a new project ', 2, None, '___sec15'),
               (' Collaborating ', 3, None, '___sec16'),
-              (' Wiki pages ', 2, 'bitgit:github:wiki', 'bitgit:github:wiki'),
-              (' Project web pages ',
-               2,
-               'bitgit:github:web',
-               'bitgit:github:web'),
-              (' User web pages ',
-               2,
-               'bitgit:github:web:user',
-               'bitgit:github:web:user'),
+              (' Wiki pages ', 2, None, '___sec17'),
+              (' Project web pages ', 2, None, '___sec18'),
+              (' User web pages ', 2, None, '___sec19'),
               (' Using Git ', 1, 'bitgit:git', 'bitgit:git'),
-              (' Basic Git commands ',
-               2,
-               'bitgit:git:basics',
-               'bitgit:git:basics'),
+              (' Basic Git commands ', 2, None, '___sec21'),
               (' Cloning ', 3, None, '___sec22'),
               (' The pull-change-push cycle ', 3, None, '___sec23'),
               (' Viewing the history of files ', 3, None, '___sec24'),
@@ -125,21 +98,21 @@ div { text-align: justify; text-justify: inter-word; }
                None,
                '___sec26'),
               (' Going back to a previous commit ', 3, None, '___sec27'),
-              (' Git working style with branching and stashing ',
-               2,
-               'bitgit:git:branch:stash',
-               'bitgit:git:branch:stash'),
-              (' Branching ', 3, None, '___sec29'),
-              (' Stashing ', 3, None, '___sec30'),
-              (' Replacing pull by fetch and merge ',
-               2,
-               'bitgit:git:fetch',
-               'bitgit:git:fetch'),
-              (' Configuring the `git diff` command ', 3, None, '___sec32'),
               (' Merging files with Git ',
                2,
                'bitgit:git:merge',
                'bitgit:git:merge'),
+              (' Git working style with branching and stashing ',
+               2,
+               'bitgit:git:branch:stash',
+               'bitgit:git:branch:stash'),
+              (' Branching ', 3, None, '___sec30'),
+              (' Stashing ', 3, None, '___sec31'),
+              (' Replacing pull by fetch and merge ',
+               2,
+               'bitgit:git:fetch',
+               'bitgit:git:fetch'),
+              (' Configuring the `git diff` command ', 3, None, '___sec33'),
               (' Team work with forking and pull requests ',
                2,
                'bitgit:git:team',
@@ -148,11 +121,8 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'bitgit:git:clone:branches',
                'bitgit:git:clone:branches'),
-              (' Git workflows ',
-               2,
-               'bitgit:git:workflows',
-               'bitgit:git:workflows'),
-              (' Git tips ', 2, 'bitgit:git:tips', 'bitgit:git:tips'),
+              (' Git workflows ', 2, None, '___sec36'),
+              (' Git tips ', 2, None, '___sec37'),
               (' How can I see which files are tracked by Git? ',
                3,
                None,
@@ -189,92 +159,47 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Deptartment of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Jan 12, 2015</h4></center> <!-- date -->
+<center><h4>Jan 21, 2015</h4></center> <!-- date -->
 <p>
-<b>Summary.</b> The essence of project hosting services with version control
-is that you have the files
+<div id="bitgit:top"></div>
+
+<p>
+Version control systems allow you to record the history of files and
+share files among several computers and collaborators in a
+professional way. Especially when working with software development or
+technical writing, it is essential to have file changes documented and
+to ensure that every computer and person involved in the project have
+the most recent updates of the files.
+
+<p>
+Projects that you want to share among several computers or project
+workers are most conveniently stored at some web site "in the
+cloud", here called <em>project hosting services</em>. For efficient access
+to the files, and the possibility to work offline, you interact with
+local copies of the files on your computers.
+I strongly recommend you to use such sites and version control for <em>all</em>
+serious programming and scientific writing work.
+
+<p>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Essence.</b>
+<p>
+The essence of project hosting services is that you have the files
 associated with a project in the cloud. Many people may share these
 files.  Every time you want to work on the project you explicitly
 update your version of the files, edit the files as you like, and
-synchronize the files with the &quot;master version&quot; in the cloud.
+synchronize the files with the "master version" in the cloud.
 It is a trivial operation to go back to a previous
 version of a file, corresponding to a certain point of time or
 labeled with a comment.
 You can also use tools to see
 what various people have done with the files throughout the history
-of the project. If several collaborators edit files in parallel, there
-are efficient tools for merging the edits.
+of the project.
+</div>
+
 
 <p>
 <!-- !split -->
-
-<h2>
-Table of contents</h2>
-
-<p>
-<a href="#___sec0"> Motivation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#bitgit:dropbox:googledrive"> Why not Dropbox or Google Drive? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec2"> Project hosting services </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec3"> Repositories and local copies </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec4"> What to choose? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#bitgit:git:install"> Installing Git </a><br>
-<a href="#bitgit:bitbucket"> Bitbucket </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#bitgit:bitbucket:project"> Creating a new project </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec8"> Collaborating </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#bitgit:bitbucket:web"> User web pages </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#bitgit:bitbucket:URLs"> Linking to Bitbucket files </a><br>
-<a href="#bitgit:googlecode"> Googlecode </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#bitgit:googlecode:project"> Creating a new project </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#bitgit:googlecode:wiki"> Wiki pages </a><br>
-<a href="#bitgit:github"> GitHub </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#bitgit:github:project"> Creating a new project </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec16"> Collaborating </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#bitgit:github:wiki"> Wiki pages </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#bitgit:github:web"> Project web pages </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#bitgit:github:web:user"> User web pages </a><br>
-<a href="#bitgit:git"> Using Git </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#bitgit:git:basics"> Basic Git commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec22"> Cloning </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec23"> The pull-change-push cycle </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec24"> Viewing the history of files </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec25"> Retrieving old files </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec26"> Reset the entire repo to an old version </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec27"> Going back to a previous commit </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#bitgit:git:branch:stash"> Git working style with branching and stashing </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec29"> Branching </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec30"> Stashing </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#bitgit:git:fetch"> Replacing pull by fetch and merge </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec32"> Configuring the <code>git diff</code> command </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#bitgit:git:merge"> Merging files with Git </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#bitgit:git:team"> Team work with forking and pull requests </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#bitgit:git:clone:branches"> Cloning a repo with multiple branches </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#bitgit:git:workflows"> Git workflows </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#bitgit:git:tips"> Git tips </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec38"> How can I see which files are tracked by Git? </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec39"> How can I reduce the size of a repo? </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec40"> How can I restore missing files? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec41"> More documentation on Git </a><br>
-<a href="#appendix:github:multiple:accounts"> Appendix: Working with multiple GitHub accounts </a><br>
-</p>
-<p>
-<!-- !split -->
-<div id="bitgit:top"></div>
-
-<p>
-Version control systems allow you to share files among several
-computers and collaborators in a professional way. Especially when
-working with software development or technical writing, it is
-essential to record the content history of files and be able to merge
-changes done by multiple collaborators.
-
-<p>
-Projects that you want to share among several computers or project
-workers are most conveniently stored at some web site &quot;in the
-cloud&quot;, here called <em>project hosting services</em>. For efficient access
-to the files, and the possibility to work offline, you interact with
-local copies of the files on your computers.
-I strongly recommend you to use such sites and version control for <em>all</em>
-serious programming and scientific writing work.
 
 <h1 id="___sec0">Motivation </h1>
 
@@ -283,7 +208,7 @@ Greg Wilson's excellent <a href="http://software-carpentry.org/2010/07/script-fo
 from using version control systems. Here follows a shorter motivation
 and a quick overview of the basic concepts.
 
-<h2 id="bitgit:dropbox:googledrive">Why not Dropbox or Google Drive?</h2>
+<h2 id="___sec1">Why not Dropbox or Google Drive? </h2>
 
 <p>
 The simplest services for hosting project files are <a href="http://dropbox.com" target="_self">Dropbox</a> and <a href="http://drive.google.com" target="_self">Google Drive</a>.
@@ -314,7 +239,7 @@ with project hosting services for file storage.
 <h2 id="___sec2">Project hosting services </h2>
 
 <p>
-Four popular project hosting services are
+Five popular project hosting services are
 
 <ul>
   <li> <a href="http://bigbucket.org" target="_self">Bitbucket</a> at <code>bitbucket.org</code></li>
@@ -400,7 +325,7 @@ For the examples below, assume that you have some directory tree
 Googlecode and bring under version control. The official name of the
 project is "My Project".
 
-<h2 id="bitgit:git:install">Installing Git</h2>
+<h2 id="___sec5">Installing Git </h2>
 
 <p>
 The installation of Git on various systems is described
@@ -512,7 +437,7 @@ and the TortoiseHG programs to generate and register keys, see the
 help pages on Bitbucket. Once the keys are generated, you can continue
 using them on any computer.
 
-<h2 id="bitgit:bitbucket:project">Creating a new project</h2>
+<h2 id="___sec7">Creating a new project </h2>
 
 <p>
 Click at <em>Repositories</em> and at <em>Create repository</em>.
@@ -671,7 +596,7 @@ you to use Gmail, Google Docs, and other Google services.
 Googlecode offers free file hosting, but all the files are public and
 open to the world.
 
-<h2 id="bitgit:googlecode:project">Creating a new project</h2>
+<h2 id="___sec12">Creating a new project </h2>
 
 <p>
 Go to <a href="http://code.google.com/hosting" target="_self"><tt>http://code.google.com/hosting</tt></a> and click on
@@ -761,7 +686,7 @@ repository: click on <em>Sharing</em> and then on <em>Administer</em>.
 The Google account names of people you allow push (write) access can be
 listed under each other in the <em>Project committers</em> field.
 
-<h2 id="bitgit:googlecode:wiki">Wiki pages</h2>
+<h2 id="___sec13">Wiki pages </h2>
 
 <p>
 Wiki pages can intuitively be made directly in the browser. However,
@@ -808,7 +733,7 @@ I do not recommend to provide an SSH key although it can be
 done (see  <a href="#appendix:github:multiple:accounts">Appendix: Working with multiple GitHub accounts</a>). It is easier
 to log in and add collaborators using their personal GitHub usernames.
 
-<h2 id="bitgit:github:project">Creating a new project</h2>
+<h2 id="___sec15">Creating a new project </h2>
 
 <p>
 Click on <em>New repository</em> on the main page and fill out a project
@@ -875,7 +800,7 @@ the <em>watch</em> button), respectively.
 <!-- No, this doesn't work: Clicking the <em>Email</em> button turns -->
 <!-- on email notifications to those participating and/or watching. -->
 
-<h2 id="bitgit:github:wiki">Wiki pages</h2>
+<h2 id="___sec17">Wiki pages </h2>
 
 <p>
 With every GitHub project there is an option to create wiki pages.
@@ -921,11 +846,11 @@ Do changes, commit the usual way, and push by
 <pre><code>Terminal&gt; git push git@github.com:user/My-project.wiki.git
 </code></pre>
 <!-- end verbatim block -->
-The address can be stored as <code>url</code> in the file <code>.git/config</code> in the
-root directory of the wiki project so that just a
+The address can be stored as <code>url</code> in <code>.git/config</code> in the
+root directory of the wiki project so that just a standard
 <code>git push</code> works.
 
-<h2 id="bitgit:github:web">Project web pages</h2>
+<h2 id="___sec18">Project web pages </h2>
 
 <p>
 HTML pages stored in your repo cannot be linked to and properly
@@ -1021,39 +946,46 @@ in the current branch such that they are up-to-date and
 identical to files in another branch.
 
 <p>
-To synchronize (merge) the gh-pages branch with the master branch, run
+To merge the current branch with some branch named <code>otherbranch</code>, run
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; git merge otherbranch
+</code></pre>
+<!-- end verbatim block -->
+Git applies smart algorithms that very often manage to merge the
+files without human interaction. However, occasionally these algorithms
+are not able to resolve conflicts between two files.
+A message about the failure of the merge is seen in the terminal
+window, and the corresponding files have markers in them showing
+which sections that needs manual editing to resolve the conflicts.
+Run
+<code>git diff</code> to show the problems (you can tailor this command to your
+needs as explained in the section <a href="#bitgit:git:fetch">Replacing pull by fetch and merge</a>). After a manual
+edit, do <code>git commit -a</code>. More details on merging appears
+in the section <a href="#bitgit:git:merge">Merging files with Git</a>.
+
+<p>
+If you want to keep the master branch and the gh-pages branch
+synchronized,
+start with merging the gh-pages branch with the master
+branch and push the complete file collection to the gh-pages branch.
+Then switch to the master
+branch and merge with gh-pages so you get the autogenerated
+<code>index.html</code> file and associated files and directories for web pages
+in the root directory of the master branch as well:
 
 <p>
 <!-- begin verbatim block  sys-->
 <pre><code>Terminal&gt; git merge master
-</code></pre>
-<!-- end verbatim block -->
-
-<p>
-If you want to keep the master branch and the gh-pages branch
-synchronized, merge the master branch while standing in the gh-pages
-branch. Then go to the master branch and merge the gh-pages branch such
-that you get the <code>index.html</code> file and other files (javascript, css, etc.)
-for the web pages also in the master branch. Go to the root directory
-of the repo and do
-
-<p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; git checkout gh-pages
 Terminal&gt; touch .nojekyll
-Terminal&gt; git add .nojekyll
-Terminal&gt; git merge master
+Terminal&gt; git push origin gh-pages
 Terminal&gt; git checkout master
 Terminal&gt; git merge gh-pages
 </code></pre>
 <!-- end verbatim block -->
-
-<p>
-You must add an empty file <code>.nojekyll</code> in the top
-directory of the project pages if you want to use HTML pages where file
-or directory names start with underscore or a period (e.g.,
-Sphinx-generated
-HTML pages need such a <code>.nojekyll</code> file).
+You <em>must</em> add an empty file <code>.nojekyll</code> in the top
+directory of the project pages if you want to use Sphinx-generated
+HTML pages (or other pages using javascripts, style sheets, and images
+in subdirectories whose names start with an underscore).
 
 <p>
 You can now add the documentation to the project files and
@@ -1142,7 +1074,7 @@ the HTML code.
 </div>
 
 
-<h2 id="bitgit:github:web:user">User web pages</h2>
+<h2 id="___sec19">User web pages </h2>
 
 <p>
 GitHub also allows you to create user pages and organization pages not
@@ -1185,7 +1117,7 @@ and there are many <a href="http://git-scm.com/downloads/guis" target="_self">op
 this respect. There are also GUIs for Mac users.
 Here we concentrate on the efficient command-line interface to Git.
 
-<h2 id="bitgit:git:basics">Basic Git commands</h2>
+<h2 id="___sec21">Basic Git commands </h2>
 
 <h3 id="___sec22">Cloning </h3>
 
@@ -1426,267 +1358,6 @@ To push it as the new state of the repo, do
 </code></pre>
 <!-- end verbatim block -->
 
-<h2 id="bitgit:git:branch:stash">Git working style with branching and stashing</h2>
-
-<p>
-<!-- git clone is without branches, say something about that in clone -->
-
-<p>
-Branching and stashing are nice features of Git that allow you to try
-out new things without affecting the stable version of your files.
-Usually, you extend and modify files quite often and perform a <code>git
-commit</code> every time you want to record the changes in your local
-repository. Imagine that you want to correct a set of errors in some
-files and push these corrections immediately.  The problem is that
-such a push will also include the latest, yet unfinished files that you
-have committed.
-
-<h3 id="___sec29">Branching </h3>
-
-<p>
-A better organization of your work would
-be to keep the latest, ongoing
-developments separate from the more official and stable version
-of the files. This is easily achieved by creating a separate branch
-where new developments takes place. You can synchronize (<code>git merge</code>)
-this branch with the official master branch as long as the developments
-go on, and when you are ready, you can synchronize the master branch
-with these developments to bring them into the official version of
-your files.
-
-<p>
-The session below shows how to make a branch, change files, and
-merge (synchronize) branches:
-
-<p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; git branch newstuff      # create new branch
-Terminal&gt; git checkout newstuff
-Terminal&gt; # extend and modify files...
-Terminal&gt; git commit -am 'Modified ... Added a file on ...'
-Terminal&gt; git checkout master      # swith back to master
-Terminal&gt; # correct errors
-Terminal&gt; git push origin master
-Terminal&gt; git checkout newstuff    # switch to other branch
-Terminal&gt; git merge master         # keep branch up-to-date w/master
-Terminal&gt; # continue development work...
-Terminal&gt; git commit -am 'More modifications of ...'
-</code></pre>
-<!-- end verbatim block -->
-At some point, your developments in <code>newstuff</code>
-are mature enough to be incorporated
-in the master branch:
-
-<p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; git checkout newstuff
-Terminal&gt; git merge master        # synchronize newstuff w/master
-Terminal&gt; git checkout master
-Terminal&gt; git merge newstuff      # synchronize master w/newstuff
-</code></pre>
-<!-- end verbatim block -->
-You no longer need the <code>newstuff</code> branch and can delete it:
-
-<p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; git branch -d newstuff
-</code></pre>
-<!-- end verbatim block -->
-This command deletes the branch locally. To also delete the branch
-in the remote repo, run
-
-<p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; git push origin --delete newstuff
-</code></pre>
-<!-- end verbatim block -->
-
-<p>
-You can learn more in an <a href="http://pcottle.github.io/learnGitBranching/" target="_self">excellent introduction and demonstration of Git branching</a>.
-
-<p>
-<div class="alert alert-block alert-notice alert-text-normal">
-<b>Automatic merge may fail.</b>
-<p>
-Git applies smart algorithms that very often manage to merge the
-files without human interaction. However, occasionally these algorithms
-are not able to resolve conflicts between two files.
-A message about the failure of the merge is seen in the terminal
-window, and the corresponding files have markers in them showing
-which sections that needs manual editing to resolve the conflicts.
-Run
-<code>git diff</code> to show the problems (you can tailor this command to your
-needs as explained in the section <a href="#bitgit:git:fetch">Replacing pull by fetch and merge</a>). After a manual
-edit, do <code>git commit -a</code>. More details on merging appears
-in the section <a href="#bitgit:git:merge">Merging files with Git</a>.
-</div>
-
-
-<h3 id="___sec30">Stashing </h3>
-
-<p>
-It is not possible to switch branches unless you have committed the
-files in the current branch. If your work on some files is in a mess
-and you want to change to another branch or fix other files in the
-current branch, a &quot;global&quot; commit affecting all files might be
-immature.  Then the <a href="http://git-scm.com/book/en/Git-Tools-Stashing" target="_self"><tt>git stash</tt></a> command is handy. It
-records the state of your files and sets you back to the state of the
-last commit in the current branch. With <code>git stash apply</code> you will update the
-files in this branch to the state when you did the last <code>git
-stash</code>.
-
-<p>
-Let us explain a typical case.  Suppose you have performed some
-extensive edits in some files and then you are suddenly
-interrupted. You need to fix some typos in some other files, commit
-the changes, and push. The problem is that many files are in an
-unfinished state - in hindsight you realize that those files should
-have been modified in a separate branch.  It is not too late to create
-that branch! First run <code>git stash</code> to get the files back to the state
-they were at the last commit. Then run <code>git stash branch newstuff</code> to
-create a new branch <code>newstuff</code> containing the state of the files when
-you did the (last) <code>git stash</code> command.  Stashing used this way is a
-convenient technique to move some immature edits after the last commit
-out in a new branch for further experimental work.
-
-<p>
-<div class="alert alert-block alert-warning alert-text-normal">
-<b>Warning.</b>
-<p>
-You can get the stashed files back by <code>git stash apply</code>. It is
-possible to multiple <code>git stash</code> and <code>git stash apply</code>
-commands. However, it is easy to run into trouble with multiple
-stashes, especially if they occur in multiple branches, as it becomes
-difficult to recognize which stashes that belong to which branch.  A
-good advice is therefore to do <code>git stash</code> <em>only once</em> to get back to
-a clean state and then move the unfinished messy files to a separate
-branch with <code>git stash branch newstuff</code>.
-</div>
-
-
-<h2 id="bitgit:git:fetch">Replacing pull by fetch and merge</h2>
-
-<p>
-The <code>git pull</code> command actually performs two steps that are sometimes
-advantageous to run separately. First, a <code>get fetch</code> is run to fetch
-new files from the repository, and thereafter a <code>git merge</code> command is
-run to merge the new files with your local version of the files.
-While <code>git pull</code> tries to do a lot and be smart in the merge, very
-often with success, the merge step may occasionally lead to
-trouble. That is why it is recommended to run a <code>git merge</code>
-separately, especially if you work with branches.
-
-<p>
-To fetch files from your repository at GitHub, which usually has
-the nickname <code>origin</code>, you write
-
-<p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; git fetch origin
-</code></pre>
-<!-- end verbatim block -->
-You now have the possibility to check out in detail what the differences
-are between the new files and local ones:
-
-<p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; git diff origin/master
-</code></pre>
-<!-- end verbatim block -->
-This command produces comparisons of the files in the current local branch
-and the <code>master</code> branch at <code>origin</code> (the GitHub repo).
-In this way you can exactly see the differences between branches.
-It also gives you an overview of what others have done with
-the files.
-When you are ready to merge in the new files from the <code>master</code> branch
-of <code>origin</code> with the files in the current local branch, you say
-
-<p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; git merge origin/master
-</code></pre>
-<!-- end verbatim block -->
-
-<p>
-Especially when you work with multiple branches, as outlined in
-the section <a href="#bitgit:git:branch:stash">Git working style with branching and stashing</a>, it is wise to first do a
-<code>get fetch origin</code> and then update each branch separately. The
-<code>git fetch origin</code> command will list the branches, e.g.,
-
-<p>
-<!-- begin verbatim block  sys-->
-<pre><code>* master
-  gh-pages
-  next
-</code></pre>
-<!-- end verbatim block -->
-After updating <code>master</code> as described, you can continue with another branch:
-
-<p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; git checkout next
-Terminal&gt; git diff origin/next
-Terminal&gt; git merge origin/next
-Terminal&gt; git checkout master
-</code></pre>
-<!-- end verbatim block -->
-
-<h3 id="___sec32">Configuring the <code>git diff</code> command </h3>
-
-<p>
-The <code>git diff</code> command launches by default the
-Unix <code>diff</code> tool in the terminal window.
-Many users prefer to use other diff tools, and the desired one
-can be specified in
-your <code>~/.gitconfig</code> file. However, a much recommended approach is to
-wrap a shell script around the call to the diff program, because
-<code>git diff</code> actually calls the diff program with a series of
-command-line arguments that will confuse diff programs that take
-the names of the two files to be compared as arguments.
-In <code>~/.gitconfig</code> you specify a script to do the diff:
-
-<p>
-<!-- begin verbatim block -->
-<pre><code>[diff]
-external = ~/bin/git-diff-wrapper.sh
-</code></pre>
-<!-- end verbatim block -->
-It remains to write the <code>git-diff-wrapper.sh</code> script.
-The  2nd and 5th command-line arguments passed to this script are the
-name of the files to be compared in the diff. A typical script may
-therefore look like
-
-<p>
-<!-- begin verbatim block  shpro-->
-<pre><code>#!/bin/sh
-
-diff &quot;$2&quot; &quot;$5&quot; | less
-</code></pre>
-<!-- end verbatim block -->
-Here we use the standard (and quite primitive) Unix <code>diff</code> program,
-but we can replace <code>diff</code> by, e.g., <code>diffuse</code>, <code>kdiff3</code>, <code>xxdiff</code>, <code>meld</code>, <code>pdiff</code>, or others. With a Python script you can easily check
-for the extensions of the files and use different diff tools for
-different types of files, e.g., <code>latexdiff</code> for LaTeX files
-and <code>pdiff</code> for pure text files.
-
-<p>
-<div class="alert alert-block alert-notice alert-text-normal">
-<b>Replacing all your files with those in the repo.</b>
-<p>
-Occasionally it becomes desirable to replace <em>all</em> files in
-the local repo with those in the repo at the file hosting service.
-One possibility is removing your repo and cloning again, or
-use the Git commands
-
-<p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; git fetch --all
-Terminal&gt; git reset --hard origin/master
-</code></pre>
-<!-- end verbatim block -->
-</div>
-
-
 <h2 id="bitgit:git:merge">Merging files with Git</h2>
 
 <p>
@@ -1864,6 +1535,241 @@ Launch a text editor and edit the file, or use <code>git mergetool</code>,
 so that the file becomes correct.
 Then run <code>git commit -am merge</code> to finalize the merge.
 
+<h2 id="bitgit:git:branch:stash">Git working style with branching and stashing</h2>
+
+<p>
+<!-- git clone is without branches, say something about that in clone -->
+
+<p>
+Branching and stashing are nice features of Git that allow you to try
+out new things without affecting the stable version of your files.
+Usually, you extend and modify files quite often and perform a <code>git
+commit</code> every time you want to record the changes in your local
+repository. Imagine that you want to correct a set of errors in some
+files and push these corrections immediately.  The problem is that
+such a push will also include the latest, yet unfinished files that you
+have committed.
+
+<h3 id="___sec30">Branching </h3>
+
+<p>
+A better organization of your work would
+be to keep the latest, ongoing
+developments separate from the more official and stable version
+of the files. This is easily achieved by creating a separate branch
+where new developments takes place:
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; git branch newstuff      # create new branch
+Terminal&gt; git checkout newstuff
+Terminal&gt; # extend and modify files...
+Terminal&gt; git commit -am 'Modified ... Added a file on ...'
+Terminal&gt; git checkout master      # swith back to master
+Terminal&gt; # correct errors
+Terminal&gt; git push origin master
+Terminal&gt; git checkout newstuff    # switch to other branch
+Terminal&gt; git merge master         # keep branch up-to-date w/master
+Terminal&gt; # continue development work...
+Terminal&gt; git commit -am 'More modifications of ...'
+</code></pre>
+<!-- end verbatim block -->
+At some point, your developments in <code>newstuff</code>
+are mature enough to be incorporated
+in the master branch:
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; git checkout newstuff
+Terminal&gt; git merge master        # synchronize newstuff w/master
+Terminal&gt; git checkout master
+Terminal&gt; git merge newstuff      # synchronize master w/newstuff
+</code></pre>
+<!-- end verbatim block -->
+You no longer need the <code>newstuff</code> branch and can delete it:
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; git branch -d newstuff
+</code></pre>
+<!-- end verbatim block -->
+This command deletes the branch locally. To also delete the branch
+in the remote repo, run
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; git push origin --delete newstuff
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+You can learn more in an <a href="http://pcottle.github.io/learnGitBranching/" target="_self">excellent introduction and demonstration of Git branching</a>.
+
+<h3 id="___sec31">Stashing </h3>
+
+<p>
+It is not possible to switch branches unless you have committed the
+files in the current branch. If your work on some files is in a mess
+and you want to change to another branch or fix other files in the
+current branch, a &quot;global&quot; commit affecting all files might be
+immature.  Then the <a href="http://git-scm.com/book/en/Git-Tools-Stashing" target="_self"><tt>git stash</tt></a> command is handy. It
+records the state of your files and sets you back to the state of the
+last commit in the current branch. With <code>git stash apply</code> you will update the
+files in this branch to the state when you did the last <code>git
+stash</code>.
+
+<p>
+Let us explain a typical case.  Suppose you have performed some
+extensive edits in some files and then you are suddenly
+interrupted. You need to fix some typos in some other files, commit
+the changes, and push. The problem is that many files are in an
+unfinished state - in hindsight you realize that those files should
+have been modified in a separate branch.  It is not too late to create
+that branch! First run <code>git stash</code> to get the files back to the state
+they were at the last commit. Then run <code>git stash branch newstuff</code> to
+create a new branch <code>newstuff</code> containing the state of the files when
+you did the (last) <code>git stash</code> command.  Stashing used this way is a
+convenient technique to move some immature edits after the last commit
+out in a new branch for further experimental work.
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>Warning.</b>
+<p>
+You can get the stashed files back by <code>git stash apply</code>. It is
+possible to multiple <code>git stash</code> and <code>git stash apply</code>
+commands. However, it is easy to run into trouble with multiple
+stashes, especially if they occur in multiple branches, as it becomes
+difficult to recognize which stashes that belong to which branch.  A
+good advice is therefore to do <code>git stash</code> <em>only once</em> to get back to
+a clean state and then move the unfinished messy files to a separate
+branch with <code>git stash branch newstuff</code>.
+</div>
+
+
+<h2 id="bitgit:git:fetch">Replacing pull by fetch and merge</h2>
+
+<p>
+The <code>git pull</code> command actually performs two steps that are sometimes
+advantageous to run separately. First, a <code>get fetch</code> is run to fetch
+new files from the repository, and thereafter a <code>git merge</code> command is
+run to merge the new files with your local version of the files.
+While <code>git pull</code> tries to do a lot and be smart in the merge, very
+often with success, the merge step may occasionally lead to
+trouble. That is why it is recommended to run a <code>git merge</code>
+separately, especially if you work with branches.
+
+<p>
+To fetch files from your repository at GitHub, which usually has
+the nickname <code>origin</code>, you write
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; git fetch origin
+</code></pre>
+<!-- end verbatim block -->
+You now have the possibility to check out in detail what the differences
+are between the new files and local ones:
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; git diff origin/master
+</code></pre>
+<!-- end verbatim block -->
+This command produces comparisons of the files in the current local branch
+and the <code>master</code> branch at <code>origin</code> (the GitHub repo).
+In this way you can exactly see the differences between branches.
+It also gives you an overview of what others have done with
+the files.
+When you are ready to merge in the new files from the <code>master</code> branch
+of <code>origin</code> with the files in the current local branch, you say
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; git merge origin/master
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+Especially when you work with multiple branches, as outlined in
+the section <a href="#bitgit:git:branch:stash">Git working style with branching and stashing</a>, it is wise to first do a
+<code>get fetch origin</code> and then update each branch separately. The
+<code>git fetch origin</code> command will list the branches, e.g.,
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>* master
+  gh-pages
+  next
+</code></pre>
+<!-- end verbatim block -->
+After updating <code>master</code> as described, you can continue with another branch:
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; git checkout next
+Terminal&gt; git diff origin/next
+Terminal&gt; git merge origin/next
+Terminal&gt; git checkout master
+</code></pre>
+<!-- end verbatim block -->
+
+<h3 id="___sec33">Configuring the <code>git diff</code> command </h3>
+
+<p>
+The <code>git diff</code> command launches by default the
+Unix <code>diff</code> tool in the terminal window.
+Many users prefer to use other diff tools, and the desired one
+can be specified in
+your <code>~/.gitconfig</code> file. However, a much recommended approach is to
+wrap a shell script around the call to the diff program, because
+<code>git diff</code> actually calls the diff program with a series of
+command-line arguments that will confuse diff programs that take
+the names of the two files to be compared as arguments.
+In <code>~/.gitconfig</code> you specify a script to do the diff:
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>[diff]
+external = ~/bin/git-diff-wrapper.sh
+</code></pre>
+<!-- end verbatim block -->
+It remains to write the <code>git-diff-wrapper.sh</code> script.
+The  2nd and 5th command-line arguments passed to this script are the
+name of the files to be compared in the diff. A typical script may
+therefore look like
+
+<p>
+<!-- begin verbatim block  shpro-->
+<pre><code>#!/bin/sh
+
+diff &quot;$2&quot; &quot;$5&quot; | less
+</code></pre>
+<!-- end verbatim block -->
+Here we use the standard (and quite primitive) Unix <code>diff</code> program,
+but we can replace <code>diff</code> by, e.g., <code>diffuse</code>, <code>kdiff3</code>, <code>xxdiff</code>, <code>meld</code>, <code>pdiff</code>, or others. With a Python script you can easily check
+for the extensions of the files and use different diff tools for
+different types of files, e.g., <code>latexdiff</code> for LaTeX files
+and <code>pdiff</code> for pure text files.
+
+<p>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Replacing all your files with those in the repo.</b>
+<p>
+Occasionally it becomes desirable to replace <em>all</em> files in
+the local repo with those in the repo at the file hosting service.
+One possibility is removing your repo and cloning again, or
+use the Git commands
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; git fetch --all
+Terminal&gt; git reset --hard origin/master
+</code></pre>
+<!-- end verbatim block -->
+</div>
+
+
 <h2 id="bitgit:git:team">Team work with forking and pull requests</h2>
 
 <p>
@@ -2009,7 +1915,7 @@ It is possible to write a little script that takes the output of
 <code>git branch -a</code> after a <code>git clone</code> command and automatically check
 out all branches via <code>git checkout</code>.
 
-<h2 id="bitgit:git:workflows">Git workflows</h2>
+<h2 id="___sec36">Git workflows </h2>
 
 <p>
 Although the purpose of these notes is just to get the reader started
@@ -2050,7 +1956,7 @@ useful.
 <!-- The script can checkout two directories and just switch between -->
 <!-- these as two users, don't need to be different machines... -->
 
-<h2 id="bitgit:git:tips">Git tips</h2>
+<h2 id="___sec37">Git tips </h2>
 
 <h3 id="___sec38">How can I see which files are tracked by Git? </h3>
 

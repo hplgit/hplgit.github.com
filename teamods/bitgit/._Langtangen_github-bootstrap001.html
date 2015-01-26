@@ -23,35 +23,17 @@ Automatically generated HTML file from DocOnce source
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Motivation ', 1, None, '___sec0'),
-              (' Why not Dropbox or Google Drive? ',
-               2,
-               'bitgit:dropbox:googledrive',
-               'bitgit:dropbox:googledrive'),
+              (' Why not Dropbox or Google Drive? ', 2, None, '___sec1'),
               (' Repositories and local copies ', 2, None, '___sec2'),
-              (' Installing Git ',
-               2,
-               'bitgit:git:install',
-               'bitgit:git:install'),
+              (' Installing Git ', 2, None, '___sec3'),
               (' GitHub ', 1, 'bitgit:github', 'bitgit:github'),
-              (' Creating a new project ',
-               2,
-               'bitgit:github:project',
-               'bitgit:github:project'),
+              (' Creating a new project ', 2, None, '___sec5'),
               (' Collaborating ', 3, None, '___sec6'),
-              (' Wiki pages ', 2, 'bitgit:github:wiki', 'bitgit:github:wiki'),
-              (' Project web pages ',
-               2,
-               'bitgit:github:web',
-               'bitgit:github:web'),
-              (' User web pages ',
-               2,
-               'bitgit:github:web:user',
-               'bitgit:github:web:user'),
+              (' Wiki pages ', 2, None, '___sec7'),
+              (' Project web pages ', 2, None, '___sec8'),
+              (' User web pages ', 2, None, '___sec9'),
               (' Using Git ', 1, 'bitgit:git', 'bitgit:git'),
-              (' Basic Git commands ',
-               2,
-               'bitgit:git:basics',
-               'bitgit:git:basics'),
+              (' Basic Git commands ', 2, None, '___sec11'),
               (' Cloning ', 3, None, '___sec12'),
               (' The pull-change-push cycle ', 3, None, '___sec13'),
               (' Viewing the history of files ', 3, None, '___sec14'),
@@ -61,21 +43,21 @@ Automatically generated HTML file from DocOnce source
                None,
                '___sec16'),
               (' Going back to a previous commit ', 3, None, '___sec17'),
-              (' Git working style with branching and stashing ',
-               2,
-               'bitgit:git:branch:stash',
-               'bitgit:git:branch:stash'),
-              (' Branching ', 3, None, '___sec19'),
-              (' Stashing ', 3, None, '___sec20'),
-              (' Replacing pull by fetch and merge ',
-               2,
-               'bitgit:git:fetch',
-               'bitgit:git:fetch'),
-              (' Configuring the `git diff` command ', 3, None, '___sec22'),
               (' Merging files with Git ',
                2,
                'bitgit:git:merge',
                'bitgit:git:merge'),
+              (' Git working style with branching and stashing ',
+               2,
+               'bitgit:git:branch:stash',
+               'bitgit:git:branch:stash'),
+              (' Branching ', 3, None, '___sec20'),
+              (' Stashing ', 3, None, '___sec21'),
+              (' Replacing pull by fetch and merge ',
+               2,
+               'bitgit:git:fetch',
+               'bitgit:git:fetch'),
+              (' Configuring the `git diff` command ', 3, None, '___sec23'),
               (' Team work with forking and pull requests ',
                2,
                'bitgit:git:team',
@@ -84,11 +66,8 @@ Automatically generated HTML file from DocOnce source
                2,
                'bitgit:git:clone:branches',
                'bitgit:git:clone:branches'),
-              (' Git workflows ',
-               2,
-               'bitgit:git:workflows',
-               'bitgit:git:workflows'),
-              (' Git tips ', 2, 'bitgit:git:tips', 'bitgit:git:tips'),
+              (' Git workflows ', 2, None, '___sec26'),
+              (' Git tips ', 2, None, '___sec27'),
               (' How can I see which files are tracked by Git? ',
                3,
                None,
@@ -120,10 +99,10 @@ end of tocinfo -->
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap002.html#___sec0" style="font-size: 80%;">Motivation</a></li>
-     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#bitgit:github" style="font-size: 80%;">GitHub</a></li>
-     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap004.html#bitgit:git" style="font-size: 80%;">Using Git</a></li>
-     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap005.html#appendix:github:multiple:accounts" style="font-size: 80%;">Appendix: Working with multiple GitHub accounts</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Motivation</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap002.html#bitgit:github" style="font-size: 80%;">GitHub</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#bitgit:git" style="font-size: 80%;">Using Git</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap004.html#appendix:github:multiple:accounts" style="font-size: 80%;">Appendix: Working with multiple GitHub accounts</a></li>
 
         </ul>
       </li>
@@ -139,44 +118,145 @@ end of tocinfo -->
 <a name="part0001"></a>
 <!-- !split -->
 
-<h2>
-Table of contents</h2>
+<h1 id="___sec0">Motivation </h1>
 
 <p>
-<a href="._Langtangen_bitgit-bootstrap002.html#___sec0"> Motivation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap002.html#bitgit:dropbox:googledrive"> Why not Dropbox or Google Drive? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap002.html#___sec2"> Repositories and local copies </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap002.html#bitgit:git:install"> Installing Git </a><br>
-<a href="._Langtangen_bitgit-bootstrap003.html#bitgit:github"> GitHub </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap003.html#bitgit:github:project"> Creating a new project </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap003.html#___sec6"> Collaborating </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap003.html#bitgit:github:wiki"> Wiki pages </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap003.html#bitgit:github:web"> Project web pages </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap003.html#bitgit:github:web:user"> User web pages </a><br>
-<a href="._Langtangen_bitgit-bootstrap004.html#bitgit:git"> Using Git </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#bitgit:git:basics"> Basic Git commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#___sec12"> Cloning </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#___sec13"> The pull-change-push cycle </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#___sec14"> Viewing the history of files </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#___sec15"> Retrieving old files </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#___sec16"> Reset the entire repo to an old version </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#___sec17"> Going back to a previous commit </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#bitgit:git:branch:stash"> Git working style with branching and stashing </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#___sec19"> Branching </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#___sec20"> Stashing </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#bitgit:git:fetch"> Replacing pull by fetch and merge </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#___sec22"> Configuring the <code>git diff</code> command </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#bitgit:git:merge"> Merging files with Git </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#bitgit:git:team"> Team work with forking and pull requests </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#bitgit:git:clone:branches"> Cloning a repo with multiple branches </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#bitgit:git:workflows"> Git workflows </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#bitgit:git:tips"> Git tips </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#___sec28"> How can I see which files are tracked by Git? </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#___sec29"> How can I reduce the size of a repo? </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#___sec30"> How can I restore missing files? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._Langtangen_bitgit-bootstrap004.html#___sec31"> More documentation on Git </a><br>
-<a href="._Langtangen_bitgit-bootstrap005.html#appendix:github:multiple:accounts"> Appendix: Working with multiple GitHub accounts </a><br>
-</p>
+Greg Wilson's excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/" target="_self">Script for Introduction to Version Control</a> provides a detailed motivation why you will benefit greatly
+from using version control systems. Here follows a shorter motivation
+and a quick overview of the basic concepts.
+
+<h2 id="___sec1">Why not Dropbox or Google Drive? </h2>
+
+<p>
+The simplest services for hosting project files are <a href="http://dropbox.com" target="_self">Dropbox</a> and <a href="http://drive.google.com" target="_self">Google Drive</a>.
+It is very easy to get started with these systems, and they allow you
+to share files among laptops and mobile units with as many users as
+you want. The systems offer a kind of version control in that the
+files are stored frequently (several times per minute), and you can go
+back to previous versions for the last 30 days. However, it is
+challenging  to find the right version from the past when there are
+so many of them and when the different versions are not annotated with
+sensible comments. Another deficiency of Dropbox and Google Drive is
+that they sync all your files in a folder, a feature you clearly do not
+want if there are many large files (simulation data, visualizations,
+movies, binaries from compilations,
+temporary scratch files, automatically generated copies)
+that can easily be regenerated.
+
+<p>
+However, the most serious problem with Dropbox and Google Drive arises
+when several people edit files simultaneously: it can be difficult
+detect who did what when, roll back to previous versions, and to
+manually merge the edits when these are incompatible. Then one needs
+more sophisticated tools, which means a <em>true version control system</em>.
+The following text aims at providing you with the minimum information
+to started with Git, the leading version control system, combined
+with project hosting services for file storage.
+
+<h2 id="___sec2">Repositories and local copies </h2>
+
+<p>
+The mentioned services host all your files in a specific project in what
+is known as a <em>repository</em>, or <em>repo</em> for short.  When a copy of the
+files are wanted on a certain computer, one clones the repository on
+that computer.  This creates a local copy of the files. Now files can
+be edited, new ones can be added, and files can be deleted.  These
+changes are then brought back to the repository.  If users at
+different computers synchronize their files frequently with the
+repository, most modern version control systems will be able to merge
+changes in files that have been edited simultaneously on different
+computers. This is perhaps one of the most useful features of project
+hosting services. However, the merge functionality clearly works best
+for pure text files and less well for binary files, such as PDF files,
+MS Word or Excel documents, and OpenOffice documents.
+
+<h2 id="___sec3">Installing Git </h2>
+
+<p>
+The installation of Git on various systems is described
+on the <a href="http://git-scm.com/" target="_self">Git website</a> under the <em>Download</em> section.
+Git involves compiled code so it is most convenient to download a
+precompiled binary version of the software on Windows, Mac and other
+Linux computers.
+On Ubuntu or any Debian-based system the relevant installation command is
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; sudo apt-get install git gitk git-doc
+</pre></div>
+<p>
+This tutorial explains Git interaction through command-line applications
+in a terminal window. There are numerous <a href="https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools#Graphical_Interfaces" target="_self">graphical user interfaces to
+Git</a>. Three examples are
+<a href="http://git-cola.github.com/downloads.html" target="_self">git-cola</a>,
+<a href="https://code.google.com/p/tortoisegit/" target="_self">TortoiseGit</a>, and
+<a href="http://sourcetreeapp.com/" target="_self">SourceTree</a>.
+
+<p>
+Make a file <code>.gitconfig</code> in your home directory with information on
+your full name, email address, your favorite text editor, and
+the name of an "excludes file" which defines the file types that Git
+should omit when bringing new directories under version control.
+Here is a simplified version of the author's <code>.gitconfig</code> file:
+<p>
+
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[user]
+name = Hans Petter Langtangen
+email = hpl@simula.no
+editor = emacs
+
+[core]
+excludesfile = ~/.gitignore
+</pre></div>
+<p>
+The "excludes file" is called <code>.gitignore</code> and must list,
+using the Unix Shell Wildcard notation,
+the type of files that you do not need to have under version control,
+because they represent garbage or temporary information,
+or they can easily be regenerated from
+some other source files. A suggested <a href="http://hplgit.github.com/teamods/bitgit/src-bitgit/.gitignore" target="_self"><tt>.gitignore</tt></a> file looks like
+
+<p>
+
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"># compiled files:
+*.o
+*.so
+*.a
+# temporary files:
+*.bak
+*.swp
+*~
+.*~
+*.old
+tmp*
+temp*
+.#*
+\#*
+# tex files:
+*.log
+*.dvi
+*.aux
+*.blg
+*.idx
+*.nav
+*.out
+*.toc
+*.snm
+*.vrb
+# eclipse files:
+*.cproject
+*.project
+# misc:
+.DS_Store
+</pre></div>
+<p>
+Be critical to what kind of files you really need a full history of.
+For example, you do not want to populate the repository with
+big graphics files of the type that can easily be regenerated by
+some program.
+
 <p>
 <p>
 <!-- navigation buttons at the bottom of the page -->
