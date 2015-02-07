@@ -6,7 +6,7 @@
        (see http://www.peterhaschke.com/About).
   -->
   <head>
-  <title>Teaching</title>
+  <title>Comparison of my two books on Python programming</title>
 <!--
   <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light.css" rel="stylesheet" type="text/css" title="light"/>
 -->
@@ -66,50 +66,70 @@
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Teaching ', 1, None, '___sec0'),
-              (' Current courses ', 2, None, '___sec1')]}
+ 'sections': [(' Comparison of my two books on Python programming ',
+               1,
+               None,
+               '___sec0')]}
 end of tocinfo -->
 
 
 <!-- ------------------- main content ---------------------- -->
 
-<h1 id="___sec0">Teaching </h1>
+<h1 id="___sec0">Comparison of my two books on Python programming </h1>
 
 <p>
-<!-- FIGURE: [fig/hpl4.jpg, width=785] -->
+I have written two books on Python programming:
 
 <p>
-One of my major and most rewarding interests the last 10+ years is the
-integration of programming and simulation in basic science education.
-This effort is a contribution to the University's famous,
-award-winning <a href="http://www.mn.uio.no/english/about/collaboration/cse/" target="_self">Computing in Science Education</a> project.
+<img src="fig/TCSE6_pic.jpg" width=160 style="margin: 0px 20px 0px 0px;">
+<img src="fig/TCSE3_pic.jpg" width=160 style="margin: 0px 20px 0px 0px;">
+<br>
 
 <p>
-Traditionally, science courses with much use of mathematical models
-applied pen and papir techniques to solve the mathematical
-problems. This is still so in most courses in the world. At the
-University of Oslo, however, we try to use the computer to help us
-with the mathematics, because this is the way one does mathematics
-today in industry and research.  Students learn to program and solve
-mathematical problems through programming from day 1 in the course
-<a href="http://www.uio.no/studier/emner/matnat/ifi/INF1100/index-eng.html" target="_self">INF1100 Introduction to programming with scientific applications</a>
-based on my book <a href="http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642549586/ref=sr_1_1?s=books&ie=UTF8&qid=1423138725&sr=1-1&keywords=langtangen" target="_self">A Primer on Scientific Programming with Python</a>. Later
-science courses follow up with real-world problem solving through
-programming. For example, our multi-variate calculus and linear
-algebra courses in mathematics are fully integrated with numerical
-methods and programming. While most other universities utilize
-computer-based mathematical methods at the master's or Ph.D.&nbsp;levels,
-we offer a unique computational approach from the very beginning of
-the bachelor studies.
+Since the titles are similar, people often ask me what the differences
+between these books are.  <em>Python Scripting for Computational Science</em>
+was written for researchers and students having traditional
+programming experience with specialized science codes in Fortran, C,
+or C++.  The book explains primarily how Python can be used to
+efficiently automate the many administrative tasks encountered by
+computational scientist (preparing data files, running experiments,
+gluing programs, managing files and directories, communicating through
+network, equipping programs with command-line or graphical user
+interfaces, etc.). Administrative programs also often need to do some
+data analysis and numerical computations so NumPy/SciPy and coupling
+of Python with Fortran, C, and C++ are also important topics in this
+book.
 
-<h2 id="___sec1">Current courses </h2>
+<p>
+<em>A Primer on Scientific Programming with Python</em> was written for
+teaching beginning students how to program computers, with emphasis on
+using the computer to solve mathematical problems from applied
+science. We use Python because this allows a continuous transition
+from Matlab-style &quot;flat&quot; programs to Java/C++-style object-oriented
+programs. The book does not cover administrative tasks with processes,
+files, user interfaces, etc., but focuses solely on numerical
+computing using examples from calculus, physics, biology, and
+finance. The goal is to teach a beginner the most important
+constructions in a programming language, how to think about
+programming, and how to use programming in combination with numerical
+methods as a powerful tool to attack mathematical problems.
 
-<ul>
- <li> Fall: <a href="http://www.uio.no/studier/emner/matnat/ifi/INF1100/index-eng.html" target="_self">INF1100 Introduction to programming with scientific applications</a></li>
- <li> Fall: <a href="http://www.uio.no/studier/emner/matnat/ifi/INF5620/index-eng.html" target="_self">INF5620 Numerical solution of partial differential equtions</a></li>
-</ul>
+<p>
+The book emphasizes the use of a subset of Python and an additional
+package SciTools so that the transition to Matlab, which is widely
+used in later science courses, is as easy and smooth as possible (a
+key feature to get accept for using Python as the first language in
+science programs).  In particular, we have an interface to
+visualization which is very close to Matlab with respect to syntax and
+functionality, but several alternative visualization packages
+(including Matlab, Matplotlib, Gnuplot, and Vtk) can be used as
+backend.
 
-<img src="fig/uio_logo_trans.png" width=100 style="box-shadow: 0px 0px 0px 0px #93a1a1; margin: 20px 0px 20px 20px;">
+<p>
+I have extensive experience with using both books in large courses
+at the University of Oslo. Although the <em>Primer</em> book is intended for
+beginners, it has become popular among professionals too, especially for
+seeing how Python is a good alternative to Matlab.
 
 <!-- ------------------- end of main content --------------- -->
 
