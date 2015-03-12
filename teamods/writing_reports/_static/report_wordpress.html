@@ -55,10 +55,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -95,7 +95,7 @@ Table of contents</h2>
 <a href="#___sec8"> Bibliography </a><br>
 </p>
 
-<h1>Mathematical problem <a name="math:problem"></a></h1>
+<h1 id="math:problem">Mathematical problem</h1>
 
 <p>
 We address the initial-value problem
@@ -116,7 +116,7 @@ is relevant for physical phenomena featuring exponential decay
 in time, e.g., vertical pressure variation in the atmosphere,
 cooling of an object, and radioactive decay.
 
-<h1>Numerical solution method <a name="numerical:problem"></a></h1>
+<h1 id="numerical:problem">Numerical solution method</h1>
 
 <p>
 We introduce a mesh in time with points $latex 0 = t_0 < t_1 \cdots < t_{N_t}=T$.
@@ -146,11 +146,11 @@ for $latex n=0,1,\ldots,N_t-1$. This scheme corresponds to
     scheme when $latex \theta=1/2$</li>
 </ul>
 
-<h1>Implementation  <a name="___sec2"></a></h1>
+<h1 id="___sec2">Implementation </h1>
 
 <p>
 The numerical method is implemented in a Python function
-<a href="#Langtangen_2012">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>decay_mod</tt></a> module):
+<a href="#Langtangen_2014">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>decay_mod</tt></a> module):
 
 <p>
 
@@ -169,29 +169,29 @@ The numerical method is implemented in a Python function
     <span style="color: #008000; font-weight: bold">return</span> u, t
 </pre></div>
 
-<h1>Numerical experiments  <a name="___sec3"></a></h1>
+<h1 id="___sec3">Numerical experiments </h1>
 
 <p>
 We define a set of numerical experiments where $latex I$, $latex a$, and $latex T$ are
 fixed, while $latex \Delta t$ and $latex \theta$ are varied.
 In particular, $latex I=1$, $latex a=2$, $latex \Delta t = 1.25, 0.75, 0.5, 0.1$.
 
-<h2>The Backward Euler method  <a name="___sec4"></a></h2>
+<h2 id="___sec4">The Backward Euler method </h2>
 
 <p>
 <center><p><img src="https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/BE.png" align="bottom" width=800></p></center>
 
-<h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
+<h2 id="___sec5">The Crank-Nicolson method </h2>
 
 <p>
 <center><p><img src="https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/CN.png" align="bottom" width=800></p></center>
 
-<h2>The Forward Euler method  <a name="___sec6"></a></h2>
+<h2 id="___sec6">The Forward Euler method </h2>
 
 <p>
 <center><p><img src="https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/FE.png" align="bottom" width=800></p></center>
 
-<h2>Error vs $latex \Delta t$  <a name="___sec7"></a></h2>
+<h2 id="___sec7">Error vs $latex \Delta t$ </h2>
 
 <p>
 How $latex E$ varies with $latex \Delta t$ for $latex \theta=0,0.5,1$
@@ -210,7 +210,7 @@ non-physically.
 <p>
 <center> 
 <hr class="figure">
-<center><p class="caption">Figure 1:  Variation of the error with the time step. <a name="fig:error"></a> </p></center>
+<center><p class="caption">Figure 1:  Variation of the error with the time step. <div id="fig:error"></div> </p></center>
 <p><img src="https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/error.png" align="bottom" width=400></p>
 </center>
 
@@ -247,17 +247,17 @@ The numbers corresponding to the figure above are given in the table below.
 </div>
 
 
-<h1>Bibliography  <a name="___sec8"></a></h1>
+<h1 id="___sec8">Bibliography </h1>
 
 <ol>
- <li> <a name="Iserles_2009"></a> <b>A. Iserles</b>. 
+ <li> <div id="Iserles_2009"></div> <b>A. Iserles</b>. 
     <em>A First Course in the Numerical Analysis of Differential Equations</em>,
     Cambridge University Press,
     2009.</li>
- <li> <a name="Langtangen_2012"></a> <b>H. P. Langtangen</b>. 
+ <li> <div id="Langtangen_2014"></div> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
     Springer,
-    2012.</li>
+    2014.</li>
 </ol>
 
 

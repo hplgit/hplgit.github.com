@@ -51,6 +51,7 @@ body .nt { color: #008000; font-weight: bold } /* Name.Tag */
 body .nv { color: #B8860B } /* Name.Variable */
 body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
 body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
 body .mf { color: #666666 } /* Literal.Number.Float */
 body .mh { color: #666666 } /* Literal.Number.Hex */
 body .mi { color: #666666 } /* Literal.Number.Integer */
@@ -89,7 +90,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
      <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
       <span class="s2">&quot;# Experiments with Schemes for Exponential Decay\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;**Dec 13, 2014**\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;**Mar 12, 2015**\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;**Summary.** This report investigates the accuracy of three finite difference\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;schemes for the ordinary differential equation $u&#39;=-au$ with the\n&quot;</span><span class="p">,</span>
@@ -106,7 +107,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;## Mathematical problem\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;&lt;a name=\&quot;math:problem\&quot;/&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;div id=\&quot;math:problem\&quot;&gt;&lt;/div&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
@@ -118,7 +119,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
      <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
       <span class="s2">&quot;&lt;!-- Equation labels as ordinary links --&gt;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;&lt;a name=\&quot;ode\&quot;/&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;div id=\&quot;ode\&quot;&gt;&lt;/div&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;$$\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\\begin{equation}\n&quot;</span><span class="p">,</span>
@@ -132,7 +133,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
      <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
       <span class="s2">&quot;&lt;!-- Equation labels as ordinary links --&gt;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;&lt;a name=\&quot;initial:value\&quot;/&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;div id=\&quot;initial:value\&quot;&gt;&lt;/div&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;$$\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\\begin{equation} \n&quot;</span><span class="p">,</span>
@@ -152,7 +153,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
       <span class="s2">&quot;cooling of an object, and radioactive decay.\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;## Numerical solution method\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;&lt;a name=\&quot;numerical:problem\&quot;/&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;div id=\&quot;numerical:problem\&quot;&gt;&lt;/div&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
@@ -161,8 +162,8 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
       <span class="s2">&quot;mesh points: $\\Delta t = t_{n}-t_{n-1}$, $n=1,\\ldots,N_t$. Let\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;$u^n$ be the numerical approximation to the exact solution at $t_n$.\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;The $\\theta$-rule [Iserles_2009]\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;is used to solve [(1)](#initial:value) numerically:&quot;</span>
+      <span class="s2">&quot;The $\\theta$-rule [[Iserles_2009]](#Iserles_2009)\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;is used to solve [(1)](#ode) numerically:&quot;</span>
      <span class="p">]</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -193,7 +194,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;The numerical method is implemented in a Python function\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;[Langtangen_2012] `solver` (found in the [`decay_mod`](https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py) module):&quot;</span>
+      <span class="s2">&quot;[[Langtangen_2014]](#Langtangen_2014) `solver` (found in the [`decay_mod`](https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py) module):&quot;</span>
      <span class="p">]</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -287,7 +288,8 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;&lt;a name=\&quot;fig:error\&quot;/&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;div id=\&quot;fig:error\&quot;&gt;&lt;/div&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;&lt;p&gt;Variation of the error with the time step.&lt;/p&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;&lt;img src=\&quot;error.png\&quot; width=400&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
@@ -328,15 +330,15 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
       <span class="s2">&quot;## Bibliography\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot; 1. \\label{Iserles_2009} **A. Iserles**. \n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot; 1. &lt;div id=\&quot;Iserles_2009\&quot;&gt;&lt;/div&gt; **A. Iserles**. \n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;    *A First Course in the Numerical Analysis of Differential Equations*,\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;    Cambridge University Press,\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;    2009.\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot; 2. \\label{Langtangen_2012} **H. P. Langtangen**. \n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot; 2. &lt;div id=\&quot;Langtangen_2014\&quot;&gt;&lt;/div&gt; **H. P. Langtangen**. \n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;    *A Primer on Scientific Programming With Python*,\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;    Springer,\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;    2012.&quot;</span>
+      <span class="s2">&quot;    2014.&quot;</span>
      <span class="p">]</span>
     <span class="p">}</span>
    <span class="p">],</span>

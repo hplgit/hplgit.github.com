@@ -47,7 +47,9 @@ Table of contents: Run pandoc with --toc option -->
 
 <!-- !split -->
 <h2 id="mathematical-problem">Mathematical problem</h2>
-<p><a name="math:problem"/></p>
+<div id="math:problem">
+
+</div>
 <p>We address the initial-value problem</p>
 <p><span class="math">\[
 \begin{equation}
@@ -60,9 +62,11 @@ u(0)  = I,                         \label{initial:value}
 \end{equation}
 \]</span> where <span class="math">\(a\)</span>, <span class="math">\(I\)</span>, and <span class="math">\(T\)</span> are prescribed parameters, and <span class="math">\(u(t)\)</span> is the unknown function to be estimated. This mathematical model is relevant for physical phenomena featuring exponential decay in time, e.g., vertical pressure variation in the atmosphere, cooling of an object, and radioactive decay.</p>
 <h2 id="numerical-solution-method">Numerical solution method</h2>
-<p><a name="numerical:problem"/></p>
+<div id="numerical:problem">
+
+</div>
 <p>We introduce a mesh in time with points <span class="math">\(0 = t_0 &lt; t_1 \cdots &lt; t_{N_t}=T\)</span>. For simplicity, we assume constant spacing <span class="math">\(\Delta t\)</span> between the mesh points: <span class="math">\(\Delta t = t_{n}-t_{n-1}\)</span>, <span class="math">\(n=1,\ldots,N_t\)</span>. Let <span class="math">\(u^n\)</span> be the numerical approximation to the exact solution at <span class="math">\(t_n\)</span>.</p>
-<p>The <span class="math">\(\theta\)</span>-rule <span class="citation">@Iserles_2009</span> is used to solve \eqref{ode} numerically:</p>
+<p>The <span class="math">\(\theta\)</span>-rule <span class="citation">[@Iserles_2009]</span> is used to solve \eqref{ode} numerically:</p>
 <p>$$</p>
 <p>u^{n+1} = u^n,</p>
 <p><span class="math">\($ for \)</span>n=0,1,,N_t-1$. This scheme corresponds to</p>
@@ -72,7 +76,7 @@ u(0)  = I,                         \label{initial:value}
 <li>The <a href="http://en.wikipedia.org/wiki/Crank-Nicolson">Crank-Nicolson</a> scheme when <span class="math">\(\theta=1/2\)</span></li>
 </ul>
 <h2 id="implementation">Implementation</h2>
-<p>The numerical method is implemented in a Python function <span class="citation">@Langtangen_2012</span> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py"><code>decay_mod</code></a> module):</p>
+<p>The numerical method is implemented in a Python function <span class="citation">[@Langtangen_2014]</span> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py"><code>decay_mod</code></a> module):</p>
 <pre class="sourceCode Python"><code class="sourceCode python"><span class="kw">def</span> solver(I, a, T, dt, theta):
     <span class="co">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     dt = <span class="dt">float</span>(dt)            <span class="co"># avoid integer division</span>
@@ -105,7 +109,7 @@ u(0)  = I,                         \label{initial:value}
 <h3 id="error-vs-delta-t">Error vs <span class="math">\(\Delta t\)</span></h3>
 <p>How <span class="math">\(E\)</span> varies with <span class="math">\(\Delta t\)</span> for <span class="math">\(\theta=0,0.5,1\)</span> is shown in <a href="#fig:error">Figure</a>.</p>
 <p><em>Observe:</em> The data points for the three largest <span class="math">\(\Delta t\)</span> values in the Forward Euler method are not relevant as the solution behaves non-physically.</p>
-<!-- <img src="error.png" width=400><p><em>Variation of the error with the time step. <a name="fig:error"/></em></p> -->
+<!-- <img src="error.png" width=400><p><em>Variation of the error with the time step. <div id="fig:error"></div></em></p> -->
 <div class="figure">
 <img src="error.png" />
 </div>
@@ -149,8 +153,14 @@ u(0)  = I,                         \label{initial:value}
 <p><em>Summary.</em> 1. <span class="math">\(\theta =1\)</span>: <span class="math">\(E\sim \Delta t\)</span> (first-order convergence). 2. <span class="math">\(\theta =0.5\)</span>: <span class="math">\(E\sim \Delta t^2\)</span> (second-order convergence). 3. <span class="math">\(\theta =1\)</span> is always stable and gives qualitatively corrects results. 4. <span class="math">\(\theta =0.5\)</span> never blows up, but may give oscillating solutions if <span class="math">\(\Delta t\)</span> is not sufficiently small. 5. <span class="math">\(\theta =0\)</span> suffers from fast-growing solution if <span class="math">\(\Delta t\)</span> is not small enough, but even below this limit one can have oscillating solutions that disappear if <span class="math">\(\Delta t\)</span> is sufficiently small.</p>
 <h2 id="bibliography">Bibliography</h2>
 <ol style="list-style-type: decimal">
-<li> <strong>A. Iserles</strong>. <em>A First Course in the Numerical Analysis of Differential Equations</em>, Cambridge University Press, 2009.</li>
-<li> <strong>H. P. Langtangen</strong>. <em>A Primer on Scientific Programming With Python</em>, Springer, 2012.</li>
+<li><div id="Iserles_2009">
+
+</div>
+<strong>A. Iserles</strong>. <em>A First Course in the Numerical Analysis of Differential Equations</em>, Cambridge University Press, 2009.</li>
+<li><div id="Langtangen_2014">
+
+</div>
+<strong>H. P. Langtangen</strong>. <em>A Primer on Scientific Programming With Python</em>, Springer, 2014.</li>
 </ol>
 </body>
 </html>

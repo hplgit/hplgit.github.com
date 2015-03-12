@@ -51,6 +51,7 @@ body .nt { color: #008000; font-weight: bold } /* Name.Tag */
 body .nv { color: #B8860B } /* Name.Variable */
 body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
 body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
 body .mf { color: #666666 } /* Literal.Number.Float */
 body .mh { color: #666666 } /* Literal.Number.Hex */
 body .mi { color: #666666 } /* Literal.Number.Integer */
@@ -93,7 +94,7 @@ Table of contents: Run pandoc with --toc option --&gt;
 
 &lt;!-- !split --&gt;
 ## Mathematical problem
-&lt;a name=&quot;math:problem&quot;/&gt;
+&lt;div id=&quot;math:problem&quot;&gt;&lt;/div&gt;
 
 
 
@@ -117,7 +118,7 @@ in time, e.g., vertical pressure variation in the atmosphere,
 cooling of an object, and radioactive decay.
 
 ## Numerical solution method
-&lt;a name=&quot;numerical:problem&quot;/&gt;
+&lt;div id=&quot;numerical:problem&quot;&gt;&lt;/div&gt;
 
 
 
@@ -126,7 +127,7 @@ For simplicity, we assume constant spacing <span class="s">$</span><span class="
 mesh points: <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t </span><span class="o">=</span><span class="nb"> t_{n}</span><span class="o">-</span><span class="nb">t_{n</span><span class="o">-</span><span class="m">1</span><span class="nb">}</span><span class="s">$</span>, <span class="s">$</span><span class="nb">n</span><span class="o">=</span><span class="m">1</span><span class="nb">,</span><span class="nv">\ldots</span><span class="nb">,N_t</span><span class="s">$</span>. Let
 <span class="s">$</span><span class="nb">u^n</span><span class="s">$</span> be the numerical approximation to the exact solution at <span class="s">$</span><span class="nb">t_n</span><span class="s">$</span>.
 
-The <span class="s">$</span><span class="nv">\theta</span><span class="s">$</span>-rule @Iserles<span class="nb">_</span>2009
+The <span class="s">$</span><span class="nv">\theta</span><span class="s">$</span>-rule [@Iserles<span class="nb">_</span>2009]
 is used to solve EQREF<span class="nb">{</span>ode<span class="nb">}</span> numerically:
 
 <span class="sb">$$</span><span class="nb"></span>
@@ -147,7 +148,7 @@ for <span class="s">$</span><span class="nb">n</span><span class="o">=</span><sp
 
 
 The numerical method is implemented in a Python function
-@Langtangen<span class="nb">_</span>2012 `solver` (found in the [`decay<span class="nb">_</span>mod`](https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc<span class="nb">_</span>mod.py) module):
+[@Langtangen<span class="nb">_</span>2014] `solver` (found in the [`decay<span class="nb">_</span>mod`](https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc<span class="nb">_</span>mod.py) module):
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<span class="nb">{</span>.Python<span class="nb">}</span>
@@ -220,8 +221,8 @@ non-physically.
 
 
 
-&lt;!-- &lt;img src=&quot;error.png&quot; width=400&gt;&lt;p&gt;&lt;em&gt;Variation of the error with the time step. &lt;a name=&quot;fig:error&quot;/&gt;&lt;/em&gt;&lt;/p&gt; --&gt;
-![&lt;p&gt;&lt;em&gt;Variation of the error with the time step. &lt;a name=&quot;fig:error&quot;/&gt;&lt;/em&gt;&lt;/p&gt;](error.png)
+&lt;!-- &lt;img src=&quot;error.png&quot; width=400&gt;&lt;p&gt;&lt;em&gt;Variation of the error with the time step. &lt;div id=&quot;fig:error&quot;&gt;&lt;/div&gt;&lt;/em&gt;&lt;/p&gt; --&gt;
+![&lt;p&gt;&lt;em&gt;Variation of the error with the time step. &lt;div id=&quot;fig:error&quot;&gt;&lt;/div&gt;&lt;/em&gt;&lt;/p&gt;](error.png)
 
 
 The numbers corresponding to the figure above are given in the table below.
@@ -251,14 +252,14 @@ The numbers corresponding to the figure above are given in the table below.
 ## Bibliography
 
 
- 1. <span class="k">\label</span><span class="nb">{</span>Iserles<span class="nb">_</span>2009<span class="nb">}</span> **A. Iserles**. 
+ 1. &lt;div id=&quot;Iserles<span class="nb">_</span>2009&quot;&gt;&lt;/div&gt; **A. Iserles**. 
     *A First Course in the Numerical Analysis of Differential Equations*,
     Cambridge University Press,
     2009.
- 2. <span class="k">\label</span><span class="nb">{</span>Langtangen<span class="nb">_</span>2012<span class="nb">}</span> **H. P. Langtangen**. 
+ 2. &lt;div id=&quot;Langtangen<span class="nb">_</span>2014&quot;&gt;&lt;/div&gt; **H. P. Langtangen**. 
     *A Primer on Scientific Programming With Python*,
     Springer,
-    2012.
+    2014.
 </pre></div>
 </body>
 </html>

@@ -56,7 +56,7 @@ table {	border-collapse: collapse; border-spacing: 0; }
 body {
   font-size: 1em;
   line-height: 1.5;
-  background: #e7e7e7 url(https://raw.githubusercontent.com/hplgit/num-methods-for-PDEs/master/doc/web/images/body-bg.png) 0 0 repeat;
+  background: #e7e7e7 url(https://cdn.rawgit.com/hplgit/num-methods-for-PDEs/master/doc/web/images/body-bg.png) 0 0 repeat;
   font-family: 'Helvetica Neue', Helvetica, Arial, serif;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
   color: #6d6d6d;
@@ -196,10 +196,10 @@ footer a:hover {
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -264,7 +264,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo.</b></center>
 <p>
-<center><h4>Dec 13, 2014</h4></center> <!-- date -->
+<center><h4>Mar 12, 2015</h4></center> <!-- date -->
 <p>
 <b>Summary.</b> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation \( u'=-au \) with the
@@ -286,7 +286,7 @@ Table of contents</h2>
 <a href="#___sec8"> Bibliography </a><br>
 </p>
 
-<h1>Mathematical problem <a name="math:problem"></a></h1>
+<h1 id="math:problem">Mathematical problem</h1>
 
 <p>
 We address the initial-value problem
@@ -304,7 +304,7 @@ is relevant for physical phenomena featuring exponential decay
 in time, e.g., vertical pressure variation in the atmosphere,
 cooling of an object, and radioactive decay.
 
-<h1>Numerical solution method <a name="numerical:problem"></a></h1>
+<h1 id="numerical:problem">Numerical solution method</h1>
 
 <p>
 We introduce a mesh in time with points \( 0 = t_0 < t_1 \cdots < t_{N_t}=T \).
@@ -331,52 +331,52 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
     scheme when \( \theta=1/2 \)</li>
 </ul>
 
-<h1>Implementation  <a name="___sec2"></a></h1>
+<h1 id="___sec2">Implementation </h1>
 
 <p>
 The numerical method is implemented in a Python function
-<a href="#Langtangen_2012">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>decay_mod</tt></a> module):
+<a href="#Langtangen_2014">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>decay_mod</tt></a> module):
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
-    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
-    dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)            <span style="color: #408080; font-style: italic"># avoid integer division</span>
-    Nt <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #408080; font-style: italic"># no of time intervals</span>
-    T <span style="color: #666666">=</span> Nt<span style="color: #666666">*</span>dt                 <span style="color: #408080; font-style: italic"># adjust T to fit time step dt</span>
-    u <span style="color: #666666">=</span> zeros(Nt<span style="color: #666666">+1</span>)           <span style="color: #408080; font-style: italic"># array of u[n] values</span>
-    t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, T, Nt<span style="color: #666666">+1</span>)  <span style="color: #408080; font-style: italic"># time mesh</span>
+<!-- code=python (!bc pycod) typeset with pygments style "trac" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="font-weight: bold">def</span> <span style="color: #990000; font-weight: bold">solver</span>(I, a, T, dt, theta):
+    <span style="color: #bb8844">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
+    dt <span style="font-weight: bold">=</span> <span style="color: #999999">float</span>(dt)            <span style="color: #999988; font-style: italic"># avoid integer division</span>
+    Nt <span style="font-weight: bold">=</span> <span style="color: #999999">int</span>(<span style="color: #999999">round</span>(T<span style="font-weight: bold">/</span>dt))     <span style="color: #999988; font-style: italic"># no of time intervals</span>
+    T <span style="font-weight: bold">=</span> Nt<span style="font-weight: bold">*</span>dt                 <span style="color: #999988; font-style: italic"># adjust T to fit time step dt</span>
+    u <span style="font-weight: bold">=</span> zeros(Nt<span style="font-weight: bold">+</span><span style="color: #009999">1</span>)           <span style="color: #999988; font-style: italic"># array of u[n] values</span>
+    t <span style="font-weight: bold">=</span> linspace(<span style="color: #009999">0</span>, T, Nt<span style="font-weight: bold">+</span><span style="color: #009999">1</span>)  <span style="color: #999988; font-style: italic"># time mesh</span>
 
-    u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> I                  <span style="color: #408080; font-style: italic"># assign initial condition</span>
-    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, Nt):    <span style="color: #408080; font-style: italic"># n=0,1,...,Nt-1</span>
-        u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
-    <span style="color: #008000; font-weight: bold">return</span> u, t
+    u[<span style="color: #009999">0</span>] <span style="font-weight: bold">=</span> I                  <span style="color: #999988; font-style: italic"># assign initial condition</span>
+    <span style="font-weight: bold">for</span> n <span style="font-weight: bold">in</span> <span style="color: #999999">range</span>(<span style="color: #009999">0</span>, Nt):    <span style="color: #999988; font-style: italic"># n=0,1,...,Nt-1</span>
+        u[n<span style="font-weight: bold">+</span><span style="color: #009999">1</span>] <span style="font-weight: bold">=</span> (<span style="color: #009999">1</span> <span style="font-weight: bold">-</span> (<span style="color: #009999">1</span><span style="font-weight: bold">-</span>theta)<span style="font-weight: bold">*</span>a<span style="font-weight: bold">*</span>dt)<span style="font-weight: bold">/</span>(<span style="color: #009999">1</span> <span style="font-weight: bold">+</span> theta<span style="font-weight: bold">*</span>dt<span style="font-weight: bold">*</span>a)<span style="font-weight: bold">*</span>u[n]
+    <span style="font-weight: bold">return</span> u, t
 </pre></div>
 
-<h1>Numerical experiments  <a name="___sec3"></a></h1>
+<h1 id="___sec3">Numerical experiments </h1>
 
 <p>
 We define a set of numerical experiments where \( I \), \( a \), and \( T \) are
 fixed, while \( \Delta t \) and \( \theta \) are varied.
 In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 
-<h2>The Backward Euler method  <a name="___sec4"></a></h2>
+<h2 id="___sec4">The Backward Euler method </h2>
 
 <p>
 <center><p><img src="BE.png" align="bottom" width=800></p></center>
 
-<h2>The Crank-Nicolson method  <a name="___sec5"></a></h2>
+<h2 id="___sec5">The Crank-Nicolson method </h2>
 
 <p>
 <center><p><img src="CN.png" align="bottom" width=800></p></center>
 
-<h2>The Forward Euler method  <a name="___sec6"></a></h2>
+<h2 id="___sec6">The Forward Euler method </h2>
 
 <p>
 <center><p><img src="FE.png" align="bottom" width=800></p></center>
 
-<h2>Error vs \( \Delta t \)  <a name="___sec7"></a></h2>
+<h2 id="___sec7">Error vs \( \Delta t \) </h2>
 
 <p>
 How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
@@ -395,7 +395,7 @@ non-physically.
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 1:  Variation of the error with the time step. <a name="fig:error"></a> </p></center>
+<center><p class="caption">Figure 1:  Variation of the error with the time step. <div id="fig:error"></div> </p></center>
 <p><img src="error.png" align="bottom" width=400></p>
 </center>
 
@@ -432,20 +432,20 @@ The numbers corresponding to the figure above are given in the table below.
 </div>
 
 
-<h1>Bibliography  <a name="___sec8"></a></h1>
+<h1 id="___sec8">Bibliography </h1>
 
 <p>
 <!-- begin bibliography -->
 
 <ol>
- <li> <a name="Iserles_2009"></a> <b>A. Iserles</b>. 
+ <li> <div id="Iserles_2009"></div> <b>A. Iserles</b>. 
     <em>A First Course in the Numerical Analysis of Differential Equations</em>,
     Cambridge University Press,
     2009.</li>
- <li> <a name="Langtangen_2012"></a> <b>H. P. Langtangen</b>. 
+ <li> <div id="Langtangen_2014"></div> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
     Springer,
-    2012.</li>
+    2014.</li>
 </ol>
 
 <!-- end bibliography -->
