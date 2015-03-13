@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Need-to-Know Intro to Version Control Systems and Project Hosting Services">
-<meta name="keywords" content="Bitbucket,Googlecode,GitHub,gh-pages on GitHub,merging files,forking (a repo),pull request">
+<meta name="keywords" content="Bitbucket,GitHub,gh-pages on GitHub,merging files,forking (a repo),pull request">
 
 <title>Need-to-Know Intro to Version Control Systems and Project Hosting Services</title>
 
@@ -83,26 +83,23 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'bitgit:bitbucket:URLs',
                'bitgit:bitbucket:URLs'),
-              (' Googlecode ', 1, 'bitgit:googlecode', 'bitgit:googlecode'),
-              (' Creating a new project ', 2, None, '___sec12'),
-              (' Wiki pages ', 2, None, '___sec13'),
               (' GitHub ', 1, 'bitgit:github', 'bitgit:github'),
-              (' Creating a new project ', 2, None, '___sec15'),
-              (' Collaborating ', 3, None, '___sec16'),
-              (' Wiki pages ', 2, None, '___sec17'),
-              (' Project web pages ', 2, None, '___sec18'),
-              (' User web pages ', 2, None, '___sec19'),
+              (' Creating a new project ', 2, None, '___sec12'),
+              (' Collaborating ', 3, None, '___sec13'),
+              (' Wiki pages ', 2, None, '___sec14'),
+              (' Project web pages ', 2, None, '___sec15'),
+              (' User web pages ', 2, None, '___sec16'),
               (' Using Git ', 1, 'bitgit:git', 'bitgit:git'),
-              (' Basic Git commands ', 2, None, '___sec21'),
-              (' Cloning ', 3, None, '___sec22'),
-              (' The pull-change-push cycle ', 3, None, '___sec23'),
-              (' Viewing the history of files ', 3, None, '___sec24'),
-              (' Retrieving old files ', 3, None, '___sec25'),
+              (' Basic Git commands ', 2, None, '___sec18'),
+              (' Cloning ', 3, None, '___sec19'),
+              (' The pull-change-push cycle ', 3, None, '___sec20'),
+              (' Viewing the history of files ', 3, None, '___sec21'),
+              (' Retrieving old files ', 3, None, '___sec22'),
               (' Reset the entire repo to an old version ',
                3,
                None,
-               '___sec26'),
-              (' Going back to a previous commit ', 3, None, '___sec27'),
+               '___sec23'),
+              (' Going back to a previous commit ', 3, None, '___sec24'),
               (' Merging files with Git ',
                2,
                'bitgit:git:merge',
@@ -111,13 +108,13 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'bitgit:git:branch:stash',
                'bitgit:git:branch:stash'),
-              (' Branching ', 3, None, '___sec30'),
-              (' Stashing ', 3, None, '___sec31'),
+              (' Branching ', 3, None, '___sec27'),
+              (' Stashing ', 3, None, '___sec28'),
               (' Replacing pull by fetch and merge ',
                2,
                'bitgit:git:fetch',
                'bitgit:git:fetch'),
-              (' Configuring the `git diff` command ', 3, None, '___sec33'),
+              (' Configuring the `git diff` command ', 3, None, '___sec30'),
               (' Team work with forking and pull requests ',
                2,
                'bitgit:git:team',
@@ -126,15 +123,15 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'bitgit:git:clone:branches',
                'bitgit:git:clone:branches'),
-              (' Git workflows ', 2, None, '___sec36'),
-              (' Git tips ', 2, None, '___sec37'),
+              (' Git workflows ', 2, None, '___sec33'),
+              (' Git tips ', 2, None, '___sec34'),
               (' How can I see which files are tracked by Git? ',
                3,
                None,
-               '___sec38'),
-              (' How can I reduce the size of a repo? ', 3, None, '___sec39'),
-              (' How can I restore missing files? ', 3, None, '___sec40'),
-              (' More documentation on Git ', 2, None, '___sec41'),
+               '___sec35'),
+              (' How can I reduce the size of a repo? ', 3, None, '___sec36'),
+              (' How can I restore missing files? ', 3, None, '___sec37'),
+              (' More documentation on Git ', 2, None, '___sec38'),
               (' Appendix: Working with multiple GitHub accounts ',
                1,
                'appendix:github:multiple:accounts',
@@ -164,7 +161,7 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Deptartment of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Jan 21, 2015</h4></center> <!-- date -->
+<center><h4>Mar 13, 2015</h4></center> <!-- date -->
 <p>
 <div id="bitgit:top"></div>
 
@@ -244,21 +241,15 @@ with project hosting services for file storage.
 <h2 id="___sec2">Project hosting services </h2>
 
 <p>
-Five popular project hosting services are
-
-<ul>
-  <li> <a href="http://bigbucket.org" target="_self">Bitbucket</a> at <code>bitbucket.org</code></li>
-  <li> <a href="http://github.com" target="_self">GitHub</a> at <code>github.com</code></li>
-  <li> <a href="http://code.google.com" target="_self">Googlecode</a> at <code>code.google.com</code></li>
-  <li> <a href="https://launchpad.net" target="_self">Launchpad</a> at <code>launchpad.net</code></li>
-  <li> <a href="http://sourceforge.net/" target="_self">Sourceforge</a> at <code>sourceforge.net</code></li>
-</ul>
-
-All these services are very similar. Below we describe how you get
-started with Bitbucket, GitHub, and Googlecode. Launchpad works very
-similarly to the latter three, but the development of it seems to
-have stalled.
-All the project hosting services have
+Through the last decade, several popular project hosting sites
+appeared: <a href="http://sourceforge.net/" target="_self">Sourceforge</a>,
+<a href="http://code.google.com/" target="_self">Google code</a>,
+<a href="https://launchpad.net" target="_self">Launchpad</a>,
+<a href="http://bigbucket.org" target="_self">Bitbucket</a>, and
+<a href="http://github.com" target="_self">GitHub</a>.
+Today, the latter two stand out as the most successful,
+and we therefore concentrate on them in this quick intro.
+Both services have
 excellent introductions available at their web sites, but the recipes
 below are much shorter and aim at getting you started as quickly as
 possible by concentrating on the most important need-to-know steps.
@@ -313,21 +304,14 @@ is some very personal advice.
    stay away from Bitbucket as this site embeds the version of the
    file into its URL (but you can get around this problem with a trick
    described in the section <a href="#bitgit:bitbucket:URLs">Linking to Bitbucket files</a>).</li>
- <li> If you want to easily drop HTML files for documentation around in
-   your repo, Googlecode will display them as web pages right away,
-   while the procedure on GitHub is technically more complicated
-   (Bitbucket does not yet support web pages as part of a project).
-   Unfortunately, Googlecode does not allow MathJax for rendering
-   LaTeX mathematics in HTML files, but MathJax works well in
-   HTML files at GitHub.</li>
  <li> If a few collaborate on a project and everyone wants to be notified
    in email about changes in project files, the procedure on
-   Bitbucket and Googlecode is easier to use than the one on GitHub.</li>
+   Bitbucket is easier to use than the one on GitHub.</li>
 </ul>
 
 For the examples below, assume that you have some directory tree
-<code>my-project</code> with files that you want to host at Bitbucket, GitHub, or
-Googlecode and bring under version control. The official name of the
+<code>my-project</code> with files that you want to host at Bitbucket or GitHub
+and bring under version control. The official name of the
 project is "My Project".
 
 <h2 id="___sec5">Installing Git </h2>
@@ -603,140 +587,6 @@ requires the hash to be replaced by <code>default</code>.
 <p>
 <!-- !split -->
 
-<h1 id="bitgit:googlecode">Googlecode</h1>
-
-<p>
-To use Googlecode you need a general account on Google, which allows
-you to use Gmail, Google Docs, and other Google services.
-Googlecode offers free file hosting, but all the files are public and
-open to the world.
-
-<h2 id="___sec12">Creating a new project </h2>
-
-<p>
-Go to <a href="http://code.google.com/hosting" target="_self"><tt>http://code.google.com/hosting</tt></a> and click on
-<em>Creating a new project</em>. Fill out <em>all</em> the fields. For now
-the project name is <code>my-project</code>.
-You can
-choose between Git, Mercurial, or Subversion as version control
-system for your project, and this choice is difficult to change later.
-If you choose Git, you must create a file <code>.netrc</code> in your
-home directory containing the line
-<p>
-
-<!-- code=text (!bc dat) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">machine code.google.com login uname password pw
-</pre></div>
-<p>
-Here, <code>uname</code> is your username for the Google account and
-<code>pw</code> is the Googlecode password which is generated for you on
-<a href="https://code.google.com/hosting/settings" target="_self"><tt>https://code.google.com/hosting/settings</tt></a> when you
-are logged in.
-The <code>.netrc</code> file avoids typing or pasting in
-your long and complicated password every time you push changes to
-the repository on <code>code.google.com</code>.
-
-<p>
-The next step is to clone the empty repository on your local machine
-so that you can add files:
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git clone https://code.google.com/p/my-project/
-</pre></div>
-<p>
-Now you can go to the <code>my-project</code> directory and add files.
-Perform
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git add .
-Terminal&gt; git commit -am &#39;First import of files.&#39;
-Terminal&gt; git push origin master
-</pre></div>
-<p>
-Click on <em>Source</em> and
-<em>Browse</em> on the project's web page, and observe that the added
-files are visible on the project page.
-
-<p>
-A very strong and useful feature with Googlecode, in my opinion, is
-that one can place documentation of the project anywhere in
-the repository, and HTML and PDF will be correctly shown in
-web browsers. (All other project hosting sites
-demands either wiki pages or special web areas for locating documentation.)
-The URL to your files is
-<p>
-
-<!-- code=text (!bc dat) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://my-project.googlecode.com/git/
-</pre></div>
-<p>
-For other version control systems just replace <code>git</code> by
-<code>hg</code> or <code>svn</code>.
-For example, if we have HTML documentation of our project in
-the directory <code>doc/html</code>, we can point users to
-<p>
-
-<!-- code=text (!bc dat) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">https://my-project.googlecode.com/git/doc/html/index.html
-</pre></div>
-<p>
-The HTML will be rendered correctly as opposed to when you load
-the similar file into the web browser from the repository,
-<p>
-
-<!-- code=text (!bc dat) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://code.google.com/p/my-project/source/browse/doc/html/index.html
-</pre></div>
-<p>
-Now you can only see the HTML source code of this file, as is usual
-on other project hosting sites. We remark that MathJax
-mathematics within the HTML code is <em>not</em> rendered correctly. At the
-time of this writing, GitHub is the only service that offers full
-MathJax support when you need web pages with mathematics.
-
-<p>
-You can click on <em>Project Home</em> and then on <em>Administer</em> to edit the
-main page of the project. This is a wiki, using Google's wiki syntax,
-but it is quite easy to add links to your documentation, e.g.,
-<p>
-
-<!-- code=text (!bc dat) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Browse the
-[https://my-project.googlecode.com/git/doc/API/html/index.html
-API documentation].
-</pre></div>
-<p>
-It is easy to allow others to push their changes to the
-repository: click on <em>Sharing</em> and then on <em>Administer</em>.
-The Google account names of people you allow push (write) access can be
-listed under each other in the <em>Project committers</em> field.
-
-<h2 id="___sec13">Wiki pages </h2>
-
-<p>
-Wiki pages can intuitively be made directly in the browser. However,
-it is often more convenient to have them locally on your computer.
-Click on <em>Source</em> and choose <em>wiki</em> on the <em>Repository</em> pull down menu.
-The proper clone command to get a copy of the wiki repository then
-appears.
-
-<p>
-Googlecode applies their own Google wiki format. My preference is
-to write documentation in the neutral <a href="https://github.com/hplgit/doconce" target="_self">DocOnce</a> format and transform the document to LaTeX, HTML, Sphinx, and Google wiki.
-The wiki can then be copied from the project directories to the
-wiki directory and then pushed to the repository. This ensures
-that there is only one source of the documentation (despite the need
-for many formats) and that the wiki pages are frequently updated.
-
-<p>
-<!-- <a href="https://odespy.googlecode.com/git/doc/API/index.html" target="_self"><tt>https://odespy.googlecode.com/git/doc/API/index.html</tt></a> -->
-<!-- <a href="https://odespy.googlecode.com/git/doc/tutorial/html/wrap_odesolvers.html" target="_self"><tt>https://odespy.googlecode.com/git/doc/tutorial/html/wrap_odesolvers.html</tt></a> -->
-
-<p>
-<!-- !split -->
-
 <h1 id="bitgit:github">GitHub</h1>
 
 <p>
@@ -760,7 +610,7 @@ I do not recommend to provide an SSH key although it can be
 done (see  <a href="#appendix:github:multiple:accounts">Appendix: Working with multiple GitHub accounts</a>). It is easier
 to log in and add collaborators using their personal GitHub usernames.
 
-<h2 id="___sec15">Creating a new project </h2>
+<h2 id="___sec12">Creating a new project </h2>
 
 <p>
 Click on <em>New repository</em> on the main page and fill out a project
@@ -805,7 +655,7 @@ Terminal&gt; git push -u origin master
 <p>
 The daily file operations are explained in the section <a href="#bitgit:git">Using Git</a>.
 
-<h3 id="___sec16">Collaborating </h3>
+<h3 id="___sec13">Collaborating </h3>
 
 <p>
 To give others permissions to push their edits of files to the
@@ -831,7 +681,7 @@ the <em>watch</em> button), respectively.
 <!-- No, this doesn't work: Clicking the <em>Email</em> button turns -->
 <!-- on email notifications to those participating and/or watching. -->
 
-<h2 id="___sec17">Wiki pages </h2>
+<h2 id="___sec14">Wiki pages </h2>
 
 <p>
 With every GitHub project there is an option to create wiki pages.
@@ -885,7 +735,7 @@ The address can be stored as <code>url</code> in <code>.git/config</code> in the
 root directory of the wiki project so that just a standard
 <code>git push</code> works.
 
-<h2 id="___sec18">Project web pages </h2>
+<h2 id="___sec15">Project web pages </h2>
 
 <p>
 HTML pages stored in your repo cannot be linked to and properly
@@ -1116,7 +966,7 @@ the HTML code.
 </div>
 
 
-<h2 id="___sec19">User web pages </h2>
+<h2 id="___sec16">User web pages </h2>
 
 <p>
 GitHub also allows you to create user pages and organization pages not
@@ -1161,9 +1011,9 @@ and there are many <a href="http://git-scm.com/downloads/guis" target="_self">op
 this respect. There are also GUIs for Mac users.
 Here we concentrate on the efficient command-line interface to Git.
 
-<h2 id="___sec21">Basic Git commands </h2>
+<h2 id="___sec18">Basic Git commands </h2>
 
-<h3 id="___sec22">Cloning </h3>
+<h3 id="___sec19">Cloning </h3>
 
 <p>
 You get started with your project on a new machine, or another user
@@ -1180,7 +1030,7 @@ ls
 Recall to replace <code>user</code> by your real username and <code>My-Project</code> by the
 actual project name.
 
-<h3 id="___sec23">The pull-change-push cycle </h3>
+<h3 id="___sec20">The pull-change-push cycle </h3>
 
 <p>
 The typical work flow with the "My Project" project starts with
@@ -1268,7 +1118,7 @@ regenerated from other files - of not, run <code>git add</code>.
 </div>
 
 
-<h3 id="___sec24">Viewing the history of files </h3>
+<h3 id="___sec21">Viewing the history of files </h3>
 
 <p>
 A nice graphical tool allows you to view all changes, or just
@@ -1327,7 +1177,7 @@ This is useful to track down particular changes in the files to see when
 they occurred and who introduced them. One can also search for regular
 expressions instead of exact text: just replace <code>-S</code> by <code>-G</code>.
 
-<h3 id="___sec25">Retrieving old files </h3>
+<h3 id="___sec22">Retrieving old files </h3>
 
 <p>
 Occasionally you need to go back to an earlier version of a file,
@@ -1383,7 +1233,7 @@ it requires the full path from the root git directory:
           c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/f.py
 </pre></div>
 
-<h3 id="___sec26">Reset the entire repo to an old version </h3>
+<h3 id="___sec23">Reset the entire repo to an old version </h3>
 
 <p>
 Run <code>git log</code> on some file and find the commit hash of the date
@@ -1408,7 +1258,7 @@ Note the period at the end of the first command (without it, you only
 get the possibility to look at old files, but the next commit is not
 affected).
 
-<h3 id="___sec27">Going back to a previous commit </h3>
+<h3 id="___sec24">Going back to a previous commit </h3>
 
 <p>
 Sometimes accidents with many files happen and you want to go back
@@ -1621,7 +1471,7 @@ files and push these corrections immediately.  The problem is that
 such a push will also include the latest, yet unfinished files that you
 have committed.
 
-<h3 id="___sec30">Branching </h3>
+<h3 id="___sec27">Branching </h3>
 
 <p>
 A better organization of your work would
@@ -1678,7 +1528,7 @@ in the remote repo, run
 <p>
 You can learn more in an <a href="http://pcottle.github.io/learnGitBranching/" target="_self">excellent introduction and demonstration of Git branching</a>.
 
-<h3 id="___sec31">Stashing </h3>
+<h3 id="___sec28">Stashing </h3>
 
 <p>
 It is not possible to switch branches unless you have committed the
@@ -1789,7 +1639,7 @@ Terminal&gt; git merge origin/next
 Terminal&gt; git checkout master
 </pre></div>
 
-<h3 id="___sec33">Configuring the <code>git diff</code> command </h3>
+<h3 id="___sec30">Configuring the <code>git diff</code> command </h3>
 
 <p>
 The <code>git diff</code> command launches by default the
@@ -1999,7 +1849,7 @@ It is possible to write a little script that takes the output of
 <code>git branch -a</code> after a <code>git clone</code> command and automatically check
 out all branches via <code>git checkout</code>.
 
-<h2 id="___sec36">Git workflows </h2>
+<h2 id="___sec33">Git workflows </h2>
 
 <p>
 Although the purpose of these notes is just to get the reader started
@@ -2040,9 +1890,9 @@ useful.
 <!-- The script can checkout two directories and just switch between -->
 <!-- these as two users, don't need to be different machines... -->
 
-<h2 id="___sec37">Git tips </h2>
+<h2 id="___sec34">Git tips </h2>
 
-<h3 id="___sec38">How can I see which files are tracked by Git? </h3>
+<h3 id="___sec35">How can I see which files are tracked by Git? </h3>
 
 <p>
 <code>git ls-files</code> is the command:
@@ -2059,7 +1909,7 @@ Terminal&gt; git ls-files myfile --error-unmatch
 The latter command prints an error message if <code>myfile</code> is not tracked.
 See <code>man git-ls-files</code> for the many options this utility has.
 
-<h3 id="___sec39">How can I reduce the size of a repo? </h3>
+<h3 id="___sec36">How can I reduce the size of a repo? </h3>
 
 <p>
 The command <code>git gc</code> can compress a git repository and should be
@@ -2093,7 +1943,7 @@ If other users have created their own branches in this repo, they
 need to <a href="http://git-scm.com/book/en/Git-Branching-Rebasing" target="_self"><tt>rebase</tt></a>,
 not <code>merge</code>, when updating the branches!
 
-<h3 id="___sec40">How can I restore missing files? </h3>
+<h3 id="___sec37">How can I restore missing files? </h3>
 
 <p>
 Sometimes you accidentally remove files from a repo, either by <code>git rm</code> or
@@ -2120,13 +1970,15 @@ the files were in the repo. Restoring a file is then done by
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git checkout &lt;commit hash&gt; filename
 </pre></div>
 
-<h2 id="___sec41">More documentation on Git </h2>
+<h2 id="___sec38">More documentation on Git </h2>
 
 <ul>
  <li> <a href="http://rogerdudler.github.io/git-guide/" target="_self">Git - the simple guide</a></li>
  <li> <a href="http://try.github.com/" target="_self">Web course on Git</a></li>
  <li> <a href="http://schacon.github.com/git/everyday.html" target="_self">Everyday GIT With 20 Commands Or So</a></li>
  <li> <a href="http://www.ndpsoftware.com/git-cheatsheet.html" target="_self">Git cheat sheet</a></li>
+ <li> <a href="https://www.atlassian.com/git/tutorial/git-basics" target="_self">Atlassian Git Tutorials</a></li>
+ <li> <a href="https://www.atlassian.com/git/tutorial/workflows" target="_self">Atlassian Git Workflows</a></li>
  <li> GitHub Guides:</li>
 
 <ul>
