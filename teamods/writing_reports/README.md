@@ -7,5 +7,6 @@ a vast collection of layouts.
    with all the enabling DocOnce commands are visible
  * `doconce_src`: the DocOnce source for the report (and associated figures
    and computer code)
+ * `report_generation`: various scripts needed to produce the reports (just for archival and web access)
 
 Run `make.sh` to copy ready-made reports to this demo directory.
