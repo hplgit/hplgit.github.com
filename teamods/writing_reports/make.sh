@@ -1,7 +1,7 @@
 #!/bin/sh
 script_source=~/vc/deqbook/doc/src/chapters/softeng1/report_generation
 report_source=~/vc/deqbook/doc/src/chapters/archive/decay-reports
-cp -r ${report_source}/* ${report_source}/.publish*.bib .
+cp -r ${report_source}/* .
 cp -r ${script_source} .
 git add .
 # git ignores temp*
