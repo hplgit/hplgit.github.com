@@ -17,6 +17,7 @@ Automatically generated HTML file from DocOnce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+
 </head>
 
 <!-- tocinfo
@@ -154,9 +155,11 @@ MathJax.Hub.Config({
 
 <a name="part0011"></a>
 <!-- !split -->
+<p style="font-size:80%">Much of the material in this document is taken from Appendix H.1 in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</p>
 
-<h1 id="sec:accesspy:ipynb">Writing IPython notebooks<a name="sec:accesspy:ipynb"></a></h1>
+<h1 id="sec:accesspy:ipynb">Writing IPython notebooks</h1>
 
+<p>
 The IPython notebook is a splendid interactive tool for doing science,
 but it can also be used as a platform for developing Python code.
 You can either run it locally on your computer or in a web service
@@ -171,8 +174,9 @@ code and see all the results in the browser window.
 There are excellent YouTube videos on how to use the IPython notebook,
 so here we provide a very quick &quot;step zero&quot; to get anyone started.
 
-<h2 id="___sec26">A simple program in the notebook <a name="___sec26"></a></h2>
+<h2 id="___sec26">A simple program in the notebook </h2>
 
+<p>
 Start the IPython notebook locally by the command <code>ipython notebook</code>
 or go to SageMathCloud or Wakari as described above.
 The default input area is a <em>cell</em> for Python code.
@@ -203,8 +207,9 @@ to be downloaded: the original notebook format (<code>.ipynb</code> file
 extension) or a plain Python program version of the notebook
 (<code>.py</code> file extension).
 
-<h2 id="___sec27">Mixing text, mathematics, code, and graphics <a name="___sec27"></a></h2>
+<h2 id="___sec27">Mixing text, mathematics, code, and graphics </h2>
 
+<p>
 The real strength of IPython notebooks arises when you want to write
 a report to document how a problem can be explored and solved.
 As a teaser, open a new notebook, click in the first cell, and choose
@@ -230,68 +235,74 @@ In the new cell, add some code to plot \( f(x) \):
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4</span>, <span style="color: #666666">101</span>)
-y <span style="color: #666666">=</span> exp(<span style="color: #666666">-</span>x)<span style="color: #666666">*</span>sin(<span style="color: #666666">2*</span>pi<span style="color: #666666">*</span>x)
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-plot(x, y, <span style="color: #BA2121">&#39;b-&#39;</span>)
-xlabel(<span style="color: #BA2121">&#39;x&#39;</span>); ylabel(<span style="color: #BA2121">&#39;y&#39;</span>)
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #666666">%</span>matplotlib inline  <span style="color: #408080; font-style: italic"># make plots inline in the notebook</span>
+
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4</span>, <span style="color: #666666">101</span>)
+y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(<span style="color: #666666">2*</span>pi<span style="color: #666666">*</span>x)
+plt<span style="color: #666666">.</span>plot(x, y, <span style="color: #BA2121">&#39;b-&#39;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&#39;x&#39;</span>); plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&#39;y&#39;</span>)
 </pre></div>
 <p>
 Executing these statements results in a plot in the browser, see
-Figure <a href="#sec:accesspy:ipynb:fig:graphics">2</a>. The import statements
-can actually be dropped since functions from <code>numpy</code> and
-<code>matplotlib</code> are imported by default when running the notebook
-in the browser or by supplying the command-line argument <code>--pylab</code>
-when starting notebooks locally on your machine.
+Figure <a href="#sec:accesspy:ipynb:fig:graphics">2</a>. It was popular to
+start the notebook by <code>ipython notebook --pylab</code> to import
+everything from <code>numpy</code> and <code>matplotlib.pyplot</code> and make
+all plots inline, but the <code>--pylab</code> option is now
+officially <a href="http://carreau.github.io/posts/10-No-PyLab-Thanks.ipynb.html" target="_blank">discouraged</a>.
+If you want the notebook to behave more as MATLAB and not use
+the <code>np</code> and <code>plt</code> prefix, you can instead of the first three
+lines above write <code>%pylab</code>.
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 2:  Example on an IPython notebook. <a name="sec:accesspy:ipynb:fig:graphics"></a> </p></center>
+<center><p class="caption">Figure 2:  Example on an IPython notebook. <div id="sec:accesspy:ipynb:fig:graphics"></div> </p></center>
 <p><img src="fig-accesspy/sage_ipynb_eqs_graphics.png" align="bottom" width=700></p>
 </center>
 
-<h1 id="___sec28">References <a name="___sec28"></a></h1>
+<h1 id="___sec28">References </h1>
 
+<p>
 <!-- begin bibliography -->
 
 <ol>
- <li> <a name="Python"></a> Python Programming Language. 
+ <li> <div id="Python"></div> Python Programming Language. 
     <a href="http://python.org" target="_blank"><tt>http://python.org</tt></a>.</li>
- <li> <a name="NumPy"></a> <b>T. E. Oliphant et al.</b>. 
+ <li> <div id="NumPy"></div> <b>T. E. Oliphant et al.</b>. 
     NumPy Array Processing Package for Python,
     <a href="http://www.numpy.org" target="_blank"><tt>http://www.numpy.org</tt></a>.</li>
- <li> <a name="NumPy:paper"></a> <b>T. E. Oliphant</b>. 
+ <li> <div id="NumPy:paper"></div> <b>T. E. Oliphant</b>. 
     Python for Scientific Computing,
     <em>Computing in Science &amp; Engineering</em>,
     9,
     2007.</li>
- <li> <a name="Matplotlib"></a> <b>J. D. Hunter et al.</b>. 
+ <li> <div id="Matplotlib"></div> <b>J. D. Hunter et al.</b>. 
     Matplotlib: Software Package for 2D Graphics,
     <a href="http://matplotlib.org/" target="_blank"><tt>http://matplotlib.org/</tt></a>.</li>
- <li> <a name="Matplotlib:paper"></a> <b>J. D. Hunter</b>. 
+ <li> <div id="Matplotlib:paper"></div> <b>J. D. Hunter</b>. 
     Matplotlib: a 2D Graphics Environment,
     <em>Computing in Science &amp; Engineering</em>,
     9,
     2007.</li>
- <li> <a name="IPython"></a> <b>F. Perez, B. E. Granger et al.</b>. 
+ <li> <div id="IPython"></div> <b>F. Perez, B. E. Granger et al.</b>. 
     IPython Software Package for Interactive Scientific Computing,
     <a href="http://ipython.org/" target="_blank"><tt>http://ipython.org/</tt></a>.</li>
- <li> <a name="IPython:paper"></a> <b>F. Perez and B. E. Granger</b>. 
+ <li> <div id="IPython:paper"></div> <b>F. Perez and B. E. Granger</b>. 
     IPython: a System for Interactive Scientific Computing,
     <em>Computing in Science &amp; Engineering</em>,
     9,
     2007.</li>
- <li> <a name="SciTools"></a> <b>H. P. Langtangen and J. H. Ring</b>. 
+ <li> <div id="SciTools"></div> <b>H. P. Langtangen and J. H. Ring</b>. 
     SciTools: Software Tools for Scientific Computing,
     <a href="http://code.google.com/p/scitools" target="_blank"><tt>http://code.google.com/p/scitools</tt></a>.</li>
- <li> <a name="Hinsen:Scientific"></a> ScientificPython Software Package. 
+ <li> <div id="Hinsen:Scientific"></div> ScientificPython Software Package. 
     <a href="http://starship.python.net/crew/hinsen" target="_blank"><tt>http://starship.python.net/crew/hinsen</tt></a>.</li>
-<li> <a name="SymPy"></a> <b>O. Certik et al.</b>. 
+<li> <div id="SymPy"></div> <b>O. Certik et al.</b>. 
     SymPy: Python library for symbolic mathematics,
     <a href="http://sympy.org" target="_blank"><tt>http://sympy.org</tt></a>.</li>
-<li> <a name="SciPy"></a> <b>E. Jones, T. E. Oliphant, P. Peterson et al.</b>. 
+<li> <div id="SciPy"></div> <b>E. Jones, T. E. Oliphant, P. Peterson et al.</b>. 
     SciPy Scientific Computing Library for Python,
     <a href="http://scipy.org" target="_blank"><tt>http://scipy.org</tt></a>.</li>
 </ol>

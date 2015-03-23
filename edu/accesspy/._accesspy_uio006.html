@@ -17,6 +17,7 @@ Automatically generated HTML file from DocOnce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+
 </head>
 
 <!-- tocinfo
@@ -154,9 +155,11 @@ MathJax.Hub.Config({
 
 <a name="part0006"></a>
 <!-- !split -->
+<p style="font-size:80%">Much of the material in this document is taken from Appendix H.1 in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</p>
 
-<h1 id="sec:accesspy:vmware">VMWare Fusion virtual machine<a name="sec:accesspy:vmware"></a></h1>
+<h1 id="sec:accesspy:vmware">VMWare Fusion virtual machine</h1>
 
+<p>
 A virtual machine allows you to run another complete computer system in a
 separate window.
 For Mac users, I recommend VMWare Fusion over
@@ -166,14 +169,15 @@ that of VirtualBox.) VMWare Fusion is commercial software, but
 there is a free trial version you can start with. Alternatively,
 you can use the simpler VMWare Player, which is free for personal use.
 
-<h2 id="sec:accesspy:vmware:fullblown:machine">Installing Ubuntu<a name="sec:accesspy:vmware:fullblown:machine"></a></h2>
+<h2 id="sec:accesspy:vmware:fullblown:machine">Installing Ubuntu</h2>
 
+<p>
 The following recipe will install a Ubuntu virtual machine under VMWare
 Fusion.
 
 <ol>
   <li> Go to <a href="http://goo.gl/nSeBCg" target="_blank"><tt>http://goo.gl/nSeBCg</tt></a> and download a full-blown Ubuntu box for scientific computing: <code>ubuntu-14.04-amd64-vmware.ova</code> (6.7 Gb!).</li>
-  <li> Launch VMWare fusion.</li>
+  <li> Launch VMWare Fusion.</li>
   <li> Click on <em>File - Import</em>, then <em>Choose file</em>, and browse to the
      to the <code>ubuntu-14.04-amd64-vmware.ova</code> file you downloaded.</li>
   <li> Type your chosen name of the virtual machine in the <em>Save As</em> text
@@ -192,7 +196,8 @@ Fusion.
 </ul>
 
   <li> Start up the virtual Ubuntu machine. The username and password for this machine are <em>fenics</em>.</li>
-  <li> You may need to define a higher resolution of the display.
+  <li> You may need to define a higher resolution of the display in the
+     Ubuntu machine.
      Find the <em>System settings</em> icon on the left, go to <em>Display</em>,
      choose some display (you can try several, click <em>Keep this configuration</em>
      when you are satisfied).</li>
@@ -202,6 +207,12 @@ Fusion.
      and choose a shortcut, say <code>Ctrl+space</code> or <code>Ctrl+backslash</code>, in the
      <em>Switch to next source using</em> field. Then you can use the shortcut
      to quickly switch keyboard.</li>
+ <li> A terminal window is key for programmers. Click on the Ubuntu icon
+     on the top of the left pane, search for <code>gnome-terminal</code>, right-click
+     its new icon in the left pane and choose <code>Lock to Launcher</code> such
+     that you always have the terminal easily accessible when you log in.
+     The <code>gnome-terminal</code> can have multiple tabs (<code>Ctrl+shift+t</code> to make
+     a new tab).</li>
 </ol>
 
 <div class="alert alert-block alert-danger alert-text-normal"><b>Pre-i3/5/7 Intel processors and 32 vs. 64 bit.</b>
@@ -210,8 +221,9 @@ does not have VT-x enabled, you cannot use the pre-packaged 64-bit virtual machi
 </div>
 
 
-<h2 id="sec:accesspy:vmware:minimalistic:machine">Installing software on a minimalistic Ubuntu machine<a name="sec:accesspy:vmware:minimalistic:machine"></a></h2>
+<h2 id="sec:accesspy:vmware:minimalistic:machine">Installing software on a minimalistic Ubuntu machine</h2>
 
+<p>
 If you have a minimalistic Ubuntu machine downloaded from
 the <a href="http://www.ubuntu.com/desktop/get-ubuntu/download" target="_blank">Ubuntu site</a>,
 you need to install additional software for scientific computing
@@ -226,11 +238,13 @@ Terminal&gt; sudo apt-get install python-matplotlib spyder
 Terminal&gt; sudo pip install ipython --upgrade
 Terminal&gt; sudo pip install tornado --upgrade
 Terminal&gt; sudo pip install pyzmq --upgrade
-Terminal&gt; sudo pip install -e hg+https://code.google.com/p/scitools#egg=scitools
+Terminal&gt; sudo pip install -e \ 
+          git+https://github.com/hplgit/scitools.git#egg=scitools
 </pre></div>
 
-<h2 id="___sec11">File sharing <a name="___sec11"></a></h2>
+<h2 id="___sec11">File sharing </h2>
 
+<p>
 The Ubuntu machine can see the files on your host system if you
 download <em>VMWare Tools</em>. Go to the <em>Virtual Machine</em> pull-down menu in
 VMWare Fusion and choose <em>Install VMWare Tools</em>. A tarfile is

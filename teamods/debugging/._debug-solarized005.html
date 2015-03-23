@@ -11,11 +11,24 @@ Automatically generated HTML file from DocOnce source
 
 <title>Debugging in Python</title>
 
-<!-- Bootstrap style: bootswatch_readable -->
-<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
-<!-- not necessary
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
--->
+
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
 
 
 </head>
@@ -73,40 +86,17 @@ $$
 
 
     
-<!-- Bootstrap navigation bar -->
-<div class="navbar navbar-default navbar-fixed-top">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="debug.html">Debugging in Python</a>
-  </div>
-  <div class="navbar-collapse collapse navbar-responsive-collapse">
-    <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._debug001.html#sec:debug:run" style="font-size: 80%;"><b>Using a debugger</b></a></li>
-     <!-- navigation toc: --> <li><a href="._debug002.html#sec:debug:howto" style="font-size: 80%;"><b>How to debug</b></a></li>
-     <!-- navigation toc: --> <li><a href="._debug003.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A recipe for program writing and debugging</a></li>
-     <!-- navigation toc: --> <li><a href="._debug004.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Application of the recipe</a></li>
-     <!-- navigation toc: --> <li><a href="#sec:debug:pylint" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Getting help from a code analyzer</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec17" style="font-size: 80%;"><b>References</b></a></li>
-
-        </ul>
-      </li>
-    </ul>
-  </div>
-</div>
-</div> <!-- end of navigation bar -->
-
-<div class="container">
-
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
-
 <a name="part0005"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._debug-solarized004.html">&laquo; Previous</a></div>
+</td><td>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
 <!-- !split -->
 <p style="font-size:80%">Much of the material in this document is taken from Appendix F in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</p>
 
@@ -124,16 +114,15 @@ Consider the first version of the <code>integrate</code> code,
 <a href="http://tinyurl.com/pwyasaa/debug/integrate_v1.py" target="_self"><tt>integrate_v1.py</tt></a>. Running Flake8 gives
 
 <p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; flake8 integrate_v1.py
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; flake8 integrate_v1.py
 integrate_v1.py:7:1: E302 expected 2 blank lines, found 1
 integrate_v1.py:8:1: E112 expected an indented block
 integrate_v1.py:8:7: E901 IndentationError: expected an indented block
 integrate_v1.py:10:1: E302 expected 2 blank lines, found 1
 integrate_v1.py:11:1: E112 expected an indented block
-</pre></div>
-<p>
+</code></pre>
+<!-- end verbatim block -->
 Flake8 checks if the program obeys the official
 <a href="http://www.python.org/dev/peps/pep-0008/" target="_self">Style Guide for Python Code</a>
 (known as <em>PEP8</em>). One of the rules in this guide is to have two
@@ -149,20 +138,19 @@ errors. We must therefore apply it to the
 <a href="http://tinyurl.com/pwyasaa/debug/integrate_v2.py" target="_self"><tt>integrate_v2.py</tt></a> code:
 
 <p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; pylint integrate_v2.py
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; pylint integrate_v2.py
 C: 20, 0: Exactly one space required after comma
 I = integrate(f, 0, 1,  n)
                      ^ (bad-whitespace)
-W: 19, 0: Redefining built-in &#39;pow&#39; (redefined-builtin)
+W: 19, 0: Redefining built-in 'pow' (redefined-builtin)
 C:  1, 0: Missing module docstring (missing-docstring)
-W:  1,14: Redefining name &#39;f&#39; from outer scope (line 8)
-W:  1,23: Redefining name &#39;n&#39; from outer scope (line 16)
+W:  1,14: Redefining name 'f' from outer scope (line 8)
+W:  1,23: Redefining name 'n' from outer scope (line 16)
 C:  1, 0: Invalid argument name &quot;f&quot; (invalid-name)
 C:  1, 0: Invalid argument name &quot;a&quot; (invalid-name)
-</pre></div>
-<p>
+</code></pre>
+<!-- end verbatim block -->
 There is much more output, but let us summarize what
 PyLint does not like about the code:
 
@@ -193,7 +181,7 @@ program development to readability of the code and remove errors.
 <p>
 <!-- I can in general recommend running Flake8 or PyLint on your programs -->
 
-<h1 id="___sec17">References </h1> <!-- chapter heading -->
+<h1 id="___sec17">References </h1> <hr>
 
 <p>
 <!-- begin bibliography -->
@@ -217,24 +205,15 @@ program development to readability of the code and remove errors.
 <!-- end bibliography -->
 
 <p>
-<!-- navigation buttons at the bottom of the page -->
-<ul class="pager">
-  <li class="previous">
-    <a href="._debug004.html">&larr; Prev</a>
-  </li>
-</ul>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._debug-solarized004.html">&laquo; Previous</a></div>
+</td><td>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
 <!-- ------------------- end of main content --------------- -->
-
-</div>  <!-- end container -->
-<!-- include javascript, jQuery *first* -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
-<!-- Bootstrap footer
-<footer>
-<a href="http://..."><img width="250" align=right src="http://..."></a>
-</footer>
--->
 
 
 </body>

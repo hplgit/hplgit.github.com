@@ -1,15 +1,15 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Unit testing with pytest and nose">
 <meta name="keywords" content="nose tests,pytest tests,unit testing,software testing nose,software testing pytest">
 
-
+<title>Unit testing with pytest and nose</title>
 
 <!-- Bootstrap style: bootswatch_readable -->
 <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
@@ -17,22 +17,22 @@ Automatically generated HTML file from Doconce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+
 </head>
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Model software ', 1, None, '___sec0'),
-              (' Requirements of the test function ', 1, None, '___sec1'),
+ 'sections': [(' Requirements of the test function ', 1, None, '___sec0'),
               (' Writing the test function; precomputed data ',
                1,
                None,
-               '___sec2'),
+               '___sec1'),
               (' Writing the test function; exact numerical solution ',
                1,
                None,
-               '___sec3'),
-              (' Testing of function robustness ', 1, None, '___sec4'),
-              (' Automatic execution of tests ', 1, None, '___sec5')]}
+               '___sec2'),
+              (' Testing of function robustness ', 1, None, '___sec3'),
+              (' Automatic execution of tests ', 1, None, '___sec4')]}
 end of tocinfo -->
 
 <body>
@@ -50,24 +50,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-<!-- newcommands_keep.tex -->
-$$
-\newcommand{\tp}{\thinspace .}
-\renewcommand{\Re}{\bbbr}
-
-\newcommand{\rhodim}{\mbox{kgm}^{-3}}
-\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
-\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
-
-
-\newcommand{\Oof}[1]{\mathcal{O}(#1)}
-\newcommand{\Prob}[1]{\hbox{P}(#1)}
-\newcommand{\Var}[1]{\hbox{Var}(#1)}
-\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
-\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
-$$
-
 
 
 
@@ -87,12 +69,11 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._nose001.html#___sec0" style="font-size: 80%;">Model software</a></li>
-     <!-- navigation toc: --> <li><a href="._nose001.html#___sec1" style="font-size: 80%;">Requirements of the test function</a></li>
-     <!-- navigation toc: --> <li><a href="._nose001.html#___sec2" style="font-size: 80%;">Writing the test function; precomputed data</a></li>
-     <!-- navigation toc: --> <li><a href="._nose001.html#___sec3" style="font-size: 80%;">Writing the test function; exact numerical solution</a></li>
-     <!-- navigation toc: --> <li><a href="._nose001.html#___sec4" style="font-size: 80%;">Testing of function robustness</a></li>
-     <!-- navigation toc: --> <li><a href="._nose001.html#___sec5" style="font-size: 80%;">Automatic execution of tests</a></li>
+     <!-- navigation toc: --> <li><a href="._nose001.html#___sec0" style="font-size: 80%;">Requirements of the test function</a></li>
+     <!-- navigation toc: --> <li><a href="._nose001.html#___sec1" style="font-size: 80%;">Writing the test function; precomputed data</a></li>
+     <!-- navigation toc: --> <li><a href="._nose001.html#___sec2" style="font-size: 80%;">Writing the test function; exact numerical solution</a></li>
+     <!-- navigation toc: --> <li><a href="._nose001.html#___sec3" style="font-size: 80%;">Testing of function robustness</a></li>
+     <!-- navigation toc: --> <li><a href="._nose001.html#___sec4" style="font-size: 80%;">Automatic execution of tests</a></li>
 
         </ul>
       </li>
@@ -109,7 +90,6 @@ $$
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Unit testing with pytest and nose</title>
 
 <div class="jumbotron">
 <center><h1>Unit testing with pytest and nose</h1></center>  <!-- document title -->
@@ -128,22 +108,22 @@ $$
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Aug 23, 2014</h4></center> <!-- date -->
+<center><h4>Mar 23, 2015</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
-<a href="._nose001.html#___sec0"> Model software </a><br>
-<a href="._nose001.html#___sec1"> Requirements of the test function </a><br>
-<a href="._nose001.html#___sec2"> Writing the test function; precomputed data </a><br>
-<a href="._nose001.html#___sec3"> Writing the test function; exact numerical solution </a><br>
-<a href="._nose001.html#___sec4"> Testing of function robustness </a><br>
-<a href="._nose001.html#___sec5"> Automatic execution of tests </a><br>
+<p>
+<a href="._nose001.html#___sec0"> Requirements of the test function </a><br>
+<a href="._nose001.html#___sec1"> Writing the test function; precomputed data </a><br>
+<a href="._nose001.html#___sec2"> Writing the test function; exact numerical solution </a><br>
+<a href="._nose001.html#___sec3"> Testing of function robustness </a><br>
+<a href="._nose001.html#___sec4"> Automatic execution of tests </a><br>
 </p>
 <p>
 <!-- Externaldocuments: ../formulas/main_formulas, ../looplist/main_looplist, ../funcif/main_funcif, ../input/main_input, ../plot/main_plot, ../files/main_files, ../class/main_class, ../random/main_random, ../oo/main_oo, ../diffeq/main_diffeq, ../discalc/main_discalc, ../ode1/main_ode1, ../boxspring/main_boxspring, ../ode2/main_ode2, ../debug/main_debug, ../cython/main_cython, ../tech/main_timing, ../tech/main_varargs, ../tech/main_ostasks, ../tech/main_accesspy, ../tech/runpy -->
 
 <p>
-<a name="sec:nose"></a>
+<div id="sec:nose"></div>
 
 <p>
 Unit testing is widely a used technique for verifying software
@@ -159,11 +139,13 @@ nose or pytest as soon as you have learned about functions in
 programming.
 
 <p>
-<div style="font-size: 80%;">Much of the material in this document is taken from Appendix H.6 in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</div>
+<!-- Acknowledge Springer book -->
 
 <p>
 
 
+
+<p><div style="font-size:80%">Much of the material in this document is taken from Appendix H.6 in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</div></p>
 <p><a href="._nose001.html" class="btn btn-primary btn-lg">Read &raquo;</a></p>
 
 

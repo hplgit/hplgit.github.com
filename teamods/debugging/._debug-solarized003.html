@@ -11,11 +11,24 @@ Automatically generated HTML file from DocOnce source
 
 <title>Debugging in Python</title>
 
-<!-- Bootstrap style: bootswatch_readable -->
-<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
-<!-- not necessary
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
--->
+
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
 
 
 </head>
@@ -73,40 +86,18 @@ $$
 
 
     
-<!-- Bootstrap navigation bar -->
-<div class="navbar navbar-default navbar-fixed-top">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="debug.html">Debugging in Python</a>
-  </div>
-  <div class="navbar-collapse collapse navbar-responsive-collapse">
-    <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._debug001.html#sec:debug:run" style="font-size: 80%;"><b>Using a debugger</b></a></li>
-     <!-- navigation toc: --> <li><a href="._debug002.html#sec:debug:howto" style="font-size: 80%;"><b>How to debug</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A recipe for program writing and debugging</a></li>
-     <!-- navigation toc: --> <li><a href="._debug004.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Application of the recipe</a></li>
-     <!-- navigation toc: --> <li><a href="._debug005.html#sec:debug:pylint" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Getting help from a code analyzer</a></li>
-     <!-- navigation toc: --> <li><a href="._debug005.html#___sec17" style="font-size: 80%;"><b>References</b></a></li>
-
-        </ul>
-      </li>
-    </ul>
-  </div>
-</div>
-</div> <!-- end of navigation bar -->
-
-<div class="container">
-
-<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
-
 <a name="part0003"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._debug-solarized002.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._debug-solarized004.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
 <!-- !split -->
 <p style="font-size:80%">Much of the material in this document is taken from Appendix F in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</p>
 
@@ -183,15 +174,13 @@ are listed below.
 <code>SyntaxError</code>: Illegal Python code.
 
 <p>
-
-<!-- code=text (!bc ccq) typeset with pygments style "default" -->
-<blockquote>
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  File &quot;somefile.py&quot;, line 5
+<!-- begin verbatim block  ccq-->
+<pre><code>  File &quot;somefile.py&quot;, line 5
     x = . 5
         ^
 SyntaxError: invalid syntax
-</pre></div>
-</blockquote><p>
+</code></pre>
+<!-- end verbatim block -->
 Often the error is precisely indicated, as above, but sometimes
 you have to search for the error on the previous line.
 
@@ -200,18 +189,16 @@ you have to search for the error on the previous line.
 is not defined.
 
 <p>
-
-<!-- code=text (!bc ccq) typeset with pygments style "default" -->
-<blockquote>
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  File &quot;somefile.py&quot;, line 20, in &lt;module&gt;
+<!-- begin verbatim block  ccq-->
+<pre><code>  File &quot;somefile.py&quot;, line 20, in &lt;module&gt;
     table(10)
   File &quot;somefile.py&quot;, line 16, in table
     value, next, error = L(x, n)
   File &quot;somefile.py&quot;, line 8, in L
     exact_error = log(1+x) - value_of_sum
-NameError: global name &#39;value_of_sum&#39; is not defined
-</pre></div>
-</blockquote><p>
+NameError: global name 'value_of_sum' is not defined
+</code></pre>
+<!-- end verbatim block -->
 Look at the last of the lines starting with <code>File</code> to see where in the
 program the error occurs. The most common reasons for a <code>NameError</code> are
 
@@ -225,16 +212,14 @@ program the error occurs. The most common reasons for a <code>NameError</code> a
 <code>TypeError</code>: An object of wrong type is used in an operation.
 
 <p>
-
-<!-- code=text (!bc ccq) typeset with pygments style "default" -->
-<blockquote>
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  File &quot;somefile.py&quot;, line 17, in table
+<!-- begin verbatim block  ccq-->
+<pre><code>  File &quot;somefile.py&quot;, line 17, in table
     value, next, error = L(x, n)
   File &quot;somefile.py&quot;, line 7, in L
     first_neglected_term = (1.0/(n+1))*(x/(1.0+x))**(n+1)
-TypeError: unsupported operand type(s) for +: &#39;float&#39; and &#39;str&#39;
-</pre></div>
-</blockquote><p>
+TypeError: unsupported operand type(s) for +: 'float' and 'str'
+</code></pre>
+<!-- end verbatim block -->
 Print out objects and their types (here: <code>print x, type(x), n, type(n)</code>),
 and you will most likely get a surprise. The reason for a <code>TypeError</code>
 is often far away from the line where the
@@ -244,14 +229,12 @@ is often far away from the line where the
 <code>ValueError</code>: An object has an illegal value.
 
 <p>
-
-<!-- code=text (!bc ccq) typeset with pygments style "default" -->
-<blockquote>
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  File &quot;somefile.py&quot;, line 8, in L
+<!-- begin verbatim block  ccq-->
+<pre><code>  File &quot;somefile.py&quot;, line 8, in L
     y = sqrt(x)
 ValueError: math domain error
-</pre></div>
-</blockquote><p>
+</code></pre>
+<!-- end verbatim block -->
 Print out the value of objects
 that can be involved in the error (here: <code>print x</code>).
 
@@ -260,14 +243,12 @@ that can be involved in the error (here: <code>print x</code>).
 too large.
 
 <p>
-
-<!-- code=text (!bc ccq) typeset with pygments style "default" -->
-<blockquote>
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  File &quot;somefile.py&quot;, line 21
+<!-- begin verbatim block  ccq-->
+<pre><code>  File &quot;somefile.py&quot;, line 21
     n = sys.argv[i+1]
 IndexError: list index out of range
-</pre></div>
-</blockquote><p>
+</code></pre>
+<!-- end verbatim block -->
 Print out the length of the list, and the index if it involves a variable
 (here: <code>print len(sys.argv), i</code>).
 
@@ -289,7 +270,7 @@ to test the program may be wrong!
 <b>9. Use a debugger.</b>
 If you end up inserting a lot of <code>print</code> statements in the program for
 checking intermediate results, you might benefit from using a debugger
-as explained in the section <a href="._debug001.html#sec:debug:run">Using a debugger</a>.
+as explained in the section <a href="._debug-solarized001.html#sec:debug:run">Using a debugger</a>.
 
 <p>
 Some may think that this list of nine points is very comprehensive.
@@ -303,33 +284,22 @@ programming is a difficult task.
     writing. Why is it so? I think the main reason is that a larger
     attention span is needed when working on a large computer program
     than when doing other intellectual tasks.</em>
-    Donald Knuth <a href="._debug005.html#Knuth85">[1]</a> (p. 18), computer scientist, 1938-.
+    Donald Knuth <a href="._debug-solarized005.html#Knuth85">[1]</a> (p. 18), computer scientist, 1938-.
 </blockquote>
 
 
 <p>
 <p>
-<!-- navigation buttons at the bottom of the page -->
-<ul class="pager">
-  <li class="previous">
-    <a href="._debug002.html">&larr; Prev</a>
-  </li>
-  <li class="next">
-    <a href="._debug004.html">Next &rarr;</a>
-  </li>
-</ul>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._debug-solarized002.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._debug-solarized004.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
 <!-- ------------------- end of main content --------------- -->
-
-</div>  <!-- end container -->
-<!-- include javascript, jQuery *first* -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
-<!-- Bootstrap footer
-<footer>
-<a href="http://..."><img width="250" align=right src="http://..."></a>
-</footer>
--->
 
 
 </body>

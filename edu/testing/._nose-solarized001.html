@@ -1,23 +1,31 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Unit testing with pytest and nose">
 <meta name="keywords" content="nose tests,pytest tests,unit testing,software testing nose,software testing pytest">
 
+<title>Unit testing with pytest and nose</title>
 
 
-
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
 <style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -40,30 +48,30 @@ Automatically generated HTML file from Doconce source
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Model software ', 1, None, '___sec0'),
-              (' Requirements of the test function ', 1, None, '___sec1'),
+ 'sections': [(' Requirements of the test function ', 1, None, '___sec0'),
               (' Writing the test function; precomputed data ',
                1,
                None,
-               '___sec2'),
+               '___sec1'),
               (' Writing the test function; exact numerical solution ',
                1,
                None,
-               '___sec3'),
-              (' Testing of function robustness ', 1, None, '___sec4'),
-              (' Automatic execution of tests ', 1, None, '___sec5')]}
+               '___sec2'),
+              (' Testing of function robustness ', 1, None, '___sec3'),
+              (' Automatic execution of tests ', 1, None, '___sec4')]}
 end of tocinfo -->
 
 <body>
@@ -82,24 +90,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands_keep.tex -->
-$$
-\newcommand{\tp}{\thinspace .}
-\renewcommand{\Re}{\bbbr}
-
-\newcommand{\rhodim}{\mbox{kgm}^{-3}}
-\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
-\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
-
-
-\newcommand{\Oof}[1]{\mathcal{O}(#1)}
-\newcommand{\Prob}[1]{\hbox{P}(#1)}
-\newcommand{\Var}[1]{\hbox{Var}(#1)}
-\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
-\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
-$$
-
-
 
 
     
@@ -115,19 +105,21 @@ $$
 
 <p>
 <!-- !split -->
+<p style="font-size:80%">Much of the material in this document is taken from Appendix H.6 in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</p>
 
 <h2>Table of contents</h2>
 
-<a href="#___sec0"> Model software </a><br>
-<a href="#___sec1"> Requirements of the test function </a><br>
-<a href="#___sec2"> Writing the test function; precomputed data </a><br>
-<a href="#___sec3"> Writing the test function; exact numerical solution </a><br>
-<a href="#___sec4"> Testing of function robustness </a><br>
-<a href="#___sec5"> Automatic execution of tests </a><br>
+<p>
+<a href="#___sec0"> Requirements of the test function </a><br>
+<a href="#___sec1"> Writing the test function; precomputed data </a><br>
+<a href="#___sec2"> Writing the test function; exact numerical solution </a><br>
+<a href="#___sec3"> Testing of function robustness </a><br>
+<a href="#___sec4"> Automatic execution of tests </a><br>
 </p>
-
-<h1>Model software  <a name="___sec0"></a></h1>
-
+<p>
+<!-- Force paragraph heading since stand-alone compilation uses -->
+<!-- --sections_up and any triple heading becomes subsection... -->
+<b>Model software.</b>
 We need a piece of software we want to test. Here we choose a function
 that runs Newton's method for solving algebraic equations
 \( f(x)=0 \). A very simple implementation goes like
@@ -143,15 +135,18 @@ that runs Newton's method for solving algebraic equations
 </code></pre>
 <!-- end verbatim block -->
 
-<h1>Requirements of the test function  <a name="___sec1"></a></h1>
+<h1 id="___sec0">Requirements of the test function </h1>
 
+<p>
 The simplest way of using the pytest or nose testing frameworks is to write a
 set of test functions, scattered around in files, such that pytest or nose
 can automatically find and run all the test functions. To this end,
 the test functions need to follow certain conventions.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Test function conventions.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Test function conventions.</b>
+<p>
 
 <ol>
 <li> The name of a test function starts with <code>test_</code>.</li>
@@ -193,8 +188,9 @@ the plain <code>assert</code> statement to have full control of what the test me
 In more complicated software the many functions in <code>nose.tools</code>
 may save quite some coding and are convenient to use.
 
-<h1>Writing the test function; precomputed data  <a name="___sec2"></a></h1>
+<h1 id="___sec1">Writing the test function; precomputed data </h1>
 
+<p>
 Newton's method for solving an algebraic equation \( f(x)=0 \) results in
 only an approximate root \( x_r \), making \( f(x_r)\neq 0 \), but
 \( |f(x_r)|\leq \epsilon \), where \( \epsilon \) is supposed to be a
@@ -247,8 +243,9 @@ alternatively be carried out by <code>nose.tools</code> functionality:
 For simplicity we dropped the optional messages explaining what wen
 wrong if tests fail.
 
-<h1>Writing the test function; exact numerical solution  <a name="___sec3"></a></h1>
+<h1 id="___sec2">Writing the test function; exact numerical solution </h1>
 
+<p>
 Approximate numerical methods are sometimes exact in certain special
 cases. An exact answer known beforehand is a good starting point for a
 test since the implementation should reproduce the known answer to
@@ -282,8 +279,9 @@ an error message in case tests fail:
 </code></pre>
 <!-- end verbatim block -->
 
-<h1>Testing of function robustness  <a name="___sec4"></a></h1>
+<h1 id="___sec3">Testing of function robustness </h1>
 
+<p>
 Our <code>Newton_basic</code> function is very basic and suffers from several
 problems:
 
@@ -419,7 +417,7 @@ The first test involves an argument <code>f</code> that is not a function:
 </code></pre>
 <!-- end verbatim block -->
 As seen, <code>success = True</code> demands that the right exception is raised and
-that its message starts with <code>f is <type 'float'></code>. What text to expect
+that its message starts with <code>f is &lt;type 'float'&gt;</code>. What text to expect
 in the message is evident from the source in function <code>Newton</code>.
 
 <p>
@@ -465,8 +463,9 @@ with pytest.raises(TypeError) as e:
 </code></pre>
 <!-- end verbatim block -->
 
-<h1>Automatic execution of tests  <a name="___sec5"></a></h1>
+<h1 id="___sec4">Automatic execution of tests </h1>
 
+<p>
 Our code for the <code>Newton_basic</code> and <code>Newton</code> functions is placed in
 a file <a href="http://tinyurl.com/pwyasaa/tech/eq_solver.py" target="_blank"><tt>eq_solver.py</tt></a> together
 with the tests. To run all test functions with names of the
@@ -502,7 +501,9 @@ potentially large number of tests and give us quick feedback.  The
 entire tree of <em>any</em> subfolder.
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal"><b>Remark on classical class-based unit testing.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Remark on classical class-based unit testing.</b>
+<p>
 The pytest and nose testing frameworks allow ordinary functions, as
 explained above, to perform the testing. The most widespread way of
 implementing unit tests, however, is to use class-based

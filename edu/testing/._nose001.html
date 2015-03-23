@@ -1,15 +1,15 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Unit testing with pytest and nose">
 <meta name="keywords" content="nose tests,pytest tests,unit testing,software testing nose,software testing pytest">
 
-
+<title>Unit testing with pytest and nose</title>
 
 <!-- Bootstrap style: bootswatch_readable -->
 <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
@@ -17,22 +17,22 @@ Automatically generated HTML file from Doconce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+
 </head>
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Model software ', 1, None, '___sec0'),
-              (' Requirements of the test function ', 1, None, '___sec1'),
+ 'sections': [(' Requirements of the test function ', 1, None, '___sec0'),
               (' Writing the test function; precomputed data ',
                1,
                None,
-               '___sec2'),
+               '___sec1'),
               (' Writing the test function; exact numerical solution ',
                1,
                None,
-               '___sec3'),
-              (' Testing of function robustness ', 1, None, '___sec4'),
-              (' Automatic execution of tests ', 1, None, '___sec5')]}
+               '___sec2'),
+              (' Testing of function robustness ', 1, None, '___sec3'),
+              (' Automatic execution of tests ', 1, None, '___sec4')]}
 end of tocinfo -->
 
 <body>
@@ -50,24 +50,6 @@ MathJax.Hub.Config({
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-<!-- newcommands_keep.tex -->
-$$
-\newcommand{\tp}{\thinspace .}
-\renewcommand{\Re}{\bbbr}
-
-\newcommand{\rhodim}{\mbox{kgm}^{-3}}
-\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
-\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
-
-
-\newcommand{\Oof}[1]{\mathcal{O}(#1)}
-\newcommand{\Prob}[1]{\hbox{P}(#1)}
-\newcommand{\Var}[1]{\hbox{Var}(#1)}
-\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
-\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
-$$
-
 
 
 
@@ -87,12 +69,11 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Model software</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">Requirements of the test function</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">Writing the test function; precomputed data</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">Writing the test function; exact numerical solution</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">Testing of function robustness</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">Automatic execution of tests</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Requirements of the test function</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">Writing the test function; precomputed data</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">Writing the test function; exact numerical solution</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">Testing of function robustness</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">Automatic execution of tests</a></li>
 
         </ul>
       </li>
@@ -107,19 +88,21 @@ $$
 
 <a name="part0001"></a>
 <!-- !split -->
+<p style="font-size:80%">Much of the material in this document is taken from Appendix H.6 in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</p>
 
 <h2>Table of contents</h2>
 
-<a href="#___sec0"> Model software </a><br>
-<a href="#___sec1"> Requirements of the test function </a><br>
-<a href="#___sec2"> Writing the test function; precomputed data </a><br>
-<a href="#___sec3"> Writing the test function; exact numerical solution </a><br>
-<a href="#___sec4"> Testing of function robustness </a><br>
-<a href="#___sec5"> Automatic execution of tests </a><br>
+<p>
+<a href="#___sec0"> Requirements of the test function </a><br>
+<a href="#___sec1"> Writing the test function; precomputed data </a><br>
+<a href="#___sec2"> Writing the test function; exact numerical solution </a><br>
+<a href="#___sec3"> Testing of function robustness </a><br>
+<a href="#___sec4"> Automatic execution of tests </a><br>
 </p>
-
-<h1 id="___sec0">Model software <a name="___sec0"></a></h1>
-
+<p>
+<!-- Force paragraph heading since stand-alone compilation uses -->
+<!-- --sections_up and any triple heading becomes subsection... -->
+<b>Model software.</b>
 We need a piece of software we want to test. Here we choose a function
 that runs Newton's method for solving algebraic equations
 \( f(x)=0 \). A very simple implementation goes like
@@ -135,8 +118,9 @@ that runs Newton's method for solving algebraic equations
     <span style="color: #008000; font-weight: bold">return</span> x, f(x), n
 </pre></div>
 
-<h1 id="___sec1">Requirements of the test function <a name="___sec1"></a></h1>
+<h1 id="___sec0">Requirements of the test function </h1>
 
+<p>
 The simplest way of using the pytest or nose testing frameworks is to write a
 set of test functions, scattered around in files, such that pytest or nose
 can automatically find and run all the test functions. To this end,
@@ -186,8 +170,9 @@ the plain <code>assert</code> statement to have full control of what the test me
 In more complicated software the many functions in <code>nose.tools</code>
 may save quite some coding and are convenient to use.
 
-<h1 id="___sec2">Writing the test function; precomputed data <a name="___sec2"></a></h1>
+<h1 id="___sec1">Writing the test function; precomputed data </h1>
 
+<p>
 Newton's method for solving an algebraic equation \( f(x)=0 \) results in
 only an approximate root \( x_r \), making \( f(x_r)\neq 0 \), but
 \( |f(x_r)|\leq \epsilon \), where \( \epsilon \) is supposed to be a
@@ -242,8 +227,9 @@ alternatively be carried out by <code>nose.tools</code> functionality:
 For simplicity we dropped the optional messages explaining what wen
 wrong if tests fail.
 
-<h1 id="___sec3">Writing the test function; exact numerical solution <a name="___sec3"></a></h1>
+<h1 id="___sec2">Writing the test function; exact numerical solution </h1>
 
+<p>
 Approximate numerical methods are sometimes exact in certain special
 cases. An exact answer known beforehand is a good starting point for a
 test since the implementation should reproduce the known answer to
@@ -277,8 +263,9 @@ an error message in case tests fail:
     <span style="color: #008000; font-weight: bold">assert</span> n <span style="color: #666666">==</span> <span style="color: #666666">1</span>, <span style="color: #BA2121">&#39;n=</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">, but linear f should have n=1&#39;</span> <span style="color: #666666">%</span> n
 </pre></div>
 
-<h1 id="___sec4">Testing of function robustness <a name="___sec4"></a></h1>
+<h1 id="___sec3">Testing of function robustness </h1>
 
+<p>
 Our <code>Newton_basic</code> function is very basic and suffers from several
 problems:
 
@@ -411,7 +398,7 @@ The first test involves an argument <code>f</code> that is not a function:
 </pre></div>
 <p>
 As seen, <code>success = True</code> demands that the right exception is raised and
-that its message starts with <code>f is <type 'float'></code>. What text to expect
+that its message starts with <code>f is &lt;type 'float'&gt;</code>. What text to expect
 in the message is evident from the source in function <code>Newton</code>.
 
 <p>
@@ -457,8 +444,9 @@ The corresponding support for testing exceptions in pytest is
     Newton(<span style="color: #008000; font-weight: bold">lambda</span> x: x<span style="color: #666666">**2</span>, <span style="color: #008000; font-weight: bold">lambda</span> x: <span style="color: #666666">2*</span>x, <span style="color: #666666">1.2</span>, eps<span style="color: #666666">=1E-7</span>, maxit<span style="color: #666666">=-2</span>)
 </pre></div>
 
-<h1 id="___sec5">Automatic execution of tests <a name="___sec5"></a></h1>
+<h1 id="___sec4">Automatic execution of tests </h1>
 
+<p>
 Our code for the <code>Newton_basic</code> and <code>Newton</code> functions is placed in
 a file <a href="http://tinyurl.com/pwyasaa/tech/eq_solver.py" target="_blank"><tt>eq_solver.py</tt></a> together
 with the tests. To run all test functions with names of the

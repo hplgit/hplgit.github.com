@@ -1,21 +1,22 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Doing operating system tasks in Python">
 <meta name="keywords" content="make a folder (in Python),directory,environment variables,move to a folder (in Python),rename file/folder (in Python),list files (in Python),check file/folder existence (in Python),remove files (in Python),delete files (in Python),remove folders (in Python),delete folders (in Python),copy files (in Python),copy folders (in Python),run programs (from Python),execute programs (from Python),split filename">
 
-
+<title>Doing operating system tasks in Python</title>
 
 <!-- Bootstrap style: bootswatch_readable -->
 <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
 <!-- not necessary
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
+
 
 </head>
 
@@ -89,9 +90,11 @@ end of tocinfo -->
 
 <a name="part0002"></a>
 <!-- !split -->
+<p style="font-size:80%">Much of the material in this document is taken from Appendix H.3 in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</p>
 
-<h2 id="___sec0">Make a folder <a name="___sec0"></a></h2>
+<h2 id="___sec0">Make a folder </h2>
 
+<p>
 Python applies the term directory instead of folder.
 The equivalent of the Unix <code>mkdir mydir</code> is
 
@@ -105,8 +108,9 @@ os<span style="color: #666666">.</span>mkdir(<span style="color: #BA2121">&#39;m
 Ordinary
 files are created by the <code>open</code> and <code>close</code> functions in Python.
 
-<h2 id="___sec1">Make intermediate folders <a name="___sec1"></a></h2>
+<h2 id="___sec1">Make intermediate folders </h2>
 
+<p>
 Suppose you want to make a subfolder under your home folder:
 
 <p>
@@ -133,8 +137,9 @@ any environment variable <code>var</code> as
 a string. The <code>os.path.join</code> function joins folder names and a filename
 in a platform-independent way.
 
-<h2 id="___sec2">Move to a folder <a name="___sec2"></a></h2>
+<h2 id="___sec2">Move to a folder </h2>
 
+<p>
 The <code>cd</code> command reads <code>os.chdir</code> and <code>cwd</code> is <code>os.getcwd</code>:
 
 <p>
@@ -146,8 +151,9 @@ os<span style="color: #666666">.</span>chdir(foldername)      <span style="color
 os<span style="color: #666666">.</span>chdir(origfolder)      <span style="color: #408080; font-style: italic"># move back</span>
 </pre></div>
 
-<h2 id="___sec3">Rename a file or folder <a name="___sec3"></a></h2>
+<h2 id="___sec3">Rename a file or folder </h2>
 
+<p>
 The cross-platform <code>mv</code> command is
 
 <p>
@@ -156,8 +162,9 @@ The cross-platform <code>mv</code> command is
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">os<span style="color: #666666">.</span>rename(oldname, newname)
 </pre></div>
 
-<h2 id="___sec4">List files <a name="___sec4"></a></h2>
+<h2 id="___sec4">List files </h2>
 
+<p>
 Unix wildcard notation can be used to list files. The equivalent of
 <code>ls *.py</code> and <code>ls plot*[1-4]*.dat</code> reads
 
@@ -169,8 +176,9 @@ filelist1 <span style="color: #666666">=</span> glob<span style="color: #666666"
 filelist2 <span style="color: #666666">=</span> glob<span style="color: #666666">.</span>glob(<span style="color: #BA2121">&#39;plot*[1-4]*.dat&#39;</span>)
 </pre></div>
 
-<h2 id="___sec5">List all files and folders in a folder <a name="___sec5"></a></h2>
+<h2 id="___sec5">List all files and folders in a folder </h2>
 
+<p>
 The counterparts to <code>ls -a mydir</code> and just <code>ls -a</code> are
 
 <p>
@@ -181,8 +189,9 @@ filelist1 <span style="color: #666666">=</span> os<span style="color: #666666">.
 filelist1<span style="color: #666666">.</span>sort()                   <span style="color: #408080; font-style: italic"># sort alphabetically</span>
 </pre></div>
 
-<h2 id="___sec6">Check if a file or folder exists <a name="___sec6"></a></h2>
+<h2 id="___sec6">Check if a file or folder exists </h2>
 
+<p>
 The widely used constructions in Unix scripts for
 testing if a file or folder
 exist are <code>if [ -f $filename ]; then</code> and
@@ -201,10 +210,11 @@ have very readable counterparts in Python:
     <span style="color: #666666">...</span>
 </pre></div>
 <p>
-<a name="app:ostasks:os:remove:glob"></a>
+<div id="app:ostasks:os:remove:glob"></div>
 
-<h2 id="___sec7">Remove files <a name="___sec7"></a></h2>
+<h2 id="___sec7">Remove files </h2>
 
+<p>
 Removing a single file is done with <code>os.rename</code>, and a loop is
 required for doing <code>rm tmp_*.df</code>:
 
@@ -217,8 +227,9 @@ filelist <span style="color: #666666">=</span> glob<span style="color: #666666">
     os<span style="color: #666666">.</span>remove(filename)
 </pre></div>
 
-<h2 id="___sec8">Remove a folder and all its subfolders <a name="___sec8"></a></h2>
+<h2 id="___sec8">Remove a folder and all its subfolders </h2>
 
+<p>
 The <code>rm -rf mytree</code> command removes an entire folder tree.
 In Python, the cross-platform valid command becomes
 
@@ -231,8 +242,9 @@ shutil<span style="color: #666666">.</span>rmtree(foldername)
 <p>
 It goes without saying that this command must be used with great care!
 
-<h2 id="___sec9">Copy a file to another file or folder <a name="___sec9"></a></h2>
+<h2 id="___sec9">Copy a file to another file or folder </h2>
 
+<p>
 The <code>cp fromfile tofile</code> construction applies <code>shutil.copy</code> in Python:
 
 <p>
@@ -241,8 +253,9 @@ The <code>cp fromfile tofile</code> construction applies <code>shutil.copy</code
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">shutil<span style="color: #666666">.</span>copy(<span style="color: #BA2121">&#39;fromfile&#39;</span>, <span style="color: #BA2121">&#39;tofile&#39;</span>)
 </pre></div>
 
-<h2 id="___sec10">Copy a folder and all its subfolders <a name="___sec10"></a></h2>
+<h2 id="___sec10">Copy a folder and all its subfolders </h2>
 
+<p>
 The recursive copy command <code>cp -r</code> for folder trees
 is in Python expressed by <code>shell.copytree</code>:
 
