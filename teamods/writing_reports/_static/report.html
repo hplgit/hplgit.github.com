@@ -76,7 +76,7 @@ u(0)  = I,                         \label{initial:value}
 <li>The <a href="http://en.wikipedia.org/wiki/Crank-Nicolson">Crank-Nicolson</a> scheme when <span class="math">\(\theta=1/2\)</span></li>
 </ul>
 <h2 id="implementation">Implementation</h2>
-<p>The numerical method is implemented in a Python function <span class="citation">[@Langtangen_2014]</span> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py"><code>decay_mod</code></a> module):</p>
+<p>The numerical method is implemented in a Python function <span class="citation">[@Langtangen_2014]</span> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py"><code>model</code></a> module):</p>
 <pre class="sourceCode Python"><code class="sourceCode python"><span class="kw">def</span> solver(I, a, T, dt, theta):
     <span class="co">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     dt = <span class="dt">float</span>(dt)            <span class="co"># avoid integer division</span>
@@ -88,7 +88,68 @@ u(0)  = I,                         \label{initial:value}
     u[<span class="dv">0</span>] = I                  <span class="co"># assign initial condition</span>
     <span class="kw">for</span> n in <span class="dt">range</span>(<span class="dv">0</span>, Nt):    <span class="co"># n=0,1,...,Nt-1</span>
         u[n<span class="dv">+1</span>] = (<span class="dv">1</span> - (<span class="dv">1</span>-theta)*a*dt)/(<span class="dv">1</span> + theta*dt*a)*u[n]
-    <span class="kw">return</span> u, t</code></pre>
+    <span class="kw">return</span> u, t
+
+<span class="kw">def</span> exact_solution(t, I, a):
+    <span class="kw">return</span> I*exp(-a*t)
+
+<span class="kw">def</span> explore(I, a, T, dt, theta=<span class="fl">0.5</span>):
+    <span class="co">&quot;&quot;&quot;</span>
+<span class="co">    Run a case with the solver, compute error measure,</span>
+<span class="co">    and plot the numerical and exact solutions (if makeplot=True).</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    u, t = solver(I, a, T, dt, theta)    <span class="co"># Numerical solution</span>
+    u_e = exact_solution(t, I, a)
+    e = u_e - u
+    E = sqrt(dt*<span class="dt">sum</span>(e**<span class="dv">2</span>))
+
+    figure()                         <span class="co"># create new plot</span>
+    t_e = linspace(<span class="dv">0</span>, T, <span class="dv">1001</span>)       <span class="co"># very fine mesh for u_e</span>
+    u_e = exact_solution(t_e, I, a)
+    plot(t,   u,   <span class="st">&#39;r--o&#39;</span>)           <span class="co"># dashed red line with circles</span>
+    plot(t_e, u_e, <span class="st">&#39;b-&#39;</span>)             <span class="co"># blue line for u_e</span>
+    legend([<span class="st">&#39;numerical&#39;</span>, <span class="st">&#39;exact&#39;</span>])
+    xlabel(<span class="st">&#39;t&#39;</span>)
+    ylabel(<span class="st">&#39;u&#39;</span>)
+    title(<span class="st">&#39;Method: theta-rule, theta=</span><span class="ot">%g</span><span class="st">, dt=</span><span class="ot">%g</span><span class="st">&#39;</span> 
+    theta2name = {<span class="dv">0</span>: <span class="st">&#39;FE&#39;</span>, <span class="dv">1</span>: <span class="st">&#39;BE&#39;</span>, <span class="fl">0.5</span>: <span class="st">&#39;CN&#39;</span>}
+    savefig(<span class="st">&#39;</span><span class="ot">%s</span><span class="st">_</span><span class="ot">%g</span><span class="st">.png&#39;</span> 
+    savefig(<span class="st">&#39;</span><span class="ot">%s</span><span class="st">_</span><span class="ot">%g</span><span class="st">.pdf&#39;</span> 
+    <span class="co">#show()  # run in batch</span>
+    <span class="kw">return</span> E
+
+<span class="kw">def</span> define_command_line_options():
+    <span class="ch">import</span> argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument(<span class="st">&#39;--I&#39;</span>, <span class="st">&#39;--initial_condition&#39;</span>, <span class="dt">type</span>=<span class="dt">float</span>,
+                        default=<span class="fl">1.0</span>, <span class="dt">help</span>=<span class="st">&#39;initial condition, u(0)&#39;</span>,
+                        metavar=<span class="st">&#39;I&#39;</span>)
+    parser.add_argument(<span class="st">&#39;--a&#39;</span>, <span class="dt">type</span>=<span class="dt">float</span>,
+                        default=<span class="fl">1.0</span>, <span class="dt">help</span>=<span class="st">&#39;coefficient in ODE&#39;</span>,
+                        metavar=<span class="st">&#39;a&#39;</span>)
+    parser.add_argument(<span class="st">&#39;--T&#39;</span>, <span class="st">&#39;--stop_time&#39;</span>, <span class="dt">type</span>=<span class="dt">float</span>,
+                        default=<span class="fl">1.0</span>, <span class="dt">help</span>=<span class="st">&#39;end time of simulation&#39;</span>,
+                        metavar=<span class="st">&#39;T&#39;</span>)
+    parser.add_argument(<span class="st">&#39;--dt&#39;</span>, <span class="st">&#39;--time_step_values&#39;</span>, <span class="dt">type</span>=<span class="dt">float</span>,
+                        default=[<span class="fl">1.0</span>], <span class="dt">help</span>=<span class="st">&#39;time step values&#39;</span>,
+                        metavar=<span class="st">&#39;dt&#39;</span>, nargs=<span class="st">&#39;+&#39;</span>, dest=<span class="st">&#39;dt_values&#39;</span>)
+    <span class="kw">return</span> parser
+
+<span class="kw">def</span> read_command_line():
+    parser = define_command_line_options()
+    args = parser.parse_args()
+    <span class="kw">return</span> args.I, args.a, args.T, args.dt_values
+
+<span class="kw">def</span> main():
+    <span class="co">&quot;&quot;&quot;Conduct experiments with theta and dt values.&quot;&quot;&quot;</span>
+    I, a, T, dt_values = read_command_line()
+    <span class="kw">for</span> theta in <span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>:
+        <span class="kw">for</span> dt in dt_values:
+            E = explore(I, a, T, dt, theta)
+            <span class="dt">print</span> <span class="st">&#39;</span><span class="ot">%3.1f</span><span class="st"> </span><span class="ot">%6.2f</span><span class="st">: </span><span class="ot">%12.3E</span><span class="st">&#39;</span> 
+
+<span class="kw">if</span> <span class="ot">__name__</span> == <span class="st">&#39;__main__&#39;</span>:
+    main()</code></pre>
 <h2 id="numerical-experiments">Numerical experiments</h2>
 <p>We define a set of numerical experiments where <span class="math">\(I\)</span>, <span class="math">\(a\)</span>, and <span class="math">\(T\)</span> are fixed, while <span class="math">\(\Delta t\)</span> and <span class="math">\(\theta\)</span> are varied. In particular, <span class="math">\(I=1\)</span>, <span class="math">\(a=2\)</span>, <span class="math">\(\Delta t = 1.25, 0.75, 0.5, 0.1\)</span>.</p>
 <h3 id="the-backward-euler-method">The Backward Euler method</h3>
@@ -150,17 +211,17 @@ u(0)  = I,                         \label{initial:value}
 </tr>
 </tbody>
 </table>
-<p><em>Summary.</em> 1. <span class="math">\(\theta =1\)</span>: <span class="math">\(E\sim \Delta t\)</span> (first-order convergence). 2. <span class="math">\(\theta =0.5\)</span>: <span class="math">\(E\sim \Delta t^2\)</span> (second-order convergence). 3. <span class="math">\(\theta =1\)</span> is always stable and gives qualitatively corrects results. 4. <span class="math">\(\theta =0.5\)</span> never blows up, but may give oscillating solutions if <span class="math">\(\Delta t\)</span> is not sufficiently small. 5. <span class="math">\(\theta =0\)</span> suffers from fast-growing solution if <span class="math">\(\Delta t\)</span> is not small enough, but even below this limit one can have oscillating solutions that disappear if <span class="math">\(\Delta t\)</span> is sufficiently small.</p>
+<p><em>Summary.</em> 1. <span class="math">\(\theta =1\)</span>: <span class="math">\(E\sim \Delta t\)</span> (first-order convergence). 2. <span class="math">\(\theta =0.5\)</span>: <span class="math">\(E\sim \Delta t^2\)</span> (second-order convergence). 3. <span class="math">\(\theta =1\)</span> is always stable and gives qualitatively corrects results. 4. <span class="math">\(\theta =0.5\)</span> never blows up, but may give oscillating solutions if <span class="math">\(\Delta t\)</span> is not sufficiently small. 5. <span class="math">\(\theta =0\)</span> suffers from fast-growing solution if <span class="math">\(\Delta t\)</span> is not small enough, but even below this limit one can have oscillating solutions (unless <span class="math">\(\Delta t\)</span> is sufficiently small).</p>
 <h2 id="bibliography">Bibliography</h2>
 <ol style="list-style-type: decimal">
 <li><div id="Iserles_2009">
 
 </div>
-<strong>A. Iserles</strong>. <em>A First Course in the Numerical Analysis of Differential Equations</em>, Cambridge University Press, 2009.</li>
+<strong>A. Iserles</strong>. <em>A First Course in the Numerical Analysis of Differential Equations</em>, second edition, Cambridge University Press, 2009.</li>
 <li><div id="Langtangen_2014">
 
 </div>
-<strong>H. P. Langtangen</strong>. <em>A Primer on Scientific Programming With Python</em>, Springer, 2014.</li>
+<strong>H. P. Langtangen</strong>. <em>A Primer on Scientific Programming With Python</em>, fourth edition, Springer, 2014.</li>
 </ol>
 </body>
 </html>

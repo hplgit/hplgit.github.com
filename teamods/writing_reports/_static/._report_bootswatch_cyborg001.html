@@ -150,7 +150,7 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
 
 <p>
 The numerical method is implemented in a Python function
-<a href="#Langtangen_2014">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>decay_mod</tt></a> module):
+<a href="#Langtangen_2014">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>model</tt></a> module):
 
 <p>
 
@@ -167,6 +167,67 @@ The numerical method is implemented in a Python function
     <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">n</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">range(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">Nt):</span>    <span style="color: #75715e"># n=0,1,...,Nt-1</span>
         <span style="color: #f8f8f2">u[n</span><span style="color: #f92672">+</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">1</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">1</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">theta)</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">a</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">dt)</span><span style="color: #f92672">/</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">1</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">theta</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">dt</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">a)</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">u[n]</span>
     <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">u,</span> <span style="color: #f8f8f2">t</span>
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">exact_solution</span><span style="color: #f8f8f2">(t,</span> <span style="color: #f8f8f2">I,</span> <span style="color: #f8f8f2">a):</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">I</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">exp(</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">a</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">t)</span>
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">explore</span><span style="color: #f8f8f2">(I,</span> <span style="color: #f8f8f2">a,</span> <span style="color: #f8f8f2">T,</span> <span style="color: #f8f8f2">dt,</span> <span style="color: #f8f8f2">theta</span><span style="color: #f92672">=</span><span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">):</span>
+    <span style="color: #e6db74">&quot;&quot;&quot;</span>
+<span style="color: #e6db74">    Run a case with the solver, compute error measure,</span>
+<span style="color: #e6db74">    and plot the numerical and exact solutions (if makeplot=True).</span>
+<span style="color: #e6db74">    &quot;&quot;&quot;</span>
+    <span style="color: #f8f8f2">u,</span> <span style="color: #f8f8f2">t</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">solver(I,</span> <span style="color: #f8f8f2">a,</span> <span style="color: #f8f8f2">T,</span> <span style="color: #f8f8f2">dt,</span> <span style="color: #f8f8f2">theta)</span>    <span style="color: #75715e"># Numerical solution</span>
+    <span style="color: #f8f8f2">u_e</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">exact_solution(t,</span> <span style="color: #f8f8f2">I,</span> <span style="color: #f8f8f2">a)</span>
+    <span style="color: #f8f8f2">e</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">u_e</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">u</span>
+    <span style="color: #f8f8f2">E</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">sqrt(dt</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">sum(e</span><span style="color: #f92672">**</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">))</span>
+
+    <span style="color: #f8f8f2">figure()</span>                         <span style="color: #75715e"># create new plot</span>
+    <span style="color: #f8f8f2">t_e</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">linspace(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">T,</span> <span style="color: #ae81ff">1001</span><span style="color: #f8f8f2">)</span>       <span style="color: #75715e"># very fine mesh for u_e</span>
+    <span style="color: #f8f8f2">u_e</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">exact_solution(t_e,</span> <span style="color: #f8f8f2">I,</span> <span style="color: #f8f8f2">a)</span>
+    <span style="color: #f8f8f2">plot(t,</span>   <span style="color: #f8f8f2">u,</span>   <span style="color: #e6db74">&#39;r--o&#39;</span><span style="color: #f8f8f2">)</span>           <span style="color: #75715e"># dashed red line with circles</span>
+    <span style="color: #f8f8f2">plot(t_e,</span> <span style="color: #f8f8f2">u_e,</span> <span style="color: #e6db74">&#39;b-&#39;</span><span style="color: #f8f8f2">)</span>             <span style="color: #75715e"># blue line for u_e</span>
+    <span style="color: #f8f8f2">legend([</span><span style="color: #e6db74">&#39;numerical&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;exact&#39;</span><span style="color: #f8f8f2">])</span>
+    <span style="color: #f8f8f2">xlabel(</span><span style="color: #e6db74">&#39;t&#39;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">ylabel(</span><span style="color: #e6db74">&#39;u&#39;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">title(</span><span style="color: #e6db74">&#39;Method: theta-rule, theta=%g, dt=%g&#39;</span> <span style="color: #f92672">%</span> <span style="color: #f8f8f2">(theta,</span> <span style="color: #f8f8f2">dt))</span>
+    <span style="color: #f8f8f2">theta2name</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;FE&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;BE&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;CN&#39;</span><span style="color: #f8f8f2">}</span>
+    <span style="color: #f8f8f2">savefig(</span><span style="color: #e6db74">&#39;%s_%g.png&#39;</span> <span style="color: #f92672">%</span> <span style="color: #f8f8f2">(theta2name[theta],</span> <span style="color: #f8f8f2">dt),</span> <span style="color: #f8f8f2">dpi</span><span style="color: #f92672">=</span><span style="color: #ae81ff">150</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">savefig(</span><span style="color: #e6db74">&#39;%s_%g.pdf&#39;</span> <span style="color: #f92672">%</span> <span style="color: #f8f8f2">(theta2name[theta],</span> <span style="color: #f8f8f2">dt))</span>
+    <span style="color: #75715e">#show()  # run in batch</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">E</span>
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">define_command_line_options</span><span style="color: #f8f8f2">():</span>
+    <span style="color: #f92672">import</span> <span style="color: #f8f8f2">argparse</span>
+    <span style="color: #f8f8f2">parser</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">argparse</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">ArgumentParser()</span>
+    <span style="color: #f8f8f2">parser</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add_argument(</span><span style="color: #e6db74">&#39;--I&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;--initial_condition&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">type</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">float,</span>
+                        <span style="color: #f8f8f2">default</span><span style="color: #f92672">=</span><span style="color: #ae81ff">1.0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">help</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;initial condition, u(0)&#39;</span><span style="color: #f8f8f2">,</span>
+                        <span style="color: #f8f8f2">metavar</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;I&#39;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">parser</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add_argument(</span><span style="color: #e6db74">&#39;--a&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">type</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">float,</span>
+                        <span style="color: #f8f8f2">default</span><span style="color: #f92672">=</span><span style="color: #ae81ff">1.0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">help</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;coefficient in ODE&#39;</span><span style="color: #f8f8f2">,</span>
+                        <span style="color: #f8f8f2">metavar</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;a&#39;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">parser</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add_argument(</span><span style="color: #e6db74">&#39;--T&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;--stop_time&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">type</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">float,</span>
+                        <span style="color: #f8f8f2">default</span><span style="color: #f92672">=</span><span style="color: #ae81ff">1.0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">help</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;end time of simulation&#39;</span><span style="color: #f8f8f2">,</span>
+                        <span style="color: #f8f8f2">metavar</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;T&#39;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">parser</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add_argument(</span><span style="color: #e6db74">&#39;--dt&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;--time_step_values&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">type</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">float,</span>
+                        <span style="color: #f8f8f2">default</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">[</span><span style="color: #ae81ff">1.0</span><span style="color: #f8f8f2">],</span> <span style="color: #f8f8f2">help</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;time step values&#39;</span><span style="color: #f8f8f2">,</span>
+                        <span style="color: #f8f8f2">metavar</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;dt&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">nargs</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;+&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">dest</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;dt_values&#39;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">parser</span>
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">read_command_line</span><span style="color: #f8f8f2">():</span>
+    <span style="color: #f8f8f2">parser</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">define_command_line_options()</span>
+    <span style="color: #f8f8f2">args</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">parser</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">parse_args()</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">args</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">I,</span> <span style="color: #f8f8f2">args</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">a,</span> <span style="color: #f8f8f2">args</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">T,</span> <span style="color: #f8f8f2">args</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">dt_values</span>
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">():</span>
+    <span style="color: #e6db74">&quot;&quot;&quot;Conduct experiments with theta and dt values.&quot;&quot;&quot;</span>
+    <span style="color: #f8f8f2">I,</span> <span style="color: #f8f8f2">a,</span> <span style="color: #f8f8f2">T,</span> <span style="color: #f8f8f2">dt_values</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">read_command_line()</span>
+    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">theta</span> <span style="color: #f92672">in</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span>
+        <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">dt</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">dt_values:</span>
+            <span style="color: #f8f8f2">E</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">explore(I,</span> <span style="color: #f8f8f2">a,</span> <span style="color: #f8f8f2">T,</span> <span style="color: #f8f8f2">dt,</span> <span style="color: #f8f8f2">theta)</span>
+            <span style="color: #66d9ef">print</span> <span style="color: #e6db74">&#39;%3.1f %6.2f: %12.3E&#39;</span> <span style="color: #f92672">%</span> <span style="color: #f8f8f2">(theta,</span> <span style="color: #f8f8f2">dt,</span> <span style="color: #f8f8f2">E)</span>
+
+<span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">__name__</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&#39;__main__&#39;</span><span style="color: #f8f8f2">:</span>
+    <span style="color: #f8f8f2">main()</span>
 </pre></div>
 
 <h1 id="___sec3">Numerical experiments </h1>
@@ -243,7 +304,7 @@ The numbers corresponding to the figure above are given in the table below.
    if \( \Delta t \) is not sufficiently small.</li>
 <li> \( \theta =0 \) suffers from fast-growing solution if \( \Delta t \) is
    not small enough, but even below this limit one can have oscillating
-   solutions that disappear if \( \Delta t \) is sufficiently small.</li>
+   solutions (unless \( \Delta t \) is sufficiently small).</li>
 </ol>
 </div>
 
@@ -256,10 +317,12 @@ The numbers corresponding to the figure above are given in the table below.
 <ol>
  <li> <div id="Iserles_2009"></div> <b>A. Iserles</b>. 
     <em>A First Course in the Numerical Analysis of Differential Equations</em>,
+    second edition,
     Cambridge University Press,
     2009.</li>
  <li> <div id="Langtangen_2014"></div> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
+    fourth edition,
     Springer,
     2014.</li>
 </ol>

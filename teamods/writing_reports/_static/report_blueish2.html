@@ -114,7 +114,6 @@ MathJax.Hub.Config({
     
 <!-- ------------------- main content ---------------------- -->
 
-
 <p>
 
 
@@ -127,14 +126,13 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo.</b></center>
 <p>
-<center><h4>Mar 12, 2015</h4></center> <!-- date -->
+<center><h4>May 21, 2015</h4></center> <!-- date -->
 <p>
 <b>Summary.</b> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation \( u'=-au \) with the
@@ -205,7 +203,7 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
 
 <p>
 The numerical method is implemented in a Python function
-<a href="#Langtangen_2014">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>decay_mod</tt></a> module):
+<a href="#Langtangen_2014">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>model</tt></a> module):
 
 <p>
 <!-- begin verbatim block  pycod-->
@@ -221,6 +219,67 @@ The numerical method is implemented in a Python function
     for n in range(0, Nt):    # n=0,1,...,Nt-1
         u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
     return u, t
+
+def exact_solution(t, I, a):
+    return I*exp(-a*t)
+
+def explore(I, a, T, dt, theta=0.5):
+    &quot;&quot;&quot;
+    Run a case with the solver, compute error measure,
+    and plot the numerical and exact solutions (if makeplot=True).
+    &quot;&quot;&quot;
+    u, t = solver(I, a, T, dt, theta)    # Numerical solution
+    u_e = exact_solution(t, I, a)
+    e = u_e - u
+    E = sqrt(dt*sum(e**2))
+
+    figure()                         # create new plot
+    t_e = linspace(0, T, 1001)       # very fine mesh for u_e
+    u_e = exact_solution(t_e, I, a)
+    plot(t,   u,   'r--o')           # dashed red line with circles
+    plot(t_e, u_e, 'b-')             # blue line for u_e
+    legend(['numerical', 'exact'])
+    xlabel('t')
+    ylabel('u')
+    title('Method: theta-rule, theta=%g, dt=%g' % (theta, dt))
+    theta2name = {0: 'FE', 1: 'BE', 0.5: 'CN'}
+    savefig('%s_%g.png' % (theta2name[theta], dt), dpi=150)
+    savefig('%s_%g.pdf' % (theta2name[theta], dt))
+    #show()  # run in batch
+    return E
+
+def define_command_line_options():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--I', '--initial_condition', type=float,
+                        default=1.0, help='initial condition, u(0)',
+                        metavar='I')
+    parser.add_argument('--a', type=float,
+                        default=1.0, help='coefficient in ODE',
+                        metavar='a')
+    parser.add_argument('--T', '--stop_time', type=float,
+                        default=1.0, help='end time of simulation',
+                        metavar='T')
+    parser.add_argument('--dt', '--time_step_values', type=float,
+                        default=[1.0], help='time step values',
+                        metavar='dt', nargs='+', dest='dt_values')
+    return parser
+
+def read_command_line():
+    parser = define_command_line_options()
+    args = parser.parse_args()
+    return args.I, args.a, args.T, args.dt_values
+
+def main():
+    &quot;&quot;&quot;Conduct experiments with theta and dt values.&quot;&quot;&quot;
+    I, a, T, dt_values = read_command_line()
+    for theta in 0, 0.5, 1:
+        for dt in dt_values:
+            E = explore(I, a, T, dt, theta)
+            print '%3.1f %6.2f: %12.3E' % (theta, dt, E)
+
+if __name__ == '__main__':
+    main()
 </code></pre>
 <!-- end verbatim block -->
 
@@ -297,7 +356,7 @@ The numbers corresponding to the figure above are given in the table below.
    if \( \Delta t \) is not sufficiently small.</li>
 <li> \( \theta =0 \) suffers from fast-growing solution if \( \Delta t \) is
    not small enough, but even below this limit one can have oscillating
-   solutions that disappear if \( \Delta t \) is sufficiently small.</li>
+   solutions (unless \( \Delta t \) is sufficiently small).</li>
 </ol>
 </div>
 
@@ -310,10 +369,12 @@ The numbers corresponding to the figure above are given in the table below.
 <ol>
  <li> <div id="Iserles_2009"></div> <b>A. Iserles</b>. 
     <em>A First Course in the Numerical Analysis of Differential Equations</em>,
+    second edition,
     Cambridge University Press,
     2009.</li>
  <li> <div id="Langtangen_2014"></div> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
+    fourth edition,
     Springer,
     2014.</li>
 </ol>

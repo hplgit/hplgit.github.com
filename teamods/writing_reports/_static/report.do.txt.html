@@ -83,10 +83,10 @@ for $n=0,1,\ldots,N_t-1$. This scheme corresponds to
 <span style="color: #228B22">## expression t.</span>
 
 The numerical method is implemented in a Python function
-cite{Langtangen_2014} `solver` (found in the &quot;`decay_mod`&quot;:
+cite{Langtangen_2014} `solver` (found in the &quot;`model`&quot;:
 <span style="color: #CD5555">&quot;https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py&quot;</span> module):
 
-<span style="color: #800080; font-weight: bold">@@@CODE ../decay_mod.py  fromto: def solver@def verify_three</span>
+<span style="color: #800080; font-weight: bold">@@@CODE ../model.py  fromto: def solver@def verify_three</span>
 
 
 <span style="color: #000080; font-weight: bold">======= Numerical experiments =======</span>
@@ -176,7 +176,7 @@ The numbers corresponding to the figure above are given in the table below.
    if $\Delta t$ is not sufficiently small.
  o $\theta =0$ suffers from fast-growing solution if $\Delta t$ is
    not small enough, but even below this limit one can have oscillating
-   solutions that disappear if $\Delta t$ is sufficiently small.
+   solutions (unless $\Delta t$ is sufficiently small).
 <span style="color: #8B008B; font-weight: bold">!esummary</span>
 
 <span style="color: #000080; font-weight: bold">======= Bibliography =======</span>

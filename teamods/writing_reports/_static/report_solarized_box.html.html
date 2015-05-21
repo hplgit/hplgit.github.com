@@ -186,7 +186,6 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 
 <span class="c">&lt;!-- ------------------- main content ---------------------- --&gt;</span>
 
-
 <span class="nt">&lt;p&gt;</span>
 
 
@@ -252,7 +251,7 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
 
 <span class="nt">&lt;p&gt;</span>
 The numerical method is implemented in a Python function
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#Langtangen_2014&quot;</span><span class="nt">&gt;</span>[2]<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;code&gt;</span>solver<span class="nt">&lt;/code&gt;</span> (found in the <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py&quot;</span> <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;&lt;tt&gt;</span>decay_mod<span class="nt">&lt;/tt&gt;&lt;/a&gt;</span> module):
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#Langtangen_2014&quot;</span><span class="nt">&gt;</span>[2]<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;code&gt;</span>solver<span class="nt">&lt;/code&gt;</span> (found in the <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py&quot;</span> <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;&lt;tt&gt;</span>model<span class="nt">&lt;/tt&gt;&lt;/a&gt;</span> module):
 
 <span class="nt">&lt;p&gt;</span>
 <span class="c">&lt;!-- begin verbatim block  pycod--&gt;</span>
@@ -268,6 +267,67 @@ The numerical method is implemented in a Python function
     for n in range(0, Nt):    # n=0,1,...,Nt-1
         u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
     return u, t
+
+def exact_solution(t, I, a):
+    return I*exp(-a*t)
+
+def explore(I, a, T, dt, theta=0.5):
+    <span class="ni">&amp;quot;&amp;quot;&amp;quot;</span>
+    Run a case with the solver, compute error measure,
+    and plot the numerical and exact solutions (if makeplot=True).
+    <span class="ni">&amp;quot;&amp;quot;&amp;quot;</span>
+    u, t = solver(I, a, T, dt, theta)    # Numerical solution
+    u_e = exact_solution(t, I, a)
+    e = u_e - u
+    E = sqrt(dt*sum(e**2))
+
+    figure()                         # create new plot
+    t_e = linspace(0, T, 1001)       # very fine mesh for u_e
+    u_e = exact_solution(t_e, I, a)
+    plot(t,   u,   &#39;r--o&#39;)           # dashed red line with circles
+    plot(t_e, u_e, &#39;b-&#39;)             # blue line for u_e
+    legend([&#39;numerical&#39;, &#39;exact&#39;])
+    xlabel(&#39;t&#39;)
+    ylabel(&#39;u&#39;)
+    title(&#39;Method: theta-rule, theta=%g, dt=%g&#39; % (theta, dt))
+    theta2name = {0: &#39;FE&#39;, 1: &#39;BE&#39;, 0.5: &#39;CN&#39;}
+    savefig(&#39;%s_%g.png&#39; % (theta2name[theta], dt), dpi=150)
+    savefig(&#39;%s_%g.pdf&#39; % (theta2name[theta], dt))
+    #show()  # run in batch
+    return E
+
+def define_command_line_options():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument(&#39;--I&#39;, &#39;--initial_condition&#39;, type=float,
+                        default=1.0, help=&#39;initial condition, u(0)&#39;,
+                        metavar=&#39;I&#39;)
+    parser.add_argument(&#39;--a&#39;, type=float,
+                        default=1.0, help=&#39;coefficient in ODE&#39;,
+                        metavar=&#39;a&#39;)
+    parser.add_argument(&#39;--T&#39;, &#39;--stop_time&#39;, type=float,
+                        default=1.0, help=&#39;end time of simulation&#39;,
+                        metavar=&#39;T&#39;)
+    parser.add_argument(&#39;--dt&#39;, &#39;--time_step_values&#39;, type=float,
+                        default=[1.0], help=&#39;time step values&#39;,
+                        metavar=&#39;dt&#39;, nargs=&#39;+&#39;, dest=&#39;dt_values&#39;)
+    return parser
+
+def read_command_line():
+    parser = define_command_line_options()
+    args = parser.parse_args()
+    return args.I, args.a, args.T, args.dt_values
+
+def main():
+    <span class="ni">&amp;quot;&amp;quot;&amp;quot;</span>Conduct experiments with theta and dt values.<span class="ni">&amp;quot;&amp;quot;&amp;quot;</span>
+    I, a, T, dt_values = read_command_line()
+    for theta in 0, 0.5, 1:
+        for dt in dt_values:
+            E = explore(I, a, T, dt, theta)
+            print &#39;%3.1f %6.2f: %12.3E&#39; % (theta, dt, E)
+
+if __name__ == &#39;__main__&#39;:
+    main()
 <span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
 <span class="c">&lt;!-- end verbatim block --&gt;</span>
 
@@ -344,7 +404,7 @@ The numbers corresponding to the figure above are given in the table below.
    if \( \Delta t \) is not sufficiently small.<span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;li&gt;</span> \( \theta =0 \) suffers from fast-growing solution if \( \Delta t \) is
    not small enough, but even below this limit one can have oscillating
-   solutions that disappear if \( \Delta t \) is sufficiently small.<span class="nt">&lt;/li&gt;</span>
+   solutions (unless \( \Delta t \) is sufficiently small).<span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ol&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 
@@ -357,10 +417,12 @@ The numbers corresponding to the figure above are given in the table below.
 <span class="nt">&lt;ol&gt;</span>
  <span class="nt">&lt;li&gt;</span> <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;Iserles_2009&quot;</span><span class="nt">&gt;&lt;/div&gt;</span> <span class="nt">&lt;b&gt;</span>A. Iserles<span class="nt">&lt;/b&gt;</span>. 
     <span class="nt">&lt;em&gt;</span>A First Course in the Numerical Analysis of Differential Equations<span class="nt">&lt;/em&gt;</span>,
+    second edition,
     Cambridge University Press,
     2009.<span class="nt">&lt;/li&gt;</span>
  <span class="nt">&lt;li&gt;</span> <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;Langtangen_2014&quot;</span><span class="nt">&gt;&lt;/div&gt;</span> <span class="nt">&lt;b&gt;</span>H. P. Langtangen<span class="nt">&lt;/b&gt;</span>. 
     <span class="nt">&lt;em&gt;</span>A Primer on Scientific Programming With Python<span class="nt">&lt;/em&gt;</span>,
+    fourth edition,
     Springer,
     2014.<span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ol&gt;</span>

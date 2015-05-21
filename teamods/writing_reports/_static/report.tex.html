@@ -100,10 +100,9 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 <span class="k">\usepackage</span><span class="nb">{</span>bm,microtype<span class="nb">}</span>
 
 <span class="k">\usepackage</span><span class="nb">{</span>graphicx<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="nb">{</span>fancyvrb<span class="nb">}</span>
 
 <span class="c">% Packages for typesetting blocks of computer code</span>
-<span class="k">\usepackage</span><span class="nb">{</span>framed,fancyvrb,moreverb<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>fancyvrb,framed,moreverb<span class="nb">}</span>
 
 <span class="c">% Define colors</span>
 <span class="k">\definecolor</span><span class="nb">{</span>orange<span class="nb">}{</span>cmyk<span class="nb">}{</span>0,0.4,0.8,0.2<span class="nb">}</span>
@@ -116,13 +115,14 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 
 <span class="k">\colorlet</span><span class="nb">{</span>comment<span class="nb">_</span>green<span class="nb">}{</span>green!50!black<span class="nb">}</span>
 <span class="k">\colorlet</span><span class="nb">{</span>string<span class="nb">_</span>red<span class="nb">}{</span>red!60!black<span class="nb">}</span>
-<span class="k">\colorlet</span><span class="nb">{</span>keyword<span class="nb">_</span>pink<span class="nb">}{</span>magenta!90!black<span class="nb">}</span>
+<span class="k">\colorlet</span><span class="nb">{</span>keyword<span class="nb">_</span>pink<span class="nb">}{</span>magenta!70!black<span class="nb">}</span>
 <span class="k">\colorlet</span><span class="nb">{</span>indendifier<span class="nb">_</span>green<span class="nb">}{</span>green!70!white<span class="nb">}</span>
 
 <span class="c">% New ansi colors</span>
 <span class="k">\definecolor</span><span class="nb">{</span>brown<span class="nb">}{</span>rgb<span class="nb">}{</span>0.54,0.27,0.07<span class="nb">}</span>
 <span class="k">\definecolor</span><span class="nb">{</span>purple<span class="nb">}{</span>rgb<span class="nb">}{</span>0.5,0.0,0.5<span class="nb">}</span>
 <span class="k">\definecolor</span><span class="nb">{</span>darkgray<span class="nb">}{</span>gray<span class="nb">}{</span>0.25<span class="nb">}</span>
+<span class="k">\definecolor</span><span class="nb">{</span>darkblue<span class="nb">}{</span>rgb<span class="nb">}{</span>0,0.08,0.45<span class="nb">}</span>
 <span class="k">\definecolor</span><span class="nb">{</span>lightred<span class="nb">}{</span>rgb<span class="nb">}{</span>1.0,0.39,0.28<span class="nb">}</span>
 <span class="k">\definecolor</span><span class="nb">{</span>lightgreen<span class="nb">}{</span>rgb<span class="nb">}{</span>0.48,0.99,0.0<span class="nb">}</span>
 <span class="k">\definecolor</span><span class="nb">{</span>lightblue<span class="nb">}{</span>rgb<span class="nb">}{</span>0.53,0.81,0.92<span class="nb">}</span>
@@ -147,19 +147,6 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 
 <span class="k">\definecolor</span><span class="nb">{</span>cbg<span class="nb">_</span>blue1<span class="nb">}{</span>rgb<span class="nb">}{</span>0.87843, 0.95686, 1.0<span class="nb">}</span>
 <span class="k">\definecolor</span><span class="nb">{</span>bar<span class="nb">_</span>blue1<span class="nb">}{</span>rgb<span class="nb">}{</span>0.7,     0.95686, 1<span class="nb">}</span>
-
-<span class="c">% Background for code blocks (parameter is color name)</span>
-<span class="k">\newenvironment</span><span class="nb">{</span>cod<span class="nb">}</span>[1]<span class="nb">{</span><span class="c">%</span>
-   <span class="k">\def\FrameCommand</span><span class="nb">{</span><span class="k">\colorbox</span><span class="nb">{</span>#1<span class="nb">}}</span><span class="c">%</span>
-   <span class="k">\MakeFramed</span><span class="nb">{</span><span class="k">\advance\hsize</span>-<span class="k">\width</span> <span class="k">\FrameRestore</span><span class="nb">}}</span><span class="c">%</span>
- <span class="nb">{</span><span class="k">\unskip\medskip\endMakeFramed</span><span class="nb">}</span>
-
-<span class="c">% Background for complete program blocks (parameter 1 is color name</span>
-<span class="c">% for background, parameter 2 is color for left bar)</span>
-<span class="k">\newenvironment</span><span class="nb">{</span>pro<span class="nb">}</span>[2]<span class="nb">{</span><span class="c">%</span>
-   <span class="k">\def\FrameCommand</span><span class="nb">{</span><span class="k">\color</span><span class="nb">{</span>#2<span class="nb">}</span><span class="k">\vrule</span> width 1mm<span class="k">\normalcolor\colorbox</span><span class="nb">{</span>#1<span class="nb">}}</span><span class="c">%</span>
-   <span class="k">\MakeFramed</span><span class="nb">{</span><span class="k">\advance\hsize</span>-<span class="k">\width</span> <span class="k">\FrameRestore</span><span class="nb">}}</span><span class="c">%</span>
- <span class="nb">{</span><span class="k">\unskip\medskip\endMakeFramed</span><span class="nb">}</span>
 
 <span class="k">\usepackage</span><span class="nb">{</span>minted<span class="nb">}</span>
 <span class="k">\usemintedstyle</span><span class="nb">{</span>default<span class="nb">}</span>
@@ -210,10 +197,12 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 
 <span class="c">% --- fancyhdr package for fancy headers ---</span>
 <span class="k">\usepackage</span><span class="nb">{</span>fancyhdr<span class="nb">}</span>
-<span class="k">\fancyhf</span><span class="nb">{}</span>
+<span class="k">\fancyhf</span><span class="nb">{}</span> <span class="c">% sets both header and footer to nothing</span>
+<span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\headrulewidth</span><span class="nb">}{</span>1pt<span class="nb">}</span>
 <span class="c">% section name to the left (L) and page number to the right (R)</span>
 <span class="c">% on even (E) pages, the other way around on odd pages</span>
-<span class="k">\fancyhead</span><span class="na">[LE,RO]</span><span class="nb">{</span><span class="k">\rightmark</span><span class="nb">}</span> <span class="c">%section</span>
+<span class="c">% (switch twoside to onside in documentclass to just have odd pages)</span>
+<span class="k">\fancyhead</span><span class="na">[LE,RO]</span><span class="nb">{</span><span class="k">\rightmark</span><span class="nb">}</span> <span class="c">% section</span>
 <span class="k">\fancyhead</span><span class="na">[RE,LO]</span><span class="nb">{</span><span class="k">\thepage</span><span class="nb">}</span>
 <span class="k">\pagestyle</span><span class="nb">{</span>fancy<span class="nb">}</span>
 
@@ -374,6 +363,7 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 
 <span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
 
+<span class="c">% endif for #ifdef PREAMBLE</span>
 <span class="c">% #endif</span>
 
 
@@ -392,7 +382,7 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 
 <span class="c">% ----------------- end author(s) -------------------------</span>
 
-<span class="k">\date</span><span class="nb">{</span>Mar 12, 2015<span class="nb">}</span>
+<span class="k">\date</span><span class="nb">{</span>May 21, 2015<span class="nb">}</span>
 <span class="k">\maketitle</span>
 
 <span class="k">\begin</span><span class="nb">{</span>quote<span class="nb">}</span><span class="k">\small</span>
@@ -466,7 +456,7 @@ for <span class="s">$</span><span class="nb">n</span><span class="o">=</span><sp
 
 
 The numerical method is implemented in a Python function
-<span class="k">\cite</span><span class="nb">{</span>Langtangen<span class="nb">_</span>2014<span class="nb">}</span> <span class="k">\Verb</span>!solver! (found in the <span class="k">\href</span><span class="nb">{{</span>https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc<span class="nb">_</span>mod.py<span class="nb">}}{</span><span class="k">\nolinkurl</span><span class="nb">{</span>decay<span class="nb">_</span>mod<span class="nb">}}</span> module):
+<span class="k">\cite</span><span class="nb">{</span>Langtangen<span class="nb">_</span>2014<span class="nb">}</span> <span class="k">\Verb</span>!solver! (found in the <span class="k">\href</span><span class="nb">{{</span>https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc<span class="nb">_</span>mod.py<span class="nb">}}{</span><span class="k">\nolinkurl</span><span class="nb">{</span>model<span class="nb">}}</span> module):
 
 <span class="k">\begin</span><span class="nb">{</span>minted<span class="nb">}</span>[fontsize=<span class="k">\fontsize</span><span class="nb">{</span>9pt<span class="nb">}{</span>9pt<span class="nb">}</span>,linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]<span class="nb">{</span>python<span class="nb">}</span>
 def solver(I, a, T, dt, theta):
@@ -481,6 +471,67 @@ def solver(I, a, T, dt, theta):
     for n in range(0, Nt):    # n=0,1,...,Nt-1
         u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
     return u, t
+
+def exact<span class="nb">_</span>solution(t, I, a):
+    return I*exp(-a*t)
+
+def explore(I, a, T, dt, theta=0.5):
+    &quot;&quot;&quot;
+    Run a case with the solver, compute error measure,
+    and plot the numerical and exact solutions (if makeplot=True).
+    &quot;&quot;&quot;
+    u, t = solver(I, a, T, dt, theta)    # Numerical solution
+    u<span class="nb">_</span>e = exact<span class="nb">_</span>solution(t, I, a)
+    e = u<span class="nb">_</span>e - u
+    E = sqrt(dt*sum(e**2))
+
+    figure()                         # create new plot
+    t<span class="nb">_</span>e = linspace(0, T, 1001)       # very fine mesh for u<span class="nb">_</span>e
+    u<span class="nb">_</span>e = exact<span class="nb">_</span>solution(t<span class="nb">_</span>e, I, a)
+    plot(t,   u,   &#39;r--o&#39;)           # dashed red line with circles
+    plot(t<span class="nb">_</span>e, u<span class="nb">_</span>e, &#39;b-&#39;)             # blue line for u<span class="nb">_</span>e
+    legend([&#39;numerical&#39;, &#39;exact&#39;])
+    xlabel(&#39;t&#39;)
+    ylabel(&#39;u&#39;)
+    title(&#39;Method: theta-rule, theta=<span class="c">%g, dt=%g&#39; % (theta, dt))</span>
+    theta2name = <span class="nb">{</span>0: &#39;FE&#39;, 1: &#39;BE&#39;, 0.5: &#39;CN&#39;<span class="nb">}</span>
+    savefig(&#39;<span class="c">%s_%g.png&#39; % (theta2name[theta], dt), dpi=150)</span>
+    savefig(&#39;<span class="c">%s_%g.pdf&#39; % (theta2name[theta], dt))</span>
+    #show()  # run in batch
+    return E
+
+def define<span class="nb">_</span>command<span class="nb">_</span>line<span class="nb">_</span>options():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add<span class="nb">_</span>argument(&#39;--I&#39;, &#39;--initial<span class="nb">_</span>condition&#39;, type=float,
+                        default=1.0, help=&#39;initial condition, u(0)&#39;,
+                        metavar=&#39;I&#39;)
+    parser.add<span class="nb">_</span>argument(&#39;--a&#39;, type=float,
+                        default=1.0, help=&#39;coefficient in ODE&#39;,
+                        metavar=&#39;a&#39;)
+    parser.add<span class="nb">_</span>argument(&#39;--T&#39;, &#39;--stop<span class="nb">_</span>time&#39;, type=float,
+                        default=1.0, help=&#39;end time of simulation&#39;,
+                        metavar=&#39;T&#39;)
+    parser.add<span class="nb">_</span>argument(&#39;--dt&#39;, &#39;--time<span class="nb">_</span>step<span class="nb">_</span>values&#39;, type=float,
+                        default=[1.0], help=&#39;time step values&#39;,
+                        metavar=&#39;dt&#39;, nargs=&#39;+&#39;, dest=&#39;dt<span class="nb">_</span>values&#39;)
+    return parser
+
+def read<span class="nb">_</span>command<span class="nb">_</span>line():
+    parser = define<span class="nb">_</span>command<span class="nb">_</span>line<span class="nb">_</span>options()
+    args = parser.parse<span class="nb">_</span>args()
+    return args.I, args.a, args.T, args.dt<span class="nb">_</span>values
+
+def main():
+    &quot;&quot;&quot;Conduct experiments with theta and dt values.&quot;&quot;&quot;
+    I, a, T, dt<span class="nb">_</span>values = read<span class="nb">_</span>command<span class="nb">_</span>line()
+    for theta in 0, 0.5, 1:
+        for dt in dt<span class="nb">_</span>values:
+            E = explore(I, a, T, dt, theta)
+            print &#39;<span class="c">%3.1f %6.2f: %12.3E&#39; % (theta, dt, E)</span>
+
+if <span class="nb">__</span>name<span class="nb">__</span> == &#39;<span class="nb">__</span>main<span class="nb">__</span>&#39;:
+    main()
 <span class="k">\end</span><span class="nb">{</span>minted<span class="nb">}</span>
 
 
@@ -601,7 +652,7 @@ The numbers corresponding to the figure above are given in the table below.
 
 <span class="k">\item</span> <span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="m">0</span><span class="s">$</span> suffers from fast-growing solution if <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> is
    not small enough, but even below this limit one can have oscillating
-   solutions that disappear if <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> is sufficiently small.
+   solutions (unless <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> is sufficiently small).
 <span class="k">\end</span><span class="nb">{</span>enumerate<span class="nb">}</span>
 
 

@@ -2,14 +2,10 @@
 script_source=~/vc/deqbook/doc/src/chapters/softeng1/report_generation
 report_source=~/vc/deqbook/doc/src/chapters/archive/decay-reports
 cp -r ${report_source}/* .
-cp -r ${script_source} .
-cd ${script_source
-rm -f exper0.* decay_* make_reports.sh clean.sh
-cd ..
 git add .
 # git ignores temp*
 git add -f _static/temp*
 
 # update wiki with mediawiki
-cp -r $source/_static/report.mwiki ~/vc/hplgit.github.com.wiki/Experiments-with-Schemes-for-Exponential-Decay.mediawiki
-cp -r $source/_static/*.png ~/vc/hplgit.github.com.wiki/
+cp -r _static/report.mwiki ~/vc/hplgit.github.com.wiki/Experiments-with-Schemes-for-Exponential-Decay.mediawiki
+cp -r _static/*.png ~/vc/hplgit.github.com.wiki/
