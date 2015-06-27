@@ -1,0 +1,957 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Learning Goals for Computing Competence">
+
+<title>Learning Goals for Computing Competence</title>
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [('Why is computing competence important?', 1, None, '___sec0'),
+              ('General goals for computing competence', 1, None, '___sec1'),
+              ('Case study', 1, None, '___sec2'),
+              ('Exercise for the case study', 2, None, '___sec3'),
+              ('Solution 1: Minimalistic Matlab', 2, None, '___sec4'),
+              ('Solution 2: Matlab with functions', 2, None, '___sec5'),
+              ('Solution 3: Standard Python', 2, None, '___sec6'),
+              ('Vectorization', 2, None, '___sec7'),
+              ('Verification and testing frameworks', 2, None, '___sec8'),
+              ('A simple test function', 3, None, '___sec9'),
+              ('A proper test function for the nose or pytest test framework',
+               3,
+               None,
+               '___sec10'),
+              ('Use of symbolic computing for exact results',
+               3,
+               None,
+               '___sec11'),
+              ('Test function for the convergence rate', 3, None, '___sec12'),
+              ('Tests in Matlab', 3, None, '___sec13'),
+              ('Extended Exercise', 2, None, '___sec14'),
+              ('A Python solution', 2, None, '___sec15'),
+              ('Solution 4: a Java OO program', 2, None, '___sec16'),
+              ('Conclusions', 2, None, '___sec17')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="computing_competence.html">Learning Goals for Computing Competence</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._computing_competence002.html#___sec0" style="font-size: 80%;"><b>Why is computing competence important?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec1" style="font-size: 80%;"><b>General goals for computing competence</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;"><b>Case study</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise for the case study</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 1: Minimalistic Matlab</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 2: Matlab with functions</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 3: Standard Python</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vectorization</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Verification and testing frameworks</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Extended Exercise</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A Python solution</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 4: a Java OO program</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Conclusions</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0004"></a>
+<!-- !split -->
+
+<h1 id="___sec2">Case study </h1>
+
+<p>
+The series of goals above are briefly stated, but illustrated here in
+detail for a special, simple case study:
+numerical integration by the Trapezoidal rule.
+
+<p>
+Many science courses now have examples and exercises involving
+implementation and application of numerical methods. How to structure
+and verify such numerical programs has, unfortunately, received little
+attention in university education and the literature.
+Students and teachers occasionally write programs that
+are too tailored to the problem at hand instead of being a good
+starting point for future extensions, and testing is often limited
+to running a case where the answer seems reasonable. The standards
+of computing need to be raised to the levels found in experimental
+physics, chemistry, and biology.
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Observation: poor versus good design of programs depends on the programming language (!).</b>
+A common conception is that simple scientific computing
+scripts implemented in Matlab and Python are very similiar - almost
+identical.  However, practice observed by this author shows that
+students and teachers tend to make software with bad design in
+Matlab, while the design improves significantly when they use
+Python. Bad design means specializing a generic algorithm to a specific
+problem and making &quot;flat&quot; programs without functions. Good design means
+reusable implementations of generic algorithms and proper use of functions
+(or classes). The coming text demonstrates the assertions.
+</div>
+
+
+<h2 id="___sec3">Exercise for the case study </h2>
+
+<p>
+Integrate the function \( g(t)=\exp{(-t^4)} \) from
+-2 to 2 using the Trapezoidal rule, defined by
+
+$$
+\begin{equation}
+\int_a^b f(x)dx \approx h\left( {1\over2}(f(a) + f(b)) +
+\sum_{i=1}^{n-1} f(a+ih)\right), \quad h = (b-a)/n
+\tag{1}
+\end{equation}
+$$
+
+<h2 id="___sec4">Solution 1: Minimalistic Matlab </h2>
+
+<p>
+The simplest possible program may look as follows in Matlab:
+
+<p>
+
+<!-- code=matlab (!bc mpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = <span style="color: #666666">-2</span>; b = <span style="color: #666666">2</span>;
+n = <span style="color: #666666">1000</span>;
+h = (b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span>n;
+s = <span style="color: #666666">0.5*</span>(<span style="color: #008000">exp</span>(<span style="color: #666666">-</span>a^<span style="color: #666666">4</span>) <span style="color: #666666">+</span> <span style="color: #008000">exp</span>(<span style="color: #666666">-</span>b^<span style="color: #666666">4</span>));
+<span style="color: #008000; font-weight: bold">for</span> <span style="color: #008000">i</span> = <span style="color: #666666">1</span>:n<span style="color: #666666">-1</span>
+    s = s <span style="color: #666666">+</span> <span style="color: #008000">exp</span>(<span style="color: #666666">-</span>(a<span style="color: #666666">+</span><span style="color: #008000">i</span><span style="color: #666666">*</span>h)^<span style="color: #666666">4</span>);
+<span style="color: #008000; font-weight: bold">end</span>
+r = h<span style="color: #666666">*</span>s;
+r
+</pre></div>
+<p>
+The solution is minimalistic and correct. Nevertheless, this solution
+has a pedagogical and software engineering flaw: a special function
+\( \exp(-t^4) \) is merged into a general algorithm
+<a href="#mjx-eqn-1">(1)</a> for integrating an arbitrary function \( f(x) \).
+
+<p>
+The writer of the program runs it and reports the result: 1.81280494737.
+How can one assess that this result is correct? There is no analytical
+result to compare with. Even if it were, the comparison is not much
+worth. Say we try to integrate
+\( h(t)=\cos t \) instead and report 1.81859242886 to be compared to the
+exact value 1.81859485365. The error \( 2.42\cdot 10^{-6} \) is &quot;small&quot;, but
+we have no idea if this error is just the approximation error in the
+numerical method or if the program has a bug too. What if the error
+were \( 1.67\cdot 10^{-3} \)? It is impossible to say whether this
+answer is the correct numerical result or not.
+Actually, this error contains both the approximation
+error and a bug where the loop is <code>for i = 0:n-1</code>.
+
+<p>
+Also, the program above is not well suited for switching to an integrand where
+we can compare with an exact answer, because several lines need modification.
+
+<h2 id="___sec5">Solution 2: Matlab with functions </h2>
+
+<p>
+A successful software engineering practice is to use functions for
+splitting a program into natural pieces, and if possible, make these
+functions sufficiently general to be reused in other problems.  In the
+present problem we should strive for the following principles:
+
+<ol>
+ <li> Since the formula for the Trapezoidal rule works for &quot;any&quot;
+    function, the implementation of the formula should be in
+    terms of a <em>function</em> taking \( f(x) \), \( a \), \( b \), and
+    \( n \) as arguments.</li>
+ <li> The special \( g(t) \) formula
+    is implemented as a separate function.</li>
+ <li> A main program solves the <em>specific problem in question</em> by calling
+    the <em>general algorithm</em> from point 1
+    with the special data of the given problem (\( g(t) \), \( a=-2 \), \( b=2 \),
+    \( n=1000 \)).</li>
+</ol>
+
+Let us apply these desirable principles in a Matlab context.
+User-defined Matlab functions must be placed in separate files. This
+is sometimes found annoying, and therefore many students and teachers tend to
+avoid functions. In the present case, we should implement the
+Trapezoidal method in a file <code>Trapezoidal.m</code> containing
+
+<p>
+
+<!-- code=matlab (!bc mpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">function</span><span style="color: #bbbbbb"> </span>r =<span style="color: #bbbbbb"> </span><span style="color: #0000FF">Trapezoidal</span>(f, a, b, n)<span style="color: #bbbbbb"></span>
+<span style="color: #408080; font-style: italic">% TRAPEZOIDAL Numerical integration from a to b</span>
+<span style="color: #408080; font-style: italic">% with n intervals by the Trapezoidal rule</span>
+f = fcnchk(f);
+h = (b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span>n;
+s = <span style="color: #666666">0.5*</span>(f(a) <span style="color: #666666">+</span> f(b));
+<span style="color: #008000; font-weight: bold">for</span> <span style="color: #008000">i</span> = <span style="color: #666666">1</span>:n<span style="color: #666666">-1</span>
+    s = s <span style="color: #666666">+</span> f(a<span style="color: #666666">+</span><span style="color: #008000">i</span><span style="color: #666666">*</span>h);
+<span style="color: #008000; font-weight: bold">end</span>
+r = h<span style="color: #666666">*</span>s;
+</pre></div>
+<p>
+The special \( g(t) \) function can be implemented in a separate file <code>g.m</code>
+or put in the main program. The function becomes
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">function v = g(t)
+v = exp(-t^4)
+end
+</pre></div>
+<p>
+Finally, a specialized main program (<code>main.m</code>) solves the problem at hand:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = -2; b = 2;
+n = 1000;
+result = Trapezoidal(@g, a, b, n);
+disp(result);
+exit
+</pre></div>
+<p>
+The important feature of this solution is that <code>Trapezoidal.m</code> can be
+reused for &quot;any&quot; integral. In particular, it is straightforward
+to also integrate an integrand where we know the exact result.
+
+<p>
+An advantage of having the \( g(t) \) as a separate function is that we
+can easily send this function to a different integration method, e.g.,
+Simpson's rule.
+
+<h2 id="___sec6">Solution 3: Standard Python </h2>
+
+<p>
+Both Solution 1 and Solution 2 are readily implemented in Python.
+However, functions in Python do <em>not</em> need to be located in separate
+files to be reusable, and therefore there is no psychological barrier
+to put a piece of code inside a function. The consequence is that a
+Python programmer is more likely to go for Solution 2.
+(This may be the reason why the author has observed
+scientific Python codes to have better design
+than Matlab codes - modularization comes more natural.)
+The relevant
+code can be placed in a single file, say <code>main.py</code>, looking as
+follows:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Trapezoidal</span>(f, a, b, n):
+    h <span style="color: #666666">=</span> (b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span><span style="color: #008000">float</span>(n)
+    s <span style="color: #666666">=</span> <span style="color: #666666">0.5*</span>(f(a) <span style="color: #666666">+</span> f(b))
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>,n,<span style="color: #666666">1</span>):
+        s <span style="color: #666666">=</span> s <span style="color: #666666">+</span> f(a <span style="color: #666666">+</span> i<span style="color: #666666">*</span>h)
+    <span style="color: #008000; font-weight: bold">return</span> h<span style="color: #666666">*</span>s
+
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp  <span style="color: #408080; font-style: italic"># or from math import *</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(t):
+    <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>t<span style="color: #666666">**4</span>)
+
+a <span style="color: #666666">=</span> <span style="color: #666666">-2</span>;  b <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+n <span style="color: #666666">=</span> <span style="color: #666666">1000</span>
+result <span style="color: #666666">=</span> Trapezoidal(g, a, b, n)
+<span style="color: #008000; font-weight: bold">print</span> result
+</pre></div>
+<p>
+This solution acknowledges the fact that the implementation is a
+generally applicable function, just as the Trapezoidal formula.
+
+<p>
+However, a small adjustment of this implementation will make it
+much better. If somebody wants to reuse the <code>Trapezoidal</code> function
+for another integral, they can import <code>Trapezoidal</code> from the
+<code>main.py</code> file, but the special problem will be executed as part of
+the import. This is not desired behavior when solving another problem.
+Instead, our special exercise problem should be isoloated in
+its own function and called from a test block in the file (to avoid
+being executed as part of an import).
+This is the general software design of <em>modules</em> in Python.
+
+<p>
+We therefore rewrite the code in a new file <code>Trapezoidal.py</code>:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Trapezoidal</span>(f, a, b, n):
+    h <span style="color: #666666">=</span> (b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span><span style="color: #008000">float</span>(n)
+    s <span style="color: #666666">=</span> <span style="color: #666666">0.5*</span>(f(a) <span style="color: #666666">+</span> f(b))
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>,n,<span style="color: #666666">1</span>):
+        s <span style="color: #666666">=</span> s <span style="color: #666666">+</span> f(a <span style="color: #666666">+</span> i<span style="color: #666666">*</span>h)
+    <span style="color: #008000; font-weight: bold">return</span> h<span style="color: #666666">*</span>s
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">_my_special_problem</span>():
+    <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(t):
+        <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-</span>t<span style="color: #666666">**4</span>)
+
+    a <span style="color: #666666">=</span> <span style="color: #666666">-2</span>;  b <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+    n <span style="color: #666666">=</span> <span style="color: #666666">1000</span>
+    result <span style="color: #666666">=</span> Trapezoidal(g, a, b, n)
+    <span style="color: #008000; font-weight: bold">print</span> result
+
+<span style="color: #008000; font-weight: bold">if</span> __name__ <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;__main__&#39;</span>:
+    _my_special_problem()
+</pre></div>
+<p>
+Now we have obtained the following important features:
+
+<ul>
+ <li> The file <code>Trapezoidal.py</code> is a module offering the widely applicable
+   function <code>Trapezoidal</code> for integrating &quot;any&quot; function.</li>
+ <li> If <code>Trapezoidal.py</code> is run as a program, the if test is true and
+   the special integral of \( g \) is computed.</li>
+ <li> In an import like <code>from Trapezoidal import Trapezoidal</code>, the if test
+   is false and nothing gets computed.</li>
+</ul>
+
+<h2 id="___sec7">Vectorization </h2>
+
+<p>
+This author has seen a lot of programs used for teaching which apply
+vectorization without explicit notice. Vectorization is a technique
+in high-level languages like IDL, MATLAB, Python, and R for
+removing loops and speed up computations. Unfortunately, the &quot;distance&quot;
+from the mathematical algorithm to vectorized code is larger than
+to a plain loop as we used above. Vectorization therefore tends to confuse
+students who are not well educated in the techniques.
+For example, the Trapezoidal rule can be vectorized as
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Trapezoidal</span>(f, a, b, n):
+    x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(a, b, n<span style="color: #666666">+1</span>)
+    <span style="color: #008000; font-weight: bold">return</span> (b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span><span style="color: #008000">float</span>(n)<span style="color: #666666">*</span>(np<span style="color: #666666">.</span>sum(f(x) <span style="color: #666666">-</span> <span style="color: #666666">0.5*</span>(f(a) <span style="color: #666666">+</span> f(b))))
+</pre></div>
+<p>
+The code is correct, but it takes some thinking to realize why these
+lines compute the formula <a href="#mjx-eqn-1">(1)</a>. Because of the <code>sum</code> function,
+we need to adjust the summation result such that
+the weight of the end points becomes correct.
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Tip: Implement scalar code first - then vectorize.</b>
+It is much easier to get a scalar code, with explicit loops that
+mimic the mathematical formula(s) as closely as possible, to work first.
+Then remove loops by vectorized expressions and test the code
+against the scalar version.
+</div>
+
+
+<h2 id="___sec8">Verification and testing frameworks </h2>
+
+<p>
+An integral part of any implemention is verification, i.e., to bring
+evidence that the program works correctly. As we have seen, comparison
+of a numerical approximation with an exact answer does not say much
+unless the error is &quot;huge&quot; and therefore clearly points to
+fundamental bugs in the code.
+
+<p>
+For most numerical methods there are only two good verification methods:
+
+<ol>
+<li> Computation of a problem where the approximation error vanishes.</li>
+<li> Empirical measurement of the convergence rate.</li>
+</ol>
+
+<h3 id="___sec9">A simple test function </h3>
+
+<p>
+The Trapezoidal rule is obviously exact for linear integrands. Therefore,
+we should test an &quot;arbitrary&quot; linear function and check that the
+error is close to machine precision. This is done in a separate
+function in a separate file <code>test_Trapezoidal.py</code>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">Trapezoidal</span> <span style="color: #008000; font-weight: bold">import</span> Trapezoidal
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">linear</span>():
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Test linear integrand: exact result for any n.&quot;&quot;&quot;</span>
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">8*</span>x <span style="color: #666666">+</span> <span style="color: #666666">6</span>
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">F</span>(x):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Anti-derivative of f(x).&quot;&quot;&quot;</span>
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">4*</span>x<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">6*</span>x
+
+    a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+    b <span style="color: #666666">=</span> <span style="color: #666666">6</span>
+    exact <span style="color: #666666">=</span> F(b) <span style="color: #666666">-</span> F(a)
+    numerical <span style="color: #666666">=</span> Trapezoidal(f, a, b, n<span style="color: #666666">=4</span>)
+    error <span style="color: #666666">=</span> exact <span style="color: #666666">-</span> numerical
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%.16f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> error
+</pre></div>
+<p>
+The output of calling <code>linear()</code>
+is in this case zero exactly, but in general one must expect
+some small round-off errors in the numerical (and exact) result.
+
+<h3 id="___sec10">A proper test function for the nose or pytest test framework </h3>
+
+<p>
+The function <code>linear</code> performs the test, but it would be better to
+integrate the test into a <em>testing framework</em> such that we with
+one command can execute a comprehensive set of tests. This makes it
+easy to run all tests after every small change of the software.
+Students should adopt such compulsory habits from the software industry.
+
+<p>
+The dominating type of test frameworks today is based on what is called
+<em>unit testing</em> in software engineering. It means that we pick a unit
+in the software and write a function (or class) that runs the test
+after certain specifications:
+
+<ul>
+ <li> The test function must start with <code>test_</code>.</li>
+ <li> The test function cannot have any arguments.</li>
+ <li> If the test fails, an <code>AssertionError</code> exception (in Python) is raised, otherwise the function runs silently.</li>
+</ul>
+
+There are two very popular test frameworks in the Python world now:
+pytest and nose. There are similar frameworks developed for Matlab too,
+see <a href="http://se.mathworks.com/support/2015a/matlab/8.5/demos/matlab-unit-test-framework-in-release-2013a.html" target="_self">a video</a>,
+but they are not as user friendly since they require the programmer
+to embed tests in classes (this is still the dominating method in
+most programming languages).
+Using test functions instead of test classes requires
+writing less code and is easier to learn.
+
+<p>
+In our case, a proper test function means the following rewrite
+of the function <code>linear</code>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_linear</span>():
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Test linear integrand: exact result for any n.&quot;&quot;&quot;</span>
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">8*</span>x <span style="color: #666666">+</span> <span style="color: #666666">6</span>
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">F</span>(x):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Anti-derivative of f(x).&quot;&quot;&quot;</span>
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">4*</span>x<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">6*</span>x
+
+    a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+    b <span style="color: #666666">=</span> <span style="color: #666666">6</span>
+    expected <span style="color: #666666">=</span> F(b) <span style="color: #666666">-</span> F(a)
+    computed <span style="color: #666666">=</span> Trapezoidal(f, a, b, n<span style="color: #666666">=4</span>)
+    error <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(expected <span style="color: #666666">-</span> computed)
+    tol <span style="color: #666666">=</span> <span style="color: #666666">1E-14</span>
+    msg <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;expected=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">, computed=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">, error=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> \ 
+          (expected, computed, error)
+    <span style="color: #008000; font-weight: bold">assert</span> error <span style="color: #666666">&lt;</span> tol, msg
+</pre></div>
+<p>
+The code is basically the same, but we comply to the rules above. The <code>assert</code>
+statement has the test as <code>error &lt; tol</code>, with <code>msg</code> as an optional
+message that is printed only if the test fails (<code>error &lt; tol</code> is <code>False</code>).
+The <code>msg</code> string can be left out and it suffices to do <code>assert error &lt; tol</code>.
+
+<p>
+The reason why we comply to testing frameworks is that we can use software
+like nose or pytest to automatically find all our tests and execute them.
+We put tests in files or directories starting with <code>test</code> and run
+one of the commands
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; nosetests -s -v .
+Terminal&gt; py.test -s -v .
+</pre></div>
+<p>
+All functions with names <code>test_*()</code> in all files <code>test*.py</code> in all
+subdirectories with names <code>test*</code> will
+be run, and statistics about how many tests that failed will be printed.
+The tests should be run after every modification of the software.
+
+<h3 id="___sec11">Use of symbolic computing for exact results </h3>
+
+<p>
+We integrated by hand the linear function. In more complicated cases it
+would be safer to use symbolic computing software to carry out the
+mathematics. Here we demonstrate how to
+use the Python package SymPy to do the integration:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_linear_symbolic</span>():
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Test linear integrand: exact result for any n.&quot;&quot;&quot;</span>
+    <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sympy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">sym</span>
+    <span style="color: #408080; font-style: italic"># Define a linear expression and integrate it</span>
+    x <span style="color: #666666">=</span> sym<span style="color: #666666">.</span>symbols(<span style="color: #BA2121">&#39;x&#39;</span>)
+    f <span style="color: #666666">=</span> <span style="color: #666666">8*</span>x <span style="color: #666666">+</span> <span style="color: #666666">6</span>
+    F <span style="color: #666666">=</span> sym<span style="color: #666666">.</span>integrate(f, x)
+    <span style="color: #408080; font-style: italic"># Verify symbolic computation: F&#39;(x) == f(x)</span>
+    <span style="color: #008000; font-weight: bold">assert</span> sym<span style="color: #666666">.</span>diff(F, x) <span style="color: #666666">==</span> f
+    <span style="color: #408080; font-style: italic"># Transform expressions f and F to Python functions of x</span>
+    f <span style="color: #666666">=</span> sym<span style="color: #666666">.</span>lambdify([x], f)
+    F <span style="color: #666666">=</span> sym<span style="color: #666666">.</span>lambdify([x], F)
+
+    <span style="color: #408080; font-style: italic"># Run one test with fixed a, b, n.</span>
+    a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+    b <span style="color: #666666">=</span> <span style="color: #666666">6</span>
+    expected <span style="color: #666666">=</span> F(b) <span style="color: #666666">-</span> F(a)
+    computed <span style="color: #666666">=</span> Trapezoidal(f, a, b, n<span style="color: #666666">=4</span>)
+    error <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(expected <span style="color: #666666">-</span> computed)
+    tol <span style="color: #666666">=</span> <span style="color: #666666">1E-14</span>
+    msg <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;expected=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">, computed=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">, error=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> \ 
+          (expected, computed, error)
+    <span style="color: #008000; font-weight: bold">assert</span> error <span style="color: #666666">&lt;</span> tol, msg
+</pre></div>
+
+<h3 id="___sec12">Test function for the convergence rate </h3>
+
+<p>
+Let us extend the verification with a case where we know the exact answer
+of the integral, but we do not know the approximation error.
+The only knowledge we usually have about the approximation error is
+of asymptotic type. For example, for the Trapezoidal rule we have an
+expression for the error from numerical analysis:
+
+$$ E = - \frac{(b-a)^3}{12n^2}f''(\xi),\quad\xi\in [a,b]. $$
+
+Since we do not know \( \xi \), we cannot compute \( E \).
+However, we realize that the error has an asymptotic behavior as
+\( n^{-2} \):
+
+$$ E = Cn^{-2}, $$
+
+for some unknown constant \( C \). In general, when verifying the implementation
+of a numerical
+method with discretization parameter \( n \), we write \( E=Cn^r \), estimate
+\( r \), and compare with the exact result (here \( n=-2 \)).
+
+<p>
+More precisely, we perform a set of experiments for \( n=n_0, n_1,
+\ldots, n_m \), where we emprically estimate \( r \) from
+two consecutive experiments:
+
+$$
+\begin{align*}
+E_i &= Cn_i^r,\\
+E_{i+1} &= Cn_{i+1}^r.
+\end{align*}
+$$
+
+Dividing the equations and solving with respect to \( r \) gives
+
+$$ r = \frac{\ln(E_i/E_{i+1})}{\ln(r_i/r_{i+1})}$$
+
+As \( i=0,\ldots,m-1 \), the \( r \) values should approach the value \( -2 \).
+
+<p>
+It is easy to use the <em>method of manufactured solutions</em> to construct a
+test problem. That is, we first choose the solution, say the integral
+is given by \( F(b)-F(a) \), where
+
+$$ F(x) = e^{-x}\sin (2x).$$
+
+Then we fit the problem to accept this solution. In the present case
+it means that the integrand must be \( f(x)=F'(x) \). We use for safety symbolic
+software to calculate \( f(x) \). Thereafter, we run a series of experiments
+where \( n \) is varied, we compute the corresponding convergence rates \( r \)
+from two consecutive experiments and test if the final \( r \), corresponding
+to the two largest \( n \) values, is sufficiently close to the expected
+convergence rate \( -2 \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_convergence_rate</span>():
+    <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sympy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">sym</span>
+    <span style="color: #408080; font-style: italic"># Construct test problem</span>
+    x <span style="color: #666666">=</span> sym<span style="color: #666666">.</span>symbols(<span style="color: #BA2121">&#39;x&#39;</span>)
+    F <span style="color: #666666">=</span> sym<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x)<span style="color: #666666">*</span>sym<span style="color: #666666">.</span>sin(<span style="color: #666666">2*</span>x)  <span style="color: #408080; font-style: italic"># Anti-derivative</span>
+    f <span style="color: #666666">=</span> sym<span style="color: #666666">.</span>diff(F, x)
+    f <span style="color: #666666">=</span> sym<span style="color: #666666">.</span>lambdify([x], f)      <span style="color: #408080; font-style: italic"># Turn to Python function</span>
+    F <span style="color: #666666">=</span> sym<span style="color: #666666">.</span>lambdify([x], F)      <span style="color: #408080; font-style: italic"># Turn to Python function</span>
+
+    a <span style="color: #666666">=</span> <span style="color: #666666">0.1</span>
+    b <span style="color: #666666">=</span> <span style="color: #666666">0.9</span>
+    expected <span style="color: #666666">=</span> F(b) <span style="color: #666666">-</span> F(a)
+    <span style="color: #408080; font-style: italic"># Run experiments (double n in each experiment)</span>
+    n <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+    errors <span style="color: #666666">=</span> []
+    <span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">8</span>):
+        n <span style="color: #666666">*=</span> <span style="color: #666666">2</span>
+        computed <span style="color: #666666">=</span> Trapezoidal(f, a, b, n)
+        error <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(expected <span style="color: #666666">-</span> computed)
+        errors<span style="color: #666666">.</span>append((n, error))
+    <span style="color: #408080; font-style: italic"># Compute empirical convergence rates</span>
+    <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> log <span style="color: #008000; font-weight: bold">as</span> ln
+    estimator <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> E1, E2, n1, n2: ln(E1<span style="color: #666666">/</span>E2)<span style="color: #666666">/</span>ln(<span style="color: #008000">float</span>(n1)<span style="color: #666666">/</span>n2)
+    r <span style="color: #666666">=</span> []
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(errors)<span style="color: #666666">-1</span>):
+        n1, E1 <span style="color: #666666">=</span> errors[i]
+        n2, E2 <span style="color: #666666">=</span> errors[i<span style="color: #666666">+1</span>]
+        r<span style="color: #666666">.</span>append(estimator(E1, E2, n1, n2))
+    expected <span style="color: #666666">=</span> <span style="color: #666666">-2</span>
+    computed <span style="color: #666666">=</span> r[<span style="color: #666666">-1</span>]  <span style="color: #408080; font-style: italic"># The &quot;most&quot; asymptotic value</span>
+    error <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(expected <span style="color: #666666">-</span> computed)
+    tol <span style="color: #666666">=</span> <span style="color: #666666">1E-3</span>
+    msg <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Convergence rates: </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> r
+    <span style="color: #008000; font-weight: bold">assert</span> error <span style="color: #666666">&lt;</span> tol, msg
+</pre></div>
+<p>
+The emprical convergence rates are in this example
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">-2.022, -2.0056, -2.0014, -2.00035, -2.000086, -2.000022,
+-2.0000054, -2.0000013, -2.00000033
+</pre></div>
+<p>
+Although the rates are known to approach \( -2 \) as \( n\rightarrow\infty \),
+the rates are close to \( -2 \) even for large \( n \) (such as \( n=4 \)).
+A rough tolerance is often used for convergence rates, for instance 0.1,
+but here we may use a smaller one if desired.
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Summary.</b>
+Knowing an exact solution to a mathematical problem
+and comparing the program output with such a solution,
+gives only an indication that the program may be
+correct, but it is only a rough indication.
+Any real test must use what we know about the approximation error,
+and that is usually only an asymptotic behavior as function of discretization
+parameters. The test needs to vary the discretization parameter(s)
+to estimate convergence rates for comparison with known asymptotic results.
+
+<p>
+Known analytical solutions are of value in convergence rate tests, but
+if they are not available, or restricted to very simplified cases,
+the method of manufactured solutions, where we solve a perturbed problem
+fitted to a constructed exact solution, is also a very useful technique.
+</div>
+
+
+<h3 id="___sec13">Tests in Matlab </h3>
+
+<p>
+In Matlab, one must decide whether to use a class-based system for unit
+testing or just write test functions that mimic the behavior of the
+Python test functions for the nose and pytest frameworks. Here is an
+example on doing the <code>test_linear()</code> function in Matlab:
+
+<p>
+
+<!-- code=matlab (!bc mpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">function</span> <span style="color: #0000FF">test_trapezoidal_linear</span>
+  <span style="color: #408080; font-style: italic">%% Check that linear functions are integrated exactly</span>
+  f = @(x) <span style="color: #666666">8*</span>x <span style="color: #666666">+</span> <span style="color: #666666">6</span>;
+  F = @(x) <span style="color: #666666">4*</span>x<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">6*</span>x;  <span style="color: #408080; font-style: italic">%% Anti-derivative</span>
+  a = <span style="color: #666666">2</span>;
+  b = <span style="color: #666666">6</span>;
+  expected = F(b) <span style="color: #666666">-</span> F(a);
+  tol = <span style="color: #666666">1E-14</span>;
+  computed = trapezoidal(f, a, b, <span style="color: #666666">4</span>);
+  error = <span style="color: #008000">abs</span>(expected <span style="color: #666666">-</span> computed);
+  assert(error <span style="color: #666666">&lt;</span> tol, <span style="color: #BA2121">&#39;n=%d, error=%g&#39;</span>, n, error);
+  <span style="color: #008000; font-weight: bold">end</span>
+<span style="color: #008000; font-weight: bold">end</span>
+
+test_trapezoidal_linear()
+</pre></div>
+<p>
+There is, unfortunately, no software available to run all tests in all
+files in all subdirectories and report on the success/failure statistics,
+but it is quite straightforward to write such software.
+
+<h2 id="___sec14">Extended Exercise </h2>
+
+<p>
+Compute the following integrals with the Midpoint rule, the
+Trapezoidal rule, and Simpson's rule:
+
+$$
+\begin{eqnarray*}
+\int_{0}^{\pi}\sin x\, dx &=& 2,\\
+\int_{-\infty}^{\infty} {1\over\sqrt{2\pi}} e^{-x^2}dx &=& 1,\\
+\int_{0}^1 3x^2dx &=& 1,\\
+\int_0^{\ln 11} e^xdx &=& 10,\\
+\int_0^1 {3\over 2}\sqrt{x}dx &=& 1.
+\end{eqnarray*}
+$$
+
+For each integral, write out a table of the numerical error for the
+three methods using a \( n \) function evaluations, where \( n \) varies as
+\( n=2^k+1 \), \( k=1,2, ..., 12 \).
+
+<h2 id="___sec15">A Python solution </h2>
+
+<p>
+In the extended problem, Solution 1 is obviously inferior because
+we need to apply, e.g., the Trapezoidal rule to five
+different integrand functions for 12 different \( n \) values.
+Then it only makes sense to implement the rule in
+a separate function that can be called 60 times.
+
+<p>
+Similarly, a mathematical function to be integrated is needed in
+three different rules, so it makes sense to isolate the mathematical
+formula for the integrand in a function in the language we are using.
+
+<p>
+We can briefly sketch a compact and smart Python code, in a single
+file, that solves the extended problem:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f1</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(x)
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f2</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">1/</span>sqrt(<span style="color: #666666">2</span>)<span style="color: #666666">*</span>exp(<span style="color: #666666">-</span>x<span style="color: #666666">**2</span>)
+
+<span style="color: #666666">...</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f5</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">3/2.0*</span>sqrt(x)
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Midpoint</span>(f, a, b, n):
+    <span style="color: #666666">...</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Trapezoidal</span>(f, a, b, n):
+    <span style="color: #666666">...</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Simpson</span>(f, a, b, n):
+    <span style="color: #666666">...</span>
+
+problems <span style="color: #666666">=</span> [(f1, <span style="color: #666666">0</span>, pi),  <span style="color: #408080; font-style: italic"># list of (function, a, b)</span>
+            (f2, <span style="color: #666666">-5</span>, <span style="color: #666666">5</span>),
+            <span style="color: #666666">...</span>
+            (f3, <span style="color: #666666">0</span>, <span style="color: #666666">1</span>)]
+
+methods <span style="color: #666666">=</span> (Midpoint, Trapezoidal, Simpson)
+result <span style="color: #666666">=</span> []
+<span style="color: #008000; font-weight: bold">for</span> method <span style="color: #AA22FF; font-weight: bold">in</span> methods:
+    <span style="color: #008000; font-weight: bold">for</span> func, a, b <span style="color: #AA22FF; font-weight: bold">in</span> problems:
+        <span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>,<span style="color: #666666">13</span>):
+            n <span style="color: #666666">=</span> <span style="color: #666666">2**</span>k <span style="color: #666666">+</span> <span style="color: #666666">1</span>
+            I <span style="color: #666666">=</span> method(func, a, b, n)
+            result<span style="color: #666666">.</span>append((I, method<span style="color: #666666">.</span>__name__, func<span style="color: #666666">.</span>__name__, n))
+
+<span style="color: #408080; font-style: italic"># write out results, nicely formatted:</span>
+<span style="color: #008000; font-weight: bold">for</span> I, method, integrand, n <span style="color: #AA22FF; font-weight: bold">in</span> result:
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%-20s</span><span style="color: #BA2121">, </span><span style="color: #BB6688; font-weight: bold">%-3s</span><span style="color: #BA2121">, n=</span><span style="color: #BB6688; font-weight: bold">%5d</span><span style="color: #BA2121">, I=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (I, method, integrand, n)
+</pre></div>
+<p>
+Note that since everything in Python is an object that can be referred
+to by a variable, it is easy to make a list <code>methods</code> (list of Python
+functions), and a list <code>problems</code> where each element is a list of a
+function and its two integration limits.  A nice feature is that the
+name of a function can be extracted as a string in the function object
+(<code>name</code> with double leading and trailing underscores).
+
+<p>
+To summarize, Solution 2 or 3 can readily be used to solve the
+extended problem, while Solution 1 is not worth much.  In courses with
+many very simple exercises, solutions of type 1 will appear
+naturally. However, published solutions should employ approach 2 or 3
+of the mentioned reasons, just to train students to think that <em>this
+is a general mathematical method that I should make reusable through a
+function</em>.
+
+<p>
+Along with the code above there should be a file <code>test_integration_methods.py</code>
+containing test functions for the various rules. The error formula
+for Simpson's rule contains \( f'''' \), so one can integrate a third-degree
+polynomial in a test and expect an error about the machine precision.
+The Midpoint rule integrates linear functions exactly.
+For testing of convergence rates, the Trapezoidal and Midpoint rules
+have errors behaving as \( n^{-2} \), while the error in
+Simpson's rule goes like \( n^{-4} \).
+
+<h2 id="___sec16">Solution 4: a Java OO program </h2>
+
+<p>
+Introductory courses in computer programming, given by a
+computer science department, often employ the Java
+language and emphasize object-oriented programming. Many computer
+scientists argue that it is better to start with Java than Python
+or (especially) Matlab. But how well is Java suited for introductory
+numerical programming?
+
+<p>
+Let us look at our first integration example, now to be solved in
+Java. Solution 1 is implemented as a simple <code>main</code> method in a class,
+with a code that follows closely the displayed Matlab code. However,
+students are in a Java course trained in splitting the code between
+classes and methods.  Therefore, Solution 2 should be an obvious
+choice for a Java programmer. However, it is not possible to have
+stand-alone functions in Java, functions must be methods belonging to
+a class.  This implies that one cannot transfer a function to another
+function as an argument. Instead one must apply the principles of
+object-oriented programming and implement the function argument as a
+reference to a superclass. To call the &quot;function argument&quot;, one calls
+a method via the superclass reference. The code below provides the
+details of the implementation:
+
+<p>
+
+<!-- code=java (!bc javapro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">java.lang.*</span><span style="color: #666666">;</span>
+
+<span style="color: #008000; font-weight: bold">interface</span> <span style="color: #0000FF; font-weight: bold">Func</span> <span style="color: #666666">{</span>  <span style="color: #408080; font-style: italic">// superclass for functions f(x)</span>
+    <span style="color: #008000; font-weight: bold">public</span> <span style="color: #B00040">double</span> <span style="color: #0000FF">f</span> <span style="color: #666666">(</span><span style="color: #B00040">double</span> x<span style="color: #666666">);</span>  <span style="color: #408080; font-style: italic">// default empty implementation</span>
+<span style="color: #666666">}</span>
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">f1</span> <span style="color: #008000; font-weight: bold">implements</span> Func <span style="color: #666666">{</span>
+    <span style="color: #008000; font-weight: bold">public</span> <span style="color: #B00040">double</span> <span style="color: #0000FF">f</span> <span style="color: #666666">(</span><span style="color: #B00040">double</span> t<span style="color: #666666">)</span>
+    <span style="color: #666666">{</span> <span style="color: #008000; font-weight: bold">return</span> Math<span style="color: #666666">.</span><span style="color: #7D9029">exp</span><span style="color: #666666">(-</span>Math<span style="color: #666666">.</span><span style="color: #7D9029">pow</span><span style="color: #666666">(</span>t<span style="color: #666666">,</span> <span style="color: #666666">4));</span> <span style="color: #666666">}</span>
+<span style="color: #666666">}</span>
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Trapezoidal</span> <span style="color: #666666">{</span>
+    <span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">static</span> <span style="color: #B00040">double</span> <span style="color: #0000FF">integrate</span>
+           <span style="color: #666666">(</span>Func f<span style="color: #666666">,</span> <span style="color: #B00040">double</span> a<span style="color: #666666">,</span> <span style="color: #B00040">double</span> b<span style="color: #666666">,</span> <span style="color: #B00040">int</span> n<span style="color: #666666">)</span>
+    <span style="color: #666666">{</span>
+        <span style="color: #B00040">double</span> h <span style="color: #666666">=</span> <span style="color: #666666">(</span>b<span style="color: #666666">-</span>a<span style="color: #666666">)/((</span><span style="color: #B00040">double</span><span style="color: #666666">)</span>n<span style="color: #666666">);</span>
+        <span style="color: #B00040">double</span> s <span style="color: #666666">=</span> <span style="color: #666666">0.5*(</span>f<span style="color: #666666">.</span><span style="color: #7D9029">f</span><span style="color: #666666">(</span>a<span style="color: #666666">)</span> <span style="color: #666666">+</span> f<span style="color: #666666">.</span><span style="color: #7D9029">f</span><span style="color: #666666">(</span>b<span style="color: #666666">));</span>
+        <span style="color: #B00040">int</span> i<span style="color: #666666">;</span>
+        <span style="color: #008000; font-weight: bold">for</span> <span style="color: #666666">(</span>i <span style="color: #666666">=</span> <span style="color: #666666">1;</span> i <span style="color: #666666">&lt;=</span> n<span style="color: #666666">-1;</span> i<span style="color: #666666">++)</span> <span style="color: #666666">{</span>
+            s <span style="color: #666666">=</span> s <span style="color: #666666">+</span> f<span style="color: #666666">.</span><span style="color: #7D9029">f</span><span style="color: #666666">(</span>a<span style="color: #666666">+</span>i<span style="color: #666666">*</span>h<span style="color: #666666">);</span>
+        <span style="color: #666666">}</span>
+        <span style="color: #008000; font-weight: bold">return</span> h<span style="color: #666666">*</span>s<span style="color: #666666">;</span>
+    <span style="color: #666666">}</span>
+<span style="color: #666666">}</span>
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">MainProgram</span> <span style="color: #666666">{</span>
+    <span style="color: #008000; font-weight: bold">public</span> <span style="color: #008000; font-weight: bold">static</span> <span style="color: #B00040">void</span> <span style="color: #0000FF">main</span> <span style="color: #666666">(</span>String argv<span style="color: #666666">[])</span>
+    <span style="color: #666666">{</span>
+        <span style="color: #B00040">double</span> a <span style="color: #666666">=</span> <span style="color: #666666">-2;</span>
+        <span style="color: #B00040">double</span> b <span style="color: #666666">=</span> <span style="color: #666666">2;</span>
+        <span style="color: #B00040">int</span> n <span style="color: #666666">=</span> <span style="color: #666666">1000;</span>
+        <span style="color: #B00040">double</span> result <span style="color: #666666">=</span> Trapezoidal<span style="color: #666666">.</span><span style="color: #7D9029">integrate</span><span style="color: #666666">(</span>f<span style="color: #666666">,</span> a<span style="color: #666666">,</span> b<span style="color: #666666">,</span> n<span style="color: #666666">);</span>
+        System<span style="color: #666666">.</span><span style="color: #7D9029">out</span><span style="color: #666666">.</span><span style="color: #7D9029">println</span><span style="color: #666666">(</span>result<span style="color: #666666">);</span>
+    <span style="color: #666666">}</span>
+<span style="color: #666666">}</span>
+</pre></div>
+<p>
+From a computer science point of view, this is a quite advanced
+solution since it relies on inheritance and true object-oriented
+programming.  From a mathematical point of view, at least when
+compared to the Matlab and Python versions, the code looks
+unnecessarily complicated.  Many introductory Java courses do not
+cover inheritance and true object-oriented programming, and without
+mastering these concepts, the students end up with Solution 1. On this
+background, one may argue that Java is not very suitable for
+implementing this type of numerical algorithms.
+
+<p>
+<!-- ===== Solution 5: A C++ Program ===== -->
+<!--  -->
+<!-- ===== Solution 6: A Fortran Program ===== -->
+<!--  -->
+<!-- ===== Transferring Functions with Parameters ====== -->
+<!--  -->
+<!-- f(x; p1, p2, ...) -->
+
+<h2 id="___sec17">Conclusions </h2>
+
+<p>
+Simple exercises have pedagogical advantages, but some
+disadvantages with respect to programming, because the programs
+may easily become too specialized. In such cases, the exercise may
+explicitly ask the student to divide the program into
+functions and make general mathematical methods available as general,
+reusable functions for a set of problems.
+This requirement can be motivated by an extended
+exercise where a piece of code are needed many times, typically
+that several methods are applied to several problems.
+
+<p>
+Especially when using Matlab, students may be too lazy to
+use functions when this is not explicitly required.
+
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pager">
+  <li class="previous">
+    <a href="._computing_competence003.html">&larr; Prev</a>
+  </li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

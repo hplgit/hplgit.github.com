@@ -1,0 +1,147 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Learning Goals for Computing Competence">
+
+<title>Learning Goals for Computing Competence</title>
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [('Why is computing competence important?', 1, None, '___sec0'),
+              ('General goals for computing competence', 1, None, '___sec1'),
+              ('Case study', 1, None, '___sec2'),
+              ('Exercise for the case study', 2, None, '___sec3'),
+              ('Solution 1: Minimalistic Matlab', 2, None, '___sec4'),
+              ('Solution 2: Matlab with functions', 2, None, '___sec5'),
+              ('Solution 3: Standard Python', 2, None, '___sec6'),
+              ('Vectorization', 2, None, '___sec7'),
+              ('Verification and testing frameworks', 2, None, '___sec8'),
+              ('A simple test function', 3, None, '___sec9'),
+              ('A proper test function for the nose or pytest test framework',
+               3,
+               None,
+               '___sec10'),
+              ('Use of symbolic computing for exact results',
+               3,
+               None,
+               '___sec11'),
+              ('Test function for the convergence rate', 3, None, '___sec12'),
+              ('Tests in Matlab', 3, None, '___sec13'),
+              ('Extended Exercise', 2, None, '___sec14'),
+              ('A Python solution', 2, None, '___sec15'),
+              ('Solution 4: a Java OO program', 2, None, '___sec16'),
+              ('Conclusions', 2, None, '___sec17')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="computing_competence.html">Learning Goals for Computing Competence</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._computing_competence002.html#___sec0" style="font-size: 80%;"><b>Why is computing competence important?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec1" style="font-size: 80%;"><b>General goals for computing competence</b></a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec2" style="font-size: 80%;"><b>Case study</b></a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise for the case study</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 1: Minimalistic Matlab</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 2: Matlab with functions</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 3: Standard Python</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vectorization</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Verification and testing frameworks</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Extended Exercise</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A Python solution</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 4: a Java OO program</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Conclusions</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0001"></a>
+<!-- !split -->
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Definition of computing.</b>
+Computing means in this document mathematical problem solving by means
+of computers. It covers numerical as well as symbolic computing.
+</div>
+
+
+<p>
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pager">
+  <li class="previous">
+    <a href="._computing_competence000.html">&larr; Prev</a>
+  </li>
+  <li class="next">
+    <a href="._computing_competence002.html">Next &rarr;</a>
+  </li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+
