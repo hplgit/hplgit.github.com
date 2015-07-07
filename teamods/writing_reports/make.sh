@@ -2,6 +2,10 @@
 script_source=~/vc/deqbook/doc/src/chapters/softeng1/report_generation
 report_source=~/vc/deqbook/doc/src/chapters/archive/decay-reports
 cp -r ${report_source}/* .
+cp -r ${script_source} .
+cd report_generation
+sh clean.sh
+cd ..
 git add .
 # git ignores temp*
 git add -f _static/temp*
