@@ -81,19 +81,19 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._computing_competence001.html#___sec0" style="font-size: 80%;"><b>Why is computing competence important?</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;"><b>General goals for computing competence</b></a></li>
-     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec2" style="font-size: 80%;"><b>Case study</b></a></li>
-     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise for the case study</a></li>
-     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 1: Minimalistic Matlab</a></li>
-     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 2: Matlab with functions</a></li>
-     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 3: Standard Python</a></li>
-     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vectorization</a></li>
-     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Verification and testing frameworks</a></li>
-     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Extended Exercise</a></li>
-     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A Python solution</a></li>
-     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 4: a Java OO program</a></li>
-     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Conclusions</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Why is computing competence important?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec1" style="font-size: 80%;"><b>General goals for computing competence</b></a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec2" style="font-size: 80%;"><b>Case study</b></a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise for the case study</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 1: Minimalistic Matlab</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 2: Matlab with functions</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 3: Standard Python</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vectorization</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Verification and testing frameworks</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Extended Exercise</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A Python solution</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 4: a Java OO program</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Conclusions</a></li>
 
         </ul>
       </li>
@@ -109,65 +109,108 @@ MathJax.Hub.Config({
 <a name="part0002"></a>
 <!-- !split -->
 
-<h1 id="___sec1">General goals for computing competence </h1>
+<h1 id="___sec0">Why is computing competence important? </h1>
 
 <p>
-Learning goals for <em>numerical algorithms</em>:
+First of all, we need to define the term <em>computing</em> and what
+it contains.
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Definition of computing.</b>
+Computing means in this document mathematical problem solving using
+computers. It covers numerical as well as symbolic computing.
+</div>
+
+
+<p>
+Mathematics has traditionally been about identifying and verifying
+structures, patterns, relations, and algorithms.
+Mathematical recipes in the form of algorithms have always been
+in focus, but with modern computers that can perform \( 10^{15} \)
+arithmetic operations per second, the enormous computing power
+have led to an even stronger focus on algorithms and
+what we here call <em>computing competence</em>.
+
+<p>
+<center><p><img src="fig/math_km.png" align="bottom" width=600></p></center>
+
+<p>
+The computing competence is about
 
 <ul>
- <li> Deep knowledge of the most fundamental algorithms for linear algebra,
-   ordinary and partial differential equations, optimization, and
-   statistical uncertainty quantification. Deep knowledge means
-   derivation/construction of the algorithms, understanding of their
-   implementation (how they work),
-   and how they can fail (error behavior).</li>
- <li> Overview of advanced algorithms and how they can be accessed in available software.</li>
- <li> Application of fundamental and advanced algorithms to classial
-   model problems as well as real-world problems with assessment of
-   the uncertainty in the answer.</li>
+ <li> derivation, verification, and implementation of algorithms</li>
+ <li> understanding the limitations (what can go wrong) with algorithms</li>
+ <li> overview of important, known algorithms</li>
+ <li> understanding how algorithm are used</li>
 </ul>
 
-Learning goals for <em>symbolic computing</em>:
+In the past, computing competence was about algorithms involving pen
+and paper and what is often referred to as <em>continuous
+models</em>. Application of computers calls for approximate <em>discrete
+models</em>. Much of the development of methods for continuous models are
+now being replaced by methods for discrete models in science and
+industry, simply because much larger problem classes can be addressed
+with discrete models, often also by simple and generic methodologies.
+However, verification of algorithms and understanding their
+limitations requires much of the classical knowledge on continuous
+models.
 
-<ul>
- <li> Knowledge of at least one computer algebra system and how it is
-   applied to perform classical mathematics (calculus, linear algebra,
-   differential equations - with verification).</li>
-</ul>
+<p>
+So, why should basic university education undergo a shift from
+classical mathematics to modern computing?
 
-Learning goals for <em>programming</em>:
+<ol>
+<li> The impact of the computer on mathematics is tremendous:
+   science and industry now rely on solving mathematical problems
+   through computing.</li>
+<li> Computing increases the relevance in education by solving
+   more realistic problems earlier.</li>
+<li> Computing through programming is excellent training of creativity.</li>
+<li> Computing enhances the understanding of abstractions and generalization.</li>
+<li> Computing decreases the need for special tricks and tedious algebra, and
+   shifts the focus to problem definition, visualization, and &quot;what if&quot;
+   discussions.</li>
+</ol>
 
-<ul>
- <li> Extensive experience with programming in a high-level language
-   (MATLAB, Python, R). Experience with programming in
-   a compiled language (Fortran, C, C++).</li>
- <li> Knowledge of basic software engineering elements: functions, classes,
-   modules/libraries, testing procedures and frameworks,
-   documentation tools, and version control systems.</li>
- <li> Extensive experience with implementing and applying numerical
-   algorithms in reusable software that acknowledges the generic nature
-   of the mathematical algorithms.</li>
- <li> Extensive experience with debugging software, e.g., as part
-   of implementing comprehensive tests.</li>
-</ul>
+The result is a deeper understanding of mathematical modeling.
+In general, we have the famous quote by Kristen Nygaard: &quot;Programming
+is understanding&quot;.
 
-Learning goals for <em>verification</em>:
+<p>
+For the mathematical training, there is one major new component among
+the arguments above: <em>understanding abstractions and
+generalization</em>. While many of the classical methods developed for
+continuous models are specialized for a particular problem or a narrow
+class of problems, computing-based algorithms are often developed for
+problems in a generic form and hence applicable to a large problem
+class.
 
-<ul>
- <li> Extensive experience with programming of testing procedures.</li>
- <li> Deep knowledge of testing/verification methods:</li>
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Key principle in mathematical modeling.</b>
+The power of mathematics lies in identifying a given problem as
+a special case of an abstract class of problems, identifying
+general solution methods for this class of problems, and applying
+a general method to the specific problem
+(applying means calculations by pen and paper, symbolic computing,
+or numerical computing by ready-made and/or self-written software).
+This generic view on problems and methods is particularly important
+for understanding how to apply available, generic software to solve
+a particular problem.
+</div>
 
-<ul>
-   <li> Exact solution of numerical models</li>
-   <li> Method of manufactured solutions (chose solution and fit a problem)</li>
-   <li> Classical analytical solutions (incl. asymptotic solutions)</li>
-   <li> Asymptotic results for approximation errors</li>
-   <li> Computing of asymptotic approximation errors (convergence rates)</li>
-</ul>
 
- <li> Step-wise construction of tests to aid debugging.</li>
-</ul>
+<p>
+Computing competence represents new knowledge and will increase the
+volume of student programs. It is always a major problem to remove
+topics from the curriculum, but a possible candidate is specialized
+mathematical methods for special problems - if more generic approximate
+algorithms can solve the problems.
 
+<!-- begin inline comment -->
+<font color="red">(<b>hpl 1</b>: Maybe unnecessary to suggest removals? But it follows from the box: if a generic view on mathematics is important, one should cut down on very specialized methods for simplified/specialized problems unless the end result is of particular importance. Often, the end result is a series and difficult to interpret...)</font>
+<!-- end inline comment -->
+
+<p>
 <p>
 <!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
