@@ -12,8 +12,8 @@ Automatically generated HTML file from DocOnce source
 <title>How to access Python for doing scientific computing</title>
 
 
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
@@ -21,6 +21,11 @@ Automatically generated HTML file from DocOnce source
 h1 {color: #b58900;}  /* yellow */
 /* h1 {color: #cb4b16;}  orange */
 /* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -43,13 +48,14 @@ h1 {color: #b58900;}  /* yellow */
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -149,9 +155,11 @@ MathJax.Hub.Config({
 
 <p>
 <!-- !split -->
+<p style="font-size:80%">Much of the material in this document is taken from Appendix H.1 in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</p>
 
-<h1>Anaconda and Spyder <a name="sec:accesspy:anaconda"></a></h1>
+<h1 id="sec:accesspy:anaconda">Anaconda and Spyder</h1>
 
+<p>
 <a href="https://store.continuum.io/cshop/anaconda/" target="_blank">Anaconda</a> is
 a free Python distribution produced by Continuum Analytics
 and contains about 200 Python packages, as well as Python itself, for doing
@@ -165,8 +173,9 @@ Anaconda and is my recommended tool for writing and running Python
 programs on Mac and Windows, unless you have preference for a plain
 text editor for writing programs and a terminal window for running them.
 
-<h2>Spyder on Mac  <a name="___sec3"></a></h2>
+<h2 id="___sec3">Spyder on Mac </h2>
 
+<p>
 Spyder is started by typing <code>spyder</code> in a (new) Terminal application.
 If you get an error message <em>unknown locale</em>, you need to type the
 following line in the Terminal application, or preferably put the line
@@ -178,8 +187,9 @@ in your <code>$HOME/.bashrc</code> Unix initialization file:
 </code></pre>
 <!-- end verbatim block -->
 
-<h2>Installation of additional packages  <a name="___sec4"></a></h2>
+<h2 id="___sec4">Installation of additional packages </h2>
 
+<p>
 Anaconda installs the <code>pip</code> tool that is handy to install additional
 packages. In a Terminal application on Mac or in a PowerShell terminal
 on Windows, write
@@ -190,24 +200,25 @@ on Windows, write
 </code></pre>
 <!-- end verbatim block -->
 
-<h2>Installing SciTools on Mac  <a name="___sec5"></a></h2>
+<h2 id="___sec5">Installing SciTools on Mac </h2>
 
+<p>
 The SciTools package can be installed by <code>pip</code> on Mac:
 
 <p>
 <!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; pip install mercurial
-Terminal&gt; pip install --user -e \ 
-          hg+https://code.google.com/p/scitools#egg=scitools
+<pre><code>Terminal&gt; pip install --user -e \ 
+          git+https://github.com/hplgit/scitools.git#egg=scitools
 </code></pre>
 <!-- end verbatim block -->
 
-<h2>Installing SciTools on Windows  <a name="___sec6"></a></h2>
+<h2 id="___sec6">Installing SciTools on Windows </h2>
 
+<p>
 The safest procedure on Windows is to go to
-<a href="http://code.google.com/p/scitools/source/browse" target="_blank"><tt>http://code.google.com/p/scitools/source/browse</tt></a> and download
-the zip file. Double-click on the downloaded file in Windows Explorer
-and click on
+<a href="https://github.com/hplgit/scitools/" target="_blank"><tt>https://github.com/hplgit/scitools/</tt></a> and click on
+<em>Download ZIP</em>. Double-click on the downloaded file in Windows Explorer
+and perform
 <em>Extract all files</em> to create a new folder with all the SciTools
 files. Find the location of this folder, open a PowerShell
 window, and move to the location, e.g.,

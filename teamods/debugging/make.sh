@@ -14,7 +14,7 @@ fi
 #cp $repo/${wrap}_4print.pdf ${name}_4print.pdf
 
 rm -rf html *.html
-cp $repo/${name}.html $repo/._${name}*.html .
+cp $repo/${name}.html $repo/${name}-solarized.html $repo/._${name}*.html .
 #cp $repo/${wrap}-solarized.html ${name}-solarized.html
 
 git add .

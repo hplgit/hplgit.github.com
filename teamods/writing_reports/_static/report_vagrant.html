@@ -140,7 +140,7 @@ TOC: on -->
 <p>
 <!-- !split -->
 
-<h1 id="math:problem">Mathematical problem<a name="math:problem"></a></h1>
+<h1 id="math:problem">Mathematical problem</h1>
 
 <p>
 We address the initial-value problem
@@ -158,7 +158,7 @@ is relevant for physical phenomena featuring exponential decay
 in time, e.g., vertical pressure variation in the atmosphere,
 cooling of an object, and radioactive decay.
 
-<h1 id="numerical:problem">Numerical solution method<a name="numerical:problem"></a></h1>
+<h1 id="numerical:problem">Numerical solution method</h1>
 
 <p>
 We introduce a mesh in time with points \( 0 = t_0 < t_1 \cdots < t_{N_t}=T \).
@@ -185,11 +185,11 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
     scheme when \( \theta=1/2 \)</li>
 </ul>
 
-<h1 id="___sec2">Implementation <a name="___sec2"></a></h1>
+<h1 id="___sec2">Implementation </h1>
 
 <p>
 The numerical method is implemented in a Python function
-<a href="#Langtangen_2012">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>decay_mod</tt></a> module):
+<a href="#Langtangen_2014">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>model</tt></a> module):
 
 <p>
 
@@ -206,31 +206,92 @@ The numerical method is implemented in a Python function
     <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, Nt):    <span style="color: #408080; font-style: italic"># n=0,1,...,Nt-1</span>
         u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
     <span style="color: #008000; font-weight: bold">return</span> u, t
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">exact_solution</span>(t, I, a):
+    <span style="color: #008000; font-weight: bold">return</span> I<span style="color: #666666">*</span>exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>t)
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">explore</span>(I, a, T, dt, theta<span style="color: #666666">=0.5</span>):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">    Run a case with the solver, compute error measure,</span>
+<span style="color: #BA2121; font-style: italic">    and plot the numerical and exact solutions (if makeplot=True).</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    u, t <span style="color: #666666">=</span> solver(I, a, T, dt, theta)    <span style="color: #408080; font-style: italic"># Numerical solution</span>
+    u_e <span style="color: #666666">=</span> exact_solution(t, I, a)
+    e <span style="color: #666666">=</span> u_e <span style="color: #666666">-</span> u
+    E <span style="color: #666666">=</span> sqrt(dt<span style="color: #666666">*</span><span style="color: #008000">sum</span>(e<span style="color: #666666">**2</span>))
+
+    figure()                         <span style="color: #408080; font-style: italic"># create new plot</span>
+    t_e <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, T, <span style="color: #666666">1001</span>)       <span style="color: #408080; font-style: italic"># very fine mesh for u_e</span>
+    u_e <span style="color: #666666">=</span> exact_solution(t_e, I, a)
+    plot(t,   u,   <span style="color: #BA2121">&#39;r--o&#39;</span>)           <span style="color: #408080; font-style: italic"># dashed red line with circles</span>
+    plot(t_e, u_e, <span style="color: #BA2121">&#39;b-&#39;</span>)             <span style="color: #408080; font-style: italic"># blue line for u_e</span>
+    legend([<span style="color: #BA2121">&#39;numerical&#39;</span>, <span style="color: #BA2121">&#39;exact&#39;</span>])
+    xlabel(<span style="color: #BA2121">&#39;t&#39;</span>)
+    ylabel(<span style="color: #BA2121">&#39;u&#39;</span>)
+    title(<span style="color: #BA2121">&#39;Method: theta-rule, theta=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">, dt=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (theta, dt))
+    theta2name <span style="color: #666666">=</span> {<span style="color: #666666">0</span>: <span style="color: #BA2121">&#39;FE&#39;</span>, <span style="color: #666666">1</span>: <span style="color: #BA2121">&#39;BE&#39;</span>, <span style="color: #666666">0.5</span>: <span style="color: #BA2121">&#39;CN&#39;</span>}
+    savefig(<span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">_</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">.png&#39;</span> <span style="color: #666666">%</span> (theta2name[theta], dt), dpi<span style="color: #666666">=150</span>)
+    savefig(<span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">_</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">.pdf&#39;</span> <span style="color: #666666">%</span> (theta2name[theta], dt))
+    <span style="color: #408080; font-style: italic">#show()  # run in batch</span>
+    <span style="color: #008000; font-weight: bold">return</span> E
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">define_command_line_options</span>():
+    <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">argparse</span>
+    parser <span style="color: #666666">=</span> argparse<span style="color: #666666">.</span>ArgumentParser()
+    parser<span style="color: #666666">.</span>add_argument(<span style="color: #BA2121">&#39;--I&#39;</span>, <span style="color: #BA2121">&#39;--initial_condition&#39;</span>, <span style="color: #008000">type</span><span style="color: #666666">=</span><span style="color: #008000">float</span>,
+                        default<span style="color: #666666">=1.0</span>, help<span style="color: #666666">=</span><span style="color: #BA2121">&#39;initial condition, u(0)&#39;</span>,
+                        metavar<span style="color: #666666">=</span><span style="color: #BA2121">&#39;I&#39;</span>)
+    parser<span style="color: #666666">.</span>add_argument(<span style="color: #BA2121">&#39;--a&#39;</span>, <span style="color: #008000">type</span><span style="color: #666666">=</span><span style="color: #008000">float</span>,
+                        default<span style="color: #666666">=1.0</span>, help<span style="color: #666666">=</span><span style="color: #BA2121">&#39;coefficient in ODE&#39;</span>,
+                        metavar<span style="color: #666666">=</span><span style="color: #BA2121">&#39;a&#39;</span>)
+    parser<span style="color: #666666">.</span>add_argument(<span style="color: #BA2121">&#39;--T&#39;</span>, <span style="color: #BA2121">&#39;--stop_time&#39;</span>, <span style="color: #008000">type</span><span style="color: #666666">=</span><span style="color: #008000">float</span>,
+                        default<span style="color: #666666">=1.0</span>, help<span style="color: #666666">=</span><span style="color: #BA2121">&#39;end time of simulation&#39;</span>,
+                        metavar<span style="color: #666666">=</span><span style="color: #BA2121">&#39;T&#39;</span>)
+    parser<span style="color: #666666">.</span>add_argument(<span style="color: #BA2121">&#39;--dt&#39;</span>, <span style="color: #BA2121">&#39;--time_step_values&#39;</span>, <span style="color: #008000">type</span><span style="color: #666666">=</span><span style="color: #008000">float</span>,
+                        default<span style="color: #666666">=</span>[<span style="color: #666666">1.0</span>], help<span style="color: #666666">=</span><span style="color: #BA2121">&#39;time step values&#39;</span>,
+                        metavar<span style="color: #666666">=</span><span style="color: #BA2121">&#39;dt&#39;</span>, nargs<span style="color: #666666">=</span><span style="color: #BA2121">&#39;+&#39;</span>, dest<span style="color: #666666">=</span><span style="color: #BA2121">&#39;dt_values&#39;</span>)
+    <span style="color: #008000; font-weight: bold">return</span> parser
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">read_command_line</span>():
+    parser <span style="color: #666666">=</span> define_command_line_options()
+    args <span style="color: #666666">=</span> parser<span style="color: #666666">.</span>parse_args()
+    <span style="color: #008000; font-weight: bold">return</span> args<span style="color: #666666">.</span>I, args<span style="color: #666666">.</span>a, args<span style="color: #666666">.</span>T, args<span style="color: #666666">.</span>dt_values
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">main</span>():
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Conduct experiments with theta and dt values.&quot;&quot;&quot;</span>
+    I, a, T, dt_values <span style="color: #666666">=</span> read_command_line()
+    <span style="color: #008000; font-weight: bold">for</span> theta <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">0</span>, <span style="color: #666666">0.5</span>, <span style="color: #666666">1</span>:
+        <span style="color: #008000; font-weight: bold">for</span> dt <span style="color: #AA22FF; font-weight: bold">in</span> dt_values:
+            E <span style="color: #666666">=</span> explore(I, a, T, dt, theta)
+            <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%3.1f</span><span style="color: #BA2121"> </span><span style="color: #BB6688; font-weight: bold">%6.2f</span><span style="color: #BA2121">: </span><span style="color: #BB6688; font-weight: bold">%12.3E</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (theta, dt, E)
+
+<span style="color: #008000; font-weight: bold">if</span> __name__ <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;__main__&#39;</span>:
+    main()
 </pre></div>
 
-<h1 id="___sec3">Numerical experiments <a name="___sec3"></a></h1>
+<h1 id="___sec3">Numerical experiments </h1>
 
 <p>
 We define a set of numerical experiments where \( I \), \( a \), and \( T \) are
 fixed, while \( \Delta t \) and \( \theta \) are varied.
 In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
 
-<h2 id="___sec4">The Backward Euler method <a name="___sec4"></a></h2>
+<h2 id="___sec4">The Backward Euler method </h2>
 
 <p>
 <center><p><img src="BE.png" align="bottom" width=800></p></center>
 
-<h2 id="___sec5">The Crank-Nicolson method <a name="___sec5"></a></h2>
+<h2 id="___sec5">The Crank-Nicolson method </h2>
 
 <p>
 <center><p><img src="CN.png" align="bottom" width=800></p></center>
 
-<h2 id="___sec6">The Forward Euler method <a name="___sec6"></a></h2>
+<h2 id="___sec6">The Forward Euler method </h2>
 
 <p>
 <center><p><img src="FE.png" align="bottom" width=800></p></center>
 
-<h2 id="___sec7">Error vs \( \Delta t \) <a name="___sec7"></a></h2>
+<h2 id="___sec7">Error vs \( \Delta t \) </h2>
 
 <p>
 How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
@@ -247,7 +308,7 @@ non-physically.
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 1:  Variation of the error with the time step. <a name="fig:error"></a> </p></center>
+<center><p class="caption">Figure 1:  Variation of the error with the time step. <div id="fig:error"></div> </p></center>
 <p><img src="error.png" align="bottom" width=400></p>
 </center>
 
@@ -282,25 +343,27 @@ The numbers corresponding to the figure above are given in the table below.
    if \( \Delta t \) is not sufficiently small.</li>
 <li> \( \theta =0 \) suffers from fast-growing solution if \( \Delta t \) is
    not small enough, but even below this limit one can have oscillating
-   solutions that disappear if \( \Delta t \) is sufficiently small.</li>
+   solutions (unless \( \Delta t \) is sufficiently small).</li>
 </ol>
 </div>
 
 
-<h1 id="___sec8">Bibliography <a name="___sec8"></a></h1>
+<h1 id="___sec8">Bibliography </h1>
 
 <p>
 <!-- begin bibliography -->
 
 <ol>
- <li> <a name="Iserles_2009"></a> <b>A. Iserles</b>. 
+ <li> <div id="Iserles_2009"></div> <b>A. Iserles</b>. 
     <em>A First Course in the Numerical Analysis of Differential Equations</em>,
+    second edition,
     Cambridge University Press,
     2009.</li>
- <li> <a name="Langtangen_2012"></a> <b>H. P. Langtangen</b>. 
+ <li> <div id="Langtangen_2014"></div> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
+    fourth edition,
     Springer,
-    2012.</li>
+    2014.</li>
 </ol>
 
 <!-- end bibliography -->

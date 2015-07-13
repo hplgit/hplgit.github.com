@@ -1,0 +1,133 @@
+<html>
+  <!-- solarized_box template -->
+  <!-- This template is an extension and modification of the solarized style
+       by Prof. Peter Hascke, see http://www.peterhaschke.com, under
+       the license http://creativecommons.org/licenses/by-sa/3.0/
+       (see http://www.peterhaschke.com/About).
+  -->
+  <head>
+  <title>Research</title>
+<!--
+  <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light.css" rel="stylesheet" type="text/css" title="light"/>
+-->
+  <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_yellow.css" rel="stylesheet" type="text/css" title="light"/>
+  <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_dark.css" rel="stylesheet" type="text/css" title="dark"/>
+  <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+  <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_dark_code.css" rel="stylesheet" type="text/css" title="dark"/>
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/font-awesome.min.css">
+
+  <!-- NOTE: replace rawgit.com by cdn.rawgit.com for production or
+  sites with heavy traffic -->
+  <script type="text/javascript" src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/switch-css.js"></script>
+  <script type="text/javascript"> set_style_from_cookie(); </script>
+  <!-- use highlight.js and styles for code -->
+  <script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- note that standard CDN as in http://highlightjs.org/download/
+    does not work with this solarized style. -->
+  </head>
+
+  <body>
+  <div id="main">
+    <header>
+
+    <nav role="navigation">
+      <ul id="list-nav">
+        <li style="width:14.25%;"><a href="index.html">About</a>
+        <li style="width:14.25%;"><a href="contact.html">Contact</a>
+        <li style="width:14.25%;"><a href="bio.html">CV & Bio</a>
+        <li style="width:14.25%;"><a href="research.html">Research</a>
+        <li style="width:14.25%;"><a href="education.html">Teaching</a>
+        <li style="width:14.25%;"><a href="books.html">Books</a>
+        <li style="width:14.25%;"><a href="software.html">Software</a>
+        </li>
+      </ul>
+    </nav>
+    <br>
+
+    <form style="font-size: 25%"  class="pull-right">
+      <a onclick="switch_style('dark'); recordOutboundLink(this, 'Outbound Links', 'dark theme'); return false;"
+          value="dark"
+          id="dark"
+          class="btn btn-mini showtooltip"
+          title="switch to dark theme">
+          <span><i class="icon-circle"></i></span>
+      </a>
+
+      <a onclick="switch_style('light'); recordOutboundLink(this, 'Outbound Links', 'light theme'); return false;"
+          value="light"
+          id="light"
+          class="btn btn-mini showtooltip"
+          title="switch to light theme">
+          <span><i class="icon-circle-blank"></i></span>
+          </a>
+    </form>
+
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Research ', 1, None, '___sec0'),
+              (' Academic profile ', 2, None, '___sec1'),
+              (' Student requirements ', 2, None, '___sec2')]}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+<h1 id="___sec0">Research </h1>
+
+<p>
+<a href="cv.pdf" target="_self">CV with complete publication list</a>
+
+<p>
+Keywords:
+
+<ul>
+ <li> Mathematical modeling (differential equations)</li>
+ <li> Numerical methods for flow problems
+   (water waves, porous media flow, biomedical flows)</li>
+ <li> Finite element methods</li>
+ <li> Stochastic models and methods in mechanics</li>
+ <li> Methods for creating flexible scientific software
+   (high-level languages, scripting, Python,
+   object-orientation)</li>
+</ul>
+
+<h2 id="___sec1">Academic profile </h2>
+
+<p>
+<img src="fig/mechanics_eqs_dark.jpg" width=400 align="right" style="margin: 0px 0px 0px 20px;">
+My interests concern the interplay between physics, mathematics, and computers. More precisely, I am excited by the fact that we can create models of the world inside a computer and play around with the models in ways that would be impossible, dangerous, or very expensive to do in the real world. For example, engineers apply computer models to design a new airplane; it would be dangerous and expensive to build a trial plane and experience that it didn't fly well. Bridges, cars, buildings, ships, electronic devices, and most other technological things are designed and tried out in a computer model before building the real thing.  My research is concerned with improving how we create computer models based on physics and mathematics. A lot of researchers
+around the world work with this topic every day, and over the last decades tremendous progress has been made. The result is manifested in, among other things, safer and cheaper consumer products, and increased understanding of climate changes and fundamental issues such as the origin of the universe. To see more specifically what I am working with now, visit our website <a href="http://cbc.simula.no" target="_self"><tt>http://cbc.simula.no</tt></a> for Center for Biomedical Computing.
+
+<p>
+In the late 1980s I took my Ph.D.&nbsp;on how to make better computer models of oil production - in Norway this is a very important problem since the national budget depends on the predicted income from the oil industry, and that prediction is based on computer simulations of the oil recovery process. In the period 1995-2005 I worked with computer simulations of tsunamis, and we had to explain why predicting tsunami hazards on computers could be important.  After Dec 25, 2004, nobody has ever questioned the importance of this research. At present, I direct a <a href="http://cbc.simula.no/pub/" target="_self">Center of Excellence</a> devoted to computer models for improving clinical practice at hospitals. For example, we create models for better understanding heart failure, why people get stroke, and why abnormal flows in the head and spine lead to diseases.  Based on the understanding from computer models, medical doctors can improve the way we create inhalation medicine or how complicated surgery can be made safer with a better outcome.
+
+<p>
+I refer to the publication list in the <a href="cv.pdf" target="_self">CV</a> for a more
+detailed, academic impression of my research.
+
+<h2 id="___sec2">Student requirements </h2>
+
+<p>
+To work with me or my colleagues, you need to be interested in and good at one of the following three subjects: 1) mathematics (especially partial differential equations), 2)  physics (especially continuum mechanics and fluid dynamics), or 3) programming (especially Python, C++ and Fortran programming on serial and parallel computers). Everything we do normally ends up in large computer programs that need hours or weeks to run on very powerful computers.
+
+<p>
+<img src="fig/simula_logo_neg_trans.png" width=350 style="box-shadow: 0px 0px 0px 0px #93a1a1; margin: 20px 0px 20px 10px;">
+
+<!-- ------------------- end of main content --------------- -->
+
+
+  </header>
+<!--
+    <footer>
+      H. P. Langtangen &#169; 2015 &nbsp; <span class="openwebicons-cc"></span> <span class="openwebicons-cc-by"></span> <span class="openwebicons-cc-sa">
+    </footer>
+-->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+      </div>
+  </body>
+</html>
+

@@ -1,11 +1,16 @@
 #!/bin/sh
-source=~/vc/deqbook/doc/src/chapters/archive/decay-reports
-cp -r $source/* $source/.publish*.bib .
-rm -rf css ipynb* report2* publish_config.py
+#rm -rf css ipynb* report2* publish_config.py
+script_source=~/vc/deqbook/doc/src/chapters/softeng1/report_generation
+report_source=~/vc/deqbook/doc/src/chapters/archive/decay-reports
+cp -r ${report_source}/* .
+cp -r ${script_source} .
+cd report_generation
+sh clean.sh
+cd ..
 git add .
 # git ignores temp*
 git add -f _static/temp*
 
 # update wiki with mediawiki
-cp -r $source/_static/report.mwiki ~/vc/hplgit.github.com.wiki/Experiments-with-Schemes-for-Exponential-Decay.mediawiki
-cp -r $source/_static/*.png ~/vc/hplgit.github.com.wiki/
+cp -r _static/report.mwiki ~/vc/hplgit.github.com.wiki/Experiments-with-Schemes-for-Exponential-Decay.mediawiki
+cp -r _static/*.png ~/vc/hplgit.github.com.wiki/

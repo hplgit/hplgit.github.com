@@ -1,0 +1,1049 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Debugging in Python">
+<meta name="keywords" content="using a debugger,debugger demo,debugging,exceptions,Midpoint rule for integration,verification,PEP8,PyLint,Flake8">
+
+<title>Debugging in Python</title>
+
+
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [(' Using a debugger ', 0, 'sec:debug:run', 'sec:debug:run'),
+              (' Step 1 ', 2, None, '___sec1'),
+              (' Step 2 ', 2, None, '___sec2'),
+              (' Step 3 ', 2, None, '___sec3'),
+              (' Step 4 ', 2, None, '___sec4'),
+              (' Step 5 ', 2, None, '___sec5'),
+              (' Step 6 ', 2, None, '___sec6'),
+              (' Step 7 ', 2, None, '___sec7'),
+              (' Step 8 ', 2, None, '___sec8'),
+              (' Step 9 ', 2, None, '___sec9'),
+              (' Step 10 ', 2, None, '___sec10'),
+              (' How to debug ', 0, 'sec:debug:howto', 'sec:debug:howto'),
+              (' A recipe for program writing and debugging ',
+               1,
+               None,
+               '___sec12'),
+              (' Application of the recipe ', 1, None, '___sec13'),
+              (' Refining the user interface ', 2, None, '___sec14'),
+              (' Writing a test function ', 2, None, '___sec15'),
+              (' Getting help from a code analyzer ',
+               1,
+               'sec:debug:pylint',
+               'sec:debug:pylint'),
+              (' References ', 0, None, '___sec17')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+$$
+
+
+
+
+    
+<a name="part0004"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._debug-solarized003.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._debug-solarized005.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- !split -->
+<p style="font-size:80%">Much of the material in this document is taken from Appendix F in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</p>
+
+<h1 id="___sec13">Application of the recipe </h1>
+
+<p>
+Let us illustrate the points above in a specific programming problem:
+implementation of the Midpoint rule for numerical integration.
+The Midpoint rule for approximating an integral \( \int_a^b f(x)dx \) reads
+
+$$
+\begin{equation}
+I = h\sum_{i=1}^{n} f(a + (i-\frac{1}{2})h), \quad h = {b-a\over n}\tp
+\tag{1}
+\end{equation}
+$$
+
+We just follow the individual steps in the recipe to develop the code.
+
+<p>
+<b>1. Understand the problem.</b>
+In this problem we must understand how to program the formula
+<a href="#mjx-eqn-1">(1)</a>. Observe that we do not need to
+understand how the formula is derived, because we do not apply the
+derivation in the program.  What is important, is to notice that the
+formula is an <em>approximation</em> of an integral. Comparing the result of
+the program with the exact value of the integral will in general show
+a discrepancy. Whether we have an approximation error or a programming
+error is always difficult to judge. We will meet this difficulty
+below.
+
+<p>
+<b>2. Work out examples.</b>
+As a test case we choose to integrate
+
+$$
+\begin{equation}
+f(x) = \sin^{-1}(x)\tp
+\tag{2}
+\end{equation}
+$$
+
+between 0 and \( \pi \).
+From a table of integrals we find that this integral equals
+
+$$
+\begin{equation}
+\left\lbrack x\sin^{-1}(x) + \sqrt{1-x^2}\,\,\right\rbrack_{0}^{\pi}\tp
+\tag{3}
+\end{equation}
+$$
+
+The formula <a href="#mjx-eqn-1">(1)</a> gives an approximation
+to this integral, so the program will (most likely) print out a result
+different from <a href="#mjx-eqn-3">(3)</a>.  It would therefore be
+very helpful to construct a calculation where there are no
+approximation errors.  Numerical integration rules usually integrate
+some polynomial of low order exactly. For the Midpoint rule it is
+obvious, if you understand the derivation of this rule, that a
+constant function will be integrated exactly. We therefore also
+introduce a test problem where we integrate \( g(x)=1 \) from 0 to 10. The
+answer should be exactly 10.
+
+<p>
+<em>Input and output</em>:
+The input to the calculations is the function to integrate, the integration
+limits \( a \) and \( b \), and the \( n \) parameter (number of intervals) in
+the formula <a href="#mjx-eqn-1">(1)</a>.
+The output from the calculations is the approximation to the integral.
+
+<p>
+<b>3. Decide on a user interface.</b>
+We find it easiest at this beginning stage to program the two
+functions \( f(x) \) and \( g(x) \) directly in the program. We also specify
+the corresponding integration limits \( a \) and \( b \) in the program, but
+we read a common \( n \) for both integrals from the command line. Note
+that this is not a flexible user interface, but it suffices as a start
+for creating a working program. A much better user interface is to
+read \( f \), \( a \), \( b \), and \( n \) from the command line, which will be done
+later in a more complete solution to the present problem.
+
+<p>
+<b>4. Make algorithms.</b>
+Like most mathematical programming problems, also this one has a
+generic part and an application part. The generic part is the formula
+<a href="#mjx-eqn-1">(1)</a>, which is applicable to an
+arbitrary function \( f(x) \). The implementation should reflect that we
+can specify any Python function <code>f(x)</code> and get it integrated.  This
+principle calls for calculating <a href="#mjx-eqn-1">(1)</a> in
+a Python function where the input to the computation (\( f \), \( a \), \( b \),
+\( n \)) are arguments. The function heading can look as <code>integrate(f, a,
+b, n)</code>, and the value of <a href="#mjx-eqn-1">(1)</a> is
+returned.
+
+<p>
+The test part of the program consists of defining the test functions
+\( f(x) \) and \( g(x) \) and writing out the calculated approximations to the
+corresponding integrals.
+
+<p>
+A first rough sketch of the program can then be
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def integrate(f, a, b, n):
+    # compute integral, store in I
+    return I
+
+def f(x):
+...
+
+def g(x):
+...
+
+# test/application part:
+n = sys.argv[1]
+I = integrate(g, 0, 10,  n)
+print &quot;Integral of g equals %g&quot; % I
+I = integrate(f, 0, pi,  n)
+# calculate and print out the exact integral of f
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+The next step is to make a detailed implementation of the <code>integrate</code>
+function. Inside this function we need to compute the sum
+<a href="#mjx-eqn-1">(1)</a>. In general, sums are computed by
+a <code>for</code> loop over the summation index, and inside the loop we
+calculate a term in the sum and add it to an accumulation variable.
+Here is the algorithm in Python code:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>s = 0
+for i in range(1, n+1):
+    s = s + f(a + (i-0.5)*h)
+I = s*h
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+<b>5. Look up information.</b>
+Our test function \( f(x)=\sin^{-1}(x) \) must be evaluated in the
+program.  How can we do this? We know that many common mathematical
+functions are offered by the <code>math</code> module. It is therefore natural to
+check if this module has an inverse sine function. The best place to
+look for Python modules is the <a href="http://docs.python.org/2/library/" target="_self">Python Standard Library</a> <a href="._debug-solarized005.html#Python:Library:Reference">[2]</a>
+documentation, which has a search facility.
+Typing <em>math</em> brings up a link to the
+<code>math</code> module, there we find <code>math.asin</code> as the function we need.
+Alternatively, one can use the command line utility <code>pydoc</code> and write
+<code>pydoc math</code> to look up all the functions in the module.
+
+<p>
+In this simple problem, we use very basic programming constructs and
+there is hardly any need for looking at similar examples to get
+started with the problem solving process.  We need to know how to
+program a sum, though, via a <code>for</code> loop and an accumulation variable
+for the sum.
+
+<p>
+<b>6. Write the program.</b>
+Here is our first attempt to write the program. You can find the
+whole code in the file <a href="http://tinyurl.com/pwyasaa/debug/integrate_v1.py" target="_self"><tt>integrate_v1.py</tt></a>.
+
+<p>
+<!-- begin verbatim block  pypro-->
+<pre><code>def integrate(f, a, b, n):
+    s = 0
+    for i in range(1, n):
+        s += f(a + i*h)
+    return s
+
+def f(x):
+return asin(x)
+
+def g(x):
+return 1
+
+# Test/application part
+n = sys.argv[1]
+I = integrate(g, 0, 10,  n)
+print &quot;Integral of g equals %g&quot; % I
+I = integrate(f, 0, pi,  n)
+I_exact = pi*asin(pi) - sqrt(1 - pi**2) - 1
+print &quot;Integral of f equals %g (exact value is %g)' % \
+  (I, I_exact)
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+<b>7. Run the program.</b>
+We try a first execution from IPython
+
+<p>
+<!-- begin verbatim block  ipy-->
+<pre><code>In [1]: run integrate_v1.py
+</code></pre>
+<!-- end verbatim block -->
+Unfortunately, the program aborts with an error:
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>  File &quot;integrate_v1.py&quot;, line 8
+    return asin(x)
+         ^
+IndentationError: expected an indented block
+</code></pre>
+<!-- end verbatim block -->
+We go to line 8 and look at that line and the surrounding code:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def f(x):
+return asin(x)
+</code></pre>
+<!-- end verbatim block -->
+Python expects that the return line is indented, because
+the function body must always be indented.
+By the way, we realize that there is a similar error in the <code>g(x)</code>
+function as well.
+We correct these errors:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def f(x):
+    return asin(x)
+
+def g(x):
+    return 1
+</code></pre>
+<!-- end verbatim block -->
+Running the program again makes Python respond with
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>  File &quot;integrate_v1.py&quot;, line 24
+    (I, I_exact)
+               ^
+SyntaxError: EOL while scanning single-quoted string
+</code></pre>
+<!-- end verbatim block -->
+There is nothing wrong with line 24, but line 24 is a part of the
+statement starting on line 23:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>print &quot;Integral of f equals %g (exact value is %g)' % \ 
+      (I, I_exact)
+</code></pre>
+<!-- end verbatim block -->
+A <code>SyntaxError</code> implies that we have written illegal Python
+code. Inspecting line 23 reveals that the string to be printed
+starts with a double quote, but ends with a single quote.
+We must be consistent and use the same enclosing quotes in a string.
+Correcting the statement,
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>print &quot;Integral of f equals %g (exact value is %g)&quot; % \ 
+      (I, I_exact)
+</code></pre>
+<!-- end verbatim block -->
+and rerunning the program yields the output
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 18, in &lt;module&gt;
+    n = sys.argv[1]
+NameError: name 'sys' is not defined
+</code></pre>
+<!-- end verbatim block -->
+Obviously, we need to import <code>sys</code> before using it.
+We add <code>import sys</code> and run again:
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 19, in &lt;module&gt;
+    n = sys.argv[1]
+IndexError: list index out of range
+</code></pre>
+<!-- end verbatim block -->
+This is a very common error: we index the list <code>sys.argv</code> out of range
+because we have not provided enough command-line arguments.
+Let us use \( n=10 \) in the test and provide that number on the command line:
+
+<p>
+<!-- begin verbatim block  pyshell-->
+<pre><code>In [5]: run integrate_v1.py 10
+</code></pre>
+<!-- end verbatim block -->
+We still have problems:
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 20, in &lt;module&gt;
+    I = integrate(g, 0, 10,  n)
+  File &quot;integrate_v1.py&quot;, line 7, in integrate
+    for i in range(1, n):
+TypeError: range() integer end argument expected, got str.
+</code></pre>
+<!-- end verbatim block -->
+It is the final <code>File</code> line that counts (the previous ones
+describe the nested functions calls up to the point where
+the error occurred).
+The error message for line 7
+is very precise: the end argument to <code>range</code>,
+<code>n</code>, should be an integer, but it is a string.
+We need to convert the string <code>sys.argv[1]</code> to <code>int</code> before
+sending it to the <code>integrate</code> function:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>n = int(sys.argv[1])
+</code></pre>
+<!-- end verbatim block -->
+After a new edit-and-run cycle we have other error messages waiting:
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 20, in &lt;module&gt;
+    I = integrate(g, 0, 10,  n)
+  File &quot;integrate_v1.py&quot;, line 8, in integrate
+    s += f(a + i*h)
+NameError: global name 'h' is not defined
+</code></pre>
+<!-- end verbatim block -->
+The <code>h</code> variable is used without being assigned a value.
+From the formula <a href="#mjx-eqn-1">(1)</a> we
+see that \( h=(b-a)/n \), so we insert this assignment at the top of
+the <code>integrate</code>
+function:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def integrate(f, a, b, n):
+    h = (b-a)/n
+    ...
+</code></pre>
+<!-- end verbatim block -->
+A new run results in a new error:
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>Integral of g equals 9
+Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 23, in &lt;module&gt;
+    I = integrate(f, 0, pi,  n)
+NameError: name 'pi' is not defined
+</code></pre>
+<!-- end verbatim block -->
+Looking carefully at all output, we see that the program managed to
+call the <code>integrate</code> function with <code>g</code> as input and write
+out the integral. However, in the call to <code>integrate</code> with <code>f</code>
+as argument, we get a <code>NameError</code>, saying that <code>pi</code> is undefined.
+When we wrote the program we took it for granted that <code>pi</code> was
+\( \pi \), but we need to import <code>pi</code> from <code>math</code> to get this
+variable defined, before we call <code>integrate</code>:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>from math import pi
+I = integrate(f, 0, pi,  n)
+</code></pre>
+<!-- end verbatim block -->
+The output of a new run is now
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>Integral of g equals 9
+Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 24, in &lt;module&gt;
+    I = integrate(f, 0, pi,  n)
+  File &quot;integrate_v1.py&quot;, line 9, in integrate
+    s += f(a + i*h)
+  File &quot;integrate_v1.py&quot;, line 13, in f
+    return asin(x)
+NameError: global name 'asin' is not defined
+</code></pre>
+<!-- end verbatim block -->
+A similar error occurred: <code>asin</code> is not defined as a function,
+and we need to import it from <code>math</code>. We can either do a
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>from math import pi, asin
+</code></pre>
+<!-- end verbatim block -->
+or just do the rough
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>from math import *
+</code></pre>
+<!-- end verbatim block -->
+to avoid any further errors with undefined names from the <code>math</code>
+module (we will get one for the <code>sqrt</code> function later, so we simply
+use the last &quot;import all&quot; kind of statement).
+
+<p>
+There are still more errors:
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>Integral of g equals 9
+Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 24, in &lt;module&gt;
+    I = integrate(f, 0, pi,  n)
+  File &quot;integrate_v1.py&quot;, line 9, in integrate
+    s += f(a + i*h)
+  File &quot;integrate_v1.py&quot;, line 13, in f
+    return asin(x)
+ValueError: math domain error
+</code></pre>
+<!-- end verbatim block -->
+Now the error concerns a wrong <code>x</code> value in the <code>f</code> function.
+Let us print out <code>x</code>:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def f(x):
+    print x
+    return asin(x)
+</code></pre>
+<!-- end verbatim block -->
+The output becomes
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>Integral of g equals 9
+0.314159265359
+0.628318530718
+0.942477796077
+1.25663706144
+Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 25, in &lt;module&gt;
+    I = integrate(f, 0, pi,  n)
+  File &quot;integrate_v1.py&quot;, line 9, in integrate
+    s += f(a + i*h)
+  File &quot;integrate_v1.py&quot;, line 14, in f
+    return asin(x)
+ValueError: math domain error
+</code></pre>
+<!-- end verbatim block -->
+We see that all the <code>asin(x)</code> computations are successful up to and
+including \( x=0.942477796077 \), but for \( x=1.25663706144 \) we get an
+error.  A <code>math domain error</code> may point to a wrong \( x \) value for
+\( \sin^{-1}(x) \) (recall that the domain of a function specifies the
+legal \( x \) values for that function).
+
+<p>
+To proceed, we need to think about the mathematics of our problem:
+Since \( \sin (x) \) is always between \( -1 \) and \( 1 \), the inverse sine
+function cannot take \( x \) values outside the interval \( [-1,1] \). The
+problem is that we try to integrate \( \sin^{-1}(x) \) from 0 to \( \pi \),
+but only integration limits within \( [-1,1] \) make sense (unless we
+allow for complex-valued trigonometric functions). Our test problem is
+hence wrong from a mathematical point of view. We need to adjust the
+limits, say 0 to 1 instead of 0 to \( \pi \). The corresponding program
+modification reads
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>I = integrate(f, 0, 1,  n)
+</code></pre>
+<!-- end verbatim block -->
+We run again and get
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>Integral of g equals 9
+0
+0
+0
+0
+0
+0
+0
+0
+0
+Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 26, in &lt;module&gt;
+    I_exact = pi*asin(pi) - sqrt(1 - pi**2) - 1
+ValueError: math domain error
+</code></pre>
+<!-- end verbatim block -->
+It is easy to go directly to the <code>ValueError</code> now, but one should
+always examine the output from top to bottom. If there is strange
+output before Python reports an error, there may be an error indicated
+by our <code>print</code> statements.
+This is not the case in the present example, but it is a good
+habit to start at the top of the output anyway. We see that all our
+<code>print x</code> statements inside the <code>f</code> function say that <code>x</code> is zero.
+This must be wrong - the idea of the integration rule is to pick \( n \)
+different points in the integration interval \( [0,1] \).
+
+<p>
+Our <code>f(x)</code> function is called from the <code>integrate</code> function.
+The argument to <code>f</code>, <code>a + i*h</code>, is seemingly always 0. Why? We print out
+the argument and the values of the variables that make up the argument:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def integrate(f, a, b, n):
+    h = (b-a)/n
+    s = 0
+    for i in range(1, n):
+        print a, i, h, a+i*h
+        s += f(a + i*h)
+    return s
+</code></pre>
+<!-- end verbatim block -->
+Running the program shows that <code>h</code> is zero and therefore
+<code>a+i*h</code> is zero.
+
+<p>
+Why is <code>h</code> zero? We need a new <code>print</code> statement in the computation
+of <code>h</code>:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def integrate(f, a, b, n):
+    h = (b-a)/n
+    print b, a, n, h
+    ...
+</code></pre>
+<!-- end verbatim block -->
+The output shows that <code>a</code>, <code>b</code>, and <code>n</code> are correct.
+Now we have encountered a very common error in Python version 2
+and C-like programming languages:
+integer
+division.
+The formula \( (1-0)/10=1/10 \) is zero according to integer division.
+The reason is that <code>a</code> and <code>b</code> are specified as <code>0</code>
+and <code>1</code> in the call to <code>integrate</code>, and <code>0</code>
+and <code>1</code> imply <code>int</code> objects. Then <code>b-a</code> becomes
+an <code>int</code>, and <code>n</code> is an <code>int</code>, causing an <code>int/int</code>
+division. We must ensure that <code>b-a</code> is <code>float</code> to get the
+right mathematical division in the computation of <code>h</code>:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def integrate(f, a, b, n):
+    h = float(b-a)/n
+    ...
+</code></pre>
+<!-- end verbatim block -->
+Thinking that the problem with wrong \( x \) values in the inverse sine
+function is resolved, we may remove all the <code>print</code> statements in the
+program, and run again.
+
+<p>
+The output now reads
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>Integral of g equals 9
+Traceback (most recent call last):
+  File &quot;integrate_v1.py&quot;, line 25, in &lt;module&gt;
+    I_exact = pi*asin(pi) - sqrt(1 - pi**2) - 1
+ValueError: math domain error
+</code></pre>
+<!-- end verbatim block -->
+That is, we are back to the <code>ValueError</code> we have seen before.
+The reason is that <code>asin(pi)</code> does not make sense, and
+the argument to <code>sqrt</code> is negative. The error is simply that we
+forgot to adjust the upper integration limit in the computation
+of the exact result. This is another very common error.
+The correct line is
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>I_exact = 1*asin(1) - sqrt(1 - 1**2) - 1
+</code></pre>
+<!-- end verbatim block -->
+We could have avoided the error by introducing variables for the
+integration limits, and a function for \( \int f(x)dx \) would make the
+code cleaner:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>a = 0; b = 1
+def int_f_exact(x):
+    return x*asin(x) - sqrt(1 - x**2)
+I_exact = int_f_exact(b) - int_f_exact(a)
+</code></pre>
+<!-- end verbatim block -->
+Although this is more work than what we initially aimed at, it usually
+saves time in the debugging phase to do things this proper way.
+
+<p>
+Eventually, the program seems to work! The output is just
+the result of our two <code>print</code> statements:
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>Integral of g equals 9
+Integral of f equals 5.0073 (exact value is 0.570796)
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+<b>8. Verify the results.</b>
+Now it is time to check if the numerical results are correct.  We
+start with the simple integral of 1 from 0 to 10: the answer should be
+10, not 9.  Recall that for this particular choice of integration
+function, there is no approximation error involved (but there could be
+a small round-off error). Hence, there must be a programming error.
+
+<p>
+To proceed, we need to calculate some intermediate mathematical
+results by hand and compare these with the corresponding statements in
+the program. We choose a very simple test problem with \( n=2 \) and
+\( h=(10-0)/2=5 \).  The formula <a href="#mjx-eqn-1">(1)</a>
+becomes
+
+$$
+\begin{equation*} I = 5\cdot\left( 1 + 1\right) = 10\tp\end{equation*}
+$$
+
+Running the program with \( n=2 \) gives
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>Integral of g equals 1
+</code></pre>
+<!-- end verbatim block -->
+We insert some <code>print</code> statements inside the <code>integrate</code> function:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def integrate(f, a, b, n):
+    h = float(b-a)/n
+    s = 0
+    for i in range(1, n):
+        print 'i=%d, a+i*h=%g' % (i, a+i*h)
+        s += f(a + i*h)
+    return s
+</code></pre>
+<!-- end verbatim block -->
+Here is the output:
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>i=1, a+i*h=5
+Integral of g equals 1
+i=1, a+i*h=0.5
+Integral of f equals 0.523599 (exact value is 0.570796)
+</code></pre>
+<!-- end verbatim block -->
+There was only one pass in the <code>i</code> loop in <code>integrate</code>.  According to
+the formula, there should be \( n \) passes, i.e., two in this test
+case. The limits of <code>i</code> must be wrong.  The limits are produced by the
+call <code>range(1,n)</code>. We recall that such a call results in integers
+going from 1 up to <code>n</code>, but <em>not</em> including <code>n</code>.  We need to include
+<code>n</code> as value of <code>i</code>, so the right call to <code>range</code> is <code>range(1,n+1)</code>.
+
+<p>
+We make this correction and rerun the program. The output is now
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>i=1, a+i*h=5
+i=2, a+i*h=10
+Integral of g equals 2
+i=1, a+i*h=0.5
+i=2, a+i*h=1
+Integral of f equals 2.0944 (exact value is 0.570796)
+</code></pre>
+<!-- end verbatim block -->
+The integral of 1 is still not correct. We need more intermediate
+results!
+
+<p>
+In our quick hand calculation we knew that \( g(x)=1 \) so all
+the \( f(a+(i-\frac{1}{2})h) \) evaluations were rapidly replaced by ones.
+Let us now compute all the \( x \) coordinates \( a+(i-\frac{1}{2})h \) that
+are used in the formula:
+
+$$
+\begin{equation*} i=1:\ a+(i-\frac{1}{2})h=2.5,\quad i=2:\ a+(i-\frac{1}{2})h=7.5\tp \end{equation*}
+$$
+
+Looking at the output from the program, we see that the argument to
+<code>g</code> has a different value - and fortunately we realize that the
+formula we have coded is wrong.  It should be <code>a+(i-0.5)*h</code>.
+
+<p>
+We correct this error and run the program:
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>i=1, a+(i-0.5)*h=2.5
+i=2, a+(i-0.5)*h=7.5
+Integral of g equals 2
+...
+</code></pre>
+<!-- end verbatim block -->
+Still the integral is wrong. At this point you may give up
+programming, but the more skills you pick up in debugging, the more
+fun it is to hunt for errors! Debugging is like reading an exciting
+criminal novel: the detective follows different ideas and tracks, but
+never gives up before the culprit is caught.
+
+<p>
+Now we read the code more carefully and compare expressions with those
+in the mathematical formula. We should, of course, have done this
+already when writing the program, but it is easy to get excited when
+writing code and hurry for the end. This ongoing story of debugging
+probably shows that reading the code carefully can save much debugging
+time.  (Actually, being extremely careful with what you write, and
+comparing all formulas with the mathematics, may be the best way to
+get more spare time when taking a programming course!)
+
+<p>
+We clearly add up all the \( f \) evaluations correctly, but then this sum
+must be multiplied by \( h \), and we forgot that in the code.  The
+<code>return</code> statement in <code>integrate</code> must therefore be modified to
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>    return s*h
+</code></pre>
+<!-- end verbatim block -->
+Eventually, the output is
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>Integral of g equals 10
+Integral of f equals 0.568484 (exact value is 0.570796)
+</code></pre>
+<!-- end verbatim block -->
+and we have managed to integrate a constant function in our program!
+Even the second integral looks promising!
+
+<p>
+To judge the result of integrating the inverse sine function, we need
+to run several increasing \( n \) values and see that the approximation
+gets better.  For \( n=2,10,100,1000 \) we get 0.550371, 0.568484,
+0.570714, 0.570794, to be compared to the exact value 0.570796.  (This
+is not the mathematically exact value, because it involves
+computations of \( \sin^{-1}(x) \), which is only approximately calculated
+by the <code>asin</code> function in the <code>math</code> module. However, the
+approximation error is very small (\( \sim 10^{-16} \)).)  The decreasing
+error provides evidence for a correct program, but it is not a strong
+proof. We should try out more functions.  In particular, linear
+functions are integrated exactly by the Midpoint rule.  We can also
+measure the speed of the decrease of the error and check that the
+speed is consistent with the properties of the Midpoint rule, but this
+is a mathematically more advanced topic.
+
+<p>
+The very important lesson learned from these debugging sessions is
+that you should start with a simple test problem where all formulas
+can be computed by hand. If you start out with \( n=100 \) and try to
+integrate the inverse sine function, you will have a much harder job
+with tracking down all the errors.
+
+<p>
+<b>9. Use a debugger.</b>
+Another lesson learned from these sessions is that we needed many
+<code>print</code> statements to see intermediate results. It is an open question
+if it would be more efficient to run a debugger and stop the code at
+relevant lines. In an edit-and-run cycle of the type we met here, we
+frequently need to examine many numerical results, correct something,
+and look at all the intermediate results again. Plain <code>print</code>
+statements are often better suited for this massive output than the
+pure manual operation of a debugger, unless one writes a program to
+automate the interaction with the debugger.
+
+<p>
+The correct code for the implementation of the Midpoint rule is found
+in <a href="http://tinyurl.com/pwyasaa/debug/integrate_v2.py" target="_self"><tt>integrate_v2.py</tt></a>.
+Some readers might be frightened by all the
+energy it took to debug this code, but this is just the nature of
+programming.  The experience of developing programs that finally work
+is very awarding.
+
+<p>
+<blockquote>
+    <em>People only become computer programmers if they're
+    obsessive about details, crave power over machines, and can bear
+    to be told day after day exactly how
+    stupid they are.</em>
+    Gregory J. E. Rawlins <a href="._debug-solarized005.html#Rawlins_1998">[3]</a>, computer scientist.
+</blockquote>
+
+
+<h2 id="___sec14">Refining the user interface </h2>
+
+<p>
+We briefly mentioned that the chosen user interface, where the user
+can only specify \( n \), is not particularly user friendly. We should
+allow \( f \), \( a \), \( b \), and \( n \) to be specified on the command line.
+Since \( f \) is a function and the command line can only provide strings
+to the program, we may use the <code>StringFunction</code> object from
+<code>scitools.std</code> to convert a string expression for the function to be
+integrated to an ordinary Python
+function.
+The other parameters should be easy to retrieve from the
+command line
+by looking up the <code>sys.argv</code> list. We
+enclose
+the input statements in a <code>try-except</code> block, here with
+a specific exception type <code>IndexError</code> (because an index
+in <code>sys.argv</code> out of bounds is the only type of error we expect
+to handle):
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>try:
+    f_formula = sys.argv[1]
+    a = eval(sys.argv[2])
+    b = eval(sys.argv[3])
+    n = int(sys.argv[4])
+except IndexError:
+    print 'Usage: %s f-formula a b n' % sys.argv[0]
+    sys.exit(1)
+</code></pre>
+<!-- end verbatim block -->
+Note that the use of <code>eval</code> allows us to specify <code>a</code> and <code>b</code>
+as <code>pi</code> or <code>exp(5)</code> or another mathematical expression.
+
+<p>
+With the input above we can perform the general task of the program:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>from scitools.std import StringFunction
+f = StringFunction(f_formula)
+I = integrate(f, a, b, n)
+print I
+</code></pre>
+<!-- end verbatim block -->
+
+<h2 id="___sec15">Writing a test function </h2>
+
+<p>
+Instead of having these test statements as a main program we
+follow the good habits
+and make a module with
+
+<ul>
+ <li> the <code>integrate</code> function,</li>
+ <li> a <code>test_integrate</code> function for testing the <code>integrate</code> function's
+   ability to exactly integrate linear functions,</li>
+ <li> a <code>main</code> function for reading data from the command line and
+   calling <code>integrate</code> for the user's problem at hand.</li>
+</ul>
+
+Any module should also have a test block, as well as doc strings for the module
+itself and all functions.
+
+<p>
+The <code>test_integrate</code> function can perform a loop over some specified <code>n</code> values
+and check that the Midpoint rule integrates a linear function exactly.
+As always, we must be prepared for round-off errors, so &quot;exactly&quot; means
+errors less than (say) \( 10^{-14} \). The relevant code becomes
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def test_integrate():
+    &quot;&quot;&quot;Check that linear functions are integrated exactly.&quot;&quot;&quot;
+
+    def g(x):
+        return p*x + q   # general linear function
+
+    def int_g_exact(x):  # integral of g(x)
+        return 0.5*p*x**2 + q*x
+
+    a = -1.2; b = 2.8    # &quot;arbitrary&quot; integration limits
+    p = -2;   q = 10
+    success = True        # True if all tests below are passed
+    for n in 1, 10, 100:
+        I = integrate(g, a, b, n)
+        I_exact = int_g_exact(b) - int_g_exact(a)
+        error = abs(I_exact - I)
+        if error &gt; 1E-14:
+            success = False
+    assert success
+</code></pre>
+<!-- end verbatim block -->
+We have followed the programming standard that will make this
+test function automatically work with the nose test framework:
+
+<ol>
+<li> the name of the function starts with <code>test_</code>,</li>
+<li> the function has no arguments,</li>
+<li> checks of whether a test is passed or not are done with <code>assert</code>.</li>
+</ol>
+
+The <code>assert success</code> statement raises an <code>AssertionError</code> exception
+if <code>success</code> is false, otherwise nothing happens. The nose testing
+framework searches for functions whose name start with <code>test_</code>,
+execute each function, and record if an <code>AssertionError</code> is raised.
+It is overkill to use nose for small programs, but in larger projects
+with many functions in many files, nose can run all tests with
+a short command and write back a notification that all tests passed.
+
+<p>
+The <code>main</code> function is simply a wrapping of the main program given
+above. The test block may call or <code>test_integrate</code> function or <code>main</code>,
+depending on whether the user will test the module or use it:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>if __name__ == '__main__':
+    if sys.argv[1] == 'verify':
+        verify()
+    else:
+        # Compute the integral specified on the command line
+        main()
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+Here is a short demo computing \( \int_0^{2\pi}(\cos (x) + \sin(x))dx \)
+with the aid of the <a href="http://tinyurl.com/pwyasaa/debug/integrate.py" target="_self"><tt>integrate.py</tt></a>
+file:
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>integrate.py 'cos(x)+sin(x)' 0 2*pi 10
+-3.48786849801e-16
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._debug-solarized003.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._debug-solarized005.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

@@ -1,21 +1,22 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Debugging in Python">
 <meta name="keywords" content="using a debugger,debugger demo,debugging,exceptions,Midpoint rule for integration,verification,PEP8,PyLint,Flake8">
 
-
+<title>Debugging in Python</title>
 
 <!-- Bootstrap style: bootswatch_readable -->
 <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
 <!-- not necessary
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
+
 
 </head>
 
@@ -55,32 +56,17 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_keep.tex -->
 $$
 \newcommand{\tp}{\thinspace .}
-\renewcommand{\Re}{\bbbr}
-
-\newcommand{\rhodim}{\mbox{kgm}^{-3}}
-\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
-\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
-
-
-\newcommand{\Oof}[1]{\mathcal{O}(#1)}
-\newcommand{\Prob}[1]{\hbox{P}(#1)}
-\newcommand{\Var}[1]{\hbox{Var}(#1)}
-\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
-\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
 $$
 
 
@@ -102,12 +88,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "<b>Using a debugger</b>" --> <li><a href="#sec:debug:run" style="font-size: 80%;"><b>Using a debugger</b></a></li>
-     <!-- navigation toc: "<b>How to debug</b>" --> <li><a href="#sec:debug:howto" style="font-size: 80%;"><b>How to debug</b></a></li>
-     <!-- navigation toc: "A recipe for program writing and debugging" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A recipe for program writing and debugging</a></li>
-     <!-- navigation toc: "Application of the recipe" --> <li><a href="#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Application of the recipe</a></li>
-     <!-- navigation toc: "Getting help from a code analyzer" --> <li><a href="#sec:debug:pylint" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Getting help from a code analyzer</a></li>
-     <!-- navigation toc: "<b>References</b>" --> <li><a href="#___sec17" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._debug001.html#sec:debug:run" style="font-size: 80%;"><b>Using a debugger</b></a></li>
+     <!-- navigation toc: --> <li><a href="._debug002.html#sec:debug:howto" style="font-size: 80%;"><b>How to debug</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A recipe for program writing and debugging</a></li>
+     <!-- navigation toc: --> <li><a href="._debug004.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Application of the recipe</a></li>
+     <!-- navigation toc: --> <li><a href="._debug005.html#sec:debug:pylint" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Getting help from a code analyzer</a></li>
+     <!-- navigation toc: --> <li><a href="._debug005.html#___sec17" style="font-size: 80%;"><b>References</b></a></li>
 
         </ul>
       </li>
@@ -122,9 +108,11 @@ $$
 
 <a name="part0003"></a>
 <!-- !split -->
+<p style="font-size:80%">Much of the material in this document is taken from Appendix F in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</p>
 
-<h1>A recipe for program writing and debugging  <a name="___sec12"></a></h1>
+<h1 id="___sec12">A recipe for program writing and debugging </h1>
 
+<p>
 <b>1. Understand the problem.</b>
 Make sure that you really understand the task the program is supposed
 to solve.  We can make a general claim: if you do not understand the
@@ -196,7 +184,7 @@ are listed below.
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  File &quot;somefile.py&quot;, line 5
     x = . 5
@@ -213,7 +201,7 @@ is not defined.
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  File &quot;somefile.py&quot;, line 20, in &lt;module&gt;
     table(10)
@@ -238,7 +226,7 @@ program the error occurs. The most common reasons for a <code>NameError</code> a
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  File &quot;somefile.py&quot;, line 17, in table
     value, next, error = L(x, n)
@@ -257,7 +245,7 @@ is often far away from the line where the
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  File &quot;somefile.py&quot;, line 8, in L
     y = sqrt(x)
@@ -273,7 +261,7 @@ too large.
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  File &quot;somefile.py&quot;, line 21
     n = sys.argv[i+1]
@@ -321,15 +309,14 @@ programming is a difficult task.
 
 <p>
 <p>
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._debug002.html">&larr; Prev</a>
   </li>
-
   <li class="next">
     <a href="._debug004.html">Next &rarr;</a>
   </li>
-
 </ul>
 <!-- ------------------- end of main content --------------- -->
 

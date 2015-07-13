@@ -1,21 +1,22 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Debugging in Python">
 <meta name="keywords" content="using a debugger,debugger demo,debugging,exceptions,Midpoint rule for integration,verification,PEP8,PyLint,Flake8">
 
-
+<title>Debugging in Python</title>
 
 <!-- Bootstrap style: bootswatch_readable -->
 <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
 <!-- not necessary
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
+
 
 </head>
 
@@ -55,32 +56,17 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_keep.tex -->
 $$
 \newcommand{\tp}{\thinspace .}
-\renewcommand{\Re}{\bbbr}
-
-\newcommand{\rhodim}{\mbox{kgm}^{-3}}
-\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
-\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
-
-
-\newcommand{\Oof}[1]{\mathcal{O}(#1)}
-\newcommand{\Prob}[1]{\hbox{P}(#1)}
-\newcommand{\Var}[1]{\hbox{Var}(#1)}
-\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
-\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
 $$
 
 
@@ -102,12 +88,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "<b>Using a debugger</b>" --> <li><a href="#sec:debug:run" style="font-size: 80%;"><b>Using a debugger</b></a></li>
-     <!-- navigation toc: "<b>How to debug</b>" --> <li><a href="#sec:debug:howto" style="font-size: 80%;"><b>How to debug</b></a></li>
-     <!-- navigation toc: "A recipe for program writing and debugging" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A recipe for program writing and debugging</a></li>
-     <!-- navigation toc: "Application of the recipe" --> <li><a href="#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Application of the recipe</a></li>
-     <!-- navigation toc: "Getting help from a code analyzer" --> <li><a href="#sec:debug:pylint" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Getting help from a code analyzer</a></li>
-     <!-- navigation toc: "<b>References</b>" --> <li><a href="#___sec17" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._debug001.html#sec:debug:run" style="font-size: 80%;"><b>Using a debugger</b></a></li>
+     <!-- navigation toc: --> <li><a href="._debug002.html#sec:debug:howto" style="font-size: 80%;"><b>How to debug</b></a></li>
+     <!-- navigation toc: --> <li><a href="._debug003.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A recipe for program writing and debugging</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Application of the recipe</a></li>
+     <!-- navigation toc: --> <li><a href="._debug005.html#sec:debug:pylint" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Getting help from a code analyzer</a></li>
+     <!-- navigation toc: --> <li><a href="._debug005.html#___sec17" style="font-size: 80%;"><b>References</b></a></li>
 
         </ul>
       </li>
@@ -122,9 +108,11 @@ $$
 
 <a name="part0004"></a>
 <!-- !split -->
+<p style="font-size:80%">Much of the material in this document is taken from Appendix F in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</p>
 
-<h1>Application of the recipe  <a name="___sec13"></a></h1>
+<h1 id="___sec13">Application of the recipe </h1>
 
+<p>
 Let us illustrate the points above in a specific programming problem:
 implementation of the Midpoint rule for numerical integration.
 The Midpoint rule for approximating an integral \( \int_a^b f(x)dx \) reads
@@ -223,7 +211,7 @@ A first rough sketch of the program can then be
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">integrate</span>(f, a, b, n):
     <span style="color: #408080; font-style: italic"># compute integral, store in I</span>
     <span style="color: #008000; font-weight: bold">return</span> I
@@ -251,7 +239,7 @@ Here is the algorithm in Python code:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">s <span style="color: #666666">=</span> <span style="color: #666666">0</span>
 <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, n<span style="color: #666666">+1</span>):
     s <span style="color: #666666">=</span> s <span style="color: #666666">+</span> f(a <span style="color: #666666">+</span> (i<span style="color: #666666">-0.5</span>)<span style="color: #666666">*</span>h)
@@ -284,7 +272,7 @@ whole code in the file <a href="http://tinyurl.com/pwyasaa/debug/integrate_v1.py
 
 <p>
 
-<!-- code=python (from !bc pypro) typeset with pygments style "default" -->
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">integrate</span>(f, a, b, n):
     s <span style="color: #666666">=</span> <span style="color: #666666">0</span>
     <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, n):
@@ -312,7 +300,7 @@ We try a first execution from IPython
 
 <p>
 
-<!-- code=ipython (from !bc ipy) typeset with pygments style "default" -->
+<!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span>run integrate_v1<span style="color: #666666">.</span>py
 </pre></div>
 <p>
@@ -320,7 +308,7 @@ Unfortunately, the program aborts with an error:
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  File &quot;integrate_v1.py&quot;, line 8
     return asin(x)
@@ -332,7 +320,7 @@ We go to line 8 and look at that line and the surrounding code:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
 <span style="color: #008000; font-weight: bold">return</span> asin(x)
 </pre></div>
@@ -345,7 +333,7 @@ We correct these errors:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> asin(x)
 
@@ -357,7 +345,7 @@ Running the program again makes Python respond with
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">  File &quot;integrate_v1.py&quot;, line 24
     (I, I_exact)
@@ -370,7 +358,7 @@ statement starting on line 23:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Integral of f equals </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121"> (exact value is </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">)&#39; % \ </span>
       (I, I_exact)
 </pre></div>
@@ -383,7 +371,7 @@ Correcting the statement,
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Integral of f equals </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121"> (exact value is </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">)&quot;</span> <span style="color: #666666">%</span> \ 
       (I, I_exact)
 </pre></div>
@@ -392,7 +380,7 @@ and rerunning the program yields the output
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Traceback (most recent call last):
   File &quot;integrate_v1.py&quot;, line 18, in &lt;module&gt;
@@ -405,7 +393,7 @@ We add <code>import sys</code> and run again:
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Traceback (most recent call last):
   File &quot;integrate_v1.py&quot;, line 19, in &lt;module&gt;
@@ -419,7 +407,7 @@ Let us use \( n=10 \) in the test and provide that number on the command line:
 
 <p>
 
-<!-- code=python (from !bc pyshell) typeset with pygments style "default" -->
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In [<span style="color: #666666">5</span>]: run integrate_v1<span style="color: #666666">.</span>py <span style="color: #666666">10</span>
 </pre></div>
 <p>
@@ -427,7 +415,7 @@ We still have problems:
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Traceback (most recent call last):
   File &quot;integrate_v1.py&quot;, line 20, in &lt;module&gt;
@@ -448,7 +436,7 @@ sending it to the <code>integrate</code> function:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">n <span style="color: #666666">=</span> <span style="color: #008000">int</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>])
 </pre></div>
 <p>
@@ -456,7 +444,7 @@ After a new edit-and-run cycle we have other error messages waiting:
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Traceback (most recent call last):
   File &quot;integrate_v1.py&quot;, line 20, in &lt;module&gt;
@@ -474,7 +462,7 @@ function:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">integrate</span>(f, a, b, n):
     h <span style="color: #666666">=</span> (b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span>n
     <span style="color: #666666">...</span>
@@ -484,7 +472,7 @@ A new run results in a new error:
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Integral of g equals 9
 Traceback (most recent call last):
@@ -503,7 +491,7 @@ variable defined, before we call <code>integrate</code>:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi
 I <span style="color: #666666">=</span> integrate(f, <span style="color: #666666">0</span>, pi,  n)
 </pre></div>
@@ -512,7 +500,7 @@ The output of a new run is now
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Integral of g equals 9
 Traceback (most recent call last):
@@ -530,7 +518,7 @@ and we need to import it from <code>math</code>. We can either do a
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> pi, asin
 </pre></div>
 <p>
@@ -538,7 +526,7 @@ or just do the rough
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
 </pre></div>
 <p>
@@ -551,7 +539,7 @@ There are still more errors:
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Integral of g equals 9
 Traceback (most recent call last):
@@ -569,7 +557,7 @@ Let us print out <code>x</code>:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
     <span style="color: #008000; font-weight: bold">print</span> x
     <span style="color: #008000; font-weight: bold">return</span> asin(x)
@@ -579,7 +567,7 @@ The output becomes
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Integral of g equals 9
 0.314159265359
@@ -615,7 +603,7 @@ modification reads
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">I <span style="color: #666666">=</span> integrate(f, <span style="color: #666666">0</span>, <span style="color: #666666">1</span>,  n)
 </pre></div>
 <p>
@@ -623,7 +611,7 @@ We run again and get
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Integral of g equals 9
 0
@@ -658,7 +646,7 @@ the argument and the values of the variables that make up the argument:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">integrate</span>(f, a, b, n):
     h <span style="color: #666666">=</span> (b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span>n
     s <span style="color: #666666">=</span> <span style="color: #666666">0</span>
@@ -677,7 +665,7 @@ of <code>h</code>:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">integrate</span>(f, a, b, n):
     h <span style="color: #666666">=</span> (b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span>n
     <span style="color: #008000; font-weight: bold">print</span> b, a, n, h
@@ -699,7 +687,7 @@ right mathematical division in the computation of <code>h</code>:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">integrate</span>(f, a, b, n):
     h <span style="color: #666666">=</span> <span style="color: #008000">float</span>(b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span>n
     <span style="color: #666666">...</span>
@@ -714,7 +702,7 @@ The output now reads
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Integral of g equals 9
 Traceback (most recent call last):
@@ -732,7 +720,7 @@ The correct line is
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">I_exact <span style="color: #666666">=</span> <span style="color: #666666">1*</span>asin(<span style="color: #666666">1</span>) <span style="color: #666666">-</span> sqrt(<span style="color: #666666">1</span> <span style="color: #666666">-</span> <span style="color: #666666">1**2</span>) <span style="color: #666666">-</span> <span style="color: #666666">1</span>
 </pre></div>
 <p>
@@ -742,7 +730,7 @@ code cleaner:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">0</span>; b <span style="color: #666666">=</span> <span style="color: #666666">1</span>
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">int_f_exact</span>(x):
     <span style="color: #008000; font-weight: bold">return</span> x<span style="color: #666666">*</span>asin(x) <span style="color: #666666">-</span> sqrt(<span style="color: #666666">1</span> <span style="color: #666666">-</span> x<span style="color: #666666">**2</span>)
@@ -758,7 +746,7 @@ the result of our two <code>print</code> statements:
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Integral of g equals 9
 Integral of f equals 5.0073 (exact value is 0.570796)
@@ -786,7 +774,7 @@ Running the program with \( n=2 \) gives
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Integral of g equals 1
 </pre></div>
@@ -795,7 +783,7 @@ We insert some <code>print</code> statements inside the <code>integrate</code> f
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">integrate</span>(f, a, b, n):
     h <span style="color: #666666">=</span> <span style="color: #008000">float</span>(b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span>n
     s <span style="color: #666666">=</span> <span style="color: #666666">0</span>
@@ -809,7 +797,7 @@ Here is the output:
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">i=1, a+i*h=5
 Integral of g equals 1
@@ -829,7 +817,7 @@ We make this correction and rerun the program. The output is now
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">i=1, a+i*h=5
 i=2, a+i*h=10
@@ -861,7 +849,7 @@ We correct this error and run the program:
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">i=1, a+(i-0.5)*h=2.5
 i=2, a+(i-0.5)*h=7.5
@@ -892,7 +880,7 @@ must be multiplied by \( h \), and we forgot that in the code.  The
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">    <span style="color: #008000; font-weight: bold">return</span> s<span style="color: #666666">*</span>h
 </pre></div>
 <p>
@@ -900,7 +888,7 @@ Eventually, the output is
 
 <p>
 
-<!-- code=text (from !bc ccq) typeset with pygments style "default" -->
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
 <blockquote>
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Integral of g equals 10
 Integral of f equals 0.568484 (exact value is 0.570796)
@@ -962,8 +950,9 @@ is very awarding.
 </blockquote>
 
 
-<h2>Refining the user interface  <a name="___sec14"></a></h2>
+<h2 id="___sec14">Refining the user interface </h2>
 
+<p>
 We briefly mentioned that the chosen user interface, where the user
 can only specify \( n \), is not particularly user friendly. We should
 allow \( f \), \( a \), \( b \), and \( n \) to be specified on the command line.
@@ -983,7 +972,7 @@ to handle):
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">try</span>:
     f_formula <span style="color: #666666">=</span> sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>]
     a <span style="color: #666666">=</span> <span style="color: #008000">eval</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">2</span>])
@@ -1002,15 +991,16 @@ With the input above we can perform the general task of the program:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scitools.std</span> <span style="color: #008000; font-weight: bold">import</span> StringFunction
 f <span style="color: #666666">=</span> StringFunction(f_formula)
 I <span style="color: #666666">=</span> integrate(f, a, b, n)
 <span style="color: #008000; font-weight: bold">print</span> I
 </pre></div>
 
-<h2>Writing a test function  <a name="___sec15"></a></h2>
+<h2 id="___sec15">Writing a test function </h2>
 
+<p>
 Instead of having these test statements as a main program we
 follow the good habits
 and make a module with
@@ -1034,7 +1024,7 @@ errors less than (say) \( 10^{-14} \). The relevant code becomes
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_integrate</span>():
     <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Check that linear functions are integrated exactly.&quot;&quot;&quot;</span>
 
@@ -1080,7 +1070,7 @@ depending on whether the user will test the module or use it:
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">if</span> __name__ <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;__main__&#39;</span>:
     <span style="color: #008000; font-weight: bold">if</span> sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>] <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;verify&#39;</span>:
         verify()
@@ -1095,21 +1085,20 @@ file:
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">integrate.py &#39;cos(x)+sin(x)&#39; 0 2*pi 10
 -3.48786849801e-16
 </pre></div>
 <p>
 <p>
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._debug003.html">&larr; Prev</a>
   </li>
-
   <li class="next">
     <a href="._debug005.html">Next &rarr;</a>
   </li>
-
 </ul>
 <!-- ------------------- end of main content --------------- -->
 

@@ -83,7 +83,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 21, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 13, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -146,21 +146,15 @@ with project hosting services for file storage.</p>
 </div>
 <div class="section" id="project-hosting-services">
 <h3>Project hosting services<a class="headerlink" href="#project-hosting-services" title="Permalink to this headline">¶</a></h3>
-<p>Five popular project hosting services are</p>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="http://bigbucket.org">Bitbucket</a> at <tt class="docutils literal"><span class="pre">bitbucket.org</span></tt></li>
-<li><a class="reference external" href="http://github.com">GitHub</a> at <tt class="docutils literal"><span class="pre">github.com</span></tt></li>
-<li><a class="reference external" href="http://code.google.com">Googlecode</a> at <tt class="docutils literal"><span class="pre">code.google.com</span></tt></li>
-<li><a class="reference external" href="https://launchpad.net">Launchpad</a> at <tt class="docutils literal"><span class="pre">launchpad.net</span></tt></li>
-<li><a class="reference external" href="http://sourceforge.net/">Sourceforge</a> at <tt class="docutils literal"><span class="pre">sourceforge.net</span></tt></li>
-</ul>
-</div></blockquote>
-<p>All these services are very similar. Below we describe how you get
-started with Bitbucket, GitHub, and Googlecode. Launchpad works very
-similarly to the latter three, but the development of it seems to
-have stalled.
-All the project hosting services have
+<p>Through the last decade, several popular project hosting sites
+appeared: <a class="reference external" href="http://sourceforge.net/">Sourceforge</a>,
+<a class="reference external" href="http://code.google.com/">Google code</a>,
+<a class="reference external" href="https://launchpad.net">Launchpad</a>,
+<a class="reference external" href="http://bigbucket.org">Bitbucket</a>, and
+<a class="reference external" href="http://github.com">GitHub</a>.
+Today, the latter two stand out as the most successful,
+and we therefore concentrate on them in this quick intro.
+Both services have
 excellent introductions available at their web sites, but the recipes
 below are much shorter and aim at getting you started as quickly as
 possible by concentrating on the most important need-to-know steps.</p>
@@ -211,21 +205,14 @@ Bitbucket unless you are willing to pay for private repos at GitHub.</li>
 stay away from Bitbucket as this site embeds the version of the
 file into its URL (but you can get around this problem with a trick
 described in the section <a class="reference internal" href="#bitgit-bitbucket-urls"><em>Linking to Bitbucket files</em></a>).</li>
-<li>If you want to easily drop HTML files for documentation around in
-your repo, Googlecode will display them as web pages right away,
-while the procedure on GitHub is technically more complicated
-(Bitbucket does not yet support web pages as part of a project).
-Unfortunately, Googlecode does not allow MathJax for rendering
-LaTeX mathematics in HTML files, but MathJax works well in
-HTML files at GitHub.</li>
 <li>If a few collaborate on a project and everyone wants to be notified
 in email about changes in project files, the procedure on
-Bitbucket and Googlecode is easier to use than the one on GitHub.</li>
+Bitbucket is easier to use than the one on GitHub.</li>
 </ul>
 </div></blockquote>
 <p>For the examples below, assume that you have some directory tree
-<tt class="docutils literal"><span class="pre">my-project</span></tt> with files that you want to host at Bitbucket, GitHub, or
-Googlecode and bring under version control. The official name of the
+<tt class="docutils literal"><span class="pre">my-project</span></tt> with files that you want to host at Bitbucket or GitHub
+and bring under version control. The official name of the
 project is &#8220;My Project&#8221;.</p>
 </div>
 <div class="section" id="installing-git">
@@ -442,104 +429,9 @@ the final <tt class="docutils literal"><span class="pre">?at=master</span></tt>:
 requires the hash to be replaced by <tt class="docutils literal"><span class="pre">default</span></tt>.</p>
 </div>
 </div>
-<div class="section" id="googlecode">
-<span id="bitgit-googlecode"></span><h2>Googlecode<a class="headerlink" href="#googlecode" title="Permalink to this headline">¶</a></h2>
-<p id="index-2">To use Googlecode you need a general account on Google, which allows
-you to use Gmail, Google Docs, and other Google services.
-Googlecode offers free file hosting, but all the files are public and
-open to the world.</p>
-<div class="section" id="creating-a-new-project-2">
-<h3>Creating a new project  (2)<a class="headerlink" href="#creating-a-new-project-2" title="Permalink to this headline">¶</a></h3>
-<p>Go to <a class="reference external" href="http://code.google.com/hosting">http://code.google.com/hosting</a> and click on
-<em>Creating a new project</em>. Fill out <em>all</em> the fields. For now
-the project name is <tt class="docutils literal"><span class="pre">my-project</span></tt>.
-You can
-choose between Git, Mercurial, or Subversion as version control
-system for your project, and this choice is difficult to change later.
-If you choose Git, you must create a file <tt class="docutils literal"><span class="pre">.netrc</span></tt> in your
-home directory containing the line</p>
-<div class="highlight-text"><div class="highlight"><pre>machine code.google.com login uname password pw
-</pre></div>
-</div>
-<p>Here, <tt class="docutils literal"><span class="pre">uname</span></tt> is your username for the Google account and
-<tt class="docutils literal"><span class="pre">pw</span></tt> is the Googlecode password which is generated for you on
-<a class="reference external" href="https://code.google.com/hosting/settings">https://code.google.com/hosting/settings</a> when you
-are logged in.
-The <tt class="docutils literal"><span class="pre">.netrc</span></tt> file avoids typing or pasting in
-your long and complicated password every time you push changes to
-the repository on <tt class="docutils literal"><span class="pre">code.google.com</span></tt>.</p>
-<p>The next step is to clone the empty repository on your local machine
-so that you can add files:</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git clone https://code.google.com/p/my-project/
-</pre></div>
-</div>
-<p>Now you can go to the <tt class="docutils literal"><span class="pre">my-project</span></tt> directory and add files.
-Perform</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git add .
-Terminal&gt; git commit -am &#39;First import of files.&#39;
-Terminal&gt; git push origin master
-</pre></div>
-</div>
-<p>Click on <em>Source</em> and
-<em>Browse</em> on the project&#8217;s web page, and observe that the added
-files are visible on the project page.</p>
-<p>A very strong and useful feature with Googlecode, in my opinion, is
-that one can place documentation of the project anywhere in
-the repository, and HTML and PDF will be correctly shown in
-web browsers. (All other project hosting sites
-demands either wiki pages or special web areas for locating documentation.)
-The URL to your files is</p>
-<div class="highlight-text"><div class="highlight"><pre>https://my-project.googlecode.com/git/
-</pre></div>
-</div>
-<p>For other version control systems just replace <tt class="docutils literal"><span class="pre">git</span></tt> by
-<tt class="docutils literal"><span class="pre">hg</span></tt> or <tt class="docutils literal"><span class="pre">svn</span></tt>.
-For example, if we have HTML documentation of our project in
-the directory <tt class="docutils literal"><span class="pre">doc/html</span></tt>, we can point users to</p>
-<div class="highlight-text"><div class="highlight"><pre>https://my-project.googlecode.com/git/doc/html/index.html
-</pre></div>
-</div>
-<p>The HTML will be rendered correctly as opposed to when you load
-the similar file into the web browser from the repository,</p>
-<div class="highlight-text"><div class="highlight"><pre>http://code.google.com/p/my-project/source/browse/doc/html/index.html
-</pre></div>
-</div>
-<p>Now you can only see the HTML source code of this file, as is usual
-on other project hosting sites. We remark that MathJax
-mathematics within the HTML code is <em>not</em> rendered correctly. At the
-time of this writing, GitHub is the only service that offers full
-MathJax support when you need web pages with mathematics.</p>
-<p>You can click on <em>Project Home</em> and then on <em>Administer</em> to edit the
-main page of the project. This is a wiki, using Google&#8217;s wiki syntax,
-but it is quite easy to add links to your documentation, e.g.,</p>
-<div class="highlight-text"><div class="highlight"><pre>Browse the
-[https://my-project.googlecode.com/git/doc/API/html/index.html
-API documentation].
-</pre></div>
-</div>
-<p>It is easy to allow others to push their changes to the
-repository: click on <em>Sharing</em> and then on <em>Administer</em>.
-The Google account names of people you allow push (write) access can be
-listed under each other in the <em>Project committers</em> field.</p>
-</div>
-<div class="section" id="wiki-pages-1">
-<h3>Wiki pages  (1)<a class="headerlink" href="#wiki-pages-1" title="Permalink to this headline">¶</a></h3>
-<p>Wiki pages can intuitively be made directly in the browser. However,
-it is often more convenient to have them locally on your computer.
-Click on <em>Source</em> and choose <em>wiki</em> on the <em>Repository</em> pull down menu.
-The proper clone command to get a copy of the wiki repository then
-appears.</p>
-<p>Googlecode applies their own Google wiki format. My preference is
-to write documentation in the neutral <a class="reference external" href="https://github.com/hplgit/doconce">DocOnce</a> format and transform the document to LaTeX, HTML, Sphinx, and Google wiki.
-The wiki can then be copied from the project directories to the
-wiki directory and then pushed to the repository. This ensures
-that there is only one source of the documentation (despite the need
-for many formats) and that the wiki pages are frequently updated.</p>
-</div>
-</div>
 <div class="section" id="github">
 <span id="bitgit-github"></span><h2>GitHub<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h2>
-<p id="index-3">Go to <tt class="docutils literal"><span class="pre">github.com</span></tt> and create an account. Then go to your account
+<p id="index-2">Go to <tt class="docutils literal"><span class="pre">github.com</span></tt> and create an account. Then go to your account
 settings (icon in the upper left corner of the page),
 choose <em>SSH Keys</em>, and provide your SSH key
 unless you have already registered this key with another GitHub
@@ -556,8 +448,8 @@ box (or see the introduction to Bitbucket above).</p>
 I do not recommend to provide an SSH key although it can be
 done (see Appendix <a class="reference internal" href="#appendix-github-multiple-accounts"><em>Appendix: Working with multiple GitHub accounts</em></a>). It is easier
 to log in and add collaborators using their personal GitHub usernames.</p>
-<div class="section" id="creating-a-new-project-3">
-<h3>Creating a new project  (3)<a class="headerlink" href="#creating-a-new-project-3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="creating-a-new-project-2">
+<h3>Creating a new project  (2)<a class="headerlink" href="#creating-a-new-project-2" title="Permalink to this headline">¶</a></h3>
 <p>Click on <em>New repository</em> on the main page and fill out a project
 name, here <em>My Project</em>, click the check button <em>Initialize this
 repository with a README</em>, and click on <em>Create repository</em>.
@@ -609,8 +501,8 @@ and choose <em>Notification Center</em>.  There you see two sections,
 the <em>watch</em> button), respectively.</p>
 </div>
 </div>
-<div class="section" id="wiki-pages-2">
-<h3>Wiki pages  (2)<a class="headerlink" href="#wiki-pages-2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="wiki-pages">
+<h3>Wiki pages<a class="headerlink" href="#wiki-pages" title="Permalink to this headline">¶</a></h3>
 <p>With every GitHub project there is an option to create wiki pages.
 Click on the <em>Wiki</em> button in the right sidebar on the main page of
 the project. Click on <em>New Page</em> to create a new page. The wiki pages
@@ -669,7 +561,7 @@ This means that one can use the link</p>
 </pre></div>
 </div>
 <p>to produce the HTML document in a browser.</p>
-<span class="target" id="index-4"></span><p id="index-5">However, there is another technique available where all HTML files in
+<span class="target" id="index-3"></span><p id="index-4">However, there is another technique available where all HTML files in
 a special branch <em>gh-pages</em> of the repository are automatically
 rendered correctly as HTML documents in a browser. This is
 the recommended technique for publishing a collection of HTML files
@@ -714,7 +606,7 @@ remembering to switch to the master branch.  To this end, one needs
 to <em>merge</em> the branches, i.e., automatically edit files
 in the current branch such that they are up-to-date and
 identical to files in another branch.</p>
-<span class="target" id="index-6"></span><span class="target" id="index-7"></span><span class="target" id="index-8"></span><p id="index-9">To merge the current branch with some branch named <tt class="docutils literal"><span class="pre">otherbranch</span></tt>, run</p>
+<span class="target" id="index-5"></span><span class="target" id="index-6"></span><span class="target" id="index-7"></span><p id="index-8">To merge the current branch with some branch named <tt class="docutils literal"><span class="pre">otherbranch</span></tt>, run</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git merge otherbranch
 </pre></div>
 </div>
@@ -831,7 +723,7 @@ If you want to use Sphinx generated HTML pages, recall to add an empty file
 </div>
 <div class="section" id="using-git">
 <span id="bitgit-git"></span><h2>Using Git<a class="headerlink" href="#using-git" title="Permalink to this headline">¶</a></h2>
-<p id="index-10">Most Mac and Linux users prefer to work with Git via commands in a
+<p id="index-9">Most Mac and Linux users prefer to work with Git via commands in a
 terminal window. Windows users may prefer a graphical user interface (GUI),
 and there are many <a class="reference external" href="http://git-scm.com/downloads/guis">options</a> in
 this respect. There are also GUIs for Mac users.
@@ -839,7 +731,7 @@ Here we concentrate on the efficient command-line interface to Git.</p>
 <div class="section" id="basic-git-commands">
 <h3>Basic Git commands<a class="headerlink" href="#basic-git-commands" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="cloning">
-<span id="index-11"></span><h4>Cloning<a class="headerlink" href="#cloning" title="Permalink to this headline">¶</a></h4>
+<span id="index-10"></span><h4>Cloning<a class="headerlink" href="#cloning" title="Permalink to this headline">¶</a></h4>
 <p>You get started with your project on a new machine, or another user
 can get started with the project,
 by running</p>
@@ -850,9 +742,9 @@ ls
 </div>
 <p>Recall to replace <tt class="docutils literal"><span class="pre">user</span></tt> by your real username and <tt class="docutils literal"><span class="pre">My-Project</span></tt> by the
 actual project name.</p>
-<span class="target" id="index-12"></span><span class="target" id="index-13"></span><span class="target" id="index-14"></span><span class="target" id="index-15"></span><span class="target" id="index-16"></span></div>
+<span class="target" id="index-11"></span><span class="target" id="index-12"></span><span class="target" id="index-13"></span><span class="target" id="index-14"></span><span class="target" id="index-15"></span></div>
 <div class="section" id="the-pull-change-push-cycle">
-<span id="index-17"></span><h4>The pull-change-push cycle<a class="headerlink" href="#the-pull-change-push-cycle" title="Permalink to this headline">¶</a></h4>
+<span id="index-16"></span><h4>The pull-change-push cycle<a class="headerlink" href="#the-pull-change-push-cycle" title="Permalink to this headline">¶</a></h4>
 <p>The typical work flow with the &#8220;My Project&#8221; project starts with
 updating the local repository by going to the <tt class="docutils literal"><span class="pre">My-Project</span></tt> directory
 and writing</p>
@@ -905,7 +797,7 @@ the repo) will most likely lead to substantial merge problems at a
 later stage (because the files have become too different for an automatic
 merge algorithm to succeed).</p>
 </div>
-<div class="admonition-do-not-forget-to-add-important-files admonition" id="index-18">
+<div class="admonition-do-not-forget-to-add-important-files admonition" id="index-17">
 <p class="first admonition-title">Do not forget to add important files</p>
 <p class="last">You should run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">status</span> <span class="pre">-s</span></tt> frequently to see the status of
 files: <tt class="docutils literal"><span class="pre">A</span></tt> for added, <tt class="docutils literal"><span class="pre">M</span></tt> for modified, <tt class="docutils literal"><span class="pre">R</span></tt> for renamed,
@@ -922,7 +814,7 @@ the latest ones:</p>
 Terminal&gt; gitk --since=&quot;2 weeks ago&quot;
 </pre></div>
 </div>
-<span class="target" id="index-19"></span><p id="index-20">You can also view changes to all files, some selected ones, or
+<span class="target" id="index-18"></span><p id="index-19">You can also view changes to all files, some selected ones, or
 a subdirectory:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git log -p                 # all changes to all files
 Terminal&gt; git log -p filename        # changes to a specific file
@@ -952,9 +844,9 @@ say the text <tt class="docutils literal"><span class="pre">def</span> <span cla
 <p>This is useful to track down particular changes in the files to see when
 they occurred and who introduced them. One can also search for regular
 expressions instead of exact text: just replace <tt class="docutils literal"><span class="pre">-S</span></tt> by <tt class="docutils literal"><span class="pre">-G</span></tt>.</p>
-<span class="target" id="index-21"></span></div>
+<span class="target" id="index-20"></span></div>
 <div class="section" id="retrieving-old-files">
-<span id="index-22"></span><h4>Retrieving old files<a class="headerlink" href="#retrieving-old-files" title="Permalink to this headline">¶</a></h4>
+<span id="index-21"></span><h4>Retrieving old files<a class="headerlink" href="#retrieving-old-files" title="Permalink to this headline">¶</a></h4>
 <p>Occasionally you need to go back to an earlier version of a file,
 say its name is <tt class="docutils literal"><span class="pre">f.py</span></tt>. Start with viewing the history:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git log f.py
@@ -1025,7 +917,7 @@ To push it as the new state of the repo, do</p>
 </div>
 <div class="section" id="merging-files-with-git">
 <span id="bitgit-git-merge"></span><h3>Merging files with Git<a class="headerlink" href="#merging-files-with-git" title="Permalink to this headline">¶</a></h3>
-<p id="index-23">The <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> command fetches new files from the repository and
+<p id="index-22">The <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt> command fetches new files from the repository and
 tries to perform an automatic merge if there are conflicts between
 the local files and the files in the repository. Alternatively,
 you may run <tt class="docutils literal"><span class="pre">git</span> <span class="pre">fetch</span></tt> and <tt class="docutils literal"><span class="pre">git</span> <span class="pre">merge</span></tt> to do the same
@@ -1362,7 +1254,7 @@ Terminal&gt; git reset --hard origin/master
 </div>
 <div class="section" id="team-work-with-forking-and-pull-requests">
 <span id="bitgit-git-team"></span><h3>Team work with forking and pull requests<a class="headerlink" href="#team-work-with-forking-and-pull-requests" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-24"></span><span class="target" id="index-25"></span><span class="target" id="index-26"></span><p id="index-27">In small collaboration teams it is natural that everyone has push access
+<span class="target" id="index-23"></span><span class="target" id="index-24"></span><span class="target" id="index-25"></span><p id="index-26">In small collaboration teams it is natural that everyone has push access
 to the repo. On GitHub this is known as the <em>Shared Repository Model</em>.
 As teams grow larger, there will usually be a few
 people in charge who should approve changes to the files. Ordinary team members
@@ -1551,6 +1443,8 @@ the files were in the repo. Restoring a file is then done by</p>
 <li><a class="reference external" href="http://try.github.com/">Web course on Git</a></li>
 <li><a class="reference external" href="http://schacon.github.com/git/everyday.html">Everyday GIT With 20 Commands Or So</a></li>
 <li><a class="reference external" href="http://www.ndpsoftware.com/git-cheatsheet.html">Git cheat sheet</a></li>
+<li><a class="reference external" href="https://www.atlassian.com/git/tutorial/git-basics">Atlassian Git Tutorials</a></li>
+<li><a class="reference external" href="https://www.atlassian.com/git/tutorial/workflows">Atlassian Git Workflows</a></li>
 <li>GitHub Guides:</li>
 </ul>
 <blockquote>
@@ -1650,17 +1544,12 @@ string in the SSH key field of any GitHub account.</p>
 <li><a class="reference internal" href="#linking-to-bitbucket-files">Linking to Bitbucket files</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#googlecode">Googlecode</a><ul>
-<li><a class="reference internal" href="#creating-a-new-project-2">Creating a new project  (2)</a></li>
-<li><a class="reference internal" href="#wiki-pages-1">Wiki pages  (1)</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#github">GitHub</a><ul>
-<li><a class="reference internal" href="#creating-a-new-project-3">Creating a new project  (3)</a><ul>
+<li><a class="reference internal" href="#creating-a-new-project-2">Creating a new project  (2)</a><ul>
 <li><a class="reference internal" href="#collaborating-2">Collaborating  (2)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#wiki-pages-2">Wiki pages  (2)</a></li>
+<li><a class="reference internal" href="#wiki-pages">Wiki pages</a></li>
 <li><a class="reference internal" href="#project-web-pages">Project web pages</a></li>
 <li><a class="reference internal" href="#user-web-pages-2">User web pages  (2)</a></li>
 </ul>

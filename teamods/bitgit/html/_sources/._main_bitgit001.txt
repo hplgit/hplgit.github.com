@@ -4,7 +4,7 @@ Need-to-Know Intro to Version Control Systems and Project Hosting Services
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Jan 21, 2015
+:Date: Mar 13, 2015
 
 Version control systems allow you to record the history of files and
 share files among several computers and collaborators in a
@@ -76,23 +76,15 @@ with project hosting services for file storage.
 Project hosting services
 ------------------------
 
-Five popular project hosting services are
-
-  * `Bitbucket <http://bigbucket.org>`__ at ``bitbucket.org``
-
-  * `GitHub <http://github.com>`__ at ``github.com``
-
-  * `Googlecode <http://code.google.com>`__ at ``code.google.com``
-
-  * `Launchpad <https://launchpad.net>`__ at ``launchpad.net``
-
-  * `Sourceforge <http://sourceforge.net/>`__ at ``sourceforge.net``
-
-All these services are very similar. Below we describe how you get
-started with Bitbucket, GitHub, and Googlecode. Launchpad works very
-similarly to the latter three, but the development of it seems to
-have stalled.
-All the project hosting services have
+Through the last decade, several popular project hosting sites
+appeared: `Sourceforge <http://sourceforge.net/>`__,
+`Google code <http://code.google.com/>`__,
+`Launchpad <https://launchpad.net>`__,
+`Bitbucket <http://bigbucket.org>`__, and
+`GitHub <http://github.com>`__.
+Today, the latter two stand out as the most successful,
+and we therefore concentrate on them in this quick intro.
+Both services have
 excellent introductions available at their web sites, but the recipes
 below are much shorter and aim at getting you started as quickly as
 possible by concentrating on the most important need-to-know steps.
@@ -148,21 +140,13 @@ is some very personal advice.
    file into its URL (but you can get around this problem with a trick
    described in the section :ref:`bitgit:bitbucket:URLs`).
 
- * If you want to easily drop HTML files for documentation around in
-   your repo, Googlecode will display them as web pages right away,
-   while the procedure on GitHub is technically more complicated
-   (Bitbucket does not yet support web pages as part of a project).
-   Unfortunately, Googlecode does not allow MathJax for rendering
-   LaTeX mathematics in HTML files, but MathJax works well in
-   HTML files at GitHub.
-
  * If a few collaborate on a project and everyone wants to be notified
    in email about changes in project files, the procedure on
-   Bitbucket and Googlecode is easier to use than the one on GitHub.
+   Bitbucket is easier to use than the one on GitHub.
 
 For the examples below, assume that you have some directory tree
-``my-project`` with files that you want to host at Bitbucket, GitHub, or
-Googlecode and bring under version control. The official name of the
+``my-project`` with files that you want to host at Bitbucket or GitHub
+and bring under version control. The official name of the
 project is "My Project".
 
 Installing Git
@@ -425,130 +409,6 @@ the final ``?at=master``:
 Other endings of the URL with commit hash, e.g., ``?at=default``,
 requires the hash to be replaced by ``default``.
 
-.. _bitgit:googlecode:
-
-Googlecode
-==========
-
-.. index:: Googlecode
-
-To use Googlecode you need a general account on Google, which allows
-you to use Gmail, Google Docs, and other Google services.
-Googlecode offers free file hosting, but all the files are public and
-open to the world.
-
-Creating a new project  (2)
----------------------------
-
-Go to `<http://code.google.com/hosting>`_ and click on
-*Creating a new project*. Fill out *all* the fields. For now
-the project name is ``my-project``.
-You can
-choose between Git, Mercurial, or Subversion as version control
-system for your project, and this choice is difficult to change later.
-If you choose Git, you must create a file ``.netrc`` in your
-home directory containing the line
-
-.. code-block:: text
-
-        machine code.google.com login uname password pw
-
-Here, ``uname`` is your username for the Google account and
-``pw`` is the Googlecode password which is generated for you on
-`<https://code.google.com/hosting/settings>`_ when you
-are logged in.
-The ``.netrc`` file avoids typing or pasting in
-your long and complicated password every time you push changes to
-the repository on ``code.google.com``.
-
-The next step is to clone the empty repository on your local machine
-so that you can add files:
-
-.. code-block:: text
-
-        Terminal> git clone https://code.google.com/p/my-project/
-
-Now you can go to the ``my-project`` directory and add files.
-Perform
-
-.. code-block:: text
-
-        Terminal> git add .
-        Terminal> git commit -am 'First import of files.'
-        Terminal> git push origin master
-
-Click on *Source* and
-*Browse* on the project's web page, and observe that the added
-files are visible on the project page.
-
-A very strong and useful feature with Googlecode, in my opinion, is
-that one can place documentation of the project anywhere in
-the repository, and HTML and PDF will be correctly shown in
-web browsers. (All other project hosting sites
-demands either wiki pages or special web areas for locating documentation.)
-The URL to your files is
-
-.. code-block:: text
-
-        https://my-project.googlecode.com/git/
-
-For other version control systems just replace ``git`` by
-``hg`` or ``svn``.
-For example, if we have HTML documentation of our project in
-the directory ``doc/html``, we can point users to
-
-.. code-block:: text
-
-        https://my-project.googlecode.com/git/doc/html/index.html
-
-The HTML will be rendered correctly as opposed to when you load
-the similar file into the web browser from the repository,
-
-.. code-block:: text
-
-        http://code.google.com/p/my-project/source/browse/doc/html/index.html
-
-Now you can only see the HTML source code of this file, as is usual
-on other project hosting sites. We remark that MathJax
-mathematics within the HTML code is *not* rendered correctly. At the
-time of this writing, GitHub is the only service that offers full
-MathJax support when you need web pages with mathematics.
-
-You can click on *Project Home* and then on *Administer* to edit the
-main page of the project. This is a wiki, using Google's wiki syntax,
-but it is quite easy to add links to your documentation, e.g.,
-
-.. code-block:: text
-
-        Browse the
-        [https://my-project.googlecode.com/git/doc/API/html/index.html
-        API documentation].
-
-It is easy to allow others to push their changes to the
-repository: click on *Sharing* and then on *Administer*.
-The Google account names of people you allow push (write) access can be
-listed under each other in the *Project committers* field.
-
-Wiki pages  (1)
----------------
-
-Wiki pages can intuitively be made directly in the browser. However,
-it is often more convenient to have them locally on your computer.
-Click on *Source* and choose *wiki* on the *Repository* pull down menu.
-The proper clone command to get a copy of the wiki repository then
-appears.
-
-Googlecode applies their own Google wiki format. My preference is
-to write documentation in the neutral `DocOnce <https://github.com/hplgit/doconce>`__ format and transform the document to LaTeX, HTML, Sphinx, and Google wiki.
-The wiki can then be copied from the project directories to the
-wiki directory and then pushed to the repository. This ensures
-that there is only one source of the documentation (despite the need
-for many formats) and that the wiki pages are frequently updated.
-
-.. `<https://odespy.googlecode.com/git/doc/API/index.html>`_
-
-.. `<https://odespy.googlecode.com/git/doc/tutorial/html/wrap_odesolvers.html>`_
-
 .. _bitgit:github:
 
 GitHub
@@ -575,7 +435,7 @@ I do not recommend to provide an SSH key although it can be
 done (see Appendix :ref:`appendix:github:multiple:accounts`). It is easier
 to log in and add collaborators using their personal GitHub usernames.
 
-Creating a new project  (3)
+Creating a new project  (2)
 ---------------------------
 
 Click on *New repository* on the main page and fill out a project
@@ -642,8 +502,8 @@ the *watch* button), respectively.
 
 .. on email notifications to those participating and/or watching.
 
-Wiki pages  (2)
----------------
+Wiki pages
+----------
 
 With every GitHub project there is an option to create wiki pages.
 Click on the *Wiki* button in the right sidebar on the main page of
@@ -1903,6 +1763,10 @@ More documentation on Git
  * `Everyday GIT With 20 Commands Or So <http://schacon.github.com/git/everyday.html>`__
 
  * `Git cheat sheet <http://www.ndpsoftware.com/git-cheatsheet.html>`__
+
+ * `Atlassian Git Tutorials <https://www.atlassian.com/git/tutorial/git-basics>`__
+
+ * `Atlassian Git Workflows <https://www.atlassian.com/git/tutorial/workflows>`__
 
  * GitHub Guides:
 

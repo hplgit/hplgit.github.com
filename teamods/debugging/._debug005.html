@@ -1,21 +1,22 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Debugging in Python">
 <meta name="keywords" content="using a debugger,debugger demo,debugging,exceptions,Midpoint rule for integration,verification,PEP8,PyLint,Flake8">
 
-
+<title>Debugging in Python</title>
 
 <!-- Bootstrap style: bootswatch_readable -->
 <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
 <!-- not necessary
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
+
 
 </head>
 
@@ -55,32 +56,17 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 <!-- newcommands_keep.tex -->
 $$
 \newcommand{\tp}{\thinspace .}
-\renewcommand{\Re}{\bbbr}
-
-\newcommand{\rhodim}{\mbox{kgm}^{-3}}
-\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
-\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
-
-
-\newcommand{\Oof}[1]{\mathcal{O}(#1)}
-\newcommand{\Prob}[1]{\hbox{P}(#1)}
-\newcommand{\Var}[1]{\hbox{Var}(#1)}
-\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
-\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
 $$
 
 
@@ -102,12 +88,12 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "<b>Using a debugger</b>" --> <li><a href="#sec:debug:run" style="font-size: 80%;"><b>Using a debugger</b></a></li>
-     <!-- navigation toc: "<b>How to debug</b>" --> <li><a href="#sec:debug:howto" style="font-size: 80%;"><b>How to debug</b></a></li>
-     <!-- navigation toc: "A recipe for program writing and debugging" --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A recipe for program writing and debugging</a></li>
-     <!-- navigation toc: "Application of the recipe" --> <li><a href="#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Application of the recipe</a></li>
-     <!-- navigation toc: "Getting help from a code analyzer" --> <li><a href="#sec:debug:pylint" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Getting help from a code analyzer</a></li>
-     <!-- navigation toc: "<b>References</b>" --> <li><a href="#___sec17" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._debug001.html#sec:debug:run" style="font-size: 80%;"><b>Using a debugger</b></a></li>
+     <!-- navigation toc: --> <li><a href="._debug002.html#sec:debug:howto" style="font-size: 80%;"><b>How to debug</b></a></li>
+     <!-- navigation toc: --> <li><a href="._debug003.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A recipe for program writing and debugging</a></li>
+     <!-- navigation toc: --> <li><a href="._debug004.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Application of the recipe</a></li>
+     <!-- navigation toc: --> <li><a href="#sec:debug:pylint" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Getting help from a code analyzer</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec17" style="font-size: 80%;"><b>References</b></a></li>
 
         </ul>
       </li>
@@ -122,9 +108,11 @@ $$
 
 <a name="part0005"></a>
 <!-- !split -->
+<p style="font-size:80%">Much of the material in this document is taken from Appendix F in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</p>
 
-<h1>Getting help from a code analyzer <a name="sec:debug:pylint"></a></h1>
+<h1 id="sec:debug:pylint">Getting help from a code analyzer</h1>
 
+<p>
 The tools <a href="http://www.pylint.org/" target="_self">PyLint</a> and
 <a href="https://flake8.readthedocs.org/en/2.0/" target="_self">Flake8</a> can analyze
 your code and point out errors and undesired coding styles.
@@ -137,7 +125,7 @@ Consider the first version of the <code>integrate</code> code,
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; flake8 integrate_v1.py
 integrate_v1.py:7:1: E302 expected 2 blank lines, found 1
 integrate_v1.py:8:1: E112 expected an indented block
@@ -162,7 +150,7 @@ errors. We must therefore apply it to the
 
 <p>
 
-<!-- code=text (from !bc sys) typeset with pygments style "default" -->
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; pylint integrate_v2.py
 C: 20, 0: Exactly one space required after comma
 I = integrate(f, 0, 1,  n)
@@ -205,26 +193,22 @@ program development to readability of the code and remove errors.
 <p>
 <!-- I can in general recommend running Flake8 or PyLint on your programs -->
 
-
-<div class="page-header">
-  <h1>References  <a name="___sec17"></a></h1>
-</div>
-
+<h1 id="___sec17">References </h1> <!-- chapter heading -->
 
 <p>
 <!-- begin bibliography -->
 
 <ol>
- <li> <a name="Knuth85"></a> <b>D. E. Knuth</b>. 
+ <li> <div id="Knuth85"></div> <b>D. E. Knuth</b>. 
     Theory and Practice,
     <em>EATCS Bull.</em>,
     27,
     pp. 14-21,
     1985.</li>
- <li> <a name="Python:Library:Reference"></a> <b>P. S. Foundation</b>. 
+ <li> <div id="Python:Library:Reference"></div> <b>P. S. Foundation</b>. 
     The Python Standard Library,
     <a href="http://docs.python.org/2/library/" target="_self"><tt>http://docs.python.org/2/library/</tt></a>.</li>
- <li> <a name="Rawlins_1998"></a> <b>G. J. E. Rawlins</b>. 
+ <li> <div id="Rawlins_1998"></div> <b>G. J. E. Rawlins</b>. 
     <em>Slaves of the Machine: The Quickening of Computer Technology</em>,
     MIT Press,
     1998.</li>
@@ -233,12 +217,11 @@ program development to readability of the code and remove errors.
 <!-- end bibliography -->
 
 <p>
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._debug004.html">&larr; Prev</a>
   </li>
-
-
 </ul>
 <!-- ------------------- end of main content --------------- -->
 

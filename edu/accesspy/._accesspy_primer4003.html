@@ -17,6 +17,7 @@ Automatically generated HTML file from DocOnce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+
 </head>
 
 <!-- tocinfo
@@ -141,9 +142,11 @@ MathJax.Hub.Config({
 
 <a name="part0003"></a>
 <!-- !split -->
+<p style="font-size:80%">Much of the material in this document is taken from Appendix H.1 in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</p>
 
-<h1 id="sec:accesspy:anaconda">Anaconda and Spyder<a name="sec:accesspy:anaconda"></a></h1>
+<h1 id="sec:accesspy:anaconda">Anaconda and Spyder</h1>
 
+<p>
 <a href="https://store.continuum.io/cshop/anaconda/" target="_blank">Anaconda</a> is
 a free Python distribution produced by Continuum Analytics
 and contains about 200 Python packages, as well as Python itself, for doing
@@ -157,8 +160,9 @@ Anaconda and is my recommended tool for writing and running Python
 programs on Mac and Windows, unless you have preference for a plain
 text editor for writing programs and a terminal window for running them.
 
-<h2 id="___sec3">Spyder on Mac <a name="___sec3"></a></h2>
+<h2 id="___sec3">Spyder on Mac </h2>
 
+<p>
 Spyder is started by typing <code>spyder</code> in a (new) Terminal application.
 If you get an error message <em>unknown locale</em>, you need to type the
 following line in the Terminal application, or preferably put the line
@@ -170,8 +174,9 @@ in your <code>$HOME/.bashrc</code> Unix initialization file:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">export LANG=en_US.UTF-8; export LC_ALL=en_US.UTF-8
 </pre></div>
 
-<h2 id="___sec4">Installation of additional packages <a name="___sec4"></a></h2>
+<h2 id="___sec4">Installation of additional packages </h2>
 
+<p>
 Anaconda installs the <code>pip</code> tool that is handy to install additional
 packages. In a Terminal application on Mac or in a PowerShell terminal
 on Windows, write
@@ -182,24 +187,25 @@ on Windows, write
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install --user packagename
 </pre></div>
 
-<h2 id="___sec5">Installing SciTools on Mac <a name="___sec5"></a></h2>
+<h2 id="___sec5">Installing SciTools on Mac </h2>
 
+<p>
 The SciTools package can be installed by <code>pip</code> on Mac:
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; pip install mercurial
-Terminal&gt; pip install --user -e \ 
-          hg+https://code.google.com/p/scitools#egg=scitools
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; pip install --user -e \ 
+          git+https://github.com/hplgit/scitools.git#egg=scitools
 </pre></div>
 
-<h2 id="___sec6">Installing SciTools on Windows <a name="___sec6"></a></h2>
+<h2 id="___sec6">Installing SciTools on Windows </h2>
 
+<p>
 The safest procedure on Windows is to go to
-<a href="http://code.google.com/p/scitools/source/browse" target="_blank"><tt>http://code.google.com/p/scitools/source/browse</tt></a> and download
-the zip file. Double-click on the downloaded file in Windows Explorer
-and click on
+<a href="https://github.com/hplgit/scitools/" target="_blank"><tt>https://github.com/hplgit/scitools/</tt></a> and click on
+<em>Download ZIP</em>. Double-click on the downloaded file in Windows Explorer
+and perform
 <em>Extract all files</em> to create a new folder with all the SciTools
 files. Find the location of this folder, open a PowerShell
 window, and move to the location, e.g.,

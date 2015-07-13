@@ -1,14 +1,14 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Guidelines for Numerical Codes">
 
-
+<title>Guidelines for Numerical Codes</title>
 
 <!-- Bootstrap style: bootswatch_readable -->
 <link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
@@ -16,20 +16,21 @@ Automatically generated HTML file from Doconce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+
 </head>
 
 <!-- tocinfo
 {'highest level': 2,
- 'sections': [('  Motivation ', 2, None, '___sec0'),
-              (' Exercise ', 2, None, '___sec1'),
-              (' Solution 1: Minimalistic Matlab ', 2, None, '___sec2'),
-              (' Solution 2: Matlab with functions ', 2, None, '___sec3'),
-              (' Solution 3: Standard Python ', 2, None, '___sec4'),
-              (' Discussion ', 2, None, '___sec5'),
-              (' Extended Exercise ', 2, None, '___sec6'),
-              (' Discussion ', 2, None, '___sec7'),
-              (' Solution 4: A Java OO Program ', 2, None, '___sec8'),
-              (' Conclusions and Recommendations ', 2, None, '___sec9')]}
+ 'sections': [('Motivation', 2, None, '___sec0'),
+              ('Exercise', 2, None, '___sec1'),
+              ('Solution 1: Minimalistic Matlab', 2, None, '___sec2'),
+              ('Solution 2: Matlab with functions', 2, None, '___sec3'),
+              ('Solution 3: Standard Python', 2, None, '___sec4'),
+              ('Discussion', 2, None, '___sec5'),
+              ('Extended Exercise', 2, None, '___sec6'),
+              ('Discussion', 2, None, '___sec7'),
+              ('Solution 4: A Java OO Program', 2, None, '___sec8'),
+              ('Conclusions and Recommendations', 2, None, '___sec9')]}
 end of tocinfo -->
 
 <body>
@@ -40,16 +41,13 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
@@ -69,23 +67,23 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "  Motivation " --> <li>  <a href="._numerical_programming_guide001.html#___sec0">  Motivation </a></li>
-     <!-- navigation toc: " Exercise " --> <li>  <a href="._numerical_programming_guide001.html#___sec1"> Exercise </a></li>
-     <!-- navigation toc: " Solution 1: Minimalistic Matlab " --> <li>  <a href="._numerical_programming_guide001.html#___sec2"> Solution 1: Minimalistic Matlab </a></li>
-     <!-- navigation toc: " Solution 2: Matlab with functions " --> <li>  <a href="._numerical_programming_guide001.html#___sec3"> Solution 2: Matlab with functions </a></li>
-     <!-- navigation toc: " Solution 3: Standard Python " --> <li>  <a href="._numerical_programming_guide001.html#___sec4"> Solution 3: Standard Python </a></li>
-     <!-- navigation toc: " Discussion " --> <li>  <a href="._numerical_programming_guide001.html#___sec5"> Discussion </a></li>
-     <!-- navigation toc: " Extended Exercise " --> <li>  <a href="._numerical_programming_guide001.html#___sec6"> Extended Exercise </a></li>
-     <!-- navigation toc: " Discussion " --> <li>  <a href="._numerical_programming_guide001.html#___sec7"> Discussion </a></li>
-     <!-- navigation toc: " Solution 4: A Java OO Program " --> <li>  <a href="._numerical_programming_guide001.html#___sec8"> Solution 4: A Java OO Program </a></li>
-     <!-- navigation toc: " Conclusions and Recommendations " --> <li>  <a href="._numerical_programming_guide001.html#___sec9"> Conclusions and Recommendations </a></li>
+     <!-- navigation toc: --> <li><a href="._numerical_programming_guide001.html#___sec0" style="font-size: 80%;">Motivation</a></li>
+     <!-- navigation toc: --> <li><a href="._numerical_programming_guide001.html#___sec1" style="font-size: 80%;">Exercise</a></li>
+     <!-- navigation toc: --> <li><a href="._numerical_programming_guide001.html#___sec2" style="font-size: 80%;">Solution 1: Minimalistic Matlab</a></li>
+     <!-- navigation toc: --> <li><a href="._numerical_programming_guide001.html#___sec3" style="font-size: 80%;">Solution 2: Matlab with functions</a></li>
+     <!-- navigation toc: --> <li><a href="._numerical_programming_guide001.html#___sec4" style="font-size: 80%;">Solution 3: Standard Python</a></li>
+     <!-- navigation toc: --> <li><a href="._numerical_programming_guide001.html#___sec5" style="font-size: 80%;">Discussion</a></li>
+     <!-- navigation toc: --> <li><a href="._numerical_programming_guide001.html#___sec6" style="font-size: 80%;">Extended Exercise</a></li>
+     <!-- navigation toc: --> <li><a href="._numerical_programming_guide001.html#___sec7" style="font-size: 80%;">Discussion</a></li>
+     <!-- navigation toc: --> <li><a href="._numerical_programming_guide001.html#___sec8" style="font-size: 80%;">Solution 4: A Java OO Program</a></li>
+     <!-- navigation toc: --> <li><a href="._numerical_programming_guide001.html#___sec9" style="font-size: 80%;">Conclusions and Recommendations</a></li>
 
         </ul>
       </li>
     </ul>
   </div>
 </div>
-</div>
+</div> <!-- end of navigation bar -->
 
 <div class="container">
 
@@ -95,7 +93,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Guidelines for Numerical Codes</title>
 
 <div class="jumbotron">
 <center><h1>Guidelines for Numerical Codes</h1></center>  <!-- document title -->
@@ -107,7 +104,6 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
@@ -116,16 +112,17 @@ MathJax.Hub.Config({
 <p>
 <center><h4>May 28, 2010</h4></center> <!-- date -->
 <p>
-<em>This note is in an ultra-preliminary state!</em>
-
-<p>
 <b>Summary.</b> A common conception is that simple scientific computing
 scripts implemented in Matlab and Python are very similiar - almost
 identical.  However, practice observed by this author shows that
 students (and teachers) tend to make software with bad design in
 Matlab, while the design improves significantly when they use
 Python. This note points to the importance of a software design that
-acknowledges the generic nature of most mathematical algorithms.
+acknowledges the generic nature of mathematical algorithms.
+
+<p>
+This document is also available in
+<a href="http://hplgit.github.io/edu/computing_competence/computing_competence.pdf" target="_self">PDF format</a>.
 
 <p>
 
@@ -136,12 +133,11 @@ acknowledges the generic nature of most mathematical algorithms.
 </div> <!-- end jumbotron -->
 
 <p>
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
-
   <li class="next">
     <a href="._numerical_programming_guide001.html">Next &rarr;</a>
   </li>
-
 </ul>
 <!-- ------------------- end of main content --------------- -->
 

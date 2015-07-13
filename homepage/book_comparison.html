@@ -1,0 +1,151 @@
+<html>
+  <!-- solarized_box template -->
+  <!-- This template is an extension and modification of the solarized style
+       by Prof. Peter Hascke, see http://www.peterhaschke.com, under
+       the license http://creativecommons.org/licenses/by-sa/3.0/
+       (see http://www.peterhaschke.com/About).
+  -->
+  <head>
+  <title>Comparison of my two books on Python programming</title>
+<!--
+  <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light.css" rel="stylesheet" type="text/css" title="light"/>
+-->
+  <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_yellow.css" rel="stylesheet" type="text/css" title="light"/>
+  <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_dark.css" rel="stylesheet" type="text/css" title="dark"/>
+  <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+  <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_dark_code.css" rel="stylesheet" type="text/css" title="dark"/>
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/font-awesome.min.css">
+
+  <!-- NOTE: replace rawgit.com by cdn.rawgit.com for production or
+  sites with heavy traffic -->
+  <script type="text/javascript" src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/switch-css.js"></script>
+  <script type="text/javascript"> set_style_from_cookie(); </script>
+  <!-- use highlight.js and styles for code -->
+  <script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- note that standard CDN as in http://highlightjs.org/download/
+    does not work with this solarized style. -->
+  </head>
+
+  <body>
+  <div id="main">
+    <header>
+
+    <nav role="navigation">
+      <ul id="list-nav">
+        <li style="width:14.25%;"><a href="index.html">About</a>
+        <li style="width:14.25%;"><a href="contact.html">Contact</a>
+        <li style="width:14.25%;"><a href="bio.html">CV & Bio</a>
+        <li style="width:14.25%;"><a href="research.html">Research</a>
+        <li style="width:14.25%;"><a href="education.html">Teaching</a>
+        <li style="width:14.25%;"><a href="books.html">Books</a>
+        <li style="width:14.25%;"><a href="software.html">Software</a>
+        </li>
+      </ul>
+    </nav>
+    <br>
+
+    <form style="font-size: 25%"  class="pull-right">
+      <a onclick="switch_style('dark'); recordOutboundLink(this, 'Outbound Links', 'dark theme'); return false;"
+          value="dark"
+          id="dark"
+          class="btn btn-mini showtooltip"
+          title="switch to dark theme">
+          <span><i class="icon-circle"></i></span>
+      </a>
+
+      <a onclick="switch_style('light'); recordOutboundLink(this, 'Outbound Links', 'light theme'); return false;"
+          value="light"
+          id="light"
+          class="btn btn-mini showtooltip"
+          title="switch to light theme">
+          <span><i class="icon-circle-blank"></i></span>
+          </a>
+    </form>
+
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Comparison of my two books on Python programming ',
+               1,
+               None,
+               '___sec0')]}
+end of tocinfo -->
+
+
+<!-- ------------------- main content ---------------------- -->
+
+<h1 id="___sec0">Comparison of my two books on Python programming </h1>
+
+<p>
+I have written two books on Python programming:
+
+<p>
+<img src="fig/TCSE6_pic.jpg" width=160 style="margin: 0px 20px 0px 0px;">
+<img src="fig/TCSE3_pic.jpg" width=160 style="margin: 0px 20px 0px 0px;">
+
+<p>
+<br />
+
+<p>
+Since the titles are similar, people often ask me what the differences
+between these books are.  <em>Python Scripting for Computational Science</em>
+was written for researchers and students having traditional
+programming experience with specialized science codes in Fortran, C,
+or C++.  The book explains primarily how Python can be used to
+efficiently automate the many administrative tasks encountered by
+computational scientist (preparing data files, running experiments,
+gluing programs, managing files and directories, communicating through
+network, equipping programs with command-line or graphical user
+interfaces, etc.). Administrative programs also often need to do some
+data analysis and numerical computations so NumPy/SciPy and coupling
+of Python with Fortran, C, and C++ are also important topics in this
+book.
+
+<p>
+<em>A Primer on Scientific Programming with Python</em> was written for
+teaching beginning students how to program computers, with emphasis on
+using the computer to solve mathematical problems from applied
+science. We use Python because this allows a continuous transition
+from Matlab-style &quot;flat&quot; programs to Java/C++-style object-oriented
+programs. The book does not cover administrative tasks with processes,
+files, user interfaces, etc., but focuses solely on numerical
+computing using examples from calculus, physics, biology, and
+finance. The goal is to teach a beginner the most important
+constructions in a programming language, how to think about
+programming, and how to use programming in combination with numerical
+methods as a powerful tool to attack mathematical problems.
+
+<p>
+The book emphasizes the use of a subset of Python and an additional
+package SciTools so that the transition to Matlab, which is widely
+used in later science courses, is as easy and smooth as possible (a
+key feature to get accept for using Python as the first language in
+science programs).  In particular, we have an interface to
+visualization which is very close to Matlab with respect to syntax and
+functionality, but several alternative visualization packages
+(including Matlab, Matplotlib, Gnuplot, and Vtk) can be used as
+backend.
+
+<p>
+I have extensive experience with using both books in large courses
+at the University of Oslo. Although the <em>Primer</em> book is intended for
+beginners, it has become popular among professionals too, especially for
+seeing how Python is a good alternative to Matlab.
+
+<!-- ------------------- end of main content --------------- -->
+
+
+  </header>
+<!--
+    <footer>
+      H. P. Langtangen &#169; 2015 &nbsp; <span class="openwebicons-cc"></span> <span class="openwebicons-cc-by"></span> <span class="openwebicons-cc-sa">
+    </footer>
+-->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+      </div>
+  </body>
+</html>
+

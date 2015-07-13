@@ -12,8 +12,8 @@ Automatically generated HTML file from DocOnce source
 <title>How to access Python for doing scientific computing</title>
 
 
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
@@ -21,6 +21,11 @@ Automatically generated HTML file from DocOnce source
 h1 {color: #b58900;}  /* yellow */
 /* h1 {color: #cb4b16;}  orange */
 /* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -43,13 +48,14 @@ h1 {color: #b58900;}  /* yellow */
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
+
 
 </head>
 
@@ -149,9 +155,11 @@ MathJax.Hub.Config({
 
 <p>
 <!-- !split -->
+<p style="font-size:80%">Much of the material in this document is taken from Appendix H.1 in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</p>
 
-<h1>VMWare Fusion virtual machine <a name="sec:accesspy:vmware"></a></h1>
+<h1 id="sec:accesspy:vmware">VMWare Fusion virtual machine</h1>
 
+<p>
 A virtual machine allows you to run another complete computer system in a
 separate window.
 For Mac users, I recommend VMWare Fusion over
@@ -161,8 +169,9 @@ that of VirtualBox.) VMWare Fusion is commercial software, but
 there is a free trial version you can start with. Alternatively,
 you can use the simpler VMWare Player, which is free for personal use.
 
-<h2>Installing Ubuntu <a name="sec:accesspy:vmware:fullblown:machine"></a></h2>
+<h2 id="sec:accesspy:vmware:fullblown:machine">Installing Ubuntu</h2>
 
+<p>
 The following recipe will install a Ubuntu virtual machine under VMWare
 Fusion.
 
@@ -170,12 +179,12 @@ Fusion.
   <li> <a href="http://www.ubuntu.com/desktop/get-ubuntu/download" target="_blank">Download Ubuntu</a>.
      Choose a version that is compatible with your computer, usually
      a 64-bit version nowadays.</li>
-  <li> Launch VMWare fusion.</li>
-  <li> Click on <em>File - New</em> and choose to <em>install Windows or another
-     operating system in a new virtual machine</em>.</li>
-  <li> Double-click on <em>Use operating system installation disc or image</em>.</li>
-  <li> Choose <em>Linux</em> and <em>Ubuntu 64 bit</em>. You will be asked to give provide
-     the name of the Ubuntu file you downloaded.</li>
+  <li> Launch VMWare Fusion (the instructions here are for version 7).</li>
+  <li> Click on <em>File - New</em> and choose to <em>Install from disc or image</em>.</li>
+  <li> Click on <em>Use another disc or disc image</em> and choose your <code>.iso</code> file
+     with the Ubuntu image.</li>
+  <li> Choose <em>Easy Install</em>, fill in password, and check the box for
+     sharing files with the host operating system.</li>
   <li> Choose <em>Customize Settings</em> and make the following
      settings (these settings can be changed later, if desired):</li>
 
@@ -187,21 +196,14 @@ Fusion.
         the virtual machine (20 Gb is considered a minimum).</li>
 </ul>
 
-  <li> Choose where you want to store the Ubuntu iso file on the hard disk.
-     The Ubuntu iso file is a single file containing all of the Ubuntu
-     operating system and all of the associated file system. Backing
-     up this file means backing up your whole Ubuntu installation, something
-     you should frequently do!</li>
-  <li> When the start-up of Ubuntu is finished, click on the Ubuntu window
-     to launch the Install application. Click <em>Install</em>. On the next
-     page, fill in <em>Download updates while installing</em> and <em>Install third-party
-     software</em>. Then click <em>Continue</em>.
-     On the next page, choose <em>Erase disk and install Ubuntu</em>, then provide
-     your location, choose a keyboard layout (English is recommended for
-     programmers, but you can easily set up Ubuntu to switch between different
-     keyboards by means of a short-key). Fill in name, etc.
-     Ubuntu will then eventually install the operating system.</li>
-  <li> You may need to define a higher resolution of the display.
+  <li> Choose where you want to store virtual machine files on the hard disk.
+     The default location is usually fine. The directory with the virtual
+     machine files needs to be frequently backed up so make sure you know
+     where it is.</li>
+  <li> Ubuntu will now install itself without further dialog, but it will
+     take some time.</li>
+  <li> You may need to define a higher resolution of the display in the
+     Ubuntu machine.
      Find the <em>System settings</em> icon on the left, go to <em>Display</em>,
      choose some display (you can try several, click <em>Keep this configuration</em>
      when you are satisfied).</li>
@@ -211,10 +213,17 @@ Fusion.
      and choose a shortcut, say <code>Ctrl+space</code> or <code>Ctrl+backslash</code>, in the
      <em>Switch to next source using</em> field. Then you can use the shortcut
      to quickly switch keyboard.</li>
+ <li> A terminal window is key for programmers. Click on the Ubuntu icon
+     on the top of the left pane, search for <code>gnome-terminal</code>, right-click
+     its new icon in the left pane and choose <code>Lock to Launcher</code> such
+     that you always have the terminal easily accessible when you log in.
+     The <code>gnome-terminal</code> can have multiple tabs (<code>Ctrl+shift+t</code> to make
+     a new tab).</li>
 </ol>
 
-<h2>Installing software on Ubuntu  <a name="___sec9"></a></h2>
+<h2 id="___sec9">Installing software on Ubuntu </h2>
 
+<p>
 You now have a full Ubuntu machine, but there is not much software
 on a it for doing scientific computing with Python.
 Installation is performed through the Ubuntu Software Center (a
@@ -257,8 +266,9 @@ The program will run for quite some time, hopefully without problems.
 If it stops, set a comment sign <code>#</code> in front of the line where it stopped
 and rerun.
 
-<h2>File sharing  <a name="___sec10"></a></h2>
+<h2 id="___sec10">File sharing </h2>
 
+<p>
 The Ubuntu machine can see the files on your host system if you
 download <em>VMWare Tools</em>. Go to the <em>Virtual Machine</em> pull-down menu in
 VMWare Fusion and choose <em>Install VMWare Tools</em>. A tarfile is
@@ -307,8 +317,9 @@ from the previous machine.
 </div>
 
 
-<h1>Dual boot on Windows  <a name="___sec11"></a></h1>
+<h1 id="___sec11">Dual boot on Windows </h1>
 
+<p>
 Instead of running Ubuntu in a virtual machine, Windows users also have
 the option of deciding on the operating system when turning on the
 machine (so-called dual boot). The <a href="http://wubi-installer.org" target="_blank">Wubi</a>

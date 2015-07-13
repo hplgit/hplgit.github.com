@@ -1,0 +1,308 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Debugging in Python">
+<meta name="keywords" content="using a debugger,debugger demo,debugging,exceptions,Midpoint rule for integration,verification,PEP8,PyLint,Flake8">
+
+<title>Debugging in Python</title>
+
+
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 0,
+ 'sections': [(' Using a debugger ', 0, 'sec:debug:run', 'sec:debug:run'),
+              (' Step 1 ', 2, None, '___sec1'),
+              (' Step 2 ', 2, None, '___sec2'),
+              (' Step 3 ', 2, None, '___sec3'),
+              (' Step 4 ', 2, None, '___sec4'),
+              (' Step 5 ', 2, None, '___sec5'),
+              (' Step 6 ', 2, None, '___sec6'),
+              (' Step 7 ', 2, None, '___sec7'),
+              (' Step 8 ', 2, None, '___sec8'),
+              (' Step 9 ', 2, None, '___sec9'),
+              (' Step 10 ', 2, None, '___sec10'),
+              (' How to debug ', 0, 'sec:debug:howto', 'sec:debug:howto'),
+              (' A recipe for program writing and debugging ',
+               1,
+               None,
+               '___sec12'),
+              (' Application of the recipe ', 1, None, '___sec13'),
+              (' Refining the user interface ', 2, None, '___sec14'),
+              (' Writing a test function ', 2, None, '___sec15'),
+              (' Getting help from a code analyzer ',
+               1,
+               'sec:debug:pylint',
+               'sec:debug:pylint'),
+              (' References ', 0, None, '___sec17')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+$$
+
+
+
+
+    
+<a name="part0003"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._debug-solarized002.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._debug-solarized004.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- !split -->
+<p style="font-size:80%">Much of the material in this document is taken from Appendix F in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</p>
+
+<h1 id="___sec12">A recipe for program writing and debugging </h1>
+
+<p>
+<b>1. Understand the problem.</b>
+Make sure that you really understand the task the program is supposed
+to solve.  We can make a general claim: if you do not understand the
+problem and the solution method, you will never be able to make a
+correct program. It may be argued that this claim is not entirely
+true: sometimes students with limited understanding of the problem are
+able to grab a similar program and guess at a few modifications, and
+actually get a program that works. But this technique is based on luck
+and not on understanding. The famous Norwegian computer scientist
+Kristen Nygaard (1926-2002) phrased it precisely: <em>Programming is
+understanding</em>.  It may be necessary to read a problem description or
+exercise many times and study relevant background material before
+starting on the programming part of the problem solving process.
+
+<p>
+<b>2. Work out examples.</b>
+Start with sketching one or more examples on input and output
+of the program.
+Such examples are important for controlling the understanding of
+the purpose of the program, and for verifying the implementation.
+
+<p>
+<b>3. Decide on a user interface.</b>
+Find out how you want to get data into the program. You may want to
+grab data from the command-line, a file, or a dialog with questions
+and answers.
+
+<p>
+<b>4. Make algorithms.</b>
+Identify the key tasks to be done in the program and sketch rough
+algorithms for these.  Some programmers prefer to do this on a piece
+of paper, others prefer to start directly in Python and write
+Python-like code with comments to sketch the program (this is easily
+developed into real Python code later).
+
+<p>
+<b>5. Look up information.</b>
+Few programmers can write the whole program without consulting
+manuals, books, and the Internet. You need to know and understand
+the basic constructs in a language and some fundamental problem solving
+techniques, but technical details can be looked up.
+
+<p>
+The more program examples you have
+studied,
+the easier it is to adapt ideas from an existing example to solve a new
+problem.
+
+<p>
+<b>6. Write the program.</b>
+Be extremely careful with what you write. In particular,
+compare all mathematical statements  and algorithms with
+the original mathematical expressions.
+
+<p>
+In longer programs, do not wait until the program is complete before
+you start testing it, test parts while you write.
+
+<p>
+<b>7. Run the program.</b>
+If the program aborts with an error message from Python, these
+messages are fortunately quite precise and helpful.  First, locate the
+line number where the error occurs and read the statement, then
+carefully read the error message. The most common errors (exceptions)
+are listed below.
+
+<p>
+<code>SyntaxError</code>: Illegal Python code.
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>  File &quot;somefile.py&quot;, line 5
+    x = . 5
+        ^
+SyntaxError: invalid syntax
+</code></pre>
+<!-- end verbatim block -->
+Often the error is precisely indicated, as above, but sometimes
+you have to search for the error on the previous line.
+
+<p>
+<code>NameError</code>: A name (variable, function, module)
+is not defined.
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>  File &quot;somefile.py&quot;, line 20, in &lt;module&gt;
+    table(10)
+  File &quot;somefile.py&quot;, line 16, in table
+    value, next, error = L(x, n)
+  File &quot;somefile.py&quot;, line 8, in L
+    exact_error = log(1+x) - value_of_sum
+NameError: global name 'value_of_sum' is not defined
+</code></pre>
+<!-- end verbatim block -->
+Look at the last of the lines starting with <code>File</code> to see where in the
+program the error occurs. The most common reasons for a <code>NameError</code> are
+
+<ul>
+  <li> a misspelled name,</li>
+  <li> a variable that is not initialized,</li>
+  <li> a function that you have forgotten to define,</li>
+  <li> a module that is not imported.</li>
+</ul>
+
+<code>TypeError</code>: An object of wrong type is used in an operation.
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>  File &quot;somefile.py&quot;, line 17, in table
+    value, next, error = L(x, n)
+  File &quot;somefile.py&quot;, line 7, in L
+    first_neglected_term = (1.0/(n+1))*(x/(1.0+x))**(n+1)
+TypeError: unsupported operand type(s) for +: 'float' and 'str'
+</code></pre>
+<!-- end verbatim block -->
+Print out objects and their types (here: <code>print x, type(x), n, type(n)</code>),
+and you will most likely get a surprise. The reason for a <code>TypeError</code>
+is often far away from the line where the
+<code>TypeError</code> occurs.
+
+<p>
+<code>ValueError</code>: An object has an illegal value.
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>  File &quot;somefile.py&quot;, line 8, in L
+    y = sqrt(x)
+ValueError: math domain error
+</code></pre>
+<!-- end verbatim block -->
+Print out the value of objects
+that can be involved in the error (here: <code>print x</code>).
+
+<p>
+<code>IndexError</code>: An index in a list, tuple, string, or array is
+too large.
+
+<p>
+<!-- begin verbatim block  ccq-->
+<pre><code>  File &quot;somefile.py&quot;, line 21
+    n = sys.argv[i+1]
+IndexError: list index out of range
+</code></pre>
+<!-- end verbatim block -->
+Print out the length of the list, and the index if it involves a variable
+(here: <code>print len(sys.argv), i</code>).
+
+<p>
+<b>8. Verify the results.</b>
+Assume now that we have a program that runs without error messages
+from Python. Before judging the results of the program, set precisely
+up a test case where you know the exact solution.  This is in general
+quite difficult. In complicated mathematical problems it is an art to
+construct good test problems and procedures for providing evidence
+that the program works.
+
+<p>
+If your program produces wrong answers, start to <em>examine intermediate
+results</em>.  Never forget that your own hand calculations that you use
+to test the program may be wrong!
+
+<p>
+<b>9. Use a debugger.</b>
+If you end up inserting a lot of <code>print</code> statements in the program for
+checking intermediate results, you might benefit from using a debugger
+as explained in the section <a href="._debug-solarized001.html#sec:debug:run">Using a debugger</a>.
+
+<p>
+Some may think that this list of nine points is very comprehensive.
+However, the recipe just contains the steps that you should always
+carry out when developing programs.  Never forget that computer
+programming is a difficult task.
+
+<p>
+<blockquote>
+    <em>Program writing is substantially more demanding than book
+    writing. Why is it so? I think the main reason is that a larger
+    attention span is needed when working on a large computer program
+    than when doing other intellectual tasks.</em>
+    Donald Knuth <a href="._debug-solarized005.html#Knuth85">[1]</a> (p. 18), computer scientist, 1938-.
+</blockquote>
+
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._debug-solarized002.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._debug-solarized004.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

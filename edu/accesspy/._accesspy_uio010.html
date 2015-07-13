@@ -17,6 +17,7 @@ Automatically generated HTML file from DocOnce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+
 </head>
 
 <!-- tocinfo
@@ -154,9 +155,11 @@ MathJax.Hub.Config({
 
 <a name="part0010"></a>
 <!-- !split -->
+<p style="font-size:80%">Much of the material in this document is taken from Appendix H.1 in the book <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"><em>A Primer on Scientific Programming with Python</em></a>, 4th edition, by the same author, published by Springer, 2014.</p>
 
-<h1 id="sec:accesspy:sagemath:wakari">The SageMathCloud and Wakari web services<a name="sec:accesspy:sagemath:wakari"></a></h1>
+<h1 id="sec:accesspy:sagemath:wakari">The SageMathCloud and Wakari web services</h1>
 
+<p>
 You can avoid installing Python on your machine completely by using
 a web service that allows you to write and run Python programs.
 Computational science projects will normally require some kind of
@@ -167,8 +170,9 @@ There are two excellent web services with notebooks: <em>SageMathCloud</em> at
 account before you can write notebooks in the web browser and download
 them to your own computer.
 
-<h2 id="___sec22">Basic intro to SageMathCloud <a name="___sec22"></a></h2>
+<h2 id="___sec22">Basic intro to SageMathCloud </h2>
 
+<p>
 Sign in, click on <em>New Project</em>, give a title to your project and
 decide whether it should be private or public, click on the project
 when it appears in the browser, and click on <em>Create or Import a File,
@@ -188,8 +192,9 @@ relevant line with the file, and a download icon appears to the very
 right. The IPython notebook option works much in the same way, see
 the section <a href="._accesspy_uio011.html#sec:accesspy:ipynb">Writing IPython notebooks</a>.
 
-<h2 id="___sec23">Basic intro to Wakari <a name="___sec23"></a></h2>
+<h2 id="___sec23">Basic intro to Wakari </h2>
 
+<p>
 After having logged in at the <code>wakari.io</code> site, you automatically
 enter an IPython notebook with a short introduction to how the
 notebook can be used. Click on the <em>New Notebook</em> button to start a
@@ -209,8 +214,9 @@ plain Python programs or commands with graphics.  Just choose the type
 of terminal and click on <em>+Tab</em> to make a new terminal window of the
 chosen type.
 
-<h2 id="___sec24">Installing your own Python packages <a name="___sec24"></a></h2>
+<h2 id="___sec24">Installing your own Python packages </h2>
 
+<p>
 Both SageMathCloud and Wakari let you install your own Python
 packages.
 To install any package <code>packagename</code>
@@ -230,7 +236,7 @@ create a Terminal (with a Unix shell) and run the command
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install --user -e \ 
-    hg+https://code.google.com/p/scitools#egg=scitools
+    git+https://github.com/hplgit/scitools.git#egg=scitools
 </pre></div>
 <p>
 <p>
