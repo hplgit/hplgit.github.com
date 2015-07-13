@@ -1,6 +1,7 @@
 #!/bin/sh
 source=~/vc/deqbook/doc/src/chapters/archive/decay-reports
 cp -r $source/* $source/.publish*.bib .
+rm -rf css ipynb* report2* publish_config.py
 git add .
 # git ignores temp*
 git add -f _static/temp*
