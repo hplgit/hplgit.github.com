@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Need-to-Know Intro to Version Control Systems and Project Hosting Services">
-<meta name="keywords" content="Bitbucket,GitHub,gh-pages on GitHub,merging files,forking (a repo),pull request">
+<meta name="keywords" content="Bitbucket,GitHub,gh-pages on GitHub,merging files,merge a single file,forking (a repo),pull request">
 
 <title>Need-to-Know Intro to Version Control Systems and Project Hosting Services</title>
 
@@ -22,73 +22,73 @@ Automatically generated HTML file from DocOnce source
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Motivation ', 1, None, '___sec0'),
-              (' Why not Dropbox or Google Drive? ', 2, None, '___sec1'),
-              (' Project hosting services ', 2, None, '___sec2'),
-              (' Repositories and local copies ', 2, None, '___sec3'),
-              (' What to choose? ', 2, None, '___sec4'),
-              (' Installing Git ', 2, None, '___sec5'),
-              (' Bitbucket ', 1, 'bitgit:bitbucket', 'bitgit:bitbucket'),
-              (' Creating a new project ', 2, None, '___sec7'),
-              (' Collaborating ', 3, None, '___sec8'),
-              (' User web pages ',
+ 'sections': [('Motivation', 1, None, '___sec0'),
+              ('Why not Dropbox or Google Drive?', 2, None, '___sec1'),
+              ('Project hosting services', 2, None, '___sec2'),
+              ('Repositories and local copies', 2, None, '___sec3'),
+              ('What to choose?', 2, None, '___sec4'),
+              ('Installing Git', 2, None, '___sec5'),
+              ('Bitbucket', 1, 'bitgit:bitbucket', 'bitgit:bitbucket'),
+              ('Creating a new project', 2, None, '___sec7'),
+              ('Collaborating', 3, None, '___sec8'),
+              ('User web pages',
                2,
                'bitgit:bitbucket:web',
                'bitgit:bitbucket:web'),
-              (' Linking to Bitbucket files ',
+              ('Linking to Bitbucket files',
                2,
                'bitgit:bitbucket:URLs',
                'bitgit:bitbucket:URLs'),
-              (' GitHub ', 1, 'bitgit:github', 'bitgit:github'),
-              (' Creating a new project ', 2, None, '___sec12'),
-              (' Collaborating ', 3, None, '___sec13'),
-              (' Wiki pages ', 2, None, '___sec14'),
-              (' Project web pages ', 2, None, '___sec15'),
-              (' User web pages ', 2, None, '___sec16'),
-              (' Using Git ', 1, 'bitgit:git', 'bitgit:git'),
-              (' Basic Git commands ', 2, None, '___sec18'),
-              (' Cloning ', 3, None, '___sec19'),
-              (' The pull-change-push cycle ', 3, None, '___sec20'),
-              (' Viewing the history of files ', 3, None, '___sec21'),
-              (' Retrieving old files ', 3, None, '___sec22'),
-              (' Reset the entire repo to an old version ',
+              ('GitHub', 1, 'bitgit:github', 'bitgit:github'),
+              ('Creating a new project', 2, None, '___sec12'),
+              ('Collaborating', 3, None, '___sec13'),
+              ('Wiki pages', 2, None, '___sec14'),
+              ('Project web pages', 2, None, '___sec15'),
+              ('User web pages', 2, None, '___sec16'),
+              ('Using Git', 1, 'bitgit:git', 'bitgit:git'),
+              ('Basic Git commands', 2, None, '___sec18'),
+              ('Cloning', 3, None, '___sec19'),
+              ('The pull-change-push cycle', 3, None, '___sec20'),
+              ('Viewing the history of files', 3, None, '___sec21'),
+              ('Retrieving old files', 3, None, '___sec22'),
+              ('Reset the entire repo to an old version',
                3,
                None,
                '___sec23'),
-              (' Going back to a previous commit ', 3, None, '___sec24'),
-              (' Merging files with Git ',
+              ('Going back to a previous commit', 3, None, '___sec24'),
+              ('Merging files with Git',
                2,
                'bitgit:git:merge',
                'bitgit:git:merge'),
-              (' Git working style with branching and stashing ',
+              ('Git working style with branching and stashing',
                2,
                'bitgit:git:branch:stash',
                'bitgit:git:branch:stash'),
-              (' Branching ', 3, None, '___sec27'),
-              (' Stashing ', 3, None, '___sec28'),
-              (' Replacing pull by fetch and merge ',
+              ('Branching', 3, None, '___sec27'),
+              ('Stashing', 3, None, '___sec28'),
+              ('Replacing pull by fetch and merge',
                2,
                'bitgit:git:fetch',
                'bitgit:git:fetch'),
-              (' Configuring the `git diff` command ', 3, None, '___sec30'),
-              (' Team work with forking and pull requests ',
+              ('Configuring the `git diff` command', 3, None, '___sec30'),
+              ('Team work with forking and pull requests',
                2,
                'bitgit:git:team',
                'bitgit:git:team'),
-              (' Cloning a repo with multiple branches ',
+              ('Cloning a repo with multiple branches',
                2,
                'bitgit:git:clone:branches',
                'bitgit:git:clone:branches'),
-              (' Git workflows ', 2, None, '___sec33'),
-              (' Git tips ', 2, None, '___sec34'),
-              (' How can I see which files are tracked by Git? ',
+              ('Git workflows', 2, None, '___sec33'),
+              ('Git tips', 2, None, '___sec34'),
+              ('How can I see which files are tracked by Git?',
                3,
                None,
                '___sec35'),
-              (' How can I reduce the size of a repo? ', 3, None, '___sec36'),
-              (' How can I restore missing files? ', 3, None, '___sec37'),
-              (' More documentation on Git ', 2, None, '___sec38'),
-              (' Appendix: Working with multiple GitHub accounts ',
+              ('How can I reduce the size of a repo?', 3, None, '___sec36'),
+              ('How can I restore missing files?', 3, None, '___sec37'),
+              ('More documentation on Git', 2, None, '___sec38'),
+              ('Appendix: Working with multiple GitHub accounts',
                1,
                'appendix:github:multiple:accounts',
                'appendix:github:multiple:accounts')]}
@@ -817,6 +817,34 @@ use the Git commands
 Terminal&gt; git reset --hard origin/master
 </pre></div>
 <p>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Merging with just one file from another branch.</b>
+Say you have two branches, A and B, and want to merge a file <code>f.txt</code>
+in A with the latest version in B. To merge this single file, go to
+the directory where <code>f.txt</code> resides and do
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">Terminal&gt; git checkout A
+Terminal&gt; git checkout --patch B f.txt
+</pre></div>
+<p>
+If <code>f.txt</code> is not present in branch A, and if you want to include more
+files, drop the <code>--patch</code> option and specify files with full path relative
+to the root in the repo:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">Terminal&gt; git checkout A
+Terminal&gt; git checkout B doc/f.txt src/files/g.py
+</pre></div>
+<p>
+Now, <code>f.txt</code> and <code>g.py</code> from branch B will be included in branch A as well.
 </div>
 
 

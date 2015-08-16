@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>&lt;no title&gt;</title>
+    <title>Appendix: Working with multiple GitHub accounts</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
@@ -44,19 +44,18 @@
         </style>
 
     
-    <link rel="top" title="Quick Intro to Version Control Systems and Project Hosting Services" href="index.html" />
-    <link rel="next" title="Need-to-Know Intro to Version Control Systems and Project Hosting Services" href="._main_bitgit001.html" />
-    <link rel="prev" title="Quick Intro to Version Control Systems and Project Hosting Services" href="index.html" />
+    <link rel="top" title="Quick Intro to Git and GitHub" href="index.html" />
+    <link rel="prev" title="Using Git" href="._main_bitgit003.html" />
  
   
-   <style type="text/css">
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
-
+       <style type="text/css">
+         div.admonition {
+           background-color: whiteSmoke;
+           border: 1px solid #bababa;
+         }
+       </style>
+      </head>
+    
   <body>
     <div class="related">
       <h3>Navigation</h3>
@@ -65,12 +64,9 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="._main_bitgit001.html" title="Need-to-Know Intro to Version Control Systems and Project Hosting Services"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="Quick Intro to Version Control Systems and Project Hosting Services"
+          <a href="._main_bitgit003.html" title="Using Git"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Quick Intro to Version Control Systems and Project Hosting Services</a> &raquo;</li> 
+        <li><a href="index.html">Quick Intro to Git and GitHub</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -79,7 +75,42 @@
         <div class="bodywrapper">
           <div class="body">
             
-  
+  <div class="section" id="appendix-working-with-multiple-github-accounts">
+<span id="appendix-github-multiple-accounts"></span><h1>Appendix: Working with multiple GitHub accounts<a class="headerlink" href="#appendix-working-with-multiple-github-accounts" title="Permalink to this headline">¶</a></h1>
+<p>Working against different GitHub accounts is easy if each project you work
+with on each account adds you as a collaborator. The term &#8220;you&#8221; here means your
+primary username on GitHub. My strong recommendation is to always check
+out a project
+using your primary GitHub username.</p>
+<p>Occasionally you want to create a new GitHub account, say for a project <code class="docutils literal"><span class="pre">XYZ</span></code>.
+For such a non-personal account, do <em>not</em> provide an SSH key of any
+particular user. The reason is that this user will then get two
+GitHub identities, and switching between these identities will require
+some special tweakings. Just forget about the SSH key for a project
+account and add
+collaborators to repos using each collaborators personal GitHub username.</p>
+<p>If you really need to operate the <code class="docutils literal"><span class="pre">XYZ</span></code> account as a
+personal account, you must provide an SSH key that is different from
+any other key at any other GitHub account (you will get an error message
+if you try to register an already registered SSH key, but it is possible to
+get around the error message by providing
+an <code class="docutils literal"><span class="pre">id_rsa.pub</span></code> key on one account and an <code class="docutils literal"><span class="pre">id_dsa.pub</span></code> on another - that
+will cause trouble). Jeffrey Way has written a recipe for <a class="reference external" href="http://net.tutsplus.com/tutorials/tools-and-tips/how-to-work-with-github-and-multiple-accounts/">how to operate multiple GitHub accounts
+using multiple identities</a>.</p>
+<p>To debug which identity that is used when you pull and push to
+GitHub accounts, you can first run</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; ssh -Tv git@github.com
+</pre></div>
+</div>
+<p>to see your current identity and which SSH key that was used to identify you.
+Typing</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; ssh-add -l
+</pre></div>
+</div>
+<p>lists all your SSH keys. The shown strings can be compared with the
+string in the SSH key field of any GitHub account.</p>
+</div>
+
 
           </div>
         </div>
@@ -92,14 +123,11 @@
             </a></p>
             </center>
   <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Quick Intro to Version Control Systems and Project Hosting Services</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="._main_bitgit001.html"
-                        title="next chapter">Need-to-Know Intro to Version Control Systems and Project Hosting Services</a></p>
+  <p class="topless"><a href="._main_bitgit003.html"
+                        title="previous chapter">Using Git</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/._main_bitgit000.txt"
+    <li><a href="_sources/._main_bitgit004.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -126,12 +154,9 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="._main_bitgit001.html" title="Need-to-Know Intro to Version Control Systems and Project Hosting Services"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="Quick Intro to Version Control Systems and Project Hosting Services"
+          <a href="._main_bitgit003.html" title="Using Git"
              >previous</a> |</li>
-        <li><a href="index.html">Quick Intro to Version Control Systems and Project Hosting Services</a> &raquo;</li> 
+        <li><a href="index.html">Quick Intro to Git and GitHub</a> &raquo;</li> 
       </ul>
     </div>
 <div class="wrapper">

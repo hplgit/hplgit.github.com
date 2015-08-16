@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Need-to-Know Intro to Git and GitHub">
-<meta name="keywords" content="GitHub,gh-pages on GitHub,merging files,forking (a repo),pull request">
+<meta name="keywords" content="GitHub,gh-pages on GitHub,merging files,merge a single file,forking (a repo),pull request">
 
 <title>Need-to-Know Intro to Git and GitHub</title>
 
@@ -22,60 +22,60 @@ Automatically generated HTML file from DocOnce source
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Motivation ', 1, None, '___sec0'),
-              (' Why not Dropbox or Google Drive? ', 2, None, '___sec1'),
-              (' Repositories and local copies ', 2, None, '___sec2'),
-              (' Installing Git ', 2, None, '___sec3'),
-              (' GitHub ', 1, 'bitgit:github', 'bitgit:github'),
-              (' Creating a new project ', 2, None, '___sec5'),
-              (' Collaborating ', 3, None, '___sec6'),
-              (' Wiki pages ', 2, None, '___sec7'),
-              (' Project web pages ', 2, None, '___sec8'),
-              (' User web pages ', 2, None, '___sec9'),
-              (' Using Git ', 1, 'bitgit:git', 'bitgit:git'),
-              (' Basic Git commands ', 2, None, '___sec11'),
-              (' Cloning ', 3, None, '___sec12'),
-              (' The pull-change-push cycle ', 3, None, '___sec13'),
-              (' Viewing the history of files ', 3, None, '___sec14'),
-              (' Retrieving old files ', 3, None, '___sec15'),
-              (' Reset the entire repo to an old version ',
+ 'sections': [('Motivation', 1, None, '___sec0'),
+              ('Why not Dropbox or Google Drive?', 2, None, '___sec1'),
+              ('Repositories and local copies', 2, None, '___sec2'),
+              ('Installing Git', 2, None, '___sec3'),
+              ('GitHub', 1, 'bitgit:github', 'bitgit:github'),
+              ('Creating a new project', 2, None, '___sec5'),
+              ('Collaborating', 3, None, '___sec6'),
+              ('Wiki pages', 2, None, '___sec7'),
+              ('Project web pages', 2, None, '___sec8'),
+              ('User web pages', 2, None, '___sec9'),
+              ('Using Git', 1, 'bitgit:git', 'bitgit:git'),
+              ('Basic Git commands', 2, None, '___sec11'),
+              ('Cloning', 3, None, '___sec12'),
+              ('The pull-change-push cycle', 3, None, '___sec13'),
+              ('Viewing the history of files', 3, None, '___sec14'),
+              ('Retrieving old files', 3, None, '___sec15'),
+              ('Reset the entire repo to an old version',
                3,
                None,
                '___sec16'),
-              (' Going back to a previous commit ', 3, None, '___sec17'),
-              (' Merging files with Git ',
+              ('Going back to a previous commit', 3, None, '___sec17'),
+              ('Merging files with Git',
                2,
                'bitgit:git:merge',
                'bitgit:git:merge'),
-              (' Git working style with branching and stashing ',
+              ('Git working style with branching and stashing',
                2,
                'bitgit:git:branch:stash',
                'bitgit:git:branch:stash'),
-              (' Branching ', 3, None, '___sec20'),
-              (' Stashing ', 3, None, '___sec21'),
-              (' Replacing pull by fetch and merge ',
+              ('Branching', 3, None, '___sec20'),
+              ('Stashing', 3, None, '___sec21'),
+              ('Replacing pull by fetch and merge',
                2,
                'bitgit:git:fetch',
                'bitgit:git:fetch'),
-              (' Configuring the `git diff` command ', 3, None, '___sec23'),
-              (' Team work with forking and pull requests ',
+              ('Configuring the `git diff` command', 3, None, '___sec23'),
+              ('Team work with forking and pull requests',
                2,
                'bitgit:git:team',
                'bitgit:git:team'),
-              (' Cloning a repo with multiple branches ',
+              ('Cloning a repo with multiple branches',
                2,
                'bitgit:git:clone:branches',
                'bitgit:git:clone:branches'),
-              (' Git workflows ', 2, None, '___sec26'),
-              (' Git tips ', 2, None, '___sec27'),
-              (' How can I see which files are tracked by Git? ',
+              ('Git workflows', 2, None, '___sec26'),
+              ('Git tips', 2, None, '___sec27'),
+              ('How can I see which files are tracked by Git?',
                3,
                None,
                '___sec28'),
-              (' How can I reduce the size of a repo? ', 3, None, '___sec29'),
-              (' How can I restore missing files? ', 3, None, '___sec30'),
-              (' More documentation on Git ', 2, None, '___sec31'),
-              (' Appendix: Working with multiple GitHub accounts ',
+              ('How can I reduce the size of a repo?', 3, None, '___sec29'),
+              ('How can I restore missing files?', 3, None, '___sec30'),
+              ('More documentation on Git', 2, None, '___sec31'),
+              ('Appendix: Working with multiple GitHub accounts',
                1,
                'appendix:github:multiple:accounts',
                'appendix:github:multiple:accounts')]}
@@ -130,14 +130,15 @@ end of tocinfo -->
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Deptartment of Informatics, University of Oslo</b></center>
+<br>
 <p>
-<center><h4>Mar 13, 2015</h4></center> <!-- date -->
+<center><h4>Aug 16, 2015</h4></center> <!-- date -->
+<br>
 <p>
 <div id="bitgit:top"></div>
 
