@@ -265,10 +265,10 @@ cp $report.tex $dir/report_plain_latex.tex
 cp decay_report_demo.do.txt $dir/tmp.do.txt
 cd $dir
 # All compiled sphinx themes are available in sphinx-themename directories
-themes=`/bin/ls -d rootdir/_themes/sphinx-*`
+themes=`/bin/ls -d sphinx-*`
 #themes="agogo basic bizstyle classic default epub haiku nature pyramid scrolls sphinxdoc traditional $themes bootstrap cloud solarized impressjs sphinx_rtd_theme"
 for theme in $themes; do
-    themeshort=`echo $theme | sed 's/rootdir\/_themes\/sphinx-//g'`
+    themeshort=`echo $theme | sed 's/sphinx-//g'`
     doconce replace XXXXX "\"$themeshort\": \"_static/$theme/index.html\", XXXXX" tmp.do.txt
 done
 doconce replace ", XXXXX" "" tmp.do.txt
