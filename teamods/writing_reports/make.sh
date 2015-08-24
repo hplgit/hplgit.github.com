@@ -6,6 +6,7 @@ cp -r ${script_source} .
 cd report_generation
 sh clean.sh
 cd ..
+rm -rf _minted-report
 git add .
 # git ignores temp*
 git add -f _static/temp*

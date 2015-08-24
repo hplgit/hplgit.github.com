@@ -265,21 +265,21 @@ cp $report.tex $dir/report_plain_latex.tex
 cp decay_report_demo.do.txt $dir/tmp.do.txt
 cd $dir
 # All compiled sphinx themes are available in sphinx-themename directories
-themes=`/bin/ls -d sphinx-*`
+themes=`/bin/ls -d rootdir/_themes/sphinx-*`
 #themes="agogo basic bizstyle classic default epub haiku nature pyramid scrolls sphinxdoc traditional $themes bootstrap cloud solarized impressjs sphinx_rtd_theme"
 for theme in $themes; do
-    themeshort=`echo $theme | sed 's/sphinx-//g'`
+    themeshort=`echo $theme | sed 's/rootdir\/_themes\/sphinx-//g'`
     doconce replace XXXXX "\"$themeshort\": \"_static/$theme/index.html\", XXXXX" tmp.do.txt
 done
 doconce replace ", XXXXX" "" tmp.do.txt
 doconce format html tmp --html_links_in_new_window --html_style=bootswatch
-if [ $? -ne 0 ]; then failures="$failures:doconce-reports/tmp.do.txt"; fi
+if [ $? -ne 0 ]; then failures="$failures:decay_report_demo.do.txt"; fi
 mv -f tmp.html index.html
 
 # Compile index.html with shell instructions
 doconce replace 'TITLE: Examples of scientific reports in different formats' 'TITLE: Examples of scientific reports in different formats and how they are made' tmp.do.txt
-doconce format html tmp -DCODE --html_links_in_new_window --html_style=bootswatch_readable
-if [ $? -ne 0 ]; then failures="$failures:doconce-reports/tmp.do.txt"; fi
+doconce format html tmp -DCODE --html_links_in_new_window --html_style=bootswatch_readable --no_mako
+if [ $? -ne 0 ]; then failures="$failures:decay_report_demo.do.txt extended version"; fi
 mv -f tmp.html index_with_doconce_commands.html
 ls *.html
 
@@ -292,7 +292,6 @@ for file in *.html; do
 done
 rm -f index.html.html  report.md.html.html # not of interest
 $pyg -o report_sphinx.rst.html -l rst rootdir/report.rst
-$pyg -o report.p.tex.html -l latex report.p.tex
 $pyg -o report.tex.html -l latex report.tex
 $pyg -o report.md.html -l latex report.md
 $pyg -o report.ipynb.html -l json report.ipynb
@@ -311,8 +310,8 @@ rm -rf index_with_doconce_commands.html.html style_github* .*_file_collection  #
 
 # Copy all doconce source files to separate directory doconce_src
 mkdir doconce_src
-cp report.do.txt .publish_references.pub model.py publish_config.py _static/BE.* _static/FE.* _static/CN.* _static/error.* doconce_src
-cp ../decay_mod.py doconce_src
+cp report.do.txt .publish_references.pub  publish_config.py _static/BE.* _static/FE.* _static/CN.* _static/error.* doconce_src
+cp ../model.py doconce_src
 cd doconce_src
 doconce replace "../model.py" "model.py" report.do.txt
 rm -f *~
