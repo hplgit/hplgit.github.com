@@ -164,67 +164,6 @@ def solver(I, a, T, dt, theta):
     for n in range(0, Nt):    # n=0,1,...,Nt-1
         u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
     return u, t
-
-def exact<span class="nb">_</span>solution(t, I, a):
-    return I*exp(-a*t)
-
-def explore(I, a, T, dt, theta=0.5):
-    &quot;&quot;&quot;
-    Run a case with the solver, compute error measure,
-    and plot the numerical and exact solutions (if makeplot=True).
-    &quot;&quot;&quot;
-    u, t = solver(I, a, T, dt, theta)    # Numerical solution
-    u<span class="nb">_</span>e = exact<span class="nb">_</span>solution(t, I, a)
-    e = u<span class="nb">_</span>e - u
-    E = sqrt(dt*sum(e**2))
-
-    figure()                         # create new plot
-    t<span class="nb">_</span>e = linspace(0, T, 1001)       # very fine mesh for u<span class="nb">_</span>e
-    u<span class="nb">_</span>e = exact<span class="nb">_</span>solution(t<span class="nb">_</span>e, I, a)
-    plot(t,   u,   &#39;r--o&#39;)           # dashed red line with circles
-    plot(t<span class="nb">_</span>e, u<span class="nb">_</span>e, &#39;b-&#39;)             # blue line for u<span class="nb">_</span>e
-    legend([&#39;numerical&#39;, &#39;exact&#39;])
-    xlabel(&#39;t&#39;)
-    ylabel(&#39;u&#39;)
-    title(&#39;Method: theta-rule, theta=<span class="c">%g, dt=%g&#39; </span>
-    theta2name = <span class="nb">{</span>0: &#39;FE&#39;, 1: &#39;BE&#39;, 0.5: &#39;CN&#39;<span class="nb">}</span>
-    savefig(&#39;<span class="c">%s_%g.png&#39; </span>
-    savefig(&#39;<span class="c">%s_%g.pdf&#39; </span>
-    #show()  # run in batch
-    return E
-
-def define<span class="nb">_</span>command<span class="nb">_</span>line<span class="nb">_</span>options():
-    import argparse
-    parser = argparse.ArgumentParser()
-    parser.add<span class="nb">_</span>argument(&#39;--I&#39;, &#39;--initial<span class="nb">_</span>condition&#39;, type=float,
-                        default=1.0, help=&#39;initial condition, u(0)&#39;,
-                        metavar=&#39;I&#39;)
-    parser.add<span class="nb">_</span>argument(&#39;--a&#39;, type=float,
-                        default=1.0, help=&#39;coefficient in ODE&#39;,
-                        metavar=&#39;a&#39;)
-    parser.add<span class="nb">_</span>argument(&#39;--T&#39;, &#39;--stop<span class="nb">_</span>time&#39;, type=float,
-                        default=1.0, help=&#39;end time of simulation&#39;,
-                        metavar=&#39;T&#39;)
-    parser.add<span class="nb">_</span>argument(&#39;--dt&#39;, &#39;--time<span class="nb">_</span>step<span class="nb">_</span>values&#39;, type=float,
-                        default=[1.0], help=&#39;time step values&#39;,
-                        metavar=&#39;dt&#39;, nargs=&#39;+&#39;, dest=&#39;dt<span class="nb">_</span>values&#39;)
-    return parser
-
-def read<span class="nb">_</span>command<span class="nb">_</span>line():
-    parser = define<span class="nb">_</span>command<span class="nb">_</span>line<span class="nb">_</span>options()
-    args = parser.parse<span class="nb">_</span>args()
-    return args.I, args.a, args.T, args.dt<span class="nb">_</span>values
-
-def main():
-    &quot;&quot;&quot;Conduct experiments with theta and dt values.&quot;&quot;&quot;
-    I, a, T, dt<span class="nb">_</span>values = read<span class="nb">_</span>command<span class="nb">_</span>line()
-    for theta in 0, 0.5, 1:
-        for dt in dt<span class="nb">_</span>values:
-            E = explore(I, a, T, dt, theta)
-            print &#39;<span class="c">%3.1f %6.2f: %12.3E&#39; </span>
-
-if <span class="nb">__</span>name<span class="nb">__</span> == &#39;<span class="nb">__</span>main<span class="nb">__</span>&#39;:
-    main()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ## Numerical experiments

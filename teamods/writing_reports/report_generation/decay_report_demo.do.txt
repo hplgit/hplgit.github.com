@@ -21,13 +21,21 @@ HTML blog post, etc.
 "Show how all the DocOnce formats are generated in detail": "index_with_doconce_commands.html"!
 !ebox
 
+The DocOnce source code for all the examples resides in a file
+"report.do.txt": "_static/report.do.txt.html". In the `doconce format`
+commands below, for translating the text to LaTeX, HTML, etc.,
+one can use the full filename `report.do.txt` or just `report`.
+If you want to play around with `report.do.txt` and modify it, you
+need the DocOnce source, figure files, computer code, etc. All
+the files are contained in a "directory at GitHub": "https://github.com/hplgit/hplgit.github.com/tree/master/teamods/writing_reports/doconce_src".
+
 # #endif
 
 ===== PDF via LaTeX =====
 
 "The classical LaTeX-style report format": "_static/report_plain.pdf"
 is widely used throughout mathematical sciences. This PDF version was made
-from hand-written "DocOnce source": "_static/report.do.txt.html",
+from the hand-written DocOnce source "report.do.txt": "_static/report.do.txt.html",
 first translated to LaTeX source code and then compiled to PDF.
 
 # #ifdef CODE
@@ -160,7 +168,7 @@ documents with fancy and attractive layouts.
 
 # #ifdef CODE
 DocOnce can easily generate a lot of various Sphinx styles (see all
-the names above). For style `X` (`pyramid`,`redcloud`, etc.) one writes
+the names above). For style `X` (`pyramid`, `redcloud`, etc.) one writes
 
 !bc sys
 doconce format sphinx report

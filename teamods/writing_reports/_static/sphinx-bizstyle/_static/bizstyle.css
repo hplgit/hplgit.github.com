@@ -4,8 +4,8 @@
  *
  * Sphinx stylesheet -- business style theme.
  *
- * :copyright: Copyright 2011 by Sphinx-users.jp, see AUTHORS.
- * :license: MIT, see LICENSE for details.
+ * :copyright: Copyright 2011-2014 by Sphinx team, see AUTHORS.
+ * :license: BSD, see LICENSE for details.
  *
  */
 
@@ -58,7 +58,8 @@ div.related {
 
 div.related ul {
     background-color: #336699;
-    height: 2em;
+    height: 100%;
+    overflow: hidden;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
 }
@@ -234,13 +235,13 @@ cite, code, tt {
     letter-spacing: 0.01em;
 }
 
-tt {
+code {
     background-color: #F2F2F2;
     border-bottom: 1px solid #ddd;
     color: #333;
 }
 
-tt.descname, tt.descclassname, tt.xref {
+code.descname, code.descclassname, code.xref {
     border: 0;
 }
 
@@ -249,16 +250,17 @@ hr {
     margin: 2em;
 }
 
-a tt {
+a code {
     border: 0;
     color: #CA7900;
 }
 
-a tt:hover {
+a code:hover {
     color: #2491CF;
 }
 
 pre {
+    background-color: transparent !important;
     font-family: 'Consolas', 'Deja Vu Sans Mono',
                  'Bitstream Vera Sans Mono', monospace;
     font-size: 0.95em;
@@ -317,7 +319,11 @@ div.admonition li p {
 }
 
 div.admonition pre, div.warning pre {
-    margin: 0.4em 1em 0.4em 1em;
+    margin: 0;
+}
+
+div.highlight {
+    margin: 0.4em 1em;
 }
 
 div.admonition p.admonition-title {
@@ -430,6 +436,13 @@ th {
     text-align: left;
     padding-right: 5px;
     background-color: #82A0BE;
+}
+
+div.literal-block-wrapper div.code-block-caption {
+    background-color: #EEE;
+    border-style: solid;
+    border-color: #CCC;
+    border-width: 1px 5px;
 }
 
 /* WIDE DESKTOP STYLE */

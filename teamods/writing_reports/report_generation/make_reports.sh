@@ -264,7 +264,9 @@ cp $report.tex $dir/report_plain_latex.tex
 # Make top index.html file
 cp decay_report_demo.do.txt $dir/tmp.do.txt
 cd $dir
+# All compiled sphinx themes are available in sphinx-themename directories
 themes=`/bin/ls -d sphinx-*`
+#themes="agogo basic bizstyle classic default epub haiku nature pyramid scrolls sphinxdoc traditional $themes bootstrap cloud solarized impressjs sphinx_rtd_theme"
 for theme in $themes; do
     themeshort=`echo $theme | sed 's/sphinx-//g'`
     doconce replace XXXXX "\"$themeshort\": \"_static/$theme/index.html\", XXXXX" tmp.do.txt
@@ -307,12 +309,12 @@ mv -f *.png *.html ._*.html *.pdf sphinx-* js css *.ipynb *.mwiki report.txt _st
 mv -f _static/index*.html .  # don't copy the index file
 rm -rf index_with_doconce_commands.html.html style_github* .*_file_collection  # unwanted byproducts
 
-# Copy all doconce source files
+# Copy all doconce source files to separate directory doconce_src
 mkdir doconce_src
-cp report.do.txt .publish_references.pub publish_config.py _static/BE.* _static/FE.* _static/CN.* _static/error.* doconce_src
+cp report.do.txt .publish_references.pub model.py publish_config.py _static/BE.* _static/FE.* _static/CN.* _static/error.* doconce_src
 cp ../decay_mod.py doconce_src
 cd doconce_src
-doconce replace "../decay_mod.py" "decay_mod.py" report.do.txt
+doconce replace "../model.py" "model.py" report.do.txt
 rm -f *~
 cd ..
 
