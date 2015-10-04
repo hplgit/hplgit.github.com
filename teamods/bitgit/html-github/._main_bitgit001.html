@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -44,7 +43,7 @@
         </style>
 
     
-    <link rel="top" title="Quick Intro to Git and GitHub" href="index.html" />
+    <link rel="top" title="Quick Intro to Git and Project Hosting Services" href="index.html" />
     <link rel="next" title="GitHub" href="._main_bitgit002.html" />
     <link rel="prev" title="Quick Intro to Git and Project Hosting Services" href="._main_bitgit000.html" />
  
@@ -57,8 +56,8 @@
        </style>
       </head>
     
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -70,14 +69,14 @@
         <li class="right" >
           <a href="._main_bitgit000.html" title="Quick Intro to Git and Project Hosting Services"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Quick Intro to Git and GitHub</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Quick Intro to Git and Project Hosting Services</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="motivation">
 <h1>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h1>
@@ -127,12 +126,12 @@ MS Word or Excel documents, and OpenOffice documents.</p>
 </div>
 <div class="section" id="installing-git">
 <h2>Installing Git<a class="headerlink" href="#installing-git" title="Permalink to this headline">¶</a></h2>
-<p id="index-0">The installation of Git on various systems is described
-on the <a class="reference external" href="http://git-scm.com/">Git website</a> under the <em>Download</em> section.
-Git involves compiled code so it is most convenient to download a
+<p id="index-0">The installation of Git on various systems is described on the <a class="reference external" href="http://git-scm.com/">Git
+website</a> under the <em>Download</em> section.  Git
+involves compiled code so it is most convenient to download a
 precompiled binary version of the software on Windows, Mac and other
-Linux computers.
-On Ubuntu or any Debian-based system the relevant installation command is</p>
+Linux computers.  On Ubuntu or any Debian-based system the relevant
+installation command is</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; sudo apt-get install git gitk git-doc
 </pre></div>
 </div>
@@ -142,6 +141,9 @@ Git</a>. Three examples are
 <a class="reference external" href="http://git-cola.github.com/downloads.html">git-cola</a>,
 <a class="reference external" href="https://code.google.com/p/tortoisegit/">TortoiseGit</a>, and
 <a class="reference external" href="http://sourcetreeapp.com/">SourceTree</a>.</p>
+</div>
+<div class="section" id="configuring-git">
+<span id="bitgit-git-config"></span><h2>Configuring Git<a class="headerlink" href="#configuring-git" title="Permalink to this headline">¶</a></h2>
 <p>Make a file <code class="docutils literal"><span class="pre">.gitconfig</span></code> in your home directory with information on
 your full name, email address, your favorite text editor, and
 the name of an &#8220;excludes file&#8221; which defines the file types that Git
@@ -205,7 +207,7 @@ some program.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <center>
             <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
@@ -218,6 +220,7 @@ some program.</p>
 <li><a class="reference internal" href="#why-not-dropbox-or-google-drive">Why not Dropbox or Google Drive?</a></li>
 <li><a class="reference internal" href="#repositories-and-local-copies">Repositories and local copies</a></li>
 <li><a class="reference internal" href="#installing-git">Installing Git</a></li>
+<li><a class="reference internal" href="#configuring-git">Configuring Git</a></li>
 </ul>
 </li>
 </ul>
@@ -228,15 +231,17 @@ some program.</p>
   <h4>Next topic</h4>
   <p class="topless"><a href="._main_bitgit002.html"
                         title="next chapter">GitHub</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/._main_bitgit001.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/._main_bitgit001.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -250,7 +255,7 @@ some program.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -262,12 +267,15 @@ some program.</p>
         <li class="right" >
           <a href="._main_bitgit000.html" title="Quick Intro to Git and Project Hosting Services"
              >previous</a> |</li>
-        <li><a href="index.html">Quick Intro to Git and GitHub</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Quick Intro to Git and Project Hosting Services</a> &raquo;</li> 
       </ul>
     </div>
 <div class="wrapper">
   <div class="footer">
-  <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
+    <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
+    <br />
+    <br />
+      &copy;2015, Hans Petter Langtangen. Released under CC Attribution 4.0 license.
   </div>
 </div>
 
