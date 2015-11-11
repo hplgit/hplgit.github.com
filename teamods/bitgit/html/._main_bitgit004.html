@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -44,7 +43,7 @@
         </style>
 
     
-    <link rel="top" title="Quick Intro to Git and Project Hosting Services" href="index.html" />
+    <link rel="top" title="Quick Intro to Git and GitHub" href="index.html" />
     <link rel="next" title="Appendix: Working with multiple GitHub accounts" href="._main_bitgit005.html" />
     <link rel="prev" title="GitHub" href="._main_bitgit003.html" />
  
@@ -57,8 +56,8 @@
        </style>
       </head>
     
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -70,14 +69,14 @@
         <li class="right" >
           <a href="._main_bitgit003.html" title="GitHub"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Quick Intro to Git and Project Hosting Services</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Quick Intro to Git and GitHub</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="using-git">
 <span id="bitgit-git"></span><h1>Using Git<a class="headerlink" href="#using-git" title="Permalink to this headline">¶</a></h1>
@@ -134,26 +133,20 @@ can be used to reformulate the message.  Running <code class="docutils literal">
 easier to formulate descriptive commit messages since this command
 gives a listing of all the changes you have made to the files since
 the last commit or pull command.</p>
-<p>You may perform many commits, to keep track of small changes, before
+<p>You may perform many commits (to keep track of small changes), before
 you push your changes to the global repository:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git push origin master
 </pre></div>
 </div>
-<p>It is recommended to push and pull frequently if the work takes place in several
+<div class="admonition-do-pull-and-push-often admonition">
+<p class="first admonition-title">Do pull and push often</p>
+<p class="last">It is recommended to pull, commit, and push
+frequently if the work takes place in several
 clones of the repo (i.e., there are many users or you work with the
 repo on different
 computers). Infrequent push and pull easily leads to merge problems
 (see the section <a class="reference internal" href="#bitgit-git-merge"><span class="std std-ref">Merging files with Git</span></a>). Also remember that others
-cannot get your changes before they are pushed.</p>
-<div class="admonition-do-commit-and-pull-often admonition">
-<p class="first admonition-title">Do commit and pull often</p>
-<p class="last">If the central repo undergoes changes (by you on other computers or by
-others), it is essential to often commit your local work and perform
-a pull. This will keep your local files in sync with the repo.
-Failing to frequently commit and pull (and hence merge your files with
-the repo) will most likely lead to substantial merge problems at a
-later stage (because the files have become too different for an automatic
-merge algorithm to succeed).</p>
+(human and machines) cannot get your changes before they are pushed!</p>
 </div>
 <div class="admonition-do-not-forget-to-add-important-files admonition" id="index-8">
 <p class="first admonition-title">Do not forget to add important files</p>
@@ -162,6 +155,20 @@ files: <code class="docutils literal"><span class="pre">A</span></code> for adde
 and <code class="docutils literal"><span class="pre">??</span></code> for not being registered in the repo. Pay particular attention
 to the <code class="docutils literal"><span class="pre">??</span></code> files and examine if all of them are redundant or easily
 regenerated from other files - of not, run <code class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></code>.</p>
+</div>
+<div class="admonition-make-sure-you-have-a-gitignore-file admonition">
+<p class="first admonition-title">Make sure you have a <code class="docutils literal"><span class="pre">.gitignore</span></code> file</p>
+<p>The simplest way of adding files to the repo is to do</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git add .
+</pre></div>
+</div>
+<p class="last">The dot adds every file, and this is seldom what you want, since
+your directories frequently contain large redundant files or files
+that can easily be regenerated. You therefore need a
+<code class="docutils literal"><span class="pre">.gitignore</span></code> file, see the section <a class="reference internal" href="._main_bitgit001.html#bitgit-git-config"><span class="std std-ref">Configuring Git</span></a>,
+either in your home directory or in the root directory of the repo.
+The <code class="docutils literal"><span class="pre">.gitignore</span></code> file will ignore undesired files when you do
+<code class="docutils literal"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">.</span></code>.</p>
 </div>
 </div>
 <div class="section" id="viewing-the-history-of-files">
@@ -206,7 +213,7 @@ expressions instead of exact text: just replace <code class="docutils literal"><
 <div class="section" id="retrieving-old-files">
 <span id="index-12"></span><h3>Retrieving old files<a class="headerlink" href="#retrieving-old-files" title="Permalink to this headline">¶</a></h3>
 <p>Occasionally you need to go back to an earlier version of a file,
-say its name is <code class="docutils literal"><span class="pre">f.py</span></code>. Start with viewing the history:</p>
+e.g., a file called <code class="docutils literal"><span class="pre">f.py</span></code>. Start with viewing the history:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git log f.py
 </pre></div>
 </div>
@@ -857,7 +864,7 @@ the files were in the repo. Restoring a file is then done by</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <center>
             <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
@@ -906,15 +913,17 @@ the files were in the repo. Restoring a file is then done by</p>
   <h4>Next topic</h4>
   <p class="topless"><a href="._main_bitgit005.html"
                         title="next chapter">Appendix: Working with multiple GitHub accounts</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/._main_bitgit004.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/._main_bitgit004.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -928,7 +937,7 @@ the files were in the repo. Restoring a file is then done by</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -940,12 +949,15 @@ the files were in the repo. Restoring a file is then done by</p>
         <li class="right" >
           <a href="._main_bitgit003.html" title="GitHub"
              >previous</a> |</li>
-        <li><a href="index.html">Quick Intro to Git and Project Hosting Services</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Quick Intro to Git and GitHub</a> &raquo;</li> 
       </ul>
     </div>
 <div class="wrapper">
   <div class="footer">
-  <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
+    <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
+    <br />
+    <br />
+      &copy;2015, Hans Petter Langtangen. Released under CC Attribution 4.0 license.
   </div>
 </div>
 

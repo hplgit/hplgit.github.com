@@ -88,30 +88,23 @@ easier to formulate descriptive commit messages since this command
 gives a listing of all the changes you have made to the files since
 the last commit or pull command.
 
-You may perform many commits, to keep track of small changes, before
+You may perform many commits (to keep track of small changes), before
 you push your changes to the global repository:
 
 .. code-block:: text
 
         Terminal> git push origin master
 
-It is recommended to push and pull frequently if the work takes place in several
-clones of the repo (i.e., there are many users or you work with the
-repo on different
-computers). Infrequent push and pull easily leads to merge problems
-(see the section :ref:`bitgit:git:merge`). Also remember that others
-cannot get your changes before they are pushed.
 
+.. admonition:: Do pull and push often
 
-.. admonition:: Do commit and pull often
-
-   If the central repo undergoes changes (by you on other computers or by
-   others), it is essential to often commit your local work and perform
-   a pull. This will keep your local files in sync with the repo.
-   Failing to frequently commit and pull (and hence merge your files with
-   the repo) will most likely lead to substantial merge problems at a
-   later stage (because the files have become too different for an automatic
-   merge algorithm to succeed).
+   It is recommended to pull, commit, and push
+   frequently if the work takes place in several
+   clones of the repo (i.e., there are many users or you work with the
+   repo on different
+   computers). Infrequent push and pull easily leads to merge problems
+   (see the section :ref:`bitgit:git:merge`). Also remember that others
+   (human and machines) cannot get your changes before they are pushed!
 
 
 
@@ -126,6 +119,26 @@ cannot get your changes before they are pushed.
    and ``??`` for not being registered in the repo. Pay particular attention
    to the ``??`` files and examine if all of them are redundant or easily
    regenerated from other files - of not, run ``git add``.
+
+
+
+
+
+.. admonition:: Make sure you have a ``.gitignore`` file
+
+   The simplest way of adding files to the repo is to do
+   
+   .. code-block:: text
+   
+           Terminal> git add .
+   
+   The dot adds every file, and this is seldom what you want, since
+   your directories frequently contain large redundant files or files
+   that can easily be regenerated. You therefore need a
+   ``.gitignore`` file, see the section :ref:`bitgit:git:config`,
+   either in your home directory or in the root directory of the repo.
+   The ``.gitignore`` file will ignore undesired files when you do
+   ``git add .``.
 
 
 
@@ -194,7 +207,7 @@ Retrieving old files
 ~~~~~~~~~~~~~~~~~~~~
 
 Occasionally you need to go back to an earlier version of a file,
-say its name is ``f.py``. Start with viewing the history:
+e.g., a file called ``f.py``. Start with viewing the history:
 
 .. code-block:: text
 

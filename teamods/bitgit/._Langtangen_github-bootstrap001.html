@@ -26,23 +26,27 @@ Automatically generated HTML file from DocOnce source
               ('Why not Dropbox or Google Drive?', 2, None, '___sec1'),
               ('Repositories and local copies', 2, None, '___sec2'),
               ('Installing Git', 2, None, '___sec3'),
+              ('Configuring Git',
+               2,
+               'bitgit:git:config',
+               'bitgit:git:config'),
               ('GitHub', 1, 'bitgit:github', 'bitgit:github'),
-              ('Creating a new project', 2, None, '___sec5'),
-              ('Collaborating', 3, None, '___sec6'),
-              ('Wiki pages', 2, None, '___sec7'),
-              ('Project web pages', 2, None, '___sec8'),
-              ('User web pages', 2, None, '___sec9'),
+              ('Creating a new project', 2, None, '___sec6'),
+              ('Collaborating', 3, None, '___sec7'),
+              ('Wiki pages', 2, None, '___sec8'),
+              ('Project web pages', 2, None, '___sec9'),
+              ('User web pages', 2, None, '___sec10'),
               ('Using Git', 1, 'bitgit:git', 'bitgit:git'),
-              ('Basic Git commands', 2, None, '___sec11'),
-              ('Cloning', 3, None, '___sec12'),
-              ('The pull-change-push cycle', 3, None, '___sec13'),
-              ('Viewing the history of files', 3, None, '___sec14'),
-              ('Retrieving old files', 3, None, '___sec15'),
+              ('Basic Git commands', 2, None, '___sec12'),
+              ('Cloning', 3, None, '___sec13'),
+              ('The pull-change-push cycle', 3, None, '___sec14'),
+              ('Viewing the history of files', 3, None, '___sec15'),
+              ('Retrieving old files', 3, None, '___sec16'),
               ('Reset the entire repo to an old version',
                3,
                None,
-               '___sec16'),
-              ('Going back to a previous commit', 3, None, '___sec17'),
+               '___sec17'),
+              ('Going back to a previous commit', 3, None, '___sec18'),
               ('Merging files with Git',
                2,
                'bitgit:git:merge',
@@ -51,13 +55,13 @@ Automatically generated HTML file from DocOnce source
                2,
                'bitgit:git:branch:stash',
                'bitgit:git:branch:stash'),
-              ('Branching', 3, None, '___sec20'),
-              ('Stashing', 3, None, '___sec21'),
+              ('Branching', 3, None, '___sec21'),
+              ('Stashing', 3, None, '___sec22'),
               ('Replacing pull by fetch and merge',
                2,
                'bitgit:git:fetch',
                'bitgit:git:fetch'),
-              ('Configuring the `git diff` command', 3, None, '___sec23'),
+              ('Configuring the `git diff` command', 3, None, '___sec24'),
               ('Team work with forking and pull requests',
                2,
                'bitgit:git:team',
@@ -66,15 +70,15 @@ Automatically generated HTML file from DocOnce source
                2,
                'bitgit:git:clone:branches',
                'bitgit:git:clone:branches'),
-              ('Git workflows', 2, None, '___sec26'),
-              ('Git tips', 2, None, '___sec27'),
+              ('Git workflows', 2, None, '___sec27'),
+              ('Git tips', 2, None, '___sec28'),
               ('How can I see which files are tracked by Git?',
                3,
                None,
-               '___sec28'),
-              ('How can I reduce the size of a repo?', 3, None, '___sec29'),
-              ('How can I restore missing files?', 3, None, '___sec30'),
-              ('More documentation on Git', 2, None, '___sec31'),
+               '___sec29'),
+              ('How can I reduce the size of a repo?', 3, None, '___sec30'),
+              ('How can I restore missing files?', 3, None, '___sec31'),
+              ('More documentation on Git', 2, None, '___sec32'),
               ('Appendix: Working with multiple GitHub accounts',
                1,
                'appendix:github:multiple:accounts',
@@ -173,12 +177,13 @@ MS Word or Excel documents, and OpenOffice documents.
 <h2 id="___sec3">Installing Git </h2>
 
 <p>
-The installation of Git on various systems is described
-on the <a href="http://git-scm.com/" target="_self">Git website</a> under the <em>Download</em> section.
-Git involves compiled code so it is most convenient to download a
+The installation of Git on various systems is described on the <a href="http://git-scm.com/" target="_self">Git
+website</a> under the <em>Download</em> section.  Git
+involves compiled code so it is most convenient to download a
 precompiled binary version of the software on Windows, Mac and other
-Linux computers.
-On Ubuntu or any Debian-based system the relevant installation command is
+Linux computers.  On Ubuntu or any Debian-based system the relevant
+installation command is
+
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
@@ -192,10 +197,12 @@ Git</a>. Three examples are
 <a href="https://code.google.com/p/tortoisegit/" target="_self">TortoiseGit</a>, and
 <a href="http://sourcetreeapp.com/" target="_self">SourceTree</a>.
 
+<h2 id="bitgit:git:config">Configuring Git</h2>
+
 <p>
 Make a file <code>.gitconfig</code> in your home directory with information on
 your full name, email address, your favorite text editor, and
-the name of an "excludes file" which defines the file types that Git
+the name of an &quot;excludes file&quot; which defines the file types that Git
 should omit when bringing new directories under version control.
 Here is a simplified version of the author's <code>.gitconfig</code> file:
 <p>
@@ -210,7 +217,7 @@ editor = emacs
 excludesfile = ~/.gitignore
 </pre></div>
 <p>
-The "excludes file" is called <code>.gitignore</code> and must list,
+The &quot;excludes file&quot; is called <code>.gitignore</code> and must list,
 using the Unix Shell Wildcard notation,
 the type of files that you do not need to have under version control,
 because they represent garbage or temporary information,
@@ -280,6 +287,11 @@ some program.
 <a href="http://..."><img width="250" align=right src="http://..."></a>
 </footer>
 -->
+
+
+<center style="font-size:80%">
+<!-- copyright only on the titlepage -->
+</center>
 
 
 </body>

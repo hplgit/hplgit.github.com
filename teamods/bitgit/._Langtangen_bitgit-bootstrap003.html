@@ -28,9 +28,13 @@ Automatically generated HTML file from DocOnce source
               ('Repositories and local copies', 2, None, '___sec3'),
               ('What to choose?', 2, None, '___sec4'),
               ('Installing Git', 2, None, '___sec5'),
+              ('Configuring Git',
+               2,
+               'bitgit:git:config',
+               'bitgit:git:config'),
               ('Bitbucket', 1, 'bitgit:bitbucket', 'bitgit:bitbucket'),
-              ('Creating a new project', 2, None, '___sec7'),
-              ('Collaborating', 3, None, '___sec8'),
+              ('Creating a new project', 2, None, '___sec8'),
+              ('Collaborating', 3, None, '___sec9'),
               ('User web pages',
                2,
                'bitgit:bitbucket:web',
@@ -40,22 +44,22 @@ Automatically generated HTML file from DocOnce source
                'bitgit:bitbucket:URLs',
                'bitgit:bitbucket:URLs'),
               ('GitHub', 1, 'bitgit:github', 'bitgit:github'),
-              ('Creating a new project', 2, None, '___sec12'),
-              ('Collaborating', 3, None, '___sec13'),
-              ('Wiki pages', 2, None, '___sec14'),
-              ('Project web pages', 2, None, '___sec15'),
-              ('User web pages', 2, None, '___sec16'),
+              ('Creating a new project', 2, None, '___sec13'),
+              ('Collaborating', 3, None, '___sec14'),
+              ('Wiki pages', 2, None, '___sec15'),
+              ('Project web pages', 2, None, '___sec16'),
+              ('User web pages', 2, None, '___sec17'),
               ('Using Git', 1, 'bitgit:git', 'bitgit:git'),
-              ('Basic Git commands', 2, None, '___sec18'),
-              ('Cloning', 3, None, '___sec19'),
-              ('The pull-change-push cycle', 3, None, '___sec20'),
-              ('Viewing the history of files', 3, None, '___sec21'),
-              ('Retrieving old files', 3, None, '___sec22'),
+              ('Basic Git commands', 2, None, '___sec19'),
+              ('Cloning', 3, None, '___sec20'),
+              ('The pull-change-push cycle', 3, None, '___sec21'),
+              ('Viewing the history of files', 3, None, '___sec22'),
+              ('Retrieving old files', 3, None, '___sec23'),
               ('Reset the entire repo to an old version',
                3,
                None,
-               '___sec23'),
-              ('Going back to a previous commit', 3, None, '___sec24'),
+               '___sec24'),
+              ('Going back to a previous commit', 3, None, '___sec25'),
               ('Merging files with Git',
                2,
                'bitgit:git:merge',
@@ -64,13 +68,13 @@ Automatically generated HTML file from DocOnce source
                2,
                'bitgit:git:branch:stash',
                'bitgit:git:branch:stash'),
-              ('Branching', 3, None, '___sec27'),
-              ('Stashing', 3, None, '___sec28'),
+              ('Branching', 3, None, '___sec28'),
+              ('Stashing', 3, None, '___sec29'),
               ('Replacing pull by fetch and merge',
                2,
                'bitgit:git:fetch',
                'bitgit:git:fetch'),
-              ('Configuring the `git diff` command', 3, None, '___sec30'),
+              ('Configuring the `git diff` command', 3, None, '___sec31'),
               ('Team work with forking and pull requests',
                2,
                'bitgit:git:team',
@@ -79,15 +83,15 @@ Automatically generated HTML file from DocOnce source
                2,
                'bitgit:git:clone:branches',
                'bitgit:git:clone:branches'),
-              ('Git workflows', 2, None, '___sec33'),
-              ('Git tips', 2, None, '___sec34'),
+              ('Git workflows', 2, None, '___sec34'),
+              ('Git tips', 2, None, '___sec35'),
               ('How can I see which files are tracked by Git?',
                3,
                None,
-               '___sec35'),
-              ('How can I reduce the size of a repo?', 3, None, '___sec36'),
-              ('How can I restore missing files?', 3, None, '___sec37'),
-              ('More documentation on Git', 2, None, '___sec38'),
+               '___sec36'),
+              ('How can I reduce the size of a repo?', 3, None, '___sec37'),
+              ('How can I restore missing files?', 3, None, '___sec38'),
+              ('More documentation on Git', 2, None, '___sec39'),
               ('Appendix: Working with multiple GitHub accounts',
                1,
                'appendix:github:multiple:accounts',
@@ -155,7 +159,7 @@ I do not recommend to provide an SSH key although it can be
 done (see  <a href="._Langtangen_bitgit-bootstrap005.html#appendix:github:multiple:accounts">Appendix: Working with multiple GitHub accounts</a>). It is easier
 to log in and add collaborators using their personal GitHub usernames.
 
-<h2 id="___sec12">Creating a new project </h2>
+<h2 id="___sec13">Creating a new project </h2>
 
 <p>
 Click on <em>New repository</em> on the main page and fill out a project
@@ -201,7 +205,7 @@ Terminal&gt; git push -u origin master
 <p>
 The daily file operations are explained in the section <a href="._Langtangen_bitgit-bootstrap004.html#bitgit:git">Using Git</a>.
 
-<h3 id="___sec13">Collaborating </h3>
+<h3 id="___sec14">Collaborating </h3>
 
 <p>
 To give others permissions to push their edits of files to the
@@ -227,7 +231,7 @@ the <em>watch</em> button), respectively.
 <!-- No, this doesn't work: Clicking the <em>Email</em> button turns -->
 <!-- on email notifications to those participating and/or watching. -->
 
-<h2 id="___sec14">Wiki pages </h2>
+<h2 id="___sec15">Wiki pages </h2>
 
 <p>
 With every GitHub project there is an option to create wiki pages.
@@ -281,7 +285,7 @@ The address can be stored as <code>url</code> in <code>.git/config</code> in the
 root directory of the wiki project so that just a standard
 <code>git push</code> works.
 
-<h2 id="___sec15">Project web pages </h2>
+<h2 id="___sec16">Project web pages </h2>
 
 <p>
 HTML pages stored in your repo cannot be linked to and properly
@@ -510,7 +514,7 @@ the HTML code.
 </div>
 
 
-<h2 id="___sec16">User web pages </h2>
+<h2 id="___sec17">User web pages </h2>
 
 <p>
 GitHub also allows you to create user pages and organization pages not
@@ -566,6 +570,11 @@ If you want to use Sphinx generated HTML pages, recall to add an empty file
 <a href="http://..."><img width="250" align=right src="http://..."></a>
 </footer>
 -->
+
+
+<center style="font-size:80%">
+<!-- copyright only on the titlepage -->
+</center>
 
 
 </body>

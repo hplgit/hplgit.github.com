@@ -72,9 +72,13 @@ div { text-align: justify; text-justify: inter-word; }
               ('Repositories and local copies', 2, None, '___sec3'),
               ('What to choose?', 2, None, '___sec4'),
               ('Installing Git', 2, None, '___sec5'),
+              ('Configuring Git',
+               2,
+               'bitgit:git:config',
+               'bitgit:git:config'),
               ('Bitbucket', 1, 'bitgit:bitbucket', 'bitgit:bitbucket'),
-              ('Creating a new project', 2, None, '___sec7'),
-              ('Collaborating', 3, None, '___sec8'),
+              ('Creating a new project', 2, None, '___sec8'),
+              ('Collaborating', 3, None, '___sec9'),
               ('User web pages',
                2,
                'bitgit:bitbucket:web',
@@ -84,22 +88,22 @@ div { text-align: justify; text-justify: inter-word; }
                'bitgit:bitbucket:URLs',
                'bitgit:bitbucket:URLs'),
               ('GitHub', 1, 'bitgit:github', 'bitgit:github'),
-              ('Creating a new project', 2, None, '___sec12'),
-              ('Collaborating', 3, None, '___sec13'),
-              ('Wiki pages', 2, None, '___sec14'),
-              ('Project web pages', 2, None, '___sec15'),
-              ('User web pages', 2, None, '___sec16'),
+              ('Creating a new project', 2, None, '___sec13'),
+              ('Collaborating', 3, None, '___sec14'),
+              ('Wiki pages', 2, None, '___sec15'),
+              ('Project web pages', 2, None, '___sec16'),
+              ('User web pages', 2, None, '___sec17'),
               ('Using Git', 1, 'bitgit:git', 'bitgit:git'),
-              ('Basic Git commands', 2, None, '___sec18'),
-              ('Cloning', 3, None, '___sec19'),
-              ('The pull-change-push cycle', 3, None, '___sec20'),
-              ('Viewing the history of files', 3, None, '___sec21'),
-              ('Retrieving old files', 3, None, '___sec22'),
+              ('Basic Git commands', 2, None, '___sec19'),
+              ('Cloning', 3, None, '___sec20'),
+              ('The pull-change-push cycle', 3, None, '___sec21'),
+              ('Viewing the history of files', 3, None, '___sec22'),
+              ('Retrieving old files', 3, None, '___sec23'),
               ('Reset the entire repo to an old version',
                3,
                None,
-               '___sec23'),
-              ('Going back to a previous commit', 3, None, '___sec24'),
+               '___sec24'),
+              ('Going back to a previous commit', 3, None, '___sec25'),
               ('Merging files with Git',
                2,
                'bitgit:git:merge',
@@ -108,13 +112,13 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'bitgit:git:branch:stash',
                'bitgit:git:branch:stash'),
-              ('Branching', 3, None, '___sec27'),
-              ('Stashing', 3, None, '___sec28'),
+              ('Branching', 3, None, '___sec28'),
+              ('Stashing', 3, None, '___sec29'),
               ('Replacing pull by fetch and merge',
                2,
                'bitgit:git:fetch',
                'bitgit:git:fetch'),
-              ('Configuring the `git diff` command', 3, None, '___sec30'),
+              ('Configuring the `git diff` command', 3, None, '___sec31'),
               ('Team work with forking and pull requests',
                2,
                'bitgit:git:team',
@@ -123,15 +127,15 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'bitgit:git:clone:branches',
                'bitgit:git:clone:branches'),
-              ('Git workflows', 2, None, '___sec33'),
-              ('Git tips', 2, None, '___sec34'),
+              ('Git workflows', 2, None, '___sec34'),
+              ('Git tips', 2, None, '___sec35'),
               ('How can I see which files are tracked by Git?',
                3,
                None,
-               '___sec35'),
-              ('How can I reduce the size of a repo?', 3, None, '___sec36'),
-              ('How can I restore missing files?', 3, None, '___sec37'),
-              ('More documentation on Git', 2, None, '___sec38'),
+               '___sec36'),
+              ('How can I reduce the size of a repo?', 3, None, '___sec37'),
+              ('How can I restore missing files?', 3, None, '___sec38'),
+              ('More documentation on Git', 2, None, '___sec39'),
               ('Appendix: Working with multiple GitHub accounts',
                1,
                'appendix:github:multiple:accounts',
@@ -161,7 +165,7 @@ end of tocinfo -->
 <center>[2] <b>Deptartment of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Aug 23, 2015</h4></center> <!-- date -->
+<center><h4>Oct 4, 2015</h4></center> <!-- date -->
 <br>
 <p>
 <div id="bitgit:top"></div>
@@ -318,12 +322,13 @@ project is "My Project".
 <h2 id="___sec5">Installing Git </h2>
 
 <p>
-The installation of Git on various systems is described
-on the <a href="http://git-scm.com/" target="_self">Git website</a> under the <em>Download</em> section.
-Git involves compiled code so it is most convenient to download a
+The installation of Git on various systems is described on the <a href="http://git-scm.com/" target="_self">Git
+website</a> under the <em>Download</em> section.  Git
+involves compiled code so it is most convenient to download a
 precompiled binary version of the software on Windows, Mac and other
-Linux computers.
-On Ubuntu or any Debian-based system the relevant installation command is
+Linux computers.  On Ubuntu or any Debian-based system the relevant
+installation command is
+
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
@@ -337,10 +342,12 @@ Git</a>. Three examples are
 <a href="https://code.google.com/p/tortoisegit/" target="_self">TortoiseGit</a>, and
 <a href="http://sourcetreeapp.com/" target="_self">SourceTree</a>.
 
+<h2 id="bitgit:git:config">Configuring Git</h2>
+
 <p>
 Make a file <code>.gitconfig</code> in your home directory with information on
 your full name, email address, your favorite text editor, and
-the name of an "excludes file" which defines the file types that Git
+the name of an &quot;excludes file&quot; which defines the file types that Git
 should omit when bringing new directories under version control.
 Here is a simplified version of the author's <code>.gitconfig</code> file:
 <p>
@@ -355,7 +362,7 @@ editor = emacs
 excludesfile = ~/.gitignore
 </pre></div>
 <p>
-The "excludes file" is called <code>.gitignore</code> and must list,
+The &quot;excludes file&quot; is called <code>.gitignore</code> and must list,
 using the Unix Shell Wildcard notation,
 the type of files that you do not need to have under version control,
 because they represent garbage or temporary information,
@@ -428,7 +435,7 @@ and the TortoiseHG programs to generate and register keys, see the
 help pages on Bitbucket. Once the keys are generated, you can continue
 using them on any computer.
 
-<h2 id="___sec7">Creating a new project </h2>
+<h2 id="___sec8">Creating a new project </h2>
 
 <p>
 Click at <em>Repositories</em> and at <em>Create repository</em>.
@@ -518,7 +525,7 @@ Further work with the files must always follow the pull, edit, commit, and
 push steps explained in
 the section <a href="#bitgit:git">Using Git</a> for Git.
 
-<h3 id="___sec8">Collaborating </h3>
+<h3 id="___sec9">Collaborating </h3>
 
 <p>
 There is a button <em>Send invitation</em> on the project home page where you
@@ -611,7 +618,7 @@ I do not recommend to provide an SSH key although it can be
 done (see  <a href="#appendix:github:multiple:accounts">Appendix: Working with multiple GitHub accounts</a>). It is easier
 to log in and add collaborators using their personal GitHub usernames.
 
-<h2 id="___sec12">Creating a new project </h2>
+<h2 id="___sec13">Creating a new project </h2>
 
 <p>
 Click on <em>New repository</em> on the main page and fill out a project
@@ -657,7 +664,7 @@ Terminal&gt; git push -u origin master
 <p>
 The daily file operations are explained in the section <a href="#bitgit:git">Using Git</a>.
 
-<h3 id="___sec13">Collaborating </h3>
+<h3 id="___sec14">Collaborating </h3>
 
 <p>
 To give others permissions to push their edits of files to the
@@ -683,7 +690,7 @@ the <em>watch</em> button), respectively.
 <!-- No, this doesn't work: Clicking the <em>Email</em> button turns -->
 <!-- on email notifications to those participating and/or watching. -->
 
-<h2 id="___sec14">Wiki pages </h2>
+<h2 id="___sec15">Wiki pages </h2>
 
 <p>
 With every GitHub project there is an option to create wiki pages.
@@ -737,7 +744,7 @@ The address can be stored as <code>url</code> in <code>.git/config</code> in the
 root directory of the wiki project so that just a standard
 <code>git push</code> works.
 
-<h2 id="___sec15">Project web pages </h2>
+<h2 id="___sec16">Project web pages </h2>
 
 <p>
 HTML pages stored in your repo cannot be linked to and properly
@@ -968,7 +975,7 @@ the HTML code.
 </div>
 
 
-<h2 id="___sec16">User web pages </h2>
+<h2 id="___sec17">User web pages </h2>
 
 <p>
 GitHub also allows you to create user pages and organization pages not
@@ -1013,9 +1020,9 @@ and there are many <a href="http://git-scm.com/downloads/guis" target="_self">op
 this respect. There are also GUIs for Mac users.
 Here we concentrate on the efficient command-line interface to Git.
 
-<h2 id="___sec18">Basic Git commands </h2>
+<h2 id="___sec19">Basic Git commands </h2>
 
-<h3 id="___sec19">Cloning </h3>
+<h3 id="___sec20">Cloning </h3>
 
 <p>
 You get started with your project on a new machine, or another user
@@ -1032,7 +1039,7 @@ ls
 Recall to replace <code>user</code> by your real username and <code>My-Project</code> by the
 actual project name.
 
-<h3 id="___sec20">The pull-change-push cycle </h3>
+<h3 id="___sec21">The pull-change-push cycle </h3>
 
 <p>
 The typical work flow with the "My Project" project starts with
@@ -1079,32 +1086,25 @@ gives a listing of all the changes you have made to the files since
 the last commit or pull command.
 
 <p>
-You may perform many commits, to keep track of small changes, before
+You may perform many commits (to keep track of small changes), before
 you push your changes to the global repository:
+
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git push origin master
 </pre></div>
 <p>
-It is recommended to push and pull frequently if the work takes place in several
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>Do pull and push often!</b>
+<p>
+It is recommended to pull, commit, and push
+frequently if the work takes place in several
 clones of the repo (i.e., there are many users or you work with the
 repo on different
 computers). Infrequent push and pull easily leads to merge problems
 (see the section <a href="#bitgit:git:merge">Merging files with Git</a>). Also remember that others
-cannot get your changes before they are pushed.
-
-<p>
-<div class="alert alert-block alert-warning alert-text-normal">
-<b>Do commit and pull often!</b>
-<p>
-If the central repo undergoes changes (by you on other computers or by
-others), it is essential to often commit your local work and perform
-a pull. This will keep your local files in sync with the repo.
-Failing to frequently commit and pull (and hence merge your files with
-the repo) will most likely lead to substantial merge problems at a
-later stage (because the files have become too different for an automatic
-merge algorithm to succeed).
+(human and machines) cannot get your changes before they are pushed!
 </div>
 
 
@@ -1120,7 +1120,29 @@ regenerated from other files - of not, run <code>git add</code>.
 </div>
 
 
-<h3 id="___sec21">Viewing the history of files </h3>
+<p>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Make sure you have a <code>.gitignore</code> file.</b>
+<p>
+The simplest way of adding files to the repo is to do
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git add .
+</pre></div>
+<p>
+The dot adds every file, and this is seldom what you want, since
+your directories frequently contain large redundant files or files
+that can easily be regenerated. You therefore need a
+<code>.gitignore</code> file, see the section <a href="#bitgit:git:config">Configuring Git</a>,
+either in your home directory or in the root directory of the repo.
+The <code>.gitignore</code> file will ignore undesired files when you do
+<code>git add .</code>.
+</div>
+
+
+<h3 id="___sec22">Viewing the history of files </h3>
 
 <p>
 A nice graphical tool allows you to view all changes, or just
@@ -1179,11 +1201,12 @@ This is useful to track down particular changes in the files to see when
 they occurred and who introduced them. One can also search for regular
 expressions instead of exact text: just replace <code>-S</code> by <code>-G</code>.
 
-<h3 id="___sec22">Retrieving old files </h3>
+<h3 id="___sec23">Retrieving old files </h3>
 
 <p>
 Occasionally you need to go back to an earlier version of a file,
-say its name is <code>f.py</code>. Start with viewing the history:
+e.g., a file called <code>f.py</code>. Start with viewing the history:
+
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
@@ -1235,7 +1258,7 @@ it requires the full path from the root git directory:
           c7673487763ec2bb374758fb8e7efefa12f16dea:dir1/dir2/f.py
 </pre></div>
 
-<h3 id="___sec23">Reset the entire repo to an old version </h3>
+<h3 id="___sec24">Reset the entire repo to an old version </h3>
 
 <p>
 Run <code>git log</code> on some file and find the commit hash of the date
@@ -1260,7 +1283,7 @@ Note the period at the end of the first command (without it, you only
 get the possibility to look at old files, but the next commit is not
 affected).
 
-<h3 id="___sec24">Going back to a previous commit </h3>
+<h3 id="___sec25">Going back to a previous commit </h3>
 
 <p>
 Sometimes accidents with many files happen and you want to go back
@@ -1473,7 +1496,7 @@ files and push these corrections immediately.  The problem is that
 such a push will also include the latest, yet unfinished files that you
 have committed.
 
-<h3 id="___sec27">Branching </h3>
+<h3 id="___sec28">Branching </h3>
 
 <p>
 A better organization of your work would
@@ -1530,7 +1553,7 @@ in the remote repo, run
 <p>
 You can learn more in an <a href="http://pcottle.github.io/learnGitBranching/" target="_self">excellent introduction and demonstration of Git branching</a>.
 
-<h3 id="___sec28">Stashing </h3>
+<h3 id="___sec29">Stashing </h3>
 
 <p>
 It is not possible to switch branches unless you have committed the
@@ -1641,7 +1664,7 @@ Terminal&gt; git merge origin/next
 Terminal&gt; git checkout master
 </pre></div>
 
-<h3 id="___sec30">Configuring the <code>git diff</code> command </h3>
+<h3 id="___sec31">Configuring the <code>git diff</code> command </h3>
 
 <p>
 The <code>git diff</code> command launches by default the
@@ -1881,7 +1904,7 @@ It is possible to write a little script that takes the output of
 <code>git branch -a</code> after a <code>git clone</code> command and automatically check
 out all branches via <code>git checkout</code>.
 
-<h2 id="___sec33">Git workflows </h2>
+<h2 id="___sec34">Git workflows </h2>
 
 <p>
 Although the purpose of these notes is just to get the reader started
@@ -1922,9 +1945,9 @@ useful.
 <!-- The script can checkout two directories and just switch between -->
 <!-- these as two users, don't need to be different machines... -->
 
-<h2 id="___sec34">Git tips </h2>
+<h2 id="___sec35">Git tips </h2>
 
-<h3 id="___sec35">How can I see which files are tracked by Git? </h3>
+<h3 id="___sec36">How can I see which files are tracked by Git? </h3>
 
 <p>
 <code>git ls-files</code> is the command:
@@ -1941,7 +1964,7 @@ Terminal&gt; git ls-files myfile --error-unmatch
 The latter command prints an error message if <code>myfile</code> is not tracked.
 See <code>man git-ls-files</code> for the many options this utility has.
 
-<h3 id="___sec36">How can I reduce the size of a repo? </h3>
+<h3 id="___sec37">How can I reduce the size of a repo? </h3>
 
 <p>
 The command <code>git gc</code> can compress a git repository and should be
@@ -1975,7 +1998,7 @@ If other users have created their own branches in this repo, they
 need to <a href="http://git-scm.com/book/en/Git-Branching-Rebasing" target="_self"><tt>rebase</tt></a>,
 not <code>merge</code>, when updating the branches!
 
-<h3 id="___sec37">How can I restore missing files? </h3>
+<h3 id="___sec38">How can I restore missing files? </h3>
 
 <p>
 Sometimes you accidentally remove files from a repo, either by <code>git rm</code> or
@@ -2002,7 +2025,7 @@ the files were in the repo. Restoring a file is then done by
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; git checkout &lt;commit hash&gt; filename
 </pre></div>
 
-<h2 id="___sec38">More documentation on Git </h2>
+<h2 id="___sec39">More documentation on Git </h2>
 
 <ul>
  <li> <a href="http://rogerdudler.github.io/git-guide/" target="_self">Git - the simple guide</a></li>
@@ -2089,6 +2112,11 @@ lists all your SSH keys. The shown strings can be compared with the
 string in the SSH key field of any GitHub account.
 
 <!-- ------------------- end of main content --------------- -->
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen. Released under CC Attribution 4.0 license
+</center>
 
 
 </body>
