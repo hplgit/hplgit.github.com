@@ -16,6 +16,16 @@ Automatically generated HTML file from DocOnce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+</style>
+
 
 </head>
 
@@ -62,6 +72,7 @@ MathJax.Hub.Config({
     </button>
     <a class="navbar-brand" href="numerical_programming_guide.html">Guidelines for Numerical Codes</a>
   </div>
+
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
@@ -257,14 +268,14 @@ part, here the Trapezoidal rule, can be reused in many other
 problems.
 
 <p>
-We may say that the the first reason is comes from the philosophy of
+We may say that the first reason is comes from the philosophy of
 mathematics and science, while the second reason is motivated by the
 practical aspect of reducing future coding efforts by relying on a
-resuable, general, and working function.  This aspect is the basis of
+reusable, general, and working function.  This aspect is the basis of
 a fundamental software engineering practice: <em>programs should consist
 of general pieces (functions) that can be reused without
 modifications to solve other problems</em>.  The importance of this
-philosopy becomes obvious when we extend the problem as described
+philosophy becomes obvious when we extend the problem as described
 below.
 
 <p>
@@ -280,7 +291,7 @@ in the present case.
 <p>
 We also emphasize that the \( g(t) \) formula is implemented in a separate
 Python function such that the formula can be reused in other
-occations, for instance, when integrating \( g(t) \) by an alternative
+occasions, for instance, when integrating \( g(t) \) by an alternative
 numerical integration rule. In many problems, the formula is much more
 complicated than the one used here, and it is important to have a
 single, well-tested implementation of the formula.
@@ -288,12 +299,12 @@ single, well-tested implementation of the formula.
 <p>
 Readers may also realize that the nature of programming (combined with
 sound programming habits) helps to increase the understanding of
-mathematics through the clear distinction between general methods and
+mathematics through the clear distinction between general methods
 and a specialized problem. Understanding the generality of methods also
 requires an understanding of abstractions in mathematics.
 Programming exercises therefore enforce a stronger focus on abstractions
 in general. All these arguments boil down to Kristen Nygaard's famous
-three words: "Programming is understanding"!
+three words: &quot;Programming is understanding&quot;!
 
 <h2 id="___sec6">Extended Exercise </h2>
 

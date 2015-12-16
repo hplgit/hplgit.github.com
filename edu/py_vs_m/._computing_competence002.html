@@ -16,6 +16,16 @@ Automatically generated HTML file from DocOnce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+</style>
+
 
 </head>
 
@@ -24,33 +34,56 @@ Automatically generated HTML file from DocOnce source
  'sections': [(u'Why is computing competence important?', 1, None, '___sec0'),
               (u'General learning outcomes for computing competence',
                1,
-               None,
-               '___sec1'),
+               u'sec:learning_outcomes',
+               u'sec:learning_outcomes'),
               (u'Case study', 1, None, '___sec2'),
               (u'Exercise for the case study', 2, None, '___sec3'),
               (u'Solution 1: Minimalistic Matlab', 2, None, '___sec4'),
               (u'Solution 2: Matlab with functions', 2, None, '___sec5'),
               (u'Solution 3: Standard Python', 2, None, '___sec6'),
-              (u'Vectorization', 2, None, '___sec7'),
-              (u'Verification and testing frameworks', 2, None, '___sec8'),
-              (u'A simple test function', 3, None, '___sec9'),
+              (u'Verification and testing frameworks',
+               1,
+               u'sec:verify',
+               u'sec:verify'),
+              (u'A simple test function', 2, None, '___sec8'),
               (u'A proper test function for the nose or pytest test framework',
-               3,
+               2,
+               None,
+               '___sec9'),
+              (u'Use of symbolic computing for exact results',
+               2,
                None,
                '___sec10'),
-              (u'Use of symbolic computing for exact results',
-               3,
-               None,
-               '___sec11'),
+              (u'Use relative errors', 2, None, '___sec11'),
               (u'Test function for the convergence rate',
-               3,
+               2,
                None,
                '___sec12'),
-              (u'Tests in Matlab', 3, None, '___sec13'),
-              (u'Extended Exercise', 2, None, '___sec14'),
-              (u'A Python solution', 2, None, '___sec15'),
-              (u'Solution 4: a Java OO program', 2, None, '___sec16'),
-              (u'Conclusions', 2, None, '___sec17')]}
+              (u'Tests in Matlab', 2, None, '___sec13'),
+              (u'Rounding errors', 2, None, '___sec14'),
+              (u'Incorporation of other learning outcomes',
+               1,
+               None,
+               '___sec15'),
+              (u'High-performance computing: vectorization',
+               2,
+               u'sec:HPC:vec',
+               u'sec:HPC:vec'),
+              (u'High-performance computing: memory usage',
+               2,
+               None,
+               '___sec17'),
+              (u'High-performance computing: parallelization',
+               2,
+               None,
+               '___sec18'),
+              (u'Understanding of approximation errors', 2, None, '___sec19'),
+              (u'Overview of advanced algorithms', 2, None, '___sec20'),
+              (u'Uncertainty quantification', 2, None, '___sec21'),
+              (u'Extended exercise', 1, None, '___sec22'),
+              (u'A Python solution', 2, None, '___sec23'),
+              (u'Solution 4: a Java OO program', 1, None, '___sec24'),
+              (u'Conclusions', 1, None, '___sec25')]}
 end of tocinfo -->
 
 <body>
@@ -82,24 +115,38 @@ MathJax.Hub.Config({
     </button>
     <a class="navbar-brand" href="computing_competence.html">Learning Outcomes for Computing Competence</a>
   </div>
+
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
      <!-- navigation toc: --> <li><a href="._computing_competence001.html#___sec0" style="font-size: 80%;"><b>Why is computing competence important?</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;"><b>General learning outcomes for computing competence</b></a></li>
+     <!-- navigation toc: --> <li><a href="#sec:learning_outcomes" style="font-size: 80%;"><b>General learning outcomes for computing competence</b></a></li>
      <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec2" style="font-size: 80%;"><b>Case study</b></a></li>
      <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise for the case study</a></li>
      <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 1: Minimalistic Matlab</a></li>
      <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 2: Matlab with functions</a></li>
      <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 3: Standard Python</a></li>
-     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Vectorization</a></li>
-     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Verification and testing frameworks</a></li>
-     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Extended Exercise</a></li>
-     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A Python solution</a></li>
-     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 4: a Java OO program</a></li>
-     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Conclusions</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence003.html#sec:verify" style="font-size: 80%;"><b>Verification and testing frameworks</b></a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A simple test function</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A proper test function for the nose or pytest test framework</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Use of symbolic computing for exact results</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Use relative errors</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Test function for the convergence rate</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tests in Matlab</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Rounding errors</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec15" style="font-size: 80%;"><b>Incorporation of other learning outcomes</b></a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence003.html#sec:HPC:vec" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;High-performance computing: vectorization</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;High-performance computing: memory usage</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;High-performance computing: parallelization</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Understanding of approximation errors</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Overview of advanced algorithms</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence003.html#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Uncertainty quantification</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec22" style="font-size: 80%;"><b>Extended exercise</b></a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A Python solution</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec24" style="font-size: 80%;"><b>Solution 4: a Java OO program</b></a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence005.html#___sec25" style="font-size: 80%;"><b>Conclusions</b></a></li>
 
         </ul>
       </li>
@@ -115,7 +162,7 @@ MathJax.Hub.Config({
 <a name="part0002"></a>
 <!-- !split -->
 
-<h1 id="___sec1">General learning outcomes for computing competence </h1>
+<h1 id="sec:learning_outcomes">General learning outcomes for computing competence</h1>
 
 <p>
 Learning outcomes for <em>numerical algorithms</em>:
@@ -127,7 +174,7 @@ Learning outcomes for <em>numerical algorithms</em>:
  <li> Overview of advanced algorithms and how they can be accessed in available software.</li>
  <li> Knowledge of high-performance computing elements: memory usage, vectorized and parallel algorithms.</li>
  <li> Understanding of approximation errors.</li>
- <li> Application of fundamental and advanced algorithms to classial
+ <li> Application of fundamental and advanced algorithms to classical
    model problems as well as real-world problems with assessment of
    the uncertainty in the answer.</li>
 </ul>
@@ -165,9 +212,8 @@ Learning outcomes for <em>verification</em>:
 
 <ul>
    <li> Exact solution of numerical models</li>
-   <li> Method of manufactured solutions (chose solution and fit a problem)</li>
+   <li> Method of manufactured solutions (choose solution and fit a problem)</li>
    <li> Classical analytical solutions (incl. asymptotic solutions)</li>
-   <li> Asymptotic results for approximation errors</li>
    <li> Computing of asymptotic approximation errors (convergence rates)</li>
 </ul>
 
@@ -179,8 +225,8 @@ Learning outcomes for <em>mathematical modeling</em>:
 <ul>
  <li> Experience with deriving computational models from basic principles
    in applied sciences (physics, geology, biology, etc.).</li>
- <li> Experinece with bringing models on dimensionless form to
-   reduce and simpilify input data and increase the understanding
+ <li> Experience with bringing models on dimensionless form to
+   reduce and simplify input data and increase the understanding
    of the model by interpreting its dimensionless parameters.</li>
  <li> Experience with solving real problems from applied sciences.</li>
 </ul>
@@ -233,14 +279,14 @@ the solution is right?
 <p>
 After obtaining an understanding of the simplified problem, one can
 generalize the models to real applications, but illustrate how the
-insight from the simplified models and methods gives very valueable
+insight from the simplified models and methods gives very valuable
 knowledge when attacking the generalizations.  The focus on simplified
 models help to detach the mathematics from a lot of
 discipline-dependent application details and cultivate the common
 mathematical and implementational ideas.
 
 <p>
-This philosophy is closely related to the <em>Key principle</em> stated eariler:
+This philosophy is closely related to the <em>Key principle</em> stated earlier:
 
 <ol>
 <li> solving a complicated problem first starts with the purpose of
