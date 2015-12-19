@@ -8,9 +8,8 @@ exper1.run_experiments(I=I, a=a, T=T)
 # Write Doconce report
 do = open('tmp_report.do.txt', 'w')
 title = 'Experiments with Schemes for Exponential Decay'
-author1 = 'Hans Petter Langtangen Email:hpl@simula.no at '\
-          'Center for Biomedical Computing, '\
-          'Simula Research Laboratory & '\
+author1 = 'Hans Petter Langtangen {copyright|CC BY} Email:hpl@simula.no at '\
+          'Center for Biomedical Computing, Simula Research Laboratory & '\
           'Department of Informatics, University of Oslo.'
 date = 'today'
 
@@ -105,7 +104,7 @@ The numerical method is implemented in a Python function
 cite{Langtangen_2014} `solver` (found in the "`model`":
 "https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" module):
 
-@@@CODE ../model.py  fromto: def solver@def exact_sol
+@@@CODE ../model.py  fromto: def solver@def u_exact
 
 
 ======= Numerical experiments =======

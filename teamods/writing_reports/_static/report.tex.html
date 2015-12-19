@@ -90,14 +90,14 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 
 <span class="k">\documentclass</span>[<span class="c">%</span>
 oneside,                 <span class="c">% oneside: electronic viewing, twoside: printing</span>
-final,                   <span class="c">% or draft (marks overfull hboxes, figures with paths)</span>
+final,                   <span class="c">% draft: marks overfull hboxes, figures with paths</span>
 10pt]<span class="nb">{</span>article<span class="nb">}</span>
 
 <span class="k">\listfiles</span>               <span class="c">% print all files needed to compile this document</span>
 
 <span class="k">\usepackage</span><span class="nb">{</span>relsize,makeidx,color,setspace,amsmath,amsfonts,amssymb<span class="nb">}</span>
 <span class="k">\usepackage</span><span class="na">[table]</span><span class="nb">{</span>xcolor<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="nb">{</span>bm,microtype<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>bm,ltablex,microtype<span class="nb">}</span>
 
 <span class="k">\usepackage</span><span class="na">[pdftex]</span><span class="nb">{</span>graphicx<span class="nb">}</span>
 
@@ -164,7 +164,7 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 <span class="k">\usepackage</span><span class="nb">{</span>lmodern<span class="nb">}</span>         <span class="c">% Latin Modern fonts derived from Computer Modern</span>
 
 <span class="c">% Hyperlinks in PDF:</span>
-<span class="k">\definecolor</span><span class="nb">{</span>linkcolor<span class="nb">}{</span>rgb<span class="nb">}{</span>0,0,0.4<span class="nb">}</span>
+
 <span class="k">\usepackage</span><span class="nb">{</span>hyperref<span class="nb">}</span>
 <span class="k">\hypersetup</span><span class="nb">{</span>
     breaklinks=true,
@@ -206,6 +206,23 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 <span class="c">% (switch twoside to onside in documentclass to just have odd pages)</span>
 <span class="k">\fancyhead</span><span class="na">[LE,RO]</span><span class="nb">{</span><span class="k">\rightmark</span><span class="nb">}</span> <span class="c">% section</span>
 <span class="k">\fancyhead</span><span class="na">[RE,LO]</span><span class="nb">{</span><span class="k">\thepage</span><span class="nb">}</span>
+<span class="k">\fancyfoot</span><span class="na">[C]</span><span class="nb">{{</span><span class="k">\footnotesize</span> <span class="k">\copyright\ </span>2015, Hans Petter Langtangen. Released under CC Attribution 4.0 license<span class="nb">}}</span>
+
+<span class="c">% Ensure copyright on titlepage (article style) and chapter pages (book style)</span>
+<span class="k">\fancypagestyle</span><span class="nb">{</span>plain<span class="nb">}{</span>
+  <span class="k">\fancyhf</span><span class="nb">{}</span>
+  <span class="k">\fancyfoot</span><span class="na">[C]</span><span class="nb">{{</span><span class="k">\footnotesize</span> <span class="k">\copyright\ </span>2015, Hans Petter Langtangen. Released under CC Attribution 4.0 license<span class="nb">}}</span>
+<span class="c">%  \renewcommand{\footrulewidth}{0mm}</span>
+  <span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\headrulewidth</span><span class="nb">}{</span>0mm<span class="nb">}</span>
+<span class="nb">}</span>
+<span class="c">% Ensure copyright on titlepages with \thispagestyle{empty}</span>
+<span class="k">\fancypagestyle</span><span class="nb">{</span>empty<span class="nb">}{</span>
+  <span class="k">\fancyhf</span><span class="nb">{}</span>
+  <span class="k">\fancyfoot</span><span class="na">[C]</span><span class="nb">{{</span><span class="k">\footnotesize</span> <span class="k">\copyright\ </span>2015, Hans Petter Langtangen. Released under CC Attribution 4.0 license<span class="nb">}}</span>
+  <span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\footrulewidth</span><span class="nb">}{</span>0mm<span class="nb">}</span>
+  <span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\headrulewidth</span><span class="nb">}{</span>0mm<span class="nb">}</span>
+<span class="nb">}</span>
+
 <span class="k">\pagestyle</span><span class="nb">{</span>fancy<span class="nb">}</span>
 
 
@@ -360,12 +377,14 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 
 <span class="k">\raggedbottom</span>
 <span class="k">\makeindex</span>
+<span class="k">\usepackage</span><span class="na">[totoc]</span><span class="nb">{</span>idxlayout<span class="nb">}</span>   <span class="c">% for index in the toc</span>
+<span class="k">\usepackage</span><span class="na">[nottoc]</span><span class="nb">{</span>tocbibind<span class="nb">}</span>  <span class="c">% for references/bibliography in the toc</span>
 
 
 
 <span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
 
-<span class="c">% endif for #ifdef PREAMBLE</span>
+<span class="c">% matching end for #ifdef PREAMBLE</span>
 <span class="c">% #endif</span>
 
 
@@ -384,7 +403,7 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 
 <span class="c">% ----------------- end author(s) -------------------------</span>
 
-<span class="k">\date</span><span class="nb">{</span>Aug 24, 2015<span class="nb">}</span>
+<span class="k">\date</span><span class="nb">{</span>Dec 19, 2015<span class="nb">}</span>
 <span class="k">\maketitle</span>
 
 <span class="k">\begin</span><span class="nb">{</span>quote<span class="nb">}</span><span class="k">\small</span>
@@ -551,7 +570,7 @@ non-physically.
 
 
 
-<span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>[t]
+<span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>[!ht]  <span class="c">% fig:error</span>
   <span class="k">\centerline</span><span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[width=0.9\linewidth]</span><span class="nb">{</span>error.pdf<span class="nb">}}</span>
   <span class="k">\caption</span><span class="nb">{</span>
   Variation of the error with the time step. <span class="k">\label</span><span class="nb">{</span>fig:error<span class="nb">}</span>
@@ -609,8 +628,8 @@ The numbers corresponding to the figure above are given in the table below.
 
 
 
-
 <span class="c">% #ifdef PREAMBLE</span>
+<span class="k">\cleardoublepage\phantomsection</span>  <span class="c">% trick to get correct link to Index</span>
 <span class="k">\printindex</span>
 
 <span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>

@@ -1,6 +1,7 @@
 #!/bin/sh
-script_source=~/vc/deqbook/doc/src/decay-chapters/softeng/report_generation
-report_source=~/vc/deqbook/doc/src/decay-chapters/archive/decay-reports
+root=../../../decay-book/doc/.src/chapters
+script_source=$root/softeng/report_generation
+report_source=$root/archive/decay-reports
 cp -r ${report_source}/* .
 cp -r ${script_source} .
 cd report_generation
