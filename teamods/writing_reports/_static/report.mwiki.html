@@ -81,7 +81,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <div class="highlight"><pre>#TITLE (actually governed by the filename): Experiments with Schemes for Exponential Decay
 
 By &#39;&#39;&#39;Hans Petter Langtangen&#39;&#39;&#39; (hpl at simula.no)
-==== Dec 19, 2015 ====
+==== Dec 20, 2015 ====
 
 Copyright 2015, Hans Petter Langtangen. Released under CC Attribution 4.0 license
 
@@ -150,7 +150,8 @@ for &lt;math&gt;n=0,1,\ldots,N_t-1&lt;/math&gt;. This scheme corresponds to
 
 
 The numerical method is implemented in a Python function
-[2] &lt;code&gt;solver&lt;/code&gt; (found in the [https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py &lt;code&gt;model&lt;/code&gt;] module):
+[2] &lt;code&gt;solver&lt;/code&gt; (found in the [http://bit.ly/1Bkp72S &lt;code&gt;model&lt;/code&gt;]):
+
 
 &lt;syntaxhighlight lang=&quot;python&quot;&gt;
 def solver(I, a, T, dt, theta):
@@ -172,36 +173,50 @@ def solver(I, a, T, dt, theta):
 
 
 
-We define a set of numerical experiments where &lt;math&gt;I&lt;/math&gt;, &lt;math&gt;a&lt;/math&gt;, and &lt;math&gt;T&lt;/math&gt; are
-fixed, while &lt;math&gt;\Delta t&lt;/math&gt; and &lt;math&gt;\theta&lt;/math&gt; are varied.
-In particular, &lt;math&gt;I=1&lt;/math&gt;, &lt;math&gt;a=2&lt;/math&gt;, &lt;math&gt;\Delta t = 1.25, 0.75, 0.5, 0.1&lt;/math&gt;.
-
-
-
-==== The Backward Euler method ====
-
-[[File:BE.png|frame|800px|alt=BE.png|&lt;span title=&quot;&quot;&gt;&lt;/span&gt;]] &lt;!-- not yet uploaded to common.wikimedia.org --&gt;
-
-
-
-
-==== The Crank-Nicolson method ====
-
-[[File:CN.png|frame|800px|alt=CN.png|&lt;span title=&quot;&quot;&gt;&lt;/span&gt;]] &lt;!-- not yet uploaded to common.wikimedia.org --&gt;
+A set of numerical experiments has been carried out,
+where &lt;math&gt;I&lt;/math&gt;, &lt;math&gt;a&lt;/math&gt;, and &lt;math&gt;T&lt;/math&gt; are fixed, while &lt;math&gt;\Delta t&lt;/math&gt; and
+&lt;math&gt;\theta&lt;/math&gt; are varied. In particular, &lt;math&gt;I=1&lt;/math&gt;, &lt;math&gt;a=2&lt;/math&gt;,
+&lt;math&gt;\Delta t = 1.25, 0.75, 0.5, 0.1&lt;/math&gt;.
+Figure fig:BE contains four plots, corresponding to
+four decreasing &lt;math&gt;\Delta t&lt;/math&gt; values. The red dashed line
+represent the numerical solution computed by the Backward
+Euler scheme, while the blue line is the exact solution.
+The corresponding results for the Crank-Nicolson and
+Forward Euler methods appear in Figures fig:CN
+and fig:FE.
 
 
 
 
-==== The Forward Euler method ====
 
-[[File:FE.png|frame|800px|alt=FE.png|&lt;span title=&quot;&quot;&gt;&lt;/span&gt;]] &lt;!-- not yet uploaded to common.wikimedia.org --&gt;
-
+[[File:BE.png|frame|800px|alt=BE.png|The Backward Euler method for decreasing time step values. (fig:BE)]] &lt;!-- not yet uploaded to common.wikimedia.org --&gt;
 
 
 
-==== Error vs &lt;math&gt;\Delta t&lt;/math&gt; ====
 
-How &lt;math&gt;E&lt;/math&gt; varies with &lt;math&gt;\Delta t&lt;/math&gt; for &lt;math&gt;\theta=0,0.5,1&lt;/math&gt;
+
+
+[[File:CN.png|frame|800px|alt=CN.png|The Crank-Nicolson method for decreasing time step values. (fig:CN)]] &lt;!-- not yet uploaded to common.wikimedia.org --&gt;
+
+
+
+
+
+
+[[File:FE.png|frame|800px|alt=FE.png|The Forward Euler method for decreasing time step values. (fig:FE)]] &lt;!-- not yet uploaded to common.wikimedia.org --&gt;
+
+
+
+
+== Error vs &lt;math&gt;\Delta t&lt;/math&gt; ==
+
+
+How the error
+
+:&lt;math&gt;
+ E^n = \left(\int_0^T (Ie^{-at} - u^n)^2dt\right)^{\frac{1}{2}}
+&lt;/math&gt;
+varies with &lt;math&gt;\Delta t&lt;/math&gt; for the three numerical methods
 is shown in Figure fig:error.
 
 
@@ -221,7 +236,8 @@ non-physically.
 
 
 
-The numbers corresponding to the figure above are given in the table below.
+The &lt;math&gt;E&lt;/math&gt; numbers corresponding to Figure fig:error
+are given in the table below.
 
 &lt;table border=&quot;1&quot;&gt;
 &lt;thead&gt;

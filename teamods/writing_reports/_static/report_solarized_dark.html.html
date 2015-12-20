@@ -87,7 +87,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;generator&quot;</span> <span class="na">content=</span><span class="s">&quot;DocOnce: https://github.com/hplgit/doconce/&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;description&quot;</span> <span class="na">content=</span><span class="s">&quot;Experiments with Schemes for Exponential Decay&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;keywords&quot;</span> <span class="na">content=</span><span class="s">&quot;keyword,model problem,exponential decay,mesh in time,$\theta$-rule,numerical scheme,finite difference scheme,numerical experiments,BE,CN,FE,error vs time step&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;keywords&quot;</span> <span class="na">content=</span><span class="s">&quot;keyword,model problem,exponential decay,mesh in time,$\theta$-rule,numerical scheme,finite difference scheme,numerical experiments,Backward Euler method,Crank-Nicolson method,Forward Euler method,error vs time step&quot;</span><span class="nt">&gt;</span>
 
 <span class="nt">&lt;title&gt;</span>Experiments with Schemes for Exponential Decay<span class="nt">&lt;/title&gt;</span>
 
@@ -150,11 +150,8 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="c">               &#39;numerical:problem&#39;),</span>
 <span class="c">              (&#39;Implementation&#39;, 1, None, &#39;___sec2&#39;),</span>
 <span class="c">              (&#39;Numerical experiments&#39;, 1, None, &#39;___sec3&#39;),</span>
-<span class="c">              (&#39;The Backward Euler method&#39;, 2, None, &#39;___sec4&#39;),</span>
-<span class="c">              (&#39;The Crank-Nicolson method&#39;, 2, None, &#39;___sec5&#39;),</span>
-<span class="c">              (&#39;The Forward Euler method&#39;, 2, None, &#39;___sec6&#39;),</span>
-<span class="c">              (&#39;Error vs $\\Delta t$&#39;, 2, None, &#39;___sec7&#39;),</span>
-<span class="c">              (&#39;Bibliography&#39;, 1, None, &#39;___sec8&#39;)]}</span>
+<span class="c">              (&#39;Error vs $\\Delta t$&#39;, 1, None, &#39;___sec4&#39;),</span>
+<span class="c">              (&#39;Bibliography&#39;, 1, None, &#39;___sec5&#39;)]}</span>
 <span class="c">end of tocinfo --&gt;</span>
 
 <span class="nt">&lt;body&gt;</span>
@@ -197,7 +194,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="nt">&lt;center&gt;</span>[2] <span class="nt">&lt;b&gt;</span>Department of Informatics, University of Oslo.<span class="nt">&lt;/b&gt;&lt;/center&gt;</span>
 <span class="nt">&lt;br&gt;</span>
 <span class="nt">&lt;p&gt;</span>
-<span class="nt">&lt;center&gt;&lt;h4&gt;</span>Dec 19, 2015<span class="nt">&lt;/h4&gt;&lt;/center&gt;</span> <span class="c">&lt;!-- date --&gt;</span>
+<span class="nt">&lt;center&gt;&lt;h4&gt;</span>Dec 20, 2015<span class="nt">&lt;/h4&gt;&lt;/center&gt;</span> <span class="c">&lt;!-- date --&gt;</span>
 <span class="nt">&lt;br&gt;</span>
 <span class="nt">&lt;p&gt;</span>
 <span class="nt">&lt;b&gt;</span>Summary.<span class="nt">&lt;/b&gt;</span> This report investigates the accuracy of three finite difference
@@ -213,11 +210,8 @@ Table of contents<span class="nt">&lt;/h2&gt;</span>
 <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#numerical:problem&quot;</span><span class="nt">&gt;</span> Numerical solution method <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
 <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec2&quot;</span><span class="nt">&gt;</span> Implementation <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
 <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec3&quot;</span><span class="nt">&gt;</span> Numerical experiments <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec4&quot;</span><span class="nt">&gt;</span> The Backward Euler method <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec5&quot;</span><span class="nt">&gt;</span> The Crank-Nicolson method <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec6&quot;</span><span class="nt">&gt;</span> The Forward Euler method <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec7&quot;</span><span class="nt">&gt;</span> Error vs \( \Delta t \) <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec8&quot;</span><span class="nt">&gt;</span> Bibliography <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec4&quot;</span><span class="nt">&gt;</span> Error vs \( \Delta t \) <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec5&quot;</span><span class="nt">&gt;</span> Bibliography <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
 <span class="nt">&lt;/p&gt;</span>
 
 <span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;math:problem&quot;</span><span class="nt">&gt;</span>Mathematical problem<span class="nt">&lt;/h1&gt;</span>
@@ -269,7 +263,7 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
 
 <span class="nt">&lt;p&gt;</span>
 The numerical method is implemented in a Python function
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#Langtangen_2014&quot;</span><span class="nt">&gt;</span>[2]<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;code&gt;</span>solver<span class="nt">&lt;/code&gt;</span> (found in the <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py&quot;</span> <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;&lt;tt&gt;</span>model<span class="nt">&lt;/tt&gt;&lt;/a&gt;</span> module):
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#Langtangen_2014&quot;</span><span class="nt">&gt;</span>[2]<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;code&gt;</span>solver<span class="nt">&lt;/code&gt;</span> (found in the <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://bit.ly/1Bkp72S&quot;</span> <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;&lt;tt&gt;</span>model<span class="nt">&lt;/tt&gt;&lt;/a&gt;</span>):
 
 <span class="nt">&lt;p&gt;</span>
 <span class="c">&lt;!-- begin verbatim block  pycod--&gt;</span>
@@ -291,30 +285,48 @@ The numerical method is implemented in a Python function
 <span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;___sec3&quot;</span><span class="nt">&gt;</span>Numerical experiments <span class="nt">&lt;/h1&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
-We define a set of numerical experiments where \( I \), \( a \), and \( T \) are
-fixed, while \( \Delta t \) and \( \theta \) are varied.
-In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
-
-<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec4&quot;</span><span class="nt">&gt;</span>The Backward Euler method <span class="nt">&lt;/h2&gt;</span>
-
-<span class="nt">&lt;p&gt;</span>
-<span class="nt">&lt;center&gt;&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;BE.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">800</span><span class="nt">&gt;&lt;/p&gt;&lt;/center&gt;</span>
-
-<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec5&quot;</span><span class="nt">&gt;</span>The Crank-Nicolson method <span class="nt">&lt;/h2&gt;</span>
-
-<span class="nt">&lt;p&gt;</span>
-<span class="nt">&lt;center&gt;&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;CN.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">800</span><span class="nt">&gt;&lt;/p&gt;&lt;/center&gt;</span>
-
-<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec6&quot;</span><span class="nt">&gt;</span>The Forward Euler method <span class="nt">&lt;/h2&gt;</span>
+A set of numerical experiments has been carried out,
+where \( I \), \( a \), and \( T \) are fixed, while \( \Delta t \) and
+\( \theta \) are varied. In particular, \( I=1 \), \( a=2 \),
+\( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
+Figure <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#fig:BE&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/a&gt;</span> contains four plots, corresponding to
+four decreasing \( \Delta t \) values. The red dashed line
+represent the numerical solution computed by the Backward
+Euler scheme, while the blue line is the exact solution.
+The corresponding results for the Crank-Nicolson and
+Forward Euler methods appear in Figures <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#fig:CN&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/a&gt;</span>
+and <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#fig:FE&quot;</span><span class="nt">&gt;</span>3<span class="nt">&lt;/a&gt;</span>.
 
 <span class="nt">&lt;p&gt;</span>
-<span class="nt">&lt;center&gt;&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;FE.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">800</span><span class="nt">&gt;&lt;/p&gt;&lt;/center&gt;</span>
-
-<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec7&quot;</span><span class="nt">&gt;</span>Error vs \( \Delta t \) <span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;center&gt;</span> <span class="c">&lt;!-- figure --&gt;</span>
+<span class="nt">&lt;hr</span> <span class="na">class=</span><span class="s">&quot;figure&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;center&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;caption&quot;</span><span class="nt">&gt;</span>Figure 1:  The Backward Euler method for decreasing time step values. <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;fig:BE&quot;</span><span class="nt">&gt;&lt;/div&gt;</span> <span class="nt">&lt;/p&gt;&lt;/center&gt;</span>
+<span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;BE.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">800</span><span class="nt">&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/center&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
-How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
-is shown in Figure <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#fig:error&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/a&gt;</span>.
+<span class="nt">&lt;center&gt;</span> <span class="c">&lt;!-- figure --&gt;</span>
+<span class="nt">&lt;hr</span> <span class="na">class=</span><span class="s">&quot;figure&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;center&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;caption&quot;</span><span class="nt">&gt;</span>Figure 2:  The Crank-Nicolson method for decreasing time step values. <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;fig:CN&quot;</span><span class="nt">&gt;&lt;/div&gt;</span> <span class="nt">&lt;/p&gt;&lt;/center&gt;</span>
+<span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;CN.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">800</span><span class="nt">&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/center&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>
+<span class="nt">&lt;center&gt;</span> <span class="c">&lt;!-- figure --&gt;</span>
+<span class="nt">&lt;hr</span> <span class="na">class=</span><span class="s">&quot;figure&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;center&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;caption&quot;</span><span class="nt">&gt;</span>Figure 3:  The Forward Euler method for decreasing time step values. <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;fig:FE&quot;</span><span class="nt">&gt;&lt;/div&gt;</span> <span class="nt">&lt;/p&gt;&lt;/center&gt;</span>
+<span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;FE.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">800</span><span class="nt">&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/center&gt;</span>
+
+<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;___sec4&quot;</span><span class="nt">&gt;</span>Error vs \( \Delta t \) <span class="nt">&lt;/h1&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>
+How the error
+
+$$ E^n = \left(\int_0^T (Ie^{-at} - u^n)^2dt\right)^{\frac{1}{2}}$$
+
+varies with \( \Delta t \) for the three numerical methods
+is shown in Figure <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#fig:error&quot;</span><span class="nt">&gt;</span>4<span class="nt">&lt;/a&gt;</span>.
 
 <span class="nt">&lt;p&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-block alert-warning alert-text-normal&quot;</span><span class="nt">&gt;</span>
@@ -329,12 +341,13 @@ non-physically.
 <span class="nt">&lt;p&gt;</span>
 <span class="nt">&lt;center&gt;</span> <span class="c">&lt;!-- figure --&gt;</span>
 <span class="nt">&lt;hr</span> <span class="na">class=</span><span class="s">&quot;figure&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;center&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;caption&quot;</span><span class="nt">&gt;</span>Figure 1:  Variation of the error with the time step. <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;fig:error&quot;</span><span class="nt">&gt;&lt;/div&gt;</span> <span class="nt">&lt;/p&gt;&lt;/center&gt;</span>
+<span class="nt">&lt;center&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;caption&quot;</span><span class="nt">&gt;</span>Figure 4:  Variation of the error with the time step. <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;fig:error&quot;</span><span class="nt">&gt;&lt;/div&gt;</span> <span class="nt">&lt;/p&gt;&lt;/center&gt;</span>
 <span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;error.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">400</span><span class="nt">&gt;&lt;/p&gt;</span>
 <span class="nt">&lt;/center&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
-The numbers corresponding to the figure above are given in the table below.
+The \( E \) numbers corresponding to Figure <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#fig:error&quot;</span><span class="nt">&gt;</span>4<span class="nt">&lt;/a&gt;</span>
+are given in the table below.
 
 <span class="nt">&lt;p&gt;</span>
 <span class="nt">&lt;table</span> <span class="na">border=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
@@ -366,7 +379,7 @@ The numbers corresponding to the figure above are given in the table below.
 <span class="nt">&lt;/div&gt;</span>
 
 
-<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;___sec8&quot;</span><span class="nt">&gt;</span>Bibliography <span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;___sec5&quot;</span><span class="nt">&gt;</span>Bibliography <span class="nt">&lt;/h1&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
 <span class="c">&lt;!-- begin bibliography --&gt;</span>

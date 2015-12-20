@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Experiments with Schemes for Exponential Decay">
-<meta name="keywords" content="keyword,model problem,exponential decay,mesh in time,$\theta$-rule,numerical scheme,finite difference scheme,numerical experiments,BE,CN,FE,error vs time step">
+<meta name="keywords" content="keyword,model problem,exponential decay,mesh in time,$\theta$-rule,numerical scheme,finite difference scheme,numerical experiments,Backward Euler method,Crank-Nicolson method,Forward Euler method,error vs time step">
 
 <title>Experiments with Schemes for Exponential Decay</title>
 
@@ -216,11 +216,8 @@ div { text-align: justify; text-justify: inter-word; }
                'numerical:problem'),
               ('Implementation', 1, None, '___sec2'),
               ('Numerical experiments', 1, None, '___sec3'),
-              ('The Backward Euler method', 2, None, '___sec4'),
-              ('The Crank-Nicolson method', 2, None, '___sec5'),
-              ('The Forward Euler method', 2, None, '___sec6'),
-              ('Error vs $\\Delta t$', 2, None, '___sec7'),
-              ('Bibliography', 1, None, '___sec8')]}
+              ('Error vs $\\Delta t$', 1, None, '___sec4'),
+              ('Bibliography', 1, None, '___sec5')]}
 end of tocinfo -->
 
 <body>
@@ -263,7 +260,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Informatics, University of Oslo.</b></center>
 <br>
 <p>
-<center><h4>Dec 19, 2015</h4></center> <!-- date -->
+<center><h4>Dec 20, 2015</h4></center> <!-- date -->
 <br>
 <p>
 <b>Summary.</b> This report investigates the accuracy of three finite difference
@@ -279,11 +276,8 @@ Table of contents</h2>
 <a href="#numerical:problem"> Numerical solution method </a><br>
 <a href="#___sec2"> Implementation </a><br>
 <a href="#___sec3"> Numerical experiments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec4"> The Backward Euler method </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec5"> The Crank-Nicolson method </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec6"> The Forward Euler method </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Error vs \( \Delta t \) </a><br>
-<a href="#___sec8"> Bibliography </a><br>
+<a href="#___sec4"> Error vs \( \Delta t \) </a><br>
+<a href="#___sec5"> Bibliography </a><br>
 </p>
 
 <h1 id="math:problem">Mathematical problem</h1>
@@ -335,7 +329,7 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
 
 <p>
 The numerical method is implemented in a Python function
-<a href="#Langtangen_2014">[2]</a> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" target="_self"><tt>model</tt></a> module):
+<a href="#Langtangen_2014">[2]</a> <code>solver</code> (found in the <a href="http://bit.ly/1Bkp72S" target="_self"><tt>model</tt></a>):
 
 <p>
 
@@ -357,30 +351,48 @@ The numerical method is implemented in a Python function
 <h1 id="___sec3">Numerical experiments </h1>
 
 <p>
-We define a set of numerical experiments where \( I \), \( a \), and \( T \) are
-fixed, while \( \Delta t \) and \( \theta \) are varied.
-In particular, \( I=1 \), \( a=2 \), \( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
-
-<h2 id="___sec4">The Backward Euler method </h2>
-
-<p>
-<center><p><img src="BE.png" align="bottom" width=800></p></center>
-
-<h2 id="___sec5">The Crank-Nicolson method </h2>
-
-<p>
-<center><p><img src="CN.png" align="bottom" width=800></p></center>
-
-<h2 id="___sec6">The Forward Euler method </h2>
+A set of numerical experiments has been carried out,
+where \( I \), \( a \), and \( T \) are fixed, while \( \Delta t \) and
+\( \theta \) are varied. In particular, \( I=1 \), \( a=2 \),
+\( \Delta t = 1.25, 0.75, 0.5, 0.1 \).
+Figure <a href="#fig:BE">1</a> contains four plots, corresponding to
+four decreasing \( \Delta t \) values. The red dashed line
+represent the numerical solution computed by the Backward
+Euler scheme, while the blue line is the exact solution.
+The corresponding results for the Crank-Nicolson and
+Forward Euler methods appear in Figures <a href="#fig:CN">2</a>
+and <a href="#fig:FE">3</a>.
 
 <p>
-<center><p><img src="FE.png" align="bottom" width=800></p></center>
-
-<h2 id="___sec7">Error vs \( \Delta t \) </h2>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  The Backward Euler method for decreasing time step values. <div id="fig:BE"></div> </p></center>
+<p><img src="BE.png" align="bottom" width=800></p>
+</center>
 
 <p>
-How \( E \) varies with \( \Delta t \) for \( \theta=0,0.5,1 \)
-is shown in Figure <a href="#fig:error">1</a>.
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 2:  The Crank-Nicolson method for decreasing time step values. <div id="fig:CN"></div> </p></center>
+<p><img src="CN.png" align="bottom" width=800></p>
+</center>
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 3:  The Forward Euler method for decreasing time step values. <div id="fig:FE"></div> </p></center>
+<p><img src="FE.png" align="bottom" width=800></p>
+</center>
+
+<h1 id="___sec4">Error vs \( \Delta t \) </h1>
+
+<p>
+How the error
+
+$$ E^n = \left(\int_0^T (Ie^{-at} - u^n)^2dt\right)^{\frac{1}{2}}$$
+
+varies with \( \Delta t \) for the three numerical methods
+is shown in Figure <a href="#fig:error">4</a>.
 
 <p>
 <div class="alert alert-block alert-warning alert-text-normal">
@@ -395,12 +407,13 @@ non-physically.
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 1:  Variation of the error with the time step. <div id="fig:error"></div> </p></center>
+<center><p class="caption">Figure 4:  Variation of the error with the time step. <div id="fig:error"></div> </p></center>
 <p><img src="error.png" align="bottom" width=400></p>
 </center>
 
 <p>
-The numbers corresponding to the figure above are given in the table below.
+The \( E \) numbers corresponding to Figure <a href="#fig:error">4</a>
+are given in the table below.
 
 <p>
 <table border="1">
@@ -432,7 +445,7 @@ The numbers corresponding to the figure above are given in the table below.
 </div>
 
 
-<h1 id="___sec8">Bibliography </h1>
+<h1 id="___sec5">Bibliography </h1>
 
 <p>
 <!-- begin bibliography -->

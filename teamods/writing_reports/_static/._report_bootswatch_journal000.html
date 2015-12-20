@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Experiments with Schemes for Exponential Decay">
-<meta name="keywords" content="keyword,model problem,exponential decay,mesh in time,$\theta$-rule,numerical scheme,finite difference scheme,numerical experiments,BE,CN,FE,error vs time step">
+<meta name="keywords" content="keyword,model problem,exponential decay,mesh in time,$\theta$-rule,numerical scheme,finite difference scheme,numerical experiments,Backward Euler method,Crank-Nicolson method,Forward Euler method,error vs time step">
 
 <title>Experiments with Schemes for Exponential Decay</title>
 
@@ -43,11 +43,8 @@ pre { color: inherit; background-color: transparent; }
                'numerical:problem'),
               ('Implementation', 1, None, '___sec2'),
               ('Numerical experiments', 1, None, '___sec3'),
-              ('The Backward Euler method', 2, None, '___sec4'),
-              ('The Crank-Nicolson method', 2, None, '___sec5'),
-              ('The Forward Euler method', 2, None, '___sec6'),
-              ('Error vs $\\Delta t$', 2, None, '___sec7'),
-              ('Bibliography', 1, None, '___sec8')]}
+              ('Error vs $\\Delta t$', 1, None, '___sec4'),
+              ('Bibliography', 1, None, '___sec5')]}
 end of tocinfo -->
 
 <body>
@@ -85,15 +82,12 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._report_bootswatch_journal001.html#math:problem" style="font-size: 80%;"><b>Mathematical problem</b></a></li>
-     <!-- navigation toc: --> <li><a href="._report_bootswatch_journal001.html#numerical:problem" style="font-size: 80%;"><b>Numerical solution method</b></a></li>
-     <!-- navigation toc: --> <li><a href="._report_bootswatch_journal001.html#___sec2" style="font-size: 80%;"><b>Implementation</b></a></li>
-     <!-- navigation toc: --> <li><a href="._report_bootswatch_journal001.html#___sec3" style="font-size: 80%;"><b>Numerical experiments</b></a></li>
-     <!-- navigation toc: --> <li><a href="._report_bootswatch_journal001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Backward Euler method</a></li>
-     <!-- navigation toc: --> <li><a href="._report_bootswatch_journal001.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Crank-Nicolson method</a></li>
-     <!-- navigation toc: --> <li><a href="._report_bootswatch_journal001.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Forward Euler method</a></li>
-     <!-- navigation toc: --> <li><a href="._report_bootswatch_journal001.html#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Error vs \( \Delta t \)</a></li>
-     <!-- navigation toc: --> <li><a href="._report_bootswatch_journal001.html#___sec8" style="font-size: 80%;"><b>Bibliography</b></a></li>
+     <!-- navigation toc: --> <li><a href="._report_bootswatch_journal001.html#math:problem" style="font-size: 80%;">Mathematical problem</a></li>
+     <!-- navigation toc: --> <li><a href="._report_bootswatch_journal001.html#numerical:problem" style="font-size: 80%;">Numerical solution method</a></li>
+     <!-- navigation toc: --> <li><a href="._report_bootswatch_journal001.html#___sec2" style="font-size: 80%;">Implementation</a></li>
+     <!-- navigation toc: --> <li><a href="._report_bootswatch_journal001.html#___sec3" style="font-size: 80%;">Numerical experiments</a></li>
+     <!-- navigation toc: --> <li><a href="._report_bootswatch_journal001.html#___sec4" style="font-size: 80%;">Error vs \( \Delta t \)</a></li>
+     <!-- navigation toc: --> <li><a href="._report_bootswatch_journal001.html#___sec5" style="font-size: 80%;">Bibliography</a></li>
 
         </ul>
       </li>
@@ -129,7 +123,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Informatics, University of Oslo.</b></center>
 <br>
 <p>
-<center><h4>Dec 19, 2015</h4></center> <!-- date -->
+<center><h4>Dec 20, 2015</h4></center> <!-- date -->
 <br>
 <p>
 <b>Summary.</b> This report investigates the accuracy of three finite difference
@@ -145,11 +139,8 @@ Table of contents</h2>
 <a href="._report_bootswatch_journal001.html#numerical:problem"> Numerical solution method </a><br>
 <a href="._report_bootswatch_journal001.html#___sec2"> Implementation </a><br>
 <a href="._report_bootswatch_journal001.html#___sec3"> Numerical experiments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._report_bootswatch_journal001.html#___sec4"> The Backward Euler method </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._report_bootswatch_journal001.html#___sec5"> The Crank-Nicolson method </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._report_bootswatch_journal001.html#___sec6"> The Forward Euler method </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._report_bootswatch_journal001.html#___sec7"> Error vs \( \Delta t \) </a><br>
-<a href="._report_bootswatch_journal001.html#___sec8"> Bibliography </a><br>
+<a href="._report_bootswatch_journal001.html#___sec4"> Error vs \( \Delta t \) </a><br>
+<a href="._report_bootswatch_journal001.html#___sec5"> Bibliography </a><br>
 </p>
 <p>
 

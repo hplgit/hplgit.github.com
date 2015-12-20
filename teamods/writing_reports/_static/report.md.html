@@ -149,7 +149,8 @@ for <span class="s">$</span><span class="nb">n</span><span class="o">=</span><sp
 
 
 The numerical method is implemented in a Python function
-[@Langtangen<span class="nb">_</span>2014] `solver` (found in the [`model`](https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc<span class="nb">_</span>mod.py) module):
+[@Langtangen<span class="nb">_</span>2014] `solver` (found in the [`model`](http://bit.ly/1Bkp72S)):
+
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<span class="nb">{</span>.Python<span class="nb">}</span>
@@ -171,47 +172,47 @@ def solver(I, a, T, dt, theta):
 
 
 
-We define a set of numerical experiments where <span class="s">$</span><span class="nb">I</span><span class="s">$</span>, <span class="s">$</span><span class="nb">a</span><span class="s">$</span>, and <span class="s">$</span><span class="nb">T</span><span class="s">$</span> are
-fixed, while <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> and <span class="s">$</span><span class="nv">\theta</span><span class="s">$</span> are varied.
-In particular, <span class="s">$</span><span class="nb">I</span><span class="o">=</span><span class="m">1</span><span class="s">$</span>, <span class="s">$</span><span class="nb">a</span><span class="o">=</span><span class="m">2</span><span class="s">$</span>, <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="nb">.</span><span class="m">25</span><span class="nb">, </span><span class="m">0</span><span class="nb">.</span><span class="m">75</span><span class="nb">, </span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="nb">, </span><span class="m">0</span><span class="nb">.</span><span class="m">1</span><span class="s">$</span>.
-
-
-
-### The Backward Euler method
-
-
-
-
-&lt;!-- &lt;img src=&quot;BE.png&quot; width=800&gt; --&gt;
-![](BE.png)
-
-
-
-### The Crank-Nicolson method
+A set of numerical experiments has been carried out,
+where <span class="s">$</span><span class="nb">I</span><span class="s">$</span>, <span class="s">$</span><span class="nb">a</span><span class="s">$</span>, and <span class="s">$</span><span class="nb">T</span><span class="s">$</span> are fixed, while <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> and
+<span class="s">$</span><span class="nv">\theta</span><span class="s">$</span> are varied. In particular, <span class="s">$</span><span class="nb">I</span><span class="o">=</span><span class="m">1</span><span class="s">$</span>, <span class="s">$</span><span class="nb">a</span><span class="o">=</span><span class="m">2</span><span class="s">$</span>,
+<span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="nb">.</span><span class="m">25</span><span class="nb">, </span><span class="m">0</span><span class="nb">.</span><span class="m">75</span><span class="nb">, </span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="nb">, </span><span class="m">0</span><span class="nb">.</span><span class="m">1</span><span class="s">$</span>.
+[Figure](#fig:BE) contains four plots, corresponding to
+four decreasing <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> values. The red dashed line
+represent the numerical solution computed by the Backward
+Euler scheme, while the blue line is the exact solution.
+The corresponding results for the Crank-Nicolson and
+Forward Euler methods appear in Figures ref<span class="nb">{</span>fig:CN<span class="nb">}</span>
+and ref<span class="nb">{</span>fig:FE<span class="nb">}</span>.
 
 
 
 
-&lt;!-- &lt;img src=&quot;CN.png&quot; width=800&gt; --&gt;
-![](CN.png)
-
-
-
-### The Forward Euler method
+&lt;!-- &lt;img src=&quot;BE.png&quot; width=800&gt;&lt;p&gt;&lt;em&gt;The Backward Euler method for decreasing time step values. &lt;div id=&quot;fig:BE&quot;&gt;&lt;/div&gt;&lt;/em&gt;&lt;/p&gt; --&gt;
+![&lt;p&gt;&lt;em&gt;The Backward Euler method for decreasing time step values. &lt;div id=&quot;fig:BE&quot;&gt;&lt;/div&gt;&lt;/em&gt;&lt;/p&gt;](BE.png)
 
 
 
 
-&lt;!-- &lt;img src=&quot;FE.png&quot; width=800&gt; --&gt;
-![](FE.png)
+&lt;!-- &lt;img src=&quot;CN.png&quot; width=800&gt;&lt;p&gt;&lt;em&gt;The Crank-Nicolson method for decreasing time step values. &lt;div id=&quot;fig:CN&quot;&gt;&lt;/div&gt;&lt;/em&gt;&lt;/p&gt; --&gt;
+![&lt;p&gt;&lt;em&gt;The Crank-Nicolson method for decreasing time step values. &lt;div id=&quot;fig:CN&quot;&gt;&lt;/div&gt;&lt;/em&gt;&lt;/p&gt;](CN.png)
 
 
 
-### Error vs <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span>
+
+&lt;!-- &lt;img src=&quot;FE.png&quot; width=800&gt;&lt;p&gt;&lt;em&gt;The Forward Euler method for decreasing time step values. &lt;div id=&quot;fig:FE&quot;&gt;&lt;/div&gt;&lt;/em&gt;&lt;/p&gt; --&gt;
+![&lt;p&gt;&lt;em&gt;The Forward Euler method for decreasing time step values. &lt;div id=&quot;fig:FE&quot;&gt;&lt;/div&gt;&lt;/em&gt;&lt;/p&gt;](FE.png)
 
 
 
-How <span class="s">$</span><span class="nb">E</span><span class="s">$</span> varies with <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> for <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">0</span><span class="nb">,</span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="nb">,</span><span class="m">1</span><span class="s">$</span>
+## Error vs <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span>
+
+
+How the error
+
+<span class="sb">$$</span><span class="nb"></span>
+<span class="nb"> E^n </span><span class="o">=</span><span class="nb"> </span><span class="nv">\left</span><span class="o">(</span><span class="nv">\int</span><span class="nb">_</span><span class="m">0</span><span class="nb">^T </span><span class="o">(</span><span class="nb">Ie^{</span><span class="o">-</span><span class="nb">at} </span><span class="o">-</span><span class="nb"> u^n</span><span class="o">)</span><span class="nb">^</span><span class="m">2</span><span class="nb">dt</span><span class="nv">\right</span><span class="o">)</span><span class="nb">^{</span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{</span><span class="m">2</span><span class="nb">}}</span>
+<span class="s">$$</span>
+varies with <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> for the three numerical methods
 is shown in [Figure](#fig:error).
 
 
@@ -226,7 +227,8 @@ non-physically.
 ![&lt;p&gt;&lt;em&gt;Variation of the error with the time step. &lt;div id=&quot;fig:error&quot;&gt;&lt;/div&gt;&lt;/em&gt;&lt;/p&gt;](error.png)
 
 
-The numbers corresponding to the figure above are given in the table below.
+The <span class="s">$</span><span class="nb">E</span><span class="s">$</span> numbers corresponding to [Figure](#fig:error)
+are given in the table below.
 
 
 <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span>  <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">0</span><span class="s">$</span>  <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="s">$</span>  <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">1</span><span class="s">$</span>  

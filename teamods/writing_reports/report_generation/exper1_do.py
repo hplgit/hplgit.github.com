@@ -102,7 +102,8 @@ for $n=0,1,\ldots,N_t-1$. This scheme corresponds to
 
 The numerical method is implemented in a Python function
 cite{Langtangen_2014} `solver` (found in the "`model`":
-"https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py" module):
+"http://bit.ly/1Bkp72S"):
+
 
 @@@CODE ../model.py  fromto: def solver@def u_exact
 
@@ -113,57 +114,46 @@ cite{Langtangen_2014} `solver` (found in the "`model`":
 
 idx{numerical experiments}
 
-We define a set of numerical experiments where $I$, $a$, and $T$ are
-fixed, while $\Delta t$ and $\theta$ are varied.
-In particular, $I=%(I)g$, $a=%(a)g$, $\Delta t = %(dt_values_str)s$.
+A set of numerical experiments has been carried out,
+where $I$, $a$, and $T$ are fixed, while $\Delta t$ and
+$\theta$ are varied. In particular, $I=%(I)g$, $a=%(a)g$,
+$\Delta t = %(dt_values_str)s$.
+Figure ref{fig:BE} contains four plots, corresponding to
+four decreasing $\Delta t$ values. The red dashed line
+represent the numerical solution computed by the Backward
+Euler scheme, while the blue line is the exact solution.
+The corresponding results for the Crank-Nicolson and
+Forward Euler methods appear in Figures ref{fig:CN}
+and ref{fig:FE}.
 
 """ % vars())
 
-short2long = dict(FE='The Forward Euler method',
-                  BE='The Backward Euler method',
-                  CN='The Crank-Nicolson method')
+short2long = dict(FE='Forward Euler method',
+                  BE='Backward Euler method',
+                  CN='Crank-Nicolson method')
 methods = 'BE', 'CN', 'FE'
-inline_figures = True  # True: subsections with inline graphics
-                       # False: no subsecs, figures with captions
-if inline_figures:
-    for method in methods:
-        do.write("""
-
-===== %s =====
-
-## Purpose: subsection with inline figure (figure without caption).
-
+for method in methods:
+    do.write("""
 
 idx{%s}
 
-FIGURE: [%s, width=800]
+FIGURE: [%s, width=800] The %s for decreasing time step values. label{fig:%s}
 
-""" % (short2long[method], method, method))
-else:
-    do.write("""
-
-===== Time series =====
-
-Figures ref{fig:BE}-ref{fig:FE} display the results.
-
-""")
-    # Full figures with captions
-    for method in methods:
-        fig = 'FIGURE: [%s, width=800] %s. '\
-              'label{fig:%s}\n\n' % \
-              (method, short2long[method], method)
-        do.write(fig)
+""" % (short2long[method], method, short2long[method], method))
 
 # Remember raw string for latex math with backslashes
 do.write(r"""
 
-===== Error vs $\Delta t$ =====
-
-## Purpose: exemplify referring to a figure with label and caption.
+======= Error vs $\Delta t$ =======
 
 idx{error vs time step}
 
-How $E$ varies with $\Delta t$ for $\theta=0,0.5,1$
+How the error
+
+!bt
+\[ E^n = \left(\int_0^T (Ie^{-at} - u^n)^2dt\right)^{\frac{1}{2}}\]
+!et
+varies with $\Delta t$ for the three numerical methods
 is shown in Figure ref{fig:error}.
 
 ## Here is an admonition box for warnings
@@ -178,7 +168,8 @@ FIGURE: [error, width=400] Variation of the error with the time step. label{fig:
 
 ## A corresponding table
 
-The numbers corresponding to the figure above are given in the table below.
+The $E$ numbers corresponding to Figure ref{fig:error}
+are given in the table below.
 
 |------c--------------c--------------c--------------c-------|
 | $\Delta t$   | $\theta=0$   | $\theta=0.5$ | $\theta=1$   |

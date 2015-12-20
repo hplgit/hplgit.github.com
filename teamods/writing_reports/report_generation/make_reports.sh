@@ -175,7 +175,7 @@ cd ..
 mv -f sphinx-rootdir rootdir
 
 # Plain LaTeX PDF
-doconce format pdflatex report --latex_code_style=vrb --device=paper
+doconce format pdflatex report --latex_code_style=vrb
 rm -f *.aux
 pdflatex report
 bibtex report
