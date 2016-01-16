@@ -90,14 +90,14 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 
 <span class="k">\documentclass</span>[<span class="c">%</span>
 oneside,                 <span class="c">% oneside: electronic viewing, twoside: printing</span>
-final,                   <span class="c">% or draft (marks overfull hboxes, figures with paths)</span>
+final,                   <span class="c">% draft: marks overfull hboxes, figures with paths</span>
 10pt]<span class="nb">{</span>article<span class="nb">}</span>
 
 <span class="k">\listfiles</span>               <span class="c">% print all files needed to compile this document</span>
 
 <span class="k">\usepackage</span><span class="nb">{</span>relsize,makeidx,color,setspace,amsmath,amsfonts,amssymb<span class="nb">}</span>
 <span class="k">\usepackage</span><span class="na">[table]</span><span class="nb">{</span>xcolor<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="nb">{</span>bm,microtype<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>bm,ltablex,microtype<span class="nb">}</span>
 
 <span class="k">\usepackage</span><span class="na">[pdftex]</span><span class="nb">{</span>graphicx<span class="nb">}</span>
 
@@ -164,7 +164,7 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 <span class="k">\usepackage</span><span class="nb">{</span>lmodern<span class="nb">}</span>         <span class="c">% Latin Modern fonts derived from Computer Modern</span>
 
 <span class="c">% Hyperlinks in PDF:</span>
-<span class="k">\definecolor</span><span class="nb">{</span>linkcolor<span class="nb">}{</span>rgb<span class="nb">}{</span>0,0,0.4<span class="nb">}</span>
+
 <span class="k">\usepackage</span><span class="nb">{</span>hyperref<span class="nb">}</span>
 <span class="k">\hypersetup</span><span class="nb">{</span>
     breaklinks=true,
@@ -206,6 +206,21 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 <span class="c">% (switch twoside to onside in documentclass to just have odd pages)</span>
 <span class="k">\fancyhead</span><span class="na">[LE,RO]</span><span class="nb">{</span><span class="k">\rightmark</span><span class="nb">}</span> <span class="c">% section</span>
 <span class="k">\fancyhead</span><span class="na">[RE,LO]</span><span class="nb">{</span><span class="k">\thepage</span><span class="nb">}</span>
+<span class="c">% Ensure copyright on titlepage (article style) and chapter pages (book style)</span>
+<span class="k">\fancypagestyle</span><span class="nb">{</span>plain<span class="nb">}{</span>
+  <span class="k">\fancyhf</span><span class="nb">{}</span>
+  <span class="k">\fancyfoot</span><span class="na">[C]</span><span class="nb">{{</span><span class="k">\footnotesize</span> <span class="k">\copyright\ </span>2015, Hans Petter Langtangen. Released under CC Attribution 4.0 license<span class="nb">}}</span>
+<span class="c">%  \renewcommand{\footrulewidth}{0mm}</span>
+  <span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\headrulewidth</span><span class="nb">}{</span>0mm<span class="nb">}</span>
+<span class="nb">}</span>
+<span class="c">% Ensure copyright on titlepages with \thispagestyle{empty}</span>
+<span class="k">\fancypagestyle</span><span class="nb">{</span>empty<span class="nb">}{</span>
+  <span class="k">\fancyhf</span><span class="nb">{}</span>
+  <span class="k">\fancyfoot</span><span class="na">[C]</span><span class="nb">{{</span><span class="k">\footnotesize</span> <span class="k">\copyright\ </span>2015, Hans Petter Langtangen. Released under CC Attribution 4.0 license<span class="nb">}}</span>
+  <span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\footrulewidth</span><span class="nb">}{</span>0mm<span class="nb">}</span>
+  <span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\headrulewidth</span><span class="nb">}{</span>0mm<span class="nb">}</span>
+<span class="nb">}</span>
+
 <span class="k">\pagestyle</span><span class="nb">{</span>fancy<span class="nb">}</span>
 
 
@@ -360,12 +375,14 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 
 <span class="k">\raggedbottom</span>
 <span class="k">\makeindex</span>
+<span class="k">\usepackage</span><span class="na">[totoc]</span><span class="nb">{</span>idxlayout<span class="nb">}</span>   <span class="c">% for index in the toc</span>
+<span class="k">\usepackage</span><span class="na">[nottoc]</span><span class="nb">{</span>tocbibind<span class="nb">}</span>  <span class="c">% for references/bibliography in the toc</span>
 
 
 
 <span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
 
-<span class="c">% endif for #ifdef PREAMBLE</span>
+<span class="c">% matching end for #ifdef PREAMBLE</span>
 <span class="c">% #endif</span>
 
 
@@ -384,7 +401,7 @@ final,                   <span class="c">% or draft (marks overfull hboxes, figu
 
 <span class="c">% ----------------- end author(s) -------------------------</span>
 
-<span class="k">\date</span><span class="nb">{</span>Aug 24, 2015<span class="nb">}</span>
+<span class="k">\date</span><span class="nb">{</span>Dec 20, 2015<span class="nb">}</span>
 <span class="k">\maketitle</span>
 
 <span class="k">\begin</span><span class="nb">{</span>quote<span class="nb">}</span><span class="k">\small</span>
@@ -458,7 +475,8 @@ for <span class="s">$</span><span class="nb">n</span><span class="o">=</span><sp
 
 
 The numerical method is implemented in a Python function
-<span class="k">\cite</span><span class="nb">{</span>Langtangen<span class="nb">_</span>2014<span class="nb">}</span> <span class="k">\texttt</span><span class="nb">{</span>solver<span class="nb">}</span> (found in the <span class="k">\href</span><span class="nb">{{</span>https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc<span class="nb">_</span>mod.py<span class="nb">}}{</span><span class="k">\nolinkurl</span><span class="nb">{</span>model<span class="nb">}}</span> module):
+<span class="k">\cite</span><span class="nb">{</span>Langtangen<span class="nb">_</span>2014<span class="nb">}</span> <span class="k">\texttt</span><span class="nb">{</span>solver<span class="nb">}</span> (found in the <span class="k">\href</span><span class="nb">{{</span>http://bit.ly/1Bkp72S<span class="nb">}}{</span><span class="k">\nolinkurl</span><span class="nb">{</span>model<span class="nb">}}</span>):
+
 
 <span class="k">\begin</span><span class="nb">{</span>minted<span class="nb">}</span>[fontsize=<span class="k">\fontsize</span><span class="nb">{</span>9pt<span class="nb">}{</span>9pt<span class="nb">}</span>,linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]<span class="nb">{</span>python<span class="nb">}</span>
 def solver(I, a, T, dt, theta):
@@ -481,63 +499,70 @@ def solver(I, a, T, dt, theta):
 
 <span class="k">\index</span><span class="nb">{</span>numerical experiments<span class="nb">}</span>
 
-We define a set of numerical experiments where <span class="s">$</span><span class="nb">I</span><span class="s">$</span>, <span class="s">$</span><span class="nb">a</span><span class="s">$</span>, and <span class="s">$</span><span class="nb">T</span><span class="s">$</span> are
-fixed, while <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> and <span class="s">$</span><span class="nv">\theta</span><span class="s">$</span> are varied.
-In particular, <span class="s">$</span><span class="nb">I</span><span class="o">=</span><span class="m">1</span><span class="s">$</span>, <span class="s">$</span><span class="nb">a</span><span class="o">=</span><span class="m">2</span><span class="s">$</span>, <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="nb">.</span><span class="m">25</span><span class="nb">, </span><span class="m">0</span><span class="nb">.</span><span class="m">75</span><span class="nb">, </span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="nb">, </span><span class="m">0</span><span class="nb">.</span><span class="m">1</span><span class="s">$</span>.
+A set of numerical experiments has been carried out,
+where <span class="s">$</span><span class="nb">I</span><span class="s">$</span>, <span class="s">$</span><span class="nb">a</span><span class="s">$</span>, and <span class="s">$</span><span class="nb">T</span><span class="s">$</span> are fixed, while <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> and
+<span class="s">$</span><span class="nv">\theta</span><span class="s">$</span> are varied. In particular, <span class="s">$</span><span class="nb">I</span><span class="o">=</span><span class="m">1</span><span class="s">$</span>, <span class="s">$</span><span class="nb">a</span><span class="o">=</span><span class="m">2</span><span class="s">$</span>,
+<span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t </span><span class="o">=</span><span class="nb"> </span><span class="m">1</span><span class="nb">.</span><span class="m">25</span><span class="nb">, </span><span class="m">0</span><span class="nb">.</span><span class="m">75</span><span class="nb">, </span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="nb">, </span><span class="m">0</span><span class="nb">.</span><span class="m">1</span><span class="s">$</span>.
+Figure~<span class="k">\ref</span><span class="nb">{</span>fig:BE<span class="nb">}</span> contains four plots, corresponding to
+four decreasing <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> values. The red dashed line
+represent the numerical solution computed by the Backward
+Euler scheme, while the blue line is the exact solution.
+The corresponding results for the Crank-Nicolson and
+Forward Euler methods appear in Figures~<span class="k">\ref</span><span class="nb">{</span>fig:CN<span class="nb">}</span>
+and~<span class="k">\ref</span><span class="nb">{</span>fig:FE<span class="nb">}</span>.
 
 
 
-<span class="k">\subsection</span><span class="nb">{</span>The Backward Euler method<span class="nb">}</span>
+<span class="k">\index</span><span class="nb">{</span>Backward Euler method<span class="nb">}</span>
 
 
-
-<span class="k">\index</span><span class="nb">{</span>BE<span class="nb">}</span>
-
-
-
-<span class="c">% inline figure</span>
-<span class="k">\centerline</span><span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[width=0.9\linewidth]</span><span class="nb">{</span>BE.pdf<span class="nb">}}</span>
-
-
-
-
-
-<span class="k">\subsection</span><span class="nb">{</span>The Crank-Nicolson method<span class="nb">}</span>
-
-
-
-<span class="k">\index</span><span class="nb">{</span>CN<span class="nb">}</span>
-
-
-
-<span class="c">% inline figure</span>
-<span class="k">\centerline</span><span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[width=0.9\linewidth]</span><span class="nb">{</span>CN.pdf<span class="nb">}}</span>
+<span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>[!ht]  <span class="c">% fig:BE</span>
+  <span class="k">\centerline</span><span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[width=0.9\linewidth]</span><span class="nb">{</span>BE.pdf<span class="nb">}}</span>
+  <span class="k">\caption</span><span class="nb">{</span>
+  The Backward Euler method for decreasing time step values. <span class="k">\label</span><span class="nb">{</span>fig:BE<span class="nb">}</span>
+  <span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>figure<span class="nb">}</span>
+<span class="c">%\clearpage % flush figures fig:BE</span>
 
 
 
 
-
-<span class="k">\subsection</span><span class="nb">{</span>The Forward Euler method<span class="nb">}</span>
-
+<span class="k">\index</span><span class="nb">{</span>Crank-Nicolson method<span class="nb">}</span>
 
 
-<span class="k">\index</span><span class="nb">{</span>FE<span class="nb">}</span>
-
-
-
-<span class="c">% inline figure</span>
-<span class="k">\centerline</span><span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[width=0.9\linewidth]</span><span class="nb">{</span>FE.pdf<span class="nb">}}</span>
-
+<span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>[!ht]  <span class="c">% fig:CN</span>
+  <span class="k">\centerline</span><span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[width=0.9\linewidth]</span><span class="nb">{</span>CN.pdf<span class="nb">}}</span>
+  <span class="k">\caption</span><span class="nb">{</span>
+  The Crank-Nicolson method for decreasing time step values. <span class="k">\label</span><span class="nb">{</span>fig:CN<span class="nb">}</span>
+  <span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>figure<span class="nb">}</span>
+<span class="c">%\clearpage % flush figures fig:CN</span>
 
 
 
 
-<span class="k">\subsection</span><span class="nb">{</span>Error vs <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span><span class="nb">}</span>
+<span class="k">\index</span><span class="nb">{</span>Forward Euler method<span class="nb">}</span>
 
+
+<span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>[!ht]  <span class="c">% fig:FE</span>
+  <span class="k">\centerline</span><span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[width=0.9\linewidth]</span><span class="nb">{</span>FE.pdf<span class="nb">}}</span>
+  <span class="k">\caption</span><span class="nb">{</span>
+  The Forward Euler method for decreasing time step values. <span class="k">\label</span><span class="nb">{</span>fig:FE<span class="nb">}</span>
+  <span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>figure<span class="nb">}</span>
+<span class="c">%\clearpage % flush figures fig:FE</span>
+
+
+
+
+<span class="k">\section</span><span class="nb">{</span>Error vs <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span><span class="nb">}</span>
 
 <span class="k">\index</span><span class="nb">{</span>error vs time step<span class="nb">}</span>
 
-How <span class="s">$</span><span class="nb">E</span><span class="s">$</span> varies with <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> for <span class="s">$</span><span class="nv">\theta</span><span class="o">=</span><span class="m">0</span><span class="nb">,</span><span class="m">0</span><span class="nb">.</span><span class="m">5</span><span class="nb">,</span><span class="m">1</span><span class="s">$</span>
+How the error
+
+<span class="sb">\[</span><span class="nb"> E^n </span><span class="o">=</span><span class="nb"> </span><span class="nv">\left</span><span class="o">(</span><span class="nv">\int</span><span class="nb">_</span><span class="m">0</span><span class="nb">^T </span><span class="o">(</span><span class="nb">Ie^{</span><span class="o">-</span><span class="nb">at} </span><span class="o">-</span><span class="nb"> u^n</span><span class="o">)</span><span class="nb">^</span><span class="m">2</span><span class="nb">dt</span><span class="nv">\right</span><span class="o">)</span><span class="nb">^{</span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{</span><span class="m">2</span><span class="nb">}}</span><span class="s">\]</span>
+varies with <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> for the three numerical methods
 is shown in Figure~<span class="k">\ref</span><span class="nb">{</span>fig:error<span class="nb">}</span>.
 
 
@@ -551,7 +576,7 @@ non-physically.
 
 
 
-<span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>[t]
+<span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>[!ht]  <span class="c">% fig:error</span>
   <span class="k">\centerline</span><span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[width=0.9\linewidth]</span><span class="nb">{</span>error.pdf<span class="nb">}}</span>
   <span class="k">\caption</span><span class="nb">{</span>
   Variation of the error with the time step. <span class="k">\label</span><span class="nb">{</span>fig:error<span class="nb">}</span>
@@ -561,7 +586,8 @@ non-physically.
 
 
 
-The numbers corresponding to the figure above are given in the table below.
+The <span class="s">$</span><span class="nb">E</span><span class="s">$</span> numbers corresponding to Figure~<span class="k">\ref</span><span class="nb">{</span>fig:error<span class="nb">}</span>
+are given in the table below.
 
 
 <span class="k">\begin</span><span class="nb">{</span>quote<span class="nb">}</span>
@@ -609,8 +635,8 @@ The numbers corresponding to the figure above are given in the table below.
 
 
 
-
 <span class="c">% #ifdef PREAMBLE</span>
+<span class="k">\cleardoublepage\phantomsection</span>  <span class="c">% trick to get correct link to Index</span>
 <span class="k">\printindex</span>
 
 <span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>

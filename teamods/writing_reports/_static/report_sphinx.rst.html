@@ -87,7 +87,7 @@ Experiments with Schemes for Exponential Decay
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <span class="nc">:Authors:</span> <span class="nf">Hans Petter Langtangen (hpl at simula.no)</span>
-<span class="nc">:Date:</span> <span class="nf">Aug 24, 2015</span>
+<span class="nc">:Date:</span> <span class="nf">Dec 20, 2015</span>
 
 <span class="ge">*Summary.*</span> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation <span class="na">:math:</span><span class="nv">`u&#39;=-au`</span> with the
@@ -170,7 +170,7 @@ for <span class="na">:math:</span><span class="nv">`n=0,1,\ldots,N_t-1`</span>. 
 <span class="gh">==============</span>
 
 The numerical method is implemented in a Python function
-<span class="s">[Ref2]_</span> <span class="s">``solver``</span> (found in the <span class="s">`model </span><span class="si">&lt;https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py&gt;</span><span class="s">`__</span> module):
+<span class="s">[Ref2]_</span> <span class="s">``solver``</span> (found in the <span class="s">`model </span><span class="si">&lt;http://bit.ly/1Bkp72S&gt;</span><span class="s">`__</span>):
 
 <span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">python</span>
 
@@ -194,40 +194,58 @@ The numerical method is implemented in a Python function
 
 <span class="p">..</span> <span class="ow">index</span><span class="p">::</span> numerical experiments
 
-We define a set of numerical experiments where <span class="na">:math:</span><span class="nv">`I`</span>, <span class="na">:math:</span><span class="nv">`a`</span>, and <span class="na">:math:</span><span class="nv">`T`</span> are
-fixed, while <span class="na">:math:</span><span class="nv">`\Delta t`</span> and <span class="na">:math:</span><span class="nv">`\theta`</span> are varied.
-In particular, <span class="na">:math:</span><span class="nv">`I=1`</span>, <span class="na">:math:</span><span class="nv">`a=2`</span>, <span class="na">:math:</span><span class="nv">`\Delta t = 1.25, 0.75, 0.5, 0.1`</span>.
+A set of numerical experiments has been carried out,
+where <span class="na">:math:</span><span class="nv">`I`</span>, <span class="na">:math:</span><span class="nv">`a`</span>, and <span class="na">:math:</span><span class="nv">`T`</span> are fixed, while <span class="na">:math:</span><span class="nv">`\Delta t`</span> and
+<span class="na">:math:</span><span class="nv">`\theta`</span> are varied. In particular, <span class="na">:math:</span><span class="nv">`I=1`</span>, <span class="na">:math:</span><span class="nv">`a=2`</span>,
+<span class="na">:math:</span><span class="nv">`\Delta t = 1.25, 0.75, 0.5, 0.1`</span>.
+Figure <span class="na">:ref:</span><span class="nv">`fig:BE`</span> contains four plots, corresponding to
+four decreasing <span class="na">:math:</span><span class="nv">`\Delta t`</span> values. The red dashed line
+represent the numerical solution computed by the Backward
+Euler scheme, while the blue line is the exact solution.
+The corresponding results for the Crank-Nicolson and
+Forward Euler methods appear in Figures <span class="na">:ref:</span><span class="nv">`fig:CN`</span>
+and <span class="na">:ref:</span><span class="nv">`fig:FE`</span>.
 
-<span class="gh">The Backward Euler method</span>
-<span class="gh">-------------------------</span>
+<span class="p">..</span> <span class="ow">index</span><span class="p">::</span> Backward Euler method
 
-<span class="p">..</span> <span class="ow">index</span><span class="p">::</span> BE
+<span class="p">..</span> <span class="nt">_fig:</span>BE:
 
 <span class="p">..</span> <span class="ow">figure</span><span class="p">::</span> BE.png
    <span class="nc">:width:</span> <span class="nf">800</span>
 
-<span class="gh">The Crank-Nicolson method</span>
-<span class="gh">-------------------------</span>
+   <span class="ge">*The Backward Euler method for decreasing time step values*</span>
 
-<span class="p">..</span> <span class="ow">index</span><span class="p">::</span> CN
+<span class="p">..</span> <span class="ow">index</span><span class="p">::</span> Crank-Nicolson method
+
+<span class="p">..</span> <span class="nt">_fig:</span>CN:
 
 <span class="p">..</span> <span class="ow">figure</span><span class="p">::</span> CN.png
    <span class="nc">:width:</span> <span class="nf">800</span>
 
-<span class="gh">The Forward Euler method</span>
-<span class="gh">------------------------</span>
+   <span class="ge">*The Crank-Nicolson method for decreasing time step values*</span>
 
-<span class="p">..</span> <span class="ow">index</span><span class="p">::</span> FE
+<span class="p">..</span> <span class="ow">index</span><span class="p">::</span> Forward Euler method
+
+<span class="p">..</span> <span class="nt">_fig:</span>FE:
 
 <span class="p">..</span> <span class="ow">figure</span><span class="p">::</span> FE.png
    <span class="nc">:width:</span> <span class="nf">800</span>
 
+   <span class="ge">*The Forward Euler method for decreasing time step values*</span>
+
+<span class="cp">.. !split</span>
+
 <span class="gh">Error vs :math:`\Delta t`</span>
-<span class="gh">-------------------------</span>
+<span class="gh">=========================</span>
 
 <span class="p">..</span> <span class="ow">index</span><span class="p">::</span> error vs time step
 
-How <span class="na">:math:</span><span class="nv">`E`</span> varies with <span class="na">:math:</span><span class="nv">`\Delta t`</span> for <span class="na">:math:</span><span class="nv">`\theta=0,0.5,1`</span>
+How the error
+
+<span class="p">..</span> <span class="ow">math</span><span class="p">::</span>
+         E^n = \left(\int_0^T (Ie^{-at} - u^n)^2dt\right)^{\frac{1}{2}}
+
+varies with <span class="na">:math:</span><span class="nv">`\Delta t`</span> for the three numerical methods
 is shown in Figure <span class="na">:ref:</span><span class="nv">`fig:error`</span>.
 
 
@@ -247,7 +265,8 @@ is shown in Figure <span class="na">:ref:</span><span class="nv">`fig:error`</sp
 
    <span class="ge">*Variation of the error with the time step*</span>
 
-The numbers corresponding to the figure above are given in the table below.
+The <span class="na">:math:</span><span class="nv">`E`</span> numbers corresponding to Figure <span class="na">:ref:</span><span class="nv">`fig:error`</span>
+are given in the table below.
 
 ================  ================  ==================  ================  
 <span class="na">:math:</span><span class="nv">`\Delta t`</span>  <span class="na">:math:</span><span class="nv">`\theta=0`</span>  <span class="na">:math:</span><span class="nv">`\theta=0.5`</span>  <span class="na">:math:</span><span class="nv">`\theta=1`</span>  

@@ -175,7 +175,7 @@ cd ..
 mv -f sphinx-rootdir rootdir
 
 # Plain LaTeX PDF
-doconce format pdflatex report --latex_code_style=vrb --device=paper
+doconce format pdflatex report --latex_code_style=vrb
 rm -f *.aux
 pdflatex report
 bibtex report
@@ -269,7 +269,9 @@ themes=`/bin/ls -d sphinx-*`
 #themes="agogo basic bizstyle classic default epub haiku nature pyramid scrolls sphinxdoc traditional $themes bootstrap cloud solarized impressjs sphinx_rtd_theme"
 for theme in $themes; do
     themeshort=`echo $theme | sed 's/sphinx-//g'`
-    doconce replace XXXXX "\"$themeshort\": \"_static/$theme/index.html\", XXXXX" tmp.do.txt
+    if [ $themeshort != 'impressjs' ]; then
+	doconce replace XXXXX "\"$themeshort\": \"_static/$theme/index.html\", XXXXX" tmp.do.txt
+    fi
 done
 doconce replace ", XXXXX" "" tmp.do.txt
 doconce format html tmp --html_links_in_new_window --html_style=bootswatch

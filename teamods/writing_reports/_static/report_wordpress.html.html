@@ -79,14 +79,13 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <h2></h2>
 
 <div class="highlight"><pre><span class="c">&lt;!--</span>
-<span class="c">Automatically generated HTML file from DocOnce source</span>
-<span class="c">(https://github.com/hplgit/doconce/)</span>
+<span class="c">Automatically generated HTML file from DocOnce source (https://github.com/hplgit/doconce/)</span>
 <span class="c">--&gt;</span>
 <span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;</span>
 <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;generator&quot;</span> <span class="na">content=</span><span class="s">&quot;DocOnce: https://github.com/hplgit/doconce/&quot;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;keywords&quot;</span> <span class="na">content=</span><span class="s">&quot;keyword,model problem,exponential decay,mesh in time,$\theta$-rule,numerical scheme,finite difference scheme,numerical experiments,BE,CN,FE,error vs time step&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;keywords&quot;</span> <span class="na">content=</span><span class="s">&quot;keyword,model problem,exponential decay,mesh in time,$\theta$-rule,numerical scheme,finite difference scheme,numerical experiments,Backward Euler method,Crank-Nicolson method,Forward Euler method,error vs time step&quot;</span><span class="nt">&gt;</span>
 
 <span class="nt">&lt;title&gt;&lt;/title&gt;</span>
 
@@ -151,10 +150,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="nt">&lt;body&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
-<span class="nt">&lt;b&gt;</span>Summary.<span class="nt">&lt;/b&gt;</span> This report investigates the accuracy of three finite difference
-schemes for the ordinary differential equation $latex u&#39;=-au$ with the
-aid of numerical experiments. Numerical artifacts are in particular
-demonstrated.
+<span class="nt">&lt;b&gt;</span>Summary.<span class="nt">&lt;/b&gt;</span> This report investigates the accuracy of three finite difference schemes for the ordinary differential equation $latex u&#39;=-au$ with the aid of numerical experiments. Numerical artifacts are in particular demonstrated.
 
 <span class="nt">&lt;h2&gt;</span>
 Table of contents<span class="nt">&lt;/h2&gt;</span>
@@ -164,11 +160,8 @@ Table of contents<span class="nt">&lt;/h2&gt;</span>
 <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#numerical:problem&quot;</span><span class="nt">&gt;</span> Numerical solution method <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
 <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec2&quot;</span><span class="nt">&gt;</span> Implementation <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
 <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec3&quot;</span><span class="nt">&gt;</span> Numerical experiments <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec4&quot;</span><span class="nt">&gt;</span> The Backward Euler method <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec5&quot;</span><span class="nt">&gt;</span> The Crank-Nicolson method <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec6&quot;</span><span class="nt">&gt;</span> The Forward Euler method <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec7&quot;</span><span class="nt">&gt;</span> Error vs $latex \Delta t$ <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec8&quot;</span><span class="nt">&gt;</span> Bibliography <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec4&quot;</span><span class="nt">&gt;</span> Error vs $latex \Delta t$ <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#___sec5&quot;</span><span class="nt">&gt;</span> Bibliography <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
 <span class="nt">&lt;/p&gt;</span>
 
 <span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;math:problem&quot;</span><span class="nt">&gt;</span>Mathematical problem<span class="nt">&lt;/h1&gt;</span>
@@ -186,23 +179,15 @@ u(0)  = I,
  $
 
 
-where $latex a$, $latex I$, and $latex T$ are prescribed parameters, and $latex u(t)$ is
-the unknown function to be estimated. This mathematical model
-is relevant for physical phenomena featuring exponential decay
-in time, e.g., vertical pressure variation in the atmosphere,
-cooling of an object, and radioactive decay.
+where $latex a$, $latex I$, and $latex T$ are prescribed parameters, and $latex u(t)$ is the unknown function to be estimated. This mathematical model is relevant for physical phenomena featuring exponential decay in time, e.g., vertical pressure variation in the atmosphere, cooling of an object, and radioactive decay.
 
 <span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;numerical:problem&quot;</span><span class="nt">&gt;</span>Numerical solution method<span class="nt">&lt;/h1&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
-We introduce a mesh in time with points $latex 0 = t_0 <span class="nt">&lt; t_1</span> <span class="err">\</span><span class="na">cdots</span> <span class="err">&lt;</span> <span class="na">t_</span><span class="err">{</span><span class="na">N_t</span><span class="err">}=</span><span class="na">T</span><span class="err">$.</span>
-<span class="na">For</span> <span class="na">simplicity</span><span class="err">,</span> <span class="na">we</span> <span class="na">assume</span> <span class="na">constant</span> <span class="na">spacing</span> <span class="err">$</span><span class="na">latex</span> <span class="err">\</span><span class="na">Delta</span> <span class="na">t</span><span class="err">$</span> <span class="na">between</span> <span class="na">the</span>
-<span class="na">mesh</span> <span class="na">points:</span> <span class="err">$</span><span class="na">latex</span> <span class="err">\</span><span class="na">Delta</span> <span class="na">t =</span> <span class="s">t_{n}-t_{n-1}$,</span> <span class="err">$</span><span class="na">latex</span> <span class="na">n=</span><span class="s">1,\ldots,N_t$.</span> <span class="na">Let</span>
-<span class="err">$</span><span class="na">latex</span> <span class="na">u</span><span class="err">^</span><span class="na">n</span><span class="err">$</span> <span class="na">be</span> <span class="na">the</span> <span class="na">numerical</span> <span class="na">approximation</span> <span class="na">to</span> <span class="na">the</span> <span class="na">exact</span> <span class="na">solution</span> <span class="na">at</span> <span class="err">$</span><span class="na">latex</span> <span class="na">t_n</span><span class="err">$.</span>
+We introduce a mesh in time with points $latex 0 = t_0 <span class="nt">&lt; t_1</span> <span class="err">\</span><span class="na">cdots</span> <span class="err">&lt;</span> <span class="na">t_</span><span class="err">{</span><span class="na">N_t</span><span class="err">}=</span><span class="na">T</span><span class="err">$.</span> <span class="na">For</span> <span class="na">simplicity</span><span class="err">,</span> <span class="na">we</span> <span class="na">assume</span> <span class="na">constant</span> <span class="na">spacing</span> <span class="err">$</span><span class="na">latex</span> <span class="err">\</span><span class="na">Delta</span> <span class="na">t</span><span class="err">$</span> <span class="na">between</span> <span class="na">the</span> <span class="na">mesh</span> <span class="na">points:</span> <span class="err">$</span><span class="na">latex</span> <span class="err">\</span><span class="na">Delta</span> <span class="na">t =</span> <span class="s">t_{n}-t_{n-1}$,</span> <span class="err">$</span><span class="na">latex</span> <span class="na">n=</span><span class="s">1,\ldots,N_t$.</span> <span class="na">Let</span> <span class="err">$</span><span class="na">latex</span> <span class="na">u</span><span class="err">^</span><span class="na">n</span><span class="err">$</span> <span class="na">be</span> <span class="na">the</span> <span class="na">numerical</span> <span class="na">approximation</span> <span class="na">to</span> <span class="na">the</span> <span class="na">exact</span> <span class="na">solution</span> <span class="na">at</span> <span class="err">$</span><span class="na">latex</span> <span class="na">t_n</span><span class="err">$.</span>
 
 <span class="err">&lt;</span><span class="na">p</span><span class="nt">&gt;</span>
-The $latex \theta$-rule <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#Iserles_2009&quot;</span><span class="nt">&gt;</span>[1]<span class="nt">&lt;/a&gt;</span>
-is used to solve <span class="nt">&lt;b&gt;</span>(REF to equation ode not supported)<span class="nt">&lt;/b&gt;</span> numerically:
+The $latex \theta$-rule <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#Iserles_2009&quot;</span><span class="nt">&gt;</span>[1]<span class="nt">&lt;/a&gt;</span> is used to solve <span class="nt">&lt;b&gt;</span>(REF to equation ode not supported)<span class="nt">&lt;/b&gt;</span> numerically:
 
 <span class="nt">&lt;p&gt;</span>
 
@@ -214,19 +199,15 @@ u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
 for $latex n=0,1,\ldots,N_t-1$. This scheme corresponds to
 
 <span class="nt">&lt;ul&gt;</span>
-  <span class="nt">&lt;li&gt;</span> The <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://en.wikipedia.org/wiki/Forward_Euler_method&quot;</span> <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;</span>Forward Euler<span class="nt">&lt;/a&gt;</span>
-    scheme when $latex \theta=0$<span class="nt">&lt;/li&gt;</span>
-  <span class="nt">&lt;li&gt;</span> The <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://en.wikipedia.org/wiki/Backward_Euler_method&quot;</span> <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;</span>Backward Euler<span class="nt">&lt;/a&gt;</span>
-    scheme when $latex \theta=1$<span class="nt">&lt;/li&gt;</span>
-  <span class="nt">&lt;li&gt;</span> The <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://en.wikipedia.org/wiki/Crank-Nicolson&quot;</span> <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;</span>Crank-Nicolson<span class="nt">&lt;/a&gt;</span>
-    scheme when $latex \theta=1/2$<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span> The <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://en.wikipedia.org/wiki/Forward_Euler_method&quot;</span> <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;</span>Forward Euler<span class="nt">&lt;/a&gt;</span>     scheme when $latex \theta=0$<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span> The <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://en.wikipedia.org/wiki/Backward_Euler_method&quot;</span> <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;</span>Backward Euler<span class="nt">&lt;/a&gt;</span>     scheme when $latex \theta=1$<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span> The <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://en.wikipedia.org/wiki/Crank-Nicolson&quot;</span> <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;</span>Crank-Nicolson<span class="nt">&lt;/a&gt;</span>     scheme when $latex \theta=1/2$<span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 
 <span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;___sec2&quot;</span><span class="nt">&gt;</span>Implementation <span class="nt">&lt;/h1&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
-The numerical method is implemented in a Python function
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#Langtangen_2014&quot;</span><span class="nt">&gt;</span>[2]<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;code&gt;</span>solver<span class="nt">&lt;/code&gt;</span> (found in the <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py&quot;</span> <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;&lt;tt&gt;</span>model<span class="nt">&lt;/tt&gt;&lt;/a&gt;</span> module):
+The numerical method is implemented in a Python function <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#Langtangen_2014&quot;</span><span class="nt">&gt;</span>[2]<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;code&gt;</span>solver<span class="nt">&lt;/code&gt;</span> (found in the <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://bit.ly/1Bkp72S&quot;</span> <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;&lt;tt&gt;</span>model<span class="nt">&lt;/tt&gt;&lt;/a&gt;</span>):
 
 <span class="nt">&lt;p&gt;</span>
 
@@ -248,50 +229,58 @@ The numerical method is implemented in a Python function
 <span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;___sec3&quot;</span><span class="nt">&gt;</span>Numerical experiments <span class="nt">&lt;/h1&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
-We define a set of numerical experiments where $latex I$, $latex a$, and $latex T$ are
-fixed, while $latex \Delta t$ and $latex \theta$ are varied.
-In particular, $latex I=1$, $latex a=2$, $latex \Delta t = 1.25, 0.75, 0.5, 0.1$.
-
-<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec4&quot;</span><span class="nt">&gt;</span>The Backward Euler method <span class="nt">&lt;/h2&gt;</span>
+A set of numerical experiments has been carried out, where $latex I$, $latex a$, and $latex T$ are fixed, while $latex \Delta t$ and $latex \theta$ are varied. In particular, $latex I=1$, $latex a=2$, $latex \Delta t = 1.25, 0.75, 0.5, 0.1$. Figure <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#fig:BE&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/a&gt;</span> contains four plots, corresponding to four decreasing $latex \Delta t$ values. The red dashed line represent the numerical solution computed by the Backward Euler scheme, while the blue line is the exact solution. The corresponding results for the Crank-Nicolson and Forward Euler methods appear in Figures <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#fig:CN&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/a&gt;</span> and <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#fig:FE&quot;</span><span class="nt">&gt;</span>3<span class="nt">&lt;/a&gt;</span>.
 
 <span class="nt">&lt;p&gt;</span>
-<span class="nt">&lt;center&gt;&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/BE.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">800</span><span class="nt">&gt;&lt;/p&gt;&lt;/center&gt;</span>
-
-<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec5&quot;</span><span class="nt">&gt;</span>The Crank-Nicolson method <span class="nt">&lt;/h2&gt;</span>
-
-<span class="nt">&lt;p&gt;</span>
-<span class="nt">&lt;center&gt;&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/CN.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">800</span><span class="nt">&gt;&lt;/p&gt;&lt;/center&gt;</span>
-
-<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec6&quot;</span><span class="nt">&gt;</span>The Forward Euler method <span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;center&gt;</span> 
+<span class="nt">&lt;hr</span> <span class="na">class=</span><span class="s">&quot;figure&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;center&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;caption&quot;</span><span class="nt">&gt;</span>Figure 1:  The Backward Euler method for decreasing time step values. <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;fig:BE&quot;</span><span class="nt">&gt;&lt;/div&gt;</span> <span class="nt">&lt;/p&gt;&lt;/center&gt;</span>
+<span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/BE.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">800</span><span class="nt">&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/center&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
-<span class="nt">&lt;center&gt;&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/FE.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">800</span><span class="nt">&gt;&lt;/p&gt;&lt;/center&gt;</span>
-
-<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec7&quot;</span><span class="nt">&gt;</span>Error vs $latex \Delta t$ <span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;center&gt;</span> 
+<span class="nt">&lt;hr</span> <span class="na">class=</span><span class="s">&quot;figure&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;center&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;caption&quot;</span><span class="nt">&gt;</span>Figure 2:  The Crank-Nicolson method for decreasing time step values. <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;fig:CN&quot;</span><span class="nt">&gt;&lt;/div&gt;</span> <span class="nt">&lt;/p&gt;&lt;/center&gt;</span>
+<span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/CN.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">800</span><span class="nt">&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/center&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
-How $latex E$ varies with $latex \Delta t$ for $latex \theta=0,0.5,1$
-is shown in Figure <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#fig:error&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/a&gt;</span>.
+<span class="nt">&lt;center&gt;</span> 
+<span class="nt">&lt;hr</span> <span class="na">class=</span><span class="s">&quot;figure&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;center&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;caption&quot;</span><span class="nt">&gt;</span>Figure 3:  The Forward Euler method for decreasing time step values. <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;fig:FE&quot;</span><span class="nt">&gt;&lt;/div&gt;</span> <span class="nt">&lt;/p&gt;&lt;/center&gt;</span>
+<span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/FE.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">800</span><span class="nt">&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/center&gt;</span>
+
+<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;___sec4&quot;</span><span class="nt">&gt;</span>Error vs $latex \Delta t$ <span class="nt">&lt;/h1&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>
+How the error
+
+<span class="nt">&lt;p&gt;</span>
+
+$latex  E^n = \left(\int_0^T (Ie^{-at} - u^n)^2dt\right)^{\frac{1}{2}} $
+
+
+varies with $latex \Delta t$ for the three numerical methods is shown in Figure <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#fig:error&quot;</span><span class="nt">&gt;</span>4<span class="nt">&lt;/a&gt;</span>.
 
 <span class="nt">&lt;p&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-block alert-warning alert-text-normal&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;b&gt;</span>Observe:<span class="nt">&lt;/b&gt;</span>
 <span class="nt">&lt;p&gt;</span>
-The data points for the three largest $latex \Delta t$ values in the
-Forward Euler method are not relevant as the solution behaves
-non-physically.
+The data points for the three largest $latex \Delta t$ values in the Forward Euler method are not relevant as the solution behaves non-physically.
 <span class="nt">&lt;/div&gt;</span>
 
 
 <span class="nt">&lt;p&gt;</span>
 <span class="nt">&lt;center&gt;</span> 
 <span class="nt">&lt;hr</span> <span class="na">class=</span><span class="s">&quot;figure&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;center&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;caption&quot;</span><span class="nt">&gt;</span>Figure 1:  Variation of the error with the time step. <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;fig:error&quot;</span><span class="nt">&gt;&lt;/div&gt;</span> <span class="nt">&lt;/p&gt;&lt;/center&gt;</span>
+<span class="nt">&lt;center&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;caption&quot;</span><span class="nt">&gt;</span>Figure 4:  Variation of the error with the time step. <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;fig:error&quot;</span><span class="nt">&gt;&lt;/div&gt;</span> <span class="nt">&lt;/p&gt;&lt;/center&gt;</span>
 <span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;https://raw.github.com/hplgit/hplgit.github.com/master/teamods/writing_reports/_static/error.png&quot;</span> <span class="na">align=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width=</span><span class="s">400</span><span class="nt">&gt;&lt;/p&gt;</span>
 <span class="nt">&lt;/center&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
-The numbers corresponding to the figure above are given in the table below.
+The $latex E$ numbers corresponding to Figure <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#fig:error&quot;</span><span class="nt">&gt;</span>4<span class="nt">&lt;/a&gt;</span> are given in the table below.
 
 <span class="nt">&lt;p&gt;</span>
 <span class="nt">&lt;table</span> <span class="na">border=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
@@ -314,28 +303,17 @@ The numbers corresponding to the figure above are given in the table below.
 <span class="nt">&lt;li&gt;</span> $latex \theta =1$: $latex E\sim \Delta t$ (first-order convergence).<span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;li&gt;</span> $latex \theta =0.5$: $latex E\sim \Delta t^2$ (second-order convergence).<span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;li&gt;</span> $latex \theta =1$ is always stable and gives qualitatively corrects results.<span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;li&gt;</span> $latex \theta =0.5$ never blows up, but may give oscillating solutions
-   if $latex \Delta t$ is not sufficiently small.<span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;li&gt;</span> $latex \theta =0$ suffers from fast-growing solution if $latex \Delta t$ is
-   not small enough, but even below this limit one can have oscillating
-   solutions (unless $latex \Delta t$ is sufficiently small).<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span> $latex \theta =0.5$ never blows up, but may give oscillating solutions    if $latex \Delta t$ is not sufficiently small.<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span> $latex \theta =0$ suffers from fast-growing solution if $latex \Delta t$ is    not small enough, but even below this limit one can have oscillating    solutions (unless $latex \Delta t$ is sufficiently small).<span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ol&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 
 
-<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;___sec8&quot;</span><span class="nt">&gt;</span>Bibliography <span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;___sec5&quot;</span><span class="nt">&gt;</span>Bibliography <span class="nt">&lt;/h1&gt;</span>
 
 <span class="nt">&lt;ol&gt;</span>
- <span class="nt">&lt;li&gt;</span> <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;Iserles_2009&quot;</span><span class="nt">&gt;&lt;/div&gt;</span> <span class="nt">&lt;b&gt;</span>A. Iserles<span class="nt">&lt;/b&gt;</span>. 
-    <span class="nt">&lt;em&gt;</span>A First Course in the Numerical Analysis of Differential Equations<span class="nt">&lt;/em&gt;</span>,
-    second edition,
-    Cambridge University Press,
-    2009.<span class="nt">&lt;/li&gt;</span>
- <span class="nt">&lt;li&gt;</span> <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;Langtangen_2014&quot;</span><span class="nt">&gt;&lt;/div&gt;</span> <span class="nt">&lt;b&gt;</span>H. P. Langtangen<span class="nt">&lt;/b&gt;</span>. 
-    <span class="nt">&lt;em&gt;</span>A Primer on Scientific Programming With Python<span class="nt">&lt;/em&gt;</span>,
-    fourth edition,
-    Springer,
-    2014.<span class="nt">&lt;/li&gt;</span>
+ <span class="nt">&lt;li&gt;</span> <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;Iserles_2009&quot;</span><span class="nt">&gt;&lt;/div&gt;</span> <span class="nt">&lt;b&gt;</span>A. Iserles<span class="nt">&lt;/b&gt;</span>.     <span class="nt">&lt;em&gt;</span>A First Course in the Numerical Analysis of Differential Equations<span class="nt">&lt;/em&gt;</span>,     second edition,     Cambridge University Press,     2009.<span class="nt">&lt;/li&gt;</span>
+ <span class="nt">&lt;li&gt;</span> <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;Langtangen_2014&quot;</span><span class="nt">&gt;&lt;/div&gt;</span> <span class="nt">&lt;b&gt;</span>H. P. Langtangen<span class="nt">&lt;/b&gt;</span>.     <span class="nt">&lt;em&gt;</span>A Primer on Scientific Programming With Python<span class="nt">&lt;/em&gt;</span>,     fourth edition,     Springer,     2014.<span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ol&gt;</span>
 
 

@@ -7,7 +7,7 @@ Experiments with Schemes for Exponential Decay
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen (hpl at simula.no)
-:Date: Aug 24, 2015
+:Date: Dec 20, 2015
 
 *Summary.* This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation :math:`u'=-au` with the
@@ -90,7 +90,7 @@ Implementation
 ==============
 
 The numerical method is implemented in a Python function
-[Ref2]_ ``solver`` (found in the `model <https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py>`__ module):
+[Ref2]_ ``solver`` (found in the `model <http://bit.ly/1Bkp72S>`__):
 
 .. code-block:: python
 
@@ -114,40 +114,58 @@ Numerical experiments
 
 .. index:: numerical experiments
 
-We define a set of numerical experiments where :math:`I`, :math:`a`, and :math:`T` are
-fixed, while :math:`\Delta t` and :math:`\theta` are varied.
-In particular, :math:`I=1`, :math:`a=2`, :math:`\Delta t = 1.25, 0.75, 0.5, 0.1`.
+A set of numerical experiments has been carried out,
+where :math:`I`, :math:`a`, and :math:`T` are fixed, while :math:`\Delta t` and
+:math:`\theta` are varied. In particular, :math:`I=1`, :math:`a=2`,
+:math:`\Delta t = 1.25, 0.75, 0.5, 0.1`.
+Figure :ref:`fig:BE` contains four plots, corresponding to
+four decreasing :math:`\Delta t` values. The red dashed line
+represent the numerical solution computed by the Backward
+Euler scheme, while the blue line is the exact solution.
+The corresponding results for the Crank-Nicolson and
+Forward Euler methods appear in Figures :ref:`fig:CN`
+and :ref:`fig:FE`.
 
-The Backward Euler method
--------------------------
+.. index:: Backward Euler method
 
-.. index:: BE
+.. _fig:BE:
 
 .. figure:: BE.png
    :width: 800
 
-The Crank-Nicolson method
--------------------------
+   *The Backward Euler method for decreasing time step values*
 
-.. index:: CN
+.. index:: Crank-Nicolson method
+
+.. _fig:CN:
 
 .. figure:: CN.png
    :width: 800
 
-The Forward Euler method
-------------------------
+   *The Crank-Nicolson method for decreasing time step values*
 
-.. index:: FE
+.. index:: Forward Euler method
+
+.. _fig:FE:
 
 .. figure:: FE.png
    :width: 800
 
+   *The Forward Euler method for decreasing time step values*
+
+.. !split
+
 Error vs :math:`\Delta t`
--------------------------
+=========================
 
 .. index:: error vs time step
 
-How :math:`E` varies with :math:`\Delta t` for :math:`\theta=0,0.5,1`
+How the error
+
+.. math::
+         E^n = \left(\int_0^T (Ie^{-at} - u^n)^2dt\right)^{\frac{1}{2}}
+
+varies with :math:`\Delta t` for the three numerical methods
 is shown in Figure :ref:`fig:error`.
 
 
@@ -167,7 +185,8 @@ is shown in Figure :ref:`fig:error`.
 
    *Variation of the error with the time step*
 
-The numbers corresponding to the figure above are given in the table below.
+The :math:`E` numbers corresponding to Figure :ref:`fig:error`
+are given in the table below.
 
 ================  ================  ==================  ================  
 :math:`\Delta t`  :math:`\theta=0`  :math:`\theta=0.5`  :math:`\theta=1`  

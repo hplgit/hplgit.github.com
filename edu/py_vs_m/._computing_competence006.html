@@ -1,0 +1,230 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Learning Outcomes for Computing Competence">
+
+<title>Learning Outcomes for Computing Competence</title>
+
+<!-- Bootstrap style: bootstrap -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(u'Why is computing competence important?', 1, None, '___sec0'),
+              (u'General learning outcomes for computing competence',
+               1,
+               u'sec:learning_outcomes',
+               u'sec:learning_outcomes'),
+              (u'Case study', 1, None, '___sec2'),
+              (u'Exercise for the case study', 2, None, '___sec3'),
+              (u'Solution 1: Minimalistic Matlab', 2, None, '___sec4'),
+              (u'Solution 2: Matlab with functions', 2, None, '___sec5'),
+              (u'Solution 3: Standard Python', 2, None, '___sec6'),
+              (u'Verification and testing frameworks',
+               1,
+               u'sec:verify',
+               u'sec:verify'),
+              (u'A simple test function', 2, None, '___sec8'),
+              (u'A proper test function for the nose or pytest test framework',
+               2,
+               None,
+               '___sec9'),
+              (u'Use of symbolic computing for exact results',
+               2,
+               None,
+               '___sec10'),
+              (u'Use relative errors', 2, None, '___sec11'),
+              (u'Test function for the convergence rate',
+               2,
+               None,
+               '___sec12'),
+              (u'Tests in Matlab', 2, None, '___sec13'),
+              (u'Rounding errors', 2, None, '___sec14'),
+              (u'Incorporation of other learning outcomes',
+               1,
+               None,
+               '___sec15'),
+              (u'High-performance computing: vectorization',
+               2,
+               u'sec:HPC:vec',
+               u'sec:HPC:vec'),
+              (u'High-performance computing: memory usage',
+               2,
+               None,
+               '___sec17'),
+              (u'High-performance computing: parallelization',
+               2,
+               None,
+               '___sec18'),
+              (u'Understanding of approximation errors', 2, None, '___sec19'),
+              (u'Overview of advanced algorithms', 2, None, '___sec20'),
+              (u'Uncertainty quantification', 2, None, '___sec21'),
+              (u'Extended exercise', 1, None, '___sec22'),
+              (u'A Python solution', 2, None, '___sec23'),
+              (u'Solution 4: a Java OO program', 1, None, '___sec24'),
+              (u'Conclusions', 1, None, '___sec25')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="computing_competence.html">Learning Outcomes for Computing Competence</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._computing_competence002.html#___sec0" style="font-size: 80%;"><b>Why is computing competence important?</b></a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence003.html#sec:learning_outcomes" style="font-size: 80%;"><b>General learning outcomes for computing competence</b></a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec2" style="font-size: 80%;"><b>Case study</b></a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise for the case study</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 1: Minimalistic Matlab</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 2: Matlab with functions</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solution 3: Standard Python</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#sec:verify" style="font-size: 80%;"><b>Verification and testing frameworks</b></a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A simple test function</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A proper test function for the nose or pytest test framework</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Use of symbolic computing for exact results</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Use relative errors</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Test function for the convergence rate</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Tests in Matlab</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Rounding errors</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec15" style="font-size: 80%;"><b>Incorporation of other learning outcomes</b></a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#sec:HPC:vec" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;High-performance computing: vectorization</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;High-performance computing: memory usage</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;High-performance computing: parallelization</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Understanding of approximation errors</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Overview of advanced algorithms</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence004.html#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Uncertainty quantification</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence005.html#___sec22" style="font-size: 80%;"><b>Extended exercise</b></a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence005.html#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A Python solution</a></li>
+     <!-- navigation toc: --> <li><a href="._computing_competence005.html#___sec24" style="font-size: 80%;"><b>Solution 4: a Java OO program</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec25" style="font-size: 80%;"><b>Conclusions</b></a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0006"></a>
+<!-- !split -->
+
+<h1 id="___sec25">Conclusions </h1>
+
+<p>
+Simple exercises have pedagogical advantages, but some disadvantages
+with respect to programming, because the programs may easily become
+too specialized. In such cases, the exercise may explicitly ask the
+student to divide the program into functions and make general
+mathematical methods available as general, reusable functions for a
+set of problems.  This requirement can be motivated by an extended
+exercise where a piece of code are needed many times, typically that
+several methods are applied to several problems.
+
+<p>
+Especially when using Matlab, students may be too lazy to use
+functions when this is not explicitly required. The result is that
+testing becomes absent and that extensions to more complicated cases
+get more error-prone.
+
+<p>
+<b>Final remark.</b>
+Linear algebra is an excellent example where the traditional mathematical
+recipes (algorithms) taught in the standard linear algebra courses all over
+the world are not compatible with how linear algebra calculations are
+carried out in the real world. Students are drilled in computing
+the inverse of \( 2\times 2 \) and \( 3\times 3 \) matrices, computing
+determinants using co-factors, computing eigenvalues using the
+characteristic polynomial, and so on. In the real world, however, golden
+rules of linear algebra go instead as follows:
+
+<ul>
+ <li> Never compute the matrix inverse.</li>
+ <li> Never compute a determinant using co-factors.</li>
+ <li> Never compute eigenvalues using the characteristic polynomial.</li>
+ <li> Never compute \( \det A \) to decide if \( A \) is approximately singular.</li>
+ <li> Never compute the eigenvalues of \( A \) to determine whether it is symmetric positive definite. Rather compute the Cholesky factorization; if successful, \( A \) is symmetric and positive definite.</li>
+ <li> Never compute \( A^TA \) when solving least squares problems.</li>
+</ul>
+
+What is the impact of such rules on the teaching of introductory linear
+algebra?
+
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pager">
+  <li class="previous">
+    <a href="._computing_competence005.html">&larr; Prev</a>
+  </li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

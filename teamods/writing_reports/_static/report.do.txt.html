@@ -1,5 +1,5 @@
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">TITLE: Experiments with Schemes for Exponential Decay</span>
-<span style="color: #000080; font-weight: bold">AUTHOR:</span> Hans Petter Langtangen Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory &amp; Department of Informatics, University of Oslo.
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Hans Petter Langtangen {copyright|CC BY} Email:hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory &amp; Department of Informatics, University of Oslo.
 <span style="color: #000080; font-weight: bold">DATE:</span> today
 
 <span style="color: #800080; font-weight: bold">__Summary.__</span>
@@ -84,9 +84,10 @@ for $n=0,1,\ldots,N_t-1$. This scheme corresponds to
 
 The numerical method is implemented in a Python function
 cite{Langtangen_2014} `solver` (found in the &quot;`model`&quot;:
-<span style="color: #CD5555">&quot;https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py&quot;</span> module):
+<span style="color: #CD5555">&quot;http://bit.ly/1Bkp72S&quot;</span>):
 
-<span style="color: #800080; font-weight: bold">@@@CODE ../model.py  fromto: def solver@def exact_sol</span>
+
+<span style="color: #800080; font-weight: bold">@@@CODE ../model.py  fromto: def solver@def u_exact</span>
 
 
 <span style="color: #000080; font-weight: bold">======= Numerical experiments =======</span>
@@ -95,52 +96,48 @@ cite{Langtangen_2014} `solver` (found in the &quot;`model`&quot;:
 
 <span style="color: #658b00">idx{numerical experiments}</span>
 
-We define a set of numerical experiments where $I$, $a$, and $T$ are
-fixed, while $\Delta t$ and $\theta$ are varied.
-In particular, $I=1$, $a=2$, $\Delta t = 1.25, 0.75, 0.5, 0.1$.
+A set of numerical experiments has been carried out,
+where $I$, $a$, and $T$ are fixed, while $\Delta t$ and
+$\theta$ are varied. In particular, $I=1$, $a=2$,
+$\Delta t = 1.25, 0.75, 0.5, 0.1$.
+Figure ref{fig:BE} contains four plots, corresponding to
+four decreasing $\Delta t$ values. The red dashed line
+represent the numerical solution computed by the Backward
+Euler scheme, while the blue line is the exact solution.
+The corresponding results for the Crank-Nicolson and
+Forward Euler methods appear in Figures ref{fig:CN}
+and ref{fig:FE}.
 
 
 
-<span style="color: #000080; font-weight: bold">===== The Backward Euler method =====</span>
+<span style="color: #658b00">idx{Backward Euler method}</span>
 
-<span style="color: #228B22">## Purpose: subsection with inline figure (figure without caption).</span>
-
-
-<span style="color: #658b00">idx{BE}</span>
-
-<span style="color: #658b00">FIGURE: [BE, width=800]</span>
+<span style="color: #658b00">FIGURE: [BE, width=800] The Backward Euler method for decreasing time step values. label{fig:BE}</span>
 
 
 
-<span style="color: #000080; font-weight: bold">===== The Crank-Nicolson method =====</span>
+<span style="color: #658b00">idx{Crank-Nicolson method}</span>
 
-<span style="color: #228B22">## Purpose: subsection with inline figure (figure without caption).</span>
-
-
-<span style="color: #658b00">idx{CN}</span>
-
-<span style="color: #658b00">FIGURE: [CN, width=800]</span>
+<span style="color: #658b00">FIGURE: [CN, width=800] The Crank-Nicolson method for decreasing time step values. label{fig:CN}</span>
 
 
 
-<span style="color: #000080; font-weight: bold">===== The Forward Euler method =====</span>
+<span style="color: #658b00">idx{Forward Euler method}</span>
 
-<span style="color: #228B22">## Purpose: subsection with inline figure (figure without caption).</span>
-
-
-<span style="color: #658b00">idx{FE}</span>
-
-<span style="color: #658b00">FIGURE: [FE, width=800]</span>
+<span style="color: #658b00">FIGURE: [FE, width=800] The Forward Euler method for decreasing time step values. label{fig:FE}</span>
 
 
 
-<span style="color: #000080; font-weight: bold">===== Error vs $\Delta t$ =====</span>
-
-<span style="color: #228B22">## Purpose: exemplify referring to a figure with label and caption.</span>
+<span style="color: #000080; font-weight: bold">======= Error vs $\Delta t$ =======</span>
 
 <span style="color: #658b00">idx{error vs time step}</span>
 
-How $E$ varies with $\Delta t$ for $\theta=0,0.5,1$
+How the error
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+\[ E^n = \left(\int_0^T (Ie^{-at} - u^n)^2dt\right)^{\frac{1}{2}}\]
+<span style="color: #8B008B; font-weight: bold">!et</span>
+varies with $\Delta t$ for the three numerical methods
 is shown in Figure ref{fig:error}.
 
 <span style="color: #228B22">## Here is an admonition box for warnings</span>
@@ -155,7 +152,8 @@ non-physically.
 
 <span style="color: #228B22">## A corresponding table</span>
 
-The numbers corresponding to the figure above are given in the table below.
+The $E$ numbers corresponding to Figure ref{fig:error}
+are given in the table below.
 
 <span style="color: #CD5555">|------c--------------c--------------c--------------c-------|</span>
 <span style="color: #CD5555">| $\Delta t$   | $\theta=0$   | $\theta=0.5$ | $\theta=1$   |</span>

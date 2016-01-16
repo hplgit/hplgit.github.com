@@ -74,7 +74,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen (hpl at simula.no)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 24, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Dec 20, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -120,7 +120,7 @@ scheme when <span class="math">\(\theta=1/2\)</span></li>
 <div class="section" id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>The numerical method is implemented in a Python function
-<a class="reference internal" href="#ref2" id="id2">[Ref2]</a> <code class="docutils literal"><span class="pre">solver</span></code> (found in the <a class="reference external" href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py">model</a> module):</p>
+<a class="reference internal" href="#ref2" id="id2">[Ref2]</a> <code class="docutils literal"><span class="pre">solver</span></code> (found in the <a class="reference external" href="http://bit.ly/1Bkp72S">model</a>):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">solver</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     <span class="n">dt</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span>            <span class="c"># avoid integer division</span>
@@ -138,30 +138,36 @@ scheme when <span class="math">\(\theta=1/2\)</span></li>
 </div>
 <div class="section" id="numerical-experiments">
 <h2>Numerical experiments<a class="headerlink" href="#numerical-experiments" title="Permalink to this headline">¶</a></h2>
-<p id="index-6">We define a set of numerical experiments where <span class="math">\(I\)</span>, <span class="math">\(a\)</span>, and <span class="math">\(T\)</span> are
-fixed, while <span class="math">\(\Delta t\)</span> and <span class="math">\(\theta\)</span> are varied.
-In particular, <span class="math">\(I=1\)</span>, <span class="math">\(a=2\)</span>, <span class="math">\(\Delta t = 1.25, 0.75, 0.5, 0.1\)</span>.</p>
-<div class="section" id="the-backward-euler-method">
-<h3>The Backward Euler method<a class="headerlink" href="#the-backward-euler-method" title="Permalink to this headline">¶</a></h3>
-<div class="figure" id="index-7">
-<a class="reference internal image-reference" href="_images/BE.png"><img alt="_images/BE.png" src="_images/BE.png" style="width: 800px;" /></a>
+<p id="index-6">A set of numerical experiments has been carried out,
+where <span class="math">\(I\)</span>, <span class="math">\(a\)</span>, and <span class="math">\(T\)</span> are fixed, while <span class="math">\(\Delta t\)</span> and
+<span class="math">\(\theta\)</span> are varied. In particular, <span class="math">\(I=1\)</span>, <span class="math">\(a=2\)</span>,
+<span class="math">\(\Delta t = 1.25, 0.75, 0.5, 0.1\)</span>.
+Figure <a class="reference internal" href="#fig-be"><span class="std std-ref">The Backward Euler method for decreasing time step values</span></a> contains four plots, corresponding to
+four decreasing <span class="math">\(\Delta t\)</span> values. The red dashed line
+represent the numerical solution computed by the Backward
+Euler scheme, while the blue line is the exact solution.
+The corresponding results for the Crank-Nicolson and
+Forward Euler methods appear in Figures <a class="reference internal" href="#fig-cn"><span class="std std-ref">The Crank-Nicolson method for decreasing time step values</span></a>
+and <a class="reference internal" href="#fig-fe"><span class="std std-ref">The Forward Euler method for decreasing time step values</span></a>.</p>
+<div class="figure" id="id3">
+<span id="fig-be"></span><span id="index-7"></span><a class="reference internal image-reference" href="_images/BE.png"><img alt="_images/BE.png" src="_images/BE.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text"><em>The Backward Euler method for decreasing time step values</em></span></p>
 </div>
+<div class="figure" id="id4">
+<span id="fig-cn"></span><span id="index-8"></span><a class="reference internal image-reference" href="_images/CN.png"><img alt="_images/CN.png" src="_images/CN.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text"><em>The Crank-Nicolson method for decreasing time step values</em></span></p>
 </div>
-<div class="section" id="the-crank-nicolson-method">
-<h3>The Crank-Nicolson method<a class="headerlink" href="#the-crank-nicolson-method" title="Permalink to this headline">¶</a></h3>
-<div class="figure" id="index-8">
-<a class="reference internal image-reference" href="_images/CN.png"><img alt="_images/CN.png" src="_images/CN.png" style="width: 800px;" /></a>
-</div>
-</div>
-<div class="section" id="the-forward-euler-method">
-<h3>The Forward Euler method<a class="headerlink" href="#the-forward-euler-method" title="Permalink to this headline">¶</a></h3>
-<div class="figure" id="index-9">
-<a class="reference internal image-reference" href="_images/FE.png"><img alt="_images/FE.png" src="_images/FE.png" style="width: 800px;" /></a>
+<div class="figure" id="id5">
+<span id="fig-fe"></span><span id="index-9"></span><a class="reference internal image-reference" href="_images/FE.png"><img alt="_images/FE.png" src="_images/FE.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-text"><em>The Forward Euler method for decreasing time step values</em></span></p>
 </div>
 </div>
 <div class="section" id="error-vs">
-<h3>Error vs <span class="math">\(\Delta t\)</span><a class="headerlink" href="#error-vs" title="Permalink to this headline">¶</a></h3>
-<p id="index-10">How <span class="math">\(E\)</span> varies with <span class="math">\(\Delta t\)</span> for <span class="math">\(\theta=0,0.5,1\)</span>
+<h2>Error vs <span class="math">\(\Delta t\)</span><a class="headerlink" href="#error-vs" title="Permalink to this headline">¶</a></h2>
+<p id="index-10">How the error</p>
+<div class="math">
+\[E^n = \left(\int_0^T (Ie^{-at} - u^n)^2dt\right)^{\frac{1}{2}}\]</div>
+<p>varies with <span class="math">\(\Delta t\)</span> for the three numerical methods
 is shown in Figure <a class="reference internal" href="#fig-error"><span class="std std-ref">Variation of the error with the time step</span></a>.</p>
 <div class="admonition-observe admonition">
 <p class="first admonition-title">Observe</p>
@@ -169,11 +175,12 @@ is shown in Figure <a class="reference internal" href="#fig-error"><span class="
 Forward Euler method are not relevant as the solution behaves
 non-physically.</p>
 </div>
-<div class="figure" id="id3">
+<div class="figure" id="id6">
 <span id="fig-error"></span><a class="reference internal image-reference" href="_images/error.png"><img alt="_images/error.png" src="_images/error.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-text"><em>Variation of the error with the time step</em></span></p>
 </div>
-<p>The numbers corresponding to the figure above are given in the table below.</p>
+<p>The <span class="math">\(E\)</span> numbers corresponding to Figure <a class="reference internal" href="#fig-error"><span class="std std-ref">Variation of the error with the time step</span></a>
+are given in the table below.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="24%" />
@@ -225,7 +232,6 @@ solutions (unless <span class="math">\(\Delta t\)</span> is sufficiently small).
 </ol>
 </div>
 </div>
-</div>
 <div class="section" id="bibliography">
 <h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h2>
 <table class="docutils citation" frame="void" id="ref1" rules="none">
@@ -266,13 +272,8 @@ Springer,
 <li><a class="reference internal" href="#mathematical-problem">Mathematical problem</a></li>
 <li><a class="reference internal" href="#numerical-solution-method">Numerical solution method</a></li>
 <li><a class="reference internal" href="#implementation">Implementation</a></li>
-<li><a class="reference internal" href="#numerical-experiments">Numerical experiments</a><ul>
-<li><a class="reference internal" href="#the-backward-euler-method">The Backward Euler method</a></li>
-<li><a class="reference internal" href="#the-crank-nicolson-method">The Crank-Nicolson method</a></li>
-<li><a class="reference internal" href="#the-forward-euler-method">The Forward Euler method</a></li>
+<li><a class="reference internal" href="#numerical-experiments">Numerical experiments</a></li>
 <li><a class="reference internal" href="#error-vs">Error vs <span class="math">\(\Delta t\)</span></a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#bibliography">Bibliography</a></li>
 </ul>
 </li>
@@ -319,7 +320,10 @@ Springer,
     </div>
 <div class="wrapper">
   <div class="footer">
-  <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
+    <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
+    <br />
+    <br />
+      &copy;2015, Hans Petter Langtangen. Released under CC Attribution 4.0 license.
   </div>
 </div>
 

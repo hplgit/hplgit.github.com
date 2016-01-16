@@ -37,7 +37,7 @@ MathJax.Hub.Config({
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </head>
 <body>
-<p><em>Summary.</em> This report investigates the accuracy of three finite difference schemes for the ordinary differential equation <span class="math">\(u&#39;=-au\)</span> with the aid of numerical experiments. Numerical artifacts are in particular demonstrated.</p>
+<p>Copyright 2015, Hans Petter Langtangen. Released under CC Attribution 4.0 license <em>Summary.</em> This report investigates the accuracy of three finite difference schemes for the ordinary differential equation <span class="math">\(u&#39;=-au\)</span> with the aid of numerical experiments. Numerical artifacts are in particular demonstrated.</p>
 <!-- 
 
 Table of contents: Run pandoc with --toc option -->
@@ -76,7 +76,7 @@ u(0)  = I,                         \label{initial:value}
 <li>The <a href="http://en.wikipedia.org/wiki/Crank-Nicolson">Crank-Nicolson</a> scheme when <span class="math">\(\theta=1/2\)</span></li>
 </ul>
 <h2 id="implementation">Implementation</h2>
-<p>The numerical method is implemented in a Python function <span class="citation">[@Langtangen_2014]</span> <code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py"><code>model</code></a> module):</p>
+<p>The numerical method is implemented in a Python function <span class="citation">[@Langtangen_2014]</span> <code>solver</code> (found in the <a href="http://bit.ly/1Bkp72S"><code>model</code></a>):</p>
 <pre class="sourceCode Python"><code class="sourceCode python"><span class="kw">def</span> solver(I, a, T, dt, theta):
     <span class="co">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     dt = <span class="dt">float</span>(dt)            <span class="co"># avoid integer division</span>
@@ -90,30 +90,30 @@ u(0)  = I,                         \label{initial:value}
         u[n<span class="dv">+1</span>] = (<span class="dv">1</span> - (<span class="dv">1</span>-theta)*a*dt)/(<span class="dv">1</span> + theta*dt*a)*u[n]
     <span class="kw">return</span> u, t</code></pre>
 <h2 id="numerical-experiments">Numerical experiments</h2>
-<p>We define a set of numerical experiments where <span class="math">\(I\)</span>, <span class="math">\(a\)</span>, and <span class="math">\(T\)</span> are fixed, while <span class="math">\(\Delta t\)</span> and <span class="math">\(\theta\)</span> are varied. In particular, <span class="math">\(I=1\)</span>, <span class="math">\(a=2\)</span>, <span class="math">\(\Delta t = 1.25, 0.75, 0.5, 0.1\)</span>.</p>
-<h3 id="the-backward-euler-method">The Backward Euler method</h3>
-<!-- <img src="BE.png" width=800> -->
+<p>A set of numerical experiments has been carried out, where <span class="math">\(I\)</span>, <span class="math">\(a\)</span>, and <span class="math">\(T\)</span> are fixed, while <span class="math">\(\Delta t\)</span> and <span class="math">\(\theta\)</span> are varied. In particular, <span class="math">\(I=1\)</span>, <span class="math">\(a=2\)</span>, <span class="math">\(\Delta t = 1.25, 0.75, 0.5, 0.1\)</span>. <a href="#fig:BE">Figure</a> contains four plots, corresponding to four decreasing <span class="math">\(\Delta t\)</span> values. The red dashed line represent the numerical solution computed by the Backward Euler scheme, while the blue line is the exact solution. The corresponding results for the Crank-Nicolson and Forward Euler methods appear in Figures ref{fig:CN} and ref{fig:FE}.</p>
+<!-- <img src="BE.png" width=800><p><em>The Backward Euler method for decreasing time step values. <div id="fig:BE"></div></em></p> -->
 <div class="figure">
 <img src="BE.png" />
 </div>
-<h3 id="the-crank-nicolson-method">The Crank-Nicolson method</h3>
-<!-- <img src="CN.png" width=800> -->
+<!-- <img src="CN.png" width=800><p><em>The Crank-Nicolson method for decreasing time step values. <div id="fig:CN"></div></em></p> -->
 <div class="figure">
 <img src="CN.png" />
 </div>
-<h3 id="the-forward-euler-method">The Forward Euler method</h3>
-<!-- <img src="FE.png" width=800> -->
+<!-- <img src="FE.png" width=800><p><em>The Forward Euler method for decreasing time step values. <div id="fig:FE"></div></em></p> -->
 <div class="figure">
 <img src="FE.png" />
 </div>
-<h3 id="error-vs-delta-t">Error vs <span class="math">\(\Delta t\)</span></h3>
-<p>How <span class="math">\(E\)</span> varies with <span class="math">\(\Delta t\)</span> for <span class="math">\(\theta=0,0.5,1\)</span> is shown in <a href="#fig:error">Figure</a>.</p>
+<h2 id="error-vs-delta-t">Error vs <span class="math">\(\Delta t\)</span></h2>
+<p>How the error</p>
+<p><span class="math">\[
+ E^n = \left(\int_0^T (Ie^{-at} - u^n)^2dt\right)^{\frac{1}{2}}
+\]</span> varies with <span class="math">\(\Delta t\)</span> for the three numerical methods is shown in <a href="#fig:error">Figure</a>.</p>
 <p><em>Observe:</em> The data points for the three largest <span class="math">\(\Delta t\)</span> values in the Forward Euler method are not relevant as the solution behaves non-physically.</p>
 <!-- <img src="error.png" width=400><p><em>Variation of the error with the time step. <div id="fig:error"></div></em></p> -->
 <div class="figure">
 <img src="error.png" />
 </div>
-<p>The numbers corresponding to the figure above are given in the table below.</p>
+<p>The <span class="math">\(E\)</span> numbers corresponding to <a href="#fig:error">Figure</a> are given in the table below.</p>
 <table>
 <thead>
 <tr class="header">

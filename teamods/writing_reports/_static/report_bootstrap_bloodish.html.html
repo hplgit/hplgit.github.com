@@ -87,7 +87,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;generator&quot;</span> <span class="na">content=</span><span class="s">&quot;DocOnce: https://github.com/hplgit/doconce/&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;description&quot;</span> <span class="na">content=</span><span class="s">&quot;Experiments with Schemes for Exponential Decay&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;keywords&quot;</span> <span class="na">content=</span><span class="s">&quot;keyword,model problem,exponential decay,mesh in time,$\theta$-rule,numerical scheme,finite difference scheme,numerical experiments,BE,CN,FE,error vs time step&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;keywords&quot;</span> <span class="na">content=</span><span class="s">&quot;keyword,model problem,exponential decay,mesh in time,$\theta$-rule,numerical scheme,finite difference scheme,numerical experiments,Backward Euler method,Crank-Nicolson method,Forward Euler method,error vs time step&quot;</span><span class="nt">&gt;</span>
 
 <span class="nt">&lt;title&gt;</span>Experiments with Schemes for Exponential Decay<span class="nt">&lt;/title&gt;</span>
 
@@ -103,6 +103,13 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="nt">code</span> <span class="p">{</span> <span class="k">color</span><span class="o">:</span> <span class="k">inherit</span><span class="p">;</span> <span class="k">background-color</span><span class="o">:</span> <span class="k">transparent</span><span class="p">;</span> <span class="p">}</span>
 <span class="c">/* Let pre tags for code blocks have the same color as the surroundings */</span>
 <span class="nt">pre</span> <span class="p">{</span> <span class="k">color</span><span class="o">:</span> <span class="k">inherit</span><span class="p">;</span> <span class="k">background-color</span><span class="o">:</span> <span class="k">transparent</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="c">/* Add scrollbar to dropdown menus in bootstrap navigation bar */</span>
+<span class="nc">.dropdown-menu</span> <span class="p">{</span>
+   <span class="k">height</span><span class="o">:</span> <span class="k">auto</span><span class="p">;</span>
+   <span class="k">max-height</span><span class="o">:</span> <span class="m">400px</span><span class="p">;</span>
+   <span class="k">overflow-x</span><span class="o">:</span> <span class="k">hidden</span><span class="p">;</span>
+<span class="p">}</span>
 <span class="nt">&lt;/style&gt;</span>
 
 
@@ -117,11 +124,8 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="c">               &#39;numerical:problem&#39;),</span>
 <span class="c">              (&#39;Implementation&#39;, 1, None, &#39;___sec2&#39;),</span>
 <span class="c">              (&#39;Numerical experiments&#39;, 1, None, &#39;___sec3&#39;),</span>
-<span class="c">              (&#39;The Backward Euler method&#39;, 2, None, &#39;___sec4&#39;),</span>
-<span class="c">              (&#39;The Crank-Nicolson method&#39;, 2, None, &#39;___sec5&#39;),</span>
-<span class="c">              (&#39;The Forward Euler method&#39;, 2, None, &#39;___sec6&#39;),</span>
-<span class="c">              (&#39;Error vs $\\Delta t$&#39;, 2, None, &#39;___sec7&#39;),</span>
-<span class="c">              (&#39;Bibliography&#39;, 1, None, &#39;___sec8&#39;)]}</span>
+<span class="c">              (&#39;Error vs $\\Delta t$&#39;, 1, None, &#39;___sec4&#39;),</span>
+<span class="c">              (&#39;Bibliography&#39;, 1, None, &#39;___sec5&#39;)]}</span>
 <span class="c">end of tocinfo --&gt;</span>
 
 <span class="nt">&lt;body&gt;</span>
@@ -153,20 +157,18 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
     <span class="nt">&lt;/button&gt;</span>
     <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;navbar-brand&quot;</span> <span class="na">href=</span><span class="s">&quot;report_bootstrap_bloodish.html&quot;</span><span class="nt">&gt;</span>Experiments with Schemes for Exponential Decay<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
+
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;navbar-collapse collapse navbar-responsive-collapse&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav navbar-nav navbar-right&quot;</span><span class="nt">&gt;</span>
       <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown-toggle&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>Contents <span class="nt">&lt;b</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/b&gt;&lt;/a&gt;</span>
         <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span><span class="nt">&gt;</span>
-     <span class="c">&lt;!-- navigation toc: --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#math:problem&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;&lt;b&gt;</span>Mathematical problem<span class="nt">&lt;/b&gt;&lt;/a&gt;&lt;/li&gt;</span>
-     <span class="c">&lt;!-- navigation toc: --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#numerical:problem&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;&lt;b&gt;</span>Numerical solution method<span class="nt">&lt;/b&gt;&lt;/a&gt;&lt;/li&gt;</span>
-     <span class="c">&lt;!-- navigation toc: --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec2&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;&lt;b&gt;</span>Implementation<span class="nt">&lt;/b&gt;&lt;/a&gt;&lt;/li&gt;</span>
-     <span class="c">&lt;!-- navigation toc: --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec3&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;&lt;b&gt;</span>Numerical experiments<span class="nt">&lt;/b&gt;&lt;/a&gt;&lt;/li&gt;</span>
-     <span class="c">&lt;!-- navigation toc: --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec4&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>The Backward Euler method<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-     <span class="c">&lt;!-- navigation toc: --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec5&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>The Crank-Nicolson method<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-     <span class="c">&lt;!-- navigation toc: --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec6&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>The Forward Euler method<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-     <span class="c">&lt;!-- navigation toc: --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec7&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>Error vs \( \Delta t \)<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-     <span class="c">&lt;!-- navigation toc: --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec8&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;&lt;b&gt;</span>Bibliography<span class="nt">&lt;/b&gt;&lt;/a&gt;&lt;/li&gt;</span>
+     <span class="c">&lt;!-- navigation toc: --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#math:problem&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;</span>Mathematical problem<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+     <span class="c">&lt;!-- navigation toc: --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#numerical:problem&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;</span>Numerical solution method<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+     <span class="c">&lt;!-- navigation toc: --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec2&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;</span>Implementation<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+     <span class="c">&lt;!-- navigation toc: --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec3&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;</span>Numerical experiments<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+     <span class="c">&lt;!-- navigation toc: --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec4&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;</span>Error vs \( \Delta t \)<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+     <span class="c">&lt;!-- navigation toc: --&gt;</span> <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec5&quot;</span> <span class="na">style=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="nt">&gt;</span>Bibliography<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
 
         <span class="nt">&lt;/ul&gt;</span>
       <span class="nt">&lt;/li&gt;</span>
@@ -202,7 +204,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="nt">&lt;center&gt;</span>[2] <span class="nt">&lt;b&gt;</span>Department of Informatics, University of Oslo.<span class="nt">&lt;/b&gt;&lt;/center&gt;</span>
 <span class="nt">&lt;br&gt;</span>
 <span class="nt">&lt;p&gt;</span>
-<span class="nt">&lt;center&gt;&lt;h4&gt;</span>Aug 24, 2015<span class="nt">&lt;/h4&gt;&lt;/center&gt;</span> <span class="c">&lt;!-- date --&gt;</span>
+<span class="nt">&lt;center&gt;&lt;h4&gt;</span>Dec 20, 2015<span class="nt">&lt;/h4&gt;&lt;/center&gt;</span> <span class="c">&lt;!-- date --&gt;</span>
 <span class="nt">&lt;br&gt;</span>
 <span class="nt">&lt;p&gt;</span>
 <span class="nt">&lt;b&gt;</span>Summary.<span class="nt">&lt;/b&gt;</span> This report investigates the accuracy of three finite difference
@@ -218,11 +220,8 @@ Table of contents<span class="nt">&lt;/h2&gt;</span>
 <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#numerical:problem&quot;</span><span class="nt">&gt;</span> Numerical solution method <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
 <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec2&quot;</span><span class="nt">&gt;</span> Implementation <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
 <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec3&quot;</span><span class="nt">&gt;</span> Numerical experiments <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec4&quot;</span><span class="nt">&gt;</span> The Backward Euler method <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec5&quot;</span><span class="nt">&gt;</span> The Crank-Nicolson method <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec6&quot;</span><span class="nt">&gt;</span> The Forward Euler method <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="ni">&amp;nbsp;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec7&quot;</span><span class="nt">&gt;</span> Error vs \( \Delta t \) <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec8&quot;</span><span class="nt">&gt;</span> Bibliography <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec4&quot;</span><span class="nt">&gt;</span> Error vs \( \Delta t \) <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;._report_bootstrap_bloodish001.html#___sec5&quot;</span><span class="nt">&gt;</span> Bibliography <span class="nt">&lt;/a&gt;&lt;br&gt;</span>
 <span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;p&gt;</span>
 
@@ -251,6 +250,11 @@ Table of contents<span class="nt">&lt;/h2&gt;</span>
 <span class="c">&lt;a href=&quot;http://...&quot;&gt;&lt;img width=&quot;250&quot; align=right src=&quot;http://...&quot;&gt;&lt;/a&gt;</span>
 <span class="c">&lt;/footer&gt;</span>
 <span class="c">--&gt;</span>
+
+
+<span class="nt">&lt;center</span> <span class="na">style=</span><span class="s">&quot;font-size:80%&quot;</span><span class="nt">&gt;</span>
+<span class="c">&lt;!-- copyright --&gt;</span> <span class="ni">&amp;copy;</span> 2015, Hans Petter Langtangen. Released under CC Attribution 4.0 license
+<span class="nt">&lt;/center&gt;</span>
 
 
 <span class="nt">&lt;/body&gt;</span>

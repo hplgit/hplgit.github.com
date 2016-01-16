@@ -36,6 +36,8 @@ the files are contained in a "directory at GitHub": "https://github.com/hplgit/h
 
 ===== PDF via LaTeX =====
 
+=== Default LaTeX format ===
+
 "The classical LaTeX-style report format": "_static/report_plain.pdf"
 is widely used throughout mathematical sciences. This PDF version was made
 from the hand-written DocOnce source "report.do.txt": "_static/report.do.txt.html",
@@ -46,7 +48,7 @@ The necessary steps in this process go as follows.
 
 !bc sys
 # Compile DocOnce to LaTeX format
-doconce format pdflatex report --latex_code_style=vrb --device=paper
+doconce format pdflatex report --latex_code_style=vrb
 
 # Compile LaTeX to PDF
 rm -f *.aux
@@ -54,7 +56,11 @@ pdflatex report
 bibtex report
 pdflatex report
 !ec
+DocOnce generates BibTeX from a bibliography file in the Publish format,
+as explained in Section ref{sec:bib}.
 # #endif
+
+=== Modern LaTeX format ===
 
 Here is another version of the same report, this time in a
 fresher, more modern "PDF format": "_static/report.pdf" for *electronic view*
@@ -84,22 +90,26 @@ Blocks of computer code is typeset with the Pygments tool
 `minted`.
 
 By default, the standard LaTeX `abstract` environment is used for the
-initial summary/abstract. We can easily replace the `abstract` environment
-by, e.g., a `quote` environment using the `doconce replace` command
-for text substitution:
+initial summary/abstract. It is easy to change the generated LaTeX
+code, either manaully or (better!) by editing commands (recall that
+manual edits are overwritten by a new DocOnce compilation while
+editing commands can be embedded in a compilation script and rerun).
+As an example, supposed you want to replace the `abstract` environment
+by a `quote` environment with a smaller font. Automatic editing is
+offered by the `doconce replace` command (direct text replacement):
 
 !bc sys
-doconce replace 'begin{abstract}' 'begin{quote}\small' report.p.tex
-doconce replace 'end{abstract}' 'end{quote}' report.p.tex
+doconce replace 'begin{abstract}' 'begin{quote}\small' report.tex
+doconce replace 'end{abstract}' 'end{quote}' report.tex
 !ec
 More sophisticated automatic editing of the generated text from
 `doconce format` can make use of `doconce subst`, which performs edits
 via regular expressions. In this way, one can tailor the LaTeX
 source (or HTML, Sphinx, whatever source) to special needs for
-a document. Everytime the translation from DocOnce to the particular
-format takes place, automatic edits of the resulting text are also run.
+a document.
 
-Finally, we must run the ordinary LaTeX commands on the LaTeX file `report.tex`:
+The next task is to run LaTeX on the generated `report.tex`
+file (and BibTeX on the generated `papers.bib`):
 !bc
 rm -f report.aux
 # Run pdflatex: the pygments environment for code requires
@@ -110,10 +120,13 @@ pdflatex -shell-escape report
 !ec
 # #endif
 
-"PDF for printing": "_static/report_4printing.pdf" (where linked URLs appear as footnotes) made from "DocOnce source": "_static/report.do.txt.html"
+=== PDF aimed at printing ===
 
+We can also make a "PDF file for printing": "_static/report_4printing.pdf",
+where linked URLs appear as footnotes
+(the "DocOnce source": "_static/report.do.txt.html" is of course the same).
 # #ifdef CODE
-The option `--device=paper` makes all URL appear as footnotes, which
+The option `--device=paper` makes all URLs appear as footnotes, which
 makes them visible in a paper version (they are still clickable in
 the text, but the link text is in black, as the rest of the text - the
 footnote superscript indicates the word to be clicked).
@@ -131,13 +144,17 @@ pdflatex -shell-escape report
 !ec
 # #endif
 
-"PDF for viewing on a phone": "_static/report_4phone.pdf" made from "DocOnce source": "_static/report.do.txt.html"
+=== PDF for viewing on a phone ===
+
+DocOnce can generate LaTeX for A4 or A6 paper size, if desired. The A6
+size is good for smart phones, see the "PDF file":
+"_static/report_4phone.pdf" (made from "DocOnce source":
+"_static/report.do.txt.html"). In this versiond we also change the
+LaTeX font to Palatino (`--latex_font=helvetica` is another
+possibility).
+
 
 # #ifdef CODE
-DocOnce can generate LaTeX for A4 or A6 paper size, if desired. The A6
-size is good for smart phones. Here we also change the LaTeX font
-to Palatino (`--latex_font=helvetica` is another possibility).
-
 !bc sys
 doconce format pdflatex report --latex_papersize=a6 \
         --latex_font=palatino --latex_code_style=pyg
@@ -148,7 +165,10 @@ pdflatex -shell-escape report
 !ec
 # #endif
 
-"PDF with another typesetting of code blocks": "_static/report_fb.pdf" (yellow background) made from "LaTeX source": "_static/report.tex.html" generated from "DocOnce source": "_static/report.do.txt.html"
+=== Fancy typesetting of code blocks ===
+
+"PDF with yellow background in code blocks": "_static/report_fb.pdf"
+(made from "LaTeX source": "_static/report.tex.html" generated from "DocOnce source": "_static/report.do.txt.html").
 
 # #ifdef CODE
 !bc sys
@@ -167,11 +187,11 @@ pdflatex report
 The Sphinx documentation system is very popular for creating online
 documents with fancy and attractive layouts.
 
-"Sphinx default layout": "_static/sphinx-default/index.html" made from "Sphinx-extended reStructuredText source": "_static/report_sphinx.rst.html" generated from "DocOnce": "_static/report.do.txt.html". Other layouts are XXXXX
+"Sphinx default layout": "_static/sphinx-default/index.html" made from "Sphinx-extended reStructuredText source": "_static/report_sphinx.rst.html" generated from "DocOnce": "_static/report.do.txt.html". Other Sphinx layouts are XXXXX
 
 # #ifdef CODE
-DocOnce can easily generate a lot of various Sphinx styles (see all
-the names above). For style `X` (`pyramid`, `redcloud`, etc.) one writes
+DocOnce can easily generate a lot of various Sphinx layouts (see all
+the names above). For layout `X` (`pyramid`, `redcloud`, etc.) one writes
 
 !bc sys
 doconce format sphinx report
@@ -513,6 +533,7 @@ doconce format html report2 --wordpress
 # #ifdef CODE
 
 ===== Handling of literature citations =====
+label{sec:bib}
 
 Bibliographic references in DocOnce files make use of information in "Publish": "https://bitbucket.org/logg/publish" database. Either you have your references already
 in the Publish format, or you can transform a BibTeX file `refs.bib` to

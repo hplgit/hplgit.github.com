@@ -2,7 +2,9 @@
 #TITLE (actually governed by the filename): Experiments with Schemes for Exponential Decay
 
 By '''Hans Petter Langtangen''' (hpl at simula.no)
-==== Aug 24, 2015 ====
+==== Dec 20, 2015 ====
+
+Copyright 2015, Hans Petter Langtangen. Released under CC Attribution 4.0 license
 
 ''Summary.'' This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation <math>u'=-au</math> with the
@@ -69,7 +71,8 @@ for <math>n=0,1,\ldots,N_t-1</math>. This scheme corresponds to
 
 
 The numerical method is implemented in a Python function
-[2] <code>solver</code> (found in the [https://github.com/hplgit/INF5620/blob/gh-pages/src/decay/experiments/dc_mod.py <code>model</code>] module):
+[2] <code>solver</code> (found in the [http://bit.ly/1Bkp72S <code>model</code>]):
+
 
 <syntaxhighlight lang="python">
 def solver(I, a, T, dt, theta):
@@ -91,36 +94,50 @@ def solver(I, a, T, dt, theta):
 
 
 
-We define a set of numerical experiments where <math>I</math>, <math>a</math>, and <math>T</math> are
-fixed, while <math>\Delta t</math> and <math>\theta</math> are varied.
-In particular, <math>I=1</math>, <math>a=2</math>, <math>\Delta t = 1.25, 0.75, 0.5, 0.1</math>.
-
-
-
-==== The Backward Euler method ====
-
-[[File:BE.png|frame|800px|alt=BE.png|<span title=""></span>]] <!-- not yet uploaded to common.wikimedia.org -->
-
-
-
-
-==== The Crank-Nicolson method ====
-
-[[File:CN.png|frame|800px|alt=CN.png|<span title=""></span>]] <!-- not yet uploaded to common.wikimedia.org -->
+A set of numerical experiments has been carried out,
+where <math>I</math>, <math>a</math>, and <math>T</math> are fixed, while <math>\Delta t</math> and
+<math>\theta</math> are varied. In particular, <math>I=1</math>, <math>a=2</math>,
+<math>\Delta t = 1.25, 0.75, 0.5, 0.1</math>.
+Figure fig:BE contains four plots, corresponding to
+four decreasing <math>\Delta t</math> values. The red dashed line
+represent the numerical solution computed by the Backward
+Euler scheme, while the blue line is the exact solution.
+The corresponding results for the Crank-Nicolson and
+Forward Euler methods appear in Figures fig:CN
+and fig:FE.
 
 
 
 
-==== The Forward Euler method ====
 
-[[File:FE.png|frame|800px|alt=FE.png|<span title=""></span>]] <!-- not yet uploaded to common.wikimedia.org -->
-
+[[File:BE.png|frame|800px|alt=BE.png|The Backward Euler method for decreasing time step values. (fig:BE)]] <!-- not yet uploaded to common.wikimedia.org -->
 
 
 
-==== Error vs <math>\Delta t</math> ====
 
-How <math>E</math> varies with <math>\Delta t</math> for <math>\theta=0,0.5,1</math>
+
+
+[[File:CN.png|frame|800px|alt=CN.png|The Crank-Nicolson method for decreasing time step values. (fig:CN)]] <!-- not yet uploaded to common.wikimedia.org -->
+
+
+
+
+
+
+[[File:FE.png|frame|800px|alt=FE.png|The Forward Euler method for decreasing time step values. (fig:FE)]] <!-- not yet uploaded to common.wikimedia.org -->
+
+
+
+
+== Error vs <math>\Delta t</math> ==
+
+
+How the error
+
+:<math>
+ E^n = \left(\int_0^T (Ie^{-at} - u^n)^2dt\right)^{\frac{1}{2}}
+</math>
+varies with <math>\Delta t</math> for the three numerical methods
 is shown in Figure fig:error.
 
 
@@ -140,7 +157,8 @@ non-physically.
 
 
 
-The numbers corresponding to the figure above are given in the table below.
+The <math>E</math> numbers corresponding to Figure fig:error
+are given in the table below.
 
 <table border="1">
 <thead>
