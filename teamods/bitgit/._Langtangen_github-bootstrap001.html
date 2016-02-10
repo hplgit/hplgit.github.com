@@ -17,6 +17,16 @@ Automatically generated HTML file from DocOnce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+</style>
+
 
 </head>
 
@@ -98,15 +108,46 @@ end of tocinfo -->
     </button>
     <a class="navbar-brand" href="Langtangen_bitgit-bootstrap.html">Quick Intro to Git and Project Hosting Services</a>
   </div>
+
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Motivation</a></li>
-     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap002.html#bitgit:github" style="font-size: 80%;">GitHub</a></li>
-     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#bitgit:git" style="font-size: 80%;">Using Git</a></li>
-     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap004.html#appendix:github:multiple:accounts" style="font-size: 80%;">Appendix: Working with multiple GitHub accounts</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Motivation</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Why not Dropbox or Google Drive?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Repositories and local copies</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Installing Git</a></li>
+     <!-- navigation toc: --> <li><a href="#bitgit:git:config" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Configuring Git</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap002.html#bitgit:github" style="font-size: 80%;"><b>GitHub</b></a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap002.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Creating a new project</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap002.html#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Collaborating</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap002.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Wiki pages</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap002.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Project web pages</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap002.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;User web pages</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#bitgit:git" style="font-size: 80%;"><b>Using Git</b></a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Basic Git commands</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cloning</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The pull-change-push cycle</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Viewing the history of files</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Retrieving old files</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reset the entire repo to an old version</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Going back to a previous commit</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#bitgit:git:merge" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Merging files with Git</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#bitgit:git:branch:stash" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Git working style with branching and stashing</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Branching</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stashing</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#bitgit:git:fetch" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Replacing pull by fetch and merge</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#___sec24" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuring the <code>git diff</code> command</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#bitgit:git:team" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Team work with forking and pull requests</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#bitgit:git:clone:branches" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Cloning a repo with multiple branches</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Git workflows</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#___sec28" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Git tips</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#___sec29" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;How can I see which files are tracked by Git?</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#___sec30" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;How can I reduce the size of a repo?</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#___sec31" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;How can I restore missing files?</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap003.html#___sec32" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;More documentation on Git</a></li>
+     <!-- navigation toc: --> <li><a href="._Langtangen_bitgit-bootstrap004.html#appendix:github:multiple:accounts" style="font-size: 80%;"><b>Appendix: Working with multiple GitHub accounts</b></a></li>
 
         </ul>
       </li>
@@ -217,7 +258,8 @@ editor = emacs
 excludesfile = ~/.gitignore
 </pre></div>
 <p>
-The &quot;excludes file&quot; is called <code>.gitignore</code> and must list,
+The <code>excludesfile</code> variable is important: it points to a
+file called <code>.gitignore</code>, which must list,
 using the Unix Shell Wildcard notation,
 the type of files that you do not need to have under version control,
 because they represent garbage or temporary information,
@@ -238,6 +280,7 @@ some other source files. A suggested <a href="http://hplgit.github.com/teamods/b
 .*~
 *.old
 tmp*
+.tmp*
 temp*
 .#*
 \#*
@@ -252,6 +295,10 @@ temp*
 *.toc
 *.snm
 *.vrb
+*.bbl
+*.ilg
+*.ind
+*.loe
 # eclipse files:
 *.cproject
 *.project
@@ -259,10 +306,25 @@ temp*
 .DS_Store
 </pre></div>
 <p>
-Be critical to what kind of files you really need a full history of.
-For example, you do not want to populate the repository with
-big graphics files of the type that can easily be regenerated by
-some program.
+<div class="alert alert-block alert-danger alert-text-normal"><b>Carefully judge what files to bring under version control!</b>
+You should be critical to what kind of files you really need a full
+history of.  For example, you do not want to populate the repository
+with big graphics files of the type that can easily be regenerated by
+some program. The suggested <code>.gitignore</code> file above lists typical
+files that are not needed (usually because they are automatically
+generated by some program).
+
+<p>
+In addition to a default <code>.gitignore</code> file in your home directory, it
+may be wise to have a <code>.gitignore</code> file tailored your repo in the
+root directory of the repo.
+
+<p>
+Large data files, even when you want to version them, fill up your
+repo and should be taken care of through the special service
+<a href="https://www.youtube.com/watch?v=uLR1RNqJ1Mw" target="_self">Git Large File Storage</a>.
+</div>
+
 
 <p>
 <p>
