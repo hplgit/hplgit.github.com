@@ -29,6 +29,15 @@ pre { color: inherit; background-color: transparent; }
    max-height: 400px;
    overflow-x: hidden;
 }
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:64px;      /* fixed header height for style bootswatch_readable */
+  margin:-64px 0 0; /* negative fixed header height */
+}
 </style>
 
 
@@ -36,7 +45,11 @@ pre { color: inherit; background-color: transparent; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [('Mathematical problem', 1, 'math:problem', 'math:problem'),
+ 'sections': [('Table of contents',
+               1,
+               'table_of_contents',
+               'table_of_contents'),
+              ('Mathematical problem', 1, 'math:problem', 'math:problem'),
               ('Numerical solution method',
                1,
                'numerical:problem',
@@ -82,6 +95,7 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;">Table of contents</a></li>
      <!-- navigation toc: --> <li><a href="._report_bootswatch_readable001.html#math:problem" style="font-size: 80%;">Mathematical problem</a></li>
      <!-- navigation toc: --> <li><a href="._report_bootswatch_readable001.html#numerical:problem" style="font-size: 80%;">Numerical solution method</a></li>
      <!-- navigation toc: --> <li><a href="._report_bootswatch_readable001.html#___sec2" style="font-size: 80%;">Implementation</a></li>
@@ -123,7 +137,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Informatics, University of Oslo.</b></center>
 <br>
 <p>
-<center><h4>May 22, 2016</h4></center> <!-- date -->
+<center><h4>Jul 2, 2016</h4></center> <!-- date -->
 <br>
 <p>
 <b>Summary.</b> This report investigates the accuracy of three finite difference
@@ -131,7 +145,10 @@ schemes for the ordinary differential equation \( u'=-au \) with the
 aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
 
-<h2>
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="table_of_contents">
 Table of contents</h2>
 
 <p>
@@ -143,13 +160,6 @@ Table of contents</h2>
 <a href="._report_bootswatch_readable001.html#___sec5"> Bibliography </a><br>
 </p>
 <p>
-
-
-<p><a href="._report_bootswatch_readable001.html" class="btn btn-primary btn-lg">Read &raquo;</a></p>
-
-
-</div> <!-- end jumbotron -->
-
 <p>
 <!-- navigation buttons at the bottom of the page -->
 <ul class="pager">

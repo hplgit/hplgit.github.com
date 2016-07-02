@@ -224,7 +224,7 @@ demonstrated.
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
 <span class="c">&lt;!-- !split --&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;math:problem&quot;</span><span class="p">&gt;</span>Mathematical problem<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;math:problem&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;anchor&quot;</span><span class="p">&gt;</span>Mathematical problem<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
 We address the initial-value problem
@@ -242,7 +242,7 @@ is relevant for physical phenomena featuring exponential decay
 in time, e.g., vertical pressure variation in the atmosphere,
 cooling of an object, and radioactive decay.
 
-<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;numerical:problem&quot;</span><span class="p">&gt;</span>Numerical solution method<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;numerical:problem&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;anchor&quot;</span><span class="p">&gt;</span>Numerical solution method<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
 We introduce a mesh in time with points \( 0 = t_0 <span class="p">&lt;</span> <span class="nt">t_1</span> <span class="err">\</span><span class="na">cdots</span> <span class="err">&lt;</span> <span class="na">t_</span><span class="err">{</span><span class="na">N_t</span><span class="err">}=</span><span class="na">T</span> <span class="err">\).</span>
@@ -269,11 +269,11 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
     scheme when \( \theta=1/2 \)<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;___sec2&quot;</span><span class="p">&gt;</span>Implementation <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;___sec2&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;anchor&quot;</span><span class="p">&gt;</span>Implementation <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
 The numerical method is implemented in a Python function
-<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#Langtangen_2014&quot;</span><span class="p">&gt;</span>[2]<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">code</span><span class="p">&gt;</span>solver<span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;</span> (found in the <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://bit.ly/1Bkp72S&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_self&quot;</span><span class="p">&gt;&lt;</span><span class="nt">tt</span><span class="p">&gt;</span>model<span class="p">&lt;/</span><span class="nt">tt</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>):
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#Langtangen_2014&quot;</span><span class="p">&gt;</span>[2]<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">code</span><span class="p">&gt;</span>solver<span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;</span> (found in the <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://bit.ly/29ayDx3&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_self&quot;</span><span class="p">&gt;&lt;</span><span class="nt">tt</span><span class="p">&gt;</span>model.py<span class="p">&lt;/</span><span class="nt">tt</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> Python module file):
 
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
 <span class="c">&lt;!-- begin verbatim block  pycod--&gt;</span>
@@ -292,7 +292,7 @@ The numerical method is implemented in a Python function
 <span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;&lt;/</span><span class="nt">pre</span><span class="p">&gt;</span>
 <span class="c">&lt;!-- end verbatim block --&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;___sec3&quot;</span><span class="p">&gt;</span>Numerical experiments <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;___sec3&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;anchor&quot;</span><span class="p">&gt;</span>Numerical experiments <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
 A set of numerical experiments has been carried out,
@@ -328,7 +328,7 @@ and <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;FE.png&quot;</span> <span class="na">align</span><span class="o">=</span><span class="s">&quot;bottom&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">800</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">center</span><span class="p">&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;___sec4&quot;</span><span class="p">&gt;</span>Error vs \( \Delta t \) <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;___sec4&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;anchor&quot;</span><span class="p">&gt;</span>Error vs \( \Delta t \) <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
 How the error
@@ -390,7 +390,7 @@ are given in the table below.
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
 
-<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;___sec5&quot;</span><span class="p">&gt;</span>Bibliography <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;___sec5&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;anchor&quot;</span><span class="p">&gt;</span>Bibliography <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
 <span class="c">&lt;!-- begin bibliography --&gt;</span>

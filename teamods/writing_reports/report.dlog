@@ -319,9 +319,7 @@ figure file FE:
     common.wikimedia.org
  ...for now we use local file CN.png
  ...checking if FE.png is stored at en.wikipedia.org/w/api.php...
- ...for wikipedia/wikibooks you must upload image file FE.png to
-    common.wikimedia.org
- ...for now we use local file FE.png
+ ...found FE.png at wikimedia
  ...checking if error.png is stored at en.wikipedia.org/w/api.php...
  ...found Error.png at wikimedia
 *** warning: reference to label "ode" in an equation does not work in MediaWiki
@@ -427,6 +425,25 @@ figure file FE:
     can use FE.png for format pandoc
 output in report.md
 translating doconce text in report.do.txt to plain
-copying from regex "def solver" until "def u_exact"
-     file: ../model.py, lines 5-18 (format: pycod)
-output in report.txt
+
+*** error: must in format "plain" have a plain sentence before
+a code block like !bc/!bt/@@@CODE, not a section/paragraph heading,
+table, or comment:
+
+---------------------------------
+theta=1/2$
+
+
+======= Implementation =======
+
+
+
+
+
+
+!bc pyhid
+from numpy import zeros, linspace
+!ec
+
+The numerical method 
+---------------------------------

@@ -52,14 +52,10 @@ Table of contents: Run pandoc with --toc option -->
 </div>
 <p>We address the initial-value problem</p>
 <p><span class="math">\[
-\begin{equation}
-u&#39;(t) = -au(t), \quad t \in (0,T], \label{ode}
-\end{equation}
-\]</span></p>
-<p><span class="math">\[
-\begin{equation} 
-u(0)  = I,                         \label{initial:value}
-\end{equation}
+\begin{align}
+u&#39;(t) &amp;= -au(t), \quad t \in (0,T], \label{ode}\\
+u(0)  &amp;= I,                         \label{initial:value}
+\end{align}
 \]</span> where <span class="math">\(a\)</span>, <span class="math">\(I\)</span>, and <span class="math">\(T\)</span> are prescribed parameters, and <span class="math">\(u(t)\)</span> is the unknown function to be estimated. This mathematical model is relevant for physical phenomena featuring exponential decay in time, e.g., vertical pressure variation in the atmosphere, cooling of an object, and radioactive decay.</p>
 <h2 id="numerical-solution-method">Numerical solution method</h2>
 <div id="numerical:problem">
@@ -76,7 +72,7 @@ u(0)  = I,                         \label{initial:value}
 <li>The <a href="http://en.wikipedia.org/wiki/Crank-Nicolson">Crank-Nicolson</a> scheme when <span class="math">\(\theta=1/2\)</span></li>
 </ul>
 <h2 id="implementation">Implementation</h2>
-<p>The numerical method is implemented in a Python function <span class="citation">[@Langtangen_2014]</span> <code>solver</code> (found in the <a href="http://bit.ly/1Bkp72S"><code>model</code></a>):</p>
+<p>The numerical method is implemented in a Python function <span class="citation">[@Langtangen_2014]</span> <code>solver</code> (found in the <a href="http://bit.ly/29ayDx3"><code>model.py</code></a> Python module file):</p>
 <pre class="sourceCode Python"><code class="sourceCode python"><span class="kw">def</span> solver(I, a, T, dt, theta):
     <span class="co">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     dt = <span class="dt">float</span>(dt)            <span class="co"># avoid integer division</span>

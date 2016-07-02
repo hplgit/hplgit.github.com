@@ -73,7 +73,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen (hpl at simula.no)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 22, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jul 2, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -119,7 +119,7 @@ scheme when <span class="math">\(\theta=1/2\)</span></li>
 <div class="section" id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>The numerical method is implemented in a Python function
-<a class="reference internal" href="#ref2" id="id2">[Ref2]</a> <code class="docutils literal"><span class="pre">solver</span></code> (found in the <a class="reference external" href="http://bit.ly/1Bkp72S">model</a>):</p>
+<a class="reference internal" href="#ref2" id="id2">[Ref2]</a> <code class="docutils literal"><span class="pre">solver</span></code> (found in the <a class="reference external" href="http://bit.ly/29ayDx3">model.py</a> Python module file):</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">solver</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     <span class="n">dt</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span>            <span class="c1"># avoid integer division</span>

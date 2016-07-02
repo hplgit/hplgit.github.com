@@ -24,6 +24,15 @@ Automatically generated HTML file from DocOnce source
    max-height: 400px;
    overflow-x: hidden;
 }
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:64px;      /* fixed header height for style bootswatch_readable */
+  margin:-64px 0 0; /* negative fixed header height */
+}
 </style>
 
 
@@ -119,7 +128,7 @@ end of tocinfo -->
 <center>[2] <b>Univ. of Oslo</b></center>
 <br>
 <p>
-<center><h4>May 22, 2016</h4></center> <!-- date -->
+<center><h4>Jul 2, 2016</h4></center> <!-- date -->
 <br>
 <p>
 The purpose of this page is to exemplify how to write scientific
@@ -129,9 +138,9 @@ HTML blog post, etc.
 <p>
 </div> <!-- end jumbotron -->
 
-<h2 id="___sec0">PDF via LaTeX </h2>
+<h2 id="___sec0" class="anchor">PDF via LaTeX </h2>
 
-<h3 id="___sec1">Default LaTeX format </h3>
+<h3 id="___sec1" class="anchor">Default LaTeX format </h3>
 
 <p>
 <a href="_static/report_plain.pdf" target="_blank">The classical LaTeX-style report format</a>
@@ -158,7 +167,7 @@ pdflatex report
 DocOnce generates BibTeX from a bibliography file in the Publish format,
 as explained in the section <a href="#sec:bib">Handling of literature citations</a>.
 
-<h3 id="___sec2">Modern LaTeX format </h3>
+<h3 id="___sec2" class="anchor">Modern LaTeX format </h3>
 
 <p>
 Here is another version of the same report, this time in a
@@ -228,7 +237,7 @@ bibtex report
 pdflatex -shell-escape report
 </pre></div>
 
-<h3 id="___sec3">PDF aimed at printing </h3>
+<h3 id="___sec3" class="anchor">PDF aimed at printing </h3>
 
 <p>
 We can also make a <a href="_static/report_4printing.pdf" target="_blank">PDF file for printing</a>,
@@ -253,7 +262,7 @@ bibtex report
 pdflatex -shell-escape report
 </pre></div>
 
-<h3 id="___sec4">PDF for viewing on a phone </h3>
+<h3 id="___sec4" class="anchor">PDF for viewing on a phone </h3>
 
 <p>
 DocOnce can generate LaTeX for A4 or A6 paper size, if desired. The A6
@@ -272,7 +281,7 @@ bibtex report
 pdflatex -shell-escape report
 </pre></div>
 
-<h3 id="___sec5">Fancy typesetting of code blocks </h3>
+<h3 id="___sec5" class="anchor">Fancy typesetting of code blocks </h3>
 
 <p>
 <a href="_static/report_fb.pdf" target="_blank">PDF with yellow background in code blocks</a>
@@ -289,7 +298,7 @@ bibtex report
 pdflatex report
 </pre></div>
 
-<h2 id="___sec6">Sphinx documents </h2>
+<h2 id="___sec6" class="anchor">Sphinx documents </h2>
 
 <p>
 The Sphinx documentation system is very popular for creating online
@@ -321,9 +330,9 @@ copies necessary files to the Sphinx
 directory and runs the necessary commands to compile the Sphinx
 document to HTML format.
 
-<h2 id="___sec7">HTML documents </h2>
+<h2 id="___sec7" class="anchor">HTML documents </h2>
 
-<h3 id="___sec8">Simple styles </h3>
+<h3 id="___sec8" class="anchor">Simple styles </h3>
 
 <p>
 <a href="_static/report_blueish.html" target="_blank">HTML with the blueish style</a> made from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a> (see <a href="_static/report_blueish.html.html" target="_blank">HTML code</a>)
@@ -390,7 +399,7 @@ document to HTML format.
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>doconce format html report --html_style=bloodish --html_body_font=Clicker+Script --html_heading_font=Clicker+Script
 </pre></div>
 
-<h3 id="___sec9">Solarized styles </h3>
+<h3 id="___sec9" class="anchor">Solarized styles </h3>
 
 <p>
 The <a href="http://ethanschoonover.com/solarized" target="_blank">solarized color style</a> for
@@ -454,7 +463,7 @@ on DocOnce support for this color style.
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>doconce format html report --html_style=solarized --html_template=template_solarized_box_yellow.html
 </pre></div>
 
-<h3 id="___sec10">Bootstrap styles </h3>
+<h3 id="___sec10" class="anchor">Bootstrap styles </h3>
 
 <p>
 DocOnce supports a range of HTML styles based on the <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a>
@@ -541,7 +550,7 @@ doconce format html report2 --html_style=bootstrap --html_template=template_boot
 # so we turn off pygments (which means plain &lt;pre&gt; tags for code blocks)
 </pre></div>
 
-<h3 id="___sec11">Other styles </h3>
+<h3 id="___sec11" class="anchor">Other styles </h3>
 
 <p>
 <a href="_static/report_github_minimal.html" target="_blank">HTML (modified) GitHub minimal style</a> made from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a> with the <a href="https://github.com/hplgit/doconce/blob/master/bundled/html_styles/style_github_minimal/template_github_minimal.html" target="_blank">GitHub minimal theme template</a> (this template is best suited for a contents pages and not a full report)
@@ -583,9 +592,9 @@ One would expect to use the <code>pandoc</code> program to transform the
 performs some additional hacks to get the mathematics to be rendered
 correctly.
 
-<h2 id="___sec12">Other formats </h2>
+<h2 id="___sec12" class="anchor">Other formats </h2>
 
-<h3 id="___sec13">IPython notebook </h3>
+<h3 id="___sec13" class="anchor">IPython notebook </h3>
 
 <p>
 <a href="http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb" target="_blank">IPython notebook</a> made from <a href="_static/report.ipynb.html" target="_blank">IPython notebook .ipynb file</a> generated from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a>
@@ -600,7 +609,7 @@ correctly.
 # http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb
 </pre></div>
 
-<h3 id="___sec14">Wiki </h3>
+<h3 id="___sec14" class="anchor">Wiki </h3>
 
 <p>
 <a href="https://github.com/hplgit/hplgit.github.com/wiki/Experiments-with-Schemes-for-Exponential-Decay" target="_blank">MediaWiki</a> made from <a href="_static/report.mwiki.html" target="_blank">MediaWiki format</a> generated from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a>
@@ -616,7 +625,7 @@ For reports without mathematics, DocOnce can also generate Googlecode
 wiki format (used at <code>code.google.com</code>)
 and the Creole wiki format (used at <code>bitbucket.org</code>).
 
-<h3 id="___sec15">Blog posts </h3>
+<h3 id="___sec15" class="anchor">Blog posts </h3>
 
 <p>
 <a href="http://doconce-report-demo.blogspot.no/" target="_blank">Google blog post at doconce.blogspot.com</a> based on on <a href="_static/report_blogger.html.html" target="_blank">HTML code</a> generated from <a href="_static/report.do.txt.html" target="_blank">DocOnce source</a>
@@ -648,7 +657,7 @@ doconce format html report2
 # Paste report2.html into a new blog post on Wordpress
 </pre></div>
 
-<h2 id="sec:bib">Handling of literature citations</h2>
+<h2 id="sec:bib" class="anchor">Handling of literature citations</h2>
 
 <p>
 Bibliographic references in DocOnce files make use of information in <a href="https://bitbucket.org/logg/publish" target="_blank">Publish</a> database. Either you have your references already

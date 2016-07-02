@@ -112,6 +112,15 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
    <span class="nb">max-height</span><span class="o">:</span> <span class="m">400px</span><span class="p">;</span>
    <span class="nb">overflow-x</span><span class="o">:</span> <span class="nb">hidden</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="c">/* Adds an invisible element before each target to offset for the navigation</span>
+<span class="c">   bar */</span>
+<span class="nc">.anchor</span><span class="o">:</span><span class="nd">:before</span> <span class="p">{</span>
+  <span class="nb">content</span><span class="o">:</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+  <span class="nb">display</span><span class="o">:</span><span class="nb">block</span><span class="p">;</span>
+  <span class="nb">height</span><span class="o">:</span><span class="m">50px</span><span class="p">;</span>      <span class="c">/* fixed header height for style bootstrap_FlatUI */</span>
+  <span class="nb">margin</span><span class="o">:-</span><span class="m">50px</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span> <span class="c">/* negative fixed header height */</span>
+<span class="p">}</span>
 <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
 
 
@@ -119,7 +128,11 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 
 <span class="c">&lt;!-- tocinfo</span>
 <span class="c">{&#39;highest level&#39;: 1,</span>
-<span class="c"> &#39;sections&#39;: [(&#39;Mathematical problem&#39;, 1, &#39;math:problem&#39;, &#39;math:problem&#39;),</span>
+<span class="c"> &#39;sections&#39;: [(&#39;Table of contents&#39;,</span>
+<span class="c">               1,</span>
+<span class="c">               &#39;table_of_contents&#39;,</span>
+<span class="c">               &#39;table_of_contents&#39;),</span>
+<span class="c">              (&#39;Mathematical problem&#39;, 1, &#39;math:problem&#39;, &#39;math:problem&#39;),</span>
 <span class="c">              (&#39;Numerical solution method&#39;,</span>
 <span class="c">               1,</span>
 <span class="c">               &#39;numerical:problem&#39;,</span>
@@ -165,6 +178,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
       <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;dropdown&quot;</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;dropdown-toggle&quot;</span> <span class="na">data-toggle</span><span class="o">=</span><span class="s">&quot;dropdown&quot;</span><span class="p">&gt;</span>Contents <span class="p">&lt;</span><span class="nt">b</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;caret&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">b</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;dropdown-menu&quot;</span><span class="p">&gt;</span>
+     <span class="c">&lt;!-- navigation toc: --&gt;</span> <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#table_of_contents&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="p">&gt;</span>Table of contents<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
      <span class="c">&lt;!-- navigation toc: --&gt;</span> <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;._report_bootstrap_FlatUI001.html#math:problem&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="p">&gt;</span>Mathematical problem<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
      <span class="c">&lt;!-- navigation toc: --&gt;</span> <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;._report_bootstrap_FlatUI001.html#numerical:problem&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="p">&gt;</span>Numerical solution method<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
      <span class="c">&lt;!-- navigation toc: --&gt;</span> <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;._report_bootstrap_FlatUI001.html#___sec2&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;font-size: 80%;&quot;</span><span class="p">&gt;</span>Implementation<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
@@ -206,7 +220,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="p">&lt;</span><span class="nt">center</span><span class="p">&gt;</span>[2] <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Department of Informatics, University of Oslo.<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;&lt;/</span><span class="nt">center</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>May 22, 2016<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;&lt;/</span><span class="nt">center</span><span class="p">&gt;</span> <span class="c">&lt;!-- date --&gt;</span>
+<span class="p">&lt;</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Jul 2, 2016<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;&lt;/</span><span class="nt">center</span><span class="p">&gt;</span> <span class="c">&lt;!-- date --&gt;</span>
 <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Summary.<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> This report investigates the accuracy of three finite difference
@@ -214,7 +228,10 @@ schemes for the ordinary differential equation \( u&#39;=-au \) with the
 aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
 
-<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span> <span class="c">&lt;!-- end jumbotron --&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;table_of_contents&quot;</span><span class="p">&gt;</span>
 Table of contents<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
@@ -226,13 +243,6 @@ Table of contents<span class="p">&lt;/</span><span class="nt">h2</span><span cla
 <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;._report_bootstrap_FlatUI001.html#___sec5&quot;</span><span class="p">&gt;</span> Bibliography <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
-
-
-<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;._report_bootstrap_FlatUI001.html&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-primary btn-lg&quot;</span><span class="p">&gt;</span>Read <span class="ni">&amp;raquo;</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-
-
-<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span> <span class="c">&lt;!-- end jumbotron --&gt;</span>
-
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
 <span class="c">&lt;!-- navigation buttons at the bottom of the page --&gt;</span>
 <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;pager&quot;</span><span class="p">&gt;</span>

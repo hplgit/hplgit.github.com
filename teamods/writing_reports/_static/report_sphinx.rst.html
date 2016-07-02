@@ -89,7 +89,7 @@ Experiments with Schemes for Exponential Decay
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <span class="nc">:Authors:</span> <span class="nf">Hans Petter Langtangen (hpl at simula.no)</span>
-<span class="nc">:Date:</span> <span class="nf">May 22, 2016</span>
+<span class="nc">:Date:</span> <span class="nf">Jul 2, 2016</span>
 
 <span class="ge">*Summary.*</span> This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation <span class="na">:math:</span><span class="nv">`u&#39;=-au`</span> with the
@@ -111,12 +111,14 @@ We address the initial-value problem
 
 <span class="p">..</span> <span class="ow">math</span><span class="p">::</span>
    <span class="nc">:label:</span> <span class="nf">ode</span>
+
         
         u&#39;(t) = -au(t), \quad t \in (0,T], 
         
 
 <span class="p">..</span> <span class="ow">math</span><span class="p">::</span>
    <span class="nc">:label:</span> <span class="nf">initial:value</span>
+
          
         u(0)  = I,                         
         
@@ -172,7 +174,7 @@ for <span class="na">:math:</span><span class="nv">`n=0,1,\ldots,N_t-1`</span>. 
 <span class="gh">==============</span>
 
 The numerical method is implemented in a Python function
-<span class="s">[Ref2]_</span> <span class="s">``solver``</span> (found in the <span class="s">`model </span><span class="si">&lt;http://bit.ly/1Bkp72S&gt;</span><span class="s">`__</span>):
+<span class="s">[Ref2]_</span> <span class="s">``solver``</span> (found in the <span class="s">`model.py </span><span class="si">&lt;http://bit.ly/29ayDx3&gt;</span><span class="s">`__</span> Python module file):
 
 <span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">python</span>
 

@@ -7,7 +7,7 @@ Experiments with Schemes for Exponential Decay
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen (hpl at simula.no)
-:Date: May 22, 2016
+:Date: Jul 2, 2016
 
 *Summary.* This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation :math:`u'=-au` with the
@@ -29,12 +29,14 @@ We address the initial-value problem
 
 .. math::
    :label: ode
+
         
         u'(t) = -au(t), \quad t \in (0,T], 
         
 
 .. math::
    :label: initial:value
+
          
         u(0)  = I,                         
         
@@ -90,7 +92,7 @@ Implementation
 ==============
 
 The numerical method is implemented in a Python function
-[Ref2]_ ``solver`` (found in the `model <http://bit.ly/1Bkp72S>`__):
+[Ref2]_ ``solver`` (found in the `model.py <http://bit.ly/29ayDx3>`__ Python module file):
 
 .. code-block:: python
 

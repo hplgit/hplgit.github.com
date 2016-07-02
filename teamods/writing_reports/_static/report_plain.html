@@ -48,7 +48,11 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [('Mathematical problem', 1, 'math:problem', 'math:problem'),
+ 'sections': [('Table of contents',
+               1,
+               'table_of_contents',
+               'table_of_contents'),
+              ('Mathematical problem', 1, 'math:problem', 'math:problem'),
               ('Numerical solution method',
                1,
                'numerical:problem',
@@ -99,7 +103,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Informatics, University of Oslo.</b></center>
 <br>
 <p>
-<center><h4>May 22, 2016</h4></center> <!-- date -->
+<center><h4>Jul 2, 2016</h4></center> <!-- date -->
 <br>
 <p>
 <b>Summary.</b> This report investigates the accuracy of three finite difference
@@ -107,7 +111,7 @@ schemes for the ordinary differential equation \( u'=-au \) with the
 aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
 
-<h2>
+<h1 id="table_of_contents">
 Table of contents</h2>
 
 <p>
@@ -168,7 +172,7 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
 
 <p>
 The numerical method is implemented in a Python function
-<a href="#Langtangen_2014">[2]</a> <code>solver</code> (found in the <a href="http://bit.ly/1Bkp72S" target="_self"><tt>model</tt></a>):
+<a href="#Langtangen_2014">[2]</a> <code>solver</code> (found in the <a href="http://bit.ly/29ayDx3" target="_self"><tt>model.py</tt></a> Python module file):
 
 <p>
 

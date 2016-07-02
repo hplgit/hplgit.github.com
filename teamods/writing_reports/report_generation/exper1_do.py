@@ -100,10 +100,13 @@ for $n=0,1,\ldots,N_t-1$. This scheme corresponds to
 ## expression f up to the line, but not including, the regular
 ## expression t.
 
-The numerical method is implemented in a Python function
-cite{Langtangen_2014} `solver` (found in the "`model`":
-"http://bit.ly/1Bkp72S"):
+!bc pyhid
+from numpy import zeros, linspace
+!ec
 
+The numerical method is implemented in a Python function
+cite{Langtangen_2014} `solver` (found in the "`model.py`":
+"http://bit.ly/29ayDx3" Python module file):
 
 @@@CODE ../model.py  fromto: def solver@def u_exact
 
