@@ -15,8 +15,10 @@ body .c { color: #008800; font-style: italic } /* Comment */
 body .err { border: 1px solid #FF0000 } /* Error */
 body .k { color: #AA22FF; font-weight: bold } /* Keyword */
 body .o { color: #666666 } /* Operator */
+body .ch { color: #008800; font-style: italic } /* Comment.Hashbang */
 body .cm { color: #008800; font-style: italic } /* Comment.Multiline */
 body .cp { color: #008800 } /* Comment.Preproc */
+body .cpf { color: #008800; font-style: italic } /* Comment.PreprocFile */
 body .c1 { color: #008800; font-style: italic } /* Comment.Single */
 body .cs { color: #008800; font-weight: bold } /* Comment.Special */
 body .gd { color: #A00000 } /* Generic.Deleted */
@@ -78,7 +80,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <body>
 <h2></h2>
 
-<div class="highlight"><pre>Copyright 2015, Hans Petter Langtangen. Released under CC Attribution 4.0 license
+<div class="highlight"><pre><span></span>Copyright 2016, Hans Petter Langtangen. Released under CC Attribution 4.0 license
 *Summary.* This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation <span class="s">$</span><span class="nb">u&#39;</span><span class="o">=-</span><span class="nb">au</span><span class="s">$</span> with the
 aid of numerical experiments. Numerical artifacts are in particular
@@ -102,15 +104,10 @@ Table of contents: Run pandoc with --toc option --&gt;
 We address the initial-value problem
 
 <span class="sb">$$</span><span class="nb"></span>
-<span class="nv">\begin</span><span class="nb">{equation}</span>
-<span class="nb">u&#39;</span><span class="o">(</span><span class="nb">t</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="o">-</span><span class="nb">au</span><span class="o">(</span><span class="nb">t</span><span class="o">)</span><span class="nb">, </span><span class="nv">\quad</span><span class="nb"> t </span><span class="nv">\in</span><span class="nb"> </span><span class="o">(</span><span class="m">0</span><span class="nb">,T</span><span class="o">]</span><span class="nb">, </span><span class="nv">\label</span><span class="nb">{ode}</span>
-<span class="nv">\end</span><span class="nb">{equation}</span>
-<span class="s">$$</span>
-
-<span class="sb">$$</span><span class="nb"></span>
-<span class="nv">\begin</span><span class="nb">{equation} </span>
-<span class="nb">u</span><span class="o">(</span><span class="m">0</span><span class="o">)</span><span class="nb">  </span><span class="o">=</span><span class="nb"> I,                         </span><span class="nv">\label</span><span class="nb">{initial:value}</span>
-<span class="nv">\end</span><span class="nb">{equation}</span>
+<span class="nv">\begin</span><span class="nb">{align}</span>
+<span class="nb">u&#39;</span><span class="o">(</span><span class="nb">t</span><span class="o">)</span><span class="nb"> &amp;</span><span class="o">=</span><span class="nb"> </span><span class="o">-</span><span class="nb">au</span><span class="o">(</span><span class="nb">t</span><span class="o">)</span><span class="nb">, </span><span class="nv">\quad</span><span class="nb"> t </span><span class="nv">\in</span><span class="nb"> </span><span class="o">(</span><span class="m">0</span><span class="nb">,T</span><span class="o">]</span><span class="nb">, </span><span class="nv">\label</span><span class="nb">{ode}</span><span class="nv">\\</span><span class="nb"></span>
+<span class="nb">u</span><span class="o">(</span><span class="m">0</span><span class="o">)</span><span class="nb">  &amp;</span><span class="o">=</span><span class="nb"> I,                         </span><span class="nv">\label</span><span class="nb">{initial:value}</span>
+<span class="nv">\end</span><span class="nb">{align}</span>
 <span class="s">$$</span>
 where <span class="s">$</span><span class="nb">a</span><span class="s">$</span>, <span class="s">$</span><span class="nb">I</span><span class="s">$</span>, and <span class="s">$</span><span class="nb">T</span><span class="s">$</span> are prescribed parameters, and <span class="s">$</span><span class="nb">u</span><span class="o">(</span><span class="nb">t</span><span class="o">)</span><span class="s">$</span> is
 the unknown function to be estimated. This mathematical model
@@ -148,8 +145,10 @@ for <span class="s">$</span><span class="nb">n</span><span class="o">=</span><sp
 ## Implementation
 
 
+
+
 The numerical method is implemented in a Python function
-[@Langtangen<span class="nb">_</span>2014] `solver` (found in the [`model`](http://bit.ly/1Bkp72S)):
+[@Langtangen<span class="nb">_</span>2014] `solver` (found in the [`model.py`](http://bit.ly/29ayDx3) Python module file):
 
 
 
@@ -262,9 +261,9 @@ are given in the table below.
     2009.
  2. &lt;div id=&quot;Langtangen<span class="nb">_</span>2014&quot;&gt;&lt;/div&gt; **H. P. Langtangen**. 
     *A Primer on Scientific Programming With Python*,
-    fourth edition,
+    fifth edition,
     Springer,
-    2014.
+    2016.
 </pre></div>
 </body>
 </html>

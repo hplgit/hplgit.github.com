@@ -29,6 +29,15 @@ pre { color: inherit; background-color: transparent; }
    max-height: 400px;
    overflow-x: hidden;
 }
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:64px;      /* fixed header height for style bootswatch_readable */
+  margin:-64px 0 0; /* negative fixed header height */
+}
 </style>
 
 
@@ -36,7 +45,11 @@ pre { color: inherit; background-color: transparent; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [('Mathematical problem', 1, 'math:problem', 'math:problem'),
+ 'sections': [('Table of contents',
+               1,
+               'table_of_contents',
+               'table_of_contents'),
+              ('Mathematical problem', 1, 'math:problem', 'math:problem'),
               ('Numerical solution method',
                1,
                'numerical:problem',
@@ -82,6 +95,7 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._report_bootswatch_readable000.html#table_of_contents" style="font-size: 80%;">Table of contents</a></li>
      <!-- navigation toc: --> <li><a href="#math:problem" style="font-size: 80%;">Mathematical problem</a></li>
      <!-- navigation toc: --> <li><a href="#numerical:problem" style="font-size: 80%;">Numerical solution method</a></li>
      <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">Implementation</a></li>
@@ -103,7 +117,7 @@ MathJax.Hub.Config({
 <a name="part0001"></a>
 <!-- !split -->
 
-<h1 id="math:problem">Mathematical problem</h1>
+<h1 id="math:problem" class="anchor">Mathematical problem</h1>
 
 <p>
 We address the initial-value problem
@@ -121,7 +135,7 @@ is relevant for physical phenomena featuring exponential decay
 in time, e.g., vertical pressure variation in the atmosphere,
 cooling of an object, and radioactive decay.
 
-<h1 id="numerical:problem">Numerical solution method</h1>
+<h1 id="numerical:problem" class="anchor">Numerical solution method</h1>
 
 <p>
 We introduce a mesh in time with points \( 0 = t_0 < t_1 \cdots < t_{N_t}=T \).
@@ -148,16 +162,16 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
     scheme when \( \theta=1/2 \)</li>
 </ul>
 
-<h1 id="___sec2">Implementation </h1>
+<h1 id="___sec2" class="anchor">Implementation </h1>
 
 <p>
 The numerical method is implemented in a Python function
-<a href="#Langtangen_2014">[2]</a> <code>solver</code> (found in the <a href="http://bit.ly/1Bkp72S" target="_self"><tt>model</tt></a>):
+<a href="#Langtangen_2014">[2]</a> <code>solver</code> (found in the <a href="http://bit.ly/29ayDx3" target="_self"><tt>model.py</tt></a> Python module file):
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
     <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T] with steps of dt.&quot;&quot;&quot;</span>
     dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)            <span style="color: #408080; font-style: italic"># avoid integer division</span>
     Nt <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #408080; font-style: italic"># no of time intervals</span>
@@ -171,7 +185,7 @@ The numerical method is implemented in a Python function
     <span style="color: #008000; font-weight: bold">return</span> u, t
 </pre></div>
 
-<h1 id="___sec3">Numerical experiments </h1>
+<h1 id="___sec3" class="anchor">Numerical experiments </h1>
 
 <p>
 A set of numerical experiments has been carried out,
@@ -187,27 +201,27 @@ Forward Euler methods appear in Figures <a href="#fig:CN">2</a>
 and <a href="#fig:FE">3</a>.
 
 <p>
-<center> <!-- figure -->
+<center> <!-- figure label: --> <div id="fig:BE"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 1:  The Backward Euler method for decreasing time step values. <div id="fig:BE"></div> </p></center>
+<center><p class="caption">Figure 1:  The Backward Euler method for decreasing time step values.  <!-- caption label: fig:BE --> </p></center>
 <p><img src="BE.png" align="bottom" width=800></p>
 </center>
 
 <p>
-<center> <!-- figure -->
+<center> <!-- figure label: --> <div id="fig:CN"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 2:  The Crank-Nicolson method for decreasing time step values. <div id="fig:CN"></div> </p></center>
+<center><p class="caption">Figure 2:  The Crank-Nicolson method for decreasing time step values.  <!-- caption label: fig:CN --> </p></center>
 <p><img src="CN.png" align="bottom" width=800></p>
 </center>
 
 <p>
-<center> <!-- figure -->
+<center> <!-- figure label: --> <div id="fig:FE"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 3:  The Forward Euler method for decreasing time step values. <div id="fig:FE"></div> </p></center>
+<center><p class="caption">Figure 3:  The Forward Euler method for decreasing time step values.  <!-- caption label: fig:FE --> </p></center>
 <p><img src="FE.png" align="bottom" width=800></p>
 </center>
 
-<h1 id="___sec4">Error vs \( \Delta t \) </h1>
+<h1 id="___sec4" class="anchor">Error vs \( \Delta t \) </h1>
 
 <p>
 How the error
@@ -226,9 +240,9 @@ non-physically.
 
 
 <p>
-<center> <!-- figure -->
+<center> <!-- figure label: --> <div id="fig:error"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 4:  Variation of the error with the time step. <div id="fig:error"></div> </p></center>
+<center><p class="caption">Figure 4:  Variation of the error with the time step.  <!-- caption label: fig:error --> </p></center>
 <p><img src="error.png" align="bottom" width=400></p>
 </center>
 
@@ -269,7 +283,7 @@ are given in the table below.
 </div>
 
 
-<h1 id="___sec5">Bibliography </h1>
+<h1 id="___sec5" class="anchor">Bibliography </h1>
 
 <p>
 <!-- begin bibliography -->
@@ -282,9 +296,9 @@ are given in the table below.
     2009.</li>
  <li> <div id="Langtangen_2014"></div> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
-    fourth edition,
+    fifth edition,
     Springer,
-    2014.</li>
+    2016.</li>
 </ol>
 
 <!-- end bibliography -->

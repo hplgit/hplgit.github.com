@@ -76,7 +76,11 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [('Mathematical problem', 1, 'math:problem', 'math:problem'),
+ 'sections': [('Table of contents',
+               1,
+               'table_of_contents',
+               'table_of_contents'),
+              ('Mathematical problem', 1, 'math:problem', 'math:problem'),
               ('Numerical solution method',
                1,
                'numerical:problem',
@@ -127,7 +131,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Informatics, University of Oslo.</b></center>
 <br>
 <p>
-<center><h4>Dec 20, 2015</h4></center> <!-- date -->
+<center><h4>Jul 2, 2016</h4></center> <!-- date -->
 <br>
 <p>
 <b>Summary.</b> This report investigates the accuracy of three finite difference
@@ -135,7 +139,7 @@ schemes for the ordinary differential equation \( u'=-au \) with the
 aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
 
-<h2>
+<h1 id="table_of_contents">
 Table of contents</h2>
 
 <p>
@@ -196,7 +200,7 @@ for \( n=0,1,\ldots,N_t-1 \). This scheme corresponds to
 
 <p>
 The numerical method is implemented in a Python function
-<a href="#Langtangen_2014">[2]</a> <code>solver</code> (found in the <a href="http://bit.ly/1Bkp72S" target="_self"><tt>model</tt></a>):
+<a href="#Langtangen_2014">[2]</a> <code>solver</code> (found in the <a href="http://bit.ly/29ayDx3" target="_self"><tt>model.py</tt></a> Python module file):
 
 <p>
 <!-- begin verbatim block  pycod-->
@@ -231,23 +235,23 @@ Forward Euler methods appear in Figures <a href="#fig:CN">2</a>
 and <a href="#fig:FE">3</a>.
 
 <p>
-<center> <!-- figure -->
+<center> <!-- figure label: --> <div id="fig:BE"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 1:  The Backward Euler method for decreasing time step values. <div id="fig:BE"></div> </p></center>
+<center><p class="caption">Figure 1:  The Backward Euler method for decreasing time step values.  <!-- caption label: fig:BE --> </p></center>
 <p><img src="BE.png" align="bottom" width=800></p>
 </center>
 
 <p>
-<center> <!-- figure -->
+<center> <!-- figure label: --> <div id="fig:CN"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 2:  The Crank-Nicolson method for decreasing time step values. <div id="fig:CN"></div> </p></center>
+<center><p class="caption">Figure 2:  The Crank-Nicolson method for decreasing time step values.  <!-- caption label: fig:CN --> </p></center>
 <p><img src="CN.png" align="bottom" width=800></p>
 </center>
 
 <p>
-<center> <!-- figure -->
+<center> <!-- figure label: --> <div id="fig:FE"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 3:  The Forward Euler method for decreasing time step values. <div id="fig:FE"></div> </p></center>
+<center><p class="caption">Figure 3:  The Forward Euler method for decreasing time step values.  <!-- caption label: fig:FE --> </p></center>
 <p><img src="FE.png" align="bottom" width=800></p>
 </center>
 
@@ -272,9 +276,9 @@ non-physically.
 
 
 <p>
-<center> <!-- figure -->
+<center> <!-- figure label: --> <div id="fig:error"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 4:  Variation of the error with the time step. <div id="fig:error"></div> </p></center>
+<center><p class="caption">Figure 4:  Variation of the error with the time step.  <!-- caption label: fig:error --> </p></center>
 <p><img src="error.png" align="bottom" width=400></p>
 </center>
 
@@ -325,9 +329,9 @@ are given in the table below.
     2009.</li>
  <li> <div id="Langtangen_2014"></div> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
-    fourth edition,
+    fifth edition,
     Springer,
-    2014.</li>
+    2016.</li>
 </ol>
 
 <!-- end bibliography -->
@@ -336,7 +340,7 @@ are given in the table below.
 
 
 <center style="font-size:80%">
-<!-- copyright --> &copy; 2015, Hans Petter Langtangen. Released under CC Attribution 4.0 license
+<!-- copyright --> &copy; 2016, Hans Petter Langtangen. Released under CC Attribution 4.0 license
 </center>
 
 

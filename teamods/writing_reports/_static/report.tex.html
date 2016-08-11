@@ -15,8 +15,10 @@ body .c { color: #008800; font-style: italic } /* Comment */
 body .err { border: 1px solid #FF0000 } /* Error */
 body .k { color: #AA22FF; font-weight: bold } /* Keyword */
 body .o { color: #666666 } /* Operator */
+body .ch { color: #008800; font-style: italic } /* Comment.Hashbang */
 body .cm { color: #008800; font-style: italic } /* Comment.Multiline */
 body .cp { color: #008800 } /* Comment.Preproc */
+body .cpf { color: #008800; font-style: italic } /* Comment.PreprocFile */
 body .c1 { color: #008800; font-style: italic } /* Comment.Single */
 body .cs { color: #008800; font-weight: bold } /* Comment.Special */
 body .gd { color: #A00000 } /* Generic.Deleted */
@@ -78,7 +80,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <body>
 <h2></h2>
 
-<div class="highlight"><pre><span class="c">%%</span>
+<div class="highlight"><pre><span></span><span class="c">%%</span>
 <span class="c">%% Automatically generated file from DocOnce source</span>
 <span class="c">%% (https://github.com/hplgit/doconce/)</span>
 <span class="c">%%</span>
@@ -93,7 +95,7 @@ oneside,                 <span class="c">% oneside: electronic viewing, twoside:
 final,                   <span class="c">% draft: marks overfull hboxes, figures with paths</span>
 10pt]<span class="nb">{</span>article<span class="nb">}</span>
 
-<span class="k">\listfiles</span>               <span class="c">% print all files needed to compile this document</span>
+<span class="k">\listfiles</span>               <span class="c">%  print all files needed to compile this document</span>
 
 <span class="k">\usepackage</span><span class="nb">{</span>relsize,makeidx,color,setspace,amsmath,amsfonts,amssymb<span class="nb">}</span>
 <span class="k">\usepackage</span><span class="na">[table]</span><span class="nb">{</span>xcolor<span class="nb">}</span>
@@ -180,7 +182,7 @@ final,                   <span class="c">% draft: marks overfull hboxes, figures
     <span class="nb">}</span>
 <span class="c">%\hyperbaseurl{}   % hyperlinks are relative to this root</span>
 
-<span class="k">\setcounter</span><span class="nb">{</span>tocdepth<span class="nb">}{</span>2<span class="nb">}</span>  <span class="c">% number chapter, section, subsection</span>
+<span class="k">\setcounter</span><span class="nb">{</span>tocdepth<span class="nb">}{</span>2<span class="nb">}</span>  <span class="c">% levels in table of contents</span>
 
 <span class="c">% Tricks for having figures close to where they are defined:</span>
 <span class="c">% 1. define less restrictive rules for where to put figures</span>
@@ -209,14 +211,14 @@ final,                   <span class="c">% draft: marks overfull hboxes, figures
 <span class="c">% Ensure copyright on titlepage (article style) and chapter pages (book style)</span>
 <span class="k">\fancypagestyle</span><span class="nb">{</span>plain<span class="nb">}{</span>
   <span class="k">\fancyhf</span><span class="nb">{}</span>
-  <span class="k">\fancyfoot</span><span class="na">[C]</span><span class="nb">{{</span><span class="k">\footnotesize</span> <span class="k">\copyright\ </span>2015, Hans Petter Langtangen. Released under CC Attribution 4.0 license<span class="nb">}}</span>
+  <span class="k">\fancyfoot</span><span class="na">[C]</span><span class="nb">{{</span><span class="k">\footnotesize</span> <span class="k">\copyright\ </span>2016, Hans Petter Langtangen. Released under CC Attribution 4.0 license<span class="nb">}}</span>
 <span class="c">%  \renewcommand{\footrulewidth}{0mm}</span>
   <span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\headrulewidth</span><span class="nb">}{</span>0mm<span class="nb">}</span>
 <span class="nb">}</span>
 <span class="c">% Ensure copyright on titlepages with \thispagestyle{empty}</span>
 <span class="k">\fancypagestyle</span><span class="nb">{</span>empty<span class="nb">}{</span>
   <span class="k">\fancyhf</span><span class="nb">{}</span>
-  <span class="k">\fancyfoot</span><span class="na">[C]</span><span class="nb">{{</span><span class="k">\footnotesize</span> <span class="k">\copyright\ </span>2015, Hans Petter Langtangen. Released under CC Attribution 4.0 license<span class="nb">}}</span>
+  <span class="k">\fancyfoot</span><span class="na">[C]</span><span class="nb">{{</span><span class="k">\footnotesize</span> <span class="k">\copyright\ </span>2016, Hans Petter Langtangen. Released under CC Attribution 4.0 license<span class="nb">}}</span>
   <span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\footrulewidth</span><span class="nb">}{</span>0mm<span class="nb">}</span>
   <span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\headrulewidth</span><span class="nb">}{</span>0mm<span class="nb">}</span>
 <span class="nb">}</span>
@@ -353,10 +355,10 @@ final,                   <span class="c">% draft: marks overfull hboxes, figures
 <span class="nb">{}{}{</span><span class="k">\indent</span><span class="nb">}</span>
 
 <span class="c">% let the header have a thick gray hrule with section and page in blue above</span>
-<span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\headrulewidth</span><span class="nb">}{</span>0.4pt<span class="nb">}</span>
+<span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\headrulewidth</span><span class="nb">}{</span>1pt<span class="nb">}</span>
 <span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\headrule</span><span class="nb">}{{</span><span class="k">\color</span><span class="nb">{</span>gray!50<span class="nb">}</span><span class="c">%</span>
 <span class="k">\hrule</span> width<span class="k">\headwidth</span> height<span class="k">\headrulewidth</span> <span class="k">\vskip</span>-<span class="k">\headrulewidth</span><span class="nb">}}</span>
-<span class="k">\fancyhead</span><span class="na">[LE,RO]</span><span class="nb">{{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span><span class="k">\rightmark</span><span class="nb">}}</span> <span class="c">%section</span>
+<span class="k">\fancyhead</span><span class="na">[LE,RO]</span><span class="nb">{{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span><span class="k">\nouppercase</span><span class="nb">{</span><span class="k">\rightmark</span><span class="nb">}}}</span> <span class="c">%section</span>
 <span class="k">\fancyhead</span><span class="na">[RE,LO]</span><span class="nb">{{</span><span class="k">\color</span><span class="nb">{</span>seccolor<span class="nb">}</span><span class="k">\thepage</span><span class="nb">}}</span>
 
 
@@ -385,6 +387,8 @@ final,                   <span class="c">% draft: marks overfull hboxes, figures
 <span class="c">% matching end for #ifdef PREAMBLE</span>
 <span class="c">% #endif</span>
 
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\exercisesection</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\subsection*</span><span class="nb">{</span>#1<span class="nb">}}</span>
+
 
 
 
@@ -401,7 +405,7 @@ final,                   <span class="c">% draft: marks overfull hboxes, figures
 
 <span class="c">% ----------------- end author(s) -------------------------</span>
 
-<span class="k">\date</span><span class="nb">{</span>Dec 20, 2015<span class="nb">}</span>
+<span class="k">\date</span><span class="nb">{</span>Jul 2, 2016<span class="nb">}</span>
 <span class="k">\maketitle</span>
 
 <span class="k">\begin</span><span class="nb">{</span>quote<span class="nb">}</span><span class="k">\small</span>
@@ -474,8 +478,10 @@ for <span class="s">$</span><span class="nb">n</span><span class="o">=</span><sp
 <span class="k">\section</span><span class="nb">{</span>Implementation<span class="nb">}</span>
 
 
+
+
 The numerical method is implemented in a Python function
-<span class="k">\cite</span><span class="nb">{</span>Langtangen<span class="nb">_</span>2014<span class="nb">}</span> <span class="k">\texttt</span><span class="nb">{</span>solver<span class="nb">}</span> (found in the <span class="k">\href</span><span class="nb">{{</span>http://bit.ly/1Bkp72S<span class="nb">}}{</span><span class="k">\nolinkurl</span><span class="nb">{</span>model<span class="nb">}}</span>):
+<span class="k">\cite</span><span class="nb">{</span>Langtangen<span class="nb">_</span>2014<span class="nb">}</span> <span class="k">\texttt</span><span class="nb">{</span>solver<span class="nb">}</span> (found in the <span class="k">\href</span><span class="nb">{{</span>http://bit.ly/29ayDx3<span class="nb">}}{</span><span class="k">\nolinkurl</span><span class="nb">{</span>model.py<span class="nb">}}</span> Python module file):
 
 
 <span class="k">\begin</span><span class="nb">{</span>minted<span class="nb">}</span>[fontsize=<span class="k">\fontsize</span><span class="nb">{</span>9pt<span class="nb">}{</span>9pt<span class="nb">}</span>,linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]<span class="nb">{</span>python<span class="nb">}</span>
@@ -571,7 +577,7 @@ is shown in Figure~<span class="k">\ref</span><span class="nb">{</span>fig:error
 The data points for the three largest <span class="s">$</span><span class="nv">\Delta</span><span class="nb"> t</span><span class="s">$</span> values in the
 Forward Euler method are not relevant as the solution behaves
 non-physically.
-<span class="k">\end</span><span class="nb">{</span>warning<span class="nb">_</span>yellowiconadmon<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>warning<span class="nb">_</span>yellowiconadmon<span class="nb">}</span> <span class="c">% title: Observe:</span>
 
 
 
@@ -623,7 +629,7 @@ are given in the table below.
 <span class="k">\end</span><span class="nb">{</span>enumerate<span class="nb">}</span>
 
 
-<span class="k">\end</span><span class="nb">{</span>summary<span class="nb">_</span>yellowiconadmon<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>summary<span class="nb">_</span>yellowiconadmon<span class="nb">}</span> <span class="c">% title: Summary</span>
 
 
 

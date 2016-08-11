@@ -15,8 +15,10 @@ body .c { color: #008800; font-style: italic } /* Comment */
 body .err { border: 1px solid #FF0000 } /* Error */
 body .k { color: #AA22FF; font-weight: bold } /* Keyword */
 body .o { color: #666666 } /* Operator */
+body .ch { color: #008800; font-style: italic } /* Comment.Hashbang */
 body .cm { color: #008800; font-style: italic } /* Comment.Multiline */
 body .cp { color: #008800 } /* Comment.Preproc */
+body .cpf { color: #008800; font-style: italic } /* Comment.PreprocFile */
 body .c1 { color: #008800; font-style: italic } /* Comment.Single */
 body .cs { color: #008800; font-weight: bold } /* Comment.Special */
 body .gd { color: #A00000 } /* Generic.Deleted */
@@ -78,12 +80,12 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <body>
 <h2></h2>
 
-<div class="highlight"><pre>#TITLE (actually governed by the filename): Experiments with Schemes for Exponential Decay
+<div class="highlight"><pre><span></span>#TITLE (actually governed by the filename): Experiments with Schemes for Exponential Decay
 
 By &#39;&#39;&#39;Hans Petter Langtangen&#39;&#39;&#39; (hpl at simula.no)
-==== Dec 20, 2015 ====
+==== Jul 2, 2016 ====
 
-Copyright 2015, Hans Petter Langtangen. Released under CC Attribution 4.0 license
+Copyright 2016, Hans Petter Langtangen. Released under CC Attribution 4.0 license
 
 &#39;&#39;Summary.&#39;&#39; This report investigates the accuracy of three finite difference
 schemes for the ordinary differential equation &lt;math&gt;u&#39;=-au&lt;/math&gt; with the
@@ -149,8 +151,10 @@ for &lt;math&gt;n=0,1,\ldots,N_t-1&lt;/math&gt;. This scheme corresponds to
 == Implementation ==
 
 
+
+
 The numerical method is implemented in a Python function
-[2] &lt;code&gt;solver&lt;/code&gt; (found in the [http://bit.ly/1Bkp72S &lt;code&gt;model&lt;/code&gt;]):
+[2] &lt;code&gt;solver&lt;/code&gt; (found in the [http://bit.ly/29ayDx3 &lt;code&gt;model.py&lt;/code&gt;] Python module file):
 
 
 &lt;syntaxhighlight lang=&quot;python&quot;&gt;
@@ -203,7 +207,7 @@ and fig:FE.
 
 
 
-[[File:FE.png|frame|800px|alt=FE.png|The Forward Euler method for decreasing time step values. (fig:FE)]] &lt;!-- not yet uploaded to common.wikimedia.org --&gt;
+    [[File:FE.png|frame|800px|alt=FE.png|The Forward Euler method for decreasing time step values. (fig:FE)]] &lt;!-- user: Tsven4, filename: FE.png, timestamp: 2016-06-12T16:40:58Z --&gt;
 
 
 
@@ -282,9 +286,9 @@ are given in the table below.
     2009.
  &lt;li&gt; &#39;&#39;&#39;H. P. Langtangen&#39;&#39;&#39;. 
     &#39;&#39;A Primer on Scientific Programming With Python&#39;&#39;,
-    fourth edition,
+    fifth edition,
     Springer,
-    2014.
+    2016.
 &lt;/ol&gt;
 </pre></div>
 </body>
