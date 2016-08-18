@@ -24,6 +24,15 @@ Automatically generated HTML file from DocOnce source
    max-height: 400px;
    overflow-x: hidden;
 }
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:64px;      /* fixed header height for style bootswatch_readable */
+  margin:-64px 0 0; /* negative fixed header height */
+}
 </style>
 
 
@@ -71,6 +80,7 @@ end of tocinfo -->
   <li> <a href="https://hplgit.github.io/fenics-tutorial/doc/web/index.html" target="_self">The FEniCS Tutorial</a></li>
 </ul>
 
+ <li> How to write books in DocOnce: <a href="http://hplgit.github.io/doconce/doc/src/book/repo/doc/pub/book/html/my-book.html" target="_self">HTML</a>, <a href="http://hplgit.github.io/doconce/doc/src/book/repo/doc/pub/book/pdf/my-book-4print.pdf" target="_self">PDF</a>, <a href="http://hplgit.github.io/doconce/doc/src/book/repo/doc/pub/book/sphinx-uio2/index.html" target="_self">Sphinx UiO</a>, <a href="http://hplgit.github.io/doconce/doc/src/book/repo/doc/pub/book/sphinx-bootstrap/index.html" target="_self">Sphinx bootstrap</a></li>
  <li> Quick Intro to Version Control Systems and Project Hosting Sites:</li>
 
 <ul>
